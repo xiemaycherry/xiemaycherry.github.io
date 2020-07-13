@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="baidu-site-verification" content="E1Di33CelZ">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="WsojkhmMcOefku3B2Vxp02NtxlUt_JzBP1fVPrFk3Gw">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'WGLQQAQKBA',
+      apiKey: '',
+      indexName: 'xiemay',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="baidu-site-verification" content="z0tVDge8Pe">
+
+  
+  <meta name="keywords" content="深度学习,">
+
+
+<meta name="description" content="Coursera深度学习教程中文笔记 课程概述 https://mooc.study.163.com/university/deeplearning_ai#/c 这些课程专为已有一定基础（基本的编程知识，熟悉Python、对机器学习有基本了解），想要尝试进入人工智能领域的计算机专业人士准备。介绍显示：“深度学习是科技业最热门的技能之一，本课程将帮你掌握深度学习。” 在这5堂课中，学生将可以学习到深">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="deeplearningvideo">
+<meta property="og:url" content="http://xiemaycherry.github.io/2019/04/03/deeplearningvideo/index.html">
+<meta property="og:site_name" content="welcome">
+<meta property="og:description" content="Coursera深度学习教程中文笔记 课程概述 https://mooc.study.163.com/university/deeplearning_ai#/c 这些课程专为已有一定基础（基本的编程知识，熟悉Python、对机器学习有基本了解），想要尝试进入人工智能领域的计算机专业人士准备。介绍显示：“深度学习是科技业最热门的技能之一，本课程将帮你掌握深度学习。” 在这5堂课中，学生将可以学习到深">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T11:29:41.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="deeplearningvideo">
+<meta name="twitter:description" content="Coursera深度学习教程中文笔记 课程概述 https://mooc.study.163.com/university/deeplearning_ai#/c 这些课程专为已有一定基础（基本的编程知识，熟悉Python、对机器学习有基本了解），想要尝试进入人工智能领域的计算机专业人士准备。介绍显示：“深度学习是科技业最热门的技能之一，本课程将帮你掌握深度学习。” 在这5堂课中，学生将可以学习到深">
+
+
+
+
+
+
+  <link rel="canonical" href="http://xiemaycherry.github.io/2019/04/03/deeplearningvideo/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>deeplearningvideo | welcome</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<meta name="baidu-site-verification" content="3BmH9zSH5h"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">welcome</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言">
+          <a href="/guestbook/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>留言</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidusitmap">
+          <a href="/baidusitmap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>baidusitmap</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/04/03/deeplearningvideo/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">deeplearningvideo</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-03T10:19:55+08:00">2019-04-03</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/视频学习/" itemprop="url" rel="index"><span itemprop="name">视频学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/03/deeplearningvideo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/03/deeplearningvideo/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                9.4k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>Coursera深度学习教程中文笔记</strong></p>
+<p>课程概述</p>
+<p><a href="https://mooc.study.163.com/university/deeplearning_ai#/c" target="_blank" rel="noopener">https://mooc.study.163.com/university/deeplearning_ai#/c</a></p>
+<p>这些课程专为已有一定基础（基本的编程知识，熟悉<strong>Python</strong>、对机器学习有基本了解），想要尝试进入人工智能领域的计算机专业人士准备。介绍显示：“深度学习是科技业最热门的技能之一，本课程将帮你掌握深度学习。”</p>
+<p>在这5堂课中，学生将可以学习到深度学习的基础，学会构建神经网络，并用在包括吴恩达本人在内的多位业界顶尖专家指导下创建自己的机器学习项目。<strong>Deep Learning Specialization</strong>对卷积神经网络 (<strong>CNN</strong>)、递归神经网络 (<strong>RNN</strong>)、长短期记忆 (<strong>LSTM</strong>) 等深度学习常用的网络结构、工具和知识都有涉及。</p>
+<p><strong>笔记是根据视频和字幕写的，没有技术含量，只需要专注和严谨。</strong></p>
+<p>2018-04-14</p>
+<p><strong>本课程视频教程地址：</strong><a href="https://mooc.study.163.com/university/deeplearning_ai#/c" target="_blank" rel="noopener">https://mooc.study.163.com/university/deeplearning_ai#/c</a></p>
+<p>（<a href="http://xn--www-8p9dt90ycxc3s4a.deeplearning.ai" target="_blank" rel="noopener">该视频从www.deeplearning.ai</a> 网站下载，因众所周知的原因，国内用户观看某些在线视频非常不容易，故一些学者一起制作了离线视频，旨在方便国内用户个人学习使用，请勿用于商业用途。视频内嵌中英文字幕，推荐使用<strong>potplayer</strong>播放。版权属于吴恩达老师所有，若在线视频流畅，请到官方网站观看。）</p>
+<p><a href="http://www.ai-start.com/" target="_blank" rel="noopener">笔记网站(适合手机阅读)</a></p>
+<p>吴恩达老师的机器学习课程笔记和视频：<a href="https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes" target="_blank" rel="noopener">https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes</a></p>
+<h1>深度学习笔记目录</h1>
+<h2 id="第一门课-神经网络和深度学习-neural-networks-and-deep-learning"><a class="header-anchor" href="#第一门课-神经网络和深度学习-neural-networks-and-deep-learning">¶</a>第一门课 神经网络和深度学习(Neural Networks and Deep Learning)</h2>
+<p>第一周：深度学习引言(Introduction to Deep Learning)</p>
+<p>1.1 欢迎(Welcome)</p>
+<p>1.2 什么是神经网络？(What is a Neural Network)</p>
+<p>1.3 神经网络的监督学习(Supervised Learning with Neural Networks)</p>
+<p>1.4 为什么神经网络会流行？(Why is Deep Learning taking off?)</p>
+<p>1.5 关于本课程(About this Course)</p>
+<p>1.6 课程资源(Course Resources)</p>
+<p>1.7 Geoffery Hinton 专访(Geoffery Hinton interview)</p>
+<p>第二周：神经网络的编程基础(Basics of Neural Network programming)</p>
+<p>2.1 二分类(Binary Classification)</p>
+<p>2.2 逻辑回归(Logistic Regression)</p>
+<p>2.3 逻辑回归的代价函数（Logistic Regression Cost Function）</p>
+<p>2.4 梯度下降（Gradient Descent）</p>
+<p>2.5 导数（Derivatives）</p>
+<p>2.6 更多的导数例子（More Derivative Examples）</p>
+<p>2.7 计算图（Computation Graph）</p>
+<p>2.8 计算图导数（Derivatives with a Computation Graph）</p>
+<p>2.9 逻辑回归的梯度下降（Logistic Regression Gradient Descent）</p>
+<p>2.10 梯度下降的例子(Gradient Descent on m Examples)</p>
+<p>2.11 向量化(Vectorization)</p>
+<p>2.12 更多的向量化例子（More Examples of Vectorization）</p>
+<p>2.13 向量化逻辑回归(Vectorizing Logistic Regression)</p>
+<p>2.14 向量化逻辑回归的梯度计算（Vectorizing Logistic Regression’s Gradient）</p>
+<p>2.15 Python中的广播机制（Broadcasting in Python）</p>
+<p>2.16 关于 Python与numpy向量的使用（A note on python or numpy vectors）</p>
+<p>2.17 Jupyter/iPython Notebooks快速入门（Quick tour of Jupyter/iPython Notebooks）</p>
+<p>2.18 逻辑回归损失函数详解（Explanation of logistic regression cost function）</p>
+<p>第三周：浅层神经网络(Shallow neural networks)</p>
+<p>3.1 神经网络概述（Neural Network Overview）</p>
+<p>3.2 神经网络的表示（Neural Network Representation）</p>
+<p>3.3 计算一个神经网络的输出（Computing a Neural Network’s output）</p>
+<p>3.4 多样本向量化（Vectorizing across multiple examples）</p>
+<p>3.5 向量化实现的解释（Justification for vectorized implementation）</p>
+<p>3.6 激活函数（Activation functions）</p>
+<p>3.7 为什么需要非线性激活函数？（why need a nonlinear activation function?）</p>
+<p>3.8 激活函数的导数（Derivatives of activation functions）</p>
+<p>3.9 神经网络的梯度下降（Gradient descent for neural networks）</p>
+<p>3.10（选修）直观理解反向传播（Backpropagation intuition）</p>
+<p>3.11 随机初始化（Random+Initialization）</p>
+<p>第四周：深层神经网络(Deep Neural Networks)</p>
+<p>4.1 深层神经网络（Deep L-layer neural network）</p>
+<p>4.2 前向传播和反向传播（Forward and backward propagation）</p>
+<p>4.3 深层网络中的前向和反向传播（Forward propagation in a Deep Network）</p>
+<p>4.4 核对矩阵的维数（Getting your matrix dimensions right）</p>
+<p>4.5 为什么使用深层表示？（Why deep representations?）</p>
+<p>4.6 搭建神经网络块（Building blocks of deep neural networks）</p>
+<p>4.7 参数VS超参数（Parameters vs Hyperparameters）</p>
+<p>4.8 深度学习和大脑的关联性（What does this have to do with the brain?）</p>
+<h2 id="第二门课-改善深层神经网络：超参数调试-正则化以及优化-improving-deep-neural-networks-hyperparameter-tuning-regularization-and-optimization"><a class="header-anchor" href="#第二门课-改善深层神经网络：超参数调试-正则化以及优化-improving-deep-neural-networks-hyperparameter-tuning-regularization-and-optimization">¶</a>第二门课 改善深层神经网络：超参数调试、正则化以及优化(Improving Deep Neural Networks:Hyperparameter tuning, Regularization and Optimization)</h2>
+<p>第一周：深度学习的实用层面(Practical aspects of Deep Learning)</p>
+<p>1.1 训练，验证，测试集（Train / Dev / Test sets）</p>
+<p>1.2 偏差，方差（Bias /Variance）</p>
+<p>1.3 机器学习基础（Basic Recipe for Machine Learning）</p>
+<p>1.4 正则化（Regularization）</p>
+<p>1.5 为什么正则化有利于预防过拟合呢？（Why regularization reduces overfitting?）</p>
+<p>1.6 dropout 正则化（Dropout Regularization）</p>
+<p>1.7 理解 dropout（Understanding Dropout）</p>
+<p>1.8 其他正则化方法（Other regularization methods）</p>
+<p>1.9 标准化输入（Normalizing inputs）</p>
+<p>1.10 梯度消失/梯度爆炸（Vanishing / Exploding gradients）</p>
+<p>1.11 神经网络的权重初始化（Weight Initialization for Deep NetworksVanishing /Exploding gradients）</p>
+<p>1.12 梯度的数值逼近（Numerical approximation of gradients）</p>
+<p>1.13 梯度检验（Gradient checking）</p>
+<p>1.14 梯度检验应用的注意事项（Gradient Checking Implementation Notes）</p>
+<p>第二周：优化算法 (Optimization algorithms)</p>
+<p>2.1 Mini-batch 梯度下降（Mini-batch gradient descent）</p>
+<p>2.2 理解Mini-batch 梯度下降（Understanding Mini-batch gradient descent）</p>
+<p>2.3 指数加权平均（Exponentially weighted averages）</p>
+<p>2.4 理解指数加权平均（Understanding Exponentially weighted averages）</p>
+<p>2.5 指数加权平均的偏差修正（Bias correction in exponentially weighted averages）</p>
+<p>2.6 momentum梯度下降（Gradient descent with momentum）</p>
+<p>2.7 RMSprop——root mean square prop（RMSprop）</p>
+<p>2.8 Adam优化算法（Adam optimization algorithm）</p>
+<p>2.9 学习率衰减（Learning rate decay）</p>
+<p>2.10 局部最优问题（The problem of local optima）</p>
+<p>第三周超参数调试，batch正则化和程序框架（Hyperparameter tuning, Batch Normalization and Programming Frameworks)</p>
+<p>3.1 调试处理（Tuning process）</p>
+<p>3.2 为超参数选择和适合范围（Using an appropriate scale to pick hyperparameters）</p>
+<p>3.3 超参数训练的实践：Pandas vs. Caviar（Hyperparameters tuning in practice: Pandas vs. Caviar）</p>
+<p>3.4 网络中的正则化激活函数（Normalizing activations in a network）</p>
+<p>3.5 将 Batch Norm拟合进神经网络（Fitting Batch Norm into a neural network）</p>
+<p>3.6 为什么Batch Norm奏效？（Why does Batch Norm work?）</p>
+<p>3.7 测试时的Batch Norm（Batch Norm at test time）</p>
+<p>3.8 Softmax 回归（Softmax Regression）</p>
+<p>3.9 训练一个Softmax 分类器（Training a softmax classifier）</p>
+<p>3.10 深度学习框架（Deep learning frameworks）</p>
+<p>3.11 TensorFlow（TensorFlow）</p>
+<h2 id="第三门课-结构化机器学习项目-structuring-machine-learning-projects"><a class="header-anchor" href="#第三门课-结构化机器学习项目-structuring-machine-learning-projects">¶</a>第三门课 结构化机器学习项目 (Structuring Machine Learning Projects)</h2>
+<p>第一周：机器学习策略（1）(ML Strategy (1))</p>
+<p>1.1 为什么是ML策略？ (Why ML Strategy)</p>
+<p>1.2 正交化(Orthogonalization)</p>
+<p>1.3 单一数字评估指标(Single number evaluation metric)</p>
+<p>1.4 满足和优化指标 (Satisficing and Optimizing metric)</p>
+<p>1.5 训练集、开发集、测试集的划分(Train/dev/test distributions)</p>
+<p>1.6 开发集和测试集的大小 (Size of the dev and test sets)</p>
+<p>1.7 什么时候改变开发集/测试集和评估指标(When to change dev/test sets and metrics)</p>
+<p>1.8 为什么是人的表现 (Why human-level performance?)</p>
+<p>1.9 可避免偏差(Avoidable bias)</p>
+<p>1.10 理解人类的表现 (Understanding human-level performance)</p>
+<p>1.11 超过人类的表现(Surpassing human-level performance)</p>
+<p>1.12 改善你的模型表现 (Improving your model performance)</p>
+<p>第二周：机器学习策略（2）(ML Strategy (2))</p>
+<p>2.1 误差分析 (Carrying out error analysis)</p>
+<p>2.2 清除标注错误的数据(Cleaning up incorrectly labeled data)</p>
+<p>2.3 快速搭建你的第一个系统，并进行迭代(Build your first system quickly, then iterate)</p>
+<p>2.4 在不同的分布上的训练集和测试集 (Training and testing on different distributions)</p>
+<p>2.5 数据分布不匹配的偏差与方差分析 (Bias and Variance with mismatched data distributions)</p>
+<p>2.6 处理数据不匹配问题(Addressing data mismatch)</p>
+<p>2.7 迁移学习 (Transfer learning)</p>
+<p>2.8 多任务学习(Multi-task learning)</p>
+<p>2.9 什么是端到端的深度学习？ (What is end-to-end deep learning?)</p>
+<p>2.10 是否使用端到端的深度学习方法 (Whether to use end-to-end deep learning)</p>
+<h2 id="第四门课-卷积神经网络-convolutional-neural-networks"><a class="header-anchor" href="#第四门课-卷积神经网络-convolutional-neural-networks">¶</a>第四门课 卷积神经网络（Convolutional Neural Networks）</h2>
+<p>第一周 卷积神经网络(Foundations of Convolutional Neural Networks)</p>
+<p>1.1	计算机视觉（Computer vision）</p>
+<p>1.2	边缘检测示例（Edge detection example）</p>
+<p>1.3	更多边缘检测内容（More edge detection）</p>
+<p>1.4	Padding</p>
+<p>1.5	卷积步长（Strided convolutions）</p>
+<p>1.6	三维卷积（Convolutions over volumes）</p>
+<p>1.7	单层卷积网络（One layer of a convolutional network）</p>
+<p>1.8	简单卷积网络示例（A simple convolution network example）</p>
+<p>1.9	池化层（Pooling layers）</p>
+<p>1.10 卷积神经网络示例（Convolutional neural network example）</p>
+<p>1.11 为什么使用卷积？（Why convolutions?）</p>
+<p>第二周 深度卷积网络：实例探究(Deep convolutional models: case studies)</p>
+<p>2.1 为什么要进行实例探究？（Why look at case studies?）</p>
+<p>2.2 经典网络（Classic networks）</p>
+<p>2.3 残差网络（Residual Networks (ResNets)）</p>
+<p>2.4 残差网络为什么有用？（Why ResNets work?）</p>
+<p>2.5 网络中的网络以及 1×1 卷积（Network in Network and 1×1 convolutions）</p>
+<p>2.6 谷歌 Inception 网络简介（Inception network motivation）</p>
+<p>2.7 Inception 网络（Inception network）</p>
+<p>2.8 使用开源的实现方案（Using open-source implementations）</p>
+<p>2.9 迁移学习（Transfer Learning）</p>
+<p>2.10 数据扩充（Data augmentation）</p>
+<p>2.11 计算机视觉现状（The state of computer vision）</p>
+<p>第三周 目标检测（Object detection）</p>
+<p>3.1 目标定位（Object localization）</p>
+<p>3.2 特征点检测（Landmark detection）</p>
+<p>3.3 目标检测（Object detection）</p>
+<p>3.4 卷积的滑动窗口实现（Convolutional implementation of sliding windows）</p>
+<p>3.5 Bounding Box预测（Bounding box predictions）</p>
+<p>3.6 交并比（Intersection over union）</p>
+<p>3.7 非极大值抑制（Non-max suppression）</p>
+<p>3.8 Anchor Boxes</p>
+<p>3.9 YOLO 算法（Putting it together: YOLO algorithm）</p>
+<p>3.10 候选区域（选修）（Region proposals (Optional)）</p>
+<p>第四周 特殊应用：人脸识别和神经风格转换（Special applications: Face recognition &amp;Neural style transfer）</p>
+<p>4.1 什么是人脸识别？(What is face recognition?)</p>
+<p>4.2 One-Shot学习（One-shot learning）</p>
+<p>4.3 Siamese 网络（Siamese network）</p>
+<p>4.4 Triplet 损失（Triplet 损失）</p>
+<p>4.5 面部验证与二分类（Face verification and binary classification）</p>
+<p>4.6 什么是神经风格转换？（What is neural style transfer?）</p>
+<p>4.7 什么是深度卷积网络？（What are deep ConvNets learning?）</p>
+<p>4.8 代价函数（Cost function）</p>
+<p>4.9 内容代价函数（Content cost function）</p>
+<p>4.10 风格代价函数（Style cost function）</p>
+<p>4.11 一维到三维推广（1D and 3D generalizations of models）</p>
+<h1>第五门课 序列模型(Sequence Models)</h1>
+<p>第一周 循环序列模型（Recurrent Neural Networks） 1.1 为什么选择序列模型？（Why Sequence Models?）</p>
+<p>1.2 数学符号（Notation）</p>
+<p>1.3 循环神经网络模型（Recurrent Neural Network Model）</p>
+<p>1.4 通过时间的反向传播（Backpropagation through time）</p>
+<p>1.5 不同类型的循环神经网络（Different types of RNNs）</p>
+<p>1.6 语言模型和序列生成（Language model and sequence generation）</p>
+<p>1.7 对新序列采样（Sampling novel sequences）</p>
+<p>1.8 循环神经网络的梯度消失（Vanishing gradients with RNNs）</p>
+<p>1.9 GRU单元（Gated Recurrent Unit（GRU））</p>
+<p>1.10 长短期记忆（LSTM（long short term memory）unit）</p>
+<p>1.11 双向循环神经网络（Bidirectional RNN）</p>
+<p>1.12 深层循环神经网络（Deep RNNs）</p>
+<p>第二周 自然语言处理与词嵌入（Natural Language Processing and Word Embeddings）</p>
+<p>2.1 词汇表征（Word Representation）</p>
+<p>2.2 使用词嵌入（Using Word Embeddings）</p>
+<p>2.3 词嵌入的特性（Properties of Word Embeddings）</p>
+<p>2.4 嵌入矩阵（Embedding Matrix）</p>
+<p>2.5 学习词嵌入（Learning Word Embeddings）</p>
+<p>2.6 Word2Vec</p>
+<p>2.7 负采样（Negative Sampling）</p>
+<p>2.8 GloVe 词向量（GloVe Word Vectors）</p>
+<p>2.9 情绪分类（Sentiment Classification）</p>
+<p>2.10 词嵌入除偏（Debiasing Word Embeddings）</p>
+<p>第三周 序列模型和注意力机制（Sequence models &amp; Attention mechanism）</p>
+<p>3.1 基础模型（Basic Models）</p>
+<p>3.2 选择最可能的句子（Picking the most likely sentence）</p>
+<p>3.3 集束搜索（Beam Search）</p>
+<p>3.4 改进集束搜索（Refinements to Beam Search）</p>
+<p>3.5 集束搜索的误差分析（Error analysis in beam search）</p>
+<p>3.6 Bleu 得分（选修）（Bleu Score (optional)）</p>
+<p>3.7 注意力模型直观理解（Attention Model Intuition）</p>
+<p>3.8注意力模型（Attention Model）</p>
+<p>3.9语音识别（Speech recognition）</p>
+<p>3.10触发字检测（Trigger Word Detection）</p>
+<p>3.11结论和致谢（Conclusion and thank you）</p>
+<p>人工智能大师访谈</p>
+<p>吴恩达采访 Geoffery Hinton</p>
+<p>吴恩达采访 Ian Goodfellow</p>
+<p>吴恩达采访 Ruslan Salakhutdinov</p>
+<p>吴恩达采访 Yoshua Bengio</p>
+<p>吴恩达采访 林元庆</p>
+<p>吴恩达采访 Pieter Abbeel</p>
+<p>吴恩达采访 Andrej Karpathy</p>
+<p>附件</p>
+<p>深度学习符号指南（原课程翻译）</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author: </strong>XieMay</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://xiemaycherry.github.io/2019/04/03/deeplearningvideo/" title="deeplearningvideo">http://xiemaycherry.github.io/2019/04/03/deeplearningvideo/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/28/贝叶斯分类器/" rel="next" title="贝叶斯分类器">
+                <i class="fa fa-chevron-left"></i> 贝叶斯分类器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/07/英语学习方法/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieMay</p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.cnblogs.com/shiyiandchuixue/" target="_blank" title="BLOGS"><i class="fa fa-fw fa-globe"></i>BLOGS</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:2323020965@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/shiyichuixue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">深度学习笔记目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一门课-神经网络和深度学习-neural-networks-and-deep-learning"><span class="nav-number">1.1.</span> <span class="nav-text">¶第一门课 神经网络和深度学习(Neural Networks and Deep Learning)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二门课-改善深层神经网络：超参数调试-正则化以及优化-improving-deep-neural-networks-hyperparameter-tuning-regularization-and-optimization"><span class="nav-number">1.2.</span> <span class="nav-text">¶第二门课 改善深层神经网络：超参数调试、正则化以及优化(Improving Deep Neural Networks:Hyperparameter tuning, Regularization and Optimization)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三门课-结构化机器学习项目-structuring-machine-learning-projects"><span class="nav-number">1.3.</span> <span class="nav-text">¶第三门课 结构化机器学习项目 (Structuring Machine Learning Projects)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四门课-卷积神经网络-convolutional-neural-networks"><span class="nav-number">1.4.</span> <span class="nav-text">¶第四门课 卷积神经网络（Convolutional Neural Networks）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">第五门课 序列模型(Sequence Models)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Symbols count total&#58;</span>
+    
+    <span title="Symbols count total">294k</span>
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+    
+  
+  <script src="[object Object]"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '1Dfsb4DwGQPCIlbyCKt9egUR-gzGzoHsz',
+        appKey: '8OKqJPeMRRQnxx2vaAwIkM8y',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

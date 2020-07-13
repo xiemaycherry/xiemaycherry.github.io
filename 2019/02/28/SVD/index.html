@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="baidu-site-verification" content="E1Di33CelZ">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="WsojkhmMcOefku3B2Vxp02NtxlUt_JzBP1fVPrFk3Gw">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'WGLQQAQKBA',
+      apiKey: '',
+      indexName: 'xiemay',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="baidu-site-verification" content="z0tVDge8Pe">
+
+  
+  <meta name="keywords" content="SVD,">
+
+
+<meta name="description" content="目录 😄 1️⃣ 简单说一下特征值、特征向量与特征分解    I. 特征值、特征向量与特征分解    II. 几何意义    III.  如何实现通过Matlab、Python实现 2️⃣详细解说SVD    I. 几何意义    I. 奇异值分解的推导过程    I. SVD算例    I. 如何通过Matlab和Python 3️⃣应用举例    I. 特征值、特征向量与特征分解 4️⃣特征">
+<meta name="keywords" content="SVD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的读书笔记">
+<meta property="og:url" content="http://xiemaycherry.github.io/2019/02/28/SVD/index.html">
+<meta property="og:site_name" content="welcome">
+<meta property="og:description" content="目录 😄 1️⃣ 简单说一下特征值、特征向量与特征分解    I. 特征值、特征向量与特征分解    II. 几何意义    III.  如何实现通过Matlab、Python实现 2️⃣详细解说SVD    I. 几何意义    I. 奇异值分解的推导过程    I. SVD算例    I. 如何通过Matlab和Python 3️⃣应用举例    I. 特征值、特征向量与特征分解 4️⃣特征">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/02/28/SVD/SVD1.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/02/28/SVD/SVD3.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/02/28/SVD/SVD4.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/02/28/SVD/SVD2.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/02/28/SVD/SVD5.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/02/28/SVD/SVD6.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/02/28/SVD/SVD7.png">
+<meta property="og:updated_time" content="2020-06-29T08:24:53.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我的读书笔记">
+<meta name="twitter:description" content="目录 😄 1️⃣ 简单说一下特征值、特征向量与特征分解    I. 特征值、特征向量与特征分解    II. 几何意义    III.  如何实现通过Matlab、Python实现 2️⃣详细解说SVD    I. 几何意义    I. 奇异值分解的推导过程    I. SVD算例    I. 如何通过Matlab和Python 3️⃣应用举例    I. 特征值、特征向量与特征分解 4️⃣特征">
+<meta name="twitter:image" content="http://xiemaycherry.github.io/2019/02/28/SVD/SVD1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://xiemaycherry.github.io/2019/02/28/SVD/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>我的读书笔记 | welcome</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<meta name="baidu-site-verification" content="3BmH9zSH5h"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">welcome</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言">
+          <a href="/guestbook/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>留言</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidusitmap">
+          <a href="/baidusitmap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>baidusitmap</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/02/28/SVD/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">我的读书笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-28T14:54:12+08:00">2019-02-28</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/28/SVD/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/SVD/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                6.3k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1>目录 😄</h1>
+<p>1️⃣ <a href="#1">简单说一下特征值、特征向量与特征分解</a><br>
+   I. <a href="#1.1">特征值、特征向量与特征分解</a><br>
+   II. <a href="#1.2">几何意义</a><br>
+   III.  <a href="#1.3">如何实现通过Matlab、Python实现</a><br>
+2️⃣<a href="#2">详细解说SVD</a><br>
+   I. <a href="#2.1">几何意义</a><br>
+   I. <a href="#2.2">奇异值分解的推导过程</a><br>
+   I. <a href="#2.3">SVD算例</a><br>
+   I. <a href="#2.4">如何通过Matlab和Python</a><br>
+3️⃣<a href="#3">应用举例</a><br>
+   I. <a href="#3.1">特征值、特征向量与特征分解</a><br>
+4️⃣<a href="#4">特征分解、奇异值分解的区别</a><br>
+   I. <a href="#4">特征分解、奇异值分解的区别</a></p>
+<h1><font id="1" color="blue"> 简单说一下特征值、特征向量与特征分解</font></h1>
+<a id="more"></a>
+<h2 id="font-id-1-1-特征值-特征向量与特征分解-font"><a class="header-anchor" href="#font-id-1-1-特征值-特征向量与特征分解-font">¶</a><font id="1.1">特征值、特征向量与特征分解</font></h2>
+<p><font color="red">Theory:</font><br>
+对于一个正阵$M$，满足如下：<br>
+$$Mx=\lambda x $$<br>
+其中$\lambda$被成为特征值，满足$||M-\lambda E||=0$再有$(M-\lambda E)x=0$，可计算其特征向量。<br>
+如果有了特征值和特征向量后呢，则可以将矩阵$M$用特征分解：<br>
+$$ M=W\sum W^{-1}$$<br>
+$W={w_1,w_2,…,w_n}$分别是特征值$\lambda_1,\lambda_2,…,\lambda_n$对应的特征向量构成的方阵</p>
+<h2 id="font-id-1-2-几何意义-font"><a class="header-anchor" href="#font-id-1-2-几何意义-font">¶</a><font id="1.2"> 几何意义 </font></h2>
+<p>对应矩阵M,其对应的线性变化<br>
+$$Mx = x’$$<br>
+上面这个式子，$Mx，x’$是一个向量，$x,x’$可能是不共线的(如图(b))，如果向量$Mx,x’$满足$Mx=x’=\lambda x$,则如图(b)，这说明了这个变换就是对向量x做一个拉伸或者压缩。<br>
+<img src="/2019/02/28/SVD/SVD1.png" alt="图一"></p>
+<h2 id="font-id-1-2-如何实现通过matlab-python实现-font"><a class="header-anchor" href="#font-id-1-2-如何实现通过matlab-python实现-font">¶</a><font id="1.2">如何实现通过Matlab、Python实现</font></h2>
+<p>数学推导：<br>
+$$ Mx = \lambda x$$<br>
+$$ Mx-\lambda x=(M-\lambda E)x=0$$<br>
+齐次线性方程组有非零解，则$||M-\lambda E||=0$可求得特征向量<br>
+再带回，可得特征向量。<br>
+Matlab:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = eig(M) <span class="comment">% 求取矩阵M的特征值，向量形式存储</span></span><br><span class="line">[V,D] = eig(M) <span class="comment">% 计算M的特征值对角阵D和特征向量V，使得MV = VD成立</span></span><br><span class="line">[V,D] = eig(M,<span class="string">'nobalance'</span>)   <span class="comment">%当矩阵M中有与截断误差数量级相差不远的值时，该指令可能更精确。'nobalance'起误差调节作用</span></span><br></pre></td></tr></table></figure>
+<p>Python<br>
+numpy科学计算库提供相应的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.diag((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)) <span class="comment"># 这是你想要求取特征值的数组</span></span><br><span class="line">a,b = numpy.linalg.elg(x) <span class="comment"># 特征值赋值给a,对应的特征向量赋值给b</span></span><br></pre></td></tr></table></figure>
+<h1><font id="2" color="blue">详细解说SVD</font></h1>
+<p>SVD的英文全称： Singular Value Decomposition，中文名字：奇异值分解</p>
+<h2 id="font-id-2-1-几何意义-font"><a class="header-anchor" href="#font-id-2-1-几何意义-font">¶</a><font id="2.1">几何意义</font></h2>
+<p><a href="http://www.ams.org/publicoutreach/feature-column/fcarc-svd" target="_blank" rel="noopener">图来源</a><br>
+以二维空间为例<br>
+<img src="/2019/02/28/SVD/SVD3.png" alt="图二"><img src="/2019/02/28/SVD/SVD4.png" alt="图二"><br>
+几何意义就是把一个单位正交的网格，转换为另外一个单位正交的网格</p>
+<p>假如选取了一组单位正交基{$\vec{v}<em>1$,$\vec{v}<em>2$},刚好矩阵$M$的线性变化$M\vec{v}<em>1 $,$M\vec{v}<em>2 $ 也正交，用$\vec{u}<em>1,\vec{u}<em>2 $分别表示$M\vec{v}<em>1 $,$M\vec{v}<em>2 $ 的单位向量，用$\lambda_1,\lambda_2 $表示$M\vec{v}<em>1 $,$M\vec{v}<em>2$的长度，描述网格在这些特定方向上的拉伸量，也被称作矩阵M的奇异值。<br>
+$M\vec{v}<em>1 =\lambda_1\vec{u}<em>1 $<br>
+$M\vec{v}<em>2 =\lambda_2\vec{u}<em>2 $<br>
+对任意给定的向量 $\vec{x}$ ,则有<br>
+$$<br>
+\mathbf{x}=\left(\mathbf{v}</em>{1} \cdot \mathbf{x}\right) \mathbf{v}</em>{1}+\left(\mathbf{v}</em>{2} \cdot \mathbf{x}\right) \mathbf{v}</em>{2}<br>
+$$<br>
+再将M的线性变换<br>
+$$<br>
+\begin{aligned} M \mathbf{x} &amp;=\left(\mathbf{v}</em>{1} \cdot \mathbf{x}\right) M \mathbf{N}</em>{1}+\left(\mathbf{v}</em>{2} \cdot \mathbf{x}\right) M \mathbf{v}</em>{2} \ M \mathbf{x} &amp;=\left(\mathbf{v}</em>{1} \cdot \mathbf{x}\right) \sigma</em>{1} \mathbf{u}</em>{1}+\left(\mathbf{v}</em>{2} \cdot \mathbf{x}\right) \sigma</em>{2} \mathbf{u}</em>{2} \end{aligned}<br>
+$$<br>
+$$<br>
+\begin{array}{c}{M \mathbf{x}=\mathbf{u}<em>{1} \sigma</em>{1} \mathbf{v}<em>{1}^{\top} \mathbf{x}+\mathbf{u}</em>{2} \sigma_{2} \mathbf{v}<em>{2}^{\top} \mathbf{x}} \ {M=\mathbf{u}</em>{1} \sigma_{1} \mathbf{v}<em>{1}^{\top}+\mathbf{u}</em>{2} \sigma_{2} \mathbf{v}_{2}^{\top}}\end{array}<br>
+$$<br>
+so<br>
+$$<br>
+M=U \Sigma V^{T}<br>
+$$</p>
+<h2 id="font-id-2-2-奇异值分解的推导过程-font"><a class="header-anchor" href="#font-id-2-2-奇异值分解的推导过程-font">¶</a><font id="2.2">奇异值分解的推导过程</font></h2>
+<p>$u=(u_1,u_2,…,u_m)$<br>
+$v=(v_1,v_2,…,v_n)$<br>
+$u,v$都是空间的基,是正交矩阵 $u<sup>Tu=E,v</sup>Tv = E$<br>
+<img src="/2019/02/28/SVD/SVD2.png" alt="图二"><br>
+任何一个矩阵$M_{m*n}$，$rank(M)=k$，一定存在ＳＶＤ,换句话说，M可以将一组单位正交基映射到另一组单位正交基。答案是肯定的<br>
+证明如下：<br>
+在n为空间中，有一组单位正交基{$\vec{v}<em>1,\vec{v}<em>2,…,\vec{v}<em>n$},线性变化作用以后<br>
+$$<br>
+{M\vec{v}<em>1,M\vec{v}<em>2,…,M\vec{v}<em>n}<br>
+$$<br>
+也是正交的，则有<br>
+$$<br>
+(M\vec{v}<em>i,M\vec{v}<em>j) = (M\vec{x}<em>i)<sup>TM\vec{v}_j=\vec{v}_i</sup>TM^TM\vec{v}<em>j=0<br>
+$$<br>
+注意喔，$M<sup>TM$是矩阵喔，则会有$M</sup>TM\vec{v}<em>j=\lambda \vec{v}<em>j$<br>
+接下去，<br>
+$$<br>
+\begin{aligned} v</em>{i}^{T} M^{T} \mathrm{M} v</em>{j}=&amp; v</em>{i}^{T} \lambda</em>{j} v</em>{j} \ &amp;=\lambda</em>{j} v</em>{i}^{T} v</em>{j} \ &amp;=\lambda</em>{j} v</em>{i}\dot v</em>{j}=0 \end{aligned}<br>
+$$<br>
+上述就证明了是有的：任何一个矩阵，都可以将一组单位正交基转换成另外一组正交基。<br>
+当$i=j$,$&lt;M\vec{v}<em>i,M \vec{v}<em>i&gt;=\lambda_i \vec{v}<em>i \vec{v}<em>i=\lambda_i$<br>
+进行一些单位化，记$u_i=\frac{A\vec{v}<em>i}{|M\vec{v}<em>i|}=\frac{1}{\sqrt{\lambda_i}}M\vec{v}<em>i$<br>
+则<br>
+$$<br>
+A v</em>{i}=\sigma</em>{i} u</em>{i}, \sigma</em>{i}(\operatorname{奇异值})=\sqrt{\lambda</em>{i}}, 0 \leq i \leq \mathrm{k}, \mathrm{k}=\operatorname{Rank}(\mathrm{A})<br>
+$$<br>
+当$k &lt; i &lt;= m$时，对$u1，u2，…，uk$进行扩展$u(k+1),…,um$，使得$u1，u2，…，um$为$m$维空间中的一组正交基.也可对$\vec{v}<em>1,\vec{v}<em>2,…,\vec{v}<em>k$进行扩展，扩展的$\vec{v}</em>{k+1},…,\vec{v}</em>{n}$存在零子空间里面。<br>
+$$<br>
+M\left[ \begin{array}{lll}{\vec{v}</em>{1}} &amp; {\cdots} &amp; {\vec{v}</em>{k}}\end{array}\right| \vec{v}</em>{k+1} \quad \cdots \quad \vec{v}</em>{m} ]=<br>
+\left[ \begin{array}{c}{\vec{u}<em>{1}^{T}} \ {\vdots} \ {\frac{\vec{u}</em>{k}^{T}}{\vec{u}<em>{k+1}}} \ {\vdots} \ {\vec{u}</em>{n}^{T}}\end{array}\right] \left[ \begin{array}{ccc|c}\sigma_{1} &amp;   &amp; 0 &amp; 0\  &amp; {\ddots} &amp; \sigma_{k} &amp; 0 \ \hline 0 &amp;  &amp; 0 &amp;0\end{array}\right]<br>
+$$<br>
+$$<br>
+M=\left[ \begin{array}{lll}{\vec{u}<em>{1}} &amp; {\cdots} &amp; {\vec{u}</em>{k}}\end{array}\right] \left<br>
+[ \begin{array}{ccc}\sigma_{1} &amp;  &amp; \  &amp; {\ddots} &amp; \  &amp;  &amp; {\sigma_{k}}\end{array}\right]<br>
+\left[ \begin{array}{c}{\vec{v}<em>{1}^{T}} \ {\vdots} \ {\vec{v}</em>{k}^{T}}\end{array}\right]+<br>
+\left[ \begin{array}{ccc}{\vec{u}<em>{k+1}} &amp; {\cdots} &amp; {\vec{u}</em>{m}}\end{array}\right]<br>
+\left[\begin{array}{c} 0 \end{array} \right]<br>
+\left[ \begin{array}{c}{\vec{v}<em>{k+1}^{T}} \ {\vdots} \ {\vec{v}</em>{n}^{T}}\end{array}\right]<br>
+$$</p>
+<h2 id="font-id-2-3-svd算例-font"><a class="header-anchor" href="#font-id-2-3-svd算例-font">¶</a><font id="2.3">SVD算例</font></h2>
+<p>U：$AA^T$的特征值和特征向量，用单位化的特征向量构成 U<br>
+V: $A^TA$ 的特征值和特征向量，用单位化的特征向量构成 V<br>
+$\sum_{mn} $ :将$ AA^{T} $或者 A^{T}A 的特征值求平方根，然后构成 Σ<br>
+以矩阵$A = \left[\begin{matrix} 1 &amp; 1\1 &amp;1\ 0 &amp;0\\end{matrix} \right]$<br>
+第一步 U ，下面是一种计算方法<br>
+对矩阵<br>
+$$<br>
+A A^{T}=\left[ \begin{array}{lll}{2} &amp; {2} &amp; {0} \ {2} &amp; {2} &amp; {0} \ {0} &amp; {0} &amp; {0}\end{array}\right]<br>
+$$<br>
+特征分解，<br>
+特征是4，0，0<br>
+特征向量是<br>
+$\left[\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0\right]^{T},\left[-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0\right]<sup>{T},[0,0,1]</sup>{T}$,可得到<br>
+$$<br>
+U=\left[ \begin{array}{ccc}{\frac{1}{\sqrt{2}}} &amp; {-\frac{1}{\sqrt{2}}} &amp; {0} \ {\frac{1}{\sqrt{2}}} &amp; {\frac{1}{\sqrt{2}}} &amp; {0} \ {0} &amp; {0} &amp; {1}\end{array}\right]<br>
+$$</p>
+<p>第二步<br>
+计算矩阵$A^TA$的特征分解，可得<br>
+特征值4，0，<br>
+$$<br>
+V=\left[ \begin{array}{cc}{\frac{1}{\sqrt{2}}} &amp; {-\frac{1}{\sqrt{2}}} \ {\frac{1}{\sqrt{2}}} &amp; {\frac{1}{\sqrt{2}}}\end{array}\right]<br>
+$$<br>
+第三步<br>
+计算$\sum_{mn}$<br>
+$$<br>
+\Sigma=\left[ \begin{array}{ll}{2} &amp; {0} \ {0} &amp; {0} \ {0} &amp; {0}\end{array}\right]<br>
+$$<br>
+最后，<br>
+$$<br>
+A=U \Sigma V^{T}=\left[ \begin{array}{ccc}{\frac{1}{\sqrt{2}}} &amp; {-\frac{1}{\sqrt{2}}} &amp; {0} \ {\frac{1}{\sqrt{2}}} &amp; {\frac{1}{\sqrt{2}}} &amp; {0} \ {0} &amp; {0} &amp; {1}\end{array}\right] \left[ \begin{array}{ll}{2} &amp; {0} \ {0} &amp; {0} \ {0} &amp; {0}\end{array}\right] \left[ \begin{array}{cc}{\frac{1}{\sqrt{2}}} &amp; {-\frac{1}{\sqrt{2}}} \ {\frac{1}{\sqrt{2}}} &amp; {\frac{1}{\sqrt{2}}}\end{array}\right]^{T}=\left[ \begin{array}{cc}{1} &amp; {1} \ {1} &amp; {1} \ {0} &amp; {0}\end{array}\right]<br>
+$$</p>
+<h2 id="font-id-2-4-如何通过matlab和python-font"><a class="header-anchor" href="#font-id-2-4-如何通过matlab和python-font">¶</a><font id="2.4">如何通过Matlab和Python</font></h2>
+<p>Matlab：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">s = svd(A)</span><br><span class="line">[U,S,V] = svd(A)</span><br><span class="line">[U,S,V] = svd(A,<span class="string">'econ'</span>)</span><br><span class="line">[U,S,V] = svd(A,<span class="number">0</span>)</span><br><span class="line">input: A 矩阵</span><br><span class="line">output:</span><br><span class="line">        s:奇异值，以列向量形式返回。奇异值是以降序顺序列出的非负实数</span><br><span class="line">        S：</span><br><span class="line">        U:左奇异向量，以矩阵的列形式返回。</span><br><span class="line">        V:奇异值，以对角矩阵形式返回。S 的对角元素是以降序排列的非负奇异值。</span><br><span class="line">        右奇异向量，以矩阵的列形式返回。</span><br></pre></td></tr></table></figure>
+<p>Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">M = np.array([ [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]])</span><br><span class="line">U,S,V  = np.linalg.svd(M)</span><br></pre></td></tr></table></figure>
+<h1><font id="3" color="blue">应用举例</font></h1>
+<h2 id="font-id-3-1-应用-font"><a class="header-anchor" href="#font-id-3-1-应用-font">¶</a><font id="3.1">应用</font></h2>
+<p>2.1 信息检索<br>
+2.2 推荐系统<br>
+2.3 基于协同过滤的推荐系统<br>
+2.4 图像压缩</p>
+<h1><font id="4" color="blue">特征值分解和奇异值分解的区别</font></h1>
+<ol>
+<li>特征值分解只能是方阵，而奇异值分解是矩阵就可以</li>
+<li>特征值分解只考虑了对矩阵缩放效果，奇异值分解对矩阵有选择、收缩、投影的效果<br>
+<img src="/2019/02/28/SVD/SVD5.png" alt="图二"><img src="/2019/02/28/SVD/SVD6.png" alt="图二"><img src="/2019/02/28/SVD/SVD7.png" alt="图二"></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author: </strong>XieMay</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://xiemaycherry.github.io/2019/02/28/SVD/" title="我的读书笔记">http://xiemaycherry.github.io/2019/02/28/SVD/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SVD/" rel="tag"># SVD</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/24/python库/" rel="next" title="python库">
+                <i class="fa fa-chevron-left"></i> python库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/03/决策树/" rel="prev" title="决策树">
+                决策树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieMay</p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.cnblogs.com/shiyiandchuixue/" target="_blank" title="BLOGS"><i class="fa fa-fw fa-globe"></i>BLOGS</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:2323020965@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/shiyichuixue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">目录 😄</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text"> 简单说一下特征值、特征向量与特征分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#font-id-1-1-特征值-特征向量与特征分解-font"><span class="nav-number">2.1.</span> <span class="nav-text">¶特征值、特征向量与特征分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-id-1-2-几何意义-font"><span class="nav-number">2.2.</span> <span class="nav-text">¶ 几何意义 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-id-1-2-如何实现通过matlab-python实现-font"><span class="nav-number">2.3.</span> <span class="nav-text">¶如何实现通过Matlab、Python实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">详细解说SVD</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#font-id-2-1-几何意义-font"><span class="nav-number">3.1.</span> <span class="nav-text">¶几何意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-id-2-2-奇异值分解的推导过程-font"><span class="nav-number">3.2.</span> <span class="nav-text">¶奇异值分解的推导过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-id-2-3-svd算例-font"><span class="nav-number">3.3.</span> <span class="nav-text">¶SVD算例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-id-2-4-如何通过matlab和python-font"><span class="nav-number">3.4.</span> <span class="nav-text">¶如何通过Matlab和Python</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">应用举例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#font-id-3-1-应用-font"><span class="nav-number">4.1.</span> <span class="nav-text">¶应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">特征值分解和奇异值分解的区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Symbols count total&#58;</span>
+    
+    <span title="Symbols count total">294k</span>
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+    
+  
+  <script src="[object Object]"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '1Dfsb4DwGQPCIlbyCKt9egUR-gzGzoHsz',
+        appKey: '8OKqJPeMRRQnxx2vaAwIkM8y',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

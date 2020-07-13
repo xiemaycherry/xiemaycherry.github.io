@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="baidu-site-verification" content="E1Di33CelZ">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="WsojkhmMcOefku3B2Vxp02NtxlUt_JzBP1fVPrFk3Gw">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'WGLQQAQKBA',
+      apiKey: '',
+      indexName: 'xiemay',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="baidu-site-verification" content="z0tVDge8Pe">
+
+  
+  <meta name="keywords" content="回归分析,">
+
+
+<meta name="description" content="[TOC] 回归分析 最简单的线性回归，避免多重共线性，过拟合，引入正则项的线性回归模型。涉及到的数学知识：一范数，二范数，多元函数求极值。模型的含义，参数求解算法，目标函数，以及各种模型的优缺点。">
+<meta name="keywords" content="回归分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回归分析">
+<meta property="og:url" content="http://xiemaycherry.github.io/2020/06/20/回归分析/index.html">
+<meta property="og:site_name" content="welcome">
+<meta property="og:description" content="[TOC] 回归分析 最简单的线性回归，避免多重共线性，过拟合，引入正则项的线性回归模型。涉及到的数学知识：一范数，二范数，多元函数求极值。模型的含义，参数求解算法，目标函数，以及各种模型的优缺点。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-b15289fd1162a807e11949e5396c7989_720w.jpg">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1252882/201902/1252882-20190224115011028-596537100.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1252882/201902/1252882-20190224115035183-1841742133.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1252882/201902/1252882-20190224115121150-29154011.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1252882/201902/1252882-20190224130226736-1827960691.png">
+<meta property="og:updated_time" content="2020-07-05T12:50:17.765Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="回归分析">
+<meta name="twitter:description" content="[TOC] 回归分析 最简单的线性回归，避免多重共线性，过拟合，引入正则项的线性回归模型。涉及到的数学知识：一范数，二范数，多元函数求极值。模型的含义，参数求解算法，目标函数，以及各种模型的优缺点。">
+<meta name="twitter:image" content="https://pic2.zhimg.com/80/v2-b15289fd1162a807e11949e5396c7989_720w.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://xiemaycherry.github.io/2020/06/20/回归分析/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>回归分析 | welcome</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<meta name="baidu-site-verification" content="3BmH9zSH5h"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">welcome</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言">
+          <a href="/guestbook/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>留言</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidusitmap">
+          <a href="/baidusitmap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>baidusitmap</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/06/20/回归分析/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">回归分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-20T19:45:16+08:00">2020-06-20</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/20/回归分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/20/回归分析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                5.1k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1>回归分析</h1>
+<p>最简单的线性回归，避免多重共线性，过拟合，引入正则项的线性回归模型。涉及到的数学知识：一范数，二范数，多元函数求极值。模型的含义，参数求解算法，目标函数，以及各种模型的优缺点。</p>
+<a id="more"></a>
+<h2 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h2>
+<p>回归分析是寻找自变量和因变量之间的数量关系，用于预测建模的方法。其一，它可以揭示自变量和因变量之间的显著性检测。其二，揭示多个自变量对一个因变量的影响程度大小。</p>
+<h2 id="回归类型"><a class="header-anchor" href="#回归类型">¶</a>回归类型</h2>
+<p>1）独立变量的数量 2）度量变量的类型 3）回归线的形状</p>
+<h2 id="1-线性回归-linear-regression"><a class="header-anchor" href="#1-线性回归-linear-regression">¶</a>1. 线性回归（Linear Regression)</h2>
+<p>因变量：连续； 自变量：连续或者离散</p>
+<h3 id="模型的形式"><a class="header-anchor" href="#模型的形式">¶</a>模型的形式</h3>
+<p>$$<br>
+Y = a+bX+𝜀\<br>
+\left(\begin{array}{c}<br>
+y_{1} \<br>
+y_{2} \<br>
+\vdots \<br>
+y_{n}<br>
+\end{array}\right)=\left(\begin{array}{cccc}<br>
+1 &amp; x_{11} &amp; \cdots &amp; x_{1(p-1)} \<br>
+1 &amp; x_{21} &amp; \cdots &amp; x_{2(p-1)} \<br>
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots \<br>
+1 &amp; x_{n 1} &amp; \cdots &amp; x_{n(p-1)}<br>
+\end{array}\right) \beta+\left(\begin{array}{c}<br>
+e_{1} \<br>
+e_{2} \<br>
+\vdots \<br>
+e_{n}<br>
+\end{array}\right)\<br>
+Y_{n<em>1} = X_{n</em>p}\beta+𝜀<br>
+$$</p>
+<p>where $a$ and $b$ are the regression coefficients, and 𝜀 is the random error.</p>
+<h3 id="目标函数"><a class="header-anchor" href="#目标函数">¶</a>目标函数</h3>
+<p>$$<br>
+min SSR = \sum_{i}(y_i-f(x_i))^2\<br>
+min_{w}||Xw-y||_2^2<br>
+$$</p>
+<h3 id="参数估计"><a class="header-anchor" href="#参数估计">¶</a>参数估计</h3>
+<p>最小二乘法（Lease Square Method)（OLS)</p>
+<p>This approach is called the method of ordinary least squares.</p>
+<h3 id="模型评估"><a class="header-anchor" href="#模型评估">¶</a>模型评估</h3>
+<h4 id="拟合优度-r-square-coefficient-of-determination"><a class="header-anchor" href="#拟合优度-r-square-coefficient-of-determination">¶</a>拟合优度 R-square , coefficient of determination</h4>
+<p>Larger $R^2$ indicates a better fit and means that the model can better explain the variation of the output with different inputs.</p>
+<p><a href="https://realpython.com/linear-regression-in-python/" target="_blank" rel="noopener">https://realpython.com/linear-regression-in-python/</a></p>
+<h3 id="要求"><a class="header-anchor" href="#要求">¶</a>要求</h3>
+<ul>
+<li>自变量和因变量之间必须满足线性关系。</li>
+<li>多元回归存在多重共线性，自相关性和异方差性。</li>
+<li>线性回归对异常值非常敏感。异常值会严重影响回归线和最终的预测值。</li>
+<li>多重共线性会增加系数估计的方差，并且使得估计对模型中的微小变化非常敏感。结果是系数估计不稳定。</li>
+<li>在多个自变量的情况下，我们可以采用正向选择、向后消除和逐步选择的方法来选择最重要的自变量。</li>
+</ul>
+<h2 id="逻辑回归-logistic-regression"><a class="header-anchor" href="#逻辑回归-logistic-regression">¶</a>逻辑回归（Logistic Regression)</h2>
+<p>Logistic 回归的本质是：假设数据服从这个分布，然后使用极大似然估计做参数的估计。</p>
+<h3 id="logistic-分布"><a class="header-anchor" href="#logistic-分布">¶</a>Logistic 分布</h3>
+<p>$$<br>
+F(x) = P(X&lt;=x) = \frac{1}{1+e^{-(x-u)/\gamma}}<br>
+$$</p>
+<p>$$<br>
+f(x) = F’(X&lt;=x) = \frac{e<sup>{-(x-u)/\gamma}}{\gamma(1+e</sup>{-1(x-u)/\gamma})^2}<br>
+$$</p>
+<p>where $u$ 表示位置参数，$\gamma$是形状参数</p>
+<p><img src="https://pic2.zhimg.com/80/v2-b15289fd1162a807e11949e5396c7989_720w.jpg" alt="img"></p>
+<h3 id="模型形式"><a class="header-anchor" href="#模型形式">¶</a>模型形式</h3>
+<p>$$<br>
+y = \frac{1}{1+e<sup>{-(w</sup>Tx+b)}}<br>
+$$</p>
+<p>$$<br>
+P(Y=1|x) = \frac{1}{1+e<sup>{-(w</sup>Tx+b)}}<br>
+$$</p>
+<h3 id="损失函数"><a class="header-anchor" href="#损失函数">¶</a>损失函数</h3>
+<p>$$<br>
+P(Y=1|x)=p(x)\<br>
+p(Y=0|x) = 1-p(x)<br>
+$$</p>
+<p>似然函数<br>
+$$<br>
+L(w)<br>
+$$</p>
+<h2 id="多项式回归-polynomial-regression"><a class="header-anchor" href="#多项式回归-polynomial-regression">¶</a>多项式回归（Polynomial Regression）</h2>
+<h2 id="逐步回归-stepwise-regrssion"><a class="header-anchor" href="#逐步回归-stepwise-regrssion">¶</a>逐步回归（Stepwise Regrssion)</h2>
+<h2 id="岭回归-ridge-regression"><a class="header-anchor" href="#岭回归-ridge-regression">¶</a>岭回归（Ridge Regression)</h2>
+<p>L2正则化(The ridge coefficients minimize a penalized residual sum of squares) 惩罚函数</p>
+<h3 id="损失函数-v2"><a class="header-anchor" href="#损失函数-v2">¶</a>损失函数</h3>
+<p>$$<br>
+argmin_{w}||y-X\beta||_2<sup>2+\lambda||\beta||_2</sup>2<br>
+$$</p>
+<p>岭回归分析是一种用于存在多重共线性（自变量高度相关）数据的技术。在多重共线性情况下，尽管最小二乘法（OLS）对每个变量很公平，但它们的差异很大，使得观测值偏移并远离真实值。岭回归通过给回归估计上增加一个偏差度，来降低标准误差。</p>
+<h2 id="套索回归-lasso-regression"><a class="header-anchor" href="#套索回归-lasso-regression">¶</a>套索回归（ <strong>Lasso Regression</strong>）</h2>
+<h3 id="l1正则化-损失函数"><a class="header-anchor" href="#l1正则化-损失函数">¶</a>L1正则化 损失函数</h3>
+<p>$$<br>
+argmin_{w}||y-X\beta||_2^2+\lambda||\beta||_1<br>
+$$</p>
+<p>The larger the value of $\lambda$ , the greater the amount of shrinkage and thus the coefficients become more robust to collinearity.</p>
+<h2 id="弹性回归-elasticnet-regression"><a class="header-anchor" href="#弹性回归-elasticnet-regression">¶</a>弹性回归 ElasticNet Regression</h2>
+<h4 id="损失函数-v3"><a class="header-anchor" href="#损失函数-v3">¶</a>损失函数</h4>
+<p>$$<br>
+argmin_{w}||y-X\beta||_2<sup>2+\lambda_1||\beta||_2</sup>2+\lambda_2||\beta||_1<br>
+$$</p>
+<h2 id="贝叶斯回归"><a class="header-anchor" href="#贝叶斯回归">¶</a>贝叶斯回归</h2>
+<p>频率派（优化问题）</p>
+<p>贝叶斯派</p>
+<p>在极大似然估计线性回归中我们把参数看成是一个未知的固定值，而贝叶斯学派则把看成是一个随机变量。</p>
+<p>Model<br>
+$$<br>
+f(x) = w^Tx = x^Tw<br>
+$$<br>
+Bayesian Method</p>
+<p>Inference and Prediction</p>
+<p><img src="https://img2018.cnblogs.com/blog/1252882/201902/1252882-20190224115011028-596537100.png" alt="img"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1252882/201902/1252882-20190224115035183-1841742133.png" alt="img"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1252882/201902/1252882-20190224115121150-29154011.png" alt="img"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1252882/201902/1252882-20190224130226736-1827960691.png" alt="img"></p>
+<h2 id="reference"><a class="header-anchor" href="#reference">¶</a>reference</h2>
+<p><a href="https://courses.analyticsvidhya.com/courses/Fundamentals-of-Regression-Analysis?utm_source=blog&amp;utm_medium=introduction_to_regression" target="_blank" rel="noopener">https://courses.analyticsvidhya.com/courses/Fundamentals-of-Regression-Analysis?utm_source=blog&amp;utm_medium=introduction_to_regression</a></p>
+<p><a href="https://www.analyticsvidhya.com/blog/2016/12/45-questions-to-test-a-data-scientist-on-regression-skill-test-regression-solution/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2016/12/45-questions-to-test-a-data-scientist-on-regression-skill-test-regression-solution/</a></p>
+<h1>Linear Regression by Sklearn</h1>
+<h2 id="ols"><a class="header-anchor" href="#ols">¶</a>OLS</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">print(__doc__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets, linear_model</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error, r2_score </span><br><span class="line"></span><br><span class="line"><span class="comment"># Load the diabetes dataset</span></span><br><span class="line">diabetes_X, diabetes_Y = datasets.load_diabetes(return_X_y= <span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># select one feature</span></span><br><span class="line">diabetes_X = diabetes_X[:, np.newaxis, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split the data set into training/testing sets</span></span><br><span class="line">X_train = diabetes_X[:<span class="number">-20</span>]</span><br><span class="line">X_test = diabetes_X[<span class="number">-20</span>:]</span><br><span class="line"></span><br><span class="line">Y_train = diabetes_Y[:<span class="number">-20</span>]</span><br><span class="line">Y_test = diabetes_Y[<span class="number">-20</span>:]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create linear regression object</span></span><br><span class="line">regr = linear_model.LinearRegression()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Train regression model</span></span><br><span class="line">regr.fit(X_train, Y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Predict </span></span><br><span class="line">Y_pred = regr.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Evaluate</span></span><br><span class="line">print(<span class="string">'Mean squared error: %.2f'</span>% mean_squared_error(Y_test, Y_pred))</span><br><span class="line">print(<span class="string">'R2_score:%.2f'</span>% r2_score(Y_test,Y_pred))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot</span></span><br><span class="line">plt.scatter(X_test,Y_test, color = <span class="string">'black'</span>)</span><br><span class="line">plt.plot(X_test,Y_pred, color = <span class="string">'blue'</span>,linewidth = <span class="number">3</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="ridge-lasso"><a class="header-anchor" href="#ridge-lasso">¶</a>Ridge &amp; Lasso</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</span><br><span class="line"></span><br><span class="line">reg = line_model.Ridge(alpha = <span class="number">.2</span>)</span><br><span class="line">reg.fit([[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">8</span>]],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line">reg.coef_</span><br><span class="line">reg.intercept_</span><br><span class="line"></span><br><span class="line">reg1 = line_model.RidgeCV(alphas = np.logspace(<span class="number">-6</span>,<span class="number">6</span>,<span class="number">13</span>))</span><br><span class="line">reg1.fit([[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">8</span>]],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line">reg.alpha_</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</span><br><span class="line"></span><br><span class="line">reg = line_model.Lasso(alpha = <span class="number">.2</span>)</span><br><span class="line">reg.fit([[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">8</span>]],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line">reg.coef_</span><br><span class="line">reg.intercept_</span><br><span class="line"></span><br><span class="line">reg1 = line_model.LassoCV(alphas = np.logspace(<span class="number">-6</span>,<span class="number">6</span>,<span class="number">13</span>))</span><br><span class="line">reg1.fit([[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">8</span>]],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line">reg.alpha_</span><br></pre></td></tr></table></figure>
+<h3 id="正则系数选择"><a class="header-anchor" href="#正则系数选择">¶</a>正则系数选择</h3>
+<p>交叉验证 LassoCV。 LassoLarsCV基于Least Angle Regression 算法</p>
+<p>坐标下降法</p>
+<h2 id="弹性回归"><a class="header-anchor" href="#弹性回归">¶</a>弹性回归</h2>
+<p>Elastic-Net</p>
+<h3 id="最小角回归"><a class="header-anchor" href="#最小角回归">¶</a>最小角回归</h3>
+<h3 id="lars-lasso"><a class="header-anchor" href="#lars-lasso">¶</a>LARS Lasso</h3>
+<h3 id="贝叶斯岭回归"><a class="header-anchor" href="#贝叶斯岭回归">¶</a>贝叶斯岭回归</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</span><br><span class="line">X = [[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">3</span>]]</span><br><span class="line">Y = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">reg = linear_mode.BayesianRidge()</span><br><span class="line">reg.fit(X, Y)</span><br></pre></td></tr></table></figure>
+<h2 id="逻辑斯特回归"><a class="header-anchor" href="#逻辑斯特回归">¶</a>逻辑斯特回归</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import linear_model</span><br><span class="line"></span><br><span class="line">reg = linear_model.LogisticRegression()</span><br></pre></td></tr></table></figure>
+<p>参数</p>
+<p><strong>penalty</strong>**{‘l1’, ‘l2’, ‘elasticnet’, ‘none’}, default=’l2’**</p>
+<p><strong>tol</strong><em>float, default=1e-4</em></p>
+<p>Tolerance for stopping criteria.</p>
+<p><strong>C</strong><em>float, default=1.0</em></p>
+<p>Inverse of regularization strength; must be a positive float. Like in support vector machines, smaller values specify stronger regularization.</p>
+<p><strong>solver</strong>*{‘newton-cg’, ‘lbfgs’, ‘liblinear’, ‘sag’, ‘saga’}, default=’lbfgs’*</p>
+<p>Algorithm to use in the optimization problem.</p>
+<p><strong>max_iter</strong><strong>int, default=100</strong></p>
+<p><strong>n_jobs</strong><strong>int, default=None</strong></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author: </strong>XieMay</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://xiemaycherry.github.io/2020/06/20/回归分析/" title="回归分析">http://xiemaycherry.github.io/2020/06/20/回归分析/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/回归分析/" rel="tag"># 回归分析</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/20/我任性/" rel="next" title="日志">
+                <i class="fa fa-chevron-left"></i> 日志
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/22/time-series-01/" rel="prev" title="day">
+                day <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieMay</p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.cnblogs.com/shiyiandchuixue/" target="_blank" title="BLOGS"><i class="fa fa-fw fa-globe"></i>BLOGS</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:2323020965@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/shiyichuixue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">回归分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">¶定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归类型"><span class="nav-number">1.2.</span> <span class="nav-text">¶回归类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-线性回归-linear-regression"><span class="nav-number">1.3.</span> <span class="nav-text">¶1. 线性回归（Linear Regression)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型的形式"><span class="nav-number">1.3.1.</span> <span class="nav-text">¶模型的形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标函数"><span class="nav-number">1.3.2.</span> <span class="nav-text">¶目标函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数估计"><span class="nav-number">1.3.3.</span> <span class="nav-text">¶参数估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型评估"><span class="nav-number">1.3.4.</span> <span class="nav-text">¶模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拟合优度-r-square-coefficient-of-determination"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">¶拟合优度 R-square , coefficient of determination</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要求"><span class="nav-number">1.3.5.</span> <span class="nav-text">¶要求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑回归-logistic-regression"><span class="nav-number">1.4.</span> <span class="nav-text">¶逻辑回归（Logistic Regression)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic-分布"><span class="nav-number">1.4.1.</span> <span class="nav-text">¶Logistic 分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型形式"><span class="nav-number">1.4.2.</span> <span class="nav-text">¶模型形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">1.4.3.</span> <span class="nav-text">¶损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式回归-polynomial-regression"><span class="nav-number">1.5.</span> <span class="nav-text">¶多项式回归（Polynomial Regression）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逐步回归-stepwise-regrssion"><span class="nav-number">1.6.</span> <span class="nav-text">¶逐步回归（Stepwise Regrssion)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#岭回归-ridge-regression"><span class="nav-number">1.7.</span> <span class="nav-text">¶岭回归（Ridge Regression)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数-v2"><span class="nav-number">1.7.1.</span> <span class="nav-text">¶损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#套索回归-lasso-regression"><span class="nav-number">1.8.</span> <span class="nav-text">¶套索回归（ Lasso Regression）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#l1正则化-损失函数"><span class="nav-number">1.8.1.</span> <span class="nav-text">¶L1正则化 损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弹性回归-elasticnet-regression"><span class="nav-number">1.9.</span> <span class="nav-text">¶弹性回归 ElasticNet Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#损失函数-v3"><span class="nav-number">1.9.0.1.</span> <span class="nav-text">¶损失函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯回归"><span class="nav-number">1.10.</span> <span class="nav-text">¶贝叶斯回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.11.</span> <span class="nav-text">¶reference</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression by Sklearn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ols"><span class="nav-number">2.1.</span> <span class="nav-text">¶OLS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ridge-lasso"><span class="nav-number">2.2.</span> <span class="nav-text">¶Ridge &amp; Lasso</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正则系数选择"><span class="nav-number">2.2.1.</span> <span class="nav-text">¶正则系数选择</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弹性回归"><span class="nav-number">2.3.</span> <span class="nav-text">¶弹性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小角回归"><span class="nav-number">2.3.1.</span> <span class="nav-text">¶最小角回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lars-lasso"><span class="nav-number">2.3.2.</span> <span class="nav-text">¶LARS Lasso</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯岭回归"><span class="nav-number">2.3.3.</span> <span class="nav-text">¶贝叶斯岭回归</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑斯特回归"><span class="nav-number">2.4.</span> <span class="nav-text">¶逻辑斯特回归</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Symbols count total&#58;</span>
+    
+    <span title="Symbols count total">294k</span>
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+    
+  
+  <script src="[object Object]"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '1Dfsb4DwGQPCIlbyCKt9egUR-gzGzoHsz',
+        appKey: '8OKqJPeMRRQnxx2vaAwIkM8y',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

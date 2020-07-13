@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="baidu-site-verification" content="E1Di33CelZ">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="WsojkhmMcOefku3B2Vxp02NtxlUt_JzBP1fVPrFk3Gw">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'WGLQQAQKBA',
+      apiKey: '',
+      indexName: 'xiemay',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="baidu-site-verification" content="z0tVDge8Pe">
+
+  
+  <meta name="keywords" content="回归树,">
+
+
+<meta name="description" content="[TOC] 分类树与回归树 分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。 Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分">
+<meta name="keywords" content="回归树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回归树">
+<meta property="og:url" content="http://xiemaycherry.github.io/2019/03/11/回归树/index.html">
+<meta property="og:site_name" content="welcome">
+<meta property="og:description" content="[TOC] 分类树与回归树 分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。 Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%9B%9E%E5%BD%92%E6%A0%91%5C%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D1.PNG">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/re.png">
+<meta property="og:updated_time" content="2020-06-29T08:27:15.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="回归树">
+<meta name="twitter:description" content="[TOC] 分类树与回归树 分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。 Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分">
+<meta name="twitter:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%9B%9E%E5%BD%92%E6%A0%91%5C%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D1.PNG">
+
+
+
+
+
+
+  <link rel="canonical" href="http://xiemaycherry.github.io/2019/03/11/回归树/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>回归树 | welcome</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<meta name="baidu-site-verification" content="3BmH9zSH5h"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">welcome</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言">
+          <a href="/guestbook/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>留言</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidusitmap">
+          <a href="/baidusitmap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>baidusitmap</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/11/回归树/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">回归树</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-11T14:36:29+08:00">2019-03-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/11/回归树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/11/回归树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                8.3k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1>分类树与回归树</h1>
+<p>分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。<br>
+Classification tree analysis is when the predicted outcome is the class to which the data belongs.</p>
+<p>回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分的两个分支的误差越小越好。</p>
+<p>Regression tree analysis is when the predicted outcome can be considered a real number (e.g. the price of a house, or a patient’s length of stay in a hospital)。</p>
+<a id="more"></a>
+<h1>回归树</h1>
+<p>英文名字：Regression Tree</p>
+<h2 id="原理介绍"><a class="header-anchor" href="#原理介绍">¶</a>原理介绍</h2>
+<p>决策树最直观的理解其实就是，输入特征空间($R^n$)，然后对特征空间做划分，每一个划分属于同一类或者对于一个输出的预测值。那么这个算法需要解决的问题是1. 如何决策边界(划分点)？2. 尽可能少的比较次数(决策树的形状)</p>
+<p><img src="/2019/03/11/回归树/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%9B%9E%E5%BD%92%E6%A0%91%5C%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D1.PNG" alt="原理1"></p>
+<p>如上图，每一个非叶子对于某个特征的划分。</p>
+<h3 id="最小二乘回归树生成算法"><a class="header-anchor" href="#最小二乘回归树生成算法">¶</a>最小二乘回归树生成算法</h3>
+<p>Q1: 选择划分点？遍历所有的特征($n$),对于每一个特征对应$s_i$个取值，尝试完所有特征，以及特征所以有划分，选择使得损失函数最小的那组特征以及特征的划分取值。</p>
+<p>Q2: 叶节点的输出？取每个区域所以结果的平均数作为输出</p>
+<p>节点的损失函数的形式</p>
+<p>$$<br>
+\min _{j, s}\left[\min <em>{c</em>{1}} Loss(y_i,c_1)+\min <em>{c</em>{2}} Loss(y_i,c_2)\right]<br>
+$$<br>
+节点有两条分支，$c1$是左节点的平均值，$c2$是右节点的平均值，换句话说，分一次划分都是使得划分出的两个分支的误差和最小。最终得到函数是<font color="red">分段函数</font></p>
+<h2 id="cart算法"><a class="header-anchor" href="#cart算法">¶</a>CART算法</h2>
+<p>输入： 训练数据集</p>
+<p>输出：回归树$f(x)$</p>
+<ol>
+<li>
+<p>选择最优的特征$j$和分切点$s$<br>
+$$<br>
+\min <em>{j, s}\left[\min <em>{c</em>{1}} \sum</em>{x_{i} \in R_{1}(j, s)}\left(y_{i}-c_{1}\right)^{2}+\min <em>{c</em>{2}} \sum_{x_{i} \in R_{2}(j, s)}\left(y_{i}-c_{2}\right)^{2}\right]<br>
+$$</p>
+</li>
+<li>
+<p>对于选定的$(j,s)$划分区域，并确定该区域的预测值</p>
+</li>
+<li>
+<p>对两个区域递归1. 2. 直到满足停止条件</p>
+</li>
+<li>
+<p>返回生成树</p>
+<p>注：分切点选择：先排序，二分。</p>
+</li>
+</ol>
+<h1>Python代码</h1>
+<h2 id="节点类"><a class="header-anchor" href="#节点类">¶</a>节点类</h2>
+<p>属性：左右节点、loss、特征编号或者特征、分割点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, score=None)</span>:</span></span><br><span class="line">        <span class="comment"># 构造函数</span></span><br><span class="line">        self.score = score</span><br><span class="line">        self.left = <span class="keyword">None</span></span><br><span class="line">        self.right = <span class="keyword">None</span></span><br><span class="line">        self.feature = <span class="keyword">None</span></span><br><span class="line">        self.split = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<h2 id="回归树类"><a class="header-anchor" href="#回归树类">¶</a>回归树类</h2>
+<p>构造方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegressionTree</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.root = Node()</span><br><span class="line">        self.height = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>给定特征、划分点，返回计算MAPE</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_split_mse</span><span class="params">(self, X, y, idx, feature, split)</span>:</span></span><br><span class="line">	<span class="string">'''</span></span><br><span class="line"><span class="string">	X:训练样本输入</span></span><br><span class="line"><span class="string">	y:训练样本输出</span></span><br><span class="line"><span class="string">	idx:该分支对应的样本编号</span></span><br><span class="line"><span class="string">	feaure: 特征</span></span><br><span class="line"><span class="string">	split: 划分点</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	split_x1=X[X[idex,feature]&lt;split]</span><br><span class="line">	split_y1=y[X[idex,feature]&lt;split]</span><br><span class="line">	split_x2=X[X[idex,feature]&gt;=split]</span><br><span class="line">	split_y2=y[X[idex,feature]&gt;=split]</span><br><span class="line">	</span><br><span class="line">    split_avg = [np.mean(split_y1), np.mean(split_y2)]</span><br><span class="line">    split_mape = [np.sum((split_y1-split_avg[<span class="number">0</span>])**<span class="number">2</span>),np.sum((split_y2-split_avg[<span class="number">1</span>])**<span class="number">2</span>)]</span><br><span class="line">    <span class="keyword">return</span> split_mse, split, split_avg</span><br></pre></td></tr></table></figure>
+<p>计算给定特征的最佳分割点</p>
+<p>遍历特征某一列的所有的不重复的点，找出MAPE最小的点作为最佳分割点。如果特征中没有不重复的元素则返回None。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_choose_split_point</span><span class="params">(self, X, y, idx, feature)</span>:</span></span><br><span class="line">    feature_x = X[idx,feature]</span><br><span class="line">    uniques = np.unique(feature_x)</span><br><span class="line">    <span class="keyword">if</span> len(uniques)==<span class="number">1</span>:</span><br><span class="line">    	<span class="keyword">return</span> Noe</span><br><span class="line"></span><br><span class="line">    mape, split, split_avg = min(</span><br><span class="line">   (self._get_split_mse(X, y, idx, feature, split)</span><br><span class="line">       <span class="keyword">for</span> split <span class="keyword">in</span> unique[<span class="number">1</span>:]), key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> mape, feature, split, split_avg</span><br></pre></td></tr></table></figure>
+<p>选择特征<br>
+遍历全部特征，计算mape,然后确定特征和对应的切割点，注意如果某个特征的值是一样的，则返回None</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_choose_feature</span><span class="params">(self, X, y, idx)</span>:</span></span><br><span class="line">    m = len(X[<span class="number">0</span>])</span><br><span class="line">    split_rets = [x <span class="keyword">for</span> x <span class="keyword">in</span> map(<span class="keyword">lambda</span> x: self._choose_split_point(</span><br><span class="line">        X, y, idx, x), range(m)) <span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>]</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> split_rets == []:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    _, feature, split, split_avg = min(</span><br><span class="line">        split_rets, key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line"> </span><br><span class="line">    idx_split = [[], []]</span><br><span class="line">    <span class="keyword">while</span> idx:</span><br><span class="line">        i = idx.pop()</span><br><span class="line">        xi = X[i][feature]</span><br><span class="line">        <span class="keyword">if</span> xi &lt; split:</span><br><span class="line">            idx_split[<span class="number">0</span>].append(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            idx_split[<span class="number">1</span>].append(i)</span><br><span class="line">    <span class="keyword">return</span> feature, split, split_avg, idx_split</span><br></pre></td></tr></table></figure>
+<p>对应叶子节点，打印相关的信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_expr2literal</span><span class="params">(self, expr)</span>:</span></span><br><span class="line">        feature, op, split = expr</span><br><span class="line">        op = <span class="string">"&gt;="</span> <span class="keyword">if</span> op == <span class="number">1</span> <span class="keyword">else</span> <span class="string">"&lt;"</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Feature%d %s %.4f"</span> % (feature, op, split)</span><br></pre></td></tr></table></figure>
+<p>建立好二叉树以后，遍历操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_rules</span><span class="params">(self)</span>:</span></span><br><span class="line">    que = [[self.root, []]]</span><br><span class="line">    self.rules = []</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">while</span> que:</span><br><span class="line">        nd, exprs = que.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span>(nd.left <span class="keyword">or</span> nd.right):</span><br><span class="line">            literals = list(map(self._expr2literal, exprs))</span><br><span class="line">            self.rules.append([literals, nd.score])</span><br><span class="line">     </span><br><span class="line">        <span class="keyword">if</span> nd.left:</span><br><span class="line">            rule_left = []</span><br><span class="line">            rule_left.append([nd.feature, <span class="number">-1</span>, nd.split])</span><br><span class="line">            que.append([nd.left, rule_left])</span><br><span class="line">     </span><br><span class="line">        <span class="keyword">if</span> nd.right:</span><br><span class="line">            rule_right =[]</span><br><span class="line">            rule_right.append([nd.feature, <span class="number">1</span>, nd.split])</span><br><span class="line">            que.append([nd.right, rule_right])</span><br></pre></td></tr></table></figure>
+<p>建立二叉树的过程，也就是训练的过程</p>
+<ol>
+<li>控制深度</li>
+<li>控制节叶子节点的最少样本数量</li>
+<li>至少有一个特征是不重复的</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self, X, y, max_depth=<span class="number">5</span>, min_samples_split=<span class="number">2</span>)</span>:</span></span><br><span class="line">        self.root = Node()</span><br><span class="line">        que = [[<span class="number">0</span>, self.root, list(range(len(y)))]]</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">while</span> que:</span><br><span class="line">            depth, nd, idx = que.pop(<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> depth == max_depth:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> len(idx) &lt; min_samples_split <span class="keyword">or</span> set(map(<span class="keyword">lambda</span> i: y[i,<span class="number">0</span>], idx)) == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">    </span><br><span class="line">            feature_rets = self._choose_feature(X, y, idx)</span><br><span class="line">            <span class="keyword">if</span> feature_rets <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">    </span><br><span class="line">            nd.feature, nd.split, split_avg, idx_split = feature_rets</span><br><span class="line">            nd.left = Node(split_avg[<span class="number">0</span>])</span><br><span class="line">            nd.right = Node(split_avg[<span class="number">1</span>])</span><br><span class="line">            que.append([depth+<span class="number">1</span>, nd.left, idx_split[<span class="number">0</span>]])</span><br><span class="line">            que.append([depth+<span class="number">1</span>, nd.right, idx_split[<span class="number">1</span>]])</span><br><span class="line">    </span><br><span class="line">        self.height = depth</span><br><span class="line">        self._get_rules()</span><br></pre></td></tr></table></figure>
+<p>打印叶子节点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_rules</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i, rule <span class="keyword">in</span> enumerate(self.rules):</span><br><span class="line">            literals, score = rule</span><br><span class="line">            print(<span class="string">"Rule %d: "</span> % i, <span class="string">' | '</span>.join(</span><br><span class="line">                literals) + <span class="string">' =&gt; split_hat %.4f'</span> % score)</span><br></pre></td></tr></table></figure>
+<p>预测单样本</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_predict</span><span class="params">(self, row)</span>:</span></span><br><span class="line">        nd = self.root</span><br><span class="line">        <span class="keyword">while</span> nd.left <span class="keyword">and</span> nd.right:</span><br><span class="line">            <span class="keyword">if</span> row[nd.feature] &lt; nd.split:</span><br><span class="line">                nd = nd.left</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nd = nd.right</span><br><span class="line">        <span class="keyword">return</span> nd.score</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 预测多条样本</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, X)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [self._predict(Xi) <span class="keyword">for</span> Xi <span class="keyword">in</span> X]</span><br></pre></td></tr></table></figure>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"Tesing the accuracy of RegressionTree..."</span>)</span><br><span class="line">    X_train=np.array([[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">4</span>],[<span class="number">5</span>],[<span class="number">6</span>],[<span class="number">7</span>],[<span class="number">8</span>],[<span class="number">9</span>],[<span class="number">10</span>]])</span><br><span class="line">    y_train=np.array([[<span class="number">5.56</span> ],[<span class="number">5.7</span>],[<span class="number">5.91</span>],[<span class="number">6.4</span></span><br><span class="line">                      ],[<span class="number">6.8</span>],[<span class="number">7.05</span>],[<span class="number">8.9</span>],[<span class="number">8.7</span></span><br><span class="line">                        ],[<span class="number">9</span> ],[<span class="number">9.05</span>]])</span><br><span class="line">    reg = RegressionTree()</span><br><span class="line">    print(reg)</span><br><span class="line">    reg.fit(X=X_train, y=y_train, max_depth=<span class="number">3</span>)</span><br><span class="line">    reg.print_rules()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<h1>简单的例子</h1>
+<p>训练数据</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th style="text-align:center">1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td style="text-align:center">5.56</td>
+<td>5.7</td>
+<td>5.91</td>
+<td>6.4</td>
+<td>6.8</td>
+<td>7.05</td>
+<td>8.9</td>
+<td>8.7</td>
+<td>9</td>
+<td>9.05</td>
+</tr>
+</tbody>
+</table>
+<p>根据上表，只有一个特征$x$.</p>
+<ol>
+<li>
+<p>选择最优的特征$j$和分切点$s$</p>
+<table>
+<thead>
+<tr>
+<th>分切点(s)</th>
+<th>1.5</th>
+<th>2.5</th>
+<th>3.5</th>
+<th>4.5</th>
+<th>5.5</th>
+<th>6.5</th>
+<th>7.5</th>
+<th>8.5</th>
+<th>9.5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$c_1$</td>
+<td>5.56</td>
+<td>5.63</td>
+<td>5.72</td>
+<td>5.89</td>
+<td>6.07</td>
+<td>6.24</td>
+<td>6.62</td>
+<td>6.88</td>
+<td>7.11</td>
+</tr>
+<tr>
+<td>$c_2$</td>
+<td>7.5</td>
+<td>7.73</td>
+<td>7.99</td>
+<td>8.25</td>
+<td>8.54</td>
+<td>8.91</td>
+<td>8.92</td>
+<td>9.03</td>
+<td>9.05</td>
+</tr>
+<tr>
+<td>loss</td>
+<td>15.72</td>
+<td>12.07</td>
+<td>8.36</td>
+<td>5.78</td>
+<td>3.91</td>
+<td>1.93</td>
+<td>8.01</td>
+<td>11.73</td>
+<td>15.74</td>
+</tr>
+</tbody>
+</table>
+<p>当分切点取$s=6.5$,损失最小$l(s=6.5)=1.93$,此时划分出两个分支，分别是$R_1={1,2,3,4,5,6}$,$c_1=6.42$,$R_2={7,8,9,10}$,$c_2=8.91$</p>
+<ol>
+<li>
+<p>a) 对R1继续划分</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td>5.56</td>
+<td>5.7</td>
+<td>5.91</td>
+<td>6.4</td>
+<td>6.8</td>
+<td>7.05</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>分切点(s)</th>
+<th>1.5</th>
+<th>2.5</th>
+<th>3.5</th>
+<th>4.5</th>
+<th>5.5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$c_1$</td>
+<td>5.56</td>
+<td>5.63</td>
+<td>5.72</td>
+<td>5.89</td>
+<td>6.07</td>
+</tr>
+<tr>
+<td>$c_2$</td>
+<td>6.37</td>
+<td>6.54</td>
+<td>6.75</td>
+<td>6.93</td>
+<td>7.05</td>
+</tr>
+<tr>
+<td>loss</td>
+<td>1.3087</td>
+<td>0.754</td>
+<td>0.2771</td>
+<td>0.4368</td>
+<td>1.0644</td>
+</tr>
+</tbody>
+</table>
+<p>当分切点取$s=3.5$,损失函数$l(s=3.6)=0.2771$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1={1,2,3}$，$c_1=5.72$,$R_2={4,5,6}$,$c_2=6.75$</p>
+<p>b) 对R2继续划分</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td>8.9</td>
+<td>8.7</td>
+<td>9</td>
+<td>9.05</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>分切点(s)</th>
+<th>7.5</th>
+<th>8.5</th>
+<th>9.5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$c_1$</td>
+<td>8.9</td>
+<td>8.8</td>
+<td>8.87</td>
+</tr>
+<tr>
+<td>$c_2$</td>
+<td>8.92</td>
+<td>9.03</td>
+<td>9.05</td>
+</tr>
+<tr>
+<td>loss</td>
+<td>0.0717</td>
+<td>0.0213</td>
+<td>0.0467</td>
+</tr>
+</tbody>
+</table>
+<p>当分切点取$s=8.5$,损失函数$l(s=8,5)=0.0213$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1={7,8}$，$c_1=8.8$,$R_2={9,10}$,$c_2=9.03$</p>
+</li>
+<li>
+<p>函数表达式</p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>  $$
+  \begin{equation}
+  f(x)=\left\{
+  \begin{aligned}
+  5.72 &amp; &amp;  x&lt;3.5\\
+  6.7 5&amp; &amp;3.5&lt;=x&lt;6.5\\
+  8.8&amp; &amp;6.5&lt;=x&lt;8.5\\
+  9.03&amp; &amp;8.5&lt;=x&lt;10\\
+  \end{aligned}
+  \right.
+  \end{equation}
+  $$
+</code></pre>
+<h1>Python库</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sklearn</span>.<span class="title">tree</span>.<span class="title">DecisionTreeClassifier</span><span class="params">(criterion=’gini’, splitter=’best’, max_depth=None, min_samples_split=<span class="number">2</span>, min_samples_leaf=<span class="number">1</span>, min_weight_fraction_leaf=<span class="number">0.0</span>, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=<span class="number">0.0</span>, min_impurity_split=None, class_weight=None, presort=False)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Created on Wed Mar 13 19:59:53 2019</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@author: 23230</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">X=np.array([[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">4</span>],[<span class="number">5</span>],[<span class="number">6</span>],[<span class="number">7</span>],[<span class="number">8</span>],[<span class="number">9</span>],[<span class="number">10</span>]])</span><br><span class="line">y=np.array([[<span class="number">5.56</span> ],[<span class="number">5.7</span>],[<span class="number">5.91</span>],[<span class="number">6.4</span>],[<span class="number">6.8</span>],[<span class="number">7.05</span>],[<span class="number">8.9</span>],[<span class="number">8.7</span>],[<span class="number">9</span> ],[<span class="number">9.05</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fit regression model</span></span><br><span class="line">regr_1 = DecisionTreeRegressor(max_depth=<span class="number">2</span>)</span><br><span class="line">regr_2 = DecisionTreeRegressor(max_depth=<span class="number">3</span>)</span><br><span class="line">regr_3 = DecisionTreeRegressor(max_depth=<span class="number">4</span>)</span><br><span class="line">regr_1.fit(X, y)</span><br><span class="line">regr_2.fit(X, y)</span><br><span class="line">regr_3.fit(X, y)</span><br><span class="line"></span><br><span class="line">X_test = np.copy(X)</span><br><span class="line">y_1 = regr_1.predict(X_test)</span><br><span class="line">y_2 = regr_2.predict(X_test)</span><br><span class="line">y_3 = regr_3.predict(X_test)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Plot the results</span></span><br><span class="line">plt.figure()</span><br><span class="line">plt.scatter(X, y, s=<span class="number">20</span>, edgecolor=<span class="string">"black"</span>,c=<span class="string">"darkorange"</span>, label=<span class="string">"data"</span>)</span><br><span class="line">plt.plot(X_test, y_1, color=<span class="string">"cornflowerblue"</span>,label=<span class="string">"max_depth=2"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.plot(X_test, y_2, color=<span class="string">"yellowgreen"</span>, label=<span class="string">"max_depth=4"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.plot(X_test, y_3, color=<span class="string">"r"</span>, label=<span class="string">"max_depth=8"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.xlabel(<span class="string">"data"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"target"</span>)</span><br><span class="line">plt.title(<span class="string">"Decision Tree Regression"</span>)</span><br><span class="line">plt.legend()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/11/回归树/re.png" alt="1552478769877"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author: </strong>XieMay</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://xiemaycherry.github.io/2019/03/11/回归树/" title="回归树">http://xiemaycherry.github.io/2019/03/11/回归树/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/回归树/" rel="tag"># 回归树</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/05/BP算法/" rel="next" title="BP算法">
+                <i class="fa fa-chevron-left"></i> BP算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/17/SVMClassifiar/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieMay</p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.cnblogs.com/shiyiandchuixue/" target="_blank" title="BLOGS"><i class="fa fa-fw fa-globe"></i>BLOGS</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:2323020965@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/shiyichuixue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">分类树与回归树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">回归树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理介绍"><span class="nav-number">2.1.</span> <span class="nav-text">¶原理介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小二乘回归树生成算法"><span class="nav-number">2.1.1.</span> <span class="nav-text">¶最小二乘回归树生成算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cart算法"><span class="nav-number">2.2.</span> <span class="nav-text">¶CART算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Python代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#节点类"><span class="nav-number">3.1.</span> <span class="nav-text">¶节点类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归树类"><span class="nav-number">3.2.</span> <span class="nav-text">¶回归树类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">简单的例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Python库</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Symbols count total&#58;</span>
+    
+    <span title="Symbols count total">294k</span>
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+    
+  
+  <script src="[object Object]"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '1Dfsb4DwGQPCIlbyCKt9egUR-gzGzoHsz',
+        appKey: '8OKqJPeMRRQnxx2vaAwIkM8y',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

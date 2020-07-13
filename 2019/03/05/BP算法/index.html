@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="baidu-site-verification" content="E1Di33CelZ">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="WsojkhmMcOefku3B2Vxp02NtxlUt_JzBP1fVPrFk3Gw">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'WGLQQAQKBA',
+      apiKey: '',
+      indexName: 'xiemay',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="baidu-site-verification" content="z0tVDge8Pe">
+
+  
+  <meta name="keywords" content="BP,">
+
+
+<meta name="description" content="[TOC] 1. 需要的微积分知识 ¶1.1 导数 对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。 对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。 ¶1.2 求导的链式法则   $x \in R$, $z=g(f(x))$, $y=f(x)$ $$ \frac{\partial z}{">
+<meta name="keywords" content="BP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BP算法">
+<meta property="og:url" content="http://xiemaycherry.github.io/2019/03/05/BP算法/index.html">
+<meta property="og:site_name" content="welcome">
+<meta property="og:description" content="[TOC] 1. 需要的微积分知识 ¶1.1 导数 对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。 对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。 ¶1.2 求导的链式法则   $x \in R$, $z=g(f(x))$, $y=f(x)$ $$ \frac{\partial z}{">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/05/BP算法/2.1.1.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/05/BP算法/3.1.1.png">
+<meta property="og:updated_time" content="2020-06-24T12:29:13.885Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BP算法">
+<meta name="twitter:description" content="[TOC] 1. 需要的微积分知识 ¶1.1 导数 对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。 对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。 ¶1.2 求导的链式法则   $x \in R$, $z=g(f(x))$, $y=f(x)$ $$ \frac{\partial z}{">
+<meta name="twitter:image" content="http://xiemaycherry.github.io/2019/03/05/BP算法/2.1.1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://xiemaycherry.github.io/2019/03/05/BP算法/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>BP算法 | welcome</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<meta name="baidu-site-verification" content="3BmH9zSH5h"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">welcome</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言">
+          <a href="/guestbook/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>留言</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidusitmap">
+          <a href="/baidusitmap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>baidusitmap</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/05/BP算法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BP算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T19:24:23+08:00">2019-03-05</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/05/BP算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/05/BP算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                11k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1>1. 需要的微积分知识</h1>
+<h2 id="1-1-导数"><a class="header-anchor" href="#1-1-导数">¶</a>1.1 导数</h2>
+<p>对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。<br>
+对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。</p>
+<h2 id="1-2-求导的链式法则"><a class="header-anchor" href="#1-2-求导的链式法则">¶</a>1.2 求导的链式法则</h2>
+<ol>
+<li>
+<p>$x \in R$, $z=g(f(x))$, $y=f(x)$<br>
+$$ \frac{\partial z}{\partial x}=\frac{\partial z}{\partial y} \frac{\partial y}{\partial x}$$</p>
+</li>
+<li>
+<p>$ x \in R^m $, $f(x)$是$R<sup>M$到$R</sup>n$的映射，$g(f)$是$R^n$到R的映射<br>
+$$ \frac{\partial g}{\partial x_i}=\sum_j^n \frac{\partial g}{\partial f_i} \frac{\partial f_i}{\partial x_i}$$<br>
+如果使用向量表示<br>
+$$ \nabla_x^z=(\frac{\partial f}{\partial x})^T \nabla_y^z$$</p>
+</li>
+</ol>
+<h1>2. 梯度下降法</h1>
+<h2 id="2-1-梯度"><a class="header-anchor" href="#2-1-梯度">¶</a>2.1 梯度</h2>
+<p>梯度其实本质也是一个向量，对于函数$f(X,y)$<br>
+在$(W,y)$这一点的梯度 $(\frac{\partial f}{\partial X},\frac{\partial f}{\partial y})$<br>
+梯度的几何意义：在该店变化增加最快的地方</p>
+<h2 id="2-2-梯度算法的解释"><a class="header-anchor" href="#2-2-梯度算法的解释">¶</a>2.2 梯度算法的解释</h2>
+<p>图来自吴恩达的机器学习课程<br>
+<img src="/2019/03/05/BP算法/2.1.1.png" alt="tu"><br>
+颜色偏红(A)的地方开始，根据梯度的负方向通过9次更新，达到了最小值(B)。<br>
+现在给定一个点$A(\theta_0,\theta_1)$,干嘛呢，我们想从A到B点（最小值点),类似人类下山，需要知道往那个方向吧、走大多一步呢？<br>
+方向：梯度的负方向 $ \delta=(\frac{\partial L}{\partial \theta_0},\frac{\partial L}{\partial \theta_1})$)<br>
+步长：学习率（$\alpha$)<br>
+因此，计算一次里目标更近了 $(\theta_0,\theta_1)=(\theta_0,\theta_1)-\alpha \dot (\delta)$<br>
+在重复上两步，直到满意为止。</p>
+<h1>3.误差反向传播算法</h1>
+<h2 id="3-1-理论推导"><a class="header-anchor" href="#3-1-理论推导">¶</a>3.1 理论推导</h2>
+<p><img src="/2019/03/05/BP算法/3.1.1.png" alt="计算图"></p>
+<h3 id="3-1-1-符号说明"><a class="header-anchor" href="#3-1-1-符号说明">¶</a>3.1.1 符号说明</h3>
+<p>上图是一个L层的神经网络，输入层为第一层，隐藏层：2至$L-1$层，输出层L</p>
+<p>令 输入向量 $\vec{X}$<br>
+$$ \vec{X} = (x_1,x_2,…,x_{m-1},x_m)$$<br>
+输出向量 $\vec{Y}$<br>
+$$ \vec{Y}=(y_1,y_2,…,y_{n-1},y_n)$$a<br>
+第j层隐藏层的输出向量 $\vec{h^{(j)}}$<br>
+$$\vec{h<sup>{(j)}}=(h_1</sup>{(j)},h_2<sup>&lt;!–￼0–&gt;,…,h_{t-1}</sup>{(j)},h_tj^{(j)})$$<br>
+其中，$tj$:表示第j的隐藏层个数<br>
+第$(l-1)$层的第i个神经元到第$l$层的第j个神经元的连接权重：$w_{ij}^{(l)}$，则第$(l-1)$层神经元到第$l$层神经元的连接权重矩阵</p>
+<p>$$W^{(l)}=\left( \begin{matrix}w_{11}^{(l)}&amp; \cdots &amp; w_{1(tj)}\<br>
+&amp;   \dots &amp;\<br>
+w_{s(l-1)}<sup>{l}&amp;\cdots&amp;w_{s(l-1)s(l)}</sup>{l}<br>
+\end{matrix}\right)$$</p>
+<h3 id="3-1-2-推导过程"><a class="header-anchor" href="#3-1-2-推导过程">¶</a>3.1.2 推导过程</h3>
+<h4 id="3-1-2-1-误差"><a class="header-anchor" href="#3-1-2-1-误差">¶</a>3.1.2.1 误差</h4>
+<p>定义的误差函数,常见的衡量性指标见 <a href="#3.6">戳我</a>,这里选择的误差平方和最小<br>
+第$i$个输出的误差,假设实际输出$(d(1),d(2),…,d(n))$：,一个输入样本对应的误差<br>
+$$E(i)=\frac{1}{2}\sum_{k=1}<sup>n(y(i)-d(i))</sup>2=\frac{1}{2}||y-d||^2$$</p>
+<p>所有训练样本($N$)的误差：<br>
+$$E(i)=\frac{1}{2}\sum_{j=1}<sup>{N}(\sum_{k=1}</sup>n(y(i)-d(i))<sup>2)=\frac{1}{2N}\sum_{j=1}</sup>{N}(||y(i)-d(i)||^2)$$</p>
+<p>因此，<br>
+$$ E = \frac{1}{2N}\sum_{i=1}<sup>N(||y(i)-d(i)||</sup>2)$$<br>
+其实，神经网络的输出是关于节点的复合函数。代价函数是关于$W$和$b$的函数。</p>
+<h4 id="3-1-2-2-正向传播"><a class="header-anchor" href="#3-1-2-2-正向传播">¶</a>3.1.2.2 正向传播</h4>
+<p>输入层$\hat{X}$：<br>
+$$ X =(x_1,x_2,x_3,…,x_m)$$<br>
+当有$N$个训练样本时，可用矩阵表示</p>
+<p>$$ X=\left( \begin{matrix}<br>
+x_{11} &amp;x_{12}&amp;…&amp;x_{1m}\<br>
+x_{21} &amp; x_{22}&amp;…&amp;x_{2m}\<br>
+\vdots &amp; \vdots&amp;\dots&amp;\vdots\<br>
+x_{N1} &amp; \vdots&amp;\vdots&amp;x_{Nm}\<br>
+\end{matrix}  \right)$$</p>
+<p>第二层 $h^{(2)}$,一共$s2$个节点:<br>
+第i个节点的计算<br>
+$$h<sup>{(2)}(i)=f(\sum_{j=1}</sup>{s2}x(j)<em>w_{ji}^{(l)}+b_i)=f(x</em>w(:,i)+b_i)$$<br>
+矩阵表示<br>
+$$ h<sup>{(2)}=f(x*W</sup>{(l)}+b^{(2)})$$<br>
+第i层 矩阵形式<br>
+$$ h<sup>{(l)}=f(h</sup>{(l-1)}*W^{(l)}+b)$$</p>
+<h4 id="3-1-2-3-反向传播"><a class="header-anchor" href="#3-1-2-3-反向传播">¶</a>3.1.2.3 反向传播</h4>
+<p>梯度下降法更新权重，不断迭代到最优解。<br>
+对$w_{ij}$求导数可得,可更新$w_{ij}$更新公式：<br>
+$$ w_{ij}=w_{ij}-\alpha \frac{\partial E}{\partial w_{ij}}$$<br>
+当然简单的情况下，可直接写出公式，当太复杂的时候，引入BP简化求导</p>
+<p>方便书写公式，对于第i的输入$h<sup>{(i-1)}*W</sup>{(i)}+b<sup>{(i)}$记作$net</sup>{(i)}$,其中，第$i$的输入和输出的关系，$输入=f(输出)$<br>
+下面开始推导</p>
+<p>首先，对于$L$层，</p>
+<p>对于$W<sup>{(L)}$，先看对$W_{ij}</sup>{(L)}$求导，<br>
+$$ \frac{\partial E}{\partial W_{ij}^{(L)}}<br>
+=\frac{\partial E}{\partial y(j)} * \frac{\partial y(i)}{\partial net_{j}^{L}} * \frac{\partial net_{j}^{L}}{\partial W_{ij}^{(L)}}\<br>
+=(y(j)-d(j))*f(x)<sup>{’}|_{x=net_j</sup>{(L)}}h_i^{(L-1)}$$</p>
+<p>令$\delta_i^{(L)}=y(i)-d(i)$</p>
+<p>上述给出了单个分量的求偏导的结果，对于$W^{(L)}$<br>
+$$<br>
+\frac{\partial E}{\partial W^{(L)}}<br>
+=\left[\begin{matrix}<br>
+\frac{\partial E}{\partial W_{11}^{(L)}} &amp; \frac{\partial E}{\partial W_{12}^{(L)}}&amp;\dots &amp; \frac{\partial E}{\partial W_{1n}^{(L)}}\<br>
+\frac{\partial E}{\partial W_{21}^{(L)}} &amp; \frac{\partial E}{\partial W_{22}^{(L)}}&amp;\dots&amp; \frac{\partial E}{\partial W_{2n}^{(L)}}\<br>
+\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
+\frac{\partial E}{\partial W_{sL,1}^{(L)}} &amp; \frac{\partial E}{\partial W_{sL,2}^{(L)}}&amp;\dots&amp; \frac{\partial E}{\partial W_{sL,n}^{(L)}}<br>
+\end{matrix}\right]<br>
+\= \left[<br>
+\begin{matrix}<br>
+h<sup>{(L-1)}_1\h</sup>{(L-1)}<em>2\ \dots\h^{(L-1)}<em>n<br>
+\end{matrix}<br>
+\right] *\left[\begin{matrix}<br>
+\delta_1<sup>{(L)}f(x)</sup>{’}|</em>{x=net_1^{(L)}}\<br>
+\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
+\dots\<br>
+\delta_n<sup>{(L)}f(x)</sup>{’}|_{x=net_n^{(L)}}<br>
+\end{matrix}\right] ^T<br>
+=h<sup>{(L-1)}S</sup>{(L)}<br>
+$$<br>
+其中，</p>
+<p>$$<br>
+S^{(L)}=\left[\begin{matrix}</p>
+<p>\delta_1<sup>{(L)}f(x)</sup>{’}|<em>{x=net_1^{(L)}}\<br>
+\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
+\dots\<br>
+\delta_n<sup>{(L)}f(x)</sup>{’}|<em>{x=net_n^{(L)}}<br>
+\end{matrix}\right]^T<br>
+$$<br>
+同理可得，<br>
+$$<br>
+\frac{\partial E}{\partial b_k<sup>{(L)}}=(y(j)-d(j))*f(x)</sup>{’}|</em>{x=net_j^{(L)}}<br>
+$$</p>
+<p>其次，对于隐含层$L-1$层，对$W_{ij}^{(L)}$求导<br>
+$$<br>
+\frac{\partial E}{\partial W_{ij}^{(L-1)}}<br>
+=\sum_{k=1}^{n}\frac{\partial E}{\partial y(k)} * \frac{\partial y(k)}{\partial net_{k}^{L}} * \frac{\partial net_{k}^{L}}{\partial f(net_j^{(L-1)})}<em>\frac{\partial f(net_j^{(L-1)})}{\partial net_j^{(L-1)}}</em>\frac{\partial net_j^{(L-1)}}{\partial W_{ij}^{(L-1)}}\<br>
+=\sum_{k=1}^{n} (y(j)-d(j))*f(x)<sup>{’}|_{x=net_j</sup>{(L)}}W_{kj}<sup>{(L)}f(x)</sup>{’}|<em>{x=net_j<sup>{L-1}}h_i</sup>{L-2}\<br>
+=\sum</em>{k=1}<sup>{n}S_i</sup>{(L)}W_{kj}<sup>{(L)}f(x)</sup>{’}|_{x=net_j<sup>{L-1}}h_i</sup>{L-2}\<br>
+$$</p>
+<p>写出矩阵形式,对$W^{(L-1)}$<br>
+$$<br>
+\frac{\partial E}{\partial W^{(L-1)}}=\left[\begin{matrix} h<sup>{(L-2)}_1\h</sup>{(L-2)}<em>2\\vdots\h^{(L-2)}</em>{s(L-2)}\end{matrix}\right] \left[\begin{matrix}</p>
+<p>\delta_1<sup>{(L)}f(x)</sup>{’}|<em>{x=net_1^{(L)}}\<br>
+\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
+\dots\<br>
+\delta_n<sup>{(L)}f(x)</sup>{’}|<em>{x=net_n^{(L)}}<br>
+\end{matrix}\right]^T<br>
+\left[\begin{matrix}<br>
+W</em>{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
+W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
+\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
+W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}<br>
+\end{matrix}\right]^T<br>
+\<br>
+\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
+0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\<br>
+=h<sup>{(L-2)}S</sup>{(L-1)}<br>
+$$</p>
+<p>$$<br>
+S^{(L-1)}=\left(\left[\begin{matrix}</p>
+<p>f(x)<sup>{’(L)}|_{x=net_1</sup>{(L)}}&amp;0&amp; \dots&amp; 0\<br>
+0&amp;f(x)<sup>{’}|_{x=net_2</sup>{(L)}}0&amp; \dots&amp; 0\<br>
+0&amp;\dots&amp;\dots&amp;0\<br>
+0&amp;0&amp;0&amp;f(x)<sup>{’(L)}|_{x=net_n</sup>{(L)}}<br>
+\end{matrix}\right]\left[\begin{matrix} \delta_1<sup>{(L)}\\delta_2</sup>{(L)}\\vdots\\delta_n^{(L)}\end{matrix}\right] \right)^T\<br>
+\left[\begin{matrix}<br>
+W_{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
+W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
+\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
+W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}*<br>
+\end{matrix}\right]^T<br>
+\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
+0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\<br>
+=S^{(L)}\left[\begin{matrix}<br>
+W_{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
+W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
+\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
+W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}*<br>
+\end{matrix}\right]^T\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
+0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]*\<br>
+$$</p>
+<p>对$1&lt;l&lt;L$,求$W^{(l)}$的偏导,</p>
+<p>最后，根据上述的推导喔，很容易得出$S<sup>{(l)}$和$S</sup>{(l+1)}$,<br>
+$$<br>
+S<sup>{(l)}=S</sup>{(l+1)}W<sup>{(l+1)</sup>T}F<sup>{’(l)}(net</sup>{(l)})\<br>
+S<sup>{(L)}=(Y-\hat{Y})F</sup>{’(L)}(net^{(L)})<br>
+$$</p>
+<p>$$<br>
+\frac{\partial E}{\part W<sup>{(l)}}=\left[\begin{matrix}h</sup>{(l-1)}<em>1\h^{(l-1)}<em>2 \\dots \h<sup>{(l-1)}_{sl}\end{matrix}\right]S</sup>{(l+1)} \left[\begin{matrix}W</em>{11}<sup>{(l+1)}&amp;W_{12}</sup>{(l+1)} &amp;\dots&amp; W</em>{2(sl+1)}^{(l+1)}\<br>
+W_{21}<sup>{(l+1)}&amp;W_{22}</sup>{(l+1)} &amp;\dots&amp; W_{2(sl+1)}^{(l+1)}\<br>
+\dots&amp;\dots&amp;\dots&amp;\dots\<br>
+W_{sl1}<sup>{(l+1)}&amp;W_{sl2}</sup>{(l+1)} &amp;\dots&amp; W_{sl(sl+1)}^{(l+1)}\<br>
+\end{matrix}  \right]^T\left[\begin{matrix} \part f<sup>{’(l)}(net_1</sup>{l})&amp;0&amp;\dots &amp; 0\<br>
+0\0 &amp;\part f<sup>{’(l)}(net_2</sup>{l})&amp;\dots&amp;0\<br>
+0 &amp; 0&amp;\dots&amp;0\<br>
+0&amp;0&amp;\dots&amp;\part f<sup>{’(l)}(net_l</sup>{l})\end{matrix}\right]<br>
+$$</p>
+<h2 id="3-2-bp算法的小结"><a class="header-anchor" href="#3-2-bp算法的小结">¶</a>3.2 BP算法的小结</h2>
+<p>算法分为两个阶段：前向阶段和后向传播阶段</p>
+<p>后向阶段算法：</p>
+<p>Step 1:  计算$\hat{y}^{(L)}$</p>
+<p>Step 2:  for l =L:2</p>
+<p>​		计算$S<sup>{(l)}=S</sup>{(l+1)}W<sup>{(l+1)}F’(net</sup>{(l)})$</p>
+<p>​		计算 $\Delta W<sup>{(l)}=h</sup>{(l-1)}S^{(l)} $</p>
+<p>​		计算$W<sup>{(l)}=W</sup>{(l)}-\delta \Delta W^{(l)}$</p>
+<h2 id="3-3-python实现"><a class="header-anchor" href="#3-3-python实现">¶</a>3.3 Python实现</h2>
+<h3 id="3-3-1-最简单三层网络"><a class="header-anchor" href="#3-3-1-最简单三层网络">¶</a>3.3.1 最简单三层网络</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">不用任何框架，自己写一个三层的神经网络</span></span><br><span class="line"><span class="string"># input-3,hidden-4 output-1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input Matrix</span></span><br><span class="line">X = np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">0</span> ,<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output Matrix</span></span><br><span class="line">y = np.array([[<span class="number">0</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>]])</span><br><span class="line"><span class="comment"># Nonlinear function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X,derive=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-X))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> X*(<span class="number">1</span>-X)</span><br><span class="line"><span class="comment"># relu</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">relu</span><span class="params">(X,derive = False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> np.maximum(<span class="number">0</span>,X)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (X&gt;<span class="number">0</span>).astype(float)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Weight bias</span></span><br><span class="line">W1 = <span class="number">2</span> * np.random.random((<span class="number">3</span>, <span class="number">4</span>))<span class="number">-1</span></span><br><span class="line">b1 = <span class="number">0.1</span> * np.ones((<span class="number">4</span>,))</span><br><span class="line"> </span><br><span class="line">W2 = <span class="number">2</span> * np.random.random((<span class="number">4</span>,<span class="number">1</span>))<span class="number">-1</span></span><br><span class="line">b2 = <span class="number">0.1</span> * np.ones((<span class="number">1</span>,))</span><br><span class="line"> </span><br><span class="line">rate = <span class="number">0.1</span></span><br><span class="line">noline = relu</span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">train_times = <span class="number">200</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> time <span class="keyword">in</span> range(train_times):</span><br><span class="line">    <span class="comment"># Layer one</span></span><br><span class="line">    A1 = np.dot(X,W1)+b1</span><br><span class="line">    Z1 = noline(A1)</span><br><span class="line">    <span class="comment"># Layer two </span></span><br><span class="line">    A2 = np.dot(Z1, W2)+b2</span><br><span class="line">    Z2 = noline(A2)</span><br><span class="line">    </span><br><span class="line">    cost = -y+Z2</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calc deltas </span></span><br><span class="line">    S2= cost*noline(A2,<span class="keyword">True</span>)</span><br><span class="line">    delta_W2 = np.dot(Z1.T,S2)</span><br><span class="line">    bias2 = S2.sum(axis=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    S1 = np.dot(S2, W2.T)*noline(A1,<span class="keyword">True</span>)</span><br><span class="line">    delta_W1= np.dot(X.T, S1)</span><br><span class="line">    bias1 = S1.sum(axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># update</span></span><br><span class="line">    W1 = W1-rate*delta_W1</span><br><span class="line">    b1 = b1-rate*bias1</span><br><span class="line">    W2 = W2-rate*delta_W2</span><br><span class="line">    b2 = b2-rate*bias2</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">'error'</span>,np.mean(((y-Z2)*(y-Z2))**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"prediction"</span>,Z2)</span><br></pre></td></tr></table></figure>
+<h2 id="font-id-3-6-3-4-附录-font-："><a class="header-anchor" href="#font-id-3-6-3-4-附录-font-：">¶</a><font id="3.6">3.4  附录</font>：</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean absolute percentage error</td>
+<td>MAPE</td>
+</tr>
+<tr>
+<td>Root mean squares percentage error</td>
+<td>RMSPE</td>
+</tr>
+<tr>
+<td>Mean absolute percentage error</td>
+<td>MAE</td>
+</tr>
+<tr>
+<td>Mean squares error</td>
+<td>MSE</td>
+</tr>
+<tr>
+<td>Index of agreement</td>
+<td>IA</td>
+</tr>
+<tr>
+<td>Theil U statistic 1</td>
+<td>U1</td>
+</tr>
+<tr>
+<td>Theil U statistic 2</td>
+<td>U2</td>
+</tr>
+<tr>
+<td>Correlation coefficient</td>
+<td>R</td>
+</tr>
+</tbody>
+</table>
+<p>MAPE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left|\frac{x</sup>{(0)}(k)-\hat{x}<sup>{(0)}(k)}{x</sup>{(0)}(k)}\right| \times 100$<br>
+RMSPE	=	$\sqrt{\frac{1}{n} \sum_{k=1}<sup>{n}\left(\frac{\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)}{x</sup>{(0)}(k)}\right)^{2}} \times 100$<br>
+MAE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left|\hat{x}</sup>{(0)}(k)-x^{(0)}(k)\right|$<br>
+MSE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}$<br>
+IA	=	$1-\frac{\sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}}{\sum_{k=1}^{n} \left( \left| \hat{x}^{(0)}(k)-\overline{x} \right|+\left| x^{(0)}(k)-\overline{x}\right| \right)^{2}}$<br>
+U1	=	$\frac{\sqrt{\frac{1}{n} \sum_{k=1}<sup>{n}\left(x</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}}}{\sqrt{\frac{1}{n} \sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}}+\sqrt{\frac{1}{n} \sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}}}$<br>
+U2	=	$\frac{\left[\sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}\right]^{1 / 2}}{\left[\sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}\right]^{1 / 2}}$<br>
+R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{Var}[\hat{x}</sup>{(0)}] \operatorname{Var}[x^{(0)}]}}$</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author: </strong>XieMay</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://xiemaycherry.github.io/2019/03/05/BP算法/" title="BP算法">http://xiemaycherry.github.io/2019/03/05/BP算法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BP/" rel="tag"># BP</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/03/决策树/" rel="next" title="决策树">
+                <i class="fa fa-chevron-left"></i> 决策树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/11/回归树/" rel="prev" title="回归树">
+                回归树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieMay</p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.cnblogs.com/shiyiandchuixue/" target="_blank" title="BLOGS"><i class="fa fa-fw fa-globe"></i>BLOGS</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:2323020965@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/shiyichuixue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">1. 需要的微积分知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-导数"><span class="nav-number">1.1.</span> <span class="nav-text">¶1.1 导数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-求导的链式法则"><span class="nav-number">1.2.</span> <span class="nav-text">¶1.2 求导的链式法则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">2. 梯度下降法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-梯度"><span class="nav-number">2.1.</span> <span class="nav-text">¶2.1 梯度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-梯度算法的解释"><span class="nav-number">2.2.</span> <span class="nav-text">¶2.2 梯度算法的解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">3.误差反向传播算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-理论推导"><span class="nav-number">3.1.</span> <span class="nav-text">¶3.1 理论推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-符号说明"><span class="nav-number">3.1.1.</span> <span class="nav-text">¶3.1.1 符号说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-推导过程"><span class="nav-number">3.1.2.</span> <span class="nav-text">¶3.1.2 推导过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-1-误差"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">¶3.1.2.1 误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-2-正向传播"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">¶3.1.2.2 正向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-3-反向传播"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">¶3.1.2.3 反向传播</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-bp算法的小结"><span class="nav-number">3.2.</span> <span class="nav-text">¶3.2 BP算法的小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-python实现"><span class="nav-number">3.3.</span> <span class="nav-text">¶3.3 Python实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-最简单三层网络"><span class="nav-number">3.3.1.</span> <span class="nav-text">¶3.3.1 最简单三层网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-id-3-6-3-4-附录-font-："><span class="nav-number">3.4.</span> <span class="nav-text">¶3.4  附录：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Symbols count total&#58;</span>
+    
+    <span title="Symbols count total">294k</span>
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+    
+  
+  <script src="[object Object]"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '1Dfsb4DwGQPCIlbyCKt9egUR-gzGzoHsz',
+        appKey: '8OKqJPeMRRQnxx2vaAwIkM8y',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
