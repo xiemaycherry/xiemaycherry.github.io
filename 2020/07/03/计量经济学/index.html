@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                6.5k字
+                6.6k字
               </span>
               
 
@@ -447,53 +447,77 @@
       
 
       
-        <h1 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h1><a id="more"></a>
+        <h1>资料</h1>
+<a id="more"></a>
 <p>计量经济学：陈强老师的书籍非常好！</p>
 <p><a href="https://www.econometrics-with-r.org/11-2-palr.html" target="_blank" rel="noopener">https://www.econometrics-with-r.org/11-2-palr.html</a></p>
 <p><a href="http://hadley.nz/index.html" target="_blank" rel="noopener">http://hadley.nz/index.html</a></p>
 <p><a href="https://sites.google.com/site/econometricsacademy/econometrics-software/stata" target="_blank" rel="noopener">https://sites.google.com/site/econometricsacademy/econometrics-software/stata</a></p>
-<h1 id="Day-Ox-01"><a href="#Day-Ox-01" class="headerlink" title="Day Ox 01"></a>Day Ox 01</h1><p>主要是想拉通一个完整的流程，拉通基本的计量分析结果。在这个过程中，主要参考了《中国工业经济》提供的源代码里面的命令，网上百度的资料。这方面的资料太稀少且不系统。help大法好啊！拉通跑完一个别人的程序，基本上就基准回归可以用了。</p>
-<h1 id="Day-Ox-02"><a href="#Day-Ox-02" class="headerlink" title="Day Ox 02"></a>Day Ox 02</h1><p>就是把DID,PSM-DID,IV方法看别人的，学会了。还有绘图功能一并学会了。</p>
-<h1 id="Introduction-to-Stata"><a href="#Introduction-to-Stata" class="headerlink" title="Introduction to Stata"></a>Introduction to Stata</h1><p>Programs – Stata do files (.do)</p>
+<h1>Day Ox 01</h1>
+<p>主要是想拉通一个完整的流程，拉通基本的计量分析结果。在这个过程中，主要参考了《中国工业经济》提供的源代码里面的命令，网上百度的资料。这方面的资料太稀少且不系统。help大法好啊！拉通跑完一个别人的程序，基本上就基准回归可以用了。</p>
+<h1>Day Ox 02</h1>
+<p>就是把DID,PSM-DID,IV方法看别人的，学会了。还有绘图功能一并学会了。</p>
+<h1>Introduction to Stata</h1>
+<p>Programs – Stata do files (.do)</p>
 <p>Data files – stata data files (.dta) and csv files</p>
 <p>Data editor – where data are imported to</p>
 <p>Log files - where output is saved</p>
-<h1 id="Load-Data"><a href="#Load-Data" class="headerlink" title="Load Data"></a>Load Data</h1><h2 id="Excel导入"><a href="#Excel导入" class="headerlink" title="Excel导入"></a>Excel导入</h2><p>edit-&gt;Data Editor -&gt;Excel</p>
-<h1 id="Summarize"><a href="#Summarize" class="headerlink" title="Summarize"></a>Summarize</h1><p>可分组描述。</p>
+<h1>Load Data</h1>
+<h2 id="excel导入"><a class="header-anchor" href="#excel导入">¶</a>Excel导入</h2>
+<p>edit-&gt;Data Editor -&gt;Excel</p>
+<h1>Summarize</h1>
+<p>可分组描述。</p>
 <p>tabstat anad, by(year) s(sum count)</p>
 <p>tabstat是Stata自带的程序命令，Stata的程序格式通常都是这样安排的</p>
 <p>anad是标记公司有没有分析师跟踪的变量</p>
 <p>by(year)是分年统计的意思。</p>
-<p><strong>s(sum count)</strong>意在输出变量anad的两个统计量，总和（sum），总观测数（count）</p>
+<p>**s(sum count)**意在输出变量anad的两个统计量，总和（sum），总观测数（count）</p>
 <p>tabstat delta_cash overinv underinv ananum cashflow fcf_p fcf_n absda size lev roa tobinq delta_std , s(count mean median sd min max)</p>
 <p><strong>tabstat</strong>是输出描述性统计非常好用的命令</p>
 <p><strong>delta_cash overinv underinv ananum cashflow fcf_p fcf_n absda size lev roa tobinq delta_std</strong>是我们要进行统计的一组变量。</p>
-<p><strong>s(count mean median sd min max)</strong>是说我们要生成：总观测数、均值、中位数、标准差、最小值和最大值。共5项统计量。当然，如果你想生成其他统计量，可以在括号里添加，比如分位数。</p>
+<p>**s(count mean median sd min max)**是说我们要生成：总观测数、均值、中位数、标准差、最小值和最大值。共5项统计量。当然，如果你想生成其他统计量，可以在括号里添加，比如分位数。</p>
 <p>eg. tabstat weight, s(mean, count) ,if foreign ==1</p>
 <p>tabstat read write math, by(prgtype) stat(n mean sd)</p>
-<h2 id="gen-rename-replace-droo"><a href="#gen-rename-replace-droo" class="headerlink" title="gen rename replace droo"></a>gen rename replace droo</h2><p>order id gender<br>label variable schtyp “type of school”<br>rename gender female<br>gen score=read+write+math<br>gen score2=score^2<br>gen pass=1 if score&gt;=150<br>replace pass=0 if pass==.<br>drop if read&lt;40<br>drop schtyp</p>
-<h2 id="stata-排序和分组"><a href="#stata-排序和分组" class="headerlink" title="stata 排序和分组"></a>stata 排序和分组</h2><ol>
-<li><p>sort 升序</p>
+<h2 id="gen-rename-replace-droo"><a class="header-anchor" href="#gen-rename-replace-droo">¶</a>gen rename replace droo</h2>
+<p>order id gender<br>
+label variable schtyp &quot;type of school&quot;<br>
+rename gender female<br>
+gen score=read+write+math<br>
+gen score2=score^2<br>
+gen pass=1 if score&gt;=150<br>
+replace pass=0 if pass==.<br>
+drop if read&lt;40<br>
+drop schtyp</p>
+<h2 id="stata-排序和分组"><a class="header-anchor" href="#stata-排序和分组">¶</a>stata 排序和分组</h2>
+<ol>
+<li>
+<p>sort 升序</p>
 <p>sort v1 v2</p>
 <p>list</p>
 </li>
-<li><p>gsort</p>
+<li>
+<p>gsort</p>
 </li>
 </ol>
 <p>gsort [+|-] varname [[+|-] varname …] [, generate(newvar) mfirst]</p>
 <p>gsort +v1 -v2</p>
 <p>3, bysort  简写 by</p>
-<h3 id="reghdfe-回归快速"><a href="#reghdfe-回归快速" class="headerlink" title="reghdfe 回归快速"></a>reghdfe 回归快速</h3><p>ssc install reghdfe</p>
-<p> help reghdfe</p>
+<h3 id="reghdfe-回归快速"><a class="header-anchor" href="#reghdfe-回归快速">¶</a>reghdfe 回归快速</h3>
+<p>ssc install reghdfe</p>
+<p>help reghdfe</p>
 <p>reghdfe depvar [indepvars] [if] [in] [weight] , absorb(absvars)[options]</p>
-<h2 id="固定效应"><a href="#固定效应" class="headerlink" title="固定效应"></a>固定效应</h2><p>i.industry, i.province</p>
+<h2 id="固定效应"><a class="header-anchor" href="#固定效应">¶</a>固定效应</h2>
+<p>i.industry, i.province</p>
 <p>加入虚拟变量</p>
 <p><a href="https://www.jianshu.com/p/56285c5ff1e3" target="_blank" rel="noopener">https://www.jianshu.com/p/56285c5ff1e3</a></p>
 <p>异方差稳健标准误</p>
 <p>vce(robust) 随机扰动项和自变量有相关性</p>
 <p>xtreg cluster(id)</p>
-<h3 id="交互性和分组回归的区别"><a href="#交互性和分组回归的区别" class="headerlink" title="交互性和分组回归的区别"></a>交互性和分组回归的区别</h3><p>分组回归：没有假设，系数可不一致</p>
-<h2 id="gen-egen"><a href="#gen-egen" class="headerlink" title="gen egen"></a>gen egen</h2><h1 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h1><p>Ox 00  描述性统计</p>
+<h3 id="交互性和分组回归的区别"><a class="header-anchor" href="#交互性和分组回归的区别">¶</a>交互性和分组回归的区别</h3>
+<p>分组回归：没有假设，系数可不一致</p>
+<h2 id="gen-egen"><a class="header-anchor" href="#gen-egen">¶</a>gen egen</h2>
+<h1>使用步骤</h1>
+<p>Ox 00  描述性统计</p>
 <p>分组描述</p>
 <p>tabstat weight, s(mean, count) ,if foreign ==1</p>
 <p>tabstat read write math, by(prgtype) stat(n mean sd)</p>
@@ -501,33 +525,92 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reg csr X1 lnsize bcash roa lev les tobinq age i.Ind i.year </span><br><span class="line">est store m1</span><br><span class="line">reg csr X2 lnsize bcash roa lev les tobinq age i.Ind i.year</span><br><span class="line">est store m2</span><br><span class="line">esttab m1 m2 m3 m4 using esttab1.rtf, replace</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">reg  csr X1 lnsize bcash roa lev tobinq age i.Ind i.year if zy==1</span><br><span class="line">est store m1</span><br><span class="line">reg  csr X1 lnsize bcash roa lev tobinq age i.Ind i.year if zy==0</span><br><span class="line">est store m2</span><br><span class="line">reg  csr X2 lnsize bcash roa lev tobinq age i.Ind i.year if zy==1</span><br><span class="line">est store m3</span><br><span class="line">reg  csr X2 lnsize bcash roa lev tobinq age i.Ind i.year if zy==0</span><br><span class="line">est store m4</span><br><span class="line">esttab m1 m2 m3,se scalars(N r2 F p) mtitles title(“图1”),using esttab1.rtf,replace</span><br></pre></td></tr></table></figure>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTQ3MTY0MA==&amp;mid=2247483904&amp;idx=1&amp;sn=5822658f03a1ee6b14cf37510287ac3e&amp;chksm=96ec21f7a19ba8e1997e9600e876976c92d6cdbfeaa068aa42cc3864dc4b43d4440bade1c2b7&amp;token=204946112&amp;lang=zh_CN#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzIwMTQ3MTY0MA==&amp;mid=2247483904&amp;idx=1&amp;sn=5822658f03a1ee6b14cf37510287ac3e&amp;chksm=96ec21f7a19ba8e1997e9600e876976c92d6cdbfeaa068aa42cc3864dc4b43d4440bade1c2b7&amp;token=204946112&amp;lang=zh_CN#rd</a></p>
-<h2 id="自相关和序列相关性"><a href="#自相关和序列相关性" class="headerlink" title="自相关和序列相关性"></a>自相关和序列相关性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xtset id time</span><br><span class="line">xtreg y x i.time, fe r</span><br><span class="line">xtreg y x i.time, fe r cluster(id)</span><br><span class="line">xtreg y x i.time, fe vce(cluster id)</span><br></pre></td></tr></table></figure>
-<p>vce(cluster panelvar)  </p>
+<h2 id="自相关和序列相关性"><a class="header-anchor" href="#自相关和序列相关性">¶</a>自相关和序列相关性</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xtset id time</span><br><span class="line">xtreg y x i.time, fe r</span><br><span class="line">xtreg y x i.time, fe r cluster(id)</span><br><span class="line">xtreg y x i.time, fe vce(cluster id)</span><br></pre></td></tr></table></figure>
+<p>vce(cluster panelvar)</p>
 <p><a href="https://cloud.tencent.com/developer/news/359411" target="_blank" rel="noopener">https://cloud.tencent.com/developer/news/359411</a></p>
-<p>标准误的选取<br>1.存在异方差且观测值之间独立：vce(robust)或robust或r<br>2.存在异方差且允许观测值组内相关、组间无关：cluster(id) 也就是常说的聚类稳健标准误，id是个体变量<br>在xtreg,fe（固定效应模型）或xtreg,re（随机效应模型）命令下，robust和cluster(id)的命令等价。即：<br>xtreg y x1 x2, fe robust= xtreg y x1 x2, fe cluster(id)</p>
+<p>标准误的选取<br>
+1.存在异方差且观测值之间独立：vce(robust)或robust或r<br>
+2.存在异方差且允许观测值组内相关、组间无关：cluster(id) 也就是常说的聚类稳健标准误，id是个体变量<br>
+在xtreg,fe（固定效应模型）或xtreg,re（随机效应模型）命令下，robust和cluster(id)的命令等价。即：<br>
+xtreg y x1 x2, fe robust= xtreg y x1 x2, fe cluster(id)</p>
 <p>因为面板数据，异方差有两种可能，其一是时间序列上的，另一种是截面上的，你的是后一种。</p>
 <p>cluster (var)说明var这个组内有相关性</p>
 <p>reghdfe NO false_connect ,absorb(i.stkcd#i.subcityid i.stkcd#i.year i.subcityid#i.year) vce (cl tie)</p>
-<h2 id="DID"><a href="#DID" class="headerlink" title="DID"></a>DID</h2><h1 id="save"><a href="#save" class="headerlink" title="save"></a>save</h1><p>save “connect_simulations.dta”, replace</p>
-<h1 id="drop"><a href="#drop" class="headerlink" title="drop"></a>drop</h1><p>drop if sgnyea==2010</p>
-<h1 id="gen"><a href="#gen" class="headerlink" title="gen"></a>gen</h1><p>gen market_access_g=ln(1+market_g)</p>
+<h2 id="did"><a class="header-anchor" href="#did">¶</a>DID</h2>
+<h1>save</h1>
+<p>save “connect_simulations.dta”, replace</p>
+<h1>drop</h1>
+<p>drop if sgnyea==2010</p>
+<h1>gen</h1>
+<p>gen market_access_g=ln(1+market_g)</p>
 <p><a href="http://wlm.userweb.mwn.de/Stata/wstatgen.htm" target="_blank" rel="noopener">http://wlm.userweb.mwn.de/Stata/wstatgen.htm</a></p>
-<h1 id="DID-1"><a href="#DID-1" class="headerlink" title="DID"></a>DID</h1><p>areg Dis HSR Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id) robust<br>est store m_1<br>areg Disw HSR Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id) robust<br>est store m_2<br>esttab m_1 m_2 using baseline.rtf, replace   ///<br>         b(%9.4f) star(<em> 0.1 <strong> 0.05 </strong></em> 0.01) t(%9.4f)    ///<br>         scalar(F N r2_a) nogaps  ///<br>         mtitle()</p>
+<h1>DID</h1>
+<p>areg Dis HSR Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id) robust<br>
+est store m_1<br>
+areg Disw HSR Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id) robust<br>
+est store m_2<br>
+esttab m_1 m_2 using baseline.rtf, replace   ///<br>
+	     b(%9.4f) star(* 0.1 ** 0.05 *** 0.01) t(%9.4f)    ///<br>
+		 scalar(F N r2_a) nogaps  ///<br>
+		 mtitle()</p>
 <p>regress y x 执行y对单个预测变量x的常规最小二乘法回归</p>
 <p>regress y x if ethnic==3&amp;income&gt;50 执行y对x的回归，但只使用ethnic等于3且income大于50的数据子集</p>
 <p>predict yhat 创建一个新变量yhat，令其等于最近回归所得到的预测值</p>
 <p>predict e, resid 创建一个新变量e，令其等于最近回归得到的残差</p>
 <p><a href="https://blog.csdn.net/arlionn/article/details/85244336" target="_blank" rel="noopener">https://blog.csdn.net/arlionn/article/details/85244336</a></p>
-<p><strong>**</strong>动态检验<strong>**</strong><br>gen Dyear=year-company_work_hsr<br>gen Before2=(Dyear==-2)<br>lab var Before2 “2 Year Prior”<br>gen Before1=(Dyear==-1)<br>lab var Before1 “1 Year Prior”<br>gen Current=(Dyear==0)<br>lab var Current “Year of Adoption”<br>gen After1=(Dyear==1)<br>lab var After1 “1 Year After”<br>gen After2=(Dyear==2)<br>lab var After2 “2 Year After”<br>gen After3_=(Dyear&gt;=3)<br>lab var After3_ “3 or More Year After”<br>areg Disw Before2 Before1 Current After1 After2 After3_ Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id) robust<br>est store Dynamic1<br>areg Dis Before2 Before1 Current After1 After2  After3_ Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id) robust<br>est store Dynamic2</p>
-<p>esttab Dynamic1 Dynamic2 using Dynamic.rtf, replace   ///<br>        b(%6.4f) star(<em> 0.1 <strong> 0.05 </strong></em> 0.01) t(%6.4f)    ///<br>                  scalar(N r2_a) nogaps  ///<br>         mtitle()</p>
-<p><strong>**</strong>平行趋势图<strong>**</strong><br>coefplot Dynamic1, keep(Before2 Before1 Current After1 After2 After3_) vertical recast(connect) lcolor(red<em>0.45) lpattern(-) ciopts(lcolor(edkblue</em>0.8)) mlcolor(gs6) mfcolor(white) msize(<em>1.2) msymbol(h) yline(0,lcolor(edkblue</em>0.6) lwidth(*1.0))</p>
+<p><strong><strong><strong>动态检验</strong></strong></strong><br>
+gen Dyear=year-company_work_hsr<br>
+gen Before2=(Dyear==-2)<br>
+lab var Before2 &quot;2 Year Prior&quot;<br>
+gen Before1=(Dyear==-1)<br>
+lab var Before1 &quot;1 Year Prior&quot;<br>
+gen Current=(Dyear==0)<br>
+lab var Current &quot;Year of Adoption&quot;<br>
+gen After1=(Dyear==1)<br>
+lab var After1 &quot;1 Year After&quot;<br>
+gen After2=(Dyear==2)<br>
+lab var After2 &quot;2 Year After&quot;<br>
+gen After3_=(Dyear&gt;=3)<br>
+lab var After3_ &quot;3 or More Year After&quot;<br>
+areg Disw Before2 Before1 Current After1 After2 After3_ Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id) robust<br>
+est store Dynamic1<br>
+areg Dis Before2 Before1 Current After1 After2  After3_ Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id) robust<br>
+est store Dynamic2</p>
+<p>esttab Dynamic1 Dynamic2 using Dynamic.rtf, replace   ///<br>
+	    b(%6.4f) star(* 0.1 ** 0.05 *** 0.01) t(%6.4f)    ///<br>
+		          scalar(N r2_a) nogaps  ///<br>
+		 mtitle()</p>
+<p><strong><strong><strong>平行趋势图</strong></strong></strong><br>
+coefplot Dynamic1, keep(Before2 Before1 Current After1 After2 After3_) vertical recast(connect) lcolor(red<em>0.45) lpattern(-) ciopts(lcolor(edkblue</em>0.8)) mlcolor(gs6) mfcolor(white) msize(<em>1.2) msymbol(h) yline(0,lcolor(edkblue</em>0.6) lwidth(*1.0))</p>
 <p>coefplot Dynamic2, keep(Before2 Before1 Current After1 After2 After3_) vertical recast(connect) lcolor(red<em>0.45) lpattern(-) ciopts(lcolor(edkblue</em>0.8)) mlcolor(gs6) mfcolor(white) msize(<em>1.2) msymbol(h) yline(0,lcolor(edkblue</em>0.6) lwidth(*1.0))</p>
-<h1 id="PSM-DID"><a href="#PSM-DID" class="headerlink" title="PSM-DID"></a>PSM-DID</h1><p>倾向性匹配得分</p>
+<h1>PSM-DID</h1>
+<p>倾向性匹配得分</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MjM5NTM4NjU2OA==&amp;mid=2650714980&amp;idx=1&amp;sn=5bafc8c230fb062d90f04709f683b5b2&amp;chksm=bef356c38984dfd54a0c1ffbf99933b7e8bac528324b6bf1ce5fce888718374bb4cc4fce70d5&amp;scene=0&amp;xtrack=1#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MjM5NTM4NjU2OA==&amp;mid=2650714980&amp;idx=1&amp;sn=5bafc8c230fb062d90f04709f683b5b2&amp;chksm=bef356c38984dfd54a0c1ffbf99933b7e8bac528324b6bf1ce5fce888718374bb4cc4fce70d5&amp;scene=0&amp;xtrack=1#rd</a></p>
-<h1 id="IV"><a href="#IV" class="headerlink" title="IV"></a>IV</h1><p>clear<br>use IV_re2<br>logit hsr near GDPA i.year,r<br>est store IV1<br>esttab IV1 using IV1.rtf, replace   ///<br>        b(%6.4f) star(<em> 0.1 <strong> 0.05 </strong></em> 0.01) t(%6.4f)    ///<br>                  scalar(N r2_p) nogaps  ///<br>         mtitle()<br>predict r # 这里就是最近一次回归<br>duplicates drop city_name year,force<br>merge 1:m city_name year using distance<br>keep if _merge==3<br>drop _merge</p>
-<p>areg Disw r Cash Invt Lev Size ROA Rec Age PGDP SOE Soe2 i.year,absorb(company_id)<br>est store m_1<br>areg Dis r Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id)<br>est store m_2</p>
-<p> esttab  m_1  m_2  using iv.rtf, replace   ///<br>         b(%6.4f) star(<em> 0.1 <strong> 0.05 </strong></em> 0.01) t(%6.4f)    ///<br>                  scalar(N r2_a) nogaps  ///<br>         mtitle()</p>
-<h1 id="plot"><a href="#plot" class="headerlink" title="plot"></a>plot</h1><p><a href="https://zhuanlan.zhihu.com/p/32432932" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32432932</a></p>
+<h1>IV</h1>
+<p>clear<br>
+use IV_re2<br>
+logit hsr near GDPA i.year,r<br>
+est store IV1<br>
+esttab IV1 using IV1.rtf, replace   ///<br>
+	    b(%6.4f) star(* 0.1 ** 0.05 *** 0.01) t(%6.4f)    ///<br>
+		          scalar(N r2_p) nogaps  ///<br>
+		 mtitle()<br>
+predict r # 这里就是最近一次回归<br>
+duplicates drop city_name year,force<br>
+merge 1:m city_name year using distance<br>
+keep if _merge==3<br>
+drop _merge</p>
+<p>areg Disw r Cash Invt Lev Size ROA Rec Age PGDP SOE Soe2 i.year,absorb(company_id)<br>
+est store m_1<br>
+areg Dis r Cash Invt Lev Size ROA Rec Age PGDP SOE i.year,absorb(company_id)<br>
+est store m_2</p>
+<p>esttab  m_1  m_2  using iv.rtf, replace   ///<br>
+	     b(%6.4f) star(* 0.1 ** 0.05 *** 0.01) t(%6.4f)    ///<br>
+		          scalar(N r2_a) nogaps  ///<br>
+		 mtitle()</p>
+<h1>plot</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/32432932" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32432932</a></p>
 
       
     </div>
@@ -678,7 +761,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XieMay</p>
-              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+              <p class="site-description motion-element" itemprop="description">期待花开</p>
           </div>
 
           
@@ -688,7 +771,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -865,7 +948,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资料"><span class="nav-number">1.</span> <span class="nav-text">资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-Ox-01"><span class="nav-number">2.</span> <span class="nav-text">Day Ox 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-Ox-02"><span class="nav-number">3.</span> <span class="nav-text">Day Ox 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction-to-Stata"><span class="nav-number">4.</span> <span class="nav-text">Introduction to Stata</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Load-Data"><span class="nav-number">5.</span> <span class="nav-text">Load Data</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Excel导入"><span class="nav-number">5.1.</span> <span class="nav-text">Excel导入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summarize"><span class="nav-number">6.</span> <span class="nav-text">Summarize</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gen-rename-replace-droo"><span class="nav-number">6.1.</span> <span class="nav-text">gen rename replace droo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stata-排序和分组"><span class="nav-number">6.2.</span> <span class="nav-text">stata 排序和分组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reghdfe-回归快速"><span class="nav-number">6.2.1.</span> <span class="nav-text">reghdfe 回归快速</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定效应"><span class="nav-number">6.3.</span> <span class="nav-text">固定效应</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交互性和分组回归的区别"><span class="nav-number">6.3.1.</span> <span class="nav-text">交互性和分组回归的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gen-egen"><span class="nav-number">6.4.</span> <span class="nav-text">gen egen</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用步骤"><span class="nav-number">7.</span> <span class="nav-text">使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自相关和序列相关性"><span class="nav-number">7.1.</span> <span class="nav-text">自相关和序列相关性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DID"><span class="nav-number">7.2.</span> <span class="nav-text">DID</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#save"><span class="nav-number">8.</span> <span class="nav-text">save</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#drop"><span class="nav-number">9.</span> <span class="nav-text">drop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gen"><span class="nav-number">10.</span> <span class="nav-text">gen</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DID-1"><span class="nav-number">11.</span> <span class="nav-text">DID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PSM-DID"><span class="nav-number">12.</span> <span class="nav-text">PSM-DID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IV"><span class="nav-number">13.</span> <span class="nav-text">IV</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#plot"><span class="nav-number">14.</span> <span class="nav-text">plot</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Day Ox 01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Day Ox 02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Introduction to Stata</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Load Data</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#excel导入"><span class="nav-number">5.1.</span> <span class="nav-text">¶Excel导入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Summarize</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gen-rename-replace-droo"><span class="nav-number">6.1.</span> <span class="nav-text">¶gen rename replace droo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stata-排序和分组"><span class="nav-number">6.2.</span> <span class="nav-text">¶stata 排序和分组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reghdfe-回归快速"><span class="nav-number">6.2.1.</span> <span class="nav-text">¶reghdfe 回归快速</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定效应"><span class="nav-number">6.3.</span> <span class="nav-text">¶固定效应</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交互性和分组回归的区别"><span class="nav-number">6.3.1.</span> <span class="nav-text">¶交互性和分组回归的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gen-egen"><span class="nav-number">6.4.</span> <span class="nav-text">¶gen egen</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">使用步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自相关和序列相关性"><span class="nav-number">7.1.</span> <span class="nav-text">¶自相关和序列相关性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#did"><span class="nav-number">7.2.</span> <span class="nav-text">¶DID</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">save</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">drop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">10.</span> <span class="nav-text">gen</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">11.</span> <span class="nav-text">DID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">12.</span> <span class="nav-text">PSM-DID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">13.</span> <span class="nav-text">IV</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">14.</span> <span class="nav-text">plot</span></a></li></ol></div>
             
 
           </div>
@@ -906,7 +989,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">252k</span>
+    <span title="Symbols count total">295k</span>
   
 
   
@@ -1483,7 +1566,19 @@
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1500,17 +1595,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

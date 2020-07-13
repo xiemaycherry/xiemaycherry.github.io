@@ -116,16 +116,16 @@
   <meta name="keywords" content="Hexo, NexT">
 
 
-<meta name="description" content="CAT_cat">
+<meta name="description" content="期待花开">
 <meta property="og:type" content="website">
 <meta property="og:title" content="welcome">
 <meta property="og:url" content="http://xiemaycherry.github.io/page/8/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="CAT_cat">
+<meta property="og:description" content="期待花开">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="welcome">
-<meta name="twitter:description" content="CAT_cat">
+<meta name="twitter:description" content="期待花开">
 
 
 
@@ -350,6 +350,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/19/SVR/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/19/SVR/" itemprop="url">支持向量回归</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-19T14:34:14+08:00">2019-03-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/19/SVR/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/19/SVR/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                3.5k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<p>支持向量机用于分类:硬间隔和软件间隔支持向量机。尽可能分对</p>
+<p>支持向量机回归： 希望$f(x)$与$y$尽可能的接近。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/SVR/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -423,7 +603,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                3.1k字
+                4.1k字
               </span>
               
 
@@ -450,87 +630,151 @@
       
         
           
-            <p>title: 支持向量机(SVM) ——- 分类器<br>date: 2019-03-17 08:50:59<br>tags: 支持向量机<br>categories: 机器学习<br>mathjax: true</p>
+            <p>title: 支持向量机(SVM) ----- 分类器<br>
+date: 2019-03-17 08:50:59<br>
+tags: 支持向量机<br>
+categories: 机器学习<br>
+mathjax: true</p>
 <p>[TOC]</p>
-<h1 id="预备的数学知识"><a href="#预备的数学知识" class="headerlink" title="预备的数学知识"></a>预备的数学知识</h1><h2 id="约束优化问题"><a href="#约束优化问题" class="headerlink" title="约束优化问题"></a>约束优化问题</h2><p>原问题,带等式约束，也带不等式约束的一般约束问题</p>
-<script type="math/tex; mode=display">
-\begin{cases} \min_{x}f(x)\\
-s.t \begin{cases} m_i(x)>=0, i=1,..,m\\
-n_j(x)=0，j=1,..,m\\
-\end{cases}
-\end{cases}\tag{1}</script><p>构造lagrange乘子法</p>
-<script type="math/tex; mode=display">
-L(x,\lambda_i,\eta_j)= f(x)-\sum_{i=1}^{m}\lambda_im_i(x)-\sum_{j=1}^{n}\eta_j \tag{2}</script><script type="math/tex; mode=display">
-\begin{cases} \min_{x} max_{\lambda_i,\eta_j} L(R^p)\\
-s.t \lambda_i>=0
-\end{cases}</script><p>上述两个问题的等价性证明</p>
-<p>如果x不满足约束$m_i(x)$,则$\lambda_i&gt;=0$,同时$m_i(x)&lt;$,则$L(R^{p},\lambda,\eta)$趋近无穷，反之，则存在最大值</p>
-<script type="math/tex; mode=display">
-min_{x} max_{\lambda,\eta}=min_{x}(max f满足条件,max f不满足约束)\\=min_{x} max_{\lambda,\eta}{f满足条件}</script><p>对偶问题: 关于$\lambda,\eta​$的最大化问题</p>
-<script type="math/tex; mode=display">max min L(x,\lambda,\eta)\\
-s.t \lambda_i>=0​</script><p><strong>弱对偶问题：对偶问题&lt;=原问题</strong> </p>
-<p>证明: $max_{x} min(\lambda \eta ) L&lt;=min_{\eta,\lambda } max_{x} L$</p>
-<script type="math/tex; mode=display">
-\underbrace{\min_{x}L(x,\lambda,\eta)}_{A(\lambda,\eta)}<=L(x,\lambda,\eta)<=\underbrace{\max_{\lambda,\eta} L(x,\lambda,\eta)}_{B(x)}</script><h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>hard-margin SVM、 soft-margin SVM 、kernel SVM</p>
-<h1 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h1><p><img src="/2019/03/17/SVMClassifiar/MyBlog\hexo\source\_posts\SVMClassifiar\1.png" alt=""></p>
+<h1>预备的数学知识</h1>
+<h2 id="约束优化问题"><a class="header-anchor" href="#约束优化问题">¶</a>约束优化问题</h2>
+<p>原问题,带等式约束，也带不等式约束的一般约束问题<br>
+$$<br>
+\begin{cases} \min_{x}f(x)\<br>
+s.t \begin{cases} m_i(x)&gt;=0, i=1,…,m\<br>
+n_j(x)=0，j=1,…,m\<br>
+\end{cases}<br>
+\end{cases}\tag{1}<br>
+$$<br>
+构造lagrange乘子法<br>
+$$<br>
+L(x,\lambda_i,\eta_j)= f(x)-\sum_{i=1}<sup>{m}\lambda_im_i(x)-\sum_{j=1}</sup>{n}\eta_j \tag{2}<br>
+$$</p>
+<p>$$<br>
+\begin{cases} \min_{x} max_{\lambda_i,\eta_j} L(R^p)\<br>
+s.t \lambda_i&gt;=0<br>
+\end{cases}<br>
+$$</p>
+<p>上述两个问题的等价性证明</p>
+<p>如果x不满足约束$m_i(x)$,则$\lambda_i&gt;=0$,同时$m_i(x)&lt;$,则$L(R^{p},\lambda,\eta)$趋近无穷，反之，则存在最大值<br>
+$$<br>
+min_{x} max_{\lambda,\eta}=min_{x}(max f满足条件,max f不满足约束)\=min_{x} max_{\lambda,\eta}{f满足条件}<br>
+$$<br>
+对偶问题: 关于$\lambda,\eta​$的最大化问题</p>
+<p>$$max min L(x,\lambda,\eta)\<br>
+s.t \lambda_i&gt;=0​$$</p>
+<p><strong>弱对偶问题：对偶问题&lt;=原问题</strong></p>
+<p>证明: $max_{x} min(\lambda \eta ) L&lt;=min_{\eta,\lambda } max_{x} L$<br>
+$$<br>
+\underbrace{\min_{x}L(x,\lambda,\eta)}<em>{A(\lambda,\eta)}&lt;=L(x,\lambda,\eta)&lt;=\underbrace{\max</em>{\lambda,\eta} L(x,\lambda,\eta)}_{B(x)}<br>
+$$</p>
+<h1>分类</h1>
+<p>hard-margin SVM、 soft-margin SVM 、kernel SVM</p>
+<h1>线性可分支持向量机</h1>
+<p><img src="/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C1.png" alt=""></p>
 <p>对于A子图，可以用一个超平面($w^Tx+b$)去分类两类数据，建立如下的数学模型</p>
-<script type="math/tex; mode=display">f(w,b)=sign(w^Tx+b)</script><p>B,C,D子图提供了超平面都可以分类，显然B,C图的超平面的鲁棒性不如D图。SVM就是找到最好的一个超平面，怎么衡量好呢？找到平面离样本点的距离最大</p>
-<h2 id="hard-margin-SVM：-最大间隔SVM"><a href="#hard-margin-SVM：-最大间隔SVM" class="headerlink" title="hard-margin SVM： 最大间隔SVM"></a>hard-margin SVM： 最大间隔SVM</h2><h2 id="第一宝-间隔"><a href="#第一宝-间隔" class="headerlink" title="第一宝 间隔"></a>第一宝 间隔</h2><p>首先，看下margin的定义</p>
-<p><img src="/2019/03/17/SVMClassifiar/MyBlog\hexo\source\_posts\SVMClassifiar\2.png" alt=""></p>
-<script type="math/tex; mode=display">margin(w,b) = min(\frac{|w^Tx_i+b|}{||w||})</script><p>接下来</p>
+<p>$$ f(w,b)=sign(w^Tx+b)$$</p>
+<p>B,C,D子图提供了超平面都可以分类，显然B,C图的超平面的鲁棒性不如D图。SVM就是找到最好的一个超平面，怎么衡量好呢？找到平面离样本点的距离最大</p>
+<h2 id="hard-margin-svm：-最大间隔svm"><a class="header-anchor" href="#hard-margin-svm：-最大间隔svm">¶</a>hard-margin SVM： 最大间隔SVM</h2>
+<h2 id="第一宝-间隔"><a class="header-anchor" href="#第一宝-间隔">¶</a>第一宝 间隔</h2>
+<p>首先，看下margin的定义</p>
+<p><img src="/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C2.png" alt=""></p>
+<p>$$ margin(w,b) = min(\frac{|w^Tx_i+b|}{||w||})$$</p>
+<p>接下来</p>
 <p>数学模型：</p>
-<script type="math/tex; mode=display">\begin{cases}  \max margin(w,b)\\ st. y_i(w^Tx_i+b)>0\end{cases}​</script><script type="math/tex; mode=display">\Longrightarrow\begin{cases}  max \frac{1}{||w||}min(y_i(w^Tx_i+b))\\  st. y_i(w^Tx_i+b)>0\end{cases}​</script><p>注意，$y_i(w^Tx_i+b)&gt;0$,所以$\exists r&gt;0, min(y_i(w^Tx_i+b))=r$,可令$r=1$,这是对超平面范数的固定作用，因为$y=w^Tx+b$和$y=2w^T+2b$是同一个超平面，总能找到缩放$w,b$使得，可以将$r$缩放到1</p>
-<script type="math/tex; mode=display">\Longrightarrow\begin{cases}  max \frac{1}{||w||}\\  st. y_i(w^Tx_i+b)>=1\end{cases}</script><script type="math/tex; mode=display">\Longrightarrow\begin{cases}  \min \frac{1}{2}w^Tw\\  st. y_i(w^Tx_i+b)>=1\end{cases}</script><p>这是一个土二次规划问题</p>
-<h2 id="第二宝-对偶"><a href="#第二宝-对偶" class="headerlink" title="第二宝 对偶"></a>第二宝 对偶</h2><p>利用lagrange乘子法得出对偶问题</p>
+<p>$$\begin{cases}  \max margin(w,b)\ st. y_i(w^Tx_i+b)&gt;0\end{cases}​$$</p>
+<p>$$\Longrightarrow\begin{cases}  max \frac{1}{||w||}min(y_i(w^Tx_i+b))\  st. y_i(w^Tx_i+b)&gt;0\end{cases}​$$</p>
+<p>注意，$y_i(w^Tx_i+b)&gt;0$,所以$\exists r&gt;0, min(y_i(w<sup>Tx_i+b))=r$,可令$r=1$,这是对超平面范数的固定作用，因为$y=w</sup>Tx+b$和$y=2w^T+2b$是同一个超平面，总能找到缩放$w,b$使得，可以将$r$缩放到1</p>
+<p>$$\Longrightarrow\begin{cases}  max \frac{1}{||w||}\  st. y_i(w^Tx_i+b)&gt;=1\end{cases}$$</p>
+<p>$$\Longrightarrow\begin{cases}  \min \frac{1}{2}w^Tw\  st. y_i(w^Tx_i+b)&gt;=1\end{cases}$$</p>
+<p>这是一个土二次规划问题</p>
+<h2 id="第二宝-对偶"><a class="header-anchor" href="#第二宝-对偶">¶</a>第二宝 对偶</h2>
+<p>利用lagrange乘子法得出对偶问题</p>
 <p><strong>带约束</strong></p>
-<script type="math/tex; mode=display">\begin{cases}  \min \frac{1}{2}w^Tw\\  st. y_i(w^Tx_i+b)-1>=0\end{cases}​</script><script type="math/tex; mode=display">\Longrightarrow L(w,b,\lambda）=\frac{1}{2}w^Tw-\sum_{i=1}^{N}\lambda_i(1-y_i(w^Tx_i+b)</script><p><strong>无约束</strong></p>
-<script type="math/tex; mode=display">\begin{cases}min_{w,b} max_{\lambda}L(w,b,\lambda) \\ s.t \lambda_i>=0\end{cases}​</script><p>此时关于$w,b​$无约束的。</p>
-<p>对$(L(w,b,\lambda))​$ 对$w​$,$b​$求偏导</p>
-<script type="math/tex; mode=display">
-\frac{\partial L}{\partial w}=w+\sum_{i=1}^{N}y_ix_i\lambda_i=0 \Longrightarrow w=-\sum_{i=1}^{N}y_ix_i\lambda_i\\
-\frac{\partial L}{\partial b}=-\sum_{i=1}^{N}\lambda_iy_i=0</script><p>带回$L(w,b,\lambda)​$,可得<strong>对偶问题</strong></p>
-<script type="math/tex; mode=display">\begin{cases} max_{\lambda}L(w,b,\lambda ) =-\frac{1}{2}\sum_i^N\sum_j^N\lambda_i  \lambda_jy_iy_jx_i^Tx_j +\sum_i^N\lambda_i \\ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i>=0\end{cases} \Longrightarrow\\\begin{cases} min_{\lambda}L(w,b,\lambda ) =\frac{1}{2}\sum_i^N\sum_j^N\lambda_i  \lambda_jy_iy_jx_i^Tx_j -\sum_i^N\lambda_i \\ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i>=0\end{cases}</script><h3 id="原问题和对偶问题有相同解的充要条件"><a href="#原问题和对偶问题有相同解的充要条件" class="headerlink" title="原问题和对偶问题有相同解的充要条件"></a>原问题和对偶问题有相同解的充要条件</h3><p>满足 KKT</p>
-<script type="math/tex; mode=display">
-\begin{cases}
-\frac{\partial L}{\partial w}=0,\frac{\partial L}{\partial b}=0,\frac{\partial L}{\partial \lambda}=0\\
-\lambda_i(y_i(w^Tx_i+b)-1)=0\\
-\lambda_i>=0\\
-y_i(w^Tx_i+b)-1>=0
-\end{cases}</script><p>如果存在$(x_k,y_k)=+1or -1​$使得​$y_i(w^Tx_i+b)-1=0​$即可求解$b=y_k-\sum_{i=0}^{N}\lambda_ix_i^Tx_k​$</p>
+<p>$$\begin{cases}  \min \frac{1}{2}w^Tw\  st. y_i(w^Tx_i+b)-1&gt;=0\end{cases}​$$</p>
+<p>$$ \Longrightarrow L(w,b,\lambda）=\frac{1}{2}w<sup>Tw-\sum_{i=1}</sup>{N}\lambda_i(1-y_i(w^Tx_i+b)$$</p>
+<p><strong>无约束</strong></p>
+<p>$$  \begin{cases}min_{w,b} max_{\lambda}L(w,b,\lambda) \ s.t \lambda_i&gt;=0\end{cases}​$$</p>
+<p>此时关于$w,b​$无约束的。</p>
+<p>对$(L(w,b,\lambda))​$ 对$w​$,$b​$求偏导<br>
+$$<br>
+\frac{\partial L}{\partial w}=w+\sum_{i=1}^{N}y_ix_i\lambda_i=0 \Longrightarrow w=-\sum_{i=1}^{N}y_ix_i\lambda_i\<br>
+\frac{\partial L}{\partial b}=-\sum_{i=1}^{N}\lambda_iy_i=0<br>
+$$<br>
+带回$L(w,b,\lambda)​$,可得<strong>对偶问题</strong></p>
+<p>$$ \begin{cases} max_{\lambda}L(w,b,\lambda ) =-\frac{1}{2}\sum_i<sup>N\sum_j</sup>N\lambda_i  \lambda_jy_iy_jx_i^Tx_j +\sum_i^N\lambda_i \ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i&gt;=0\end{cases} \Longrightarrow\\begin{cases} min_{\lambda}L(w,b,\lambda ) =\frac{1}{2}\sum_i<sup>N\sum_j</sup>N\lambda_i  \lambda_jy_iy_jx_i^Tx_j -\sum_i^N\lambda_i \ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i&gt;=0\end{cases}$$</p>
+<h3 id="原问题和对偶问题有相同解的充要条件"><a class="header-anchor" href="#原问题和对偶问题有相同解的充要条件">¶</a>原问题和对偶问题有相同解的充要条件</h3>
+<p>满足 KKT<br>
+$$<br>
+\begin{cases}<br>
+\frac{\partial L}{\partial w}=0,\frac{\partial L}{\partial b}=0,\frac{\partial L}{\partial \lambda}=0\<br>
+\lambda_i(y_i(w^Tx_i+b)-1)=0\<br>
+\lambda_i&gt;=0\<br>
+y_i(w^Tx_i+b)-1&gt;=0<br>
+\end{cases}<br>
+$$<br>
+如果存在$(x_k,y_k)=+1or -1​$使得​$y_i(w<sup>Tx_i+b)-1=0​$即可求解$b=y_k-\sum_{i=0}</sup>{N}\lambda_ix_i^Tx_k​$</p>
 <p>代入模型</p>
-<script type="math/tex; mode=display">f(x)=sign(\sum_i^Na_iy_ix_i^Tx+y_k-\sum_{i=0}^{N}\lambda_ix_i^Tx_k)</script><p>注意，对于任意的训练样本，总有$\lambda_i=0$或者$y_if(x_i)=1$,如果$\lambda_i&gt;0$,说明样本点落在最大间隔的边界上，这些点就是支持向量，这条边界$w^Tx+b=1or-1$</p>
-<h1 id="soft-marign-软间隔"><a href="#soft-marign-软间隔" class="headerlink" title="soft-marign 软间隔"></a>soft-marign 软间隔</h1><p>  想法：允许一部分样本可以不被正确分类</p>
-<h2 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h2><script type="math/tex; mode=display">
-\min_{w,b} \frac{1}{2}w^Tw+loss</script><h2 id="一些损失函数"><a href="#一些损失函数" class="headerlink" title="一些损失函数"></a>一些损失函数</h2><ol>
-<li><p>0-1损失 个数</p>
-<script type="math/tex; mode=display">loss=\sum_{i=1}^NI\{y_i(w^Tx+b)<1\}​</script><p>数学性质不好，不连续</p>
+<p>$$ f(x)=sign(\sum_i<sup>Na_iy_ix_i</sup>Tx+y_k-\sum_{i=0}<sup>{N}\lambda_ix_i</sup>Tx_k)$$</p>
+<p>注意，对于任意的训练样本，总有$\lambda_i=0$或者$y_if(x_i)=1$,如果$\lambda_i&gt;0$,说明样本点落在最大间隔的边界上，这些点就是支持向量，这条边界$w^Tx+b=1or-1$</p>
+<h1>soft-marign 软间隔</h1>
+<p>想法：允许一部分样本可以不被正确分类</p>
+<h2 id="优化目标"><a class="header-anchor" href="#优化目标">¶</a>优化目标</h2>
+<p>$$<br>
+\min_{w,b} \frac{1}{2}w^Tw+loss<br>
+$$</p>
+<h2 id="一些损失函数"><a class="header-anchor" href="#一些损失函数">¶</a>一些损失函数</h2>
+<ol>
+<li>
+<p>0-1损失 个数</p>
+<p>$$loss=\sum_{i=1}<sup>NI{y_i(w</sup>Tx+b)&lt;1}​$$</p>
+<p>数学性质不好，不连续</p>
 </li>
-<li><p>0-1损失 距离 <strong>hinge loss</strong></p>
-<script type="math/tex; mode=display">
-loss = \begin{cases}
-0 , y_i(w^Tx_i+b)>=0,\\
-1-y_i(w^tx_i+b),  y_i(w^Tx_i+b)<1\\
-\end{cases}</script><script type="math/tex; mode=display">
-loss_{max} = max(0,1-y_i(w^Tx_i+b)=1-z)</script><p>此时优化问题，令$\xi_i=1-y_i(w^Tx_i+b)$</p>
-<script type="math/tex; mode=display">
-\min \frac{1}{2}w^Tw+\sum_{i=1}^{N}\xi_i\\
-s.t \begin{cases}
-y_i(w^Tx_i+b)>=1-\xi_i\\
-\xi_i>=0
-\end{cases}</script></li>
-<li><p>指数损失（<strong>exponential loss </strong>)</p>
-<script type="math/tex; mode=display">
-l_{exp}(z)=exp(-z)</script></li>
-<li><p>对率损失<strong>logistic loss</strong></p>
-<script type="math/tex; mode=display">
-l_{log}(z)=log(1+exp(-z)）</script></li>
+<li>
+<p>0-1损失 距离 <strong>hinge loss</strong><br>
+$$<br>
+loss = \begin{cases}<br>
+0 , y_i(w^Tx_i+b)&gt;=0,\<br>
+1-y_i(w^tx_i+b),  y_i(w^Tx_i+b)&lt;1\<br>
+\end{cases}<br>
+$$</p>
+<p>$$<br>
+loss_{max} = max(0,1-y_i(w^Tx_i+b)=1-z)<br>
+$$</p>
+<p>此时优化问题，令$\xi_i=1-y_i(w^Tx_i+b)$<br>
+$$<br>
+\min \frac{1}{2}w<sup>Tw+\sum_{i=1}</sup>{N}\xi_i\<br>
+s.t \begin{cases}<br>
+y_i(w^Tx_i+b)&gt;=1-\xi_i\<br>
+\xi_i&gt;=0<br>
+\end{cases}<br>
+$$</p>
+</li>
+<li>
+<p>指数损失（**exponential loss **)<br>
+$$<br>
+l_{exp}(z)=exp(-z)<br>
+$$</p>
+</li>
+<li>
+<p>对率损失<strong>logistic loss</strong><br>
+$$<br>
+l_{log}(z)=log(1+exp(-z)）<br>
+$$</p>
+</li>
 </ol>
-<p><img src="/2019/03/17/SVMClassifiar/MyBlog\hexo\source\_posts\SVMClassifiar\3.jpg" alt=""></p>
-<h1 id="核方法"><a href="#核方法" class="headerlink" title="核方法"></a>核方法</h1><h2 id="核函数的定义"><a href="#核函数的定义" class="headerlink" title="核函数的定义"></a>核函数的定义</h2><p>设 $\chi$为输入空间（Input Space），  $\mathrm{H}$为特征空间(Feature Space,一定是希尔伯特空间），存在一个映射</p>
-<script type="math/tex; mode=display">
-\varphi : \chi \rightarrow \mathrm{H}</script><p>对任意的 $x, y \in \mathrm{X}​$，函数  $K(x, y)​$，满足</p>
-<script type="math/tex; mode=display">
-K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可以看出，我们并不需要知道输入空间和特征空间满足的映射关系   ，只需要知道核函数就可以算出，输入空间中任意两点映射到特征空间的内积。</p>
+<p><img src="/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C3.jpg" alt=""></p>
+<h1>核方法</h1>
+<h2 id="核函数的定义"><a class="header-anchor" href="#核函数的定义">¶</a>核函数的定义</h2>
+<p>设 $\chi$为输入空间（Input Space），  $\mathrm{H}$为特征空间(Feature Space,一定是希尔伯特空间），存在一个映射<br>
+$$<br>
+\varphi : \chi \rightarrow \mathrm{H}<br>
+$$<br>
+对任意的 $x, y \in \mathrm{X}​$，函数  $K(x, y)​$，满足<br>
+$$<br>
+K(x, y)=&lt;\varphi(x), \varphi(y)&gt;<br>
+$$<br>
+则称  $K(x, y)$为核函数。可以看出，我们并不需要知道输入空间和特征空间满足的映射关系   ，只需要知道核函数就可以算出，输入空间中任意两点映射到特征空间的内积。</p>
 
           
         
@@ -677,7 +921,7 @@ K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可�
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                8.8k字
+                8.3k字
               </span>
               
 
@@ -704,7 +948,9 @@ K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可�
       
         
           <p>[TOC]</p>
-<h1 id="分类树与回归树"><a href="#分类树与回归树" class="headerlink" title="分类树与回归树"></a>分类树与回归树</h1><p>分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。<br>Classification tree analysis is when the predicted outcome is the class to which the data belongs.</p>
+<h1>分类树与回归树</h1>
+<p>分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。<br>
+Classification tree analysis is when the predicted outcome is the class to which the data belongs.</p>
 <p>回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分的两个分支的误差越小越好。</p>
 <p>Regression tree analysis is when the predicted outcome can be considered a real number (e.g. the price of a house, or a patient’s length of stay in a hospital)。</p>
           <!--noindex-->
@@ -858,7 +1104,7 @@ K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可�
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                10k字
+                11k字
               </span>
               
 
@@ -886,143 +1132,205 @@ K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可�
         
           
             <p>[TOC]</p>
-<h1 id="1-需要的微积分知识"><a href="#1-需要的微积分知识" class="headerlink" title="1. 需要的微积分知识"></a>1. 需要的微积分知识</h1><h2 id="1-1-导数"><a href="#1-1-导数" class="headerlink" title="1.1 导数"></a>1.1 导数</h2><p>对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。<br>对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。</p>
-<h2 id="1-2-求导的链式法则"><a href="#1-2-求导的链式法则" class="headerlink" title="1.2 求导的链式法则"></a>1.2 求导的链式法则</h2><ol>
-<li><p>$x \in R$, $z=g(f(x))$, $y=f(x)$</p>
-<script type="math/tex; mode=display">\frac{\partial z}{\partial x}=\frac{\partial z}{\partial y} \frac{\partial y}{\partial x}</script></li>
-<li><p>$ x \in R^m $, $f(x)$是$R^M$到$R^n$的映射，$g(f)$是$R^n$到R的映射</p>
-<script type="math/tex; mode=display">\frac{\partial g}{\partial x_i}=\sum_j^n \frac{\partial g}{\partial f_i} \frac{\partial f_i}{\partial x_i}</script><p> 如果使用向量表示</p>
-<script type="math/tex; mode=display">\nabla_x^z=(\frac{\partial f}{\partial x})^T \nabla_y^z</script><h1 id="2-梯度下降法"><a href="#2-梯度下降法" class="headerlink" title="2. 梯度下降法"></a>2. 梯度下降法</h1><h2 id="2-1-梯度"><a href="#2-1-梯度" class="headerlink" title="2.1 梯度"></a>2.1 梯度</h2><p>梯度其实本质也是一个向量，对于函数$f(X,y)$<br>在$(W,y)$这一点的梯度 $(\frac{\partial f}{\partial X},\frac{\partial f}{\partial y})$<br>梯度的几何意义：在该店变化增加最快的地方</p>
+<h1>1. 需要的微积分知识</h1>
+<h2 id="1-1-导数"><a class="header-anchor" href="#1-1-导数">¶</a>1.1 导数</h2>
+<p>对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。<br>
+对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。</p>
+<h2 id="1-2-求导的链式法则"><a class="header-anchor" href="#1-2-求导的链式法则">¶</a>1.2 求导的链式法则</h2>
+<ol>
+<li>
+<p>$x \in R$, $z=g(f(x))$, $y=f(x)$<br>
+$$ \frac{\partial z}{\partial x}=\frac{\partial z}{\partial y} \frac{\partial y}{\partial x}$$</p>
+</li>
+<li>
+<p>$ x \in R^m $, $f(x)$是$R<sup>M$到$R</sup>n$的映射，$g(f)$是$R^n$到R的映射<br>
+$$ \frac{\partial g}{\partial x_i}=\sum_j^n \frac{\partial g}{\partial f_i} \frac{\partial f_i}{\partial x_i}$$<br>
+如果使用向量表示<br>
+$$ \nabla_x^z=(\frac{\partial f}{\partial x})^T \nabla_y^z$$</p>
 </li>
 </ol>
-<h2 id="2-2-梯度算法的解释"><a href="#2-2-梯度算法的解释" class="headerlink" title="2.2 梯度算法的解释"></a>2.2 梯度算法的解释</h2><p>图来自吴恩达的机器学习课程<br><img src="/2019/03/05/BP算法/2.1.1.png" alt="tu"><br>颜色偏红(A)的地方开始，根据梯度的负方向通过9次更新，达到了最小值(B)。<br>现在给定一个点$A(\theta_0,\theta_1)$,干嘛呢，我们想从A到B点（最小值点),类似人类下山，需要知道往那个方向吧、走大多一步呢？<br>方向：梯度的负方向 $ \delta=(\frac{\partial L}{\partial \theta_0},\frac{\partial L}{\partial \theta_1})$)<br>步长：学习率（$\alpha$)<br>因此，计算一次里目标更近了 $(\theta_0,\theta_1)=(\theta_0,\theta_1)-\alpha \dot (\delta)$<br>在重复上两步，直到满意为止。</p>
-<h1 id="3-误差反向传播算法"><a href="#3-误差反向传播算法" class="headerlink" title="3.误差反向传播算法"></a>3.误差反向传播算法</h1><h2 id="3-1-理论推导"><a href="#3-1-理论推导" class="headerlink" title="3.1 理论推导"></a>3.1 理论推导</h2><p><img src="/2019/03/05/BP算法/3.1.1.png" alt="计算图"></p>
-<h3 id="3-1-1-符号说明"><a href="#3-1-1-符号说明" class="headerlink" title="3.1.1 符号说明"></a>3.1.1 符号说明</h3><p>上图是一个L层的神经网络，输入层为第一层，隐藏层：2至$L-1$层，输出层L</p>
-<p>令 输入向量 $\vec{X}$</p>
-<script type="math/tex; mode=display">\vec{X} = (x_1,x_2,...,x_{m-1},x_m)</script><p>输出向量 $\vec{Y}$</p>
-<script type="math/tex; mode=display">\vec{Y}=(y_1,y_2,...,y_{n-1},y_n)$$a
-第j层隐藏层的输出向量 $\vec{h^{(j)}}$
-$$\vec{h^{(j)}}=(h_1^{(j)},h_2^,...,h_{t-1}^{(j)},h_tj^{(j)})</script><p>其中，$tj$:表示第j的隐藏层个数<br>第$(l-1)$层的第i个神经元到第$l$层的第j个神经元的连接权重：$w_{ij}^{(l)}$，则第$(l-1)$层神经元到第$l$层神经元的连接权重矩阵</p>
-<script type="math/tex; mode=display">W^{(l)}=\left( \begin{matrix}w_{11}^{(l)}& \cdots & w_{1(tj)}\\
-    &   \dots &\\
-    w_{s(l-1)}^{l}&\cdots&w_{s(l-1)s(l)}^{l}
-\end{matrix}\right)</script><h3 id="3-1-2-推导过程"><a href="#3-1-2-推导过程" class="headerlink" title="3.1.2 推导过程"></a>3.1.2 推导过程</h3><h4 id="3-1-2-1-误差"><a href="#3-1-2-1-误差" class="headerlink" title="3.1.2.1 误差"></a>3.1.2.1 误差</h4><p>定义的误差函数,常见的衡量性指标见 <a href="#3.6">戳我</a>,这里选择的误差平方和最小<br>第$i$个输出的误差,假设实际输出$(d(1),d(2),…,d(n))$：,一个输入样本对应的误差</p>
-<script type="math/tex; mode=display">E(i)=\frac{1}{2}\sum_{k=1}^n(y(i)-d(i))^2=\frac{1}{2}||y-d||^2</script><p>所有训练样本($N$)的误差：</p>
-<script type="math/tex; mode=display">E(i)=\frac{1}{2}\sum_{j=1}^{N}(\sum_{k=1}^n(y(i)-d(i))^2)=\frac{1}{2N}\sum_{j=1}^{N}(||y(i)-d(i)||^2)</script><p>因此，</p>
-<script type="math/tex; mode=display">E = \frac{1}{2N}\sum_{i=1}^N(||y(i)-d(i)||^2)</script><p>其实，神经网络的输出是关于节点的复合函数。代价函数是关于$W$和$b$的函数。</p>
-<h4 id="3-1-2-2-正向传播"><a href="#3-1-2-2-正向传播" class="headerlink" title="3.1.2.2 正向传播"></a>3.1.2.2 正向传播</h4><p>输入层$\hat{X}$：</p>
-<script type="math/tex; mode=display">X =(x_1,x_2,x_3,...,x_m)</script><p>当有$N$个训练样本时，可用矩阵表示</p>
-<script type="math/tex; mode=display">X=\left( \begin{matrix}
-x_{11} &x_{12}&...&x_{1m}\\
-x_{21} & x_{22}&...&x_{2m}\\
-\vdots & \vdots&\dots&\vdots\\
-x_{N1} & \vdots&\vdots&x_{Nm}\\
-\end{matrix}  \right)</script><p>第二层 $h^{(2)}$,一共$s2$个节点:<br>第i个节点的计算</p>
-<script type="math/tex; mode=display">h^{(2)}(i)=f(\sum_{j=1}^{s2}x(j)*w_{ji}^{(l)}+b_i)=f(x*w(:,i)+b_i)</script><p>矩阵表示</p>
-<script type="math/tex; mode=display">h^{(2)}=f(x*W^{(l)}+b^{(2)})</script><p>第i层 矩阵形式</p>
-<script type="math/tex; mode=display">h^{(l)}=f(h^{(l-1)}*W^{(l)}+b)</script><h4 id="3-1-2-3-反向传播"><a href="#3-1-2-3-反向传播" class="headerlink" title="3.1.2.3 反向传播"></a>3.1.2.3 反向传播</h4><p>梯度下降法更新权重，不断迭代到最优解。<br>对$w_{ij}$求导数可得,可更新$w_{ij}$更新公式：</p>
-<script type="math/tex; mode=display">w_{ij}=w_{ij}-\alpha \frac{\partial E}{\partial w_{ij}}</script><p>当然简单的情况下，可直接写出公式，当太复杂的时候，引入BP简化求导</p>
-<p>方便书写公式，对于第i的输入$h^{(i-1)}*W^{(i)}+b^{(i)}$记作$net^{(i)}$,其中，第$i$的输入和输出的关系，$输入=f(输出)$<br>下面开始推导</p>
+<h1>2. 梯度下降法</h1>
+<h2 id="2-1-梯度"><a class="header-anchor" href="#2-1-梯度">¶</a>2.1 梯度</h2>
+<p>梯度其实本质也是一个向量，对于函数$f(X,y)$<br>
+在$(W,y)$这一点的梯度 $(\frac{\partial f}{\partial X},\frac{\partial f}{\partial y})$<br>
+梯度的几何意义：在该店变化增加最快的地方</p>
+<h2 id="2-2-梯度算法的解释"><a class="header-anchor" href="#2-2-梯度算法的解释">¶</a>2.2 梯度算法的解释</h2>
+<p>图来自吴恩达的机器学习课程<br>
+<img src="/2019/03/05/BP算法/2.1.1.png" alt="tu"><br>
+颜色偏红(A)的地方开始，根据梯度的负方向通过9次更新，达到了最小值(B)。<br>
+现在给定一个点$A(\theta_0,\theta_1)$,干嘛呢，我们想从A到B点（最小值点),类似人类下山，需要知道往那个方向吧、走大多一步呢？<br>
+方向：梯度的负方向 $ \delta=(\frac{\partial L}{\partial \theta_0},\frac{\partial L}{\partial \theta_1})$)<br>
+步长：学习率（$\alpha$)<br>
+因此，计算一次里目标更近了 $(\theta_0,\theta_1)=(\theta_0,\theta_1)-\alpha \dot (\delta)$<br>
+在重复上两步，直到满意为止。</p>
+<h1>3.误差反向传播算法</h1>
+<h2 id="3-1-理论推导"><a class="header-anchor" href="#3-1-理论推导">¶</a>3.1 理论推导</h2>
+<p><img src="/2019/03/05/BP算法/3.1.1.png" alt="计算图"></p>
+<h3 id="3-1-1-符号说明"><a class="header-anchor" href="#3-1-1-符号说明">¶</a>3.1.1 符号说明</h3>
+<p>上图是一个L层的神经网络，输入层为第一层，隐藏层：2至$L-1$层，输出层L</p>
+<p>令 输入向量 $\vec{X}$<br>
+$$ \vec{X} = (x_1,x_2,…,x_{m-1},x_m)$$<br>
+输出向量 $\vec{Y}$<br>
+$$ \vec{Y}=(y_1,y_2,…,y_{n-1},y_n)$$a<br>
+第j层隐藏层的输出向量 $\vec{h^{(j)}}$<br>
+$$\vec{h<sup>{(j)}}=(h_1</sup>{(j)},h_2<sup>&lt;!–￼0–&gt;,…,h_{t-1}</sup>{(j)},h_tj^{(j)})$$<br>
+其中，$tj$:表示第j的隐藏层个数<br>
+第$(l-1)$层的第i个神经元到第$l$层的第j个神经元的连接权重：$w_{ij}^{(l)}$，则第$(l-1)$层神经元到第$l$层神经元的连接权重矩阵</p>
+<p>$$W^{(l)}=\left( \begin{matrix}w_{11}^{(l)}&amp; \cdots &amp; w_{1(tj)}\<br>
+&amp;   \dots &amp;\<br>
+w_{s(l-1)}<sup>{l}&amp;\cdots&amp;w_{s(l-1)s(l)}</sup>{l}<br>
+\end{matrix}\right)$$</p>
+<h3 id="3-1-2-推导过程"><a class="header-anchor" href="#3-1-2-推导过程">¶</a>3.1.2 推导过程</h3>
+<h4 id="3-1-2-1-误差"><a class="header-anchor" href="#3-1-2-1-误差">¶</a>3.1.2.1 误差</h4>
+<p>定义的误差函数,常见的衡量性指标见 <a href="#3.6">戳我</a>,这里选择的误差平方和最小<br>
+第$i$个输出的误差,假设实际输出$(d(1),d(2),…,d(n))$：,一个输入样本对应的误差<br>
+$$E(i)=\frac{1}{2}\sum_{k=1}<sup>n(y(i)-d(i))</sup>2=\frac{1}{2}||y-d||^2$$</p>
+<p>所有训练样本($N$)的误差：<br>
+$$E(i)=\frac{1}{2}\sum_{j=1}<sup>{N}(\sum_{k=1}</sup>n(y(i)-d(i))<sup>2)=\frac{1}{2N}\sum_{j=1}</sup>{N}(||y(i)-d(i)||^2)$$</p>
+<p>因此，<br>
+$$ E = \frac{1}{2N}\sum_{i=1}<sup>N(||y(i)-d(i)||</sup>2)$$<br>
+其实，神经网络的输出是关于节点的复合函数。代价函数是关于$W$和$b$的函数。</p>
+<h4 id="3-1-2-2-正向传播"><a class="header-anchor" href="#3-1-2-2-正向传播">¶</a>3.1.2.2 正向传播</h4>
+<p>输入层$\hat{X}$：<br>
+$$ X =(x_1,x_2,x_3,…,x_m)$$<br>
+当有$N$个训练样本时，可用矩阵表示</p>
+<p>$$ X=\left( \begin{matrix}<br>
+x_{11} &amp;x_{12}&amp;…&amp;x_{1m}\<br>
+x_{21} &amp; x_{22}&amp;…&amp;x_{2m}\<br>
+\vdots &amp; \vdots&amp;\dots&amp;\vdots\<br>
+x_{N1} &amp; \vdots&amp;\vdots&amp;x_{Nm}\<br>
+\end{matrix}  \right)$$</p>
+<p>第二层 $h^{(2)}$,一共$s2$个节点:<br>
+第i个节点的计算<br>
+$$h<sup>{(2)}(i)=f(\sum_{j=1}</sup>{s2}x(j)<em>w_{ji}^{(l)}+b_i)=f(x</em>w(:,i)+b_i)$$<br>
+矩阵表示<br>
+$$ h<sup>{(2)}=f(x*W</sup>{(l)}+b^{(2)})$$<br>
+第i层 矩阵形式<br>
+$$ h<sup>{(l)}=f(h</sup>{(l-1)}*W^{(l)}+b)$$</p>
+<h4 id="3-1-2-3-反向传播"><a class="header-anchor" href="#3-1-2-3-反向传播">¶</a>3.1.2.3 反向传播</h4>
+<p>梯度下降法更新权重，不断迭代到最优解。<br>
+对$w_{ij}$求导数可得,可更新$w_{ij}$更新公式：<br>
+$$ w_{ij}=w_{ij}-\alpha \frac{\partial E}{\partial w_{ij}}$$<br>
+当然简单的情况下，可直接写出公式，当太复杂的时候，引入BP简化求导</p>
+<p>方便书写公式，对于第i的输入$h<sup>{(i-1)}*W</sup>{(i)}+b<sup>{(i)}$记作$net</sup>{(i)}$,其中，第$i$的输入和输出的关系，$输入=f(输出)$<br>
+下面开始推导</p>
 <p>首先，对于$L$层，</p>
-<p>对于$W^{(L)}$，先看对$W_{ij}^{(L)}$求导，</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial W_{ij}^{(L)}}
-=\frac{\partial E}{\partial y(j)} * \frac{\partial y(i)}{\partial net_{j}^{L}} * \frac{\partial net_{j}^{L}}{\partial W_{ij}^{(L)}}\\
-=(y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}h_i^{(L-1)}</script><p>令$\delta_i^{(L)}=y(i)-d(i)$</p>
-<p>上述给出了单个分量的求偏导的结果，对于$W^{(L)}$</p>
-<script type="math/tex; mode=display">
-\frac{\partial E}{\partial W^{(L)}}
-=\left[\begin{matrix} 
-\frac{\partial E}{\partial W_{11}^{(L)}} & \frac{\partial E}{\partial W_{12}^{(L)}}&\dots & \frac{\partial E}{\partial W_{1n}^{(L)}}\\
-\frac{\partial E}{\partial W_{21}^{(L)}} & \frac{\partial E}{\partial W_{22}^{(L)}}&\dots& \frac{\partial E}{\partial W_{2n}^{(L)}}\\
-\vdots& \dots& \dots& \dots\\
-\frac{\partial E}{\partial W_{sL,1}^{(L)}} & \frac{\partial E}{\partial W_{sL,2}^{(L)}}&\dots& \frac{\partial E}{\partial W_{sL,n}^{(L)}}
-\end{matrix}\right]
-\\= \left[
-\begin{matrix}
-h^{(L-1)}_1\\h^{(L-1)}_2\\ \dots\\h^{(L-1)}_n
-\end{matrix}
-\right] *\left[\begin{matrix}
-\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
-\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
-\dots\\
-\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
-\end{matrix}\right] ^T
-=h^{(L-1)}S^{(L)}</script><p>其中，</p>
-<script type="math/tex; mode=display">
-S^{(L)}=\left[\begin{matrix}
-
-\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
-\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
-\dots\\
-\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
-\end{matrix}\right]^T</script><p>同理可得，</p>
-<script type="math/tex; mode=display">
-\frac{\partial E}{\partial b_k^{(L)}}=(y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}</script><p>其次，对于隐含层$L-1$层，对$W_{ij}^{(L)}$求导</p>
-<script type="math/tex; mode=display">
-\frac{\partial E}{\partial W_{ij}^{(L-1)}}
-=\sum_{k=1}^{n}\frac{\partial E}{\partial y(k)} * \frac{\partial y(k)}{\partial net_{k}^{L}} * \frac{\partial net_{k}^{L}}{\partial f(net_j^{(L-1)})}*\frac{\partial f(net_j^{(L-1)})}{\partial net_j^{(L-1)}}*\frac{\partial net_j^{(L-1)}}{\partial W_{ij}^{(L-1)}}\\
-=\sum_{k=1}^{n} (y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}W_{kj}^{(L)}f(x)^{'}|_{x=net_j^{L-1}}h_i^{L-2}\\
-=\sum_{k=1}^{n}S_i^{(L)}W_{kj}^{(L)}f(x)^{'}|_{x=net_j^{L-1}}h_i^{L-2}\\</script><p>写出矩阵形式,对$W^{(L-1)}$</p>
-<script type="math/tex; mode=display">
-\frac{\partial E}{\partial W^{(L-1)}}=\left[\begin{matrix} h^{(L-2)}_1\\h^{(L-2)}_2\\\vdots\\h^{(L-2)}_{s(L-2)}\end{matrix}\right] \left[\begin{matrix}
-
-\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
-\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
-\dots\\
-\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
-\end{matrix}\right]^T
-\left[\begin{matrix} 
-W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
-W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
-\vdots& \dots& \dots& \dots\\
- W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}
-\end{matrix}\right]^T
- \\
-\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
-0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\\
-=h^{(L-2)}S^{(L-1)}</script><script type="math/tex; mode=display">
-S^{(L-1)}=\left(\left[\begin{matrix}
-
-f(x)^{'(L)}|_{x=net_1^{(L)}}&0& \dots& 0\\
-0&f(x)^{'}|_{x=net_2^{(L)}}0& \dots& 0\\
-0&\dots&\dots&0\\
-0&0&0&f(x)^{'(L)}|_{x=net_n^{(L)}}
-\end{matrix}\right]\left[\begin{matrix} \delta_1^{(L)}\\\delta_2^{(L)}\\\vdots\\\delta_n^{(L)}\end{matrix}\right] \right)^T\\
-\left[\begin{matrix} 
-W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
-W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
-\vdots& \dots& \dots& \dots\\
- W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}*
-\end{matrix}\right]^T
-\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
-0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\\
-=S^{(L)}\left[\begin{matrix} 
-W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
-W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
-\vdots& \dots& \dots& \dots\\
- W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}*
-\end{matrix}\right]^T\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
-0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]*\\</script><p>对$1&lt;l&lt;L$,求$W^{(l)}$的偏导,</p>
-<p>最后，根据上述的推导喔，很容易得出$S^{(l)}$和$S^{(l+1)}$,</p>
-<script type="math/tex; mode=display">
-S^{(l)}=S^{(l+1)}W^{(l+1)^T}F^{'(l)}(net^{(l)})\\
-S^{(L)}=(Y-\hat{Y})F^{'(L)}(net^{(L)})</script><script type="math/tex; mode=display">
-\frac{\partial E}{\part W^{(l)}}=\left[\begin{matrix}h^{(l-1)}_1\\h^{(l-1)}_2 \\\dots \\h^{(l-1)}_{sl}\end{matrix}\right]S^{(l+1)} \left[\begin{matrix}W_{11}^{(l+1)}&W_{12}^{(l+1)} &\dots& W_{2(sl+1)}^{(l+1)}\\
-W_{21}^{(l+1)}&W_{22}^{(l+1)} &\dots& W_{2(sl+1)}^{(l+1)}\\
-\dots&\dots&\dots&\dots\\
-W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
-\end{matrix}  \right]^T\left[\begin{matrix} \part f^{'(l)}(net_1^{l})&0&\dots & 0\\
-0\\0 &\part f^{'(l)}(net_2^{l})&\dots&0\\
-0 & 0&\dots&0\\
-0&0&\dots&\part f^{'(l)}(net_l^{l})\end{matrix}\right]</script><h2 id="3-2-BP算法的小结"><a href="#3-2-BP算法的小结" class="headerlink" title="3.2 BP算法的小结"></a>3.2 BP算法的小结</h2><p>算法分为两个阶段：前向阶段和后向传播阶段</p>
+<p>对于$W<sup>{(L)}$，先看对$W_{ij}</sup>{(L)}$求导，<br>
+$$ \frac{\partial E}{\partial W_{ij}^{(L)}}<br>
+=\frac{\partial E}{\partial y(j)} * \frac{\partial y(i)}{\partial net_{j}^{L}} * \frac{\partial net_{j}^{L}}{\partial W_{ij}^{(L)}}\<br>
+=(y(j)-d(j))*f(x)<sup>{’}|_{x=net_j</sup>{(L)}}h_i^{(L-1)}$$</p>
+<p>令$\delta_i^{(L)}=y(i)-d(i)$</p>
+<p>上述给出了单个分量的求偏导的结果，对于$W^{(L)}$<br>
+$$<br>
+\frac{\partial E}{\partial W^{(L)}}<br>
+=\left[\begin{matrix}<br>
+\frac{\partial E}{\partial W_{11}^{(L)}} &amp; \frac{\partial E}{\partial W_{12}^{(L)}}&amp;\dots &amp; \frac{\partial E}{\partial W_{1n}^{(L)}}\<br>
+\frac{\partial E}{\partial W_{21}^{(L)}} &amp; \frac{\partial E}{\partial W_{22}^{(L)}}&amp;\dots&amp; \frac{\partial E}{\partial W_{2n}^{(L)}}\<br>
+\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
+\frac{\partial E}{\partial W_{sL,1}^{(L)}} &amp; \frac{\partial E}{\partial W_{sL,2}^{(L)}}&amp;\dots&amp; \frac{\partial E}{\partial W_{sL,n}^{(L)}}<br>
+\end{matrix}\right]<br>
+\= \left[<br>
+\begin{matrix}<br>
+h<sup>{(L-1)}_1\h</sup>{(L-1)}<em>2\ \dots\h^{(L-1)}<em>n<br>
+\end{matrix}<br>
+\right] *\left[\begin{matrix}<br>
+\delta_1<sup>{(L)}f(x)</sup>{’}|</em>{x=net_1^{(L)}}\<br>
+\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
+\dots\<br>
+\delta_n<sup>{(L)}f(x)</sup>{’}|_{x=net_n^{(L)}}<br>
+\end{matrix}\right] ^T<br>
+=h<sup>{(L-1)}S</sup>{(L)}<br>
+$$<br>
+其中，</p>
+<p>$$<br>
+S^{(L)}=\left[\begin{matrix}</p>
+<p>\delta_1<sup>{(L)}f(x)</sup>{’}|<em>{x=net_1^{(L)}}\<br>
+\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
+\dots\<br>
+\delta_n<sup>{(L)}f(x)</sup>{’}|<em>{x=net_n^{(L)}}<br>
+\end{matrix}\right]^T<br>
+$$<br>
+同理可得，<br>
+$$<br>
+\frac{\partial E}{\partial b_k<sup>{(L)}}=(y(j)-d(j))*f(x)</sup>{’}|</em>{x=net_j^{(L)}}<br>
+$$</p>
+<p>其次，对于隐含层$L-1$层，对$W_{ij}^{(L)}$求导<br>
+$$<br>
+\frac{\partial E}{\partial W_{ij}^{(L-1)}}<br>
+=\sum_{k=1}^{n}\frac{\partial E}{\partial y(k)} * \frac{\partial y(k)}{\partial net_{k}^{L}} * \frac{\partial net_{k}^{L}}{\partial f(net_j^{(L-1)})}<em>\frac{\partial f(net_j^{(L-1)})}{\partial net_j^{(L-1)}}</em>\frac{\partial net_j^{(L-1)}}{\partial W_{ij}^{(L-1)}}\<br>
+=\sum_{k=1}^{n} (y(j)-d(j))*f(x)<sup>{’}|_{x=net_j</sup>{(L)}}W_{kj}<sup>{(L)}f(x)</sup>{’}|<em>{x=net_j<sup>{L-1}}h_i</sup>{L-2}\<br>
+=\sum</em>{k=1}<sup>{n}S_i</sup>{(L)}W_{kj}<sup>{(L)}f(x)</sup>{’}|_{x=net_j<sup>{L-1}}h_i</sup>{L-2}\<br>
+$$</p>
+<p>写出矩阵形式,对$W^{(L-1)}$<br>
+$$<br>
+\frac{\partial E}{\partial W^{(L-1)}}=\left[\begin{matrix} h<sup>{(L-2)}_1\h</sup>{(L-2)}<em>2\\vdots\h^{(L-2)}</em>{s(L-2)}\end{matrix}\right] \left[\begin{matrix}</p>
+<p>\delta_1<sup>{(L)}f(x)</sup>{’}|<em>{x=net_1^{(L)}}\<br>
+\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
+\dots\<br>
+\delta_n<sup>{(L)}f(x)</sup>{’}|<em>{x=net_n^{(L)}}<br>
+\end{matrix}\right]^T<br>
+\left[\begin{matrix}<br>
+W</em>{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
+W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
+\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
+W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}<br>
+\end{matrix}\right]^T<br>
+\<br>
+\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
+0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\<br>
+=h<sup>{(L-2)}S</sup>{(L-1)}<br>
+$$</p>
+<p>$$<br>
+S^{(L-1)}=\left(\left[\begin{matrix}</p>
+<p>f(x)<sup>{’(L)}|_{x=net_1</sup>{(L)}}&amp;0&amp; \dots&amp; 0\<br>
+0&amp;f(x)<sup>{’}|_{x=net_2</sup>{(L)}}0&amp; \dots&amp; 0\<br>
+0&amp;\dots&amp;\dots&amp;0\<br>
+0&amp;0&amp;0&amp;f(x)<sup>{’(L)}|_{x=net_n</sup>{(L)}}<br>
+\end{matrix}\right]\left[\begin{matrix} \delta_1<sup>{(L)}\\delta_2</sup>{(L)}\\vdots\\delta_n^{(L)}\end{matrix}\right] \right)^T\<br>
+\left[\begin{matrix}<br>
+W_{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
+W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
+\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
+W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}*<br>
+\end{matrix}\right]^T<br>
+\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
+0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\<br>
+=S^{(L)}\left[\begin{matrix}<br>
+W_{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
+W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
+\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
+W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}*<br>
+\end{matrix}\right]^T\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
+0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]*\<br>
+$$</p>
+<p>对$1&lt;l&lt;L$,求$W^{(l)}$的偏导,</p>
+<p>最后，根据上述的推导喔，很容易得出$S<sup>{(l)}$和$S</sup>{(l+1)}$,<br>
+$$<br>
+S<sup>{(l)}=S</sup>{(l+1)}W<sup>{(l+1)</sup>T}F<sup>{’(l)}(net</sup>{(l)})\<br>
+S<sup>{(L)}=(Y-\hat{Y})F</sup>{’(L)}(net^{(L)})<br>
+$$</p>
+<p>$$<br>
+\frac{\partial E}{\part W<sup>{(l)}}=\left[\begin{matrix}h</sup>{(l-1)}<em>1\h^{(l-1)}<em>2 \\dots \h<sup>{(l-1)}_{sl}\end{matrix}\right]S</sup>{(l+1)} \left[\begin{matrix}W</em>{11}<sup>{(l+1)}&amp;W_{12}</sup>{(l+1)} &amp;\dots&amp; W</em>{2(sl+1)}^{(l+1)}\<br>
+W_{21}<sup>{(l+1)}&amp;W_{22}</sup>{(l+1)} &amp;\dots&amp; W_{2(sl+1)}^{(l+1)}\<br>
+\dots&amp;\dots&amp;\dots&amp;\dots\<br>
+W_{sl1}<sup>{(l+1)}&amp;W_{sl2}</sup>{(l+1)} &amp;\dots&amp; W_{sl(sl+1)}^{(l+1)}\<br>
+\end{matrix}  \right]^T\left[\begin{matrix} \part f<sup>{’(l)}(net_1</sup>{l})&amp;0&amp;\dots &amp; 0\<br>
+0\0 &amp;\part f<sup>{’(l)}(net_2</sup>{l})&amp;\dots&amp;0\<br>
+0 &amp; 0&amp;\dots&amp;0\<br>
+0&amp;0&amp;\dots&amp;\part f<sup>{’(l)}(net_l</sup>{l})\end{matrix}\right]<br>
+$$</p>
+<h2 id="3-2-bp算法的小结"><a class="header-anchor" href="#3-2-bp算法的小结">¶</a>3.2 BP算法的小结</h2>
+<p>算法分为两个阶段：前向阶段和后向传播阶段</p>
 <p>后向阶段算法：</p>
 <p>Step 1:  计算$\hat{y}^{(L)}$</p>
 <p>Step 2:  for l =L:2</p>
-<p>​        计算$S^{(l)}=S^{(l+1)}W^{(l+1)}F’(net^{(l)})$</p>
-<p>​        计算 $\Delta W^{(l)}=h^{(l-1)}S^{(l)} $</p>
-<p>​        计算$W^{(l)}=W^{(l)}-\delta \Delta W^{(l)}$</p>
-<h2 id="3-3-Python实现"><a href="#3-3-Python实现" class="headerlink" title="3.3 Python实现"></a>3.3 Python实现</h2><h3 id="3-3-1-最简单三层网络"><a href="#3-3-1-最简单三层网络" class="headerlink" title="3.3.1 最简单三层网络"></a>3.3.1 最简单三层网络</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">不用任何框架，自己写一个三层的神经网络</span></span><br><span class="line"><span class="string"># input-3,hidden-4 output-1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input Matrix</span></span><br><span class="line">X = np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">0</span> ,<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output Matrix</span></span><br><span class="line">y = np.array([[<span class="number">0</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>]])</span><br><span class="line"><span class="comment"># Nonlinear function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X,derive=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-X))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> X*(<span class="number">1</span>-X)</span><br><span class="line"><span class="comment"># relu</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">relu</span><span class="params">(X,derive = False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> np.maximum(<span class="number">0</span>,X)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (X&gt;<span class="number">0</span>).astype(float)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Weight bias</span></span><br><span class="line">W1 = <span class="number">2</span> * np.random.random((<span class="number">3</span>, <span class="number">4</span>))<span class="number">-1</span></span><br><span class="line">b1 = <span class="number">0.1</span> * np.ones((<span class="number">4</span>,))</span><br><span class="line"> </span><br><span class="line">W2 = <span class="number">2</span> * np.random.random((<span class="number">4</span>,<span class="number">1</span>))<span class="number">-1</span></span><br><span class="line">b2 = <span class="number">0.1</span> * np.ones((<span class="number">1</span>,))</span><br><span class="line"> </span><br><span class="line">rate = <span class="number">0.1</span></span><br><span class="line">noline = relu</span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">train_times = <span class="number">200</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> time <span class="keyword">in</span> range(train_times):</span><br><span class="line">    <span class="comment"># Layer one</span></span><br><span class="line">    A1 = np.dot(X,W1)+b1</span><br><span class="line">    Z1 = noline(A1)</span><br><span class="line">    <span class="comment"># Layer two </span></span><br><span class="line">    A2 = np.dot(Z1, W2)+b2</span><br><span class="line">    Z2 = noline(A2)</span><br><span class="line">    </span><br><span class="line">    cost = -y+Z2</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calc deltas </span></span><br><span class="line">    S2= cost*noline(A2,<span class="keyword">True</span>)</span><br><span class="line">    delta_W2 = np.dot(Z1.T,S2)</span><br><span class="line">    bias2 = S2.sum(axis=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    S1 = np.dot(S2, W2.T)*noline(A1,<span class="keyword">True</span>)</span><br><span class="line">    delta_W1= np.dot(X.T, S1)</span><br><span class="line">    bias1 = S1.sum(axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># update</span></span><br><span class="line">    W1 = W1-rate*delta_W1</span><br><span class="line">    b1 = b1-rate*bias1</span><br><span class="line">    W2 = W2-rate*delta_W2</span><br><span class="line">    b2 = b2-rate*bias2</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">'error'</span>,np.mean(((y-Z2)*(y-Z2))**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"prediction"</span>,Z2)</span><br></pre></td></tr></table></figure>
-<h2 id="3-4-附录："><a href="#3-4-附录：" class="headerlink" title="3.4  附录："></a><font id="3.6">3.4  附录</font>：</h2><div class="table-container">
+<p>​		计算$S<sup>{(l)}=S</sup>{(l+1)}W<sup>{(l+1)}F’(net</sup>{(l)})$</p>
+<p>​		计算 $\Delta W<sup>{(l)}=h</sup>{(l-1)}S^{(l)} $</p>
+<p>​		计算$W<sup>{(l)}=W</sup>{(l)}-\delta \Delta W^{(l)}$</p>
+<h2 id="3-3-python实现"><a class="header-anchor" href="#3-3-python实现">¶</a>3.3 Python实现</h2>
+<h3 id="3-3-1-最简单三层网络"><a class="header-anchor" href="#3-3-1-最简单三层网络">¶</a>3.3.1 最简单三层网络</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">不用任何框架，自己写一个三层的神经网络</span></span><br><span class="line"><span class="string"># input-3,hidden-4 output-1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input Matrix</span></span><br><span class="line">X = np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">0</span> ,<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output Matrix</span></span><br><span class="line">y = np.array([[<span class="number">0</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>]])</span><br><span class="line"><span class="comment"># Nonlinear function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X,derive=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-X))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> X*(<span class="number">1</span>-X)</span><br><span class="line"><span class="comment"># relu</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">relu</span><span class="params">(X,derive = False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> np.maximum(<span class="number">0</span>,X)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (X&gt;<span class="number">0</span>).astype(float)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Weight bias</span></span><br><span class="line">W1 = <span class="number">2</span> * np.random.random((<span class="number">3</span>, <span class="number">4</span>))<span class="number">-1</span></span><br><span class="line">b1 = <span class="number">0.1</span> * np.ones((<span class="number">4</span>,))</span><br><span class="line"> </span><br><span class="line">W2 = <span class="number">2</span> * np.random.random((<span class="number">4</span>,<span class="number">1</span>))<span class="number">-1</span></span><br><span class="line">b2 = <span class="number">0.1</span> * np.ones((<span class="number">1</span>,))</span><br><span class="line"> </span><br><span class="line">rate = <span class="number">0.1</span></span><br><span class="line">noline = relu</span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">train_times = <span class="number">200</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> time <span class="keyword">in</span> range(train_times):</span><br><span class="line">    <span class="comment"># Layer one</span></span><br><span class="line">    A1 = np.dot(X,W1)+b1</span><br><span class="line">    Z1 = noline(A1)</span><br><span class="line">    <span class="comment"># Layer two </span></span><br><span class="line">    A2 = np.dot(Z1, W2)+b2</span><br><span class="line">    Z2 = noline(A2)</span><br><span class="line">    </span><br><span class="line">    cost = -y+Z2</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calc deltas </span></span><br><span class="line">    S2= cost*noline(A2,<span class="keyword">True</span>)</span><br><span class="line">    delta_W2 = np.dot(Z1.T,S2)</span><br><span class="line">    bias2 = S2.sum(axis=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    S1 = np.dot(S2, W2.T)*noline(A1,<span class="keyword">True</span>)</span><br><span class="line">    delta_W1= np.dot(X.T, S1)</span><br><span class="line">    bias1 = S1.sum(axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># update</span></span><br><span class="line">    W1 = W1-rate*delta_W1</span><br><span class="line">    b1 = b1-rate*bias1</span><br><span class="line">    W2 = W2-rate*delta_W2</span><br><span class="line">    b2 = b2-rate*bias2</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">'error'</span>,np.mean(((y-Z2)*(y-Z2))**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"prediction"</span>,Z2)</span><br></pre></td></tr></table></figure>
+<h2 id="font-id-3-6-3-4-附录-font-："><a class="header-anchor" href="#font-id-3-6-3-4-附录-font-：">¶</a><font id="3.6">3.4  附录</font>：</h2>
 <table>
 <thead>
 <tr>
@@ -1065,8 +1373,14 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
 </tr>
 </tbody>
 </table>
-</div>
-<p>MAPE    =    $\frac{1}{n} \sum_{k=1}^{n}\left|\frac{x^{(0)}(k)-\hat{x}^{(0)}(k)}{x^{(0)}(k)}\right| \times 100$<br>RMSPE    =    $\sqrt{\frac{1}{n} \sum_{k=1}^{n}\left(\frac{\hat{x}^{(0)}(k)-x^{(0)}(k)}{x^{(0)}(k)}\right)^{2}} \times 100$<br>MAE    =    $\frac{1}{n} \sum_{k=1}^{n}\left|\hat{x}^{(0)}(k)-x^{(0)}(k)\right|$<br>MSE    =    $\frac{1}{n} \sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}$<br>IA    =    $1-\frac{\sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}}{\sum_{k=1}^{n} \left( \left| \hat{x}^{(0)}(k)-\overline{x} \right|+\left| x^{(0)}(k)-\overline{x}\right| \right)^{2}}$<br>U1    =    $\frac{\sqrt{\frac{1}{n} \sum_{k=1}^{n}\left(x^{(0)}(k)-x^{(0)}(k)\right)^{2}}}{\sqrt{\frac{1}{n} \sum_{k=1}^{n} x^{(0)}(k)^{2}}+\sqrt{\frac{1}{n} \sum_{k=1}^{n} x^{(0)}(k)^{2}}}$<br>U2    =    $\frac{\left[\sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}\right]^{1 / 2}}{\left[\sum_{k=1}^{n} x^{(0)}(k)^{2}\right]^{1 / 2}}$<br>R    =    $\frac{\operatorname{Cov}(\hat{x}^{(0)}, x^{(0)})}{\sqrt{\operatorname{Var}[\hat{x}^{(0)}] \operatorname{Var}[x^{(0)}]}}$</p>
+<p>MAPE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left|\frac{x</sup>{(0)}(k)-\hat{x}<sup>{(0)}(k)}{x</sup>{(0)}(k)}\right| \times 100$<br>
+RMSPE	=	$\sqrt{\frac{1}{n} \sum_{k=1}<sup>{n}\left(\frac{\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)}{x</sup>{(0)}(k)}\right)^{2}} \times 100$<br>
+MAE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left|\hat{x}</sup>{(0)}(k)-x^{(0)}(k)\right|$<br>
+MSE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}$<br>
+IA	=	$1-\frac{\sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}}{\sum_{k=1}^{n} \left( \left| \hat{x}^{(0)}(k)-\overline{x} \right|+\left| x^{(0)}(k)-\overline{x}\right| \right)^{2}}$<br>
+U1	=	$\frac{\sqrt{\frac{1}{n} \sum_{k=1}<sup>{n}\left(x</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}}}{\sqrt{\frac{1}{n} \sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}}+\sqrt{\frac{1}{n} \sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}}}$<br>
+U2	=	$\frac{\left[\sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}\right]^{1 / 2}}{\left[\sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}\right]^{1 / 2}}$<br>
+R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{Var}[\hat{x}</sup>{(0)}] \operatorname{Var}[x^{(0)}]}}$</p>
 
           
         
@@ -1213,7 +1527,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                5.8k字
+                5.9k字
               </span>
               
 
@@ -1239,189 +1553,10 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
 
       
         
-          <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:</p>
+          <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！😄 😃 😁 😮</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/03/03/决策树/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/02/28/SVD/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/28/SVD/" itemprop="url">我的读书笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-28T14:54:12+08:00">2019-02-28</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/28/SVD/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/SVD/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                6.1k字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="目录-smile"><a href="#目录-smile" class="headerlink" title="目录 :smile:"></a>目录 :smile:</h1><p>:one: <a href="#1">简单说一下特征值、特征向量与特征分解</a><br>&nbsp;&nbsp; I. <a href="#1.1">特征值、特征向量与特征分解</a><br>&nbsp;&nbsp; II. <a href="#1.2">几何意义</a><br>&nbsp;&nbsp; III.  <a href="#1.3">如何实现通过Matlab、Python实现</a><br>:two:<a href="#2">详细解说SVD</a><br>&nbsp;&nbsp; I. <a href="#2.1">几何意义</a><br>&nbsp;&nbsp; I. <a href="#2.2">奇异值分解的推导过程</a><br>&nbsp;&nbsp; I. <a href="#2.3">SVD算例</a><br>&nbsp;&nbsp; I. <a href="#2.4">如何通过Matlab和Python</a><br>:three:<a href="#3">应用举例</a><br>&nbsp;&nbsp; I. <a href="#3.1">特征值、特征向量与特征分解</a><br>:four:<a href="#4">特征分解、奇异值分解的区别</a><br>&nbsp;&nbsp; I. <a href="#4">特征分解、奇异值分解的区别</a></p>
-<h1 id="简单说一下特征值、特征向量与特征分解"><a href="#简单说一下特征值、特征向量与特征分解" class="headerlink" title=" 简单说一下特征值、特征向量与特征分解"></a><font id="1" color="blue"> 简单说一下特征值、特征向量与特征分解</font></h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/28/SVD/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1468,7 +1603,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1501,7 +1636,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XieMay</p>
-              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+              <p class="site-description motion-element" itemprop="description">期待花开</p>
           </div>
 
           
@@ -1511,7 +1646,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1713,7 +1848,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">252k</span>
+    <span title="Symbols count total">295k</span>
   
 
   
@@ -2252,9 +2387,9 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
   
     
       
-    
-      
         
+      
+    
       
     
       
@@ -2323,7 +2458,19 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -2340,17 +2487,5 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

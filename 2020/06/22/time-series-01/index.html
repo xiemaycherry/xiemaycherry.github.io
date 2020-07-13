@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                6.9k字
+                7.2k字
               </span>
               
 
@@ -453,16 +453,25 @@
       
 
       
-        <h1 id="时间序列及其分解"><a href="#时间序列及其分解" class="headerlink" title="时间序列及其分解"></a>时间序列及其分解</h1><a id="more"></a>
-<h2 id="时间序列分类"><a href="#时间序列分类" class="headerlink" title="时间序列分类"></a>时间序列分类</h2><h3 id="平稳序列（stationary-series"><a href="#平稳序列（stationary-series" class="headerlink" title="平稳序列（stationary series)"></a>平稳序列（stationary series)</h3><p>序列中的各观察值基本上在某个固定的水平上波动，在不同时F间段波动程度不同，但不存在某种规律。平稳性时间序列的均值和方差都是常数。</p>
+        <h1>时间序列及其分解</h1>
+<a id="more"></a>
+<h2 id="时间序列分类"><a class="header-anchor" href="#时间序列分类">¶</a>时间序列分类</h2>
+<h3 id="平稳序列-stationary-series"><a class="header-anchor" href="#平稳序列-stationary-series">¶</a>平稳序列（stationary series)</h3>
+<p>序列中的各观察值基本上在某个固定的水平上波动，在不同时F间段波动程度不同，但不存在某种规律。平稳性时间序列的均值和方差都是常数。</p>
 <p>方法：a) 看原图。是否在某个常数附近波动，且波动范围有界。如果有明显的趋势性或者周期性，则不是。b) ADF单位根检测。p值。</p>
-<h3 id="非平稳序列（non-stationary-series"><a href="#非平稳序列（non-stationary-series" class="headerlink" title="非平稳序列（non-stationary series)"></a>非平稳序列（non-stationary series)</h3><p>涉及趋势、季节性和周期三种特性，包含其中一种或者多种成分。</p>
-<h4 id="趋势-trend"><a href="#趋势-trend" class="headerlink" title="趋势(trend)"></a>趋势(trend)</h4><p>时间序列在长时期内呈现出来的某种上升或者下降的趋势。分为线性和非线性。</p>
-<h4 id="季节性（seasonality"><a href="#季节性（seasonality" class="headerlink" title="季节性（seasonality)"></a>季节性（seasonality)</h4><p>是指时间序列在一年内重复出现的周期波动。因季节不同而发生变化，如旅游旺季，旅游淡季。</p>
-<h4 id="周期性（cyclicity）"><a href="#周期性（cyclicity）" class="headerlink" title="周期性（cyclicity）"></a>周期性（cyclicity）</h4><p>是指时间序列呈现出的长期趋势。周期性不同于趋势变动，它是涨落相间的交替波动。不同意季节变动，它无固定规律，变动周期多在一年以上，且周期长短不一。周期性通常是由经济环境的变化引起的。</p>
-<h4 id="偶然性因素"><a href="#偶然性因素" class="headerlink" title="偶然性因素"></a>偶然性因素</h4><p>其导致时间序列呈现出某种随机波动。</p>
+<h3 id="非平稳序列-non-stationary-series"><a class="header-anchor" href="#非平稳序列-non-stationary-series">¶</a>非平稳序列（non-stationary series)</h3>
+<p>涉及趋势、季节性和周期三种特性，包含其中一种或者多种成分。</p>
+<h4 id="趋势-trend"><a class="header-anchor" href="#趋势-trend">¶</a>趋势(trend)</h4>
+<p>时间序列在长时期内呈现出来的某种上升或者下降的趋势。分为线性和非线性。</p>
+<h4 id="季节性-seasonality"><a class="header-anchor" href="#季节性-seasonality">¶</a>季节性（seasonality)</h4>
+<p>是指时间序列在一年内重复出现的周期波动。因季节不同而发生变化，如旅游旺季，旅游淡季。</p>
+<h4 id="周期性-cyclicity"><a class="header-anchor" href="#周期性-cyclicity">¶</a>周期性（cyclicity）</h4>
+<p>是指时间序列呈现出的长期趋势。周期性不同于趋势变动，它是涨落相间的交替波动。不同意季节变动，它无固定规律，变动周期多在一年以上，且周期长短不一。周期性通常是由经济环境的变化引起的。</p>
+<h4 id="偶然性因素"><a class="header-anchor" href="#偶然性因素">¶</a>偶然性因素</h4>
+<p>其导致时间序列呈现出某种随机波动。</p>
 <p>时间序列的成分可分为：趋势（T),季节性（S),周期性（C),随机性（I)。</p>
-<h2 id="平稳时间序列分析"><a href="#平稳时间序列分析" class="headerlink" title="平稳时间序列分析"></a>平稳时间序列分析</h2><h3 id="AR模型"><a href="#AR模型" class="headerlink" title="AR模型"></a>AR模型</h3><div class="table-container">
+<h2 id="平稳时间序列分析"><a class="header-anchor" href="#平稳时间序列分析">¶</a>平稳时间序列分析</h2>
+<h3 id="ar模型"><a class="header-anchor" href="#ar模型">¶</a>AR模型</h3>
 <table>
 <thead>
 <tr>
@@ -493,18 +502,20 @@
 <td style="text-align:left">将自回归模型、移动平均模型和差分法结合，我们就得到了差分自回归移动平均模型ARIMA(p,d,q)</td>
 <td style="text-align:left"></td>
 <td style="text-align:left"></td>
+<td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="参数确定"><a href="#参数确定" class="headerlink" title="参数确定"></a>参数确定</h3><p><strong>拖尾和截尾</strong><br>拖尾指序列以指数率单调递减或震荡衰减，而截尾指序列从某个时点变得非常小。</p>
+<h3 id="参数确定"><a class="header-anchor" href="#参数确定">¶</a>参数确定</h3>
+<p><strong>拖尾和截尾</strong><br>
+拖尾指序列以指数率单调递减或震荡衰减，而截尾指序列从某个时点变得非常小。</p>
 <p><img src="https://xiemaycherry.github.io/2020/06/22/time-series-01/K:%5CMyBlog%5Chexo%5Csource_posts%5Ctime-series-01%5Ctuowei.png" alt="img"></p>
-<h3 id="ARIMA建模过程"><a href="#ARIMA建模过程" class="headerlink" title="ARIMA建模过程"></a>ARIMA建模过程</h3><ol>
+<h3 id="arima建模过程"><a class="header-anchor" href="#arima建模过程">¶</a>ARIMA建模过程</h3>
+<ol>
 <li>将序列平稳（差分法确定d）</li>
 <li>p和q阶数确定：ACF与PACF</li>
 <li>ARIMA（p,d,q）</li>
 </ol>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -531,66 +542,111 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h4 id="参数-p-q-的自动确定方式"><a href="#参数-p-q-的自动确定方式" class="headerlink" title="参数 p,q 的自动确定方式"></a>参数 p,q 的自动确定方式</h4><h5 id="信息准则"><a href="#信息准则" class="headerlink" title="信息准则"></a>信息准则</h5><p>在参数估计的时候，我们可以采用似然函数作为目标函数。可以通过加入模型复杂度的惩罚项避免过拟合问题。比如赤池信息准则（AIC)和贝叶斯信息准则(BIC)</p>
-<script type="math/tex; mode=display">
-AIC=2k−2ln(L)</script><p>一方面引入惩罚项，使得模型参数尽快少，减少过拟合。另一方面，也希望提高模型的拟合度（极大似然）</p>
-<script type="math/tex; mode=display">
-BIC=kLn(n)−2ln(L)</script><p>k为模型参数个数，n为样本数量，L为似然函数。引入$Kln(n)$惩罚项在维度过大且样本数据相对较少的情况下，可以有效避免出现维度灾难。</p>
-<h2 id="时间序列的分解"><a href="#时间序列的分解" class="headerlink" title="时间序列的分解"></a>时间序列的分解</h2><p>加法模型</p>
-<script type="math/tex; mode=display">
-X_t = T_t + C_t+S_t + I_t ,t = 1,2,..,n</script><p>每个时间序列看成是三个部分的叠加，分别是趋势项、循环项，季节项，随机项</p>
-<p>乘法模型</p>
-<script type="math/tex; mode=display">
-X_t = T_t*C_t*S_t*I_t</script><h3 id="趋势分析"><a href="#趋势分析" class="headerlink" title="趋势分析"></a>趋势分析</h3><p>趋势拟合法就是把时间作为自变量，相应的序列观察值作为因变量，建立序列值随时间变化的回归模型。可分为线性拟合和曲线拟合。</p>
-<h4 id="线性拟合"><a href="#线性拟合" class="headerlink" title="线性拟合"></a>线性拟合</h4><p>如果长期趋势呈现出线性特征，可用线性模型拟合，</p>
-<script type="math/tex; mode=display">
-\left\{\begin{array}{c}
-x_t = a+bt+I_t\\
-E(I_t) = 0,Var(I_t) = \sigma^2
-\end{array}
-\right.</script><p>其中，$T_t = a+bt$就是消除随机波动影响后的该序列的长期趋势。</p>
-<h4 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h4><p>如果长期趋势呈现出线性特征，可用曲线模型来拟合</p>
-<script type="math/tex; mode=display">
-\left\{
-\begin{array}{c|c|c}
-二次型& T_t = a+bt+ct^2& 变换后，线性最小二乘法\\
-指数型&T_t = ab^t& 对数变化 & 最小二乘法\\
-修正指数型&T_t = a+bc^t&  &迭代法\\
-Gompertz型& T_t = e^{a+bc^t}& & 迭代法\\
-Logistic & T_t = \frac{1}{a+bc^t}& 迭代法
-\end{array}
-\right.</script><h4 id="平滑法"><a href="#平滑法" class="headerlink" title="平滑法"></a>平滑法</h4><h4 id="移动平均法"><a href="#移动平均法" class="headerlink" title="移动平均法"></a>移动平均法</h4><p>假设在比较短的时间间隔里，序列的取值是较稳定的，这种差异是由随机波动造成的。由此，可用一定时间间隔内的平均值作为某一期的估计值。</p>
-<p>n期中心移动平均</p>
-<script type="math/tex; mode=display">
-\widetilde{x_t} = \frac{1}{n}(\frac{1}{2}x_{t-\frac{n}{2}}+x_{t-\frac{n}{2}+1}+\dots+x_{t+\frac{n}{2}-1}+\frac{1}{2}x_{t+\frac{n}{2}})</script><p>n期移动平均</p>
-<script type="math/tex; mode=display">
-\widetilde{x_t} = \frac{1}{n}(x_t+x_{t-1}+\dots+x_{t-n+1})</script><h4 id="指数平滑法"><a href="#指数平滑法" class="headerlink" title="指数平滑法"></a>指数平滑法</h4><p>简单指数平滑</p>
-<script type="math/tex; mode=display">
-\widetilde{x_t} = \alpha x_t+\alpha (1-\alpha )x_{t-1}+\dots)</script><h3 id="季节效应"><a href="#季节效应" class="headerlink" title="季节效应"></a>季节效应</h3><p>季节性效应的存在，使得气温会在不同年份的相同月份呈现出相似的性质。</p>
-<p>如果只是存在季节性和随机波动性</p>
-<script type="math/tex; mode=display">
-x_{ij} = \hat{x}S_j+I_{ij}</script><p>其中$S_j$表示第j个月的季节指数，$\hat{x}$为各月平均气温。</p>
+<h4 id="参数-p-q-的自动确定方式"><a class="header-anchor" href="#参数-p-q-的自动确定方式">¶</a>参数 p,q 的自动确定方式</h4>
+<h5 id="信息准则"><a class="header-anchor" href="#信息准则">¶</a>信息准则</h5>
+<p>在参数估计的时候，我们可以采用似然函数作为目标函数。可以通过加入模型复杂度的惩罚项避免过拟合问题。比如赤池信息准则（AIC)和贝叶斯信息准则(BIC)<br>
+$$<br>
+AIC=2k−2ln(L)<br>
+$$<br>
+一方面引入惩罚项，使得模型参数尽快少，减少过拟合。另一方面，也希望提高模型的拟合度（极大似然）<br>
+$$<br>
+BIC=kLn(n)−2ln(L)<br>
+$$</p>
+<p>k为模型参数个数，n为样本数量，L为似然函数。引入$Kln(n)$惩罚项在维度过大且样本数据相对较少的情况下，可以有效避免出现维度灾难。</p>
+<h2 id="时间序列的分解"><a class="header-anchor" href="#时间序列的分解">¶</a>时间序列的分解</h2>
+<p>加法模型<br>
+$$<br>
+X_t = T_t + C_t+S_t + I_t ,t = 1,2,…,n<br>
+$$<br>
+每个时间序列看成是三个部分的叠加，分别是趋势项、循环项，季节项，随机项</p>
+<p>乘法模型<br>
+$$<br>
+X_t = T_t<em>C_t</em>S_t*I_t<br>
+$$</p>
+<h3 id="趋势分析"><a class="header-anchor" href="#趋势分析">¶</a>趋势分析</h3>
+<p>趋势拟合法就是把时间作为自变量，相应的序列观察值作为因变量，建立序列值随时间变化的回归模型。可分为线性拟合和曲线拟合。</p>
+<h4 id="线性拟合"><a class="header-anchor" href="#线性拟合">¶</a>线性拟合</h4>
+<p>如果长期趋势呈现出线性特征，可用线性模型拟合，<br>
+$$<br>
+\left{\begin{array}{c}<br>
+x_t = a+bt+I_t\<br>
+E(I_t) = 0,Var(I_t) = \sigma^2<br>
+\end{array}<br>
+\right.<br>
+$$<br>
+其中，$T_t = a+bt$就是消除随机波动影响后的该序列的长期趋势。</p>
+<h4 id="曲线拟合"><a class="header-anchor" href="#曲线拟合">¶</a>曲线拟合</h4>
+<p>如果长期趋势呈现出线性特征，可用曲线模型来拟合<br>
+$$<br>
+\left{<br>
+\begin{array}{c|c|c}<br>
+二次型&amp; T_t = a+bt+ct^2&amp; 变换后，线性最小二乘法\<br>
+指数型&amp;T_t = ab^t&amp; 对数变化 &amp; 最小二乘法\<br>
+修正指数型&amp;T_t = a+bc^t&amp;  &amp;迭代法\<br>
+Gompertz型&amp; T_t = e<sup>{a+bc</sup>t}&amp; &amp; 迭代法\<br>
+Logistic &amp; T_t = \frac{1}{a+bc^t}&amp; 迭代法<br>
+\end{array}<br>
+\right.<br>
+$$</p>
+<h4 id="平滑法"><a class="header-anchor" href="#平滑法">¶</a>平滑法</h4>
+<h4 id="移动平均法"><a class="header-anchor" href="#移动平均法">¶</a>移动平均法</h4>
+<p>假设在比较短的时间间隔里，序列的取值是较稳定的，这种差异是由随机波动造成的。由此，可用一定时间间隔内的平均值作为某一期的估计值。</p>
+<p>n期中心移动平均<br>
+$$<br>
+\widetilde{x_t} = \frac{1}{n}(\frac{1}{2}x_{t-\frac{n}{2}}+x_{t-\frac{n}{2}+1}+\dots+x_{t+\frac{n}{2}-1}+\frac{1}{2}x_{t+\frac{n}{2}})<br>
+$$<br>
+n期移动平均<br>
+$$<br>
+\widetilde{x_t} = \frac{1}{n}(x_t+x_{t-1}+\dots+x_{t-n+1})<br>
+$$</p>
+<h4 id="指数平滑法"><a class="header-anchor" href="#指数平滑法">¶</a>指数平滑法</h4>
+<p>简单指数平滑<br>
+$$<br>
+\widetilde{x_t} = \alpha x_t+\alpha (1-\alpha )x_{t-1}+\dots)<br>
+$$</p>
+<h3 id="季节效应"><a class="header-anchor" href="#季节效应">¶</a>季节效应</h3>
+<p>季节性效应的存在，使得气温会在不同年份的相同月份呈现出相似的性质。</p>
+<p>如果只是存在季节性和随机波动性<br>
+$$<br>
+x_{ij} = \hat{x}S_j+I_{ij}<br>
+$$<br>
+其中$S_j$表示第j个月的季节指数，$\hat{x}$为各月平均气温。</p>
 <p>季节指数的计算:</p>
-<p>Step1: 计算周期内各期的平均数</p>
-<script type="math/tex; mode=display">
-\hat{x}_k = \frac{\sum_{i= 1}^{n}x_{ik}}{n}（k = 1,2,...,m)</script><p>其中，m表示周期，n表示周期的数量</p>
-<p>Step2: 计算总平均数</p>
-<script type="math/tex; mode=display">
-\hat{x} = \frac{\sum_{i = 1}^{n}\sum_{k = 1}^{m}x_{ik}}{nm}</script><p>Step3: 计算季节指数</p>
-<script type="math/tex; mode=display">
-S_k = \frac{\hat{x}_k}{\hat{x}}</script><h3 id="混合效应"><a href="#混合效应" class="headerlink" title="混合效应"></a>混合效应</h3><p>加法模型</p>
-<script type="math/tex; mode=display">
-x_t = T_t + S_t + I_t</script><p>乘法模型</p>
-<script type="math/tex; mode=display">
-x_t = T_t*S_t*I_t</script><p>混合模型</p>
-<script type="math/tex; mode=display">
-x_t = S_t*T_t+I_t\\
-x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的影响，则说明季节性与趋势之间没有相互作用关系，可加。如果季节波动的振幅随趋势的变化而变化，是相互作用的关系，可尝试混合模型和乘法模型。</p>
-<h1 id="Tool-in-Python-xfresh"><a href="#Tool-in-Python-xfresh" class="headerlink" title="Tool in Python: xfresh"></a>Tool in Python: xfresh</h1><h2 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h2><p>官网： <a href="https://tsfresh.readthedocs.io/en/latest/text/quick_start.html" target="_blank" rel="noopener">https://tsfresh.readthedocs.io/en/latest/text/quick_start.html</a></p>
+<p>Step1: 计算周期内各期的平均数<br>
+$$<br>
+\hat{x}<em>k = \frac{\sum</em>{i= 1}^{n}x_{ik}}{n}（k = 1,2,…,m)<br>
+$$<br>
+其中，m表示周期，n表示周期的数量</p>
+<p>Step2: 计算总平均数<br>
+$$<br>
+\hat{x} = \frac{\sum_{i = 1}^{n}\sum_{k = 1}^{m}x_{ik}}{nm}<br>
+$$<br>
+Step3: 计算季节指数<br>
+$$<br>
+S_k = \frac{\hat{x}_k}{\hat{x}}<br>
+$$</p>
+<h3 id="混合效应"><a class="header-anchor" href="#混合效应">¶</a>混合效应</h3>
+<p>加法模型<br>
+$$<br>
+x_t = T_t + S_t + I_t<br>
+$$<br>
+乘法模型<br>
+$$<br>
+x_t = T_t<em>S_t</em>I_t<br>
+$$<br>
+混合模型<br>
+$$<br>
+x_t = S_t<em>T_t+I_t\<br>
+x_t = S_t</em>(T_t+I_t)<br>
+$$<br>
+如果季节波动的振幅不受趋势变动的影响，则说明季节性与趋势之间没有相互作用关系，可加。如果季节波动的振幅随趋势的变化而变化，是相互作用的关系，可尝试混合模型和乘法模型。</p>
+<h1>Tool in Python: xfresh</h1>
+<h2 id="特征提取"><a class="header-anchor" href="#特征提取">¶</a>特征提取</h2>
+<p>官网： <a href="https://tsfresh.readthedocs.io/en/latest/text/quick_start.html" target="_blank" rel="noopener">https://tsfresh.readthedocs.io/en/latest/text/quick_start.html</a></p>
 <p>中文： <a href="https://github.com/SimaShanhe/tsfresh-feature-translation" target="_blank" rel="noopener">https://github.com/SimaShanhe/tsfresh-feature-translation</a></p>
-<h2 id="Data-Formats"><a href="#Data-Formats" class="headerlink" title="Data Formats"></a>Data Formats</h2><p>column_id: Features will be extracted individually for each entity(id); one row per id.</p>
-<p>column_sort:  sorting the time series. </p>
+<h2 id="data-formats"><a class="header-anchor" href="#data-formats">¶</a>Data Formats</h2>
+<p>column_id: Features will be extracted individually for each entity(id); one row per id.</p>
+<p>column_sort:  sorting the time series.</p>
 <p>特征提取: 可以一次性提取完；也可以单独提取kind_to_parameters 设置参数；还可以提取</p>
 <p><img src="https://tsfresh.readthedocs.io/en/latest/_images/feature_extraction_process_20160815_mc_1.png" alt="the time series"></p>
 <p>可分布式计算</p>
@@ -598,17 +654,20 @@ x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的�
 <p>首先确定滑动窗口</p>
 <p>Step1 : 实现单变量特征的提取</p>
 <p>Step2 : 实现多变量特征的提取</p>
-<h2 id="Day-Ox-01"><a href="#Day-Ox-01" class="headerlink" title="Day Ox 01"></a>Day Ox 01</h2><p>知识清单:</p>
+<h2 id="day-ox-01"><a class="header-anchor" href="#day-ox-01">¶</a>Day Ox 01</h2>
+<p>知识清单:</p>
 <ol>
-<li><p>特征提取：大概上千种特征（几十种方法）</p>
-<p>tsfresh.feature_extraction.extraction.extract_features(<strong>timeseries_container</strong>,default_fc_parameters=None<strong>,</strong> <em>kind_to_fc_parameters=None**</em>,<strong> <em>column_id=None</em></strong>,<strong> <em>column_sort=None</em></strong>,<strong> <em>column_kind=None</em></strong>,<strong> <em>column_value=None</em></strong>,<strong> <em>chunksize=None</em></strong>,<strong> <em>n_jobs=1</em></strong>,<strong> <em>show_warnings=False</em></strong>,<strong> <em>disable_progressbar=False</em></strong>,<strong> <em>impute_function=None</em></strong>,<strong> <em>profile=False</em></strong>,<strong> <em>profiling_filename=’profile.txt’</em></strong>,<strong> <em>profiling_sorting=’cumulative’</em></strong>,<strong> <em>distributor=None</em></strong>)**</p>
+<li>
+<p>特征提取：大概上千种特征（几十种方法）</p>
+<p>tsfresh.feature_extraction.extraction.extract_features(<strong>timeseries_container</strong>,default_fc_parameters=None**,** <em>kind_to_fc_parameters=None</em>**,** <em>column_id=None</em>**,** <em>column_sort=None</em>**,** <em>column_kind=None</em>**,** <em>column_value=None</em>**,** <em>chunksize=None</em>**,** <em>n_jobs=1</em>**,** <em>show_warnings=False</em>**,** <em>disable_progressbar=False</em>**,** <em>impute_function=None</em>**,** <em>profile=False</em>**,** <em>profiling_filename=‘profile.txt’</em><strong>,</strong> <em>profiling_sorting=‘cumulative’</em><strong>,</strong> <em>distributor=None</em>**)**</p>
 <p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" target="_blank" rel="noopener"><code>pandas.DataFrame</code></a> containing the different time series</p>
 <p><strong>column_id</strong> (<a href="https://docs.python.org/3.7/library/stdtypes.html#str" target="_blank" rel="noopener"><em>str</em></a>) – The name of the id column to group by.</p>
 <p><strong>column_sort</strong> (<a href="https://docs.python.org/3.7/library/stdtypes.html#str" target="_blank" rel="noopener"><em>str</em></a>) – The name of the sort column.</p>
-<p><strong>n_jobs</strong> (<a href="https://docs.python.org/3.7/library/functions.html#int" target="_blank" rel="noopener"><em>int</em></a>) – The number of processes to use for parallelization. </p>
+<p><strong>n_jobs</strong> (<a href="https://docs.python.org/3.7/library/functions.html#int" target="_blank" rel="noopener"><em>int</em></a>) – The number of processes to use for parallelization.</p>
 </li>
-<li><p>时间序列的滑动窗口（单序列划分成多序列）</p>
-<p><code>tsfresh.utilities.dataframe_functions.``roll_time_series</code><strong>(*</strong>df_or_dict<strong>*,</strong> <em>column_id**</em>,<strong> <em>column_sort=None</em></strong>,<strong> <em>column_kind=None</em></strong>,<strong> <em>rolling_direction=1</em></strong>,<strong> <em>max_timeshift=None</em></strong>,<strong> <em>min_timeshift=0</em></strong>,<strong> <em>chunksize=None</em></strong>,<strong> <em>n_jobs=1</em></strong>,<strong> <em>show_warnings=False</em></strong>,<strong> <em>disable_progressbar=False</em></strong>,<strong> <em>distributor=None</em></strong>)**</p>
+<li>
+<p>时间序列的滑动窗口（单序列划分成多序列）</p>
+<p><code>tsfresh.utilities.dataframe_functions.``roll_time_series</code><strong>(<strong><em>df_or_dict</em></strong>,</strong> <em>column_id</em>**,** <em>column_sort=None</em>**,** <em>column_kind=None</em>**,** <em>rolling_direction=1</em>**,** <em>max_timeshift=None</em>**,** <em>min_timeshift=0</em>**,** <em>chunksize=None</em>**,** <em>n_jobs=1</em>**,** <em>show_warnings=False</em>**,** <em>disable_progressbar=False</em>**,** <em>distributor=None</em>**)**</p>
 <ul>
 <li><strong>max_timeshift</strong> (<a href="https://docs.python.org/3.7/library/functions.html#int" target="_blank" rel="noopener"><em>int</em></a>) – If not None, the cut-out window is at maximum max_timeshift large. If none, it grows infinitely.</li>
 <li><strong>min_timeshift</strong> (<a href="https://docs.python.org/3.7/library/functions.html#int" target="_blank" rel="noopener"><em>int</em></a>) – Throw away all extracted forecast windows smaller or equal than this. Must be larger than or equal 0.</li>
@@ -616,25 +675,30 @@ x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的�
 <li><em>show_warnings=False</em></li>
 </ul>
 </li>
-<li><p>（指定）特征提取</p>
+<li>
+<p>（指定）特征提取</p>
 </li>
-<li><p>显著性检测</p>
+<li>
+<p>显著性检测</p>
 <p><a href="https://tsfresh.readthedocs.io/en/latest/api/tsfresh.feature_selection.html?highlight=select_features#tsfresh.feature_selection.selection.select_features" target="_blank" rel="noopener">https://tsfresh.readthedocs.io/en/latest/api/tsfresh.feature_selection.html?highlight=select_features#tsfresh.feature_selection.selection.select_features</a></p>
 <p>相关性检测</p>
 <p><a href="https://tsfresh.readthedocs.io/en/latest/text/parallelization.html#parallelization-of-feature-selection" target="_blank" rel="noopener">https://tsfresh.readthedocs.io/en/latest/text/parallelization.html#parallelization-of-feature-selection</a></p>
 </li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tsfresh <span class="keyword">import</span> extract_features, select_features,extract_relevant_features</span><br><span class="line"><span class="keyword">from</span> tsfresh.utilities.dataframe_functions <span class="keyword">import</span> impute</span><br><span class="line"><span class="keyword">from</span> tsfresh.utilities.dataframe_functions <span class="keyword">import</span> roll_time_series, make_forecasting_frame</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> tsfresh <span class="keyword">as</span> tsf </span><br><span class="line"></span><br><span class="line">fc_parameters_value1 = &#123;<span class="string">"length"</span>: <span class="keyword">None</span>, </span><br><span class="line">                          <span class="string">"sum_values"</span>: <span class="keyword">None</span>&#125;</span><br><span class="line"></span><br><span class="line">fc_parameters_value2 = &#123;<span class="string">"maximum"</span>: <span class="keyword">None</span>, </span><br><span class="line">                             <span class="string">"minimum"</span>: <span class="keyword">None</span>&#125;</span><br><span class="line"></span><br><span class="line">kind_to_fc_parameters = &#123;</span><br><span class="line">    <span class="string">"value1"</span>: fc_parameters_value1,</span><br><span class="line">    <span class="string">"value2"</span>: fc_parameters_value2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># ceate data</span></span><br><span class="line">    rawdata = &#123;<span class="string">'id1'</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],<span class="string">'time'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>],\</span><br><span class="line">        <span class="string">'value1'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>], <span class="string">'value2'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    df = pd.DataFrame(rawdata)</span><br><span class="line"><span class="comment"># 设置长度+1 = 真实长度,是当前编号往上数.</span></span><br><span class="line">    df_rolled = roll_time_series(df, column_id=<span class="string">"id1"</span>, column_sort=<span class="string">"time"</span>,</span><br><span class="line">                                max_timeshift=<span class="number">1</span>, min_timeshift=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># roll_time_series的返回值</span></span><br><span class="line">    print(df_rolled)</span><br><span class="line">    df_rolled = df_rolled.drop(<span class="string">'id1'</span>,axis = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># column_id: 聚合列 column_sort:排序，一个column_id就对应一个特征</span></span><br><span class="line">    extracted_features = extract_features(df_rolled, column_id=<span class="string">'id'</span>, column_sort=<span class="string">'time'</span>, </span><br><span class="line">            kind_to_fc_parameters = kind_to_fc_parameters, show_warnings=<span class="keyword">False</span>)</span><br><span class="line">    print(extracted_features)</span><br></pre></td></tr></table></figure>
-<h2 id="Day-Ox-02-查看提取特征"><a href="#Day-Ox-02-查看提取特征" class="headerlink" title="Day Ox 02 查看提取特征"></a>Day Ox 02 查看提取特征</h2><p>可根据此提取自动提取的特征，用于预测时候的提取特征</p>
+<h2 id="day-ox-02-查看提取特征"><a class="header-anchor" href="#day-ox-02-查看提取特征">¶</a>Day Ox 02 查看提取特征</h2>
+<p>可根据此提取自动提取的特征，用于预测时候的提取特征</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kind_to_fc_parameters = tsf.feature_extraction.settings.from_columns(extracted_features)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5. 特征抽取与过滤同时进行（一步到位，省去多余计算）</span></span><br><span class="line"><span class="comment"># column_id: group by </span></span><br><span class="line"><span class="comment">#features_filtered_direct = extract_relevant_features(timeseries, y, column_id='id', column_sort='time')</span></span><br><span class="line"><span class="comment">#print(features_filtered_direct.head())</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2020/06/22/time-series-01/image-20200705150137882.png" alt="image-20200705150137882" style="zoom: 50%;"></p>
+<img src="/2020/06/22/time-series-01/image-20200705150137882.png" alt="image-20200705150137882" style="zoom: 50%;">
 <p>学习路径：</p>
 <pre><code>1. 数据格式
- 2. 滑动窗口设置
- 3. 特征提取
- 4. 特征选择
-</code></pre><h1 id="专题-时间序列的竞赛方案"><a href="#专题-时间序列的竞赛方案" class="headerlink" title="专题 时间序列的竞赛方案"></a>专题 时间序列的竞赛方案</h1><p><a href="https://mp.weixin.qq.com/s?__biz=MzU1Nzc1NjI0Nw==&amp;mid=2247485604&amp;idx=1&amp;sn=6283ec080344665bfad90570bf1504a4&amp;chksm=fc31b29ccb463b8acac7acf4d89494aaad0c76620becb2b07c370ccbfaff850edc3c1ad4e0fd&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1593390448780&amp;sharer_shareid=fb5716a8ad12ea6329433df53d4cbf64#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzU1Nzc1NjI0Nw==&amp;mid=2247485604&amp;idx=1&amp;sn=6283ec080344665bfad90570bf1504a4&amp;chksm=fc31b29ccb463b8acac7acf4d89494aaad0c76620becb2b07c370ccbfaff850edc3c1ad4e0fd&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1593390448780&amp;sharer_shareid=fb5716a8ad12ea6329433df53d4cbf64#rd</a></p>
+2. 滑动窗口设置
+3. 特征提取
+4. 特征选择
+</code></pre>
+<h1>专题 时间序列的竞赛方案</h1>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzU1Nzc1NjI0Nw==&amp;mid=2247485604&amp;idx=1&amp;sn=6283ec080344665bfad90570bf1504a4&amp;chksm=fc31b29ccb463b8acac7acf4d89494aaad0c76620becb2b07c370ccbfaff850edc3c1ad4e0fd&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1593390448780&amp;sharer_shareid=fb5716a8ad12ea6329433df53d4cbf64#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzU1Nzc1NjI0Nw==&amp;mid=2247485604&amp;idx=1&amp;sn=6283ec080344665bfad90570bf1504a4&amp;chksm=fc31b29ccb463b8acac7acf4d89494aaad0c76620becb2b07c370ccbfaff850edc3c1ad4e0fd&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1593390448780&amp;sharer_shareid=fb5716a8ad12ea6329433df53d4cbf64#rd</a></p>
 <p><a href="https://www.zhihu.com/question/21229371/answer/533770345" target="_blank" rel="noopener">https://www.zhihu.com/question/21229371/answer/533770345</a></p>
 <p>Prophet 工具</p>
 
@@ -781,7 +845,7 @@ x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的�
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XieMay</p>
-              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+              <p class="site-description motion-element" itemprop="description">期待花开</p>
           </div>
 
           
@@ -791,7 +855,7 @@ x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -968,7 +1032,7 @@ x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间序列及其分解"><span class="nav-number">1.</span> <span class="nav-text">时间序列及其分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列分类"><span class="nav-number">1.1.</span> <span class="nav-text">时间序列分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#平稳序列（stationary-series"><span class="nav-number">1.1.1.</span> <span class="nav-text">平稳序列（stationary series)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非平稳序列（non-stationary-series"><span class="nav-number">1.1.2.</span> <span class="nav-text">非平稳序列（non-stationary series)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#趋势-trend"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">趋势(trend)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#季节性（seasonality"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">季节性（seasonality)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#周期性（cyclicity）"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">周期性（cyclicity）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偶然性因素"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">偶然性因素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平稳时间序列分析"><span class="nav-number">1.2.</span> <span class="nav-text">平稳时间序列分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AR模型"><span class="nav-number">1.2.1.</span> <span class="nav-text">AR模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数确定"><span class="nav-number">1.2.2.</span> <span class="nav-text">参数确定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARIMA建模过程"><span class="nav-number">1.2.3.</span> <span class="nav-text">ARIMA建模过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-p-q-的自动确定方式"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">参数 p,q 的自动确定方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信息准则"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">信息准则</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列的分解"><span class="nav-number">1.3.</span> <span class="nav-text">时间序列的分解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#趋势分析"><span class="nav-number">1.3.1.</span> <span class="nav-text">趋势分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性拟合"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">线性拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#曲线拟合"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">曲线拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平滑法"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">平滑法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动平均法"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">移动平均法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指数平滑法"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">指数平滑法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#季节效应"><span class="nav-number">1.3.2.</span> <span class="nav-text">季节效应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合效应"><span class="nav-number">1.3.3.</span> <span class="nav-text">混合效应</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tool-in-Python-xfresh"><span class="nav-number">2.</span> <span class="nav-text">Tool in Python: xfresh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征提取"><span class="nav-number">2.1.</span> <span class="nav-text">特征提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Formats"><span class="nav-number">2.2.</span> <span class="nav-text">Data Formats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-Ox-01"><span class="nav-number">2.3.</span> <span class="nav-text">Day Ox 01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day-Ox-02-查看提取特征"><span class="nav-number">2.4.</span> <span class="nav-text">Day Ox 02 查看提取特征</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#专题-时间序列的竞赛方案"><span class="nav-number">3.</span> <span class="nav-text">专题 时间序列的竞赛方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">时间序列及其分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列分类"><span class="nav-number">1.1.</span> <span class="nav-text">¶时间序列分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#平稳序列-stationary-series"><span class="nav-number">1.1.1.</span> <span class="nav-text">¶平稳序列（stationary series)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非平稳序列-non-stationary-series"><span class="nav-number">1.1.2.</span> <span class="nav-text">¶非平稳序列（non-stationary series)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#趋势-trend"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">¶趋势(trend)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#季节性-seasonality"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">¶季节性（seasonality)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#周期性-cyclicity"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">¶周期性（cyclicity）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偶然性因素"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">¶偶然性因素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平稳时间序列分析"><span class="nav-number">1.2.</span> <span class="nav-text">¶平稳时间序列分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ar模型"><span class="nav-number">1.2.1.</span> <span class="nav-text">¶AR模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数确定"><span class="nav-number">1.2.2.</span> <span class="nav-text">¶参数确定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arima建模过程"><span class="nav-number">1.2.3.</span> <span class="nav-text">¶ARIMA建模过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-p-q-的自动确定方式"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">¶参数 p,q 的自动确定方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信息准则"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">¶信息准则</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列的分解"><span class="nav-number">1.3.</span> <span class="nav-text">¶时间序列的分解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#趋势分析"><span class="nav-number">1.3.1.</span> <span class="nav-text">¶趋势分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性拟合"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">¶线性拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#曲线拟合"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">¶曲线拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平滑法"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">¶平滑法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动平均法"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">¶移动平均法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指数平滑法"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">¶指数平滑法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#季节效应"><span class="nav-number">1.3.2.</span> <span class="nav-text">¶季节效应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合效应"><span class="nav-number">1.3.3.</span> <span class="nav-text">¶混合效应</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Tool in Python: xfresh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征提取"><span class="nav-number">2.1.</span> <span class="nav-text">¶特征提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-formats"><span class="nav-number">2.2.</span> <span class="nav-text">¶Data Formats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#day-ox-01"><span class="nav-number">2.3.</span> <span class="nav-text">¶Day Ox 01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#day-ox-02-查看提取特征"><span class="nav-number">2.4.</span> <span class="nav-text">¶Day Ox 02 查看提取特征</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">专题 时间序列的竞赛方案</span></a></li></ol></div>
             
 
           </div>
@@ -1009,7 +1073,7 @@ x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的�
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">252k</span>
+    <span title="Symbols count total">295k</span>
   
 
   
@@ -1586,7 +1650,19 @@ x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的�
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1603,17 +1679,5 @@ x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的�
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

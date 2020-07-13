@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="welcome">
 <meta property="og:description" content="2020-6-29 三种相关分析方法的异同    名称 中文 公式 数据要求 含义     person correlation coefficient 皮尔森相关系数 $\rho_{X, Y}=\frac{\operatorname{Cov}(X, Y)}{\sqrt{D(X) D(Y)}}$ a. 正太分布。因为计算系数后，通常需要t检测，t检测是基于正态分布的。b. 实验数据之间的差距不同">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-29T15:27:34.013Z">
+<meta property="og:updated_time" content="2020-07-13T16:09:12.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天了解多一点">
 <meta name="twitter:description" content="2020-6-29 三种相关分析方法的异同    名称 中文 公式 数据要求 含义     person correlation coefficient 皮尔森相关系数 $\rho_{X, Y}=\frac{\operatorname{Cov}(X, Y)}{\sqrt{D(X) D(Y)}}$ a. 正太分布。因为计算系数后，通常需要t检测，t检测是基于正态分布的。b. 实验数据之间的差距不同">
@@ -448,7 +448,7 @@
 
       
         <hr>
-<h1 id="2020-6-29-三种相关分析方法的异同"><a href="#2020-6-29-三种相关分析方法的异同" class="headerlink" title="2020-6-29 三种相关分析方法的异同"></a>2020-6-29 三种相关分析方法的异同</h1><div class="table-container">
+<h1>2020-6-29 三种相关分析方法的异同</h1>
 <table>
 <thead>
 <tr>
@@ -470,7 +470,7 @@
 <tr>
 <td>spearman correlation coefficient</td>
 <td>斯皮尔曼相关性系数</td>
-<td>$\rho=1-\frac{6 \sum_{i=1}^{N} d_{i}^{2}}{n\left(n^{2}-1\right)}$</td>
+<td>$\rho=1-\frac{6 \sum_{i=1}^{N} d_{i}<sup>{2}}{n\left(n</sup>{2}-1\right)}$</td>
 <td>没有。使用范围较广</td>
 <td></td>
 </tr>
@@ -479,11 +479,12 @@
 <td>肯德尔相关性系数</td>
 <td>$\tau=\frac{C-D}{\frac{1}{2} N(N-1)}$其中C表示XY中拥有一致性的元素对数（两个元素为一对）；D表示XY中拥有不一致性的元素对数。</td>
 <td>对象是分类变量。分有序和无序。</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-</div>
-<h1 id="2020-6-20"><a href="#2020-6-20" class="headerlink" title="2020-6-20"></a>2020-6-20</h1><p>当你通过<strong>数据可视化</strong>来表达观点，<strong>首先</strong>自己要有一个清晰的结论，<strong>然后</strong>有针对性地<strong>突出</strong>自己想要表达的要点，通过视觉化的元素，引导观众正确地理解自己的观点，而不要让观众自行得出结论。</p>
+<h1>2020-6-20</h1>
+<p>当你通过<strong>数据可视化</strong>来表达观点，<strong>首先</strong>自己要有一个清晰的结论，<strong>然后</strong>有针对性地<strong>突出</strong>自己想要表达的要点，通过视觉化的元素，引导观众正确地理解自己的观点，而不要让观众自行得出结论。</p>
 <p>最后，分享一下我在知识星球上面发的关于分析数据的 5 点思考。</p>
 <p><strong>1. 分析数据的平均值和中位数</strong></p>
 <p>比如说，客户的年龄、购买金额的平均值和中位数分别是多少？中位数往往比平均值更具有分析价值。</p>
@@ -509,37 +510,41 @@
 <p>哈佛大学</p>
 <p><a href="https://www.bilibili.com/video/av455440626/?p=2" target="_blank" rel="noopener">https://www.bilibili.com/video/av455440626/?p=2</a></p>
 <p>2020-6-16</p>
-<p>  一面 1h </p>
-<p>  <strong>1.自我介绍</strong>  </p>
-<p>  <strong>2.统计</strong>  </p>
-<p>  1）假设检验，A城市平均工资X1，方差sigma1，B城市平均工资X2，方差sigma2. </p>
-<p>  设计假设检验，验证X1显著大于X2，要求H0，H1，假设检验统计量及其分布 </p>
-<p>  2）概率论，甲乙两人同时玩一个游戏，投至均匀骰子，两个人轮流投掷，谁先投到6谁赢， </p>
-<p>  问甲先投，获胜的概率 </p>
-<p>  <strong>3.机器学习</strong>  </p>
-<p>  1）100万个样本量，70个feature，如果你用random forest，你会选择多深的树 </p>
-<p>  2）简述bagging，rf，boosting的区别 </p>
-<p>  <strong>4.产品</strong>  </p>
-<p>  1）快手内部生态分为生产者和消费者，你如何选择一个指标，用于评判尽可能多的人发作品 </p>
-<p>  2）直播间价值用观看时长来评判，选择一个指标去评判直播间的价值 </p>
-<p>  <strong>5.python</strong>  </p>
-<p>  一个简单编程，list a = [10,20,30,40,50,60,70,80,90] </p>
-<p>  在list 中先取出20的倍数，i.e., 20,40,60,80，再取出30的倍数，依此类推一直到90，最后取出10的倍数 </p>
-<p>  <strong>6.Sql</strong>  </p>
-<p>  leetcode, top three department salary 变种 </p>
-<p>  二面 30mins 隔天 </p>
-<p>  1.得到一个AB test结果，你怎么分析 </p>
-<p>  2.经典product题目，一个指标下降了，如何分析 </p>
-<p>  3.宏观问题，怎么分析南北方用户差异</p>
+<p>一面 1h</p>
+<p><strong>1.自我介绍</strong></p>
+<p><strong>2.统计</strong></p>
+<p>1）假设检验，A城市平均工资X1，方差sigma1，B城市平均工资X2，方差sigma2.</p>
+<p>设计假设检验，验证X1显著大于X2，要求H0，H1，假设检验统计量及其分布</p>
+<p>2）概率论，甲乙两人同时玩一个游戏，投至均匀骰子，两个人轮流投掷，谁先投到6谁赢，</p>
+<p>问甲先投，获胜的概率</p>
+<p><strong>3.机器学习</strong></p>
+<p>1）100万个样本量，70个feature，如果你用random forest，你会选择多深的树</p>
+<p>2）简述bagging，rf，boosting的区别</p>
+<p><strong>4.产品</strong></p>
+<p>1）快手内部生态分为生产者和消费者，你如何选择一个指标，用于评判尽可能多的人发作品</p>
+<p>2）直播间价值用观看时长来评判，选择一个指标去评判直播间的价值</p>
+<p><strong>5.python</strong></p>
+<p>一个简单编程，list a = [10,20,30,40,50,60,70,80,90]</p>
+<p>在list 中先取出20的倍数，i.e., 20,40,60,80，再取出30的倍数，依此类推一直到90，最后取出10的倍数</p>
+<p><strong>6.Sql</strong></p>
+<p>leetcode, top three department salary 变种</p>
+<p>二面 30mins 隔天</p>
+<p>1.得到一个AB test结果，你怎么分析</p>
+<p>2.经典product题目，一个指标下降了，如何分析</p>
+<p>3.宏观问题，怎么分析南北方用户差异</p>
 <p>2020-6-13 大数据挖掘与分析实习生一面面经</p>
 <ol>
-<li><p>自我介绍</p>
+<li>
+<p>自我介绍</p>
 </li>
-<li><p>sql怎么样</p>
+<li>
+<p>sql怎么样</p>
 </li>
-<li><p>python怎么自学的</p>
+<li>
+<p>python怎么自学的</p>
 </li>
-<li><p>讲一个数据挖掘与分析实习或项目。</p>
+<li>
+<p>讲一个数据挖掘与分析实习或项目。</p>
 <p><strong>5.讲实习经历</strong></p>
 </li>
 </ol>
@@ -555,58 +560,74 @@
 <p>输出层：模型+报告撰写。</p>
 <p>简单版本</p>
 <ul>
-<li><p><strong>项目背景：</strong>简述项目相关背景，为什么做，目的是什么</p>
+<li>
+<p>**项目背景：**简述项目相关背景，为什么做，目的是什么</p>
 </li>
-<li><p><strong>项目进度：</strong>综述项目的整体进程，以及目前的情况</p>
+<li>
+<p>**项目进度：**综述项目的整体进程，以及目前的情况</p>
 </li>
-<li><p><strong>名词解释：</strong>关键性指标定义是什么，为什么这么定义</p>
+<li>
+<p>**名词解释：**关键性指标定义是什么，为什么这么定义</p>
 <p>名词解释：关键性指标的定义是说明，为什么这么定义。有何不同。</p>
 </li>
-<li><p><strong>数据获取方法：</strong>如何取样，怎么获取到的数据，会有哪些问题</p>
+<li>
+<p>**数据获取方法：**如何取样，怎么获取到的数据，会有哪些问题</p>
 <p>数据获取方法：如何取样，相关问题。包括异常值补充，如何填充。数据清洗和数据补全。</p>
 </li>
-<li><p><strong>数据概览：</strong>重要指标的趋势，变化情况，重要拐点成因解释</p>
+<li>
+<p>**数据概览：**重要指标的趋势，变化情况，重要拐点成因解释</p>
 <ul>
 <li>可视化或者表格展示</li>
 </ul>
 </li>
-<li><p><strong>数据拆分：</strong>根据需要拆分不同的维度，作为细节补充</p>
+<li>
+<p>**数据拆分：**根据需要拆分不同的维度，作为细节补充</p>
 </li>
-<li><p><strong>结论汇总：</strong>汇总之前数据分析的主要结论，作为概览</p>
+<li>
+<p>**结论汇总：**汇总之前数据分析的主要结论，作为概览</p>
 </li>
-<li><p><strong>后续改进：</strong>分析目前存在的问题，并给出解决改进防范</p>
+<li>
+<p>**后续改进：**分析目前存在的问题，并给出解决改进防范</p>
 </li>
-<li><p><strong>致谢</strong></p>
+<li>
+<p><strong>致谢</strong></p>
 </li>
-<li><p><strong>附件：</strong>详细数据</p>
+<li>
+<p>**附件：**详细数据</p>
 </li>
 </ul>
 <p>专业版本</p>
 <ol>
-<li><p>标题业</p>
+<li>
+<p>标题业</p>
 </li>
-<li><p>目标</p>
+<li>
+<p>目标</p>
 </li>
-<li><p>前言</p>
-<p>a.    其对能否解决业务问题，起到决策性作用。包括分析背景、目的以及思路。</p>
+<li>
+<p>前言</p>
+<p>a.	其对能否解决业务问题，起到决策性作用。包括分析背景、目的以及思路。</p>
 </li>
-<li><p>正文</p>
+<li>
+<p>正文</p>
 <p>a. 报告的核心观点是什么？由哪些子观点组成，支持每个子观点的数据，展示方式，量化结果（遵循金字塔原理)</p>
 <ol>
 <li>现状描述；2， 什么量化指标；3，同比、环比等等 4. 选择原因</li>
 </ol>
 </li>
-<li><p>结论</p>
+<li>
+<p>结论</p>
 <p>a. 根据分析结果，通常以综述性文字来说明，要紧密结合业务。</p>
 </li>
-<li><p>附录</p>
+<li>
+<p>附录</p>
 <p>a. 资料，重要数据，地图</p>
 </li>
 </ol>
 <p>关键词： 指标；数据；可视化；逻辑；实事求是</p>
 <p>难点： 建模分析；计量</p>
 <p>重点： 维度；指标</p>
-<p>最忌讳的就是分析出一大推显而易见的结论，就行数据挖掘一样。</p>
+<p>最忌讳的就是分析出一大推显而易见的结论，就像数据挖掘一样。</p>
 <hr>
 <p>2020-6-11</p>
 <p>经济学的顶级期刊。</p>
@@ -764,7 +785,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XieMay</p>
-              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+              <p class="site-description motion-element" itemprop="description">期待花开</p>
           </div>
 
           
@@ -774,7 +795,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -951,7 +972,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2020-6-29-三种相关分析方法的异同"><span class="nav-number">1.</span> <span class="nav-text">2020-6-29 三种相关分析方法的异同</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2020-6-20"><span class="nav-number">2.</span> <span class="nav-text">2020-6-20</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">2020-6-29 三种相关分析方法的异同</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">2020-6-20</span></a></li></ol></div>
             
 
           </div>
@@ -992,7 +1013,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">252k</span>
+    <span title="Symbols count total">295k</span>
   
 
   
@@ -1569,7 +1590,19 @@
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1586,17 +1619,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
