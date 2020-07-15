@@ -116,18 +116,18 @@
   <meta name="keywords" content="机器学习,">
 
 
-<meta name="description" content="理论部分 该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数，去拟合上次预测的残差。当我们训练完成得到k棵树，我们要预测一个样本的分数，其实就是根据这个样本的特征，在每棵树中会落到对应的一个叶子节点，每个叶子节点就对应一个分数，最后只需要将每棵树对应的分数加起来就是该样本的预测值。 boosting: https://zhuanlan.zhihu.c">
+<meta name="description" content="理论部分该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数，去拟合上次预测的残差。当我们训练完成得到k棵树，我们要预测一个样本的分数，其实就是根据这个样本的特征，在每棵树中会落到对应的一个叶子节点，每个叶子节点就对应一个分数，最后只需要将每棵树对应的分数加起来就是该样本的预测值。 boosting: https://zhuanlan.zhihu.co">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xgboost">
 <meta property="og:url" content="http://xiemaycherry.github.io/2020/07/03/Xgboost/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="理论部分 该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数，去拟合上次预测的残差。当我们训练完成得到k棵树，我们要预测一个样本的分数，其实就是根据这个样本的特征，在每棵树中会落到对应的一个叶子节点，每个叶子节点就对应一个分数，最后只需要将每棵树对应的分数加起来就是该样本的预测值。 boosting: https://zhuanlan.zhihu.c">
+<meta property="og:description" content="理论部分该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数，去拟合上次预测的残差。当我们训练完成得到k棵树，我们要预测一个样本的分数，其实就是根据这个样本的特征，在每棵树中会落到对应的一个叶子节点，每个叶子节点就对应一个分数，最后只需要将每棵树对应的分数加起来就是该样本的预测值。 boosting: https://zhuanlan.zhihu.co">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-07-10T03:40:43.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xgboost">
-<meta name="twitter:description" content="理论部分 该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数，去拟合上次预测的残差。当我们训练完成得到k棵树，我们要预测一个样本的分数，其实就是根据这个样本的特征，在每棵树中会落到对应的一个叶子节点，每个叶子节点就对应一个分数，最后只需要将每棵树对应的分数加起来就是该样本的预测值。 boosting: https://zhuanlan.zhihu.c">
+<meta name="twitter:description" content="理论部分该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数，去拟合上次预测的残差。当我们训练完成得到k棵树，我们要预测一个样本的分数，其实就是根据这个样本的特征，在每棵树中会落到对应的一个叶子节点，每个叶子节点就对应一个分数，最后只需要将每棵树对应的分数加起来就是该样本的预测值。 boosting: https://zhuanlan.zhihu.co">
 
 
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                2.7k字
+                2.8k字
               </span>
               
 
@@ -448,30 +448,26 @@
 
       
         <a id="more"></a>
-<h1>理论部分</h1>
-<p>该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数，去拟合上次<strong>预测的残差</strong>。当我们训练完成得到k棵树，我们要预测一个样本的分数，其实就是根据这个样本的特征，在每棵树中会落到对应的一个叶子节点，每个叶子节点就对应一个分数，最后只需要将每棵树对应的分数加起来就是该样本的预测值。</p>
+<h1 id="理论部分"><a href="#理论部分" class="headerlink" title="理论部分"></a>理论部分</h1><p>该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数，去拟合上次<strong>预测的残差</strong>。当我们训练完成得到k棵树，我们要预测一个样本的分数，其实就是根据这个样本的特征，在每棵树中会落到对应的一个叶子节点，每个叶子节点就对应一个分数，最后只需要将每棵树对应的分数加起来就是该样本的预测值。</p>
 <p>boosting: <a href="https://zhuanlan.zhihu.com/p/38329631" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38329631</a></p>
 <p>Xgboost 就是回归树的集成</p>
 <p><a href="https://www.csuldw.com/2019/07/20/2019-07-20-xgboost-theory/" target="_blank" rel="noopener">https://www.csuldw.com/2019/07/20/2019-07-20-xgboost-theory/</a></p>
 <p><a href="https://blog.csdn.net/github_38414650/article/details/76061893?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare" target="_blank" rel="noopener">https://blog.csdn.net/github_38414650/article/details/76061893?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare</a></p>
 <p><a href="https://blog.csdn.net/qq_24519677/article/details/81809157" target="_blank" rel="noopener">https://blog.csdn.net/qq_24519677/article/details/81809157</a></p>
 <p>有空再推导了</p>
-<h1>调用库</h1>
-<p>Python 提供了两种库</p>
+<h1 id="调用库"><a href="#调用库" class="headerlink" title="调用库"></a>调用库</h1><p>Python 提供了两种库</p>
 <ol>
 <li>xgboost</li>
 <li>xgboost sklearn接口</li>
 </ol>
 <p>搭建模型</p>
 <ol>
-<li>
-<p>参数设置</p>
+<li><p>参数设置</p>
 </li>
-<li>
-<p>GridSearchCV 调参(网格法)</p>
-</li>
-<li>
-<p>调参步骤，参数范围</p>
+<li><p>GridSearchCV 调参(网格法)</p>
+<ol>
+<li>调参步骤，参数范围</li>
+</ol>
 </li>
 </ol>
 <p><a href="https://blog.csdn.net/han_xiaoyang/article/details/52665396" target="_blank" rel="noopener">https://blog.csdn.net/han_xiaoyang/article/details/52665396</a></p>
@@ -479,7 +475,7 @@
 <p><a href="https://blog.csdn.net/s09094031/article/details/94871596?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6.compare" target="_blank" rel="noopener">https://blog.csdn.net/s09094031/article/details/94871596?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6.compare</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.model_selection.``train_test_split</span><br></pre></td></tr></table></figure>
 <p>test_size train_size：</p>
-<p>​	三种类型。float，int，None。</p>
+<p>​    三种类型。float，int，None。</p>
 <ul>
 <li>float：0.0-1.0之间，代表训练数据集占总数据集的比例。</li>
 <li>int：代表训练数据集具体的样本数量。</li>
@@ -495,16 +491,14 @@
 <p>stratify：array-like或者None，默认是None。如果不是None，将会利用数据的标签将数据分层划分。</p>
 <p>若为None时，划分出来的测试集或训练集中，其类标签的比例也是随机的。</p>
 <p>若不为None时，划分出来的测试集或训练集中，其类标签的比例同输入的数组中类标签的比例相同，可以用于处理不均衡的数据集。</p>
-<p>x_train, y_train, x_test, y_test = train_test_split(x, y,<br>
-test_size=0.23, random_state=2)</p>
+<p>x_train, y_train, x_test, y_test = train_test_split(x, y,<br>                                                    test_size=0.23, random_state=2)</p>
 <p><a href="https://blog.csdn.net/qq_43288098/article/details/105407204?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.compare" target="_blank" rel="noopener">https://blog.csdn.net/qq_43288098/article/details/105407204?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.compare</a></p>
 <p>参数：分开调</p>
 <p><a href="https://blog.csdn.net/zc02051126/article/details/46711047" target="_blank" rel="noopener">https://blog.csdn.net/zc02051126/article/details/46711047</a></p>
 <p><a href="https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst" target="_blank" rel="noopener">https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst</a></p>
 <p><a href="https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/</a></p>
 <p><a href="https://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn" target="_blank" rel="noopener">https://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn</a></p>
-<h2 id="模型保存"><a class="header-anchor" href="#模型保存">¶</a>模型保存</h2>
-<p><a href="https://www.fatrabbids.com/2018/10/19/xgboost%E7%9A%84%E4%BF%9D%E5%AD%98%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B%E3%80%81%E7%BB%A7%E7%BB%AD%E8%AE%AD%E7%BB%83/#more-235" target="_blank" rel="noopener">https://www.fatrabbids.com/2018/10/19/xgboost%e7%9a%84%e4%bf%9d%e5%ad%98%e6%a8%a1%e5%9e%8b%e3%80%81%e5%8a%a0%e8%bd%bd%e6%a8%a1%e5%9e%8b%e3%80%81%e7%bb%a7%e7%bb%ad%e8%ae%ad%e7%bb%83/#more-235</a></p>
+<h2 id="模型保存"><a href="#模型保存" class="headerlink" title="模型保存"></a>模型保存</h2><p><a href="https://www.fatrabbids.com/2018/10/19/xgboost的保存模型、加载模型、继续训练/#more-235" target="_blank" rel="noopener">https://www.fatrabbids.com/2018/10/19/xgboost%e7%9a%84%e4%bf%9d%e5%ad%98%e6%a8%a1%e5%9e%8b%e3%80%81%e5%8a%a0%e8%bd%bd%e6%a8%a1%e5%9e%8b%e3%80%81%e7%bb%a7%e7%bb%ad%e8%ae%ad%e7%bb%83/#more-235</a></p>
 
       
     </div>
@@ -665,7 +659,7 @@ test_size=0.23, random_state=2)</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -842,7 +836,7 @@ test_size=0.23, random_state=2)</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">理论部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">调用库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型保存"><span class="nav-number">2.1.</span> <span class="nav-text">¶模型保存</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#理论部分"><span class="nav-number">1.</span> <span class="nav-text">理论部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用库"><span class="nav-number">2.</span> <span class="nav-text">调用库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型保存"><span class="nav-number">2.1.</span> <span class="nav-text">模型保存</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -883,7 +877,7 @@ test_size=0.23, random_state=2)</p>
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">295k</span>
+    <span title="Symbols count total">253k</span>
   
 
   
@@ -1460,19 +1454,7 @@ test_size=0.23, random_state=2)</p>
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1489,5 +1471,17 @@ test_size=0.23, random_state=2)</p>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
