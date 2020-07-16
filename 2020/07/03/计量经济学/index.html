@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="welcome">
 <meta property="og:description" content="资料">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-13T09:01:57.537Z">
+<meta property="og:updated_time" content="2020-07-16T09:00:12.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计量经济学">
 <meta name="twitter:description" content="资料">
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                6.5k字
+                6.6k字
               </span>
               
 
@@ -508,7 +508,9 @@
 <p>因为面板数据，异方差有两种可能，其一是时间序列上的，另一种是截面上的，你的是后一种。</p>
 <p>cluster (var)说明var这个组内有相关性</p>
 <p>reghdfe NO false_connect ,absorb(i.stkcd#i.subcityid i.stkcd#i.year i.subcityid#i.year) vce (cl tie)</p>
-<h2 id="DID"><a href="#DID" class="headerlink" title="DID"></a>DID</h2><h1 id="save"><a href="#save" class="headerlink" title="save"></a>save</h1><p>save “connect_simulations.dta”, replace</p>
+<h2 id="DID"><a href="#DID" class="headerlink" title="DID"></a>DID</h2><p> reghdfe lngraddegree lnedu lninfr lnpgdp, absorb(i.year#i.pro) vce(pro)</p>
+<p> xtreg lngraddegree lnedu lninfr lnpgdp i.year, fe vce(cluster pro)</p>
+<h1 id="save"><a href="#save" class="headerlink" title="save"></a>save</h1><p>save “connect_simulations.dta”, replace</p>
 <h1 id="drop"><a href="#drop" class="headerlink" title="drop"></a>drop</h1><p>drop if sgnyea==2010</p>
 <h1 id="gen"><a href="#gen" class="headerlink" title="gen"></a>gen</h1><p>gen market_access_g=ln(1+market_g)</p>
 <p><a href="http://wlm.userweb.mwn.de/Stata/wstatgen.htm" target="_blank" rel="noopener">http://wlm.userweb.mwn.de/Stata/wstatgen.htm</a></p>
@@ -688,7 +690,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -810,7 +812,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -906,7 +910,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">253k</span>
+    <span title="Symbols count total">258k</span>
   
 
   
