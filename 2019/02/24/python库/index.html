@@ -124,10 +124,12 @@
 <meta property="og:site_name" content="welcome">
 <meta property="og:description" content="开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-20T10:09:03.967Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190216223007343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ryb2tlX1pob3U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:updated_time" content="2020-07-21T06:11:07.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python库">
 <meta name="twitter:description" content="开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190216223007343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ryb2tlX1pob3U=,size_16,color_FFFFFF,t_70#pic_center">
 
 
 
@@ -440,7 +442,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                5.7k字
+                8.8k字
               </span>
               
 
@@ -551,6 +553,35 @@
 <p>index</p>
 <h1 id="scikit-learn"><a href="#scikit-learn" class="headerlink" title="scikit-learn"></a>scikit-learn</h1><p>官方教程绝对是最好最棒的选择，有简单数学推导、直观立马就能上手的案例，还能提阅读英文的能力喔，实在是一举多得啊！！！！ <a href="https://scikit-learn.org/" target="_blank" rel="noopener">scikit-learn.org</a></p>
 <h2 id="regression"><a href="#regression" class="headerlink" title="regression"></a>regression</h2><h2 id="Feature-selection"><a href="#Feature-selection" class="headerlink" title="Feature selection"></a>Feature selection</h2><h3 id="Method-from-sklearn-feature-selection-import-VarianceThreshold"><a href="#Method-from-sklearn-feature-selection-import-VarianceThreshold" class="headerlink" title="Method from sklearn.feature_selection import VarianceThreshold"></a>Method from sklearn.feature_selection import VarianceThreshold</h3><h3 id="sklearn-feature-selection-SelectFromModel"><a href="#sklearn-feature-selection-SelectFromModel" class="headerlink" title="sklearn.feature_selection.SelectFromModel"></a>sklearn.feature_selection.SelectFromModel</h3><p><em>class</em> sklearn.feature_selection.SelectFromModel(<em>estimator</em>, , <em>threshold=None</em>, <em>prefit=False</em>, <em>norm_order=1</em>, <em>max_features=None</em>)</p>
+<h1 id="seaborn"><a href="#seaborn" class="headerlink" title="seaborn"></a>seaborn</h1><p>seaborn.jointplot(x, y, data=None, kind=’scatter’, stat_func=None, color=None, height=6, ratio=5, space=0.2, dropna=True, xlim=None, ylim=None, joint_kws=None, marginal_kws=None, annot_kws=None, **kwargs)</p>
+<ul>
+<li><p>Parameters</p>
+<p><strong>x, y</strong>strings or vectorsData or names of variables in <code>data</code>.<strong>data</strong>DataFrame, optionalDataFrame when <code>x</code> and <code>y</code> are variable names.<strong>kind</strong>{ “scatter” | “reg” | “resid” | “kde” | “hex” }, optionalKind of plot to draw.<strong>stat_func</strong>callable or None, optional<em>Deprecated**</em>color<strong>matplotlib color, optionalColor used for the plot elements.</strong>height<strong>numeric, optionalSize of the figure (it will be square).</strong>ratio<strong>numeric, optionalRatio of joint axes height to marginal axes height.</strong>space<strong>numeric, optionalSpace between the joint and marginal axes</strong>dropna<strong>bool, optionalIf True, remove observations that are missing from <code>x</code> and <code>y</code>.</strong>{x, y}lim<strong>two-tuples, optionalAxis limits to set before plotting.</strong>{joint, marginal, annot}_kws<strong>dicts, optionalAdditional keyword arguments for the plot components.</strong>kwargs**key, value pairingsAdditional keyword arguments are passed to the function used to draw the plot on the joint Axes, superseding items in the <code>joint_kws</code> dictionary.</p>
+</li>
+<li><p>Returns</p>
+<p><strong>grid</strong><a href="https://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid" target="_blank" rel="noopener"><code>JointGrid</code></a><a href="https://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid" target="_blank" rel="noopener"><code>JointGrid</code></a> object with the plot on it.</p>
+</li>
+</ul>
+<p><a href="http://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid" target="_blank" rel="noopener">http://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid</a></p>
+<p>g = sns.jointplot(x=”x”, y=”y”, kind = ‘reg’ , space=0,color = ‘g’, data=df11,stat_func=sci.pearsonr)</p>
+<p>sns.set()</p>
+<p>sns.axes_style(“darkgrid”)</p>
+<p>sns.set_context(“paper”)</p>
+<p><a href="https://blog.mazhangjing.com/2018/03/29/learn_seaborn/" target="_blank" rel="noopener">https://blog.mazhangjing.com/2018/03/29/learn_seaborn/</a></p>
+<p><a href="https://blog.csdn.net/weiyudang11/article/details/51549672" target="_blank" rel="noopener">https://blog.csdn.net/weiyudang11/article/details/51549672</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#初始化类</span><br><span class="line">g=sns.JointGrid(x=&apos;v_ma5&apos;,y=&apos;price_change&apos;,data=stock,space=0.5,ratio=5)</span><br><span class="line"></span><br><span class="line">g=sns.JointGrid(x=&apos;v_ma5&apos;,y=&apos;price_change&apos;,data=stock,space=0.5,ratio=5)</span><br><span class="line">g=g.plot_joint(plt.scatter,color=&apos;.3&apos;,edgecolor=&apos;r&apos;)</span><br><span class="line">g=g.plot_marginals(sns.distplot,kde=False)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from scipy import stats</span><br><span class="line">g=sns.JointGrid(x=&apos;v_ma5&apos;,y=&apos;price_change&apos;,data=stock,space=0.5,ratio=5)</span><br><span class="line">g=g.plot_joint(plt.scatter,color=&apos;.3&apos;,edgecolor=&apos;r&apos;)</span><br><span class="line">_=g.ax_marg_x.hist(stock.v_ma10,color=&apos;r&apos;,alpha=.6,bins=50)</span><br><span class="line">_=g.ax_marg_y.hist(stock.low,color=&apos;y&apos;,orientation=&quot;horizontal&quot;,bins=20)</span><br><span class="line">rquare=lambda a,b:stats.pearsonr(a,b)[0]**2</span><br><span class="line">g=g.annotate(rquare,template=&apos;&#123;stat&#125;:&#123;val:.2f&#125;&apos;,stat=&apos;$R^2$&apos;,loc=&apos;upper left&apos;,fontsize=12)</span><br></pre></td></tr></table></figure>
+<h2 id="颜色和风格设置"><a href="#颜色和风格设置" class="headerlink" title="颜色和风格设置"></a>颜色和风格设置</h2><h2 id="调色板"><a href="#调色板" class="headerlink" title="调色板"></a>调色板</h2><p>主要使用以下几个函数设置颜色：<br>color_palette() 能传入任何Matplotlib所有支持的颜色<br>color_palette() 不写参数则默认颜色</p>
+<p>current_palette = sns.color_palette() sns.palplot(current_palette) plt.show()</p>
+<p>set_palette() 设置所有图的颜色</p>
+<p>sns.palplot(sns.color_palette(“hls”,8)) plt.show()</p>
+<h2 id="颜色的亮度及饱和度"><a href="#颜色的亮度及饱和度" class="headerlink" title="颜色的亮度及饱和度"></a>颜色的亮度及饱和度</h2><p>l-光度 lightness<br>s-饱和 saturation</p>
+<p>sns.palplot(sns.hls_palette(8,l=.7,s=.9)) plt.show()</p>
+<h2 id="xkcd选取颜色"><a href="#xkcd选取颜色" class="headerlink" title="xkcd选取颜色"></a>xkcd选取颜色</h2><p>xkcd包含了一套众包努力的针对随机RGB色的命名。产生了954个可以随时通过xkcd_rgb字典中调用的命名颜色</p>
+<p>plt.plot([0,1],[0,1],sns.xkcd_rgb[‘pale red’],lw = 3) #lw = 线宽度<br>plt.plot([0,1],[0,2],sns.xkcd_rgb[‘medium green’],lw = 3)<br>plt.plot([0,1],[0,3],sns.xkcd_rgb[‘denim blue’],lw = 3)<br>plt.show()</p>
+<p><img src="https://img-blog.csdnimg.cn/20190216223007343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ryb2tlX1pob3U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="汇总"><a href="#汇总" class="headerlink" title="汇总"></a>汇总</h2><p><a href="http://seaborn.pydata.org/api.html#" target="_blank" rel="noopener">http://seaborn.pydata.org/api.html#</a></p>
+<p><a href="https://github.com/mwaskom/seaborn/blob/master/seaborn/rcmod.py" target="_blank" rel="noopener">https://github.com/mwaskom/seaborn/blob/master/seaborn/rcmod.py</a></p>
+<p><a href="https://xkcd.com/color/rgb/" target="_blank" rel="noopener">https://xkcd.com/color/rgb/</a></p>
 
       
     </div>
@@ -902,7 +933,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-高级用法总结"><span class="nav-number">1.</span> <span class="nav-text">Python 高级用法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#容器：-Containers"><span class="nav-number">1.1.</span> <span class="nav-text">容器： Containers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list推导（list-comprehensions"><span class="nav-number">2.</span> <span class="nav-text">list推导（list comprehensions)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">3.</span> <span class="nav-text">迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可迭代对象："><span class="nav-number">3.1.</span> <span class="nav-text">可迭代对象：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python库——numpy"><span class="nav-number">4.</span> <span class="nav-text">Python库——numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What"><span class="nav-number">4.1.</span> <span class="nav-text">What</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How"><span class="nav-number">4.2.</span> <span class="nav-text">How</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python库——pandas"><span class="nav-number">5.</span> <span class="nav-text">Python库——pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what"><span class="nav-number">5.1.</span> <span class="nav-text">what</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib"><span class="nav-number">6.</span> <span class="nav-text">Matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index"><span class="nav-number">7.</span> <span class="nav-text">index</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#scikit-learn"><span class="nav-number"></span> <span class="nav-text">scikit-learn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#regression"><span class="nav-number">1.</span> <span class="nav-text">regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-selection"><span class="nav-number">2.</span> <span class="nav-text">Feature selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-from-sklearn-feature-selection-import-VarianceThreshold"><span class="nav-number">2.1.</span> <span class="nav-text">Method from sklearn.feature_selection import VarianceThreshold</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sklearn-feature-selection-SelectFromModel"><span class="nav-number">2.2.</span> <span class="nav-text">sklearn.feature_selection.SelectFromModel</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-高级用法总结"><span class="nav-number">1.</span> <span class="nav-text">Python 高级用法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#容器：-Containers"><span class="nav-number">1.1.</span> <span class="nav-text">容器： Containers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list推导（list-comprehensions"><span class="nav-number">2.</span> <span class="nav-text">list推导（list comprehensions)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">3.</span> <span class="nav-text">迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可迭代对象："><span class="nav-number">3.1.</span> <span class="nav-text">可迭代对象：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python库——numpy"><span class="nav-number">4.</span> <span class="nav-text">Python库——numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What"><span class="nav-number">4.1.</span> <span class="nav-text">What</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How"><span class="nav-number">4.2.</span> <span class="nav-text">How</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python库——pandas"><span class="nav-number">5.</span> <span class="nav-text">Python库——pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what"><span class="nav-number">5.1.</span> <span class="nav-text">what</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib"><span class="nav-number">6.</span> <span class="nav-text">Matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index"><span class="nav-number">7.</span> <span class="nav-text">index</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#scikit-learn"><span class="nav-number"></span> <span class="nav-text">scikit-learn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#regression"><span class="nav-number">1.</span> <span class="nav-text">regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-selection"><span class="nav-number">2.</span> <span class="nav-text">Feature selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-from-sklearn-feature-selection-import-VarianceThreshold"><span class="nav-number">2.1.</span> <span class="nav-text">Method from sklearn.feature_selection import VarianceThreshold</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sklearn-feature-selection-SelectFromModel"><span class="nav-number">2.2.</span> <span class="nav-text">sklearn.feature_selection.SelectFromModel</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#seaborn"><span class="nav-number"></span> <span class="nav-text">seaborn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色和风格设置"><span class="nav-number">1.</span> <span class="nav-text">颜色和风格设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调色板"><span class="nav-number">2.</span> <span class="nav-text">调色板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色的亮度及饱和度"><span class="nav-number">3.</span> <span class="nav-text">颜色的亮度及饱和度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xkcd选取颜色"><span class="nav-number">4.</span> <span class="nav-text">xkcd选取颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇总"><span class="nav-number">5.</span> <span class="nav-text">汇总</span></a></li></ol></li></div>
             
 
           </div>
@@ -943,7 +974,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">273k</span>
+    <span title="Symbols count total">277k</span>
   
 
   
@@ -1520,19 +1551,7 @@
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1549,5 +1568,17 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
