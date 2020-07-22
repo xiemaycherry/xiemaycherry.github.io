@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://xiemaycherry.github.io/2019/02/22/%E5%AD%A6%E4%B9%A0Daily/</loc>
+    <lastmod>2020-07-22T16:36:32.297Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/17/%E7%A7%91%E7%A0%94-%E5%90%84%E8%A1%8C%E5%90%84%E4%B8%9A%E6%A0%87%E5%87%86/</loc>
+    <lastmod>2020-07-22T16:01:21.150Z</lastmod>
+  </url>  <url>
     <loc>http://xiemaycherry.github.io/2020/06/09/Reading-Record/</loc>
     <lastmod>2020-07-22T15:25:08.437Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/02/22/%E5%AD%A6%E4%B9%A0Daily/</loc>
-    <lastmod>2020-07-22T15:22:51.134Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2019/02/24/python%E5%BA%93/</loc>
     <lastmod>2020-07-21T06:11:07.353Z</lastmod>
@@ -42,9 +45,6 @@
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2020/07/03/Xgboost/</loc>
     <lastmod>2020-07-19T03:06:54.130Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/17/%E7%A7%91%E7%A0%94-%E5%90%84%E8%A1%8C%E5%90%84%E4%B8%9A%E6%A0%87%E5%87%86/</loc>
-    <lastmod>2020-07-18T09:51:15.589Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2019/02/22/MayMay/</loc>
     <lastmod>2020-07-17T10:19:12.247Z</lastmod>
