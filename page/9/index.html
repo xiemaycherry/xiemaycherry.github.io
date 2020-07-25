@@ -350,6 +350,291 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/22/Boosting/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/22/Boosting/" itemprop="url">Boosting</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-22T14:54:29+08:00">2019-03-22</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/22/Boosting/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/22/Boosting/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                4.2k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h1>Boosting</h1>
+<h2 id="原理"><a class="header-anchor" href="#原理">¶</a>原理</h2>
+<p>Boosting算法是将“弱学习算法“提升为“强学习算法”的过程。</p>
+<ol>
+<li>
+<p>加法模型<br>
+$$<br>
+F_n(x;P) = \sum_{t=1}^{n}\alpha_th_t(x;a_t)<br>
+$$</p>
+</li>
+<li>
+<p>前向分步<br>
+$$<br>
+F_m(x) = F_{m-1}(x)+\alpha_mh_m(x,a_m)<br>
+$$<br>
+如果选取不同损失函数，则产生不同的类型</p>
+</li>
+</ol>
+<h1>AdaBoost</h1>
+<p>AdaBoost就是损失函数为指数损失的Boosting算法。</p>
+<ol>
+<li>
+<p>每一次迭代的弱学习$h(x;a_m)$有何不一样，如何学习？</p>
+<p>AdaBoost改变了训练数据的权值，也就是样本的概率分布，其思想是将关注点放在被错误分类的样本上，减小上一轮被正确分类的样本权值，提高那些被错误分类的样本权值。</p>
+</li>
+<li>
+<p>弱分类器权值$β_m$如何确定？</p>
+<p>AdaBoost采用加权多数表决的方法，加大分类误差率小的弱分类器的权重，减小分类误差率大的弱分类器的权重。这个很好理解，正确率高分得好的弱分类器在强分类器中当然应该有较大的发言权。</p>
+</li>
+</ol>
+<h2 id="原理理解"><a class="header-anchor" href="#原理理解">¶</a>原理理解</h2>
+<p>基于Boosting的理解，对于AdaBoost，我们要搞清楚两点：</p>
+<p>每一次迭代的弱学习h(x;am)有何不一样，如何学习？<br>
+弱分类器权值βm如何确定？<br>
+对于第一个问题，AdaBoost改变了训练数据的权值，也就是样本的概率分布，其思想是将关注点放在被错误分类的样本上，减小上一轮被正确分类的样本权值，提高那些被错误分类的样本权值。然后，再根据所采用的一些基本机器学习算法进行学习，比如逻辑回归。</p>
+<p>对于第二个问题，AdaBoost采用加权多数表决的方法，加大分类误差率小的弱分类器的权重，减小分类误差率大的弱分类器的权重。这个很好理解，正确率高分得好的弱分类器在强分类器中当然应该有较大的发言权。</p>
+<h2 id="公式推导"><a class="header-anchor" href="#公式推导">¶</a>公式推导</h2>
+<p>指数损失函数<br>
+$$<br>
+L(Y,f(x))=exp(-Yf(x))<br>
+$$<br>
+权重更新公式: 采用的指数误差函数<br>
+$$<br>
+l_{exp}(a_th_t|D_t)=E(exp(-f(x)a_th_t(x)))\<br>
+=p(f(x)=h_t(x))e<sup>{-at}+p(f(x)!=h_t(x))e</sup>{at}\<br>
+=e<sup>{-at}(1-\xi)+e</sup>{at}\xi<br>
+$$</p>
+<p>$$<br>
+a_t=\frac{1}{2}ln \frac{1-\xi}{\xi}<br>
+$$</p>
+<p>分布更新公式<br>
+$$<br>
+\begin{aligned} l\left(H_{t-1}(x)+\alpha h_{t}(x) | D\right) &amp;=E_{X \sim D}\left(\exp \left(-y(x)\left(H_{t-1}(x)+\alpha h_{t}(x)\right)\right)\right) \ &amp;=E_{x \sim D}\left(\exp \left(-y(x) H_{t-1}(x)\right) \exp \left(-y(x) \alpha h_{t}(x)\right)\right) \end{aligned}<br>
+$$</p>
+<p>在泰勒展开$exp(-y(x)h_t(x))$<br>
+$$<br>
+\begin{aligned} l\left(H_{t-1}(x)+h_{t}(x) | D\right) &amp; \approx E_{x \sim D}\left[\exp \left(-y(x) H_{t-1}(x)\right)\left(1-\alpha y(x) h_{t}(x)+\frac{\alpha^{2} y^{2}(x) h_{t}^{2}(x)}{2}\right)\right] \ &amp;=E_{x \sim D}\left[\exp \left(-y(x) H_{t-1}(x)\right)\left(1-y(x) h_{t}(x)+0.5 \alpha^{2}\right)\right] \end{aligned}<br>
+$$</p>
+<p>$$<br>
+\begin{aligned} h(x) &amp;=\arg \min <em>{h} l\left(H</em>{t-1}(x)+\alpha h_{t} | D\right) \ &amp;=\arg \max <em>{h} E</em>{x \sim D}\left[\exp \left(-y(x) H_{t-1}(x)\right) \alpha y(x) h_{t}(x)\right] \ &amp;=\arg \max <em>{h}\left[\frac{\exp \left(-y(x) H</em>{t-1}(x)\right)}{E_{x \sim D}\left[\exp \left(-y(x) H_{t-1}(x)\right)\right]} y(x) h(x)\right] \end{aligned}<br>
+$$</p>
+<p>$$</p>
+<p>$$</p>
+<p>令一个新分布,注意分子是常数<br>
+$$<br>
+D_{t}(x)=\frac{D(x) \exp \left(-y(x) H_{t-1}(x)\right)^{L}}{E_{x \sim D}\left[\exp \left(-y(x) H_{t-1}(x)\right)\right]}<br>
+$$</p>
+<p>$$<br>
+\begin{aligned} h(x) &amp;=\arg \max <em>{h} E</em>{x \sim D,}(y(x) h(x)) \ &amp;=\arg \max <em>{h} E</em>{x \sim D_{t}}(1-2 \mathcal{I}(y(x) \neq h(x))) \ &amp;=\arg \min <em>{h} E</em>{x \sim D_{i}}(\mathcal{I}(y(x) \neq h(x))) \end{aligned}<br>
+$$</p>
+<p>同理可得<br>
+$$<br>
+\begin{aligned} D_{t+1} &amp;=\frac{D(x) \exp \left(-y(x) H_{t}(x)\right)}{E_{x \sim D}\left[\exp \left(-y(x) H_{t}(x)\right)\right]} \ &amp;=\frac{D_{t}(x) \cdot E_{x \sim D}\left[\exp \left(-y(x) H_{t-1}(x)\right)\right] \cdot \exp \left(-y(x) H_{t}(x)\right)}{\exp \left(-y(x) H_{t-1}(x)\right) \cdot E_{x \sim D}\left[\exp \left(-y(x) H_{t}(x)\right)\right]} \ &amp;=D_{t}(x) \exp \left(-y(x) \alpha h_{t}(x)\right) \cdot C . \quad(C i s a \text {constant}) \end{aligned}<br>
+$$</p>
+<p>$$<br>
+Z_{t}=\sum_{i}^{m} D_{t}(x) \exp \left(-y(x) \alpha_{t} h_{y}(x)\right)<br>
+$$</p>
+<p>指数误差函数<br>
+$$<br>
+\begin{aligned} l(H(x) | D) &amp;=\frac{1}{m} \sum_{i}^{m} \exp \left(-y_{i} H\left(x_{i}\right)\right) \ &amp;=\frac{1}{m} \sum_{i}^{m} \exp \left(-\sum_{j}^{T} \alpha_{j} y_{i} h_{j}\left(x_{i}\right)\right) \ &amp;=\sum_{i}^{m} D_{1}\left(x_{i}\right) \exp \left(-\sum_{j}^{T} \alpha_{j} y_{i} h_{j}\left(x_{i}\right)\right) \ &amp;=Z_{1} Z_{2}\left(x_{i}\right) \exp \left(-\sum_{j=2}^{T} \alpha_{j} y_{i} h_{j}\left(x_{i}\right)\right) \ &amp; \vdots \ &amp;=\prod_{i=1}^{T} Z_{i} \end{aligned}<br>
+$$</p>
+<h2 id="算法描述"><a class="header-anchor" href="#算法描述">¶</a>算法描述</h2>
+<p>总结一下，得到AdaBoost的算法流程：</p>
+<p>输入：训练数据集$T={(x1,y1),(x2,y2),(xN,yN)}T={(x1,y1),(x2,y2),(xN,yN)}$，其中，$xi∈X⊆Rnxi∈X⊆Rn，yi∈Y=−1,1yi∈Y=−1,1，$迭代次数M</p>
+<p>初始化训练样本的权值分布：$D1=(w1,1,w1,2,…,w1,i),w,i=1,2,…,N$。</p>
+<p>对于$m=1,2,…,M$</p>
+<p>(a)　使用具有权值分布$D_m$的训练数据集进行学习，得到弱分类器$h_m(x)$　(b)　计算$h_m(x)$在训练数据集上的分类误差率：</p>
+<p>$e_m=∑_{i=1}^{N}w_m,iI(h_m(xi)≠y_i)$</p>
+<p>©　计算$h_m(x)$在强分类器中所占的权重：</p>
+<p>$\alpha_m=\frac{1}{2}log(\frac{1−e_m}{e_m})$</p>
+<p>(d)　更新训练数据集的权值分布（这里，$z_m是归一化因子，为了使样本的概率分布和为1）：</p>
+<p>$$w_{m+1,i}=\frac{w_{m,i}}exp(−α_my_ih_m(xi))，i=1,2,…,10$$</p>
+<p>$$z_m=∑_{i=1}^{N}w_{m,i}exp(−α_my_ih_m(xi))$$</p>
+<p>得到最终分类器：</p>
+<p>$$F(x)=sign(∑_{i=1}^{N}α_mh_m(x))$$</p>
+<h2 id="面经"><a class="header-anchor" href="#面经">¶</a>面经</h2>
+<p>今年8月开始找工作，参加大厂面试问到的相关问题有如下几点：</p>
+<ol>
+<li>手推AdaBoost</li>
+</ol>
+<ol start="2">
+<li>与GBDT比较</li>
+</ol>
+<ol start="3">
+<li>AdaBoost几种基本机器学习算法哪个抗噪能力最强，哪个对重采样不敏感？</li>
+</ol>
+<h2 id="算法流程"><a class="header-anchor" href="#算法流程">¶</a>算法流程</h2>
+<h2 id="实例计算"><a class="header-anchor" href="#实例计算">¶</a>实例计算</h2>
+<h2 id="python实现"><a class="header-anchor" href="#python实现">¶</a>Python实现</h2>
+<p><a href="https://www.cnblogs.com/davidwang456/articles/8927029.html" target="_blank" rel="noopener">https://www.cnblogs.com/davidwang456/articles/8927029.html</a></p>
+<h1>集成学习</h1>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/19/SVR/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1299,189 +1584,11 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/决策树/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/03/决策树/" itemprop="url">决策树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T09:18:39+08:00">2019-03-03</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/03/决策树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/决策树/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                5.9k字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！😄 😃 😁 😮</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/03/决策树/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1524,7 +1631,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1569,7 +1676,9 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1652,7 +1761,9 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1732,7 +1843,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">324k</span>
+    <span title="Symbols count total">325k</span>
   
 
   
