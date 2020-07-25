@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="welcome">
 <meta property="og:description" content="PageRank是一种网页排序算法，基于页面的质量和数量。可应用于评估网页节点重要性。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-16T12:45:38.647Z">
+<meta property="og:updated_time" content="2020-07-25T07:58:48.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PageRank算法">
 <meta name="twitter:description" content="PageRank是一种网页排序算法，基于页面的质量和数量。可应用于评估网页节点重要性。">
@@ -390,6 +390,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/科研/" itemprop="url" rel="index"><span itemprop="name">科研</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -422,7 +440,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                656字
+                679字
               </span>
               
 
@@ -449,22 +467,32 @@
       
         <p>PageRank是一种网页排序算法，基于页面的质量和数量。可应用于评估网页节点重要性。</p>
 <a id="more"></a>
-<h1 id="PageRank算法"><a href="#PageRank算法" class="headerlink" title="PageRank算法"></a>PageRank算法</h1><p>PageRank,即<strong><em>\</em>网页排名**</strong>，又称<strong>网页级别</strong>、<strong>Google左侧排名</strong>或<strong>佩奇排名。</strong>PageRank是Google用于用来标识网页的等级/重要性的一种方法，是Google用来衡量一个网站的好坏的唯一标准。</p>
+<h1>PageRank算法</h1>
+<p>PageRank,即****网页排名*<em><strong>，又称</strong>网页级别</em>*、<strong>Google左侧排名</strong>或**佩奇排名。**PageRank是Google用于用来标识网页的等级/重要性的一种方法，是Google用来衡量一个网站的好坏的唯一标准。</p>
 <p>假设</p>
 <ol>
 <li>数量假设: 如果一个页面节点入链数量越多，则这个页码越重要。</li>
 <li>质量假设：指向页面A的入链质量不同，考虑权重的影响，则这个页面越是重要。</li>
 </ol>
-<h2 id="算法求解"><a href="#算法求解" class="headerlink" title="算法求解"></a>算法求解</h2><ol>
+<h2 id="算法求解"><a class="header-anchor" href="#算法求解">¶</a>算法求解</h2>
+<ol>
 <li>第一阶段：通过网页链接关系构建起Web图，初始每个页面相同的PageRank值，再通过若干轮得到每个页面的最终pagerank.</li>
 <li>每一轮更新页面PageRank得分的计算方法</li>
 </ol>
-<h3 id="权重"><a href="#权重" class="headerlink" title="权重"></a>权重</h3><script type="math/tex; mode=display">
-PR(T)/L(T)\\
-where PR(T)的PageRank值，L(T)为T的出链数目</script><h3 id="修正"><a href="#修正" class="headerlink" title="修正"></a>修正</h3><p>$L(T)$为0的情况，孤立网页，使得很多网页能被访问到。$q = 0.85$</p>
-<script type="math/tex; mode=display">
-PR(A) = (\frac{PR(B)}{L(B)}+\frac{PR(C)}{L(C)}+\dots)q+1-q</script><h2 id="其他网络属性度量方法"><a href="#其他网络属性度量方法" class="headerlink" title="其他网络属性度量方法"></a>其他网络属性度量方法</h2><p>Centrality indices:  degree, betweenness, and closeness.</p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p>提出者： The anatomy of a large-scale hypertextual Web search engine  </p>
+<h3 id="权重"><a class="header-anchor" href="#权重">¶</a>权重</h3>
+<p>$$<br>
+PR(T)/L(T)\<br>
+where PR(T)的PageRank值，L(T)为T的出链数目<br>
+$$</p>
+<h3 id="修正"><a class="header-anchor" href="#修正">¶</a>修正</h3>
+<p>$L(T)$为0的情况，孤立网页，使得很多网页能被访问到。$q = 0.85$<br>
+$$<br>
+PR(A) = (\frac{PR(B)}{L(B)}+\frac{PR©}{L©}+\dots)q+1-q<br>
+$$</p>
+<h2 id="其他网络属性度量方法"><a class="header-anchor" href="#其他网络属性度量方法">¶</a>其他网络属性度量方法</h2>
+<p>Centrality indices:  degree, betweenness, and closeness.</p>
+<h2 id="reference"><a class="header-anchor" href="#reference">¶</a>reference</h2>
+<p>提出者： The anatomy of a large-scale hypertextual Web search engine</p>
 <p><a href="https://en.wikipedia.org/wiki/PageRank" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/PageRank</a></p>
 
       
@@ -547,8 +575,8 @@ PR(A) = (\frac{PR(B)}{L(B)}+\frac{PR(C)}{L(C)}+\dots)q+1-q</script><h2 id="其�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/17/科研-各行各业标准/" rel="prev" title="国际和国内标准">
-                国际和国内标准 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/17/学习の历程-《机器学习》周志华学习记录/" rel="prev" title="西瓜书">
+                西瓜书 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -626,7 +654,7 @@ PR(A) = (\frac{PR(B)}{L(B)}+\frac{PR(C)}{L(C)}+\dots)q+1-q</script><h2 id="其�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -754,15 +782,7 @@ PR(A) = (\frac{PR(B)}{L(B)}+\frac{PR(C)}{L(C)}+\dots)q+1-q</script><h2 id="其�
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -817,7 +837,7 @@ PR(A) = (\frac{PR(B)}{L(B)}+\frac{PR(C)}{L(C)}+\dots)q+1-q</script><h2 id="其�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PageRank算法"><span class="nav-number">1.</span> <span class="nav-text">PageRank算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法求解"><span class="nav-number">1.1.</span> <span class="nav-text">算法求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权重"><span class="nav-number">1.1.1.</span> <span class="nav-text">权重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修正"><span class="nav-number">1.1.2.</span> <span class="nav-text">修正</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他网络属性度量方法"><span class="nav-number">1.2.</span> <span class="nav-text">其他网络属性度量方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.3.</span> <span class="nav-text">reference</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">PageRank算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法求解"><span class="nav-number">1.1.</span> <span class="nav-text">¶算法求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权重"><span class="nav-number">1.1.1.</span> <span class="nav-text">¶权重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修正"><span class="nav-number">1.1.2.</span> <span class="nav-text">¶修正</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他网络属性度量方法"><span class="nav-number">1.2.</span> <span class="nav-text">¶其他网络属性度量方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.3.</span> <span class="nav-text">¶reference</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -858,7 +878,7 @@ PR(A) = (\frac{PR(B)}{L(B)}+\frac{PR(C)}{L(C)}+\dots)q+1-q</script><h2 id="其�
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">277k</span>
+    <span title="Symbols count total">316k</span>
   
 
   
@@ -1400,6 +1420,29 @@ PR(A) = (\frac{PR(B)}{L(B)}+\frac{PR(C)}{L(C)}+\dots)q+1-q</script><h2 id="其�
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 

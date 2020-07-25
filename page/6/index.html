@@ -350,6 +350,663 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/" itemprop="url">aiai_</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T09:20:51+08:00">2019-04-17</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/深度学习-Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">深度学习(Deep Learning)</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                30k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1>C2W1</h1>
+<h2 id="l01-train-dev-test-sets"><a class="header-anchor" href="#l01-train-dev-test-sets">¶</a>L01 : Train/Dev/Test Sets</h2>
+<h3 id="1-process"><a class="header-anchor" href="#1-process">¶</a>1. process</h3>
+<p>应用型机器学习是一个高度迭代的过程，通常在项目启动时，我们会先有一个初步想法，比如构建一个含有特定层数，隐藏单元数量或数据集个数等等的神经网络，然后编码，并尝试运行这些代码，通过运行和测试得到该神经网络或这些配置信息的运行结果，你可能会根据输出结果重新完善自己的想法，改变策略，或者为了找到更好的神经网络不断迭代更新自己的方案。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_2.png)</p>
+<h3 id="2-data-split"><a class="header-anchor" href="#2-data-split">¶</a>2. data split</h3>
+<ul>
+<li>训练集（train set）：用训练集对算法或模型进行<strong>训练</strong>过程；</li>
+<li>验证集（development set）：利用验证集（又称为简单交叉验证集，hold-out cross validation set）进行<strong>交叉验证</strong>，<strong>选择出最好的模型</strong>或者验证不同算法的有效性。</li>
+<li>测试集（test set）：最后利用测试集对模型进行测试，<strong>获取模型运行的无偏估计</strong>（对学习方法进行评估）。</li>
+</ul>
+<p>假设这是训练数据，我用一个长方形表示，我们通常会将这些数据划分成几部分，一部分作为训练集，一部分作为简单交叉验证集，有时也称之为验证集，方便起见，我就叫它验证集（<strong>dev set</strong>），其实都是同一个概念，最后一部分则作为测试集。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_3.png)</p>
+<ol>
+<li>
+<p>在机器学习发展的小数据量时代，如 100、1000、10000 的数据量大小，可以将数据集按照以下比例进行划分：</p>
+<ul>
+<li>无验证集的情况：70% / 30%；</li>
+<li>有验证集的情况：60% / 20% / 20%；</li>
+</ul>
+</li>
+<li>
+<p>在如今的<strong>大数据时代</strong>，对于一个问题，我们拥有的数据集的规模可能是百万级别的，所以验证集和测试集所占的比重会趋向于变得更小。</p>
+<p>验证集的目的是为了验证不同的算法哪种更加有效，所以验证集只要足够大到能够验证大约 2-10 种算法哪种更好，而不需要使用 20% 的数据作为验证集。如百万数据中抽取 1 万的数据作为验证集就可以了。</p>
+<p>测试集的主要目的是评估模型的效果，如在单个分类器中，往往在百万级别的数据中，我们选择其中 1000 条数据足以评估单个模型的效果。</p>
+</li>
+</ol>
+<ul>
+<li>100 万数据量：98% / 1% / 1%；</li>
+<li>超百万数据量：99.5% / 0.25% / 0.25%（或者99.5% / 0.4% / 0.1%）</li>
+</ul>
+<h3 id="3-建议"><a class="header-anchor" href="#3-建议">¶</a>3. 建议</h3>
+<p><strong>验证集要和训练集来自于同一个分布</strong>（数据来源一致），可以使得机器学习算法变得更快并获得更好的效果。</p>
+<p>如果不需要用<strong>无偏估计</strong>来评估模型的性能，则可以不需要测试集。如果只有验证集，没有测试集，我们要做的就是，在训练集上训练，尝试不同的模型框架，在验证集上评估这些模型，然后迭代并选出适用的模型。因为验证集中已经涵盖测试集数据，其不再提供无偏性能评估。当然，如果你不需要无偏估计，那就再好不过了。</p>
+<h2 id="l02-bias-variance"><a class="header-anchor" href="#l02-bias-variance">¶</a>L02 : Bias/Variance</h2>
+<p>**“偏差-方差分解”（bias-variance decomposition）**是解释学习算法泛化性能的一种重要工具。</p>
+<p>泛化误差可分解为偏差、方差与噪声之和：</p>
+<ul>
+<li><strong>偏差</strong>：度量了学习算法的期望预测与真实结果的偏离程度，即刻画了<strong>学习算法本身的拟合能力</strong>；</li>
+<li><strong>方差</strong>：度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了<strong>数据扰动所造成的影响</strong>；</li>
+<li><strong>噪声</strong>：表达了在当前任务上任何学习算法所能够达到的期望泛化误差的下界，即刻画了<strong>学习问题本身的难度</strong>。</li>
+</ul>
+<p>high bias ,underfitting</p>
+<p>high variance, overfitting</p>
+<p>just right</p>
+<h3 id="1-example"><a class="header-anchor" href="#1-example">¶</a>1. example</h3>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_5.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_6.png)</p>
+<p>Your algorithms ever on the training set and dev set you can try to diganose whether has problems high barriers or high variances or both or neither.</p>
+<h2 id="l03-basic-recipe-for-machine-learning"><a class="header-anchor" href="#l03-basic-recipe-for-machine-learning">¶</a>L03 Basic Recipe for Machine learning</h2>
+<h3 id="1-method"><a class="header-anchor" href="#1-method">¶</a>1. METHOD</h3>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_8.png)</p>
+<p>Training a bigger network almost never hurts. And the main cost of training a neural network that’s too big is just computational time, so long as you’re regularizing.</p>
+<p>今天我们讲了如何通过组织机器学习来诊断偏差和方差的基本方法，然后选择解决问题的正确操作，希望大家有所了解和认识。我在课上不止一次提到了正则化，它是一种非常实用的减少方差的方法，正则化时会出现偏差方差权衡问题，偏差可能略有增加，如果网络足够大，增幅通常不会太高，我们下节课再细讲，以便大家更好理解如何实现神经网络的正则化。</p>
+<p>第一点，高偏差和高方差是两种不同的情况，我们后续要尝试的方法也可能完全不同</p>
+<p>只要正则适度，通常构建一个更大的网络便可以，在不影响方差的同时减少偏差，而采用更多数据通常可以在不过多影响偏差的同时减少方差。这两步实际要做的工作是：训练网络，选择网络或者准备更多数据，现在我们有工具可以做到在减少偏差或方差的同时，不对另一方产生过多不良影响。</p>
+<h2 id="l04"><a class="header-anchor" href="#l04">¶</a>L04</h2>
+<h3 id="1-over-fitting"><a class="header-anchor" href="#1-over-fitting">¶</a>1. over fitting</h3>
+<h3 id="regularization"><a class="header-anchor" href="#regularization">¶</a>regularization</h3>
+<p>L2 regularization</p>
+<p>L1 regularizaion: w will be sparse  L1 正则化最后得到 w 向量中将存在大量的 0</p>
+<p>为什么只正则化参数w？为什么不再加上参数b 呢？你可以这么做，只是我习惯省略不写，因为通常w是一个高维参数矢量，w已经可以表达高偏差问题，可能w包含有很多参数，我们不可能拟合所有参数，而只是b单个数字，所以w几乎涵盖所有参数，而不是，如果加了参数b，其实也没太大影响，因为b只是众多参数中的一个，所以我通常省略不计，如果你想加上这个参数，完全没问题。</p>
+<ol>
+<li>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_9.png)</li>
+</ol>
+<p>2.![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_10.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_11.png)矩阵范数被称作“弗罗贝尼乌斯范数”，用下标标注F</p>
+<ol start="3">
+<li>
+<p>反向传播时，填上正则化的一项</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_12.png)</p>
+<p>因此L2正则化也被称为“权重衰减”。</p>
+</li>
+</ol>
+<p>to get more training data</p>
+<h2 id="l05-why-regularization-reduces-overfitting"><a class="header-anchor" href="#l05-why-regularization-reduces-overfitting">¶</a>L05 :Why Regularization Reduces Overfitting</h2>
+<p>我们添加正则项，它可以避免数据权值矩阵过大，这就是弗罗贝尼乌斯范数，为什么压缩范数，或者弗罗贝尼乌斯范数或者参数可以减少过拟合？我们尝试消除或至少减少许多隐藏单元的影响，最终这个网络会变得更简单.Regularization其实是让函数变得<strong>简化</strong>。</p>
+<p>直观上理解就是如果正则化设置得足够大，权重矩阵被设置为接近于0的值，直观理解就是把多隐藏单元的权重设为0，于是基本上消除了这些隐藏单元的许多影响。如果是这种情况，这个被大大简化了的神经网络会变成一个很小的网络，小到如同一个逻辑回归单元，可是深度却很大，它会使这个网络从过度拟合的状态更接近左图的高偏差状态。</p>
+<p>总结一下，如果正则化参数变得很大，w参数很小，z也会相对变小，此时忽略的b影响，z会相对变小，实际上，z的取值范围很小，这个激活函数tanh，也就是曲线函数会相对呈线性，整个神经网络会计算离线性函数近的值，这个线性函数非常简单，并不是一个极复杂的高度非线性函数，不会发生过拟合。</p>
+<p><strong>L2 regularization的不足</strong>：要通过不断的选用不同的λ进行测试，计算量加大了。</p>
+<h2 id="l06-dropout-regularization"><a class="header-anchor" href="#l06-dropout-regularization">¶</a>L06 : Dropout Regularization</h2>
+<h3 id="1-工作原理"><a class="header-anchor" href="#1-工作原理">¶</a>1. 工作原理</h3>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_15.png)</p>
+<p>如果上面这幅图存在over fitting。复制这个神经网络，dropout会遍历网络的每一层。假设网络中的每一层，每个节点都以抛硬币的方式设置概率，每个节点得以保留和消除的概率都是0.5，设置完节点概率，我们会消除一些节点，然后删除掉从该节点进出的连线，最后得到一个节点更少，规模更小的网络，然后用<strong>backprop</strong>方法进行训练。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_13.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_14.png)</p>
+<p>我们针对每个训练样本训练规模极小的网络，最后你可能会认识到为什么要正则化网络，因为我们在训练极小的网络。</p>
+<h3 id="2-inverted-dropout-反向随机失活"><a class="header-anchor" href="#2-inverted-dropout-反向随机失活">¶</a>2. <strong>inverted dropout</strong>（反向随机失活）</h3>
+<p>对第L</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">keep_prob = <span class="number">0.8</span>    <span class="comment"># 设置神经元保留概率</span></span><br><span class="line">dl = np.random.rand(al.shape[<span class="number">0</span>], al.shape[<span class="number">1</span>]) &lt; keep_prob</span><br><span class="line">al = np.multiply(al, dl)</span><br><span class="line">al /= keep_prob</span><br></pre></td></tr></table></figure>
+<p>最后一步<code>al /= keep_prob</code>是因为 a[l]a[l]中的一部分元素失活（相当于被归零），为了在下一层计算时不影响 $Z[l+1]=W[l+1]a[l]+b[l+1]$的期望值，因此除以一个<code>keep_prob</code>。举例解释我们假设第三隐藏层上有50个单元或50个神经元，在一维上是50，我们通过因子分解将它拆分成维的，保留和删除它们的概率分别为80%和20%，这意味着最后被删除或归零的单元平均有10（50×20%=10）个，现在我们看下$z<sup>{[4]}$，，我们的预期是$z</sup>{[4]}=w<sup>{[4]}a</sup>{[3]}$，$a<sup>{[3]}$减少20%，也就是说中有$a</sup>{[3]}$20%的元素被归零，为了不影响的$a<sup>{[4]}$期望值，我们需要用$w</sup>{[4]}a<sup>{[3]}/keep_prob$，它将会修正或弥补我们所需的那20%，$a</sup>{[3]}$的期望值不会变，划线部分就是所谓的<strong>dropout</strong>方法。</p>
+<h2 id="l07-understanding-dropout"><a class="header-anchor" href="#l07-understanding-dropout">¶</a>L07 : Understanding Dropout</h2>
+<p>直观上理解：不要依赖于任何一个特征，因为该单元的输入可能随时被清除，因此该单元通过这种方式传播下去，并为单元的四个输入增加一点权重，通过传播所有权重，<strong>dropout</strong>将产生收缩权重的平方范数的效果，和之前讲的L2正则化类似；实施<strong>dropout</strong>的结果实它会压缩权重，并完成一些预防过拟合的外层正则化；L2对不同权重的衰减是不同的，它取决于激活函数倍增的大小。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_16.png)</p>
+<p>计算视觉中的输入量非常大，输入太多像素，以至于没有足够的数据，所以<strong>dropout</strong>在计算机视觉中应用得比较频繁，有些计算机视觉研究人员非常喜欢用它，几乎成了默认的选择，但要牢记一点，<strong>dropout</strong>是一种正则化方法，它有助于预防过拟合，因此除非算法过拟合，不然我是不会使用<strong>dropout</strong>的，所以它在其它领域应用得比较少，主要存在于计算机视觉领域，因为我们通常没有足够的数据，所以一直存在过拟合，这就是有些计算机视觉研究人员如此钟情于<strong>dropout</strong>函数的原因。直观上我认为不能概括其它学科。<strong>dropout</strong>将产生收缩权重的平方范数的效果。当然，不同的层，值可以设置成不同，如果你觉得某一层容易过拟合，把值设置小一点。</p>
+<p>dropout 的一大<strong>缺点</strong>是成本函数无法被明确定义。因为每次迭代都会随机消除一些神经元结点的影响，因此无法确保成本函数单调递减。因此，使用 dropout 时，先将<code>keep_prob</code>全部设置为 1.0 后运行代码，确保 $J(w,b)$函数单调递减，再打开 dropout。</p>
+<h2 id="l08-other-regularization-methods"><a class="header-anchor" href="#l08-other-regularization-methods">¶</a>L08 :  Other Regularization Methods</h2>
+<ul>
+<li>
+<p>数据扩增（Data Augmentation）：通过图片的一些变换（翻转，局部放大后切割等），得到更多的训练集和验证集。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_17.png)</p>
+</li>
+<li>
+<p>早停止法（Early Stopping）：将训练集和验证集进行梯度下降时的成本变化曲线画在同一个坐标轴内，当训练集误差降低但验证集误差升高，两者开始发生较大偏差时及时停止迭代，并返回具有最小验证集误差的连接权和阈值，以避免过拟合。这种方法的缺点是无法同时达成偏差和方差的最优。</p>
+</li>
+</ul>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_18.png)</p>
+<p>但对我来说<strong>early stopping</strong>的主要缺点就是你不能独立地处理这两个问题，因为提早停止梯度下降，也就是停止了优化代价函数，因为现在你不再尝试降低代价函数，所以代价函数的值可能不够小，同时你又希望不出现过拟合，你没有采取不同的方式来解决这两个问题，而是用一种方法同时解决两个问题，这样做的结果是我要考虑的东西变得更复杂。</p>
+<p><strong>Early stopping</strong>的优点是，只运行一次梯度下降，你可以找出的w较小值，中间值和较大值，而无需尝试正则化超级参数的很多值。</p>
+<h2 id="l09-：-normalizing-inputs"><a class="header-anchor" href="#l09-：-normalizing-inputs">¶</a>L09 ： Normalizing inputs</h2>
+<ol>
+<li>
+<p>零均值</p>
+<p>$u=\frac{1}{m}\sum x^{(i)}$,$x-u$</p>
+</li>
+<li>
+<p>归一化方差；</p>
+<p>$\delta<sup>2=\frac{1}{m}(x</sup>{(i)})^2$,每个特征的方差，每个特征数据除以它，就归一化方差了</p>
+</li>
+</ol>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_19.png)</p>
+<h3 id="why"><a class="header-anchor" href="#why">¶</a>why</h3>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_20.png)</p>
+<p>在不使用标准化的成本函数中，如果设置一个较小的学习率，可能需要很多次迭代才能到达全局最优解；而如果使用了标准化，那么无论从哪个位置开始迭代，都能以相对较少的迭代次数找到全局最优解。</p>
+<h2 id="l10-vanishing-exploding-gradients"><a class="header-anchor" href="#l10-vanishing-exploding-gradients">¶</a>L10 : Vanishing /Exploding Gradients</h2>
+<p>训练神经网络，尤其是深度神经所面临的一个问题就是梯度消失或梯度爆炸，也就是你训练神经网络的时候，导数或坡度有时会变得非常大，或者非常小，甚至于以指数方式变小，这加大了训练的难度。</p>
+<p>在深度神经网络中，激活函数将以指数级递减，虽然我只是讨论了激活函数以与相关的指数级数增长或下降，它也适用于与层数相关的导数或梯度函数，也是呈指数级增长或呈指数递减。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_21.png)</p>
+<p>假定 g(z)=z,b[l]=0g(z)=z,b[l]=0，对于目标输出有：</p>
+<p>$y^=W[L]W[L−1]…W[2]W[1]X$</p>
+<ul>
+<li>对于$ W[l]$的值大于 1 的情况，激活函数的值将以指数级递增；</li>
+<li>对于 $W[l]$的值小于 1 的情况，激活函数的值将以指数级递减。</li>
+</ul>
+<p>对于导数同理。因此，在计算梯度时，根据不同情况梯度函数会以指数级递增或递减，导致训练导数难度上升，梯度下降算法的步长会变得非常小，需要训练的时间将会非常长。</p>
+<h2 id="l11-weight-initialization-in-a-deep-network"><a class="header-anchor" href="#l11-weight-initialization-in-a-deep-network">¶</a>L11 : Weight initialization in a deep network</h2>
+<p>为了预防值z过大或过小，你可以看到n越大，你希望w越小，因为z是wx+b的和,最合理的方法$w_i=1/n$</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_22.png)</p>
+<p>因此，实际上，你要做的就是设置某层权重矩阵</p>
+<p>$w^{[l]}=n p . random. randn (shape) * np.sqrt \left(\frac{1}{n^{[l-1]}}\right)$</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_23.png)</p>
+<p>当多个节点时，也一样的看，使得这个节点$z^{<a href="i">L</a>}$不要太大，单独看每个节点既可以</p>
+<p>relu : var(w(i)) = 2/n or $\frac{2}{n<sup>{[l-1]}*n</sup>{[l]}}$</p>
+<p>tanh: var(w(i)) = 1/n</p>
+<p>通过设置初始化化权重矩阵，使得不会增长太快或者太慢</p>
+<h2 id="l12-：-numerical-approximations-of-gradients"><a class="header-anchor" href="#l12-：-numerical-approximations-of-gradients">¶</a>L12 ： Numerical Approximations of Gradients</h2>
+<p>单边误差</p>
+<p>$f^{\prime}(\theta)=\lim _{\varepsilon \rightarrow 0} \frac{f(\theta+\varepsilon)-(\theta)}{\varepsilon}$</p>
+<p>误差$O(\varepsilon)$</p>
+<p>双边误差</p>
+<p>$f^{\prime}(\theta)=\lim _{\varepsilon \rightarrow 0}=\frac{f(\theta+\varepsilon)-(\theta-\varepsilon)}{2 \varepsilon}$</p>
+<p>$O\left(\varepsilon^{2}\right)$</p>
+<h2 id="l-13-gradient-checking"><a class="header-anchor" href="#l-13-gradient-checking">¶</a>L 13 Gradient Checking</h2>
+<p>梯度检验帮我们节省了很多时间，也多次帮我发现<strong>backprop</strong>实施过程中的bug，接下来，我们看看如何利用它来调试或检验<strong>backprop</strong>的实施是否正确。</p>
+<p>首先要做的就是，把所有参数转换成一个巨大的向量数据，你要做的就是把矩阵w转换成一个向量，把所有矩阵w转换成向量之后，做连接运算，得到一个巨型向量$\theta$，该向量表示为参数$\theta$，代价函数J是所有W和b的函数，现在你得到了一个的代价函数（即）。接着，你得到与和顺序相同的数据，你同样可以把$dW<sup>{[l]}$,和$db</sup>{[l]}$ 转换成一个新的向量，用它们来初始化大向量$d\theta$，它与$\theta$具有相同维度。</p>
+<p>梯度的逼近值<br>
+$$<br>
+d \theta_{\text { approx }}[i]=\frac{J\left(\theta_{1}, \theta_{2}, \ldots . \theta_{i}+\varepsilon, \ldots\right)-J\left(\theta_{1}, \theta_{2}, \ldots . \theta_{i}-\varepsilon, \ldots\right)}{2 \varepsilon}<br>
+$$<br>
+![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_24.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_25.png)</p>
+<p>现在你已经了解了梯度检验的工作原理，它帮助我在神经网络实施中发现了很多<strong>bug</strong>，希望它对你也有所帮助。</p>
+<h1>L 14 : Gradient Checking Implementation notes</h1>
+<ol>
+<li>不要在训练中使用梯度检验，它只用于调试（debug）。使用完毕关闭梯度检验的功能；太慢了</li>
+<li>如果算法的梯度检验失败，要检查所有项，并试着找出 bug，即确定哪个 dθapprox[i] 与 dθ 的值相差比较大；</li>
+<li>当成本函数包含正则项时，也需要带上正则项进行检验；</li>
+<li>梯度检验不能与 dropout 同时使用。因为每次迭代过程中，dropout 会随机消除隐藏层单元的不同子集，难以计算 dropout 在梯度下降上的成本函数 J。建议关闭 dropout，用梯度检验进行双重检查，确定在没有 dropout 的情况下算法正确，然后打开 dropout；</li>
+</ol>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_25.png)</p>
+<h2 id="summary"><a class="header-anchor" href="#summary">¶</a>Summary</h2>
+<p><font color="red">回顾这一周，我们讲了如何配置训练集，验证集和测试集，如何分析偏差和方差，如何处理高偏差或高方差以及高偏差和高方差并存的问题，如何在神经网络中应用不同形式的正则化，如正则化和<strong>dropout</strong>，还有加快神经网络训练速度的技巧，最后是梯度检验。</font></p>
+<h1>C2W2 :Optimization Algorithm</h1>
+<h2 id="l-01-mini-batch-gradient-descent"><a class="header-anchor" href="#l-01-mini-batch-gradient-descent">¶</a>L 01 : Mini Batch Gradient Descent</h2>
+<ol>
+<li>
+<p>Vectorization</p>
+</li>
+<li>
+<p>Mini batch</p>
+<p>not entire training set</p>
+<p>bady training set i，$x^$</p>
+<p>mini batch training set</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_1.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_2.png)</p>
+</li>
+</ol>
+<p>mini batch gradient descent</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_3.png)</p>
+<h2 id="l-02-understanding-mini-batch-gradient-decent"><a class="header-anchor" href="#l-02-understanding-mini-batch-gradient-decent">¶</a>L 02 : Understanding Mini-Batch Gradient Decent</h2>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_4.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_6.png)</p>
+<p>左图，随着iterations increased, it should decrease .if it ever goes up on iteration,something is wrong.</p>
+<p>右图 : it’s as if on every iteration you’re training on a different training set or really training on a different mini batch. It should trend downwards, but it’s also going to be a little bit <a href="http://noisier.So" target="_blank" rel="noopener">noisier.So</a> if you plot J{t}, as you’re training mini batch in descent it may be over multiple epochs,you might expect to see a curve like this.</p>
+<h3 id="choosing-your-mini-batch-size"><a class="header-anchor" href="#choosing-your-mini-batch-size">¶</a>Choosing your mini-batch size</h3>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_5.png)</p>
+<h3 id="1-优缺点"><a class="header-anchor" href="#1-优缺点">¶</a>1. 优缺点</h3>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_7.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_8.png)</p>
+<p>通过减小学习率，噪声会被改善或有所减小，但随机梯度下降法的一大缺点是，你会失去所有向量化带给你的加速，因为一次性只处理了一个训练样本，这样效率过于低下，所以实践中最好选择不大不小的<strong>mini-batch</strong>尺寸，实际上学习率达到最快。你会发现两个好处，一方面，你得到了大量向量化，上个视频中我们用过的例子中，如果<strong>mini-batch</strong>大小为1000个样本，你就可以对1000个样本向量化，比你一次性处理多个样本快得多。另一方面，你不需要等待整个训练集被处理完就可以开始进行后续工作，再用一下上个视频的数字，每次训练集允许我们采取5000个梯度下降步骤，所以实际上一些位于中间的<strong>mini-batch</strong>大小效果最好。</p>
+<p>使用<strong>batch</strong>梯度下降法时，每次迭代你都需要历遍整个训练集，可以预期每次迭代成本都会下降，所以如果成本函数是迭代次数的一个函数，它应该会随着每次迭代而减少，如果在某次迭代中增加了，那肯定出了问题，也许你的学习率太大。</p>
+<p>在随机梯度下降法中，从某一点开始，我们重新选取一个起始点，每次迭代，你只对一个样本进行梯度下降，大部分时候你向着全局最小值靠近，有时候你会远离最小值，因为那个样本恰好给你指的方向不对，因此随机梯度下降法是有很多噪声的，平均来看，它最终会靠近最小值，不过有时候也会方向错误，因为随机梯度下降法永远不会收敛，而是会一直在最小值附近波动，但它并不会在达到最小值并停留在此。</p>
+<p>用<strong>mini-batch</strong>梯度下降法，我们从这里开始，一次迭代这样做，两次，三次，四次，它不会总朝向最小值靠近，但它比随机梯度下降要更持续地靠近最小值的方向，它也不一定在很小的范围内收敛或者波动，如果出现这个问题，可以慢慢减少学习率，我们在下个视频会讲到学习率衰减，也就是如何减小学习率。</p>
+<p>batch : too long,too time</p>
+<p>随机： lose speeding ,噪声大</p>
+<p>mini-batch和stochastic都存在噪声问题，且在local optima附近会徘徊。但设置合适大小的mini-batch size，噪声和徘徊问题可接受的范围内。</p>
+<p>size=1,又叫随机梯度下降法 stochastic gradient descent</p>
+<h3 id="how"><a class="header-anchor" href="#how">¶</a>how</h3>
+<p>如何选择mini-batch size（这是一个hyperparameter）：</p>
+<ul>
+<li>小数据量，比如总的样本只有几千个，完全可以直接用batch gradient descent</li>
+<li>大数量，mini-batch size倾向于选择2^n个，比如64, 128, 256等</li>
+<li>mini-batch 与CPU/GPU memory的内存容量。</li>
+</ul>
+<p>In practice of course the mini batch size is another hyper parameter that you might do a quick search over to try to figure out which one is most sufficient of reducing the cost function j. 按照上面的方法</p>
+<h2 id="l-03-exponentially-weighted-averages"><a class="header-anchor" href="#l-03-exponentially-weighted-averages">¶</a>L 03: Exponentially Weighted Averages</h2>
+<p>In order to understand those algorithms, you need to be able they use something called exponentially weighted averages. Also called exponentially weighted moving averages in statistics.</p>
+<h3 id="1-指数加权平均数-exponentially-weighted-averages"><a class="header-anchor" href="#1-指数加权平均数-exponentially-weighted-averages">¶</a>1. 指数加权平均数（Exponentially weighted averages）</h3>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_9.png)</p>
+<p>$\theta _i$表示每一日的温度值，蓝色的点，$v_t$表示加权平均后的,红色</p>
+<p>权平均方法是：每天的温度值加权值$vt$设置为前一天的温度加权值$vt−1$和当天的温度实际值$θt$做加权平均：<br>
+$$<br>
+v_{t}=\beta v_{t-1}+(1-\beta) \theta_{t}<br>
+$$<br>
+由于以后我们要考虑的原因，在计算时可视$v_T$大概是$\frac{1}{(1-\beta)}$的每日温度的加权平均，</p>
+<p>如果是$\beta$=0.9，这是十天的平均值，红色</p>
+<p>如果$\beta$=0.98,是50天的结果，绿色</p>
+<p>如果$beta$=0.5,是2day的结果，黄色</p>
+<p>由于仅平均了两天的温度，平均的数据太少，所以得到的曲线有更多的噪声，有可能出现异常值，但是这个曲线能够更快适应温度变化。</p>
+<p>当 $\beta$较大时，指数加权平均值适应地更缓慢一些。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_10.png)</p>
+<p>$</p>
+<h2 id="l-04-understanding-exponentially-weighted-averages"><a class="header-anchor" href="#l-04-understanding-exponentially-weighted-averages">¶</a>L 04 : Understanding Exponentially Weighted Averages</h2>
+<p><strong>假如β=0.9，每个v的计算如下：</strong><br>
+$$<br>
+\begin{aligned} v_{100} &amp;=0.9 v_{99}+0.1 \theta_{100} \ v_{99} &amp;=0.9 v_{98}+0.1 \theta_{99} \ v_{98} &amp;=0.9 v_{97}+0.1 \theta_{98} \end{aligned}<br>
+$$<br>
+递推可得：<br>
+$$<br>
+v_{100}=0.1 \theta_{100}+0.1 * 0.9 \theta_{99}+0.1 *(0.9)^{2} \theta_{98}+\ldots<br>
+$$<br>
+指数的衰减规律</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_11.png)</p>
+<p>一般的<br>
+$$<br>
+v_{t}=\sum_{i=1}^{t}(1-\beta) \beta^{t-i} \theta_{i}<br>
+$$<br>
+无穷级数求和：<br>
+$$<br>
+\sum_{t=1}^{n}(1-\beta) \beta^{t}=1<br>
+$$<br>
+因此可以近似的认为所有项的系数之和正好为100%。</p>
+<p>即，$vt$是对t日之前<strong>所有的实际温度的加权平均</strong>,权重是指数递减的。</p>
+<p>十天后，曲线高度下降到了1/3,赋予权重$\beta^{t-i}$</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_12.png)<br>
+$$<br>
+0.9^{10}<sub>=0.35</sub>=1/e<br>
+$$<br>
+一般认为，$v_t$近似前$\frac{1}{1-\beta}$的加权平均值</p>
+<h2 id="l05-bias-correction-in-exponentially-weighted-averages"><a class="header-anchor" href="#l05-bias-correction-in-exponentially-weighted-averages">¶</a>L05 : Bias correction in exponentially weighted averages</h2>
+<p>指数加权平均的偏差修正</p>
+<p>由于计算$v1$的时候，并没有历史值做加权，这个时候令其前一个加权值$v0=0$，则会导致$v_1$远小于$\theta_1$,依次类推，<strong>在靠近前面的值会出现显著的小于实际值的情况</strong></p>
+<p>因此做一个修正<br>
+$$<br>
+v_{t}=\frac{\beta v_{t-1}+(1-\beta) \theta_{t}}{1-\beta^{t}}<br>
+$$<br>
+你会发现随着$\beta^t$增加，接近于0，所以当t很大的时候，偏差修正几乎没有作用，因此当t较大的时候，紫线基本和绿线重合了。不过在开始学习阶段，你才开始预测热身练习，偏差修正可以帮助你更好预测温度，偏差修正可以帮助你使结果从紫线变成绿线。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_13.png)</p>
+<p>因为在Machine Learning中看重的是很多次迭代后的结果，初期的偏差影响并不大。</p>
+<h2 id="l-06-gradient-descent-with-momentum"><a class="header-anchor" href="#l-06-gradient-descent-with-momentum">¶</a>L 06 : Gradient Descent With Momentum</h2>
+<p>动量梯度下降法，运行速度几乎总是快于标准的梯度下降算法，</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_14.png)</p>
+<p>当慢慢下降到最小值，上下波动的梯度下降法的速度减缓，无法使用更大的学习率，</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_15.png)</p>
+<p>在纵轴上，希望学校慢一点，不需要摆动，横着上，加快学校，基于此就有了Gradient descent with momentum。<br>
+$$<br>
+\begin{array}{c}{v_{d W} :=\beta v_{d W}+(1-\beta) d W} \ {v_{d b} :=\beta v_{d b}+(1-\beta) d b} \ {w=w-\alpha v_{d W}} \ {b=b-\alpha v_{d b}}\end{array}<br>
+$$<br>
+这样，可以让gradient更平滑</p>
+<ul>
+<li>对于上图垂直方向，原来是会上下震荡，但引入了exponentially weighted average，相当于对前面的震荡进行了平均，<strong>结果就是上下震荡互相抵消了</strong>。而水平方向都是向右没有震荡，因此平均后还是向右。最终导致呈现上图红色的下降路线。</li>
+<li>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_18.png)</li>
+</ul>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_16.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_17.png)</p>
+<h2 id="l-07-rmsprop"><a class="header-anchor" href="#l-07-rmsprop">¶</a>L 07 : RMSprop</h2>
+<p>RMSprop (Root Mean Square Propagation，均方根传递)，<strong>与momentum一样，也是降低梯度的抖动</strong>。<strong>而是平抑不同大小梯度的更新速率。实际上 作用在α上的</strong></p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_19.png)</p>
+<p>回忆一下我们之前的例子，如果你执行梯度下降，虽然横轴方向正在推进，但纵轴方向会有大幅度摆动，为了分析这个例子，假设b纵轴代表参数，横轴代表参数W，可能有w1，或者w2其它重要的参数，为了便于理解，被称为b和w。</p>
+<p>我们希望学习速度快，而在垂直方向，也就是例子中的方向，我们希望减缓纵轴上的摆动，所以有了$S_{d W} $和$ S_{d b}$，我们希望$S_{d W} $会相对较小，所以我们要除以一个较小的数，而希望$ S_{d b}$又较大，所以这里我们要除以较大的数字，这样就可以减缓纵轴上的变化。</p>
+<p>这些微分，垂直方向的要比水平方向的大得多，所以斜率在方向特别大，所以这些微分中，db较大，dw较小，因为函数的倾斜程度，在纵轴上，也就是b方向上要大于在横轴上，也就是方向上W。db的平方较大，所以$Sdb$也会较大，而相比之下，dw会小一些，亦或dw平方会小一些，因此$Sdw$会小一些，结果就是纵轴上的更新要被一个较大的数相除，就能消除摆动，而水平方向的更新则被较小的数相除。</p>
+<p><strong>RMSprop</strong>的影响就是你的更新最后会变成这样（绿色线），纵轴方向上摆动较小，而横轴方向继续推进。还有个影响就是，你可以用一个更大学习率，然后加快学习，而无须在纵轴上垂直方向偏离。</p>
+<p>实际中dw是一个高维度的参数向量，db也是一个高维度参数向量，但是你的直觉是，在你要消除摆动的维度中，最终你要计算一个更大的和值，这个平方和微分的加权平均值，所以你最后去掉了那些有摆动的方向。所以这就是<strong>RMSprop</strong>，全称是均方根，因为你将微分进行平方，然后最后使用平方根。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_20.png)</p>
+<p>解释平方：</p>
+<p>垂直方向，比较陡，梯度比较大，但我们又希望它下降的慢。因此对梯度除以一个较大的值，所以用梯度的平方的平均来表示。让不同的参数拥有不同的learning rate。</p>
+<p><strong>从某种角度看，RMSprop会根据当前的梯度自动调整参数的learning rate，梯度大降低learning rate，梯度小的时候提高learning rate，从而一方面避免了震荡，另一方面避免在平坦的地方徘徊太久。</strong></p>
+<p>为了避免出现分母为0<br>
+$$<br>
+\begin{array}{c}{s_{d w}=\beta s_{d w}+(1-\beta)(d w)^{2}} \ {s_{d b}=\beta s_{d b}+(1-\beta)(d b)^{2}} \ {w :=w-\alpha \frac{d w}{\sqrt{s_{d w}+\varepsilon}}} \ {b :=b-\alpha \frac{d b}{\sqrt{s_{d b}+\varepsilon}}}\end{array}<br>
+$$<br>
+$\varepsilon$取$10^{-8}$不错的选择.</p>
+<p>补充：</p>
+<p>RMSProp算法对梯度计算了<strong>微分平方加权平均数</strong>。这种做法有利于消除了摆动幅度大的方向，用来修正摆动幅度，使得各个维度的摆动幅度都较小。另一方面也使得网络函数收敛更快</p>
+<h2 id="l-08-adam-optimization-algorithm"><a class="header-anchor" href="#l-08-adam-optimization-algorithm">¶</a>L 08 Adam optimization algorithm</h2>
+<p>Adam（Adaptive Moment Estimation，自适应矩估计）就是momentum和RMSprop的结合。momentum负责平滑梯度，而RMSprop负责调解learning rate。</p>
+<h3 id="1-adam"><a class="header-anchor" href="#1-adam">¶</a>1. Adam</h3>
+<p>a. 引入的变量有：</p>
+<ul>
+<li>$v$ : 计算同momentum算法，将梯度进行指数加权平均</li>
+<li>$s$: 计算同RMSprop，将梯度的平方进行指数加权平均</li>
+<li>$β1$ : 计算vv的加权参数</li>
+<li>$β2$ : 计算ss的加权参数</li>
+</ul>
+<p>b. 在迭代前，初始化参数v和s<br>
+$$<br>
+v_{d W}=0, s_{d W}=0, v_{d b}=0, s_{d b}=0<br>
+$$<br>
+c. 对第t次梯度下降的迭代 a. 首先计算dw和db的v和s<br>
+$$<br>
+\begin{array}{c}{v_{d W}=\beta_{1} v_{d W}+\left(1-\beta_{1}\right) d W} \ {s_{d W}=\beta_{2} s_{d W}+\left(1-\beta_{2}\right)(d W)^{2}} \ {v_{d b}=\beta_{1} v_{d b}+\left(1-\beta_{1}\right) d b} \ {s_{d b}=\beta_{2} s_{d b}+\left(1-\beta_{2}\right)(d b)^{2}}\end{array}<br>
+$$<br>
+d. 修正<br>
+$$<br>
+v_{d W}^{\text {corrected}}=\frac{v_{d W}}{1-\left(\beta_{1}\right)^{t}}\<br>
+\begin{aligned} s_{d W}^{\text {corrected}} &amp;=\frac{s_{d W}}{1-\left(\beta_{2}\right)^{t}} \ v_{d b}^{\text {corrected}} &amp;=\frac{v_{d b}}{1-\left(\beta_{1}\right)^{t}} \ s_{d b}^{\text {corrected}} &amp;=\frac{s_{d b}}{1-\left(\beta_{2}\right)^{t}} \end{aligned}</p>
+<p>$$<br>
+e. 最后更新参数W和b<br>
+$$<br>
+W=W-\alpha \frac{v_{d W}^{\text {corrected}}}{\sqrt{s_{d W}^{\text { corrected }}+\varepsilon}}\<br>
+b=b-\alpha \frac{v_{d b}^{\text {corrected}}}{\sqrt{s_{d b}^{\text { corrected }}+\varepsilon}}<br>
+$$<br>
+超参的选择：</p>
+<ul>
+<li>α：需要调优</li>
+<li>β1: 通常选择为0.9</li>
+<li>β2: 通常选择为0.999</li>
+<li>ε: 一般不需要调优，选择一个小数，比如10−8</li>
+</ul>
+<p>你可以尝试一系列值α，然后看哪个有效</p>
+<h2 id="l09-learning-rate-decay"><a class="header-anchor" href="#l09-learning-rate-decay">¶</a>L09 : Learning Rate Decay</h2>
+<ol>
+<li>
+<p>why</p>
+<p>为什么要做learning rate decay？ 较大的learning rate虽然在算法开始阶段会加快收敛速度，但在收敛接近到优化点的时候，算法会在优化点附近震荡，如下图：</p>
+</li>
+</ol>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_22.png)</p>
+<p>2.如何做learning rate decay？ <strong>思路很简单，就是引入一个函数，让α随着迭代（比如min-batch的epoch）递减</strong>。为此可以采用的decay函数有：</p>
+<p>倒数：<br>
+$$<br>
+\alpha :=\frac{1}{1+\text { decay rate * epoch num}} \alpha<br>
+$$<br>
+![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_23.png)</p>
+<h2 id="l-10-the-problem-of-local-optima"><a class="header-anchor" href="#l-10-the-problem-of-local-optima">¶</a>L 10: The Problem of local Optima</h2>
+<p>事实上，如果你要创建一个神经网络，通常梯度为零的点并不是这个图中的局部最优点，实际上成本函数的零梯度点，通常是鞍点。</p>
+<p>但是一个具有高维度空间的函数，如果梯度为0，那么在每个方向，它可能是凸函数，也可能是凹函数。如果你在2万维空间中，那么想要得到局部最优，所有的2万个方向都需要是这样，但发生的机率也许很小，也许是$2^{-20000}$，因此更有可能遇到有些方向的曲线会这样向上弯曲，另一些方向曲线向下弯，而不是所有的都向上弯曲，因此在高维度空间，你更可能碰到鞍点。所有，担心收敛到local optima，真是人们想多了，实际上并没有想象的那么多local optima。在高维空间，几乎不太可能被困在一个local optima，这是一个好消息。</p>
+<p>因此，在高维空间遇到的问题是高原问题（Problem of plateaus）</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_27.png)</p>
+<p>Adam算法可以加速学习</p>
+<h1>W3 Hyperparameter tuning</h1>
+<h2 id="l01-tuning-process"><a class="header-anchor" href="#l01-tuning-process">¶</a>L01 Tuning process</h2>
+<ol>
+<li>到目前为止，我们接触到的hyperparameter有：</li>
+<li>learning rate: αα</li>
+<li>momentum 参数: ββ</li>
+<li>Adam参数: β1β1和 β2β2以及εε</li>
+<li>神经网络层数: L</li>
+<li>神经网络隐藏层neuron数：n[l]n[l]</li>
+<li>learning rate decay参数</li>
+<li>min-batch size</li>
+<li>这些hyperparameter重要性排序：</li>
+<li>最重要的： learning rate: αα</li>
+<li>比较重要的： momentum 参数: ββ 神经网络层数: L 神经网络隐藏层neuron数：n[l]n[l]</li>
+<li>次重要的： 神经网络隐藏层neuron数 learning rate decay参数</li>
+<li>基本不需调整的 β1β1和 β2β2以及ε</li>
+</ol>
+<h4 id="1-try-random-values-don-t-use-a-grid"><a class="header-anchor" href="#1-try-random-values-don-t-use-a-grid">¶</a>1. Try random values : Don’t use a grid</h4>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_28.png)</p>
+<p>why:</p>
+<p>举个例子，假设超参数1是（学习速率），取一个极端的例子，假设超参数2是<strong>Adam</strong>算法中，分母中的$\varepsilon$。在这种情况下，a的取值很重要，而$\varepsilon$取值则无关紧要。如果你在网格中取点，接着，你试验了a的5个取值，那你会发现，无论$\varepsilon$取何值，结果基本上都是一样的。所以，你知道共有25种模型，但进行试验的值只有5个，我认为这是很重要的。</p>
+<p>对比而言，如果你随机取值，你会试验25个独立的a,$\varepsilon$，似乎你更有可能发现效果做好的那个。</p>
+<h3 id="2-由粗糙到精细的策略"><a class="header-anchor" href="#2-由粗糙到精细的策略">¶</a>2. 由粗糙到精细的策略</h3>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_29.png)</p>
+<h2 id="l-02-using-an-appropriate-scale-to-pick-hyperparameters"><a class="header-anchor" href="#l-02-using-an-appropriate-scale-to-pick-hyperparameters">¶</a>L 02: Using an Appropriate Scale to pick hyperparameters</h2>
+<p>$a$取值0.0001,1,如果你画一条从0.0001到1的数轴，沿其随机均匀取值，那90%的数值将会落在0.1到1之间，结果就是，在0.1到1之间，应用了90%的资源，而在0.0001到0.1之间，只有10%的搜索资源，这看上去不太对。</p>
+<p>同时在范围内搜索，也不是均匀分布（uniformly random）的，通常有这个参数的scale，<strong>比如对数scale</strong>。</p>
+<p>反而，用对数标尺搜索超参数的方式会更合理，因此这里不使用线性轴，分别依次取0.0001，0.001，0.01，0.1，1，在对数轴上均匀随机取点，这样，在0.0001到0.001之间，就会有更多的搜索资源可用，还有在0.001到0.01之间等等。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_32.png)</p>
+<h2 id="l-03-hyperparameter-tuning-i-practice"><a class="header-anchor" href="#l-03-hyperparameter-tuning-i-practice">¶</a>L 03 : Hyperparameter tuning i practice</h2>
+<ol>
+<li>不同的算法和场景，对超参的scale敏感性可能不一样.</li>
+<li>根据计算资源和数据量，可以采取两种策略来调参
+<ul>
+<li>Panda（熊猫策略）：对一个模型先后修改参数，查看其表现，最终选择最好的参数。就像熊猫一样，一次只抚养一个后代。</li>
+<li>Caviar（鱼子酱策略）：计算资源足够，可以同时运行很多模型实例，采用不同的参数，然后最终选择一个好的。类似鱼类，一次下很多卵，自动竞争成活。</li>
+</ul>
+</li>
+</ol>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_33.png)</p>
+<h3 id="l-04-normalizing-activations-in-a-network"><a class="header-anchor" href="#l-04-normalizing-activations-in-a-network">¶</a>L 04: Normalizing Activations in a Network</h3>
+<h4 id="1-implementing-batch-normalizing"><a class="header-anchor" href="#1-implementing-batch-normalizing">¶</a>1. Implementing Batch Normalizing</h4>
+<p><strong>Batch</strong>归一化,<strong>Batch</strong>归一化会使你的参数搜索问题变得很容易，使神经网络对超参数的选择更加稳定，超参数的范围会更加庞大，工作效果也很好，也会是你的训练更加容易，甚至是深层网络。</p>
+<p>可以normalize $a<sup>{[l]},z</sup>{[l]}$,选择$z^{[L]}$</p>
+<p><strong>设置 γ 和 β 的原因</strong>是，如果各隐藏层的输入均值在靠近 0 的区域，即处于激活函数的线性区域，不利于训练非线性神经网络，从而得到效果较差的模型。因此，需要用 γ 和 β 对标准化后的结果做进一步处理。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_34.png)</p>
+<p>需要注意的是，β和γ不是超参，而是梯度下降需学习的参数。</p>
+<h2 id="l-05-fitting-batch-norm-into-neural-networks"><a class="header-anchor" href="#l-05-fitting-batch-norm-into-neural-networks">¶</a>L 05 : Fitting Batch Norm Into Neural Networks</h2>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_35.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_36.png)</p>
+<p>注意</p>
+<p>先前我说过每层的参数是$w<sup>{[l]}$和$b</sup>{[l]}$，还有$\beta<sup>{[l]}$和$b</sup>{[l]}$，请注意计算的方式如下，$z<sup>{[l]}=w</sup>{[l]} a<sup>{[l-1]}+b</sup>{[l]}$，但<strong>Batch</strong>归一化做的是，它要看这个<strong>mini-batch</strong>，先将$z<sup>{[l]}$归一化，结果为均值0和标准方差，再由$\beta$和b重缩放，但这意味着，无论$b</sup>{[l]}$的值是多少，都是要被减去的，因为在<strong>Batch</strong>归一化的过程中，你要计算的$z^{[l]}$均值，再减去平均值，在此例中的<strong>mini-batch</strong>中增加任何常数，数值都不会改变，因为加上的任何常数都将会被均值减去所抵消.</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_37.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_38.png)</p>
+<p>最后，请记住的维$z<sup>{[l]}$，因为在这个例子中，维数会是$\left(n</sup>{[l]}, 1\right)$，的尺寸为，如果是l层隐藏单元的数量，那$ \beta^{[l]}$和$ \gamma<sup>{[l]}$的维度也是$\left(n</sup>{[l]}, 1\right)$，因为这是你隐藏层的数量，你有隐藏单元，<strong>所以$\gamma^{[l]}$和</strong>$  \beta^{[l]}$用来将每个隐藏层的均值和方差缩放为网络想要的值。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_39.png)</p>
+<h3 id="l-06-why-doest-batch-norm-work"><a class="header-anchor" href="#l-06-why-doest-batch-norm-work">¶</a>L 06 Why Doest Batch Norm Work?</h3>
+<ol>
+<li>首先，起到了normalization的作用，同对输入数据X的normalization作用类似。</li>
+</ol>
+<ol start="2">
+<li>
+<p>让每一层的学习，<strong>一定程度解耦了前层参数和后层参数，让各层更加独立的学习</strong>。无论前一层如何变，本层输入的数据总是保持稳定的均值和方差。（主要原因）</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_40.png)</p>
+<p>所以使你数据改变分布的这个想法，有个有点怪的名字“<strong>Covariate shift</strong>”，想法是这样的，如果你已经学习了到 的映射，如果 的分布改变了，那么你可能需要重新训练你的学习算法。这种做法同样适用于，如果真实函数由 到 映射保持不变，正如此例中，因为真实函数是此图片是否是一只猫，训练你的函数的需要变得更加迫切，如果真实函数也改变，情况就更糟了。</p>
+<p>关于第二点，如果实际应用样本和训练样本的数据分布不同（例如，橘猫图片和黑猫图片），我们称发生了“<strong>Covariate Shift</strong>”。这种情况下，一般要对模型进行重新训练。Batch Normalization 的作用就是减小 Covariate Shift 所带来的影响，让模型变得更加健壮，鲁棒性（Robustness）更强。</p>
+<p>即使输入的值改变了，由于 Batch Normalization 的作用，使得均值和方差保持不变（由 γ 和 β 决定），限制了在前层的参数更新对数值分布的影响程度，因此后层的学习变得更容易一些。Batch Normalization 减少了各层 W 和 b 之间的耦合性，让各层更加独立，实现自我训练学习的效果。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_41.png)</p>
+<p>另外，Batch Normalization 也<strong>起到微弱的正则化</strong>（regularization）效果。因为在每个 mini-batch 而非整个数据集上计算均值和方差，只由这一小部分数据估计得出的均值和方差会有一些噪声，因此最终计算出的 z<sub>(i)z</sub>(i)也有一定噪声。类似于 dropout，这种噪声会使得神经元不会再特别依赖于任何一个输入特征。</p>
+<p>因为 Batch Normalization 只有微弱的正则化效果，因此可以和 dropout 一起使用，以获得更强大的正则化效果。通过应用更大的 mini-batch 大小，可以减少噪声，从而减少这种正则化效果。</p>
+<p>最后，不要将 Batch Normalization 作为正则化的手段，而是当作加速学习的方式。正则化只是一种非期望的副作用，Batch Normalization 解决的还是反向传播过程中的梯度问题（梯度消失和爆炸）。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_42.png)</p>
+</li>
+</ol>
+<h3 id="l-07-batch-norm-at-test-time"><a class="header-anchor" href="#l-07-batch-norm-at-test-time">¶</a>L 07 : Batch Norm At Test Time</h3>
+<p>问题：BN算法在训练时是一个批次的数据训练，能算出每一层Z的均值和方差；而在测试时，输入的则是单个数据，<strong>单条数据没法做均值和方差的计算</strong>，怎么在测试期输入均值和方差呢?</p>
+<p>实际应用中一般不使用这种方法，而是使用之前学习过的指数加权平均的方法来预测测试过程单个样本的 μ 和 $σ^2$</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_43.png)</p>
+<p>计算$z_{\text { norm }}^{(\hat{2})}$，用$\mu$ 和$ \sigma^{2}$的指数加权平均，用你手头的最新数值来做调整，然后你可以用左边我们刚算出来的和你在神经网络训练过程中得到的$\beta$和$\sigma$参数来计算你那个测试样本的z值。</p>
+<h3 id="l-08-softmax-regression"><a class="header-anchor" href="#l-08-softmax-regression">¶</a>L 08 : Softmax Regression</h3>
+<h4 id="1-multi-class-classification"><a class="header-anchor" href="#1-multi-class-classification">¶</a>1. [Multi-class classification]</h4>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_44.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_45.png)</p>
+<p>最后一层是概率，之和为1，要用到<strong>Softmax</strong>层，<strong>Softmax</strong>激活函数的特殊之处在于，因为需要将所有可能的输出归一化，就需要输入一个向量，最后输出一个向量。</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_46.png)</p>
+<h4 id="2-softmax-example"><a class="header-anchor" href="#2-softmax-example">¶</a>2. Softmax example</h4>
+<p>没有隐藏层的softmax,代表一些决策边界</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_47.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_48.png)</p>
+<h3 id="l-09-training-softmax-classifier"><a class="header-anchor" href="#l-09-training-softmax-classifier">¶</a>L 09 Training SoftMax classifier</h3>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_49.png)</p>
+<p><strong>Softmax</strong>这个名称的来源是与所谓<strong>hardmax</strong>对比,<strong>Softmax</strong>回归或<strong>Softmax</strong>激活函数将<strong>logistic</strong>激活函数推广到类，而不仅仅是两类，结果就是如果C=2，那么C=2的<strong>Softmax</strong>实际上变回了<strong>logistic</strong>回归，</p>
+<h4 id="loss-function"><a class="header-anchor" href="#loss-function">¶</a>Loss Function</h4>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_50.png)<br>
+$$<br>
+J\left(w^{[1]}, b^{[1]}, \ldots \ldots\right)=\frac{1}{m} \sum_{i=1}^{m} L\left(\hat{y}^{(i)}, y^{(i)}\right)<br>
+$$<br>
+![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_51.png)</p>
+<h4 id="3-gradient-descent-with-softmax"><a class="header-anchor" href="#3-gradient-descent-with-softmax">¶</a>3. Gradient descent with softmax</h4>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_52.png)</p>
+<p>最后一层求导，softmax激活函数<br>
+$$<br>
+J\left(w^{[1]}, b^{[1]}, \ldots \ldots\right)=\frac{1}{m} \sum_{i=1}^{m} L\left(\hat{y}^{(i)}, y^{(i)}\right)<br>
+$$</p>
+<h2 id="l11-tensorflow"><a class="header-anchor" href="#l11-tensorflow">¶</a>L11 TensorFlow</h2>
+<h4 id="1-基本流程"><a class="header-anchor" href="#1-基本流程">¶</a>1. 基本流程</h4>
+<p>使用tensorflow，只要告诉tensorflow forward prop，它自己就会做backprop，因此不用自己实现backprop</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_53.png)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="comment">#导入TensorFlow</span></span><br><span class="line">​</span><br><span class="line">w = tf.Variable(<span class="number">0</span>,dtype = tf.float32)</span><br><span class="line"><span class="comment">#接下来，让我们定义参数w，在TensorFlow中，你要用tf.Variable()来定义参数</span></span><br><span class="line">​</span><br><span class="line"><span class="comment">#然后我们定义损失函数：</span></span><br><span class="line">​</span><br><span class="line">cost = tf.add(tf.add(w**<span class="number">2</span>,tf.multiply(- <span class="number">10.</span>,w)),<span class="number">25</span>)</span><br><span class="line"><span class="comment">#然后我们定义损失函数J</span></span><br><span class="line">然后我们再写：</span><br><span class="line">​</span><br><span class="line">train = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cost)</span><br><span class="line"><span class="comment">#(让我们用0.01的学习率，目标是最小化损失)。</span></span><br><span class="line">​</span><br><span class="line"><span class="comment">#最后下面的几行是惯用表达式:</span></span><br><span class="line">​</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">​</span><br><span class="line">session = tf.Session()<span class="comment">#这样就开启了一个TensorFlow session。</span></span><br><span class="line">​</span><br><span class="line">session.run(init)<span class="comment">#来初始化全局变量。</span></span><br><span class="line">​</span><br><span class="line"><span class="comment">#然后让TensorFlow评估一个变量，我们要用到:</span></span><br><span class="line">​</span><br><span class="line">session.run(w)</span><br><span class="line">​</span><br><span class="line"><span class="comment">#上面的这一行将w初始化为0，并定义损失函数，我们定义train为学习算法，它用梯度下降法优化器使损失函数最小化，但实际上我们还没有运行学习算法，所以#上面的这一行将w初始化为0，并定义损失函数，我们定义train为学习算法，它用梯度下降法优化器使损失函数最小化，但实际上我们还没有运行学习算法，所以session.run(w)评估了w，让我：：</span></span><br><span class="line">​</span><br><span class="line">print(session.run(w))</span><br><span class="line">​</span><br><span class="line">所以如果我们运行这个，它评估等于<span class="number">0</span>，因为我们什么都还没运行。</span><br><span class="line"></span><br><span class="line"><span class="comment">#现在让我们输入：</span></span><br><span class="line">​</span><br><span class="line">$session.run(train)，它所做的就是运行一步梯度下降法。</span><br><span class="line"><span class="comment">#接下来在运行了一步梯度下降法后，让我们评估一下w的值，再print：</span></span><br><span class="line">​</span><br><span class="line">print(session.run(w))</span><br><span class="line"><span class="comment">#在一步梯度下降法之后，w现在是0.1。</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-如何用训练数据"><a class="header-anchor" href="#2-如何用训练数据">¶</a>2. 如何用训练数据</h4>
+<p>placeholder 在实际的训练过程中，要用不同的样本反复放到一个待优化函数中的，这个时候就可以用tensorflow的placeholder实现,在run的时候，对应给出<code>feed_dict</code>，表名占位符x的实际值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf <span class="comment"># 导入Tensorflow</span></span><br><span class="line"></span><br><span class="line">coefficient = np.array([[<span class="number">2.</span>],[<span class="number">-10.</span>],[<span class="number">25.</span>]])</span><br><span class="line"></span><br><span class="line">w = tf.Variable(<span class="number">0</span>, dtype=tf.float32)</span><br><span class="line">x = tf.placeholder(tf.float32, [<span class="number">3</span>,<span class="number">1</span>]) <span class="comment"># 3x1大小的placeholder</span></span><br><span class="line">cost = w**x[<span class="number">0</span>][<span class="number">0</span>] - x[<span class="number">1</span>][<span class="number">0</span>]*w + x[<span class="number">2</span>][<span class="number">0</span>] <span class="comment"># 要优化的cost function（即forward prop的形式）</span></span><br><span class="line">train = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cost) </span><br><span class="line"></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">session = tf.Session()</span><br><span class="line">session.run(init)</span><br><span class="line">print(session.run(w))</span><br><span class="line"></span><br><span class="line">session.run(train, feed_dict=&#123;x:coefficient&#125;) <span class="comment"># x占位符替换为coefficient</span></span><br><span class="line">print(session.run(w))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    session.run(train, feed_dict=&#123;x:coefficient&#125;) <span class="comment"># # x占位符替换为coefficient</span></span><br><span class="line">print(session.run(w))</span><br></pre></td></tr></table></figure>
+<h4 id="3-计算流"><a class="header-anchor" href="#3-计算流">¶</a>3. 计算流</h4>
+<p><strong>TensorFlow</strong>程序的核心是计算损失函数，然后<strong>TensorFlow</strong>自动计算出导数，以及如何最小化损失，因此这个等式或者这行代码所做的就是让<strong>TensorFlow</strong>建立计算图，</p>
+<p>with 语句适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等。建立计算流的过程，前向传播的过程，operation</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_56.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_54.png)</p>
+<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_55.png)</p>
+<h1>Summary</h1>
+<p><font color="read">how to systematically organize the hyper parameter search process and  batch normalization and framework </font></p>
+<p><a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Improving_Deep_Neural_Networks/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%AE%9E%E7%94%A8%E5%B1%82%E9%9D%A2" target="_blank" rel="noopener">http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Improving_Deep_Neural_Networks/深度学习的实用层面</a></p>
+<p><a href="http://www.ai-start.com/dl2017/html/lesson2-week1.html#header-n3" target="_blank" rel="noopener">http://www.ai-start.com/dl2017/html/lesson2-week1.html#header-n3</a></p>
+<p><a href="http://dl-notes.imshuai.com/#/c2w1?id=_4-heros-of-deep-learning-yoshua-bengio-interview" target="_blank" rel="noopener">http://dl-notes.imshuai.com/#/c2w1?id=_4-heros-of-deep-learning-yoshua-bengio-interview</a></p>
+<p><a href="https://www.youtube.com/watch?v=4Ct3Yujl1dk&amp;list=PLkDaE6sCZn6Hn0vK8co82zjQtt3T2Nkqc&amp;index=14" target="_blank" rel="noopener">https://www.youtube.com/watch?v=4Ct3Yujl1dk&amp;list=PLkDaE6sCZn6Hn0vK8co82zjQtt3T2Nkqc&amp;index=14</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/04/16/彩铅DailyLifeStyle/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -441,7 +1098,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                288字
+                321字
               </span>
               
 
@@ -467,7 +1124,7 @@
 
       
         
-          <h1 id="Day-one"><a href="#Day-one" class="headerlink" title="Day one"></a>Day one</h1>
+          <h1>Day one</h1>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/04/16/彩铅DailyLifeStyle/#more" rel="contents">
@@ -475,284 +1132,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/04/13/machine learning test/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/13/machine learning test/" itemprop="url">test</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-13T19:59:23+08:00">2019-04-13</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/machine-learning/" itemprop="url" rel="index"><span itemprop="name">machine learning</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/13/machine learning test/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/13/machine learning test/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                3.1k字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Logistics-Regression"><a href="#Logistics-Regression" class="headerlink" title="Logistics Regression"></a>Logistics Regression</h1><p>   如何凸显你是一个对逻辑回归已经非常了解的人呢。那就是用一句话概括它！<strong>逻辑回归假设数据服从伯努利分布,通过极大化似然函数的方法，运用梯度下降来求解参数，来达到将数据二分类的目的。</strong></p>
-<p>​     这里面其实包含了5个点 1：逻辑回归的假设，2：逻辑回归的损失函数，3：逻辑回归的求解方法，4：逻辑回归的目的，5:逻辑回归如何分类。这些问题是考核你对逻辑回归的基本了解。</p>
-<h2 id="逻辑回归的基本假设"><a href="#逻辑回归的基本假设" class="headerlink" title="逻辑回归的基本假设"></a><strong>逻辑回归的基本假设</strong></h2><ul>
-<li><ul>
-<li><p>任何的模型都是有自己的假设，在这个假设下模型才是适用的。逻辑回归的</p>
-<p>第一个</p>
-<p>基本假设是</p>
-<p>假设数据服从伯努利分布。</p>
-<p>伯努利分布有一个简单的例子是抛硬币，抛中为正面的概率是p,抛中为负面的概率是 1-p,在逻辑回归这个模型里面是假设 $h_θ(x)$为样本为正的概率，</p>
-<p>$1−h_θ(x)$为样本为负的概率。那么整个模型可以描述为$h_θ(x;θ)=p$</p>
-</li>
-<li><p>逻辑回归的第二个假设是假设样本为正的概率是 $p=\frac{1}{1+e^{w^Tx}}$</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><p>所以逻辑回归的最终形式 </p>
-<p>$h_θ(x;θ)=\frac{1}{1+e^{w^Tx}}$</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="逻辑回归的损失函数"><a href="#逻辑回归的损失函数" class="headerlink" title="逻辑回归的损失函数"></a><strong>逻辑回归的损失函数</strong></h2><ul>
-<li><p>逻辑回归的损失函数是它的极大似然函数</p>
-<p>$Lθ(x)=\pi_{i=1}^{m}h_θ(xi;θ)^y_i∗(1−h_θ(xi;θ))^{1−y_i}$</p>
-</li>
-</ul>
-<h2 id="逻辑回归的求解方法"><a href="#逻辑回归的求解方法" class="headerlink" title="逻辑回归的求解方法"></a><strong>逻辑回归的求解方法</strong></h2><ul>
-<li><p>由于该极大似然函数无法直接求解，我们一般通过对该函数进行梯度下降来不断逼急最优解。在这个地方其实会有个加分的项，考察你对其他优化方法的了解。因为就梯度下降本身来看的话就有随机梯度下降，批梯度下降，small batch 梯度下降三种方式，面试官可能会问这三种方式的优劣以及如何选择最合适的梯度下降方式。</p>
-<ul>
-<li>简单来说 批梯度下降会获得全局最优解，缺点是在更新每个参数的时候需要遍历所有的数据，计算量会很大，并且会有很多的冗余计算，导致的结果是当数据量大的时候，每个参数的更新都会很慢。</li>
-<li>随机梯度下降是以高方差频繁更新，优点是使得sgd会跳到新的和潜在更好的局部最优解，缺点是使得收敛到局部最优解的过程更加的复杂。</li>
-<li>小批量梯度下降结合了sgd和batch gd的优点，每次更新的时候使用n个样本。减少了参数更新的次数，可以达到更加稳定收敛结果，一般在深度学习当中我们采用这种方法。</li>
-</ul>
-</li>
-<li><ul>
-<li>其实这里还有一个隐藏的更加深的加分项，看你了不了解诸如Adam，动量法等优化方法。因为上述方法其实还有两个致命的问题。<ul>
-<li>第一个是如何对模型选择合适的学习率。自始至终保持同样的学习率其实不太合适。因为一开始参数刚刚开始学习的时候，此时的参数和最优解隔的比较远，需要保持一个较大的学习率尽快逼近最优解。但是学习到后面的时候，参数和最优解已经隔的比较近了，你还保持最初的学习率，容易越过最优点，在最优点附近来回振荡，通俗一点说，就很容易学过头了，跑偏了。</li>
-<li>第二个是如何对参数选择合适的学习率。在实践中，对每个参数都保持的同样的学习率也是很不合理的。有些参数更新频繁，那么学习率可以适当小一点。有些参数更新缓慢，那么学习率就应该大一点。这里我们不展开，有空我会专门出一个专题介绍。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="逻辑回归的目的"><a href="#逻辑回归的目的" class="headerlink" title="逻辑回归的目的"></a><strong>逻辑回归的目的</strong></h2><ul>
-<li><p>该函数的目的便是将数据二分类，提高准确率。</p>
-</li>
-<li><p>逻辑回归如何分类</p>
-<ul>
-<li>逻辑回归作为一个回归(也就是y值是连续的)，如何应用到分类上去呢。y值确实是一个连续的变量。逻辑回归的做法是划定一个阈值，y值大于这个阈值的是一类，y值小于这个阈值的是另外一类。阈值具体如何调整根据实际情况选择。一般会选择0.5做为阈值来划分。</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-对逻辑回归的进一步提问"><a href="#3-对逻辑回归的进一步提问" class="headerlink" title="3.对逻辑回归的进一步提问"></a><strong>3.对逻辑回归的进一步提问</strong></h2><p>​    逻辑回归虽然从形式上非常的简单，但是其内涵是非常的丰富。有很多问题是可以进行思考的</p>
-<ul>
-<li><p><strong>逻辑回归的损失函数为什么要使用极大似然函数作为损失函数？</strong></p>
-<ul>
-<li><p>损失函数一般有四种，平方损失函数，对数损失函数，HingeLoss0-1损失函数，绝对值损失函数。将极大似然函数取对数以后等同于对数损失函数。在逻辑回归这个模型下，对数损失函数的训练求解参数的速度是比较快的。至于原因大家可以求出这个式子的梯度更新</p>
-<p>$w_j=w_j−(y^i−h_w(x^i;w))∗x_j^i\theta​$</p>
-<p>这个式子的更新速度只和$x_j,y_j</p>
-<p>相关。和sigmod函数本身的梯度是无关的。这样更新的速度是可以自始至终都比较的稳定。</p>
-</li>
-<li><p>为什么不选平方损失函数的呢？其一是因为如果你使用平方损失函数，你会发现梯度更新的速度和sigmod函数本身的梯度是很相关的。sigmod函数在它在定义域内的梯度都不大于0.25。这样训练会非常的慢。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>逻辑回归在训练的过程当中，如果有很多的特征高度相关或者说有一个特征重复了100遍，会造成怎样的影响？</strong></p>
-</li>
-<li><p>先说结论，如果在损失函数最终收敛的情况下，其实就算有很多特征高度相关也不会影响分类器的效果。</p>
-</li>
-<li>但是对特征本身来说的话，假设只有一个特征，在不考虑采样的情况下，你现在将它重复100遍。训练以后完以后，数据还是这么多，但是这个特征本身重复了100遍，实质上将原来的特征分成了100份，每一个特征都是原来特征权重值的百分之一。</li>
-<li><p>如果在随机采样的情况下，其实训练收敛完以后，还是可以认为这100个特征和原来那一个特征扮演的效果一样，只是可能中间很多特征的值正负相消了。</p>
-</li>
-<li><p><strong>为什么我们还是会在训练的过程当中将高度相关的特征去掉？</strong></p>
-<ul>
-<li>去掉高度相关的特征会让模型的可解释性更好</li>
-<li>可以大大提高训练的速度。如果模型当中有很多特征高度相关的话，就算损失函数本身收敛了，但实际上参数是没有收敛的，这样会拉低训练的速度。其次是特征多了，本身就会增大训练的时间。</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-逻辑回归的优缺点总结"><a href="#4-逻辑回归的优缺点总结" class="headerlink" title="4.逻辑回归的优缺点总结"></a><strong>4.逻辑回归的优缺点总结</strong></h2><p>​    面试的时候，别人也经常会问到，你在使用逻辑回归的时候有哪些感受。觉得它有哪些优缺点。</p>
-<p>​     <strong>在这里我们总结了逻辑回归应用到工业界当中一些优点：</strong></p>
-<ul>
-<li><p>形式简单，模型的可解释性非常好。从特征的权重可以看到不同的特征对最后结果的影响，某个特征的权重值比较高，那么这个特征最后对结果的影响会比较大。</p>
-</li>
-<li><p>模型效果不错。在工程上是可以接受的（作为baseline)，如果特征工程做的好，效果不会太差，并且特征工程可以大家并行开发，大大加快开发的速度。</p>
-</li>
-<li><p>训练速度较快。分类的时候，计算量仅仅只和特征的数目相关。并且逻辑回归的分布式优化sgd发展比较成熟，训练的速度可以通过堆机器进一步提高，这样我们可以在短时间内迭代好几个版本的模型。</p>
-</li>
-<li><p>资源占用小,尤其是内存。因为只需要存储各个维度的特征值，。</p>
-</li>
-<li><p>方便输出结果调整。逻辑回归可以很方便的得到最后的分类结果，因为输出的是每个样本的概率分数，我们可以很容易的对这些概率分数进行cutoff，也就是划分阈值(大于某个阈值的是一类，小于某个阈值的是一类)。</p>
-</li>
-</ul>
-<p>​      <strong>但是逻辑回归本身也有许多的缺点:</strong></p>
-<ul>
-<li><p>准确率并不是很高。因为形式非常的简单(非常类似线性模型)，很难去拟合数据的真实分布。</p>
-</li>
-<li><p>很难处理数据不平衡的问题。举个例子：如果我们对于一个正负样本非常不平衡的问题比如正负样本比 10000:1.我们把所有样本都预测为正也能使损失函数的值比较小。但是作为一个分类器，它对正负样本的区分能力不会很好。</p>
-</li>
-<li><p>处理非线性数据较麻烦。逻辑回归在不引入其他方法的情况下，只能处理线性可分的数据，或者进一步说，处理二分类的问题 。</p>
-</li>
-<li><p>逻辑回归本身无法筛选特征。有时候，我们会用gbdt来筛选特征，然后再上逻辑回归。</p>
-</li>
-</ul>
-<h2 id="模型、策略、算法"><a href="#模型、策略、算法" class="headerlink" title="模型、策略、算法"></a>模型、策略、算法</h2><h2 id="Codings"><a href="#Codings" class="headerlink" title="Codings"></a>Codings</h2>
-          
         
       
     </div>
@@ -858,7 +1237,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/machine-learning/" itemprop="url" rel="index"><span itemprop="name">machine learning</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
 
                 
                 
@@ -897,7 +1276,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                107字
+                109字
               </span>
               
 
@@ -924,12 +1303,329 @@
       
         
           
-            <p><img src="/2019/04/13/machine learning/image-20200624204341481.png" alt="image-20200624204341481"></p>
+            <p><img src="/2019/04/13/machine learning/%E5%90%B4%E6%81%A9%E8%BE%BE%5Cimage-20200624204341481.png" alt="image-20200624204341481"></p>
 <p>英伟达:芯片，GPU</p>
 <p>开发框架：tensorflow，pytorch caffe</p>
-<h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><p>学习目的是学习一个输入到输出的映射，称为模型。模型的集合就是假设空间。</p>
+<h2 id="监督学习"><a class="header-anchor" href="#监督学习">¶</a>监督学习</h2>
+<p>学习目的是学习一个输入到输出的映射，称为模型。模型的集合就是假设空间。</p>
 <p>模型：概率模型；非概率模型；</p>
 <p>学习过程：搜索过程</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/04/13/machine learning test/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/13/machine learning test/" itemprop="url">test</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-13T19:59:23+08:00">2019-04-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/13/machine learning test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/13/machine learning test/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                3.1k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1>Logistics Regression</h1>
+<p>如何凸显你是一个对逻辑回归已经非常了解的人呢。那就是用一句话概括它！<strong>逻辑回归假设数据服从伯努利分布,通过极大化似然函数的方法，运用梯度下降来求解参数，来达到将数据二分类的目的。</strong></p>
+<p>​     这里面其实包含了5个点 1：逻辑回归的假设，2：逻辑回归的损失函数，3：逻辑回归的求解方法，4：逻辑回归的目的，5:逻辑回归如何分类。这些问题是考核你对逻辑回归的基本了解。</p>
+<h2 id="逻辑回归的基本假设"><a class="header-anchor" href="#逻辑回归的基本假设">¶</a><strong>逻辑回归的基本假设</strong></h2>
+<ul>
+<li>
+<ul>
+<li>
+<p>任何的模型都是有自己的假设，在这个假设下模型才是适用的。逻辑回归的</p>
+<p>第一个</p>
+<p>基本假设是</p>
+<p>假设数据服从伯努利分布。</p>
+<p>伯努利分布有一个简单的例子是抛硬币，抛中为正面的概率是p,抛中为负面的概率是 1-p,在逻辑回归这个模型里面是假设 $h_θ(x)$为样本为正的概率，</p>
+<p>$1−h_θ(x)$为样本为负的概率。那么整个模型可以描述为$h_θ(x;θ)=p$</p>
+</li>
+<li>
+<p>逻辑回归的第二个假设是假设样本为正的概率是 $p=\frac{1}{1+e<sup>{w</sup>Tx}}$</p>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<p>所以逻辑回归的最终形式</p>
+<p>$h_θ(x;θ)=\frac{1}{1+e<sup>{w</sup>Tx}}$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="逻辑回归的损失函数"><a class="header-anchor" href="#逻辑回归的损失函数">¶</a><strong>逻辑回归的损失函数</strong></h2>
+<ul>
+<li>
+<p>逻辑回归的损失函数是它的极大似然函数</p>
+<p>$Lθ(x)=\pi_{i=1}<sup>{m}h_θ(xi;θ)</sup>y_i∗(1−h_θ(xi;θ))^{1−y_i}$</p>
+</li>
+</ul>
+<h2 id="逻辑回归的求解方法"><a class="header-anchor" href="#逻辑回归的求解方法">¶</a><strong>逻辑回归的求解方法</strong></h2>
+<ul>
+<li>
+<p>由于该极大似然函数无法直接求解，我们一般通过对该函数进行梯度下降来不断逼急最优解。在这个地方其实会有个加分的项，考察你对其他优化方法的了解。因为就梯度下降本身来看的话就有随机梯度下降，批梯度下降，small batch 梯度下降三种方式，面试官可能会问这三种方式的优劣以及如何选择最合适的梯度下降方式。</p>
+<ul>
+<li>简单来说 批梯度下降会获得全局最优解，缺点是在更新每个参数的时候需要遍历所有的数据，计算量会很大，并且会有很多的冗余计算，导致的结果是当数据量大的时候，每个参数的更新都会很慢。</li>
+<li>随机梯度下降是以高方差频繁更新，优点是使得sgd会跳到新的和潜在更好的局部最优解，缺点是使得收敛到局部最优解的过程更加的复杂。</li>
+<li>小批量梯度下降结合了sgd和batch gd的优点，每次更新的时候使用n个样本。减少了参数更新的次数，可以达到更加稳定收敛结果，一般在深度学习当中我们采用这种方法。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>其实这里还有一个隐藏的更加深的加分项，看你了不了解诸如Adam，动量法等优化方法。因为上述方法其实还有两个致命的问题。
+<ul>
+<li>第一个是如何对模型选择合适的学习率。自始至终保持同样的学习率其实不太合适。因为一开始参数刚刚开始学习的时候，此时的参数和最优解隔的比较远，需要保持一个较大的学习率尽快逼近最优解。但是学习到后面的时候，参数和最优解已经隔的比较近了，你还保持最初的学习率，容易越过最优点，在最优点附近来回振荡，通俗一点说，就很容易学过头了，跑偏了。</li>
+<li>第二个是如何对参数选择合适的学习率。在实践中，对每个参数都保持的同样的学习率也是很不合理的。有些参数更新频繁，那么学习率可以适当小一点。有些参数更新缓慢，那么学习率就应该大一点。这里我们不展开，有空我会专门出一个专题介绍。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="逻辑回归的目的"><a class="header-anchor" href="#逻辑回归的目的">¶</a><strong>逻辑回归的目的</strong></h2>
+<ul>
+<li>
+<p>该函数的目的便是将数据二分类，提高准确率。</p>
+</li>
+<li>
+<p>逻辑回归如何分类</p>
+<ul>
+<li>逻辑回归作为一个回归(也就是y值是连续的)，如何应用到分类上去呢。y值确实是一个连续的变量。逻辑回归的做法是划定一个阈值，y值大于这个阈值的是一类，y值小于这个阈值的是另外一类。阈值具体如何调整根据实际情况选择。一般会选择0.5做为阈值来划分。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-对逻辑回归的进一步提问"><a class="header-anchor" href="#3-对逻辑回归的进一步提问">¶</a><strong>3.对逻辑回归的进一步提问</strong></h2>
+<p>​    逻辑回归虽然从形式上非常的简单，但是其内涵是非常的丰富。有很多问题是可以进行思考的</p>
+<ul>
+<li>
+<p><strong>逻辑回归的损失函数为什么要使用极大似然函数作为损失函数？</strong></p>
+<ul>
+<li>
+<p>损失函数一般有四种，平方损失函数，对数损失函数，HingeLoss0-1损失函数，绝对值损失函数。将极大似然函数取对数以后等同于对数损失函数。在逻辑回归这个模型下，对数损失函数的训练求解参数的速度是比较快的。至于原因大家可以求出这个式子的梯度更新</p>
+<p>$w_j=w_j−(y<sup>i−h_w(x</sup>i;w))∗x_j^i\theta$</p>
+<p>这个式子的更新速度只和$x_j,y_j</p>
+<p>相关。和sigmod函数本身的梯度是无关的。这样更新的速度是可以自始至终都比较的稳定。</p>
+</li>
+<li>
+<p>为什么不选平方损失函数的呢？其一是因为如果你使用平方损失函数，你会发现梯度更新的速度和sigmod函数本身的梯度是很相关的。sigmod函数在它在定义域内的梯度都不大于0.25。这样训练会非常的慢。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>逻辑回归在训练的过程当中，如果有很多的特征高度相关或者说有一个特征重复了100遍，会造成怎样的影响？</strong></p>
+</li>
+<li>
+<p>先说结论，如果在损失函数最终收敛的情况下，其实就算有很多特征高度相关也不会影响分类器的效果。</p>
+</li>
+<li>
+<p>但是对特征本身来说的话，假设只有一个特征，在不考虑采样的情况下，你现在将它重复100遍。训练以后完以后，数据还是这么多，但是这个特征本身重复了100遍，实质上将原来的特征分成了100份，每一个特征都是原来特征权重值的百分之一。</p>
+</li>
+<li>
+<p>如果在随机采样的情况下，其实训练收敛完以后，还是可以认为这100个特征和原来那一个特征扮演的效果一样，只是可能中间很多特征的值正负相消了。</p>
+</li>
+<li>
+<p><strong>为什么我们还是会在训练的过程当中将高度相关的特征去掉？</strong></p>
+<ul>
+<li>去掉高度相关的特征会让模型的可解释性更好</li>
+<li>可以大大提高训练的速度。如果模型当中有很多特征高度相关的话，就算损失函数本身收敛了，但实际上参数是没有收敛的，这样会拉低训练的速度。其次是特征多了，本身就会增大训练的时间。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-逻辑回归的优缺点总结"><a class="header-anchor" href="#4-逻辑回归的优缺点总结">¶</a><strong>4.逻辑回归的优缺点总结</strong></h2>
+<p>​    面试的时候，别人也经常会问到，你在使用逻辑回归的时候有哪些感受。觉得它有哪些优缺点。</p>
+<p>​     <strong>在这里我们总结了逻辑回归应用到工业界当中一些优点：</strong></p>
+<ul>
+<li>
+<p>形式简单，模型的可解释性非常好。从特征的权重可以看到不同的特征对最后结果的影响，某个特征的权重值比较高，那么这个特征最后对结果的影响会比较大。</p>
+</li>
+<li>
+<p>模型效果不错。在工程上是可以接受的（作为baseline)，如果特征工程做的好，效果不会太差，并且特征工程可以大家并行开发，大大加快开发的速度。</p>
+</li>
+<li>
+<p>训练速度较快。分类的时候，计算量仅仅只和特征的数目相关。并且逻辑回归的分布式优化sgd发展比较成熟，训练的速度可以通过堆机器进一步提高，这样我们可以在短时间内迭代好几个版本的模型。</p>
+</li>
+<li>
+<p>资源占用小,尤其是内存。因为只需要存储各个维度的特征值，。</p>
+</li>
+<li>
+<p>方便输出结果调整。逻辑回归可以很方便的得到最后的分类结果，因为输出的是每个样本的概率分数，我们可以很容易的对这些概率分数进行cutoff，也就是划分阈值(大于某个阈值的是一类，小于某个阈值的是一类)。</p>
+</li>
+</ul>
+<p>​      <strong>但是逻辑回归本身也有许多的缺点:</strong></p>
+<ul>
+<li>
+<p>准确率并不是很高。因为形式非常的简单(非常类似线性模型)，很难去拟合数据的真实分布。</p>
+</li>
+<li>
+<p>很难处理数据不平衡的问题。举个例子：如果我们对于一个正负样本非常不平衡的问题比如正负样本比 10000:1.我们把所有样本都预测为正也能使损失函数的值比较小。但是作为一个分类器，它对正负样本的区分能力不会很好。</p>
+</li>
+<li>
+<p>处理非线性数据较麻烦。逻辑回归在不引入其他方法的情况下，只能处理线性可分的数据，或者进一步说，处理二分类的问题 。</p>
+</li>
+<li>
+<p>逻辑回归本身无法筛选特征。有时候，我们会用gbdt来筛选特征，然后再上逻辑回归。</p>
+</li>
+</ul>
+<h2 id="模型-策略-算法"><a class="header-anchor" href="#模型-策略-算法">¶</a>模型、策略、算法</h2>
+<h2 id="codings"><a class="header-anchor" href="#codings">¶</a>Codings</h2>
 
           
         
@@ -1102,7 +1798,7 @@
 
       
         
-          <h1 id="official-definition"><a href="#official-definition" class="headerlink" title="official definition"></a>official definition</h1>
+          <h1>official definition</h1>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/04/11/tensorflow/#more" rel="contents">
@@ -1110,574 +1806,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/" itemprop="url">Deep Learning Neural Network and Deep Learning</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-11T09:25:45+08:00">2019-04-11</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                22k字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Course-one-Neural-Networks-and-Deep-Learning-Course-1-of-the-Deep-Learning-Specialization"><a href="#Course-one-Neural-Networks-and-Deep-Learning-Course-1-of-the-Deep-Learning-Specialization" class="headerlink" title="Course one :  Neural Networks and Deep Learning(Course 1 of the Deep Learning Specialization)"></a>Course one :  Neural Networks and Deep Learning(Course 1 of the Deep Learning Specialization)</h1><h1 id="C1W1"><a href="#C1W1" class="headerlink" title="C1W1"></a>C1W1</h1><h2 id="C1W1L01-Welcome"><a href="#C1W1L01-Welcome" class="headerlink" title="C1W1L01: Welcome"></a>C1W1L01: Welcome</h2><p>AI is the new Electricity!</p>
-<p>Course 1: Neural Networks and Deep Learning</p>
-<p>Course 2: Improving Deep Neural Networks: Hyperparameter tuning,Regularization and Optimization</p>
-<p>Course 3: Structuring your Machine Learning project</p>
-<p>Course 4: Convolutional Neural Networks</p>
-<p>Course 5: Natural Langurge Processing: Building sequence models</p>
-<h2 id="C1W1L02-What-is-Neural-Network"><a href="#C1W1L02-What-is-Neural-Network" class="headerlink" title="C1W1L02 : What is Neural Network"></a>C1W1L02 : What is Neural Network</h2><p>Deep Learning = training (very large) neural network</p>
-<h3 id="For-example-of-house-prize-prediction-the-simplest-neural-network"><a href="#For-example-of-house-prize-prediction-the-simplest-neural-network" class="headerlink" title="For example of house prize prediction : the simplest neural network"></a>For example of house prize prediction : the simplest neural network</h3><p>如果现在有六栋房子的信息，分别是房子的大小(size of house)和对应的价格(prize),绘制出如下的。自然的想法：线性回归，得到拟合的直线。值得注意的是，房价不可能是负数吧！因此下图中蓝色的线，大致就是我们所需要的函数。这个对应一个最简单神经网络（neural network）</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/housr_prize_1.png" alt=""></p>
-<p>上述是一个tiny little neural network，更大的，更复杂的神经网络是</p>
-<p>把很多最简单的single neural堆积(stacking)到一起。</p>
-<h3 id="For-example-of-house-prize-prediction-stacking-the-neural"><a href="#For-example-of-house-prize-prediction-stacking-the-neural" class="headerlink" title="For example of house prize prediction : stacking the  neural"></a>For example of house prize prediction : stacking the  neural</h3><p>上面这个例子，仅仅考虑特征是size,实际情况上，与房屋相关的特征还有number of bedrooms、zip code、wealth, number of bedrooms and size affect family size. The zip code is a feature that tells you you know walkability. The wealth tells you how good is the school quality</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/house_prize_2.png" alt=""></p>
-<p>hidden layer 用输入层计算得到，因此说输入层与中间层紧密连接起来了</p>
-<h3 id="The-actual-application-of-neural-networks"><a href="#The-actual-application-of-neural-networks" class="headerlink" title="The actual application of neural networks"></a>The actual application of neural networks</h3><p>hidden layer 与上一层的连接情况并不是手工确定，每一层都是上一层所有的输入函数，所以建立的神经网络如下：</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/house prize 3.png" alt=""></p>
-<p>The remarkable thing about neural network</p>
-<ol>
-<li>Given enough data about X&amp;Y (x,y) which good at freaking out functions :map x to y</li>
-<li>Most powerful in supervised learning</li>
-</ol>
-<h3 id="C2W1CL03-Supervised-Learning-with-Neural-Network"><a href="#C2W1CL03-Supervised-Learning-with-Neural-Network" class="headerlink" title="C2W1CL03 : Supervised Learning with Neural Network"></a>C2W1CL03 : Supervised Learning with Neural Network</h3><h3 id="常见的监督学习"><a href="#常见的监督学习" class="headerlink" title="常见的监督学习"></a>常见的监督学习</h3><p>截止到目前，<strong>Neural Network的成功应用基本都在Supervised Learning</strong>。比如：Ad，Images vision, Audio to Text, Machine translation, Autonomous Driving</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/supervised-learning-exmples.png" alt=""></p>
-<h3 id="常见的神经网络的设计"><a href="#常见的神经网络的设计" class="headerlink" title="常见的神经网络的设计"></a>常见的神经网络的设计</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/NeuralNetworkExamples.png" alt=""></p>
-<p>卷积神经网络：<strong>Convolutional Neural Network</strong> (CNN) 通常有用图像数据</p>
-<p>递归神经网络： <strong>Recurrent Neural Network</strong> (RNN) 通常用于time series</p>
-<p>对应复杂的应用中，定制一些复杂的混合的神经网络结构</p>
-<h3 id="结构化和非结构化数据"><a href="#结构化和非结构化数据" class="headerlink" title="结构化和非结构化数据"></a>结构化和非结构化数据</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/datastructure.png" alt=""></p>
-<p>处理非结构化数据是很难的，与结构化数据比较，让计算机理解非结构化数据很难</p>
-<h3 id="C1W1L04-Why-is-deep-learning-taking-off"><a href="#C1W1L04-Why-is-deep-learning-taking-off" class="headerlink" title="C1W1L04: Why is deep learning taking off"></a>C1W1L04: Why is deep learning taking off</h3><p>Answer: scale</p>
-<p>If you want to hit this very high level of performance ,firstly, you need to be able train a big enough neural network in order to take advantage of the huge amount of data and second you need to be out here on the x axes you do need a lot of data.</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/scale.jpg" alt=""></p>
-<ol>
-<li>If you do not have a lot training data is often up to your skill at hand engineering features that determines the foreman.在这个小的训练集中，各种算法的优先级事实上定义的也不是很明确，所以如果你没有大量的训练集，那效果会取决于你的特征工程能力，那将决定最终的性能。</li>
-<li>这个图形区域的左边，各种算法之间的优先级并不是定义的很明确，最终的性能更多的是取决于你在用<strong>工程选择特征</strong>方面的能力以及<strong>算法处理方面</strong>的一些细节.</li>
-<li>只是在某些大数据规模非常庞大的训练集，也就是在右边这个会非常的大时，我们能更加持续地看到更大的由神经网络控制其它方法.</li>
-</ol>
-<h3 id="The-Reason"><a href="#The-Reason" class="headerlink" title="The Reason"></a>The Reason</h3><ol>
-<li><p>the scale of data</p>
-</li>
-<li><p>the speed of computation  such as GPUS</p>
-</li>
-<li><p>innovation of algorithm </p>
-<p>许多算法方面的创新，一直是在尝试着使得神经网络运行的更快</p>
-<p>switch sigmoid function to relu function</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/algorithm——rul.jpg" alt=""></p>
-</li>
-</ol>
-<p>在这个区域，也就是这个<strong>sigmoid</strong>函数的梯度会接近零，所以学习的速度会变得非常缓慢，因为当你实现梯度下降以及梯度接近零的时候，参数会更新的很慢，所以学习的速率也会变的很慢，而通过改变这个被叫做激活函数的东西，神经网络换用这一个函数，叫做<strong>ReLU</strong>的函数（修正线性单元），<strong>ReLU</strong>它的梯度对于所有输入的负值都是零，因此梯度更加不会趋向逐渐减少到零。</p>
-<p>训练你的神经网络的过程，很多时候是凭借直觉的，往往你对神经网络架构有了一个想法，于是你尝试写代码实现你的想法，然后让你运行一个试验环境来告诉你，你的神经网络效果有多好，通过参考这个结果再返回去修改你的神经网络里面的一些细节，然后你不断的重复上面的操作，当你的神经网络需要很长时间去训练，需要很长时间重复这一循环，在这里就有很大的区别，根据你的生产效率去构建更高效的神经网络。当你能够有一个想法，试一试，看效果如何。在10分钟内，或者也许要花上一整天，如果你训练你的神经网络用了一个月的时间，有时候发生这样的事情，也是值得的，因为你很快得到了一个结果。在10分钟内或者一天内，你应该尝试更多的想法，那极有可能使得你的神经网络在你的应用方面工作的更好、更快的计算，在提高速度方面真的有帮助，那样你就能更快地得到你的实验结果。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/faster.jpg" alt=""></p>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a><font color="red">Summary</font></h2><font color="green">早上花了2h小时学习第一周的视频，先看一遍视频的字幕，逐字逐句的理解，虽然很多时候都是自己乱猜的，大概清楚讲的什么！然后再看大牛的笔记，然后再看一篇结合PPT。下午也看了半个多小时。问题：1. 自己的英文水平不够，这个需要大大的提高讷。2. 其实只要看别人的笔记就可以知道内容，但是还是想听andow ng的讲解。3. 视频都比较短，每个视频设计的知识点或者内容不多，1到3个，分成知识点做笔记还是不错的</font>
-
-<font color="blue">这一周的内容，也就是今天我学习的知识简单和容易理解。学习了神经网络的大致结构，神经网络的应用领域，深度学习为什么取得快速的发展的三点原因，尤其是数据scale与其他方法和神经网络规模的大致性能关系</font>
-
-<h1 id="C1W2"><a href="#C1W2" class="headerlink" title="C1W2"></a>C1W2</h1><h3 id="C1W2L01-Binary-Classification"><a href="#C1W2L01-Binary-Classification" class="headerlink" title="C1W2L01: Binary Classification"></a>C1W2L01: Binary Classification</h3><p>In this week, we’re going to go over the basics of neural network programming. We are going to study handle data without for loop.</p>
-<p>forward password for propagation </p>
-<p> backward pass or what’s called a backward propagation step</p>
-<p>Why the computations in learning in a neural network can be organized in this board propagation and a separate backward propagation by using logistic regression to convey(传达) theses ideas.</p>
-<h3 id="Binary-Classification"><a href="#Binary-Classification" class="headerlink" title="Binary Classification"></a>Binary Classification</h3><p>Input； an image . three separate matrices corresponding red green and blue color channels of this image. 如果你的图片大小为64x64像素，那么你就有三个规模为64x64的矩阵，分别对应图片中红、绿、蓝三种像素的强度值</p>
-<p>unroll all of these pixel intensity values into  a feature vector </p>
-<p>pixel intensity values of this image </p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/w_piexl.jpg" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/2_blue_green_read.jpg" alt=""></p>
-<p>notation</p>
-<p>(x,y)： a pair X comma Y</p>
-<p>$M_{train}$: M subscript train</p>
-<p>每条测试集在矩阵中都是以列向量的形式存在</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/2_noation.png" alt=""></p>
-<p>Matrix capital</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/2_nation_2.png" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/2_all_nation.jpg" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/2_all_nation_1.jpg" alt=""></p>
-<h3 id="Model-hypothesis-Function-Logistic-Regression"><a href="#Model-hypothesis-Function-Logistic-Regression" class="headerlink" title="Model : hypothesis Function :Logistic Regression"></a>Model : hypothesis Function :Logistic Regression</h3><p>So given an input X and the parameters W and b, how do we generate the output Y hat? Well, one thing you could try, that doesn’t work, would be to have Y hat be w transpose X plus B, kind of a linear function of the input X. And in fact, this is what you use if you were doing linear regression. But this isn’t a very good algorithm for binary classification because you want Y hat to be the chance that Y is equal to one. </p>
-<p>So,Y hat should really be between zero and one. This is what the sigmoid function looks like. </p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/log_1.png" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/log_3.jpg" alt=""></p>
-<h3 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a>sigmoid function</h3><script type="math/tex; mode=display">
-\sigma(z) = \frac{1}{1+e^{-z}}</script><p>因为你想让$\hat{y}$表示实际值$y$等于1的机率的话， 应该在0到1之间。这是一个需要解决的问题，因为可能比1要大得多，或者甚至为一个负值。对于你想要的在0和1之间的概率来说它是没有意义的，因此在逻辑回归中，我们的输出应该是等于由上面得到的线性函数式子作为自变量的<strong>sigmoid</strong>函数中，公式如上图最下面所示，将线性函数转换为非线性函数。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/log_2.jpg" alt=""></p>
-<p>注意：原来$w,b$是分开在，这里就合并，引入变量$x_0=1$,对应偏置$b$,</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/log_3.png" alt=""></p>
-<h3 id="Strategy：Cost-function"><a href="#Strategy：Cost-function" class="headerlink" title="Strategy：Cost function"></a>Strategy：Cost function</h3><p>Firstly : Loss function</p>
-<script type="math/tex; mode=display">
-L(\hat{y},y)=\frac{1}{2}\sum{(y_i-\hat{y_i})^2}</script><p>这个优化问题不是凸优化问题(non-convex)，因此不选用这个</p>
-<p>Secondly，</p>
-<script type="math/tex; mode=display">
-L(y,\hat{y})=-(ylog^{\hat{y}}+(1-y)log^{1-\hat{y}})</script><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/log_cost_1.jpg" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/log__cost_2.jpg" alt=""></p>
-<h3 id="Algorithm-Gradient-Descent"><a href="#Algorithm-Gradient-Descent" class="headerlink" title="Algorithm: Gradient Descent"></a>Algorithm: Gradient Descent</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/GD1.jpg" alt=""></p>
-<p>Gradient Descent算法步骤：</p>
-<ol>
-<li>Initialize $w$, $b$ to zero</li>
-<li>repeat：</li>
-</ol>
-<p>$w :=w−\alpha \frac{∂J(w,b)}{∂w}​$</p>
-<p>$b :=b-\alpha \frac{∂J(w,b)}{∂b}$</p>
-<h3 id="C1W2L05-amp-C1W2L06-Derivatives"><a href="#C1W2L05-amp-C1W2L06-Derivatives" class="headerlink" title="C1W2L05 &amp; C1W2L06 Derivatives"></a>C1W2L05 &amp; C1W2L06 Derivatives</h3><p>求导，这个是微积分的内容，不用写了！</p>
-<h3 id="C1W2L07：-Computation-Graph"><a href="#C1W2L07：-Computation-Graph" class="headerlink" title="C1W2L07： Computation Graph"></a>C1W2L07： Computation Graph</h3><h3 id="C1W2L08-Derivatives-with-compution-graphs"><a href="#C1W2L08-Derivatives-with-compution-graphs" class="headerlink" title="C1W2L08 : Derivatives with compution graphs"></a>C1W2L08 : Derivatives with compution graphs</h3><p>链式法则</p>
-<script type="math/tex; mode=display">
-\frac{\partial L}{\partial v}=\frac{\partial L}{\partial u}\frac{\partial u}{\partial v}</script><h3 id="C1W2L09-Logistic-Regression-Gradient-Descent"><a href="#C1W2L09-Logistic-Regression-Gradient-Descent" class="headerlink" title="C1W2L09 : Logistic Regression Gradient Descent"></a>C1W2L09 : Logistic Regression Gradient Descent</h3><h4 id="single-training-example"><a href="#single-training-example" class="headerlink" title="single training example"></a>single training example</h4><p>You’ve seen the loss function that measures how well you’re doing on the single training example. You’ve also seen the cost function that measures how well your parameters w and b are doing on your entire training set.</p>
-<p>You’ve heard me say that the computations of a neural network are organized in terms of a forward pass or a forward propagation step, in which we compute the output of the neural network, followed by a backward pass or back propagation step, which we use to compute gradients or compute derivatives.</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/gd_1.jpg" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/gd_2.png" alt=""></p>
-<script type="math/tex; mode=display">
-\frac{\partial L}{\partial w}=\frac{\partial L}{\partial \alpha }\frac{\partial \alpha }{\partial z}\frac{\partial z}{\partial w}
-\\=-(\frac{y}{a}+\frac{1-y}{1-a})a(1-a)x=(a-y)x</script><h3 id="C1W2L10-Gradient-Descent-on-m-example"><a href="#C1W2L10-Gradient-Descent-on-m-example" class="headerlink" title="C1W2L10 Gradient Descent on m example"></a>C1W2L10 Gradient Descent on m example</h3><script type="math/tex; mode=display">
-\min L(w,b)=\sum_{i=1}^{m}L(\alpha_i,y_i)/m\\
-\frac{\partial L }{\partial w}=(\sum_{i=1}^{m}\frac{\partial L(a_i,y_i)}{\partial w})/m=(\sum_{i=1}^{m}(a-y_i)x_i)/m\\
-\frac{\partial L }{\partial b}=(\sum_{i=1}^{m}\frac{\partial L(a_i,y_i)}{\partial b})/m=(\sum_{i=1}^{m}(a-1)x_i)/m</script><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/gd_3jpg.jpg" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/cost_3.png" alt=""></p>
-<p>上面的伪代码告诉我们，需要多次for loop完成代码，但是这会造成运算速度下降！因为我们越来越多地训练非常大的数据集，因此你真的需要你的代码变得非常高效。所以在接下来的几个视频中，我们会谈到向量化，以及如何应用向量化而连一个<strong>for</strong>循环都不使用。所以学习了这些，我希望你有关于如何应用逻辑回归，或是用于逻辑回归的梯度下降，事情会变得更加清晰</p>
-<h3 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h3><font color="red">今天主要学习了以logistics regression 为例，如何通过链式求导的过程，简单的练习一下，以及再次了解什么是梯度下降法，以及训练学习算法的需要一个损失函数，训练的过程就是求损失函数最优值的过程</font>
-
-<h3 id="C1W2L11-Vectorization"><a href="#C1W2L11-Vectorization" class="headerlink" title="C1W2L11: Vectorization"></a>C1W2L11: Vectorization</h3><h4 id="1-什么是Vectorization：将-for-loop-尽可能转换为矩阵运算"><a href="#1-什么是Vectorization：将-for-loop-尽可能转换为矩阵运算" class="headerlink" title="1. 什么是Vectorization：将 for loop 尽可能转换为矩阵运算"></a>1. 什么是Vectorization：将 for loop 尽可能转换为矩阵运算</h4><p>通过<strong>numpy</strong>内置函数和避开显式的循环(<strong>loop</strong>)的方式进行向量化，从而有效提高代码速度。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/v_1.jpg" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">np.dot(a,b)</span><br><span class="line">如果a,b是一维数组，则计算点积</span><br><span class="line">如果a,b是多维数据，则矩阵乘法</span><br></pre></td></tr></table></figure>
-<h4 id="2-An-example-of-vectorization"><a href="#2-An-example-of-vectorization" class="headerlink" title="2. An example of vectorization"></a>2. An example of vectorization</h4><p>vectorization的好处：conciser code, but faster execution 一个简单的对比实验：1,000,000大小的两个向量内积计算，for loop要比Vectorization快300倍。 在Deep Learning时代，vectorization是一项重要的技能。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np <span class="comment">#导入numpy库</span></span><br><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">#创建一个数据a</span></span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># [1 2 3 4]</span></span><br><span class="line"><span class="keyword">import</span> time <span class="comment">#导入时间库</span></span><br><span class="line">a = np.random.rand(<span class="number">1000000</span>)</span><br><span class="line">b = np.random.rand(<span class="number">1000000</span>) <span class="comment">#通过round随机得到两个一百万维度的数组</span></span><br><span class="line">tic = time.time() <span class="comment">#现在测量一下当前时间</span></span><br><span class="line"><span class="comment">#向量化的版本</span></span><br><span class="line">c = np.dot(a,b)</span><br><span class="line">toc = time.time()</span><br><span class="line">print(“Vectorized version:” + str(<span class="number">1000</span>*(toc-tic)) +”ms”) <span class="comment">#打印一下向量化的版本的时间</span></span><br><span class="line">​</span><br><span class="line"><span class="comment">#继续增加非向量化的版本</span></span><br><span class="line">c = <span class="number">0</span></span><br><span class="line">tic = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">    c += a[i]*b[i]</span><br><span class="line">toc = time.time()</span><br><span class="line">print(c)</span><br><span class="line">print(“For loop:” + str(<span class="number">1000</span>*(toc-tic)) + “ms”)<span class="comment">#打印for循环的版本的时间</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-GPU-or-CPU"><a href="#3-GPU-or-CPU" class="headerlink" title="3. GPU or CPU"></a>3. GPU or CPU</h4><ol>
-<li><p>大规模的深度学习再<strong>GPU</strong>或者图像处理单元运行”，<strong>CPU</strong>和<strong>GPU</strong>都有并行化的指令，他们有时候会叫做<strong>SIMD</strong>指令，这个代表了一个单独指令多维数据，这个的基础意义是，如果你使用了<strong>built-in</strong>函数,像<code>np.function</code>或者并不要求你实现循环的函数，它可以让<strong>python</strong>的充分利用并行化计算。</p>
-</li>
-<li><p>只是在<strong>GPU</strong>和<strong>CPU</strong>上面计算，<strong>GPU</strong>更加擅长<strong>SIMD</strong>计算，但是<strong>CPU</strong>事实上也不是太差，可能没有<strong>GPU</strong>那么擅长吧。SIMD Both CPU and GPU have parallelization instructions(i.e. SIMD, Signle Instruction Multiple Data)</p>
-</li>
-</ol>
-<h3 id="C12L12-：-More-Vectorization-Example"><a href="#C12L12-：-More-Vectorization-Example" class="headerlink" title="C12L12 ： More Vectorization Example"></a>C12L12 ： More Vectorization Example</h3><h3 id="矩阵和向量乘法"><a href="#矩阵和向量乘法" class="headerlink" title="矩阵和向量乘法"></a>矩阵和向量乘法</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/v_2.png" alt=""></p>
-<h3 id="向量函数"><a href="#向量函数" class="headerlink" title="向量函数"></a>向量函数</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/v_3.png" alt=""></p>
-<ol>
-<li>原则：whenever possible, avoid explict for-loops</li>
-<li>使用Element wised的矩阵运算，将函数作用在每个矩阵元素上，比如：<ul>
-<li>np.exp()</li>
-<li>np.log()</li>
-<li>np.abs()</li>
-<li>np.maxium()</li>
-<li>1/v</li>
-<li>v**2</li>
-</ul>
-</li>
-</ol>
-<h3 id="C1W2L13-Vectorizing-Logistic-Regression"><a href="#C1W2L13-Vectorizing-Logistic-Regression" class="headerlink" title="C1W2L13: Vectorizing Logistic Regression"></a>C1W2L13: Vectorizing Logistic Regression</h3><h3 id="1-前向传播"><a href="#1-前向传播" class="headerlink" title="1. 前向传播"></a>1. 前向传播</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/v_3.jpg" alt=""></p>
-<script type="math/tex; mode=display">
-\hat{y}=σ(w^TX+b)=(a(1),a(2),...,a(m−1),a(m))=\\
-(\alpha(z_1),\alpha(z_m),...,\alpha(z_m))=\\
-(\alpha(w^Tx_1+b),\alpha(w^Tx_2+b),...,\alpha(w^Tx_m+b))=</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">z=np.dot(W^T,X)+b</span><br><span class="line"><span class="comment"># z这里就是python 巧妙的地方，b是实数，但是向量加上实数后，b扩展成向量，被称为广播（brosdcasting）</span></span><br></pre></td></tr></table></figure>
-<p>个人经验：</p>
-<ol>
-<li>首先，熟悉每个变量的记号和维度，必要的话，可以画出来，更直观。</li>
-<li>先从一个样本做向量化，再把m个样本的操作向量化。</li>
-<li>for-loop里面是循环乘法，则向量化一定是一个乘法形式，若对于不确定乘法的左右关系，是否需转置，可以根据目标变量的维度推测。或者先乘起来，再根据目标变量看是否要转置。</li>
-</ol>
-<h3 id="C1W2L14-Vectorzing-Logistic-Regression’s-Gradient-Compution"><a href="#C1W2L14-Vectorzing-Logistic-Regression’s-Gradient-Compution" class="headerlink" title="C1W2L14 : Vectorzing Logistic Regression’s Gradient Compution"></a>C1W2L14 : Vectorzing Logistic Regression’s Gradient Compution</h3><ol>
-<li><p>backforwd</p>
-</li>
-<li><script type="math/tex; mode=display">
-\frac{∂J}{∂w}=\frac{1}{m}X(A−Y)T\\
-\frac{∂J}{∂b}=\frac{1}{m}(a(i)−y(i))</script></li>
-</ol>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/v-4.jpg" alt=""></p>
-<p>重要的是弄清楚，里面的行列关系，代表的意思，运算时候，先自己理清楚。还有点积、等等运算性质对应的操作，或者对应的内置函数</p>
-<h3 id="C1W2L15-Broadcasting-in-Python"><a href="#C1W2L15-Broadcasting-in-Python" class="headerlink" title="C1W2L15: Broadcasting in Python"></a>C1W2L15: Broadcasting in Python</h3><h3 id="One-Example"><a href="#One-Example" class="headerlink" title="One Example"></a>One Example</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/bordacasing_4.png" alt=""></p>
-<p><code>A.sum(axis = 0)</code>中的参数<code>axis</code>。<strong>axis用来指明将要进行的运算是沿着哪个轴执行，在numpy中，0轴是垂直的，也就是列，而1轴是水平的，也就是行。</strong></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/boradcasing_5.png" alt=""></p>
-<p>第二个<code>A/cal.reshape(1,4)</code>指令则调用了<strong>numpy</strong>中的广播机制。这里使用 3 by 4的矩阵除以1 by 4 的矩阵。技术上来讲，其实并不需要再将矩阵 <code>reshape</code>(重塑)成 ，因为矩阵本身已经是 了。但是当我们写代码时不确定矩阵维度的时候，通常会对矩阵进行重塑来确保得到我们想要的列向量或行向量。重塑操作<code>reshape</code>是一个常量时间的操作，时间复杂度是，它的调用代价极低。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/boradcasing_6.png" alt=""></p>
-<h3 id="Secondly-Example"><a href="#Secondly-Example" class="headerlink" title="Secondly Example"></a>Secondly Example</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/bordacasing_2.png" alt=""></p>
-<p>python的广播机制会将常数扩展成4by 1的列向量</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/boradcasing_3.png" alt=""></p>
-<p>其实是将1by*n 的矩阵复制成为mbyn的矩阵</p>
-<h3 id="广播机制的举例"><a href="#广播机制的举例" class="headerlink" title="广播机制的举例"></a>广播机制的举例</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/bordcasing_1.png" alt=""></p>
-<h3 id="axis"><a href="#axis" class="headerlink" title="axis"></a>axis</h3><p>补充：numpy中，类似sum的函数，经常涉及axis参数，可以取值为0或1，甚至其他。经常记不住，这里我查了了一下，是这样的（<a href="https://stackoverflow.com/questions/17079279/how-is-axis-indexed-in-numpys-array" target="_blank" rel="noopener">原文</a>）：</p>
-<ol>
-<li><strong>axis的数字，和数组的shape参数的索引是对应的</strong>。比如一个数组的shape是(5,6)，则代表5个row，6个column。即在shape中，row和column的个数的索引是0和1。也就第1个坐标，在shape中的第一个元素，<strong>索引是0，代表row的方向</strong>；第2个坐标，在shape中的第2个元素，<strong>索引是1，代表row的方向</strong>。</li>
-<li>对于sum函数，axis指的是sum“<strong>沿着</strong>”的方向，经过计算，这个方向的维度因为求和后就消失了，比如sum(axis=0)代表是沿着“row”方向进行求和，</li>
-<li>当然axis可以是一个tupe，那就相当于沿着多个多个方向求和。</li>
-<li>sum如果不传入axis参数，默认是对所有维度求和。</li>
-</ol>
-<h3 id="broadcasting"><a href="#broadcasting" class="headerlink" title="broadcasting"></a>broadcasting</h3><p>  当两个数组的形状并不相同的时候，我们可以通过扩展数组的方法来实现相加、相减、相乘等操作，这种机制叫做广播（broadcasting）。</p>
-<p>三种广播情况</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/bordacasing.png" alt=""></p>
-<h3 id="C1W2L16-A-Note-on-Python-numpy-vectors"><a href="#C1W2L16-A-Note-on-Python-numpy-vectors" class="headerlink" title="C1W2L16 A Note on Python/numpy vectors"></a>C1W2L16 A Note on Python/numpy vectors</h3><p>本节主要讲<strong>Python</strong>中的<strong>numpy</strong>一维数组的特性，以及与行向量或列向量的区别</p>
-<h3 id="1-一维数组的特性"><a href="#1-一维数组的特性" class="headerlink" title="1. 一维数组的特性"></a>1. 一维数组的特性</h3><p>首先设置a = np.array.random.randn(5)，这样会生成存储在数组a中的5个高斯随机数变量。之后输出 ，从屏幕上可以得知，此时a 的<strong>shape</strong>（形状）是一个的结构。这在<strong>Python</strong>中被称作<strong>一个一维数组</strong>。它既不是一个行向量也不是一个列向量，这也导致它有一些不是很直观的效果。举个例子，如果我输出一个转置阵，最终结果它会和看起来一样，所以和的转置阵最终结果看起来一样。而如果我输出和的转置阵的内积，你可能会想：乘以的转置返回给你的可能会是一个矩阵。但是如果我这样做，你只会得到一个数。</p>
-<p>所以我建议当你编写神经网络时，不要在使用的<strong>shape</strong>(5,1)是还是(n,)或者一维数组。相反，如果你设置(5,1)，那么这就是5行1列向量。在先前的操作里a和a的转置看起来一样，而现在这样的 a变成一个新的a 的转置，并且它是一个行向量。请注意一个细微的差别，在这种数据结构中，当我们输出a 的转置时有两对方括号，而之前只有一对方括号，所以这就是1行5列的矩阵和一维数组的差别。</p>
-<h3 id="2-行向量和列向量"><a href="#2-行向量和列向量" class="headerlink" title="2. 行向量和列向量"></a>2. 行向量和列向量</h3><p><strong>rank 1 array问题</strong>：shape是(x,)的数组，既不是行向量，也不是列向量，没法参与正常的矩阵运算，应该总是使用(x,1)或(1,x)的shape来表示向量。但可以通过reshape方法将rank 1 array转换为行向量或列向量。（什么是rank，就是一个数组的维度）一维的数组既不是行向量也不是列向量，转置后，依然是本身。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/note_1.jpg" alt=""></p>
-<h3 id="3-解决方法"><a href="#3-解决方法" class="headerlink" title="3. 解决方法"></a>3. 解决方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span>(a.shape=（<span class="number">5</span>，<span class="number">1</span>)）</span><br><span class="line"><span class="comment"># 为了确保你的矩阵或向量所需要的维数时，不要羞于 reshape 操作</span></span><br></pre></td></tr></table></figure>
-<h3 id="C1W2L18-：Quick-Tour-of-Jupyter-iPython-Notebooks"><a href="#C1W2L18-：Quick-Tour-of-Jupyter-iPython-Notebooks" class="headerlink" title="C1W2L18 ：Quick Tour of Jupyter/iPython Notebooks"></a>C1W2L18 ：Quick Tour of Jupyter/iPython Notebooks</h3><h3 id="C1W2L18-Explanation-of-Logistic-Regression-Cost-Function"><a href="#C1W2L18-Explanation-of-Logistic-Regression-Cost-Function" class="headerlink" title="C1W2L18: Explanation of Logistic Regression Cost Function"></a>C1W2L18: Explanation of Logistic Regression Cost Function</h3><p>对应logistic regression，输出$\hat{y}=p(y=1|x)$,那么$p(y=0|x)=1-\hat{y}$</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/cost_2png.png" alt=""></p>
-<p>综合上面</p>
-<script type="math/tex; mode=display">
-p(y|x)= \hat{y}^y*(1-\hat{y})^{1-y}</script><p>对于整个训练集，</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/cost_1png.png" alt=""></p>
-<p>假设所有的训练样本服从同一分布且相互独立，也即独立同分布的，所有这些样本的联合概率就是每个样本概率的乘积:</p>
-<script type="math/tex; mode=display">
-p(labels \ in\  training\  set)=\Pi_{i=1}^mp(y_i|x_i)</script><p>如果利用极大似然法做，找到一组参数，使得样本观测值概率最大</p>
-<script type="math/tex; mode=display">
-\max log p(label \ in \ training \ set)=log \Pi_{i=1}^mp(y_i|x_i)=\sum -L(\hat{y^i},y^i)</script><script type="math/tex; mode=display">
-\min cost J(w,b)=\frac{1}{m}L(\hat{y^i},y^i)</script><p>总结一下，为了最小化成本函数，我们从<strong>logistic</strong>回归模型的最大似然估计的角度出发，假设训练集中的样本都是独立同分布的条件下</p>
-<h3 id="Day3-summary"><a href="#Day3-summary" class="headerlink" title="Day3 : summary"></a>Day3 : summary</h3><font color="red">主要学习了python编程的如何才能高效率，内置函数的具有并行性，simd指令，以及一维数组的使用注意事项，logistic regression的lost function的原理证明</font>
-
-<h1 id="C1W3"><a href="#C1W3" class="headerlink" title="C1W3"></a>C1W3</h1><h2 id="C1W3L01-Neural-Network-Overview"><a href="#C1W3L01-Neural-Network-Overview" class="headerlink" title="C1W3L01 : Neural Network Overview"></a>C1W3L01 : Neural Network Overview</h2><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_2.png" alt=""></p>
-<p>许多<strong>sigmoid</strong>单元堆叠起来形成一个神经网络。</p>
-<p>正向传播：输入层到layer one</p>
-<script type="math/tex; mode=display">
-\left.\begin{array}{c}{x} \\ {W^{[1]}} \\ {b^{[1]}}\end{array}\right\} \Longrightarrow z^{[1]}=W^{[1]} x+b^{[1]} \Longrightarrow a^{[1]}=\sigma\left(z^{[1)}\right)</script><p>layer one 到layer two</p>
-<script type="math/tex; mode=display">
-\left.\begin{array}{r}{a^{(1]}=\sigma\left(z^{[1]}\right)} \\ {W^{[2]}} \\ {b^{[2]}}\end{array}\right\}\begin{array}{l}{\Longrightarrow z^{[2]}=W^{[2]} a^{[1]}+b^{[2]} \Longrightarrow a^{[2]}=\sigma\left(z^{[2]}\right)} \\ {\Longrightarrow L\left(a^{[2]}, y\right)}\end{array}</script><p>反向传播</p>
-<script type="math/tex; mode=display">
-\left.\begin{array}{r}{d a^{[1]}=d \sigma\left(z^{[1]}\right)} \\ {d W^{[2]}} \\ {d b^{[2]}}\end{array}\right\}\begin{array}{l}{\Longleftarrow d z^{[2]}=d\left(W^{[2]} \alpha^{[1]}+b^{[2]}\right) \Longleftarrow d a^{[2]}=d \sigma\left(z^{[2]}\right)} \\ {\Longleftarrow d L\left(a^{[2]}, y\right)}\end{array}</script><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_3.png" alt=""></p>
-<p>$W$的行数是本次结点个数，列数是上层节点个数</p>
-<h2 id="C1W3L02-Nerual-Network-Representations"><a href="#C1W3L02-Nerual-Network-Representations" class="headerlink" title="C1W3L02 : Nerual Network Representations"></a>C1W3L02 : Nerual Network Representations</h2><p>符号说明</p>
-<h2 id="C1W3L03：-Computation-Neural-Network-Output"><a href="#C1W3L03：-Computation-Neural-Network-Output" class="headerlink" title="C1W3L03： Computation Neural Network Output"></a>C1W3L03： Computation Neural Network Output</h2><h3 id="A-simple-training-examples"><a href="#A-simple-training-examples" class="headerlink" title="A simple training examples"></a>A simple training examples</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_5.png" alt=""></p>
-<p>其中，x表示输入特征，a表示每个神经元的输出，W表示特征的权重，上标表示神经网络的层数（隐藏层为1），下标表示该层的第几个神经元。这是神经网络的<strong>符号惯例</strong>，下同。</p>
-<p><strong>神经网络的计算</strong></p>
-<p>关于神经网络是怎么计算的，从我们之前提及的逻辑回归开始，如下图所示。用圆圈表示神经网络的计算单元，逻辑回归的计算有两个步骤，首先你按步骤计算出，然后在第二步中你以<strong>sigmoid</strong>函数为激活函数计算（得出），一个神经网络只是这样子做了好多次重复计算。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_6.png" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_4.png" alt=""></p>
-<p>说明：$w_i^{[1]}$和$W^{[1]}$的关系，一个按照logistic regression ，一个是矩阵表示。</p>
-<p><strong>向量化计算</strong> 如果你执行神经网络的程序，用for循环来做这些看起来真的很低效。所以接下来我们要做的就是把这四个等式向量化。向量化的过程是将神经网络中的一层神经元参数纵向堆积起来，例如隐藏层中的纵向堆积起来变成一个(4,3)的矩阵，用符号$W^{[1]}$表示。另一个看待这个的方法是我们有四个逻辑回归单元，且每一个逻辑回归单元都有相对应的参数——向量，把这四个向量堆积在一起，你会得出这4×3的矩阵。</p>
-<script type="math/tex; mode=display">
-z^{[n]}=W^{[n]}X+b^{[n]}</script><script type="math/tex; mode=display">
-a^{[1]}=\left[ \begin{array}{c}{a_{1}^{[1]}} \\ {a_{2}^{[1]}} \\ {a_{3}^{[1]}} \\ {a_{4}^{[1]}}\end{array}\right]=\sigma\left(z^{[1]}\right)</script><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_7.png" alt=""></p>
-<p>Given input X（a single training set)</p>
-<script type="math/tex; mode=display">
-\begin{array}{c}{z^{[1]}=W^{[1]} a^{[0]}+b^{[1]}} \\ {a^{[1]}=\sigma\left(z^{[1]}\right)} \\ {z^{[2]}=W^{[2]} a^{[1]}+b^{[2]}} \\ {a^{[2]}=\sigma\left(z^{[2]}\right)}\end{array}</script><p>说明：</p>
-<p>$W$的第$i$行表示，当前层到上一层的权重行向量，再计算单个的时候，由于是按照logristics regression的方式，所以认为$w_i$是列向量，所以转置成行向量。上面的图也说明了：如何从单个操作到矩阵操作，权重矩阵是怎么构造，怎么表示的。</p>
-<p>b是列向量。</p>
-<h2 id="C1W3L04-Vectorizing-Across-Mutilple-Example"><a href="#C1W3L04-Vectorizing-Across-Mutilple-Example" class="headerlink" title="C1W3L04: Vectorizing Across Mutilple Example"></a>C1W3L04: Vectorizing Across Mutilple Example</h2><p>Different training examples in different columns of the matrix </p>
-<ol>
-<li><p>for loop</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_8.png" alt=""></p>
-</li>
-<li><p>vectorizing : stacking training set in columns</p>
-<script type="math/tex; mode=display">
-x=\left[ \begin{array}{cccc}{\vdots} & {\vdots} & {\vdots} & {\vdots} \\ {x^{(1)}} & {x^{(2)}} & {\dots} & {x} \\ {\vdots} & {\vdots} & {\vdots} & {\vdots}\end{array}\right]</script></li>
-</ol>
-<p>就有</p>
-<script type="math/tex; mode=display">
-\left\{\begin{array}{l}{A^{[1]}=\sigma\left(z^{[1]}\right)} \\ {z^{[2]}=W^{[2]} A^{[1]}+b^{[2]}} \\ {A^{[2]}=\sigma\left(z^{[2]}\right)}\end{array}\right.</script><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_9.png" alt=""></p>
-<p>当垂直扫描，是索引到隐藏单位的数字。当水平扫描，将从第一个训练示例中从第一个隐藏的单元到第二个训练样本，第三个训练样本……直到节点对应于第一个隐藏单元的激活值，且这个隐藏单元是位于这个训练样本中的最终训练样本。</p>
-<p>从水平上看，矩阵代表了各个训练样本。从竖直上看，矩阵的不同的索引对应于不同的隐藏单元。</p>
-<h2 id="C1W3L05-Explanation-for-vectorized-implement"><a href="#C1W3L05-Explanation-for-vectorized-implement" class="headerlink" title="C1W3L05 : Explanation for vectorized implement"></a>C1W3L05 : Explanation for vectorized implement</h2><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_10.png" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_11.png" alt=""></p>
-<h2 id="C1W3L06-Activation-Function"><a href="#C1W3L06-Activation-Function" class="headerlink" title="C1W3L06 : Activation Function"></a>C1W3L06 : Activation Function</h2><p>在讨论优化算法时，有一点要说明：基本已经不用<strong>sigmoid</strong>激活函数了，<strong>tanh</strong>函数在所有场合都优于<strong>sigmoid</strong>函数。</p>
-<p><strong>sigmoid</strong>函数和<strong>tanh</strong>函数两者共同的缺点是，在z特别大或者特别小的情况下，导数的梯度或者函数的斜率会变得特别小，最后就会接近于0，导致降低梯度下降的速度。</p>
-<p>在机器学习另一个很流行的函数是：修正线性单元的函数（<strong>ReLu</strong>），<strong>ReLu</strong>函数图像是如下图。$ a = max(0,z)$：  所以，只要是正值的情况下，导数恒等于1，当是负值的时候，导数恒等于0。从实际上来说，当使用的导数时，=0的导数是没有定义的。但是当编程实现的时候，的取值刚好等于0.00000001，这个值相当小，所以，在实践中，不需要担心这个值，是等于0的时候，假设一个导数是1或者0效果都可以。</p>
-<p>如果输出是0、1值（二分类问题），则输出层选择<strong>sigmoid</strong>函数，然后其它的所有单元都选择<strong>Relu</strong>函数。</p>
-<p>这是很多激活函数的默认选择，如果在隐藏层上不确定使用哪个激活函数，那么通常会使用<strong>Relu</strong>激活函数。有时，也会使用<strong>tanh</strong>激活函数，但<strong>Relu</strong>的一个缺点是：当z是负值的时候，导数等于0。</p>
-<p>这里也有另一个版本的<strong>Relu</strong>被称为<strong>Leaky Relu</strong>。</p>
-<p>当是负值时，这个函数的值不是等于0，而是轻微的倾斜。</p>
-<p>两者的优点是：</p>
-<p>第一，在的区间变动很大的情况下，激活函数的导数或者激活函数的斜率都会远大于0，在程序实现就是一个<strong>if-else</strong>语句，而<strong>sigmoid</strong>函数需要进行浮点四则运算，在实践中，使用<strong>ReLu</strong>激活函数神经网络通常会比使用<strong>sigmoid</strong>或者<strong>tanh</strong>激活函数学习的更快。</p>
-<p>第二，<strong>sigmoid</strong>和<strong>tanh</strong>函数的导数在正负饱和区的梯度都会接近于0，这会造成梯度弥散，而<strong>Relu</strong>和<strong>Leaky ReLu</strong>函数大于0部分都为常数，不会产生梯度弥散现象。(同时应该注意到的是，<strong>Relu</strong>进入负半区的时候，梯度为0，神经元此时不会训练，产生所谓的稀疏性，而<strong>Leaky ReLu</strong>不会有这问题)</p>
-<p>在<strong>ReLu</strong>的梯度一半都是0，但是，有足够的隐藏层使得z值大于0，所以对大多数的训练数据来说学习过程仍然可以很快。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_12.png" alt=""></p>
-<p><strong>sigmoid</strong>激活函数：除了输出层是一个二分类问题基本不会用它。</p>
-<p><strong>tanh</strong>激活函数：<strong>tanh</strong>是非常优秀的，几乎适合所有场合。</p>
-<p><strong>ReLu</strong>激活函数：最常用的默认函数，，如果不确定用哪个激活函数，就使用<strong>ReLu</strong>或者<strong>Leaky ReLu</strong>。</p>
-<p>通常的建议是：如果不确定哪一个激活函数效果更好，可以把它们都试试，然后在验证集或者发展集上进行评价。然后看哪一种表现的更好，就去使用它。</p>
-<h2 id="C1W3L07-Why-non-linear-activation-Functions"><a href="#C1W3L07-Why-non-linear-activation-Functions" class="headerlink" title="C1W3L07 : Why non-linear activation Functions"></a>C1W3L07 : Why non-linear activation Functions</h2><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_13.png" alt=""></p>
-<p>通过推导可以得出，如果使用线性激活函数，相当于没有隐藏层。无论你的神经网络有多少层一直在做的只是计算线性函数，所以不如直接去掉全部隐藏层。当当然，在output layer是可以不用activation function，或者用linear activation function；这种情况一般是要求输出实数集结果（比如预测房价）。即便如此，在hidden layer还是要用non-linear activation function。</p>
-<h3 id="sigmoid-activation-function"><a href="#sigmoid-activation-function" class="headerlink" title="sigmoid activation function"></a>sigmoid activation function</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_14.png" alt=""></p>
-<script type="math/tex; mode=display">
-\frac{d}{d z} g(z)=\frac{1}{1+e^{-z}}\left(1-\frac{1}{1+e^{-z}}\right)=g(z)(1-g(z))</script><h3 id="tanh-activation-function"><a href="#tanh-activation-function" class="headerlink" title="tanh activation function"></a>tanh activation function</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_15.png" alt=""></p>
-<script type="math/tex; mode=display">
-g(z)=\tanh (z)=\frac{e^{z}-e^{-z}}{e^{x}+e^{-z}}</script><script type="math/tex; mode=display">
-\frac{d}{d z} g(z)=1-(\tanh (z))^{2}</script><h3 id="Rectified-linear-unit-RelU"><a href="#Rectified-linear-unit-RelU" class="headerlink" title="Rectified linear unit(RelU)"></a>Rectified linear unit(RelU)</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_16.png" alt=""></p>
-<script type="math/tex; mode=display">
-g(z)^{\prime}=\left\{\begin{array}{ll}{0} & {\text { if } z<0} \\ {1} & {\text { if } z>0} \\ {\text {undefined}} & {\text { if } z=0}\end{array}\right.</script><p>注：通常在z= 0的时候给定其导数1,0；当然=0的情况很少</p>
-<h3 id="Leaky-linear-unit-Leaky-ReLU"><a href="#Leaky-linear-unit-Leaky-ReLU" class="headerlink" title="Leaky linear unit (Leaky ReLU)"></a><strong>Leaky linear unit (Leaky ReLU)</strong></h3><script type="math/tex; mode=display">
-g(z)=\max (0.01 z, z)</script><script type="math/tex; mode=display">
-g(z)^{\prime}=\left\{\begin{array}{ll}{0.01} & {\text { if } z<0} \\ {1} & {\text { if } z>0} \\ {\text {undefined}} & {\text { if } z=0}\end{array}\right.</script><p>注：通常在的z=0时候给定其导数1,0.01；当然的情况很少。</p>
-<h2 id="C1W3L09-Gradient-Descent-For-Neural-Networks"><a href="#C1W3L09-Gradient-Descent-For-Neural-Networks" class="headerlink" title="C1W3L09 : Gradient Descent For Neural Networks"></a>C1W3L09 : Gradient Descent For Neural Networks</h2><ol>
-<li><p>gradient descent的关键是求cost function对参数的偏导数</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_17.png" alt=""></p>
-</li>
-<li><p>求导过程使用的是Backpropagation</p>
-<ol>
-<li><p>首先做forward propagation，求解出每一层的输出A</p>
-<script type="math/tex; mode=display">
-(1) z^{[1]}=W^{[1]} x+b^{[1]}\\
-(2) a^{[1]}=\sigma\left(z^{[1]}\right)\\(3) z^{[2]}=W^{[2]}=W^{[2]} a^{[1]}+b^{[2]}\\(4) a^{[2]}=g^{[2]}\left(z^{[z]}\right)=\sigma\left(z^{[2]}\right)</script></li>
-<li><p>然后向后，逐层求解对每一层参数的偏导数</p>
-</li>
-</ol>
-</li>
-</ol>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_18.png" alt=""></p>
-<p>sum，<code>keepdims</code>是防止<strong>python</strong>输出那些古怪的秩数(n,)，加上这个确保阵矩阵这个向量输出的维度为(n,1）这样标准的形式。</p>
-<h2 id="C1WL10-Backpropagation-intuition-optional"><a href="#C1WL10-Backpropagation-intuition-optional" class="headerlink" title="C1WL10: Backpropagation intuition (optional)"></a>C1WL10: Backpropagation intuition (optional)</h2><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_19.png" alt=""></p>
-<p>实现后向传播有个技巧，就是要保证矩阵的维度相互匹配</p>
-<p>其实，对于一个神经元，输入部分：是权重和上一层输出的线性组合；输出：激活函数作用于输入，因此对$W$求偏导时，对激活函数求一次，再对线性组合求一次。对$b$求偏导是，对线性部分求偏导是1,这里用求和。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_20.png" alt=""></p>
-<h2 id="C1W3L11-Random-Initialization"><a href="#C1W3L11-Random-Initialization" class="headerlink" title="C1W3L11: Random Initialization"></a>C1W3L11: Random Initialization</h2><p>`</p>
-<p>与logistic regression不同，初始化参数不可固定为0，而是每个参数都要随机初始化。</p>
-<p>主要原因是：<strong>如果每个参数w和b都是0，则同一层的每个neuron计算结果完全一样</strong>（输入一样a，参数一样w，则z一样,<strong>symmetry breaking problem</strong>）；接下来反向传播时的偏导数也一样，下一轮迭代同一层的每个neuron的w又是一样的。这样整个neural Network上每一层的neuron是同质的，自然不会有好的performance。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week3_13 (1" alt="">.png)</p>
-<p>不过，对b参数，可以都初始化为0。</p>
-<p>另外需要注意，虽然w是随机初始化，但最好使用较小的随机数。主要是避免让z的计算值过大，导致activation function对z的偏导数趋于0，导致Gradient descent下降较慢。 通常的做法是对random的值乘以一个比率，比如0.01（但具体怎么选这个比率，也要根据情况而定，这应该又是一个超参了）：</p>
-<p>$W[1]=np.random.randn((2,2))∗0.01$</p>
-<p>因为如果你用<strong>tanh</strong>或者<strong>sigmoid</strong>激活函数，或者说只在输出层有一个<strong>Sigmoid</strong>，如果（数值）波动太大，当你计算激活值时如果很大，就会很大或者很小，因此这种情况下你很可能停在<strong>tanh</strong>/<strong>sigmoid</strong>函数的平坦的地方，这些地方梯度很小也就意味着梯度下降会很慢，因此学习也就很慢。</p>
-<p>事实上有时有比0.01更好的常数，当你训练一个只有一层隐藏层的网络时（这是相对浅的神经网络，没有太多的隐藏层），设为0.01可能也可以。但当你训练一个非常非常深的神经网络，你可能要试试0.01以外的常数。</p>
-<h2 id="summary-1"><a href="#summary-1" class="headerlink" title="summary"></a>summary</h2><font color="red">如何建立一个一层的神经网络了，初始化参数，用前向传播预测，还有计算导数，结合反向传播用在梯度下降中。</font>
-
-<font color="blue">
-
-1. Define the neural network structure ( # of input units, # of hidden units, etc).
-2. Initialize the model's parameters
-
-1. Loop:
-   - Implement forward propagation
-   - Compute loss
-   - Implement backward propagation to get the gradients
-   - Update parameters (gradient descent)
-
-</font>
-
-<h1 id="C1W4"><a href="#C1W4" class="headerlink" title="C1W4"></a>C1W4</h1><h2 id="C1W4L01-Deep-layer-neural-network"><a href="#C1W4L01-Deep-layer-neural-network" class="headerlink" title="C1W4L01 Deep-layer neural network"></a>C1W4L01 Deep-layer neural network</h2><h3 id="1-logistics-regression-and-shallow-neural-network-and-deep-layer-neural-network"><a href="#1-logistics-regression-and-shallow-neural-network-and-deep-layer-neural-network" class="headerlink" title="1. logistics regression and shallow neural network and deep-layer neural network"></a>1. logistics regression and shallow neural network and deep-layer neural network</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_1.png" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_2.png" alt=""></p>
-<h3 id="2-notation"><a href="#2-notation" class="headerlink" title="2. notation"></a>2. notation</h3><p>神经网络模型</p>
-<script type="math/tex; mode=display">
-\begin{array}{l}{X \in \mathbb{R}^{n_{x} \times m}} 代表输入的矩阵\\{x^{(i)} \in \mathbb{R}^{n_{x}}} 代表第 i 个样本的列向量\\
-{Y \in \mathbb{R}^{n_{y} \times n}} 标记矩阵\\ {y^{(i)} \in \mathbb{R}^{n_{v}}}是第i样本的输出标签\\
-W^{[l]} \in \mathbb{R}^{l \times(l-1)}代表第[l]层的权重矩阵\\ b^{[l]} \in \mathbb{R}^{l}代表第[l]层的偏差矩阵\\
- {\hat{y}^{(i)} \in \mathbb{R}^{n_{v}}}是预测输出向量\end{array}</script><script type="math/tex; mode=display">
-通用激活公式：
-a_{j}^{[l]}=g^{[l]}\left(z_{j}^{[l]}\right)=g^{ | l ]}\left(\sum_{k} w_{j k}^{[l]} a_{k}^{[l-1]}+b_{j}^{[l]}\right)</script><h2 id="C1W4L02：-Forward-and-Backward-propagation"><a href="#C1W4L02：-Forward-and-Backward-propagation" class="headerlink" title="C1W4L02： Forward and Backward propagation"></a>C1W4L02： Forward and Backward propagation</h2><h3 id="1-forward-propagation"><a href="#1-forward-propagation" class="headerlink" title="1. forward propagation"></a>1. forward propagation</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_3.png" alt=""></p>
-<h3 id="2-backward-propagation"><a href="#2-backward-propagation" class="headerlink" title="2. backward propagation"></a>2. backward propagation</h3><script type="math/tex; mode=display">
-\begin{array}{l}{d z^{[l]}=d a^{[l]} * g^{[l]}\left(z^{l l}\right)} \\ {d w^{[l]}=d z^{[l]} \cdot a^{[l-1]}}\\d b^{[l]}=d z^{[l]}\\
-d a^{[l-1]}=w^{[l]} \cdot d z^{[l]}\\
-d z^{[l]}=w^{[l+1] T} d z^{[l+1]} \cdot g^{[l]^{\prime}}\left(z^{[l]}\right)\end{array}</script><p>向量化</p>
-<script type="math/tex; mode=display">
-\begin{array}{l}{d Z^{[l]}=d A^{[l]} * g^{[l]}\left(Z^{[l]}\right)} \\ {d W^{[l]}=\frac{1}{m} d Z^{[l]} \cdot A^{[l-1] T}}\\
-\begin{array}{l}{d b^{[l]}=\frac{1}{m} n p \cdot \operatorname{sum}\left(d z^{[l]}, \text { axis }=1, \text {keepdims}=\text {True}\right)} \\ {d A^{[l-1]}=W^{[l] T} \cdot d Z^{[l]}}\end{array}\end{array}</script><p>summary</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_5.png" alt=""></p>
-<h2 id="C1W4L03-Forward-Propagation-in-d-deep-network"><a href="#C1W4L03-Forward-Propagation-in-d-deep-network" class="headerlink" title="C1W4L03 : Forward Propagation in d deep network"></a>C1W4L03 : Forward Propagation in d deep network</h2><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_6.png" alt=""></p>
-<p>这里只能用一个显式<strong>for</strong>循环，从1到，然后一层接着一层去计算。</p>
-<h2 id="C1W4L04-Getting-matrix-dimension-right"><a href="#C1W4L04-Getting-matrix-dimension-right" class="headerlink" title="C1W4L04 Getting matrix dimension right"></a>C1W4L04 Getting matrix dimension right</h2><p>当实现深度神经网络的时候，其中一个常用的检查代码是否有错的方法就是拿出一张纸过一遍算法中矩阵的维数。</p>
-<p>$d_w^{[l]}$和$w^{[l]}$维度相同，$db^{[l]}$和$b^{[l]}$维度相同，且w和b向量化维度不变，但z,a以及x的维度会向量化后发生变化。</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_8.png" alt=""></p>
-<p>反向传播的维数检查</p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_7.png" alt=""></p>
-<p>在你做深度神经网络的反向传播时，一定要确认所有的矩阵维数是前后一致的，可以大大提高代码通过率。</p>
-<h2 id="C1W4L05-Why-deep-representations"><a href="#C1W4L05-Why-deep-representations" class="headerlink" title="C1W4L05 Why deep representations?"></a>C1W4L05 Why deep representations?</h2><p>神经网络不需要很大，但是得有深度，也就是隐藏层需要很多，</p>
-<h3 id="1-for-example-of-face-detector"><a href="#1-for-example-of-face-detector" class="headerlink" title="1. for example of face detector"></a>1. for example of face detector</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_9.png" alt=""></p>
-<h2 id="C1W4L06-Building-blocks-of-a-deep-neural-network"><a href="#C1W4L06-Building-blocks-of-a-deep-neural-network" class="headerlink" title="C1W4L06 :Building blocks of a deep neural network"></a>C1W4L06 :Building blocks of a deep neural network</h2><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_10.png" alt=""></p>
-<p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_11.png" alt=""></p>
-<p>可以看得出，再反向传播的时候，需要用到$Z^{[L]},W^{[L]},b^{[L]}$,因此cash them</p>
-<p>正向传播：$Z^{[1]},A^{[1]}…………$,反向传播：$dA^{[L]},dZ{[L]},dW^{[L]}dB^{[L]},dA^{[L-1]}$</p>
-<h2 id="C1W4L07：Parameters-vs-Hyperparameters"><a href="#C1W4L07：Parameters-vs-Hyperparameters" class="headerlink" title="C1W4L07：Parameters vs Hyperparameters"></a>C1W4L07：Parameters vs Hyperparameters</h2><h3 id="1-What"><a href="#1-What" class="headerlink" title="1 What"></a>1 What</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_12.png" alt=""></p>
-<h3 id="2-How"><a href="#2-How" class="headerlink" title="2 How"></a>2 How</h3><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/L1_week4_13.png" alt=""></p>
-<p><strong>Idea—Code—Experiment—Idea</strong>这个循环，尝试各种不同的参数，实现模型并观察是否成功，然后再迭代</p>
-<p>今天的深度学习应用领域，还是很经验性的过程，通常你有个想法，比如你可能大致知道一个最好的学习率值，可能说最好，我会想先试试看，然后你可以实际试一下，训练一下看看效果如何。然后基于尝试的结果你会发现，你觉得学习率设定再提高到0.05会比较好。如果你不确定什么值是最好的，你大可以先试试一个学习率，再看看损失函数J的值有没有下降。然后你可以试一试大一些的值，然后发现损失函数的值增加并发散了。然后可能试试其他数，看结果是否下降的很快或者收敛到在更高的位置。你可能尝试不同的并观察损失函数这么变了，试试一组值，然后可能损失函数变成这样，这个值会加快学习过程，并且收敛在更低的损失函数值上（箭头标识），我就用这个值了。</p>
-<p>在前面几页中，还有很多不同的超参数。然而，当你开始开发新应用时，预先很难确切知道，究竟超参数的最优值应该是什么。所以通常，你必须尝试很多不同的值，并走这个循环，试试各种参数。试试看5个隐藏层，这个数目的隐藏单元，实现模型并观察是否成功，然后再迭代。这页的标题是，应用深度学习领域，一个很大程度基于经验的过程，凭经验的过程通俗来说，就是试直到你找到合适的数值。</p>
-<p>所以我经常建议人们，特别是刚开始应用于新问题的人们，去试一定范围的值看看结果如何。然后下一门课程，我们会用更系统的方法，用系统性的尝试各种超参数取值。然后其次，甚至是你已经用了很久的模型，可能你在做网络广告应用，在你开发途中，很有可能学习率的最优数值或是其他超参数的最优值是会变的，所以即使你每天都在用当前最优的参数调试你的系统，你还是会发现，最优值过一年就会变化，因为电脑的基础设施，<strong>CPU</strong>或是<strong>GPU</strong>可能会变化很大。所以有一条经验规律可能每几个月就会变。如果你所解决的问题需要很多年时间，只要经常试试不同的超参数，勤于检验结果，看看有没有更好的超参数数值，相信你慢慢会得到设定超参数的直觉，知道你的问题最好用什么数值。</p>
-<p>有一条经验规律：经常试试不同的超参数，勤于检查结果，看看有没有更好的超参数取值，你将会得到设定超参数的直觉。</p>
-<p>总结：超参数的设定，靠经验，尝试，并调，根据结果调，</p>
-<h2 id="C1W4L08-What-does-this-have-to-do-with-the-brain"><a href="#C1W4L08-What-does-this-have-to-do-with-the-brain" class="headerlink" title="C1W4L08 : What does this have to do with the brain?"></a>C1W4L08 : What does this have to do with the brain?</h2><h1 id="summary-forward-prop-and-back-prop"><a href="#summary-forward-prop-and-back-prop" class="headerlink" title="# summary : forward prop and back prop"></a># summary : forward prop and back prop</h1><h2 id="1-logistics-regression-shallow-neural-network-and-deep-neural-network"><a href="#1-logistics-regression-shallow-neural-network-and-deep-neural-network" class="headerlink" title="1. logistics regression,shallow neural network and deep neural network"></a>1. logistics regression,shallow neural network and deep neural network</h2><p>logistics regression</p>
-<script type="math/tex; mode=display">
-Z = W^TX+B\\
-A = \frac{1}{1+e^{-Z}}\\
-L(A,Y)=-\frac{1}{m}(Ylog^A+(1-Y)log^{1-A}\\
-\frac{\partial L}{\partial Z}=(A-Y)\\
-\frac{\partial L}{\partial W}=X(A-Y)\\</script><p>说明：X是样本按列堆积，W是列向量</p>
-<p>shallow neural network 以二分问题为例</p>
-<script type="math/tex; mode=display">
-Z^{[1]}=W^{[1]}A^{[0]}+b^{[1]}\\
-A^{[1]}=g^{[1]}(Z^{[1]})\\
-\ \\
-Z^{[2]}=W^{[2]}A^{[1]}+b^{[2]}\\
-A^{[2]}=g^{[2]}(Z^{[2]})\\
-\ \ \\
-\ \\
-L(A^{[2]},Y)=-\frac{1}{m}(Ylog^{A}+(1-Y)log^{1-A})\\
-\frac{\partial L}{\partial Z^{[2]}}=(A^{[2]}-Y)\\
-\frac{\partial L}{\partial W^{[2]}}=(A^{[2]}-Y)A^{[1]^T}\\
-\frac{\partial L}{\partial b^{[2]}}=(A^{[2]}-Y)1_{1*m}^T\\
-\frac{\partial L}{\partial a^{[1]}}=W^{[2]^T}(A^{[2]}-Y)\\
-\ \\
-\frac{\partial L}{\partial Z^{[1]}}=W^{[2]^T}(A^{[2]}-Y)* g^{'[1]}(Z^{[1]})\\</script><p>说明：W是按列排$W^{[L]}$是$n^{[L]}*n^{[L-1]}$矩阵，A,Z是按列堆积，记得检查矩阵维数就好了</p>
-<h2 id="deep-neural-network"><a href="#deep-neural-network" class="headerlink" title="deep neural network"></a>deep neural network</h2><script type="math/tex; mode=display">
-Z^{[l]}=W^{[l]}A^{[l-1]}+b^{[l]}\\
-A^{[l]}=g^{[l]}(Z^{[l]})\\
-\ \ \\
-\ \\
-\frac{\partial L}{\partial Z^{[l]}}=\partial A^*g^{'[l]}(Z^{l})\\
-\frac{\partial L}{\partial W^{[l]}}=\partial Z^{[l]} A^{[1-1]^T}\\
-\frac{\partial L}{\partial b^{[l]}}=\partial Z^{[l]}\\
-\frac{\partial L}{\partial a^{[l-1]}}=W^{[l]^T}\partial Z^{[l]}\\
-\ \\
-\frac{\partial L}{\partial Z^{[l-1]}}=W^{[l]^T}\partial Z^{[l]}* g^{'[l-1]}(Z^{[l-1]})\\</script><h2 id="2-vectorization"><a href="#2-vectorization" class="headerlink" title="2. vectorization"></a>2. vectorization</h2><ol>
-<li>推导的时候要向量化，注意矩阵维数表示，可以从单个推导到mutli</li>
-<li>充分利用python的广播属性，和内置函数的并行化</li>
-<li>python一维，二维数组的特性</li>
-</ol>
-<h2 id="3-知识结构"><a href="#3-知识结构" class="headerlink" title="3. 知识结构"></a>3. 知识结构</h2><p><img src="/2019/04/11/Deep Learning.ai_Neural Networks and Deep Learning/C1.png" alt=""></p>
-
-          
         
       
     </div>
@@ -1763,7 +1891,7 @@ A^{[l]}=g^{[l]}(Z^{[l]})\\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1891,15 +2019,7 @@ A^{[l]}=g^{[l]}(Z^{[l]})\\
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1979,7 +2099,7 @@ A^{[l]}=g^{[l]}(Z^{[l]})\\
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">277k</span>
+    <span title="Symbols count total">316k</span>
   
 
   
@@ -2518,9 +2638,9 @@ A^{[l]}=g^{[l]}(Z^{[l]})\\
   
     
       
-    
-      
         
+      
+    
       
     
       

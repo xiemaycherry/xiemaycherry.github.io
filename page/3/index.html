@@ -350,6 +350,226 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/07/03/Xgboost/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/03/Xgboost/" itemprop="url">Xgboost</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-03T14:53:59+08:00">2020-07-03</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/03/Xgboost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/03/Xgboost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                2.8k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h1>理论部分</h1>
+<p>该算法思想就是不断地添加树，不断地进行特征分裂来生长一棵树，每次添加一个树，其实是学习一个新函数，去拟合上次<strong>预测的残差</strong>。当我们训练完成得到k棵树，我们要预测一个样本的分数，其实就是根据这个样本的特征，在每棵树中会落到对应的一个叶子节点，每个叶子节点就对应一个分数，最后只需要将每棵树对应的分数加起来就是该样本的预测值。</p>
+<p>boosting: <a href="https://zhuanlan.zhihu.com/p/38329631" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38329631</a></p>
+<p>Xgboost 就是回归树的集成</p>
+<p><a href="https://www.csuldw.com/2019/07/20/2019-07-20-xgboost-theory/" target="_blank" rel="noopener">https://www.csuldw.com/2019/07/20/2019-07-20-xgboost-theory/</a></p>
+<p><a href="https://blog.csdn.net/github_38414650/article/details/76061893?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare" target="_blank" rel="noopener">https://blog.csdn.net/github_38414650/article/details/76061893?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare</a></p>
+<p><a href="https://blog.csdn.net/qq_24519677/article/details/81809157" target="_blank" rel="noopener">https://blog.csdn.net/qq_24519677/article/details/81809157</a></p>
+<p>有空再推导了</p>
+<h1>调用库</h1>
+<p>Python 提供了两种库</p>
+<ol>
+<li>xgboost</li>
+<li>xgboost sklearn接口</li>
+</ol>
+<p>搭建模型</p>
+<ol>
+<li>
+<p>参数设置</p>
+</li>
+<li>
+<p>GridSearchCV 调参(网格法)</p>
+</li>
+<li>
+<p>调参步骤，参数范围</p>
+</li>
+</ol>
+<p><a href="https://blog.csdn.net/han_xiaoyang/article/details/52665396" target="_blank" rel="noopener">https://blog.csdn.net/han_xiaoyang/article/details/52665396</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb</span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBRegressor</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error,make_scorer</span><br><span class="line"><span class="keyword">from</span> sklearn.grid_search <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.cross_validation <span class="keyword">import</span> KFold, train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_boston</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/s09094031/article/details/94871596?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6.compare" target="_blank" rel="noopener">https://blog.csdn.net/s09094031/article/details/94871596?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6.compare</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.model_selection.``train_test_split</span><br></pre></td></tr></table></figure>
+<p>test_size train_size：</p>
+<p>​	三种类型。float，int，None。</p>
+<ul>
+<li>float：0.0-1.0之间，代表训练数据集占总数据集的比例。</li>
+<li>int：代表训练数据集具体的样本数量。</li>
+<li>None：设置为test_size的补。</li>
+<li>default：默认为None。</li>
+</ul>
+<p>random_state：三种类型。int，randomstate instance，None。</p>
+<p>int：是随机数生成器的种子。每次分配的数据相同。</p>
+<p>randomstate：random_state是随机数生成器的种子。（这里没太理解）</p>
+<p>None：随机数生成器是使用了np.random的randomstate。</p>
+<p>种子相同，产生的随机数就相同。种子不同，即使是不同的实例，产生的种子也不相同。</p>
+<p>shuffle：布尔值，可选参数。默认是None。在划分数据之前先打乱数据。如果shuffle=FALSE，则stratify必须是None。</p>
+<p>stratify：array-like或者None，默认是None。如果不是None，将会利用数据的标签将数据分层划分。</p>
+<p>若为None时，划分出来的测试集或训练集中，其类标签的比例也是随机的。</p>
+<p>若不为None时，划分出来的测试集或训练集中，其类标签的比例同输入的数组中类标签的比例相同，可以用于处理不均衡的数据集。</p>
+<p>x_train, y_train, x_test, y_test = train_test_split(x, y,<br>
+test_size=0.23, random_state=2)</p>
+<p><a href="https://blog.csdn.net/qq_43288098/article/details/105407204?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.compare" target="_blank" rel="noopener">https://blog.csdn.net/qq_43288098/article/details/105407204?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.compare</a></p>
+<p>参数：分开调</p>
+<p><a href="https://blog.csdn.net/zc02051126/article/details/46711047" target="_blank" rel="noopener">https://blog.csdn.net/zc02051126/article/details/46711047</a></p>
+<p><a href="https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst" target="_blank" rel="noopener">https://github.com/dmlc/xgboost/blob/master/doc/parameter.rst</a></p>
+<p><a href="https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/</a></p>
+<p><a href="https://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn" target="_blank" rel="noopener">https://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn</a></p>
+<h2 id="模型保存"><a class="header-anchor" href="#模型保存">¶</a>模型保存</h2>
+<p><a href="https://www.fatrabbids.com/2018/10/19/xgboost%E7%9A%84%E4%BF%9D%E5%AD%98%E6%A8%A1%E5%9E%8B%E3%80%81%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B%E3%80%81%E7%BB%A7%E7%BB%AD%E8%AE%AD%E7%BB%83/#more-235" target="_blank" rel="noopener">https://www.fatrabbids.com/2018/10/19/xgboost%e7%9a%84%e4%bf%9d%e5%ad%98%e6%a8%a1%e5%9e%8b%e3%80%81%e5%8a%a0%e8%bd%bd%e6%a8%a1%e5%9e%8b%e3%80%81%e7%bb%a7%e7%bb%ad%e8%ae%ad%e7%bb%83/#more-235</a></p>
+<h1>XGBoost的特性重要性和特性选择</h1>
+<ol>
+<li>
+<p>模型复杂度</p>
+<p>特征数量衡量：特征重要性阙值的增加，选择特征数量减少，模型的准确率会下降。当然，特征数量的减少反而会是准确率升高，因为这些被剔除特征是噪声。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/06/23/English-Daily/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -451,7 +671,8 @@
         
           
             <a id="more"></a>
-<h1 id="2020-7-6"><a href="#2020-7-6" class="headerlink" title="2020-7-6"></a>2020-7-6</h1><p>coincide with v. 与…相符</p>
+<h1>2020-7-6</h1>
+<p>coincide with v. 与…相符</p>
 <p>stalk v. 潜近（猎物或人）；（非法）跟踪；怒冲冲地走；趾高气扬地走</p>
 <p>n. 秆；柄；（叶）柄；（花）梗</p>
 <p>verge</p>
@@ -469,48 +690,54 @@
 <p>phrase. (feel obliged to do sth.)觉得有义务做；不得不做</p>
 <p>I felt obliged to leave after such an unpleasant quarrel.</p>
 <p>发生了这样不愉快的争吵之后，我觉得有必要离开。</p>
-<h1 id="2020-7-1"><a href="#2020-7-1" class="headerlink" title="2020-7-1"></a>2020-7-1</h1><p>jelly n. 果冻；肉冻；果酱；胶状物，胶凝物；轻便塑料鞋</p>
+<h1>2020-7-1</h1>
+<p>jelly n. 果冻；肉冻；果酱；胶状物，胶凝物；轻便塑料鞋</p>
 <p>oval adj. 椭圆形的；卵形的 n. 椭圆形；卵形</p>
-<p>rigorous /‘rɪɡərəs/ adj. 谨慎的，细致的；严格的，严厉的</p>
+<p>rigorous /'rɪɡərəs/ adj. 谨慎的，细致的；严格的，严厉的</p>
 <p>He makes a rigorous study of the plants in the area.</p>
 <p>他对该地的植物进行了缜密的研究。</p>
-<p>ultimately  UK/‘ʌltɪmətli/ adv. 最终, 最后, 归根结底, 终究</p>
+<p>ultimately  UK/'ʌltɪmətli/ adv. 最终, 最后, 归根结底, 终究</p>
 <p>Everything will ultimately depend on what is said at the meeting.</p>
 <p>一切将最终取决于会议的内容。</p>
-<p><strong>sturdy</strong> UK/‘stɜːdi/</p>
+<p><strong>sturdy</strong> UK/'stɜːdi/</p>
 <p>adj. 结实的，坚固的；强壮的；健壮的；坚决的，顽强的</p>
-<p><strong>broaden</strong> UK/‘brɔːdn/</p>
+<p><strong>broaden</strong> UK/'brɔːdn/</p>
 <p>You should broaden your experience by travelling more.</p>
 <p>你应该多到各地走走以增广见识.</p>
 <p><strong>broaden</strong> the horizon 开拓视野</p>
 <p>propel UK/prə’pel/ v. 推进，推动；驱使；迫使</p>
-<p><strong>voyage</strong>  UK/‘vɔɪɪdʒ/</p>
+<p><strong>voyage</strong>  UK/'vɔɪɪdʒ/</p>
 <p>n. 航行, （尤指）航海</p>
 <p>v. 航行, 远行, （尤指）远航</p>
 <p>例句</p>
 <p>The voyage from England to India used to take 3 weeks.</p>
 <p>从英格兰到印度的航行曾经需要三周。</p>
-<h1 id="2020-6-28"><a href="#2020-6-28" class="headerlink" title="2020-6-28"></a>2020-6-28</h1><p>moist  UK/mɔɪst/ adj. 微湿的, 湿润的</p>
+<h1>2020-6-28</h1>
+<p>moist  UK/mɔɪst/ adj. 微湿的, 湿润的</p>
 <p>insult UK/ɪn’sʌlt/v. 侮辱，辱骂 n. 侮辱，辱骂</p>
 <p>spontaneous UK/spɒn’teɪniəs/</p>
 <p>They greeted him with spontaneous applause.</p>
 <p>他们自发地鼓起掌来欢迎他。</p>
-<p>slender  UK/‘slendə(r)/</p>
-<p>perimeter UK/pə’rɪmɪtə(r)/ n. 周长；外缘，边缘</p>
+<p>slender  UK/'slendə®/</p>
+<p>perimeter UK/pə’rɪmɪtə®/ n. 周长；外缘，边缘</p>
 <p>blouse UK/blaʊz/</p>
 <p>He pointed out a woman passing by who was wearing a skirt and blouse.</p>
 <p>他指出了一个穿着裙子和衬衫的过路女子。</p>
-<p>perfume UK/‘pɜːfjuːm/ n. 香水, 香料, 芳香 v. 使…发出香气, 洒香水</p>
-<h1 id="2020-6-27"><a href="#2020-6-27" class="headerlink" title="2020-6-27"></a>2020-6-27</h1><h1 id="2020-6-26"><a href="#2020-6-26" class="headerlink" title="2020-6-26"></a>2020-6-26</h1><p>Functional foods are food products that have a potentially <strong>positive effect on</strong> health beyond basic nutritional benefits. Functional foods <strong>aim to solve not only</strong> all the needs that regular foods provide, <strong>but also to address</strong> functional needs, <strong>which can range from</strong> maintaining and improving physical or mental health <strong>to</strong> adjusting energy levels and moods.</p>
+<p>perfume UK/'pɜːfjuːm/ n. 香水, 香料, 芳香 v. 使…发出香气, 洒香水</p>
+<h1>2020-6-27</h1>
+<h1>2020-6-26</h1>
+<p>Functional foods are food products that have a potentially <strong>positive effect on</strong> health beyond basic nutritional benefits. Functional foods <strong>aim to solve not only</strong> all the needs that regular foods provide, <strong>but also to address</strong> functional needs, <strong>which can range from</strong> maintaining and improving physical or mental health <strong>to</strong> adjusting energy levels and moods.</p>
 <p>Food has been historically used as preventive medicine in many cultures around the world, but the recent rise of functional foods can be directly linked to the rise of the wellness economy, which, in turn, is largely <strong>driven by</strong> influencer marketing and social media use.</p>
-<h1 id="2020-6-25"><a href="#2020-6-25" class="headerlink" title="2020-6-25"></a>2020-6-25</h1><p>IT IS A truth universally acknowledged that inequality（不平等）in the rich world（发达国家）is high and rising. Or, at least, it used to be. A growing band of economists are challenging the received（被公认的）wisdom, pointing out that trends in the distribution（分布，分配）of income and wealth may not be as bad as is often thought.</p>
+<h1>2020-6-25</h1>
+<p>IT IS A truth universally acknowledged that inequality（不平等）in the rich world（发达国家）is high and rising. Or, at least, it used to be. A growing band of economists are challenging the received（被公认的）wisdom, pointing out that trends in the distribution（分布，分配）of income and wealth may not be as bad as is often thought.</p>
 <p>众所周知，富裕国家的不平等现象非常严重，而且还在加剧。或者说，至少曾经是这样的。越来越多的经济学家开始质疑既有的观点，他们指出收入和财富的分布趋势可能不是像通常被认为的那么糟糕。</p>
-<h2 id="2020-6-24"><a href="#2020-6-24" class="headerlink" title="2020-6-24"></a>2020-6-24</h2><p>imaginary</p>
+<h2 id="2020-6-24"><a class="header-anchor" href="#2020-6-24">¶</a>2020-6-24</h2>
+<p>imaginary</p>
 <p>adj. 想象中的, 幻想的, 虚构的</p>
 <p>carriage</p>
 <p>n. 运输；运费，（旧时）马车；火车车厢；仪态，姿态，举止</p>
 <p>message</p>
-<p>messenger </p>
+<p>messenger</p>
 <p>n. 信使, 送信人, 通信员, 邮递员</p>
 <p>pavement</p>
 <p>n. 人行道</p>
@@ -524,10 +751,11 @@
 <p>v. 使和谐一致，调和；使和解；将就，妥协</p>
 <p>It’s difficult to reconcile these two different points of view.</p>
 <p>很难兼顾这两种不同的观点。</p>
-<h1 id="2020-6-23"><a href="#2020-6-23" class="headerlink" title="2020-6-23"></a>2020-6-23</h1><p>￼The success of the brand <strong>wasn’t</strong> built through big marketing campaigns, <strong>but</strong> through a savvy digital marketing strategy <strong>that</strong> <strong>increased</strong> brand awareness and <strong>generated</strong> high engagement, traffic, and conversions.  </p>
+<h1>2020-6-23</h1>
+<p>￼The success of the brand <strong>wasn’t</strong> built through big marketing campaigns, <strong>but</strong> through a savvy digital marketing strategy <strong>that</strong> <strong>increased</strong> brand awareness and <strong>generated</strong> high engagement, traffic, and conversions.</p>
 <p>该品牌的成功并不建立于大型营销活动，而是建立于精准的数字营销策略，该策略提高了品牌的知名度，获得了很高的参与度、流量和转化率。</p>
 <p>traffic: 信息流量，通信量</p>
-<p>With only 40 physical stores, which are mostly used to drive consumers to e-commerce portals, Perfect Diary maintains momentum primarily through its digital footprint. Currently, it has a powerful presence on Little Red Book, Bilibili, Weibo, WeChat, Tmall, and Douyin.  </p>
+<p>With only 40 physical stores, which are mostly used to drive consumers to e-commerce portals, Perfect Diary maintains momentum primarily through its digital footprint. Currently, it has a powerful presence on Little Red Book, Bilibili, Weibo, WeChat, Tmall, and Douyin.</p>
 <p><strong>Thereafter</strong> she wrote articles for papers and magazines for a living.</p>
 <p>此后她给报纸和杂志撰稿谋生。</p>
 <p><strong>adv. 此后, 之后, 以后</strong></p>
@@ -685,7 +913,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                6.9k字
+                7.2k字
               </span>
               
 
@@ -711,7 +939,7 @@
 
       
         
-          <h1 id="时间序列及其分解"><a href="#时间序列及其分解" class="headerlink" title="时间序列及其分解"></a>时间序列及其分解</h1>
+          <h1>时间序列及其分解</h1>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/06/22/time-series-01/#more" rel="contents">
@@ -863,7 +1091,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                1.4k字
+                5.1k字
               </span>
               
 
@@ -890,7 +1118,8 @@
       
         
           <p>[TOC]</p>
-<h1 id="回归分析"><a href="#回归分析" class="headerlink" title="回归分析"></a>回归分析</h1><p>最简单的线性回归，避免多重共线性，过拟合，引入正则项的线性回归模型。涉及到的数学知识：一范数，二范数，多元函数求极值。模型的含义，参数求解算法，目标函数，以及各种模型的优缺点。</p>
+<h1>回归分析</h1>
+<p>最简单的线性回归，避免多重共线性，过拟合，引入正则项的线性回归模型。涉及到的数学知识：一范数，二范数，多元函数求极值。模型的含义，参数求解算法，目标函数，以及各种模型的优缺点。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/06/20/回归分析/#more" rel="contents">
@@ -1114,184 +1343,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/06/19/知识清单/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/19/知识清单/" itemprop="url">知识清单</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T22:08:16+08:00">2020-06-19</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/规划/" itemprop="url" rel="index"><span itemprop="name">规划</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/19/知识清单/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/19/知识清单/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                851字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>主要是列出关于日常中遇到的很好的资料，自己不清楚的文章和资料。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/19/知识清单/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1339,7 +1390,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1467,15 +1518,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1555,7 +1598,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">277k</span>
+    <span title="Symbols count total">316k</span>
   
 
   
@@ -2100,9 +2143,9 @@
       
     
       
-        
-      
     
+      
+        
       
     
   
