@@ -989,6 +989,329 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/07/13/科研工具/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/13/科研工具/" itemprop="url">科研工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-13T16:06:58+08:00">2020-07-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/科研/" itemprop="url" rel="index"><span itemprop="name">科研</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/13/科研工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/13/科研工具/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                6.4k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h1>普通图</h1>
+<h2 id="seaborn"><a class="header-anchor" href="#seaborn">¶</a>seaborn</h2>
+<h4 id="sns-set"><a class="header-anchor" href="#sns-set">¶</a>sns.set()</h4>
+<p><em>seaborn.set（context =‘notebook’，style =‘darkgrid’，palette =‘deep’，font =‘sans-serif’，font_scale = 1，color_codes = True，rc = None)</em></p>
+<h4 id="set-style-设置图标风格"><a class="header-anchor" href="#set-style-设置图标风格">¶</a><strong>set_style() 设置图标风格</strong></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">seaborn.set_style（style = None，rc = None )</span><br><span class="line"># 切换seaborn图表风格</span><br><span class="line"># 风格选择包括：&quot;white&quot;, &quot;dark&quot;, &quot;whitegrid&quot;, &quot;darkgrid&quot;, &quot;ticks&quot;</span><br><span class="line"># rc：dict，可选,参数映射以覆盖预设的seaborn样式字典中的值</span><br><span class="line">sns.set_style(&apos;whitegrid&apos;,&#123;&quot;xtick.major.size&quot;: 10, &quot;ytick.major.size&quot;: 10&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="sns-axes-style-设置子图风格"><a class="header-anchor" href="#sns-axes-style-设置子图风格">¶</a><strong>sns.axes_style() 设置子图风格</strong></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(10,8))</span><br><span class="line">with sns.axes_style(&quot;darkgrid&quot;):</span><br><span class="line">    plt.subplot(211)</span><br><span class="line">    sinplot()</span><br></pre></td></tr></table></figure>
+<h4 id="图标颜色设置-color-palette"><a class="header-anchor" href="#图标颜色设置-color-palette">¶</a><strong>图标颜色设置 color_palette()</strong></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sns.color_palette(palette=None, n_colors=None, desat=None)</span><br><span class="line"></span><br><span class="line"># 1 分类</span><br><span class="line"># 默认6种颜色：deep, muted, pastel, bright, dark, colorblind</span><br><span class="line"># n_colors：int,调色板中的颜色数量</span><br><span class="line"># dasat:float，去饱和度0-1之间</span><br><span class="line"># 2 圆形调色系统</span><br><span class="line">sns.palplot(sns.color_palette(&apos;hls&apos;,8))</span><br><span class="line"># 颜色色块个数为8个</span><br><span class="line"></span><br><span class="line"># 自定义色板 rgb</span><br><span class="line">pal1 = sns.color_palette([(0.5,0.1,0.7),(0.3,0.1,0.9)]) sns.palplot(pal1)</span><br></pre></td></tr></table></figure>
+<p><a href="https://zhuanlan.zhihu.com/p/53467339" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53467339</a></p>
+<h3 id="子图方式"><a class="header-anchor" href="#子图方式">¶</a>子图方式</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(10, 8))</span><br><span class="line">ax1 = fig.add_subplot(2, 1, 1)</span><br></pre></td></tr></table></figure>
+<h2 id="step1-主题设置"><a class="header-anchor" href="#step1-主题设置">¶</a>step1 主题设置</h2>
+<h4 id="sns-set-v2"><a class="header-anchor" href="#sns-set-v2">¶</a>sns.set()</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import seaborn as sns</span><br><span class="line">sns.set()  # 声明使用 Seaborn 样式</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sns.set(context=&apos;notebook&apos;, style=&apos;darkgrid&apos;, palette=&apos;deep&apos;, font=&apos;sans-serif&apos;, font_scale=1, color_codes=False, rc=None)</span><br><span class="line"></span><br><span class="line">context=&apos;&apos; 参数控制着默认的画幅大小，分别有 &#123;paper, notebook, talk, poster&#125; 四个值。其中，poster &gt; talk &gt; notebook &gt; paper。</span><br><span class="line">style=&apos;&apos; 参数控制默认样式，分别有 &#123;darkgrid, whitegrid, dark, white, ticks&#125;，你可以自行更改查看它们之间的不同。</span><br><span class="line">palette=&apos;&apos; 参数为预设的调色板。分别有 &#123;deep, muted, bright, pastel, dark, colorblind&#125; 等，你可以自行更改查看它们之间的不同。</span><br><span class="line">剩下的 font=&apos;&apos; 用于设置字体，font_scale= 设置字体大小，color_codes= 不使用调色板而采用先前的 &apos;r&apos; 等色彩缩写。</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> scipy.stats <span class="keyword">as</span> sci</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line">sns.set()</span><br><span class="line">sns.axes_style(<span class="string">"darkgrid"</span>) <span class="comment"># 风格</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字体和字号</span></span><br><span class="line">font1 = &#123;<span class="string">'family'</span>: <span class="string">'Times New Roman'</span>,</span><br><span class="line">         <span class="string">'weight'</span>: <span class="string">'normal'</span>,</span><br><span class="line">         <span class="string">'size'</span>: <span class="number">12</span>,</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">plt.rc(<span class="string">'font'</span>,family=<span class="string">'Times New Roman'</span>) </span><br><span class="line">plt.rc(<span class="string">'font'</span>, **font1)</span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">9</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 其他</span></span><br><span class="line">plt.xticks(city.iloc[:,<span class="number">0</span>],xstick,fontsize = <span class="number">14</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Year'</span>,fontsize = <span class="number">14</span>)</span><br><span class="line">plt.yticks(fontsize = <span class="number">14</span>)</span><br><span class="line">plt.legend(bbox_to_anchor=(<span class="number">0.95</span>, <span class="number">1.08</span>), loc=<span class="string">'best'</span>,prop=font1, borderaxespad=<span class="number">0.</span>,ncol=<span class="number">2</span>)</span><br><span class="line">plt.grid(axis=<span class="string">"y"</span>)</span><br></pre></td></tr></table></figure>
+<p><a href="https://xkcd.com/color/rgb/" target="_blank" rel="noopener">https://xkcd.com/color/rgb/</a></p>
+<h1>重新设置字体和字号</h1>
+<p>字体，字号: 14(号） 12（小四）10.5 五号，9 小五号，位置</p>
+<p>fontsize</p>
+<p>prop :dict</p>
+<p><strong>fontsize</strong>int or {‘xx-small’, ‘x-small’, ‘small’, ‘medium’, ‘large’, ‘x-large’, ‘xx-large’}</p>
+<p>The font size of the legend. If the value is numeric the size will be the absolute font size in points. String values are relative to the current default font size. This argument is only used if <em>prop</em> is not specified.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">from matplotlib import rcParams</span><br><span class="line">FontProperties有6个属性可以供修改。它们分别为:family,style,variant,stretch,weight,size.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">family：‘serif’, ‘sans-serif’, ‘cursive’, ‘fantasy’, or ‘monospace’为最常用的</span><br><span class="line">Serif 在印刷学上指衬线字体。衬线字体有 Georgia, Garamond, Times New Roman, 中文的宋体。</span><br><span class="line">sans-serif就是无衬线字体。无衬线字体比较圆滑，线条一般粗细均匀。比较适合用作艺术字、标题等。因此sans-serif一般不适用于绘图的axes，legend等。</span><br><span class="line">cursive即为手写字体。可以用在特殊手写效果的绘图上。</span><br><span class="line">fantasy梦幻字体，非常有艺术感。</span><br><span class="line">monospace。等宽字体，可以使得英文字母等宽。</span><br><span class="line"></span><br><span class="line">style: Either ‘normal’, ‘italic’ or ‘oblique’.</span><br><span class="line">italic和oblique都是向右倾斜的文字, 但区别在于Italic是指斜体字，而Oblique是倾斜的文字，对于没有斜体的字体应该使用Oblique属性值来实现倾斜的文字效果.</span><br><span class="line"></span><br><span class="line">size: Either an relative value of ‘xx-small’, ‘x-small’,  ‘small’, ‘medium’, ‘large’, ‘x-large’, ‘xx-large’  or an absolute font size, e.g., 12</span><br><span class="line"></span><br><span class="line"># paper</span><br><span class="line"></span><br><span class="line">params=&#123;‘font.family&apos;:&apos;serif&apos;,</span><br><span class="line">        &apos;font.serif&apos;:&apos;Times New Roman&apos;,</span><br><span class="line">        &apos;font.style&apos;:&apos;italic&apos;,</span><br><span class="line">        &apos;font.weight&apos;:&apos;normal&apos;, #or &apos;blod&apos;</span><br><span class="line">        &apos;font.size&apos;:&apos;medium&apos;,#or large,small</span><br><span class="line">        &#125;</span><br><span class="line">rcParams.update(params)</span><br></pre></td></tr></table></figure>
+<h3 id="method-03"><a class="header-anchor" href="#method-03">¶</a>method 03</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">font1 = &#123;&apos;family&apos;: &apos;Times New Roman&apos;,</span><br><span class="line">         &apos;weight&apos;: &apos;normal&apos;,</span><br><span class="line">         &apos;size&apos;: 12,</span><br><span class="line">         &#125;</span><br><span class="line">plt.rc(&apos;font&apos;,family=&apos;Times New Roman&apos;) </span><br><span class="line">plt.rc(&apos;font&apos;, **font1)</span><br></pre></td></tr></table></figure>
+<h2 id="中文"><a class="header-anchor" href="#中文">¶</a>中文</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pyplot并不默认支持中文显示，需要rcParams修改字体来实现</span><br><span class="line">rcParams的属性：</span><br><span class="line">‘font.family’ 用于显示字体的名字</span><br><span class="line">‘font.style’ 字体风格，正常’normal’ 或斜体’italic’</span><br><span class="line">‘font.size’ 字体大小，整数字号或者’large’ ‘x-small’</span><br><span class="line">&apos;font.serif&apos; ①Times New Roman；②Times；③SimSun；④STSong</span><br></pre></td></tr></table></figure>
+<h2 id="seaborn-color"><a class="header-anchor" href="#seaborn-color">¶</a>seaborn color</h2>
+<p>g=g.plot_joint(sns.regplot,color= sns.xkcd_rgb[‘light red’])</p>
+<h2 id="属性指定"><a class="header-anchor" href="#属性指定">¶</a>属性指定</h2>
+<p><a href="https://matplotlib.org/api/text_api.html#matplotlib.text.Text" target="_blank" rel="noopener">https://matplotlib.org/api/text_api.html#matplotlib.text.Text</a></p>
+<h2 id="matplotlib"><a class="header-anchor" href="#matplotlib">¶</a>Matplotlib</h2>
+<p><a href="https://huhuhang.com/post/machine-learning/matplotlib-basic" target="_blank" rel="noopener">https://huhuhang.com/post/machine-learning/matplotlib-basic</a></p>
+<p>import matplotlib.pyplot as plt</p>
+<h3 id="plt-figure"><a class="header-anchor" href="#plt-figure">¶</a>plt.figure()</h3>
+<h3 id="plt-figure-画布"><a class="header-anchor" href="#plt-figure-画布">¶</a>plt.figure() 画布</h3>
+<p><img src="https://pic3.zhimg.com/80/v2-307d460860c1df3e253e2ccaee95b41a_720w.jpg" alt="img"></p>
+<h3 id="plt-subplot-划分子图"><a class="header-anchor" href="#plt-subplot-划分子图">¶</a>plt.subplot() 划分子图</h3>
+<h3 id="基本属性"><a class="header-anchor" href="#基本属性">¶</a>基本属性</h3>
+<h5 id="标题"><a class="header-anchor" href="#标题">¶</a>标题</h5>
+<p><img src="https://pic4.zhimg.com/80/v2-2f83a0a82bffecc371460b865de580db_720w.jpg" alt="img"></p>
+<p><img src="https://pic1.zhimg.com/80/v2-fc32e879695684b26c22273da2d9f904_720w.jpg" alt="img"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-1f9b00e3c04ded54f8b8197d512e65cb_720w.jpg" alt="img"></p>
+<h5 id="market"><a class="header-anchor" href="#market">¶</a>market</h5>
+<p><img src="https://pic4.zhimg.com/80/v2-18cee5ad639c2db35ef81b3a46afc8fb_720w.jpg" alt="img"></p>
+<h5 id="linstyle"><a class="header-anchor" href="#linstyle">¶</a>linstyle</h5>
+<ul>
+<li>plt.text() 设置图内文本</li>
+</ul>
+<h5 id="轴标签"><a class="header-anchor" href="#轴标签">¶</a>轴标签</h5>
+<ul>
+<li>plt.xlabel() 设置坐标轴标签</li>
+<li>plt.ylabel()</li>
+</ul>
+<h5 id="范围"><a class="header-anchor" href="#范围">¶</a>范围</h5>
+<ul>
+<li>
+<p>plt.xlim() 设置坐标取值范围 元组</p>
+</li>
+<li>
+<p>plt.ylim()</p>
+</li>
+<li>
+<p>plt.imshow()</p>
+</li>
+<li>
+<p>plt.axis(“off”)</p>
+</li>
+</ul>
+<h3 id="设置记号刻度-刻度标签"><a class="header-anchor" href="#设置记号刻度-刻度标签">¶</a>设置记号刻度 刻度标签</h3>
+<p>plt.xticks（[-np.pi，-np.pi / 2,0，np.pi / 2，np.pi]）</p>
+<p>plt.yticks（[ -  1，0，+1]）</p>
+<p>plt.xticks(new_ticks)<br>
+plt.yticks([-2, -1.8, -1, 1.22, 3],<br>
+[r’$really\ bad$’, r’$bad$’, r’$normal\ \alpha$’, r’$good$’, r’$really\ good$’])</p>
+<h3 id="设置记号标签"><a class="header-anchor" href="#设置记号标签">¶</a>设置记号标签</h3>
+<p>plt.xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi],       [r’$-\pi$’, r’$-\pi/2$’, r’$0$’, r’$+\pi/2$’, r’$+\pi$’]) plt.yticks([-1, 0, +1],       [r’$-1$’, r’$0$’, r’$+1$’])</p>
+<h3 id="设置坐标"><a class="header-anchor" href="#设置坐标">¶</a>设置坐标</h3>
+<p>plt.plot([],[],)</p>
+<p>linestyle marker marketsize</p>
+<p><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html</a></p>
+<table>
+<thead>
+<tr>
+<th><a href="https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D.set_linestyle" target="_blank" rel="noopener"><code>linestyle</code></a> or ls</th>
+<th>{’-’, ‘–’, ‘-.’, ‘:’, ‘’, (offset, on-off-seq), …}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D.set_linewidth" target="_blank" rel="noopener"><code>linewidth</code></a> or lw</td>
+<td>float</td>
+</tr>
+<tr>
+<td><a href="https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D.set_marker" target="_blank" rel="noopener"><code>marker</code></a></td>
+<td>marker style</td>
+</tr>
+<tr>
+<td><a href="https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D.set_markeredgecolor" target="_blank" rel="noopener"><code>markeredgecolor</code></a> or mec</td>
+<td>color</td>
+</tr>
+<tr>
+<td><a href="https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D.set_markeredgewidth" target="_blank" rel="noopener"><code>markeredgewidth</code></a> or mew</td>
+<td>float</td>
+</tr>
+<tr>
+<td><a href="https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D.set_markerfacecolor" target="_blank" rel="noopener"><code>markerfacecolor</code></a> or mfc</td>
+<td>color</td>
+</tr>
+<tr>
+<td><a href="https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D.set_markerfacecoloralt" target="_blank" rel="noopener"><code>markerfacecoloralt</code></a> or mfcalt</td>
+<td>color</td>
+</tr>
+<tr>
+<td><a href="https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D.set_markersize" target="_blank" rel="noopener"><code>markersize</code></a> or ms</td>
+<td>float</td>
+</tr>
+</tbody>
+</table>
+<p>plt.axis([2011,2014,0.04,0.18])</p>
+<p>plt.xticks(np.arange(2011,2015,1)) plt.yticks(np.arange(0.04,0.20,0.02))</p>
+<p>plt.ylabel(“RMSE”)</p>
+<p>plt.xlabel(&quot;(a) LSTM&quot;)</p>
+<p>plt.grid(True）</p>
+<p>plt.figure(2) #plt.subplot(222)</p>
+<h1>地图专题</h1>
+<p>软件Acrmap, Geoda</p>
+<h2 id="地图可视化"><a class="header-anchor" href="#地图可视化">¶</a>地图可视化</h2>
+<p>径向图、地图</p>
+<h2 id="空间分析"><a class="header-anchor" href="#空间分析">¶</a>空间分析</h2>
+<p>空间相关性分析</p>
+<h2 id="绘图"><a class="header-anchor" href="#绘图">¶</a>绘图</h2>
+<h2 id="绘图软件-gephi"><a class="header-anchor" href="#绘图软件-gephi">¶</a>绘图软件-- Gephi</h2>
+<h3 id="step"><a class="header-anchor" href="#step">¶</a>Step</h3>
+<ol>
+<li>数据准备</li>
+<li></li>
+</ol>
+<h3 id="video"><a class="header-anchor" href="#video">¶</a>Video</h3>
+<p><a href="https://www.udemy.com/course/gephi/learn/lecture/67426#overview" target="_blank" rel="noopener">https://www.udemy.com/course/gephi/learn/lecture/67426#overview</a></p>
+<h3 id="交通"><a class="header-anchor" href="#交通">¶</a>交通</h3>
+<p><a href="https://blog.csdn.net/yirry/article/details/79233176?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare" target="_blank" rel="noopener">https://blog.csdn.net/yirry/article/details/79233176?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare</a></p>
+<h3 id="官网"><a class="header-anchor" href="#官网">¶</a>官网</h3>
+<p><a href="https://gephi.org/users/download/" target="_blank" rel="noopener">https://gephi.org/users/download/</a></p>
+<h3 id="其他"><a class="header-anchor" href="#其他">¶</a>其他</h3>
+<p>python <a href="https://networkx.github.io/documentation/stable/auto_examples/subclass/plot_antigraph.html#sphx-glr-auto-examples-subclass-plot-antigraph-py" target="_blank" rel="noopener">https://networkx.github.io/documentation/stable/auto_examples/subclass/plot_antigraph.html#sphx-glr-auto-examples-subclass-plot-antigraph-py</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/07/08/Research-Career/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1153,184 +1476,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/07/03/计量经济学/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/03/计量经济学/" itemprop="url">计量经济学</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-03T22:10:28+08:00">2020-07-03</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/03/计量经济学/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/03/计量经济学/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                6.8k字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1>资料</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/03/计量经济学/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1378,7 +1523,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1586,7 +1731,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">318k</span>
+    <span title="Symbols count total">324k</span>
   
 
   
