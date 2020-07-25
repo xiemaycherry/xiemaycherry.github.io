@@ -116,20 +116,20 @@
   <meta name="keywords" content="决策树,">
 
 
-<meta name="description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！😄 😃 😁 😮">
+<meta name="description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:">
 <meta name="keywords" content="决策树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="决策树">
 <meta property="og:url" content="http://xiemaycherry.github.io/2019/03/03/决策树/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！😄 😃 😁 😮">
+<meta property="og:description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://xiemaycherry.github.io/2019/03/03/决策树/1.bmp">
 <meta property="og:image" content="http://xiemaycherry.github.io/2019/03/03/决策树/2.jpg">
 <meta property="og:updated_time" content="2020-06-29T08:27:29.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树">
-<meta name="twitter:description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！😄 😃 😁 😮">
+<meta name="twitter:description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:">
 <meta name="twitter:image" content="http://xiemaycherry.github.io/2019/03/03/决策树/1.bmp">
 
 
@@ -443,7 +443,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                5.9k字
+                5.8k字
               </span>
               
 
@@ -468,119 +468,55 @@
       
 
       
-        <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！😄 😃 😁 😮</p>
+        <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:</p>
 <a id="more"></a>
 <p>[TOC]</p>
-<h1>决策树</h1>
-<p>英文名字：Descision Tree</p>
-<h2 id="什么是决策树"><a class="header-anchor" href="#什么是决策树">¶</a>什么是决策树</h2>
-<p>举个校园相亲的例子，今天校园的小猫(女)和小狗(男)准备配对，小猫如何才能在众多的优质🐶的心仪的狗呢？于是呢？有一只特乖巧的小猫找到了你，你正在学习机器学习，刚好学习了决策树，准备给这只猫猫挑选优质狗，当然，你不仅仅是直接告诉猫哪些狗是合适你的？你更应该详细的给猫讲解决策树是如何根据它提出的标准选出的符合要求的狗呢？<br>
-猫给出如下信息：<br>
-年龄&lt;0.5 不心仪；年龄大于&gt;=0.5  6.5&lt;=体重&lt;=8.5;心仪; 年龄&gt;=0.5 体重&gt;8.5 长相好 心仪;其余情况不心仪; 根据上述条件可以构造一颗树：<br>
-<img src="/2019/03/03/决策树/1.bmp" alt="tuyi"><br>
-上面的图就是决策树，最终的结果是心仪或者不心仪。决策树算法以树形结构表示数据分类的结果</p>
-<h2 id="基本概念"><a class="header-anchor" href="#基本概念">¶</a>基本概念</h2>
-<p>决策树属于也只能非参数学习算法、可以用于解决(多)分类问题，回归问题。 回归问题的结果，叶子结点的平均值是回归问题的解。<br>
-根节点：决策树具有数据结构里面的二叉树、树的全部属性<br>
-非叶子节点 ：（决策点） 代表测试的条件，数据的属性的测试<br>
-叶子节点 ：分类后获得分类标记<br>
-分支： 测试的结果</p>
-<h2 id="数学问题-熵-gini系数"><a class="header-anchor" href="#数学问题-熵-gini系数">¶</a>数学问题-熵-Gini系数</h2>
-<p>什么是熵：熵的概念源于物理学，用于度量一个热力学系统的无序程度。<br>
-信息熵：不得不提香农这个大写的人啦！信息论里面的知识。在信息论里面，<font color="red">信息熵衡量信息量的大小，也就是对随机变量不确定度的一个衡量。熵越大，不确定性越大；</font><br>
-对于某个单符号无记忆信源，发出符号($x_i$)的概率是$p_i$,概率越大，符号的信息量就越小，香农公式 $I(x_i)=-log_{p_i}$。信源所含的信息熵就是信息量的期望]<br>
-$H(x)=-\sum p_i*log_{p_i}$<br>
-Gini系数： $Gimi§ = 1-\sum_{k=1}<sup>{K}p_k</sup>2$</p>
-<h2 id="决策树如何构建的问题"><a class="header-anchor" href="#决策树如何构建的问题">¶</a>决策树如何构建的问题</h2>
-<p>自我提问阶段：<br>
-<font color="green" size="3">每个节点的位置如何确定？</font><br>
-特征的选择：每次选入的特征作为分裂的标准，都是使得决策树在这个节点的根据你自己选择的标准（信息熵最小、信息增益最大、gini系数最小）.<br>
-<font color="green" size="3">每个节点在哪个值上做划分，确定分支结构呢？</font><br>
-遍历划分的节点的分界值操作来解决这个问题<br>
-<font color="green" size="3">可以想象，我们构造的决策树足够庞大，决策树可以把每一个样本都分对，那么决策树的泛化能力就可以很差了</font><br>
-为了解决这个问题，就需要剪枝操作了</p>
-<h3 id="训练算法"><a class="header-anchor" href="#训练算法">¶</a>训练算法</h3>
-<h4 id="基于信息熵的构造"><a class="header-anchor" href="#基于信息熵的构造">¶</a>基于信息熵的构造</h4>
-<p>当选择某个特征作为节点时，我们就希望这个特征的信息熵越小越好，那么不确定性越小。<br>
-计算特征的信息熵公式如下：<br>
-$$ H(x) = -p_i(x)log^{p_i(x)}<br>
-= -\frac{n_j}{S}log^{\frac{n_j}{S}}$$<br>
-$n_j$: 第j个类别，在样本中出现的频数<br>
-$S$: 样本个数<br>
-对于离散属性，直接计算信息熵，连续属性，就需要划分区间，按区间计算信息熵。</p>
+<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p>英文名字：Descision Tree</p>
+<h2 id="什么是决策树"><a href="#什么是决策树" class="headerlink" title="什么是决策树"></a>什么是决策树</h2><p>举个校园相亲的例子，今天校园的小猫(女)和小狗(男)准备配对，小猫如何才能在众多的优质🐶的心仪的狗呢？于是呢？有一只特乖巧的小猫找到了你，你正在学习机器学习，刚好学习了决策树，准备给这只猫猫挑选优质狗，当然，你不仅仅是直接告诉猫哪些狗是合适你的？你更应该详细的给猫讲解决策树是如何根据它提出的标准选出的符合要求的狗呢？<br>猫给出如下信息：<br>年龄<0.5 不心仪；年龄大于="">=0.5  6.5&lt;=体重&lt;=8.5;心仪; 年龄&gt;=0.5 体重&gt;8.5 长相好 心仪;其余情况不心仪; 根据上述条件可以构造一颗树：<br><img src="/2019/03/03/决策树/1.bmp" alt="tuyi"><br>上面的图就是决策树，最终的结果是心仪或者不心仪。决策树算法以树形结构表示数据分类的结果</0.5></p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>决策树属于也只能非参数学习算法、可以用于解决(多)分类问题，回归问题。 回归问题的结果，叶子结点的平均值是回归问题的解。<br>根节点：决策树具有数据结构里面的二叉树、树的全部属性<br>非叶子节点 ：（决策点） 代表测试的条件，数据的属性的测试<br>叶子节点 ：分类后获得分类标记<br>分支： 测试的结果</p>
+<h2 id="数学问题-熵-Gini系数"><a href="#数学问题-熵-Gini系数" class="headerlink" title="数学问题-熵-Gini系数"></a>数学问题-熵-Gini系数</h2><p>什么是熵：熵的概念源于物理学，用于度量一个热力学系统的无序程度。<br>信息熵：不得不提香农这个大写的人啦！信息论里面的知识。在信息论里面，<font color="red">信息熵衡量信息量的大小，也就是对随机变量不确定度的一个衡量。熵越大，不确定性越大；</font><br>对于某个单符号无记忆信源，发出符号($x_i$)的概率是$p_i$,概率越大，符号的信息量就越小，香农公式 $I(x_i)=-log_{p_i}$。信源所含的信息熵就是信息量的期望]<br>$H(x)=-\sum p_i*log_{p_i}$<br>Gini系数： $Gimi(p) = 1-\sum_{k=1}^{K}p_k^2$</p>
+<h2 id="决策树如何构建的问题"><a href="#决策树如何构建的问题" class="headerlink" title="决策树如何构建的问题"></a>决策树如何构建的问题</h2><p>自我提问阶段：</p>
+<p><font color="green" size="3">每个节点的位置如何确定？</font><br>特征的选择：每次选入的特征作为分裂的标准，都是使得决策树在这个节点的根据你自己选择的标准（信息熵最小、信息增益最大、gini系数最小）.</p>
+<p><font color="green" size="3">每个节点在哪个值上做划分，确定分支结构呢？</font><br>遍历划分的节点的分界值操作来解决这个问题</p>
+<p><font color="green" size="3">可以想象，我们构造的决策树足够庞大，决策树可以把每一个样本都分对，那么决策树的泛化能力就可以很差了</font><br>为了解决这个问题，就需要剪枝操作了</p>
+<h3 id="训练算法"><a href="#训练算法" class="headerlink" title="训练算法"></a>训练算法</h3><h4 id="基于信息熵的构造"><a href="#基于信息熵的构造" class="headerlink" title="基于信息熵的构造"></a>基于信息熵的构造</h4><p>当选择某个特征作为节点时，我们就希望这个特征的信息熵越小越好，那么不确定性越小。<br>计算特征的信息熵公式如下：</p>
+<script type="math/tex; mode=display">H(x) = -p_i(x)log^{p_i(x)}
+= -\frac{n_j}{S}log^{\frac{n_j}{S}}</script><p>$n_j$: 第j个类别，在样本中出现的频数<br>$S$: 样本个数<br>对于离散属性，直接计算信息熵，连续属性，就需要划分区间，按区间计算信息熵。</p>
 <ol>
-<li>基于某一层的数据集<br>
-a. 遍历计算所有属性，遍历相应属性以不同值为分截点的信息熵<br>
-b. 选择信息熵最小的作为节点</li>
-<li>如果到达终止条件，返回相应信息，否则，按照分支重复步骤1</li>
+<li>基于某一层的数据集<br> a. 遍历计算所有属性，遍历相应属性以不同值为分截点的信息熵<br> b. 选择信息熵最小的作为节点<ol>
+<li>如果到达终止条件，返回相应信息，否则，按照分支重复步骤1<h4 id="ID3算法：-信息增益最大化"><a href="#ID3算法：-信息增益最大化" class="headerlink" title="ID3算法： 信息增益最大化"></a>ID3算法： 信息增益最大化</h4>C:类别<script type="math/tex; mode=display">H(C)=-\sum_{i=1}^{m}p_i log _2^{p_i}</script>按照D组划分C<script type="math/tex; mode=display">H(C/D)=\sum_{i=1}^{v}\frac{|C_i|}{|C|}H(C_i)</script>信息增益<script type="math/tex; mode=display">gain(D) = gain(C)-H(C/D)</script>这里我就以网上给出的数据为例，给出根据信息熵构成决策树的计算过程。</li>
 </ol>
-<h4 id="id3算法：-信息增益最大化"><a class="header-anchor" href="#id3算法：-信息增益最大化">¶</a>ID3算法： 信息增益最大化</h4>
-<p>C:类别<br>
-$$H©=-\sum_{i=1}^{m}p_i log <em>2^{p_i}$$<br>
-按照D组划分C<br>
-$$H(C/D)=\sum</em>{i=1}^{v}\frac{|C_i|}{|C|}H(C_i)$$<br>
-信息增益<br>
-$$ gain(D) = gain©-H(C/D)$$<br>
-这里我就以网上给出的数据为例，给出根据信息熵构成决策树的计算过程。</p>
-<ol>
-<li>
-<p>确定特征，统计属性值和分解结果，总共四个特征，四种特征的统计结果如下图：<br>
-<img src="/2019/03/03/决策树/2.jpg" alt="图er"></p>
 </li>
-<li>
-<p>根据历史数据，在不知到任何情况下，计算数据本身的熵为<br>
-$$ - \frac{9}{14}log_2 \frac{9}{14}-\frac{5}{14}log_2\frac{5}{14}=0.940$$</p>
+<li><p>确定特征，统计属性值和分解结果，总共四个特征，四种特征的统计结果如下图：<br><img src="/2019/03/03/决策树/2.jpg" alt="图er"></p>
 </li>
-<li>
-<p>计算每个特征做为节点的信息熵<br>
-以天气为例，天气三种属性，当Outlook = sunny时，H(x) = $-\frac{2}{5}log_2\frac{2}{5}-\frac{3}{5}log_2\frac{3}{5}$; 当Outlook= overcast,$H(x)=0$,当Outlook = rainy ,$H(x) = 0.971$<br>
-所以，当选天气作为节点时，此时$H(x)=\frac{5}{14}*0.971+\frac{4}{14}*0+\frac{5}{14}*0.971 = 0.693$,gain(天气) = 0.247<br>
-同理，可得gain(温度) =0.029  gain(湿度)=0.152，gain(风)=0.048<br>
-因此选择天气节点，在递归实现其他节点的选择。<br>
-信息增益的方法偏向选择具有大量值的属性，也就是说某个属性特征索取的不同值越多，那么越有可能作为分裂属性，这样是不合理的；</p>
-</li>
+<li><p>根据历史数据，在不知到任何情况下，计算数据本身的熵为</p>
+<script type="math/tex; mode=display">- \frac{9}{14}log_2 \frac{9}{14}-\frac{5}{14}log_2\frac{5}{14}=0.940</script></li>
+<li>计算每个特征做为节点的信息熵<br>以天气为例，天气三种属性，当Outlook = sunny时，H(x) = $-\frac{2}{5}log_2\frac{2}{5}-\frac{3}{5}log_2\frac{3}{5}$; 当Outlook= overcast,$H(x)=0$,当Outlook = rainy ,$H(x) = 0.971$<br>所以，当选天气作为节点时，此时$H(x)=\frac{5}{14}<em>0.971+\frac{4}{14}</em>0+\frac{5}{14}*0.971 = 0.693$,gain(天气) = 0.247<br>同理，可得gain(温度) =0.029  gain(湿度)=0.152，gain(风)=0.048<br>因此选择天气节点，在递归实现其他节点的选择。<br>信息增益的方法偏向选择具有大量值的属性，也就是说某个属性特征索取的不同值越多，那么越有可能作为分裂属性，这样是不合理的；</li>
 </ol>
-<h4 id="c4-5-信息增益率"><a class="header-anchor" href="#c4-5-信息增益率">¶</a>C4.5: 信息增益率</h4>
-<p>如果这里考虑了一列ID,每个ID出现一次，所以算出的信息增益大。<br>
-$ H(x) = 0$,信息增益最大化了，可以引入信息增益率<br>
-$$C(T) = \frac{信息增益}{H(T)}<br>
-=\frac{H©-H(C/T)}{H(T)}$$</p>
-<h4 id="cart-基尼-gini-系数"><a class="header-anchor" href="#cart-基尼-gini-系数">¶</a>CART:基尼(Gini)系数</h4>
-<p>$$G = 1-\sum_{i=l_k}<sup>{k}p_i</sup>2$$,也是对随机变量不确定性的一个衡量，gini越大，不确定性越大</p>
-<h3 id="连续属性的处理方法"><a class="header-anchor" href="#连续属性的处理方法">¶</a>连续属性的处理方法</h3>
-<p>选取分解点的问题： 分成不同的区间（二分、三分…)，分别计算增益值，然后比较选择。<br>
-将需要处理的样本（对应根节点）或样本子集（对应子树）按照连续变量的大小从小到大进行排序<br>
-假设该属性对应不同的属性值共N个，那么总共有N-1个可能的候选分割值点，每个候选的分割阈值点的值为上述排序后的属性值中两两前后连续元素的中点</p>
-<h2 id="评价"><a class="header-anchor" href="#评价">¶</a>评价</h2>
-<p>评价函数：<br>
-$$C(T) = \sum_{releaf} N_t*H(T)$$<br>
-$ N_t$：每个叶子节点里面含有的样本个数<br>
-$H(T)$:叶子节点含有的信息熵</p>
-<h3 id="过拟合"><a class="header-anchor" href="#过拟合">¶</a>过拟合</h3>
-<p>如果决策树过于庞大，分支太多，可能造成过拟合。对应训练样本都尽可能的分对，也许样本本身就存在异常点呢？<br>
-I. 预剪枝：边构建，边剪枝</p>
+<h4 id="C4-5-信息增益率"><a href="#C4-5-信息增益率" class="headerlink" title="C4.5: 信息增益率"></a>C4.5: 信息增益率</h4><p>如果这里考虑了一列ID,每个ID出现一次，所以算出的信息增益大。<br>$ H(x) = 0$,信息增益最大化了，可以引入信息增益率</p>
+<script type="math/tex; mode=display">C(T) = \frac{信息增益}{H(T)}
+=\frac{H(C)-H(C/T)}{H(T)}</script><h4 id="CART-基尼-Gini-系数"><a href="#CART-基尼-Gini-系数" class="headerlink" title="CART:基尼(Gini)系数"></a>CART:基尼(Gini)系数</h4><script type="math/tex; mode=display">G = 1-\sum_{i=l_k}^{k}p_i^2$$,也是对随机变量不确定性的一个衡量，gini越大，不确定性越大
+### 连续属性的处理方法
+选取分解点的问题： 分成不同的区间（二分、三分....)，分别计算增益值，然后比较选择。
+将需要处理的样本（对应根节点）或样本子集（对应子树）按照连续变量的大小从小到大进行排序
+假设该属性对应不同的属性值共N个，那么总共有N-1个可能的候选分割值点，每个候选的分割阈值点的值为上述排序后的属性值中两两前后连续元素的中点
+## 评价
+评价函数：
+$$C(T) = \sum_{releaf} N_t*H(T)</script><p>$ N_t$：每个叶子节点里面含有的样本个数<br>$H(T)$:叶子节点含有的信息熵</p>
+<h3 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h3><p>如果决策树过于庞大，分支太多，可能造成过拟合。对应训练样本都尽可能的分对，也许样本本身就存在异常点呢？<br>I. 预剪枝：边构建，边剪枝</p>
 <ol>
 <li>指定深度d</li>
 <li>节点的min_sample</li>
-<li>节点熵值或者gini值小于阙值<br>
-熵和基尼值的大小表示数据的复杂程度，当熵或者基尼值过小时，表示数据的纯度比较大，如果熵或者基尼值小于一定程度数，节点停止分裂。</li>
+<li>节点熵值或者gini值小于阙值<br>熵和基尼值的大小表示数据的复杂程度，当熵或者基尼值过小时，表示数据的纯度比较大，如果熵或者基尼值小于一定程度数，节点停止分裂。</li>
 <li>当所以特征都用完了</li>
-<li>指定节点个数<br>
-当节点的数据量小于一个指定的数量时，不继续分裂。两个原因：一是数据量较少时，再做分裂容易强化噪声数据的作用；二是降低树生长的复杂性。提前结束分裂一定程度上有利于降低过拟合的影响。</li>
+<li>指定节点个数<br>当节点的数据量小于一个指定的数量时，不继续分裂。两个原因：一是数据量较少时，再做分裂容易强化噪声数据的作用；二是降低树生长的复杂性。提前结束分裂一定程度上有利于降低过拟合的影响。</li>
 </ol>
-<p>II. 后剪枝： 构建好后，然后才开始裁剪<br>
-$$ C_\alpha(T) = C(T)+\alpha|T_{leaf}|$$<br>
-在构造含一棵树后，选一些节点做计算，看是否需要剪枝</p>
-<h2 id="决策树单个节点选择的代码实现"><a class="header-anchor" href="#决策树单个节点选择的代码实现">¶</a>决策树单个节点选择的代码实现</h2>
-<h3 id="简单实现了单个节点决策构造过程"><a class="header-anchor" href="#简单实现了单个节点决策构造过程">¶</a>简单实现了单个节点决策构造过程</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split</span><span class="params">(X,y,d,value)</span>:</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">在d纬度上，按照value进行划分</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">    index_a =(X[:,d]&lt;=value)</span><br><span class="line">    index_b =(X[:,d]&gt;value)</span><br><span class="line">    <span class="keyword">return</span> X[index_a],X[index_b],y[index_a],y[index_b]</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log </span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">entropy</span><span class="params">(y)</span>:</span></span><br><span class="line">    counter = Counter(y) <span class="comment"># 字典</span></span><br><span class="line">    res = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> counter.values():</span><br><span class="line">        p = num/len(y)</span><br><span class="line">        res+=-p*log(p)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gain</span><span class="params">(X,y,d,v)</span>:</span></span><br><span class="line">    X_l,X_r,y_l,y_r = split(X,y,d,v)</span><br><span class="line">    e = len(y_l)/len(y)*entropy(y_l)+len(y_r)/len(y)*entropy(y_r)</span><br><span class="line">    <span class="keyword">return</span> (entropy(y)-e)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gainratio</span><span class="params">(X,y,d,v)</span>:</span></span><br><span class="line">    X_l,X_r,y_l,y_r = split(X,y,d,v)</span><br><span class="line">    gain =entropy(y) - len(y_l)/len(y)*entropy(y_l)+len(y_r)/len(y)*entropy(y_r)</span><br><span class="line">    <span class="keyword">return</span> gain/(entropy(y_l)+entropy(y_r))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gini</span><span class="params">(y)</span>:</span></span><br><span class="line">    counter = Counter(y)</span><br><span class="line">    res = <span class="number">1.0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> counter.values():</span><br><span class="line">        p = num / len(y)</span><br><span class="line">        res += -p**<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">    <span class="comment">#X_l,X_r,y_l,y_r = split(X,y,d,v)</span></span><br><span class="line">    <span class="comment">#return 1-(len(y_l)/len(y))**2-(len(y_r)/len(y))**2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">try_split</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    best_entropy = float(<span class="string">'inf'</span>)</span><br><span class="line">    best_d,best_v=<span class="number">-1</span>,<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> range(X.shape[<span class="number">1</span>]):</span><br><span class="line">        sorted_index = np.argsort(X[:,d])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(X)):</span><br><span class="line">            <span class="keyword">if</span> (X[sorted_index[i],d] != X[sorted_index[i<span class="number">-1</span>],d]):</span><br><span class="line">                v = (X[sorted_index[i<span class="number">-1</span>],d]+X[sorted_index[i],d])/<span class="number">2</span></span><br><span class="line">                X_l,X_r,y_l,y_r = split(X,y,d,v)</span><br><span class="line">                <span class="comment"># 信息熵</span></span><br><span class="line">                e = entropy(y_l)+entropy(y_r)</span><br><span class="line">                <span class="comment">#gini</span></span><br><span class="line">                e = gini(y_l) + gini(y_r)</span><br><span class="line">                <span class="comment"># 信息增益</span></span><br><span class="line">                e = -gain(X,y,d,v)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> e &lt; best_entropy:</span><br><span class="line">                    best_entropy, best_d,best_v = e,d,v</span><br><span class="line">    <span class="keyword">return</span> best_entropy, best_d, best_v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动来划分</span></span><br><span class="line"></span><br><span class="line">data =np.array([[	<span class="number">0.3</span>	,	<span class="number">5</span>	,	<span class="number">2</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.4</span>	,	<span class="number">6</span>	,	<span class="number">0</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.5</span>	,	<span class="number">6.5</span>	,	<span class="number">1</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">0.6</span>	,	<span class="number">6</span>	,	<span class="number">0</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.7</span>	,	<span class="number">9</span>	,	<span class="number">2</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">0.5</span>	,	<span class="number">7</span>	,	<span class="number">1</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.4</span>	,	<span class="number">6</span>	,	<span class="number">0</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.6</span>	,	<span class="number">8.5</span>	,	<span class="number">0</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">0.3</span>	,	<span class="number">5.5</span>	,	<span class="number">2</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.9</span>	,	<span class="number">10</span>	,	<span class="number">0</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">1</span>	,	<span class="number">12</span>	,	<span class="number">1</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.6</span>	,	<span class="number">9</span>	,	<span class="number">1</span>	,	<span class="number">0</span>	],</span><br><span class="line">])</span><br><span class="line">X =data[:,<span class="number">0</span>:<span class="number">3</span>]</span><br><span class="line">y = data[:,<span class="number">-1</span>]</span><br><span class="line"><span class="comment"># 手动来划分</span></span><br><span class="line">best_entropy, best_d, best_v = try_split(X, y)</span><br><span class="line">print(best_entropy, best_d, best_v)</span><br><span class="line">X1_l, X1_r, y1_l, y1_r = split(X,y,best_d,best_v)</span><br><span class="line">print(X1_l, X1_r, y1_l, y1_r)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">best_entropy2, best_d2, best_v2 = try_split(X1_r, y1_r)</span><br><span class="line">X2_l, X2_r, y2_l, y2_r = split(X1_r,y1_r,best_d2,best_v2)</span><br><span class="line">entropy(y2_l)</span><br></pre></td></tr></table></figure>
-<h3 id="python-sklean里面tree模块里面的decisiontreeclassifier"><a class="header-anchor" href="#python-sklean里面tree模块里面的decisiontreeclassifier">¶</a>Python sklean里面tree模块里面的DecisionTreeClassifier</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line">clf =tree.DecisionTreeClassifier(max_depth=<span class="number">1</span>,criterion =<span class="string">'gini'</span>) <span class="comment"># criterion='entropy|gini'</span></span><br><span class="line"></span><br><span class="line">clf = clf.fit(X,y)</span><br></pre></td></tr></table></figure>
-<p>训练好一颗决策树之后，我们可以使用export_graphviz导出器以Graphviz格式导出树。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> graphviz </span><br><span class="line">dot_data = tree.export_graphviz(clf, out_file=<span class="keyword">None</span>,) </span><br><span class="line">graph = graphviz.Source(dot_data) </span><br><span class="line">graph.render(<span class="string">"data"</span>)</span><br></pre></td></tr></table></figure>
-<p>在运行时可以出错：<br>
-ExecutableNotFound: failed to execute [‘dot’, ‘-Tpdf’, ‘-O’, ‘data’], make sure the Graphviz executables are on your systems’ PATH<br>
-原因：graphviz本身是一个软件，需要额外下载，并将其bin加入环境变量之中。<a href="https://graphviz.gitlab.io/_pages/Download/Download_windows.html" target="_blank" rel="noopener">下载</a></p>
+<p>II. 后剪枝： 构建好后，然后才开始裁剪</p>
+<script type="math/tex; mode=display">C_\alpha(T) = C(T)+\alpha|T_{leaf}|</script><p>在构造含一棵树后，选一些节点做计算，看是否需要剪枝</p>
+<h2 id="决策树单个节点选择的代码实现"><a href="#决策树单个节点选择的代码实现" class="headerlink" title="决策树单个节点选择的代码实现"></a>决策树单个节点选择的代码实现</h2><h3 id="简单实现了单个节点决策构造过程"><a href="#简单实现了单个节点决策构造过程" class="headerlink" title="简单实现了单个节点决策构造过程"></a>简单实现了单个节点决策构造过程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split</span><span class="params">(X,y,d,value)</span>:</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">在d纬度上，按照value进行划分</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">    index_a =(X[:,d]&lt;=value)</span><br><span class="line">    index_b =(X[:,d]&gt;value)</span><br><span class="line">    <span class="keyword">return</span> X[index_a],X[index_b],y[index_a],y[index_b]</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log </span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">entropy</span><span class="params">(y)</span>:</span></span><br><span class="line">    counter = Counter(y) <span class="comment"># 字典</span></span><br><span class="line">    res = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> counter.values():</span><br><span class="line">        p = num/len(y)</span><br><span class="line">        res+=-p*log(p)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gain</span><span class="params">(X,y,d,v)</span>:</span></span><br><span class="line">    X_l,X_r,y_l,y_r = split(X,y,d,v)</span><br><span class="line">    e = len(y_l)/len(y)*entropy(y_l)+len(y_r)/len(y)*entropy(y_r)</span><br><span class="line">    <span class="keyword">return</span> (entropy(y)-e)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gainratio</span><span class="params">(X,y,d,v)</span>:</span></span><br><span class="line">    X_l,X_r,y_l,y_r = split(X,y,d,v)</span><br><span class="line">    gain =entropy(y) - len(y_l)/len(y)*entropy(y_l)+len(y_r)/len(y)*entropy(y_r)</span><br><span class="line">    <span class="keyword">return</span> gain/(entropy(y_l)+entropy(y_r))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gini</span><span class="params">(y)</span>:</span></span><br><span class="line">    counter = Counter(y)</span><br><span class="line">    res = <span class="number">1.0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> counter.values():</span><br><span class="line">        p = num / len(y)</span><br><span class="line">        res += -p**<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">    <span class="comment">#X_l,X_r,y_l,y_r = split(X,y,d,v)</span></span><br><span class="line">    <span class="comment">#return 1-(len(y_l)/len(y))**2-(len(y_r)/len(y))**2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">try_split</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    best_entropy = float(<span class="string">'inf'</span>)</span><br><span class="line">    best_d,best_v=<span class="number">-1</span>,<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> range(X.shape[<span class="number">1</span>]):</span><br><span class="line">        sorted_index = np.argsort(X[:,d])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(X)):</span><br><span class="line">            <span class="keyword">if</span> (X[sorted_index[i],d] != X[sorted_index[i<span class="number">-1</span>],d]):</span><br><span class="line">                v = (X[sorted_index[i<span class="number">-1</span>],d]+X[sorted_index[i],d])/<span class="number">2</span></span><br><span class="line">                X_l,X_r,y_l,y_r = split(X,y,d,v)</span><br><span class="line">                <span class="comment"># 信息熵</span></span><br><span class="line">                e = entropy(y_l)+entropy(y_r)</span><br><span class="line">                <span class="comment">#gini</span></span><br><span class="line">                e = gini(y_l) + gini(y_r)</span><br><span class="line">                <span class="comment"># 信息增益</span></span><br><span class="line">                e = -gain(X,y,d,v)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> e &lt; best_entropy:</span><br><span class="line">                    best_entropy, best_d,best_v = e,d,v</span><br><span class="line">    <span class="keyword">return</span> best_entropy, best_d, best_v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动来划分</span></span><br><span class="line"></span><br><span class="line">data =np.array([[	<span class="number">0.3</span>	,	<span class="number">5</span>	,	<span class="number">2</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.4</span>	,	<span class="number">6</span>	,	<span class="number">0</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.5</span>	,	<span class="number">6.5</span>	,	<span class="number">1</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">0.6</span>	,	<span class="number">6</span>	,	<span class="number">0</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.7</span>	,	<span class="number">9</span>	,	<span class="number">2</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">0.5</span>	,	<span class="number">7</span>	,	<span class="number">1</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.4</span>	,	<span class="number">6</span>	,	<span class="number">0</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.6</span>	,	<span class="number">8.5</span>	,	<span class="number">0</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">0.3</span>	,	<span class="number">5.5</span>	,	<span class="number">2</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.9</span>	,	<span class="number">10</span>	,	<span class="number">0</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">1</span>	,	<span class="number">12</span>	,	<span class="number">1</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.6</span>	,	<span class="number">9</span>	,	<span class="number">1</span>	,	<span class="number">0</span>	],</span><br><span class="line">])</span><br><span class="line">X =data[:,<span class="number">0</span>:<span class="number">3</span>]</span><br><span class="line">y = data[:,<span class="number">-1</span>]</span><br><span class="line"><span class="comment"># 手动来划分</span></span><br><span class="line">best_entropy, best_d, best_v = try_split(X, y)</span><br><span class="line">print(best_entropy, best_d, best_v)</span><br><span class="line">X1_l, X1_r, y1_l, y1_r = split(X,y,best_d,best_v)</span><br><span class="line">print(X1_l, X1_r, y1_l, y1_r)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">best_entropy2, best_d2, best_v2 = try_split(X1_r, y1_r)</span><br><span class="line">X2_l, X2_r, y2_l, y2_r = split(X1_r,y1_r,best_d2,best_v2)</span><br><span class="line">entropy(y2_l)</span><br></pre></td></tr></table></figure>
+<h3 id="Python-sklean里面tree模块里面的DecisionTreeClassifier"><a href="#Python-sklean里面tree模块里面的DecisionTreeClassifier" class="headerlink" title="Python sklean里面tree模块里面的DecisionTreeClassifier"></a>Python sklean里面tree模块里面的DecisionTreeClassifier</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line">clf =tree.DecisionTreeClassifier(max_depth=<span class="number">1</span>,criterion =<span class="string">'gini'</span>) <span class="comment"># criterion='entropy|gini'</span></span><br><span class="line"></span><br><span class="line">clf = clf.fit(X,y)</span><br></pre></td></tr></table></figure>
+<p>训练好一颗决策树之后，我们可以使用export_graphviz导出器以Graphviz格式导出树。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> graphviz </span><br><span class="line">dot_data = tree.export_graphviz(clf, out_file=<span class="keyword">None</span>,) </span><br><span class="line">graph = graphviz.Source(dot_data) </span><br><span class="line">graph.render(<span class="string">"data"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>在运行时可以出错：<br>ExecutableNotFound: failed to execute [‘dot’, ‘-Tpdf’, ‘-O’, ‘data’], make sure the Graphviz executables are on your systems’ PATH<br>原因：graphviz本身是一个软件，需要额外下载，并将其bin加入环境变量之中。<a href="https://graphviz.gitlab.io/_pages/Download/Download_windows.html" target="_blank" rel="noopener">下载</a></p>
 
       
     </div>
@@ -741,7 +677,7 @@ ExecutableNotFound: failed to execute [‘dot’, ‘-Tpdf’, ‘-O’, ‘data
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -928,7 +864,7 @@ ExecutableNotFound: failed to execute [‘dot’, ‘-Tpdf’, ‘-O’, ‘data
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是决策树"><span class="nav-number">1.1.</span> <span class="nav-text">¶什么是决策树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">¶基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学问题-熵-gini系数"><span class="nav-number">1.3.</span> <span class="nav-text">¶数学问题-熵-Gini系数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树如何构建的问题"><span class="nav-number">1.4.</span> <span class="nav-text">¶决策树如何构建的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练算法"><span class="nav-number">1.4.1.</span> <span class="nav-text">¶训练算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于信息熵的构造"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">¶基于信息熵的构造</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#id3算法：-信息增益最大化"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">¶ID3算法： 信息增益最大化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c4-5-信息增益率"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">¶C4.5: 信息增益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cart-基尼-gini-系数"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">¶CART:基尼(Gini)系数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续属性的处理方法"><span class="nav-number">1.4.2.</span> <span class="nav-text">¶连续属性的处理方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评价"><span class="nav-number">1.5.</span> <span class="nav-text">¶评价</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#过拟合"><span class="nav-number">1.5.1.</span> <span class="nav-text">¶过拟合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树单个节点选择的代码实现"><span class="nav-number">1.6.</span> <span class="nav-text">¶决策树单个节点选择的代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单实现了单个节点决策构造过程"><span class="nav-number">1.6.1.</span> <span class="nav-text">¶简单实现了单个节点决策构造过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-sklean里面tree模块里面的decisiontreeclassifier"><span class="nav-number">1.6.2.</span> <span class="nav-text">¶Python sklean里面tree模块里面的DecisionTreeClassifier</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是决策树"><span class="nav-number">1.1.</span> <span class="nav-text">什么是决策树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学问题-熵-Gini系数"><span class="nav-number">1.3.</span> <span class="nav-text">数学问题-熵-Gini系数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树如何构建的问题"><span class="nav-number">1.4.</span> <span class="nav-text">决策树如何构建的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练算法"><span class="nav-number">1.4.1.</span> <span class="nav-text">训练算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于信息熵的构造"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">基于信息熵的构造</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ID3算法：-信息增益最大化"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">ID3算法： 信息增益最大化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C4-5-信息增益率"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">C4.5: 信息增益率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CART-基尼-Gini-系数"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">CART:基尼(Gini)系数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过拟合"><span class="nav-number">1.4.2.</span> <span class="nav-text">过拟合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树单个节点选择的代码实现"><span class="nav-number">1.5.</span> <span class="nav-text">决策树单个节点选择的代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单实现了单个节点决策构造过程"><span class="nav-number">1.5.1.</span> <span class="nav-text">简单实现了单个节点决策构造过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-sklean里面tree模块里面的DecisionTreeClassifier"><span class="nav-number">1.5.2.</span> <span class="nav-text">Python sklean里面tree模块里面的DecisionTreeClassifier</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -969,7 +905,7 @@ ExecutableNotFound: failed to execute [‘dot’, ‘-Tpdf’, ‘-O’, ‘data
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">324k</span>
+    <span title="Symbols count total">284k</span>
   
 
   
@@ -1569,7 +1505,19 @@ ExecutableNotFound: failed to execute [‘dot’, ‘-Tpdf’, ‘-O’, ‘data
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1586,17 +1534,5 @@ ExecutableNotFound: failed to execute [‘dot’, ‘-Tpdf’, ‘-O’, ‘data
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

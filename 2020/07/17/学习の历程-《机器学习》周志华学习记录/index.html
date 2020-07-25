@@ -116,22 +116,22 @@
   <meta name="keywords" content="西瓜书,">
 
 
-<meta name="description" content="¶阅读目录 [TOC] ¶第一章">
+<meta name="description" content="阅读目录[TOC] 第一章">
 <meta name="keywords" content="西瓜书">
 <meta property="og:type" content="article">
 <meta property="og:title" content="西瓜书">
 <meta property="og:url" content="http://xiemaycherry.github.io/2020/07/17/学习の历程-《机器学习》周志华学习记录/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="¶阅读目录 [TOC] ¶第一章">
+<meta property="og:description" content="阅读目录[TOC] 第一章">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://xiemaycherry.github.io/2020/07/17/学习の历程-《机器学习》周志华学习记录/5.1.png">
-<meta property="og:image" content="http://xiemaycherry.github.io/2020/07/17/学习の历程-《机器学习》周志华学习记录/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%AD%A6%E4%B9%A0%E3%81%AE%E5%8E%86%E7%A8%8B-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E5%91%A8%E5%BF%97%E5%8D%8E%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5CStacking.png">
-<meta property="og:image" content="http://xiemaycherry.github.io/2020/07/17/学习の历程-《机器学习》周志华学习记录/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%AD%A6%E4%B9%A0%E3%81%AE%E5%8E%86%E7%A8%8B-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E5%91%A8%E5%BF%97%E5%8D%8E%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5C%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1.jpg">
+<meta property="og:image" content="http://xiemaycherry.github.io/2020/07/17/学习の历程-《机器学习》周志华学习记录/MyBlog/hexo/source/_posts/学习の历程-《机器学习》周志华学习记录/Stacking.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2020/07/17/学习の历程-《机器学习》周志华学习记录/MyBlog/hexo/source/_posts/学习の历程-《机器学习》周志华学习记录/极大似然估计.jpg">
 <meta property="og:image" content="https://img-blog.csdn.net/20160623222921977">
 <meta property="og:updated_time" content="2020-07-25T07:56:06.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西瓜书">
-<meta name="twitter:description" content="¶阅读目录 [TOC] ¶第一章">
+<meta name="twitter:description" content="阅读目录[TOC] 第一章">
 <meta name="twitter:image" content="http://xiemaycherry.github.io/2020/07/17/学习の历程-《机器学习》周志华学习记录/5.1.png">
 
 
@@ -470,196 +470,73 @@
       
 
       
-        <h2 id="阅读目录"><a class="header-anchor" href="#阅读目录">¶</a><em>阅读目录</em></h2>
-<p>[TOC]</p>
-<h2 id="第一章"><a class="header-anchor" href="#第一章">¶</a>第一章</h2>
-<a id="more"></a>
+        <h2 id="阅读目录"><a href="#阅读目录" class="headerlink" title="阅读目录"></a><em>阅读目录</em></h2><p>[TOC]</p>
+<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><a id="more"></a>
 <ol>
-<li>
-<p>What is the machine learning?<br>
-非常官方的定义： Tom mitchell(1998) Well-posed Learning<br>
-Problem:A compute program is said to learn from experience E with respect to same task T and some performance measure P,if its performance on T,as measured by P, improves with experience E。（这个我莫法翻译喔）<br>
-大概意思是强大的计算机能够事先地完成人为非显示编程好的任务，怎么完成呢？对于某个任务T,给定一个性能度量方法P,在经验E的影响下，如果P对T的测量结果得到了改进，则说明该程序从E中学习了<br>
-机器学习的过程大致如此：让计算机从数据中产生模型(model)，首先提供经验数据，给定学习算法(learning algorithm)和性能测量方法，它就能根据数据产生模型。<br>
-模型： 泛指从数据中学得的结果<br>
-模式： 局部性的结果</p>
-</li>
-<li>
-<p>基本术语<br>
-数据集: data set<br>
-样本： sample<br>
-属性（特征）： attribute（feature)<br>
-属性值： attribute value<br>
-属性空间（特征空间）： attribute space （ sample space）<br>
-特征向量： feature vector<br>
-学习（训练）：learning（training）<br>
-训练数据： training data<br>
-训练集： training set<br>
-假设：hypothesis 学得模型对应了关于数据的某种潜在规律<br>
-泛函能力: generalization</p>
-</li>
-<li>
-<p>假设空间<br>
-归纳（induction）： 从特殊到一般的“泛化”(generalization)过程<br>
-演绎（deduction)： 从一般到特殊的“特化”(specialization)过程<br>
-机器学习显然是归纳学习（inductive learning)<br>
-归纳学习分狭义与广义，狭义是指要求从training set 中学得概念，广义是指从sample中学习</p>
-<p>学习过程（训练过程）看作是在所以假设组成的空间中进行搜索的过程，搜索目标是找到与training set匹配的假设。如果假设的表示一旦确定，假设空间与其规模就确定了。想更详细了解假设空间，<a href="http://www.deeplearningbook.org/contents/ml.html" target="_blank" rel="noopener">戳我啦</a>5.2<br>
-现实问题中常面临很大的假设空间，我们可以寻找一个与训练集一致的假设集合，称之为版本空间。版本空间从假设空间剔除了与正例不一致和与反例一致的假设，它可以看成是对正例的最大泛化。<br>
-归纳偏好<br>
-机器学习算法在学习过程中对某种类型假设的偏好，称为“归纳偏好”（inductive bias),也就是学习算法在一个可能很庞大的假设空间中对假设进行选择的启发式或者“价值观”<br>
-奥卡姆剃刀定律： 若有多个假设与观测一致，则选择做简单的哪个。<br>
-没有免费的无餐定理（No Free Lunch Theorem[NFL]) 在所以问题出现的机会相同，或者所以问题同等重要下，所有算法的期望一样。但在实际问题中，针对具体的问题，不同的算法才会出现相对优劣。</p>
-</li>
-<li>
-<p>发展历程<br>
-推理期：二十世纪五十年代到七十年代初，AI处于推理区，代表性工作主要是A.Newell 和H.Simon的“逻辑理论家”程序和此后的“通用问题求解”程序等。“逻辑理论家”程序证明了数学家罗素和怀特海的《数学原理》里面的某些定理，获得图灵奖。<br>
-知识期：从二十世纪七十年代中期开始，AI的研究进入了“知识期”，大量的专家系统出现，E.A.Feigenbaum（知识工程之父）在1994获得图灵奖。人们意识到，专家系统面临“知识工程瓶颈&quot;,在那个时候，有人把知识总结出来再教给计算机是相当困难的。<br>
-1950年，图灵再关于图灵测试的文章中，曾提到机器学习的可能<br>
-二十世纪五十年代初，A.Samuel著名跳棋程序。五十年代中后期，基于神经网络的”连接主义“学习，如F.Rosenblatt的感知器（Perceptro），B.Widrem的Adaline,六七十年代，基于逻辑表示的”符号主义学习技术蓬勃发展<br>
-学习期：二十世纪八十年代是机器学习百花初放的时期。一大主流是符号主义学习，代表决策树（decision tree).二十世纪九十年代中期之前，另外一大主流技术是基于神经网络的连接主义学习。二十世纪九十年代中期，”统计学习“占据主流，代表支持向量机。二十一世纪初，连接主义学习掀起了”深度学习“为名的热潮。</p>
+<li><p>What is the machine learning?<br>非常官方的定义： Tom mitchell(1998) Well-posed Learning<br>Problem:A compute program is said to learn from experience E with respect to same task T and some performance measure P,if its performance on T,as measured by P, improves with experience E。（这个我莫法翻译喔）<br>大概意思是强大的计算机能够事先地完成人为非显示编程好的任务，怎么完成呢？对于某个任务T,给定一个性能度量方法P,在经验E的影响下，如果P对T的测量结果得到了改进，则说明该程序从E中学习了<br>机器学习的过程大致如此：让计算机从数据中产生模型(model)，首先提供经验数据，给定学习算法(learning algorithm)和性能测量方法，它就能根据数据产生模型。<br>模型： 泛指从数据中学得的结果<br>模式： 局部性的结果</p>
+<ol>
+<li>基本术语<br>数据集: data set<br>样本： sample<br>属性（特征）： attribute（feature)<br>属性值： attribute value<br>属性空间（特征空间）： attribute space （ sample space）<br>特征向量： feature vector<br>学习（训练）：learning（training）<br>训练数据： training data<br>训练集： training set<br>假设：hypothesis 学得模型对应了关于数据的某种潜在规律<br>泛函能力: generalization</li>
+<li>假设空间<br>归纳（induction）： 从特殊到一般的“泛化”(generalization)过程<br>演绎（deduction)： 从一般到特殊的“特化”(specialization)过程<br>机器学习显然是归纳学习（inductive learning)<br>归纳学习分狭义与广义，狭义是指要求从training set 中学得概念，广义是指从sample中学习</li>
+</ol>
+<p>学习过程（训练过程）看作是在所以假设组成的空间中进行搜索的过程，搜索目标是找到与training set匹配的假设。如果假设的表示一旦确定，假设空间与其规模就确定了。想更详细了解假设空间，<a href="http://www.deeplearningbook.org/contents/ml.html" target="_blank" rel="noopener">戳我啦</a>5.2<br>现实问题中常面临很大的假设空间，我们可以寻找一个与训练集一致的假设集合，称之为版本空间。版本空间从假设空间剔除了与正例不一致和与反例一致的假设，它可以看成是对正例的最大泛化。<br>归纳偏好<br>机器学习算法在学习过程中对某种类型假设的偏好，称为“归纳偏好”（inductive bias),也就是学习算法在一个可能很庞大的假设空间中对假设进行选择的启发式或者“价值观”<br>奥卡姆剃刀定律： 若有多个假设与观测一致，则选择做简单的哪个。<br>没有免费的无餐定理（No Free Lunch Theorem[NFL]) 在所以问题出现的机会相同，或者所以问题同等重要下，所有算法的期望一样。但在实际问题中，针对具体的问题，不同的算法才会出现相对优劣。                        </p>
+<ol>
+<li>发展历程<br>推理期：二十世纪五十年代到七十年代初，AI处于推理区，代表性工作主要是A.Newell 和H.Simon的“逻辑理论家”程序和此后的“通用问题求解”程序等。“逻辑理论家”程序证明了数学家罗素和怀特海的《数学原理》里面的某些定理，获得图灵奖。<br>知识期：从二十世纪七十年代中期开始，AI的研究进入了“知识期”，大量的专家系统出现，E.A.Feigenbaum（知识工程之父）在1994获得图灵奖。人们意识到，专家系统面临“知识工程瓶颈”,在那个时候，有人把知识总结出来再教给计算机是相当困难的。<br>1950年，图灵再关于图灵测试的文章中，曾提到机器学习的可能<br>二十世纪五十年代初，A.Samuel著名跳棋程序。五十年代中后期，基于神经网络的”连接主义“学习，如F.Rosenblatt的感知器（Perceptro），B.Widrem的Adaline,六七十年代，基于逻辑表示的”符号主义学习技术蓬勃发展<br>学习期：二十世纪八十年代是机器学习百花初放的时期。一大主流是符号主义学习，代表决策树（decision tree).二十世纪九十年代中期之前，另外一大主流技术是基于神经网络的连接主义学习。二十世纪九十年代中期，”统计学习“占据主流，代表支持向量机。二十一世纪初，连接主义学习掀起了”深度学习“为名的热潮。</li>
+</ol>
 </li>
 </ol>
-<h2 id="第二章-：-模型评估与选择"><a class="header-anchor" href="#第二章-：-模型评估与选择">¶</a>第二章 ： 模型评估与选择</h2>
-<h3 id="经验误差与过拟合-欠拟合"><a class="header-anchor" href="#经验误差与过拟合-欠拟合">¶</a>经验误差与过拟合、欠拟合</h3>
-<p>训练误差（training error) or 经验误差（empirical error): 学习器在训练集上的输出与训练集之间的差异<br>
-过拟合（over fitting）：在训练集上表现非常好，泛化能力太差，最常见的情况是学习能力太强学习到不太一般的特性，无法彻底避免，只能“缓解”<br>
-欠拟合（under fitting）：这种情况容易克服<br>
-模型选择(model selection): 不同的参数配置，产生不同的模型。理论上最好的模型是对泛化能力进行评估，最好的就是泛化误差最小的，泛化误差是无法直接获取的</p>
-<h3 id="评估方法"><a class="header-anchor" href="#评估方法">¶</a>评估方法</h3>
-<p>设置一个&quot;测试集（testing set)&quot;来测试学习器在新样本的判断能力，用测试误差近似泛化误差<br>
-要求：</p>
+<h2 id="第二章-：-模型评估与选择"><a href="#第二章-：-模型评估与选择" class="headerlink" title="第二章 ： 模型评估与选择"></a>第二章 ： 模型评估与选择</h2><h3 id="经验误差与过拟合、欠拟合"><a href="#经验误差与过拟合、欠拟合" class="headerlink" title="经验误差与过拟合、欠拟合"></a>经验误差与过拟合、欠拟合</h3><p>训练误差（training error) or 经验误差（empirical error): 学习器在训练集上的输出与训练集之间的差异<br>过拟合（over fitting）：在训练集上表现非常好，泛化能力太差，最常见的情况是学习能力太强学习到不太一般的特性，无法彻底避免，只能“缓解”<br>欠拟合（under fitting）：这种情况容易克服<br>模型选择(model selection): 不同的参数配置，产生不同的模型。理论上最好的模型是对泛化能力进行评估，最好的就是泛化误差最小的，泛化误差是无法直接获取的</p>
+<h3 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h3><p>设置一个”测试集（testing set)”来测试学习器在新样本的判断能力，用测试误差近似泛化误差<br>要求：</p>
 <ol>
 <li>测试样本与训练样本独立同分布的</li>
-<li>测试集应该尽可能与训练集互斥，测试样本尽量不出现在训练集中</li>
-</ol>
-<h4 id="如何产生training-set-和-testing-set"><a class="header-anchor" href="#如何产生training-set-和-testing-set">¶</a>如何产生training set 和 testing set</h4>
-<ol>
-<li>留出法（hold-out)<br>
-要求：数据集($D$)划分成两个互斥的集合（训练集($S$,测试集$T$),需要注意的是，划分后，尽量可能的保持数据分布的一致性。<br>
-不同的划分结果，得到不同的测试误差。单次使用留出法得到的结果是不够稳定的，所以一般采用若干次的随机划分，重复进行实验评估后去平均值</li>
-<li>交叉验证法（cross validation)<br>
-I. 将数据($D$)划分成$k$个大小相似的互斥子集，每个子集$D_i$都尽可能保持数据分布的一致性<br>
-II. 每次都用$k-1$作为训练集，余下的哪个子集作为测试集，于是乎都到了k个测试结果的均值<br>
-值得注意的是，$k$的取值对结果的稳定性和保真性有很大的影响，因此也叫k者交叉验证（k-flold cross validation) k的通常取值是10<br>
-同样的，数据集$D$划分为$k$个子集有很多的划分方式，可重复$P$次$k$折交叉验证。</li>
-<li>自助法 (bootstrapping)<br>
-注意的是我们希望通过所以的训练集（$D$)训练出模型，但是流出法和交叉验证的方法，都保留一部分作为测试集，因此实际评估的模型所使用的训练集更下，这也许会导致估计偏差。<br>
-自助法： 可重复采样或者有放回采样</li>
+<li>测试集应该尽可能与训练集互斥，测试样本尽量不出现在训练集中<h4 id="如何产生training-set-和-testing-set"><a href="#如何产生training-set-和-testing-set" class="headerlink" title="如何产生training set 和 testing set"></a>如何产生training set 和 testing set</h4></li>
+<li>留出法（hold-out)<br>要求：数据集($D$)划分成两个互斥的集合（训练集($S$,测试集$T$),需要注意的是，划分后，尽量可能的保持数据分布的一致性。<br>不同的划分结果，得到不同的测试误差。单次使用留出法得到的结果是不够稳定的，所以一般采用若干次的随机划分，重复进行实验评估后去平均值</li>
+<li>交叉验证法（cross validation)<br>I. 将数据($D$)划分成$k$个大小相似的互斥子集，每个子集$D_i$都尽可能保持数据分布的一致性<br>II. 每次都用$k-1$作为训练集，余下的哪个子集作为测试集，于是乎都到了k个测试结果的均值<br>值得注意的是，$k$的取值对结果的稳定性和保真性有很大的影响，因此也叫k者交叉验证（k-flold cross validation) k的通常取值是10<br>同样的，数据集$D$划分为$k$个子集有很多的划分方式，可重复$P$次$k$折交叉验证。</li>
+<li>自助法 (bootstrapping)<br>注意的是我们希望通过所以的训练集（$D$)训练出模型，但是流出法和交叉验证的方法，都保留一部分作为测试集，因此实际评估的模型所使用的训练集更下，这也许会导致估计偏差。<br>自助法： 可重复采样或者有放回采样</li>
 <li>记采样产生的数据集（$D’$),每次从$D$中挑选应该样本，将其拷贝至($D’$),并再将采样的样本放回数据集($D$),重复($m$)次以后，得到了包含($m$)个样本的数据集($D’$)</li>
-<li>对于可重复采样，样本始终不采到的概率是$(1-\frac{1}{m})^m$,取极限得到：初式数据集中$36.8%$为出现在采样数据集中，因此可将($D$)作为训练集，($D\D’$)作为测试集，又称外包估计(out-of-bag estimate)<br>
-自助法适用于数据量少，难区别测试集和训练集时，自助法会改变初始数据的分布，在初始数据足够的情况下，流出法和交叉验证更常用一些</li>
-</ol>
-<h4 id="调参和最终的模型"><a class="header-anchor" href="#调参和最终的模型">¶</a>调参和最终的模型</h4>
-<p>学习算法都有参数(parameter),不同的参数配置，学得模型的性能也往往不同<br>
-验证集(validation set): 模型评估和选择中用于估计测试的数据集称为的数据集<br>
-往往将训练集划分为训练集和验证集，基于验证集上的性能来进行模型选择和调参</p>
-<h4 id="性能度量-performance-measure"><a class="header-anchor" href="#性能度量-performance-measure">¶</a>性能度量(performance measure)</h4>
-<h4 id="假设检验"><a class="header-anchor" href="#假设检验">¶</a>假设检验</h4>
-<p>（其实我一直都并不是特别了解）</p>
+<li><p>对于可重复采样，样本始终不采到的概率是$(1-\frac{1}{m})^m$,取极限得到：初式数据集中$36.8%$为出现在采样数据集中，因此可将($D$)作为训练集，($D\D’$)作为测试集，又称外包估计(out-of-bag estimate)<br>自助法适用于数据量少，难区别测试集和训练集时，自助法会改变初始数据的分布，在初始数据足够的情况下，流出法和交叉验证更常用一些</p>
+<h4 id="调参和最终的模型"><a href="#调参和最终的模型" class="headerlink" title="调参和最终的模型"></a>调参和最终的模型</h4><p>学习算法都有参数(parameter),不同的参数配置，学得模型的性能也往往不同<br>验证集(validation set): 模型评估和选择中用于估计测试的数据集称为的数据集<br>往往将训练集划分为训练集和验证集，基于验证集上的性能来进行模型选择和调参</p>
+<h4 id="性能度量-performance-measure"><a href="#性能度量-performance-measure" class="headerlink" title="性能度量(performance measure)"></a>性能度量(performance measure)</h4><h4 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h4><p>（其实我一直都并不是特别了解）</p>
 <ol>
-<li>假设检验的基本原理<br>
-是重要的统计推断问题之一，根据样本提供的信息，检验关于总体某个假设是否正确。包括参数的假设检验（均值、方差等）和非参数（分布啊）的假设检验。</li>
-<li>参数检验： 提出假设H—&gt;在构造统计量，确定统计量的分布—&gt; 确定拒绝域和接受域的分界线—&gt; 在根据样本计算统计量的值u —&gt; 推断</li>
+<li>假设检验的基本原理<br>是重要的统计推断问题之一，根据样本提供的信息，检验关于总体某个假设是否正确。包括参数的假设检验（均值、方差等）和非参数（分布啊）的假设检验。 </li>
+</ol>
+</li>
+<li>参数检验： 提出假设H—-&gt;在构造统计量，确定统计量的分布—-&gt; 确定拒绝域和接受域的分界线—-&gt; 在根据样本计算统计量的值u —-&gt; 推断</li>
 <li>分布拟合检验</li>
 </ol>
-<h4 id="偏差和方差"><a class="header-anchor" href="#偏差和方差">¶</a>偏差和方差</h4>
-<p>通过概率论分析对学习算法的期望泛化错误率进行拆解<br>
-$x$: 测试样本<br>
-$y_D$： $x$在数据集中的标记<br>
-$y$: $x$的真实标记<br>
-$f(x:D)$: 在训练集上学得的模型$f$在$x$上预测输出<br>
-以回归任务为例子：<br>
-学习算法的期望预测为：<br>
-$$ \hat{f}(x) = E_D[f(x;D)]$$<br>
-方差：度量同样的样本大小的训练集的变动所导致的学习性能的变化，即刻画数据扰动所造成的影响<br>
-$$ var(x)= E_D[(f(x;D)-\hat{f}(x))^2]$$<br>
-噪声： 表达了当前任务上任务学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度。<br>
-$$ \epsilon<sup>2=E_D[(y_D-y)</sup>2] $$<br>
-期望输出和真实标记的差别称为偏差(bias): 度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力<br>
-$$ bias<sup>2(x)=(f(x)-y)</sup>2$$<br>
-若假设噪声期望为零，那么算法的期望泛化误差：<br>
-$$<br>
-E(f;D)=E_D[(f(x;D)-y)^2]\<br>
-=…=E_D[(f(x;D)-\hat{f}(x))<sup>2]+(\hat{f}(x)-y)</sup>2+E_D[(y_D-y)^2]<br>
-$$<br>
-$$E(f;D)=bias<sup>2(x)+var(x)+\epsilon</sup>2$$</p>
-<p>由上式可知，泛化能力由学习算法的能力、数据的充分性、学习任务本身的难度共同决定的。<br>
-underfitting: 偏差主导泛化误差<br>
-over fitting： 训练数据发生的扰动渐渐被学习到，方差主导了泛化误差</p>
-<h2 id="第三章-线性模型"><a class="header-anchor" href="#第三章-线性模型">¶</a>第三章 线性模型</h2>
-<p>我自己其实是一直停留在线性模型学习过程，因为每次开头都是这一张，所以我就学习了很多次。这次不准备再细看了。</p>
-<h3 id="线性判别分析-linear-discriminant-analysis-lda"><a class="header-anchor" href="#线性判别分析-linear-discriminant-analysis-lda">¶</a>线性判别分析 Linear Discriminant Analysis (LDA)</h3>
-<p>基本思想： 在训练样例集上，设法将样本例子投影到一条直线上使得同类样例的投影尽可能接近、异类投影点尽可能远离。<br>
-数学表达：<br>
-$D={(x_i,y_i)}<em>{i=1}^{m}$: data set<br>
-$X_i$: 第$i$类集合<br>
-$u_i$: 第$i$类集合均值向量<br>
-$\sum{i}$: 第$i$类集合协方差矩阵<br>
-$ w^Tu_i$： 第$i$类集合在直线上的投影<br>
-$ w^T\sum</em>{i}w$: 样本点的在直线上的投影<br>
-学习算法：<br>
-同类更近：<br>
-$\min \sum_{i=1}<sup>{n}(w</sup>T\sum_{i}w)$<br>
-类中心越大：<br>
-$\max ||w<sup>{T}u_1-(\sum_{i=2}(w</sup>{T}u_i))||_2^2$<br>
-因此，想最大化的目标<br>
-考虑$i = 2$的情况</p>
-<p>$$J  = \frac{||w<sup>Tu_0-w</sup>Tu_1||<em>2<sup>2}{w</sup>T\sum</em>{i=1}w+w^T\sum_{i=2}w}<br>
-=\frac{w<sup>T(u_0-u_1)(u_0-u_1)</sup>Tw}{w^T(\sum_1+\sum_2)w} $$<br>
-$$<br>
-应用空间几何和矩阵的关系描述<br>
-类内散度矩阵($S_W$)<br>
-$$<br>
-$$\sum_1+\sum_2$$<br>
-$$<br>
-类间散度矩阵：<br>
-$$<br>
-$$(u_0-u_1)(u_0-u_1)^T$$<br>
-$$<br>
-所以，我们想优化目标如下：<br>
-$$<br>
-$$J = \frac{w<sup>T_Sbw}{w</sup>TS_ww}$$</p>
-<p>如何确定$w$呢？注意到分子分母都是关于$w$的二次型，因此解这和w的方向有关系，因此，可令 $w^TS_ww=1$<br>
-,优化问题可是如下：</p>
-<p>$$\min -w^TS_bw \<br>
-s.t. w^TS_ww = 1$$</p>
-<p>构造lagrange 函数</p>
-<p>$$ L = -w<sup>TS_bw+r(w</sup>TS_ww-1)$$</p>
-<p>对$w$求导可得：</p>
-<p>$$S_bw =rS_ww$$<br>
-$S_b w$和$ u_0 - u_1 $ 方向是$u_0-u_1$,不妨设<br>
-$$ S_nw=r(u_0-u_1)$$<br>
-so,$$w = s_w^{-1}(u_0-u_1)$$<br>
-这里考虑到数值解的稳定性，因此往往把$S_w$进行<a href="https://www.cnblogs.com/xiemaycherry/p/10460464.html" target="_blank" rel="noopener">奇异值分解</a></p>
-<h2 id="第四章-决策树"><a class="header-anchor" href="#第四章-决策树">¶</a>第四章 决策树</h2>
-<p>决策树是一种特别普通的符合生活做决策的过程。</p>
-<h2 id="第五章-神经网络"><a class="header-anchor" href="#第五章-神经网络">¶</a>第五章 神经网络</h2>
-<p>神经网络最开始出现是根据生物神经网络来的。</p>
-<h3 id="最简单的神经网络：神经元模型-neuron-unit"><a class="header-anchor" href="#最简单的神经网络：神经元模型-neuron-unit">¶</a>最简单的神经网络：神经元模型(neuron|unit)</h3>
-<p>McCulloch and Pitts抽象出“M-P神经元模型&quot;<br>
-<img src="/2020/07/17/学习の历程-《机器学习》周志华学习记录/5.1.png" alt="tup"></p>
-<h3 id="感知器-perceptron"><a class="header-anchor" href="#感知器-perceptron">¶</a>感知器（Perceptron)</h3>
-<p>输入层和输出层，输出层：M-P神经元<br>
-感知器的学习过程一定是收敛的</p>
-<h3 id="多层前馈神经网络-multi-layer-feddforward-neural-networks"><a class="header-anchor" href="#多层前馈神经网络-multi-layer-feddforward-neural-networks">¶</a>多层前馈神经网络 （multi-layer feddforward neural networks)</h3>
-<p>前馈：网络的拓扑结构不存在环或者回路<br>
-神经元的学习过程：就是根据训练数据来调整神经元之间的”连接权&quot;(connection weight),以及每个功能神经元的阙值</p>
-<h3 id="误差逆传播算法：-error-backpropagation-bp"><a class="header-anchor" href="#误差逆传播算法：-error-backpropagation-bp">¶</a>误差逆传播算法： error BackPropagation (BP)</h3>
-<h2 id="全局最小和局部最小"><a class="header-anchor" href="#全局最小和局部最小">¶</a>全局最小和局部最小</h2>
-<p>神经网络的训练过程其实也就是参数寻优的过程，基于梯度的搜素是使用最为广泛的参数寻优方法，但是如果误差函数在当前点的梯度为零，则很有可能达到局部极小。</p>
-<h2 id="第六章-支持向量机"><a class="header-anchor" href="#第六章-支持向量机">¶</a>第六章 支持向量机</h2>
-<p>支持向量机的学习原理很简单也很有趣，从分类问题，怎么一步一步建立的优化问题，一步一步的完善优化问题以及求解，从硬间隔到软间隔，分类问题是考虑分对，而回归问题希望预测值和原始值尽可能的接近，这样就造成了约束条件，目标性的不同。</p>
+<h4 id="偏差和方差"><a href="#偏差和方差" class="headerlink" title="偏差和方差"></a>偏差和方差</h4><p>通过概率论分析对学习算法的期望泛化错误率进行拆解<br>$x$: 测试样本<br>$y_D$： $x$在数据集中的标记<br>$y$: $x$的真实标记<br>$f(x:D)$: 在训练集上学得的模型$f$在$x$上预测输出<br>以回归任务为例子：<br>学习算法的期望预测为：</p>
+<script type="math/tex; mode=display">\hat{f}(x) = E_D[f(x;D)]</script><p>方差：度量同样的样本大小的训练集的变动所导致的学习性能的变化，即刻画数据扰动所造成的影响</p>
+<script type="math/tex; mode=display">var(x)= E_D[(f(x;D)-\hat{f}(x))^2]</script><p>噪声： 表达了当前任务上任务学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度。</p>
+<script type="math/tex; mode=display">\epsilon^2=E_D[(y_D-y)^2]</script><p>期望输出和真实标记的差别称为偏差(bias): 度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力</p>
+<script type="math/tex; mode=display">bias^2(x)=(f(x)-y)^2</script><p>若假设噪声期望为零，那么算法的期望泛化误差：</p>
+<script type="math/tex; mode=display">
+E(f;D)=E_D[(f(x;D)-y)^2]\\
+=....=E_D[(f(x;D)-\hat{f}(x))^2]+(\hat{f}(x)-y)^2+E_D[(y_D-y)^2]</script><script type="math/tex; mode=display">E(f;D)=bias^2(x)+var(x)+\epsilon^2</script><p>由上式可知，泛化能力由学习算法的能力、数据的充分性、学习任务本身的难度共同决定的。<br>underfitting: 偏差主导泛化误差<br>over fitting： 训练数据发生的扰动渐渐被学习到，方差主导了泛化误差</p>
+<h2 id="第三章-线性模型"><a href="#第三章-线性模型" class="headerlink" title="第三章 线性模型"></a>第三章 线性模型</h2><p>我自己其实是一直停留在线性模型学习过程，因为每次开头都是这一张，所以我就学习了很多次。这次不准备再细看了。</p>
+<h3 id="线性判别分析-Linear-Discriminant-Analysis-LDA"><a href="#线性判别分析-Linear-Discriminant-Analysis-LDA" class="headerlink" title="线性判别分析 Linear Discriminant Analysis (LDA)"></a>线性判别分析 Linear Discriminant Analysis (LDA)</h3><p>基本思想： 在训练样例集上，设法将样本例子投影到一条直线上使得同类样例的投影尽可能接近、异类投影点尽可能远离。<br>数学表达：<br>$D={(x_i,y_i)}_{i=1}^{m}$: data set<br>$X_i$: 第$i$类集合<br>$u_i$: 第$i$类集合均值向量<br>$\sum{i}$: 第$i$类集合协方差矩阵<br>$ w^Tu_i$： 第$i$类集合在直线上的投影<br>$ w^T\sum_{i}w$: 样本点的在直线上的投影<br>学习算法：<br>同类更近：<br>$\min \sum_{i=1}^{n}(w^T\sum_{i}w)$<br>类中心越大：<br>$\max ||w^{T}u_1-(\sum_{i=2}(w^{T}u_i))||_2^2$<br>因此，想最大化的目标<br>考虑$i = 2$的情况</p>
+<script type="math/tex; mode=display">J  = \frac{||w^Tu_0-w^Tu_1||_2^2}{w^T\sum_{i=1}w+w^T\sum_{i=2}w}
+=\frac{w^T(u_0-u_1)(u_0-u_1)^Tw}{w^T(\sum_1+\sum_2)w}</script><script type="math/tex; mode=display">
+应用空间几何和矩阵的关系描述
+类内散度矩阵($S_W$)</script><script type="math/tex; mode=display">\sum_1+\sum_2</script><script type="math/tex; mode=display">
+类间散度矩阵：</script><script type="math/tex; mode=display">(u_0-u_1)(u_0-u_1)^T</script><script type="math/tex; mode=display">
+所以，我们想优化目标如下：</script><script type="math/tex; mode=display">J = \frac{w^T_Sbw}{w^TS_ww}</script><p>如何确定$w$呢？注意到分子分母都是关于$w$的二次型，因此解这和w的方向有关系，因此，可令 $w^TS_ww=1$<br>,优化问题可是如下：</p>
+<script type="math/tex; mode=display">\min -w^TS_bw \\
+s.t. w^TS_ww = 1</script><p>构造lagrange 函数</p>
+<script type="math/tex; mode=display">L = -w^TS_bw+r(w^TS_ww-1)</script><p>对$w$求导可得：</p>
+<script type="math/tex; mode=display">S_bw =rS_ww</script><p>$S_b w$和$ u_0 - u_1 $ 方向是$u_0-u_1$,不妨设</p>
+<script type="math/tex; mode=display">S_nw=r(u_0-u_1)</script><p>so,<script type="math/tex">w = s_w^{-1}(u_0-u_1)</script><br>这里考虑到数值解的稳定性，因此往往把$S_w$进行<a href="https://www.cnblogs.com/xiemaycherry/p/10460464.html" target="_blank" rel="noopener">奇异值分解</a></p>
+<h2 id="第四章-决策树"><a href="#第四章-决策树" class="headerlink" title="第四章 决策树"></a>第四章 决策树</h2><p>决策树是一种特别普通的符合生活做决策的过程。</p>
+<h2 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h2><p>神经网络最开始出现是根据生物神经网络来的。</p>
+<h3 id="最简单的神经网络：神经元模型-neuron-unit"><a href="#最简单的神经网络：神经元模型-neuron-unit" class="headerlink" title="最简单的神经网络：神经元模型(neuron|unit)"></a>最简单的神经网络：神经元模型(neuron|unit)</h3><p>McCulloch and Pitts抽象出“M-P神经元模型”<br><img src="/2020/07/17/学习の历程-《机器学习》周志华学习记录/5.1.png" alt="tup"></p>
+<h3 id="感知器（Perceptron"><a href="#感知器（Perceptron" class="headerlink" title="感知器（Perceptron)"></a>感知器（Perceptron)</h3><p>输入层和输出层，输出层：M-P神经元<br>感知器的学习过程一定是收敛的</p>
+<h3 id="多层前馈神经网络-（multi-layer-feddforward-neural-networks"><a href="#多层前馈神经网络-（multi-layer-feddforward-neural-networks" class="headerlink" title="多层前馈神经网络 （multi-layer feddforward neural networks)"></a>多层前馈神经网络 （multi-layer feddforward neural networks)</h3><p>前馈：网络的拓扑结构不存在环或者回路<br>神经元的学习过程：就是根据训练数据来调整神经元之间的”连接权”(connection weight),以及每个功能神经元的阙值</p>
+<h3 id="误差逆传播算法：-error-BackPropagation-BP"><a href="#误差逆传播算法：-error-BackPropagation-BP" class="headerlink" title="误差逆传播算法： error BackPropagation (BP)"></a>误差逆传播算法： error BackPropagation (BP)</h3><h2 id="全局最小和局部最小"><a href="#全局最小和局部最小" class="headerlink" title="全局最小和局部最小"></a>全局最小和局部最小</h2><p>神经网络的训练过程其实也就是参数寻优的过程，基于梯度的搜素是使用最为广泛的参数寻优方法，但是如果误差函数在当前点的梯度为零，则很有可能达到局部极小。</p>
+<h2 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h2><p>支持向量机的学习原理很简单也很有趣，从分类问题，怎么一步一步建立的优化问题，一步一步的完善优化问题以及求解，从硬间隔到软间隔，分类问题是考虑分对，而回归问题希望预测值和原始值尽可能的接近，这样就造成了约束条件，目标性的不同。</p>
 <p>最重要的是引入了核方法，低维空间的非线性关系映射成了高维空间线性关系，这是特别重要的思想</p>
-<h1>第八章 集成学习</h1>
-<h2 id="基本思想"><a class="header-anchor" href="#基本思想">¶</a>基本思想</h2>
-<p>构建一组基学习器（base learner)，在结合</p>
+<h1 id="第八章-集成学习"><a href="#第八章-集成学习" class="headerlink" title="第八章 集成学习"></a>第八章 集成学习</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>构建一组基学习器（base learner)，在结合</p>
 <p>a. 如果集成中是相同类型的个体学习器，如决策树，全是神经网络的集成“同质”（homogeneous),个体学习器叫基学习器</p>
 <p>b. 不同的学习器，异质（heterogeneous)，个体学习器叫组件学习器</p>
-<h3 id="为什么有效"><a class="header-anchor" href="#为什么有效">¶</a>为什么有效</h3>
-<ol>
-<li>
-<p>多样性的基学习器</p>
+<h3 id="为什么有效"><a href="#为什么有效" class="headerlink" title="为什么有效"></a>为什么有效</h3><ol>
+<li><p>多样性的基学习器</p>
 <ol>
 <li>不同的模型取长补短</li>
 <li>每个基学习器都犯错误，综合起来可能性不大</li>
@@ -670,82 +547,56 @@ so,$$w = s_w^{-1}(u_0-u_1)$$<br>
 </ol>
 </li>
 </ol>
-<h3 id="构建不同的机器学习"><a class="header-anchor" href="#构建不同的机器学习">¶</a>构建不同的机器学习</h3>
-<p>Q 1: 如何建立基学习器</p>
+<h3 id="构建不同的机器学习"><a href="#构建不同的机器学习" class="headerlink" title="构建不同的机器学习"></a>构建不同的机器学习</h3><p>Q 1: 如何建立基学习器</p>
 <p>尽量满足多样性</p>
 <p>M1: 不同的学习算法</p>
 <p>M2: 相同学习算法、不同的参数</p>
 <p>M3: 不同的数据集（不同的样本子集、数据集上不同的特征）</p>
 <p>homogenous ensemble</p>
 <ol>
-<li>
-<p>采用相同的学习算法、不同的训练集</p>
+<li><p>采用相同的学习算法、不同的训练集</p>
 <p>Bagging Boosting</p>
 </li>
-<li>
-<p>相同算法，不同的参数设置</p>
+<li><p>相同算法，不同的参数设置</p>
 </li>
-<li>
-<p>相同的训练集，不同的学习算法</p>
+<li><p>相同的训练集，不同的学习算法</p>
 </li>
 </ol>
 <p>Q2: 如何综合呢？</p>
 <ol>
-<li>
-<p>t投票法：majority voting</p>
+<li><p>t投票法：majority voting</p>
 </li>
-<li>
-<p>weighted voting</p>
+<li><p>weighted voting</p>
 </li>
-<li>
-<p>训练一个新模型确定如何综合</p>
+<li><p>训练一个新模型确定如何综合</p>
 <ol>
 <li>Stacking</li>
 <li>偏好的简单模型</li>
 </ol>
 </li>
 </ol>
-<h3 id="综合"><a class="header-anchor" href="#综合">¶</a>综合</h3>
-<h2 id="bagging-boostrap-aggregating"><a class="header-anchor" href="#bagging-boostrap-aggregating">¶</a>Bagging = Boostrap AGGregatING</h2>
-<p>有放回采样，同质学习器</p>
-<h4 id="算法"><a class="header-anchor" href="#算法">¶</a>算法</h4>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input : </span><br><span class="line">	训练集 D=&#123;(x1,y1)&#125;</span><br><span class="line">	基学习算法A</span><br><span class="line">	训练轮数 T</span><br><span class="line">过程</span><br><span class="line">	for t = 1,2,...,T do</span><br><span class="line">		h_t= A(D,Dt) // Dt第t次采样的分布</span><br><span class="line">	end for</span><br><span class="line">输出</span><br><span class="line">	回归：Average</span><br><span class="line">	分类：投票法</span><br></pre></td></tr></table></figure>
-<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
-<p>没有用于建模的样本，可以用作验证集来对泛化能力进行包外估计，可以得出Bagging泛化误差的包外估计</p>
-<h4 id="random-forest-rf"><a class="header-anchor" href="#random-forest-rf">¶</a>random forest（RF)</h4>
-<p>输入为样本集$D={(x,y1),(x2,y2),…(xm,ym)}$，弱分类器迭代次数T。</p>
+<h3 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h3><h2 id="Bagging-Boostrap-AGGregatING"><a href="#Bagging-Boostrap-AGGregatING" class="headerlink" title="Bagging = Boostrap AGGregatING"></a>Bagging = Boostrap AGGregatING</h2><p>有放回采样，同质学习器</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input : </span><br><span class="line">	训练集 D=&#123;(x1,y1)&#125;</span><br><span class="line">	基学习算法A</span><br><span class="line">	训练轮数 T</span><br><span class="line">过程</span><br><span class="line">	for t = 1,2,...,T do</span><br><span class="line">		h_t= A(D,Dt) // Dt第t次采样的分布</span><br><span class="line">	end for</span><br><span class="line">输出</span><br><span class="line">	回归：Average</span><br><span class="line">	分类：投票法</span><br></pre></td></tr></table></figure>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>没有用于建模的样本，可以用作验证集来对泛化能力进行包外估计，可以得出Bagging泛化误差的包外估计</p>
+<h4 id="random-forest（RF"><a href="#random-forest（RF" class="headerlink" title="random forest（RF)"></a>random forest（RF)</h4><p>输入为样本集$D={(x,y1),(x2,y2),…(xm,ym)}$，弱分类器迭代次数T。</p>
 <p>输出为最终的强分类器f(x)f(x)</p>
 <p>1）对于t=1,2…,T:</p>
 <p>a)对训练集进行第t次随机采样，共采集m次，得到包含m个样本的采样集$Dt$</p>
 <p>b)用采样集$Dt$训练第t个决策树模型$Gt(x)$，在训练决策树模型的节点的时候， 在节点上所有的样本特征中选择一部分样本特征， 在这些随机选择的部分样本特征中选择一个最优的特征来做决策树的左右子树划分</p>
-<ol start="2">
-<li>如果是分类算法预测，则T个弱学习器投出最多票数的类别或者类别之一为最终类别。如果是回归算法，T个弱学习器得到的回归结果进行算术平均得到的值为最终的模型输出。</li>
-</ol>
+<p>2) 如果是分类算法预测，则T个弱学习器投出最多票数的类别或者类别之一为最终类别。如果是回归算法，T个弱学习器得到的回归结果进行算术平均得到的值为最终的模型输出。</p>
 <p>参数设置</p>
 <p>利用00B样本评估变量的重要性</p>
-<h2 id="boosting-提高"><a class="header-anchor" href="#boosting-提高">¶</a>Boosting 提高</h2>
-<p>顺次建立学习器，就是先从训练集上训练一个基学习器，再根据学习器的表现对训练集分布进行调整，让先学习器错误训练的样本在后续收到更多的关注，然后基于调整的分布训练下一个学习器，最后，在将这T个学习器进行加权结合</p>
-<p>基学习器的线性组合<br>
-$$<br>
-H_N(x;P)=\sum_{t=1}^{N}\alpha_th_t(x;a_t)<br>
-$$<br>
-$a_t$是第$i$个弱学习器的最优参数，$\alpha_t$是在强分类器中的比重，$P$是$a_t$和$\alpha_t$的组合</p>
-<p>最小化指数损失函数<br>
-$$<br>
-l_{exp}(H|D)=E_{x~D}[e^{-f(x)H(x)}]<br>
-$$</p>
-<p>$$<br>
-H_n(x)=H_{n-1}(x)+\alpha_{n}h_{n}(x,a_n)<br>
-$$</p>
-<p>$$l(h_i(x,a_t)|D)=E_{x~D}(exp(-f(x)h_i(x)))\=p(f(x)=1)exp(-h_i(x))+p(f(x)=-1)exp(h_i(x))$$</p>
-<p>$$ \frac{\partial l(h_i(x,a_t)|D)}{\partial h_i(x,a_t)}=\<br>
--p(f(x)=1)exp(-h_i(x))+p(f(x)=-1)exp(h_i(x))=0 $$</p>
-<p>$$h(x)=\frac{1}{2}ln\frac{P(f(x)=1)}{P(f(x)=-1)}$$</p>
-<p>采取不同的损失函数，得到不同的类型</p>
+<h2 id="Boosting-提高"><a href="#Boosting-提高" class="headerlink" title="Boosting 提高"></a>Boosting 提高</h2><p>顺次建立学习器，就是先从训练集上训练一个基学习器，再根据学习器的表现对训练集分布进行调整，让先学习器错误训练的样本在后续收到更多的关注，然后基于调整的分布训练下一个学习器，最后，在将这T个学习器进行加权结合</p>
+<p>基学习器的线性组合</p>
+<script type="math/tex; mode=display">
+H_N(x;P)=\sum_{t=1}^{N}\alpha_th_t(x;a_t)</script><p>$a_t$是第$i$个弱学习器的最优参数，$\alpha_t$是在强分类器中的比重，$P$是$a_t$和$\alpha_t$的组合</p>
+<p>最小化指数损失函数</p>
+<script type="math/tex; mode=display">
+l_{exp}(H|D)=E_{x~D}[e^{-f(x)H(x)}]</script><script type="math/tex; mode=display">
+H_n(x)=H_{n-1}(x)+\alpha_{n}h_{n}(x,a_n)</script><script type="math/tex; mode=display">l(h_i(x,a_t)|D)=E_{x~D}(exp(-f(x)h_i(x)))\\=p(f(x)=1)exp(-h_i(x))+p(f(x)=-1)exp(h_i(x))</script><script type="math/tex; mode=display">\frac{\partial l(h_i(x,a_t)|D)}{\partial h_i(x,a_t)}=\\
+-p(f(x)=1)exp(-h_i(x))+p(f(x)=-1)exp(h_i(x))=0</script><script type="math/tex; mode=display">h(x)=\frac{1}{2}ln\frac{P(f(x)=1)}{P(f(x)=-1)}</script><p>采取不同的损失函数，得到不同的类型</p>
 <p><a href="https://blog.csdn.net/luanpeng825485697/article/details/79383492" target="_blank" rel="noopener">https://blog.csdn.net/luanpeng825485697/article/details/79383492</a></p>
-<h3 id="gbdt"><a class="header-anchor" href="#gbdt">¶</a>GBDT</h3>
-<h2 id="stacking"><a class="header-anchor" href="#stacking">¶</a>Stacking</h2>
-<p><img src="/2020/07/17/学习の历程-《机器学习》周志华学习记录/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%AD%A6%E4%B9%A0%E3%81%AE%E5%8E%86%E7%A8%8B-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E5%91%A8%E5%BF%97%E5%8D%8E%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5CStacking.png" alt=""></p>
+<h3 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h3><h2 id="Stacking"><a href="#Stacking" class="headerlink" title="Stacking"></a>Stacking</h2><p><img src="/2020/07/17/学习の历程-《机器学习》周志华学习记录/MyBlog\hexo\source\_posts\学习の历程-《机器学习》周志华学习记录\Stacking.png" alt=""></p>
 <p>不同学习器，相同数据集</p>
 <p>第一层</p>
 <p>第二层：不用第一层的数据</p>
@@ -755,176 +606,112 @@ $$</p>
 <p>第一层尽可能的多样性：</p>
 <p>综合好的模型</p>
 <p>防止过拟合</p>
-<pre><code>1. 随机性
-2. 
-</code></pre>
-<p>Bagging Boosting Stacking</p>
-<h2 id="极大似然估计"><a class="header-anchor" href="#极大似然估计">¶</a>极大似然估计</h2>
-<p>似然： 相似的样子</p>
+<pre><code> 1. 随机性
+ 2. 
+</code></pre><p>Bagging Boosting Stacking</p>
+<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>似然： 相似的样子</p>
 <p>对于一组数据，假设符合正态分布，希望已知点在这个正态分布的情况下，所有点对于的概率之和或者积最大，</p>
-<p><img src="/2020/07/17/学习の历程-《机器学习》周志华学习记录/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%AD%A6%E4%B9%A0%E3%81%AE%E5%8E%86%E7%A8%8B-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E5%91%A8%E5%BF%97%E5%8D%8E%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%5C%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1.jpg" alt="">，蓝色表示数据，红色就是做得正态分布</p>
-<h2 id="第十章-降维与度量学习"><a class="header-anchor" href="#第十章-降维与度量学习">¶</a>第十章 降维与度量学习</h2>
-<h3 id="k近邻学习"><a class="header-anchor" href="#k近邻学习">¶</a>k近邻学习</h3>
-<p>k-Nearest Neighbor</p>
+<p><img src="/2020/07/17/学习の历程-《机器学习》周志华学习记录/MyBlog\hexo\source\_posts\学习の历程-《机器学习》周志华学习记录\极大似然估计.jpg" alt="">，蓝色表示数据，红色就是做得正态分布</p>
+<h2 id="第十章-降维与度量学习"><a href="#第十章-降维与度量学习" class="headerlink" title="第十章 降维与度量学习"></a>第十章 降维与度量学习</h2><h3 id="k近邻学习"><a href="#k近邻学习" class="headerlink" title="k近邻学习"></a>k近邻学习</h3><p>k-Nearest Neighbor</p>
 <p>原理： 基于某种距离度量找出训练集中与其最靠近的k个训练样本，根据k个邻居的信息进行预测。</p>
-<p>给定测试样本$x$,如果最邻近样本$z$,最邻近分类器出错的概率就是$x$与$z$不再同一类<br>
-$$<br>
-p(err) = 1-\sum_{c \in y}p(c|x)P(c|z)<br>
-$$</p>
-<h3 id="低维嵌入"><a class="header-anchor" href="#低维嵌入">¶</a>低维嵌入</h3>
-<p>缓解维数灾难的重要途经之一是降维（dimension reduction）这样使得子空间中样本密度大幅度提高，距离计算变得更容易，</p>
-<h4 id="多维缩放-multiple-dimensional-scaling"><a class="header-anchor" href="#多维缩放-multiple-dimensional-scaling">¶</a>多维缩放（Multiple Dimensional,Scaling）</h4>
-<p>MDS</p>
-<p>假定m个样本在原始空间的距离矩阵$D$,在低维空间中，两个样本欧式距离等于原空间的距离，$||z_i-z_j|| = dist_{ij}$, 令$B=Z^TZ$为降维后样本的内积矩阵,<br>
-$$<br>
-dist_{ij}<sup>2=||z_i||</sup>2+||z_j||^2-2z_iz_j=b_{ii}+b_{jj}-2b_{ij}<br>
-$$</p>
-<p>对降维后数据中心化，均值为0,$\sum_{i=1}<sup>{m}z_i$,于是乎就有$\sum_{i=1}</sup>{M}b_{ij}=z_j(z_1+z_2+…+z_m)=0=\sum_{j=1}^{m}x_{ij}$</p>
-<p>,可得<br>
-$$<br>
-\sum_{i=1}<sup>{m}dist_{ij}</sup>2=\sum_{i=1}^{m}(b_{ii}+b_{jj}-2b_{ij})=tr(B)<em>mb</em>{jj}\<br>
-\sum_{i=1}<sup>{m}\sum_{j=1}</sup>{m}dist_{ij}^2 = 2m tr(B)\<br>
-tr(B)=\sum_{i=1}<sup>{m}||z_i||</sup>2<br>
-$$<br>
-可得<br>
-$$<br>
-b_{ij}=-\frac{1}{2}(dist_{ij}<sup>2-dist_{i.}</sup>2-dist_{.j}<sup>2+dist{…}</sup>2)<br>
-$$<br>
-对矩阵B做特征值分解(eigenvalue decomposition)，$B = V \land V$,则<br>
-$$<br>
-Z = \land_{<em>}^{1/2}V_{</em>}<br>
-$$<br>
-欲获得低维子空间，最简单是对原始高维空间进行线性变换，$Z = W^TX$,特别的，$W$取正交变换，$W={w_1,w_2,…,w_{d’}}$W是d’个d维基向量，</p>
-<h2 id="主成分分析"><a class="header-anchor" href="#主成分分析">¶</a>主成分分析</h2>
-<p>Principal Component Analysis ：PCA</p>
+<p>给定测试样本$x$,如果最邻近样本$z$,最邻近分类器出错的概率就是$x$与$z$不再同一类</p>
+<script type="math/tex; mode=display">
+p(err) = 1-\sum_{c \in y}p(c|x)P(c|z)</script><h3 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h3><p>缓解维数灾难的重要途经之一是降维（dimension reduction）这样使得子空间中样本密度大幅度提高，距离计算变得更容易，</p>
+<h4 id="多维缩放（Multiple-Dimensional-Scaling）"><a href="#多维缩放（Multiple-Dimensional-Scaling）" class="headerlink" title="多维缩放（Multiple Dimensional,Scaling）"></a>多维缩放（Multiple Dimensional,Scaling）</h4><p>MDS</p>
+<p>假定m个样本在原始空间的距离矩阵$D$,在低维空间中，两个样本欧式距离等于原空间的距离，$||z_i-z_j|| = dist_{ij}$, 令$B=Z^TZ$为降维后样本的内积矩阵,</p>
+<script type="math/tex; mode=display">
+dist_{ij}^2=||z_i||^2+||z_j||^2-2z_iz_j=b_{ii}+b_{jj}-2b_{ij}</script><p>对降维后数据中心化，均值为0,$\sum_{i=1}^{m}z_i$,于是乎就有$\sum_{i=1}^{M}b_{ij}=z_j(z_1+z_2+…+z_m)=0=\sum_{j=1}^{m}x_{ij}$</p>
+<p>,可得</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{m}dist_{ij}^2=\sum_{i=1}^{m}(b_{ii}+b_{jj}-2b_{ij})=tr(B)_mb_{jj}\\
+\sum_{i=1}^{m}\sum_{j=1}^{m}dist_{ij}^2 = 2m tr(B)\\
+tr(B)=\sum_{i=1}^{m}||z_i||^2</script><p>可得</p>
+<script type="math/tex; mode=display">
+b_{ij}=-\frac{1}{2}(dist_{ij}^2-dist_{i.}^2-dist_{.j}^2+dist{..}^2)</script><p>对矩阵B做特征值分解(eigenvalue decomposition)，$B = V \land V$,则</p>
+<script type="math/tex; mode=display">
+Z = \land_{*}^{1/2}V_{*}</script><p>欲获得低维子空间，最简单是对原始高维空间进行线性变换，$Z = W^TX$,特别的，$W$取正交变换，$W={w_1,w_2,…,w_{d’}}$W是d’个d维基向量，</p>
+<h2 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h2><p>Principal Component Analysis ：PCA</p>
 <p>在正交空间里面的样本，用一个超平面对样本进行恰当的表达，至少这个样本点满足</p>
 <p>最近重构性： 样本点到这个超平面的距离足够近</p>
 <p>最大可分性： 样本点在这超平面上的投影尽可能分开</p>
 <p>对于最近重构性：</p>
-<p>假设样本去中心化，再假设投影变换后得到欣的正交坐标系${w_1,w_2,…,w_d}$,d维空间里面的一组单位正交基，$||w_i||<em>2=0$,$||w_i<sup>Tw_j||=0$,如果再新坐标系中丢掉一部分坐标，样本点在新坐标的投影是$z_i={w_1</sup>Tx</em>{i1}},…,w_{d’}^Tx_{i}$,于是又$z_{ij} =w_{j}<sup>Tx_i$,$\hat{x_i}=\sum_{j}</sup>{d’}w_jx_i$<br>
-$$<br>
-\sum_{i=1}<sup>{m}||\sum_{j=1}</sup>{d’}z_{ij}w_j-x_i||<em>2<sup>2=\sum_{i=1}</sup>{m}z_i<sup>Tz_i-2\sum_{i=1}</sup>{m}z_i<sup>TW</sup>Tx_i+x_i^Tx_i\<br>
-=\sum</em>{i=1}<sup>{m}x_i</sup>TWW<sup>Tx_i-2\sum_{i=1}</sup>{m}x_i<sup>TWW</sup>Tx_i+x_i^Tx_i\<br>
-min -\sum_{i=1}<sup>{m}z_i</sup>Tz_i=-tr(Z^TZ)\<br>
-min -tr(\sum_{i=1}<sup>{m}W</sup>Tx_ix_i<sup>TW)=-tr(W</sup>T(\sum_{i=1}<sup>{m}x_i</sup>Tx_i)W）=-tr(W<sup>TXX</sup>TW)\<br>
-s.t W^TW = I<br>
-$$</p>
-<p>对于最大可分性$(W^T\hat{X}=0)$<br>
-$$<br>
-max tr(W<sup>TXX</sup>TW)\s.t W^TW = I<br>
-$$<br>
-根据lagrange<br>
-$$<br>
-L(W,\lambda)=-tr(W<sup>TXX</sup>TW)-\lambda(W^TW-I)\<br>
-\frac{\partial L}{\partial w_i}=-2w_iXX^T-2\lambda_i w_i=0\<br>
-XX^Tw_i = \lambda w_i<br>
-$$<br>
-$XX^T$是协方差矩阵,$\lambda$是特征值，$w_i$是特征向量</p>
+<p>假设样本去中心化，再假设投影变换后得到欣的正交坐标系${w_1,w_2,…,w_d}$,d维空间里面的一组单位正交基，$||w_i||_2=0$,$||w_i^Tw_j||=0$,如果再新坐标系中丢掉一部分坐标，样本点在新坐标的投影是$z_i={w_1^Tx_{i1}},..,w_{d’}^Tx_{i}$,于是又$z_{ij} =w_{j}^Tx_i$,$\hat{x_i}=\sum_{j}^{d’}w_jx_i$</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{m}||\sum_{j=1}^{d'}z_{ij}w_j-x_i||_2^2=\sum_{i=1}^{m}z_i^Tz_i-2\sum_{i=1}^{m}z_i^TW^Tx_i+x_i^Tx_i\\
+=\sum_{i=1}^{m}x_i^TWW^Tx_i-2\sum_{i=1}^{m}x_i^TWW^Tx_i+x_i^Tx_i\\
+min -\sum_{i=1}^{m}z_i^Tz_i=-tr(Z^TZ)\\
+min -tr(\sum_{i=1}^{m}W^Tx_ix_i^TW)=-tr(W^T(\sum_{i=1}^{m}x_i^Tx_i)W）=-tr(W^TXX^TW)\\
+s.t W^TW = I</script><p>对于最大可分性$(W^T\hat{X}=0)$</p>
+<script type="math/tex; mode=display">
+max tr(W^TXX^TW)\\s.t W^TW = I</script><p>根据lagrange</p>
+<script type="math/tex; mode=display">
+L(W,\lambda)=-tr(W^TXX^TW)-\lambda(W^TW-I)\\
+\frac{\partial L}{\partial w_i}=-2w_iXX^T-2\lambda_i w_i=0\\
+XX^Tw_i = \lambda w_i</script><p>$XX^T$是协方差矩阵,$\lambda$是特征值，$w_i$是特征向量</p>
 <p>特别提示，$x$需要中心化</p>
-<p>对于线性PCA降维方法是从高维空间映射到低维空间，$Z= W^TX$,然而不少情况，则需要非线性映射才能找到恰当的低维嵌入， $\phi(x)$<br>
-$$<br>
-\max tr(\phi(X)\phi(X)^T)=tr( W<sup>T\varphi(x)\varphi(x)</sup>TW)\<br>
-W^TW = I<br>
-$$<br>
-于是有<br>
-$$<br>
-\varphi(x)^T\varphi(x)w_i=\lambda_iw_i\<br>
-w_i=\frac{tr(\varphi(x)^T\varphi(x))}{\lambda_iw_i}<br>
-$$</p>
-<p>$$<br>
-z_j = \frac{\sum_{i=1}<sup>{m}\varphi(x)</sup>T\varphi(x)}{\lambda_iw_i}\varphi(x_i)<br>
-=\frac{\sum_{i=1}^{m}\varphi(x_i)K(x_i,x)}{\lambda_iw_i}<br>
-$$</p>
-<h2 id="流形学习-表示学习有点困难"><a class="header-anchor" href="#流形学习-表示学习有点困难">¶</a>流形学习（表示学习有点困难)</h2>
-<h1>第十一章 特征选择与稀疏学习</h1>
-<p>对于一个学习任务，对任务有用的特征,称为&quot;relevant feature&quot;，对于没有用的属性”irrelevant feature&quot;,因此从给定特征集选择出相关特征子集的过程，特征选择（feature selection),原因一，降维；原因二：降低学习的任务。</p>
+<p>对于线性PCA降维方法是从高维空间映射到低维空间，$Z= W^TX$,然而不少情况，则需要非线性映射才能找到恰当的低维嵌入， $\phi(x)$</p>
+<script type="math/tex; mode=display">
+\max tr(\phi(X)\phi(X)^T)=tr( W^T\varphi(x)\varphi(x)^TW)\\
+W^TW = I</script><p>于是有</p>
+<script type="math/tex; mode=display">
+\varphi(x)^T\varphi(x)w_i=\lambda_iw_i\\
+w_i=\frac{tr(\varphi(x)^T\varphi(x))}{\lambda_iw_i}</script><script type="math/tex; mode=display">
+z_j = \frac{\sum_{i=1}^{m}\varphi(x)^T\varphi(x)}{\lambda_iw_i}\varphi(x_i)\
+=\frac{\sum_{i=1}^{m}\varphi(x_i)K(x_i,x)}{\lambda_iw_i}</script><h2 id="流形学习（表示学习有点困难"><a href="#流形学习（表示学习有点困难" class="headerlink" title="流形学习（表示学习有点困难)"></a>流形学习（表示学习有点困难)</h2><h1 id="第十一章-特征选择与稀疏学习"><a href="#第十一章-特征选择与稀疏学习" class="headerlink" title="第十一章 特征选择与稀疏学习"></a>第十一章 特征选择与稀疏学习</h1><p>对于一个学习任务，对任务有用的特征,称为”relevant feature”，对于没有用的属性”irrelevant feature”,因此从给定特征集选择出相关特征子集的过程，特征选择（feature selection),原因一，降维；原因二：降低学习的任务。</p>
 <p>无关特征，包括一类冗余特征（redundant feature），能够从其他特征里面推演出来。</p>
-<h2 id="特征搜索"><a class="header-anchor" href="#特征搜索">¶</a>特征搜索</h2>
-<h3 id="前向-forward-搜索"><a class="header-anchor" href="#前向-forward-搜索">¶</a>前向（forward)搜索</h3>
-<p>对于特征集合${a_1,a_2,…,a_d }$,每个特征看作一个候选集，对这$d$候选的单特征子集进行评价，可选出最优子集，然后，再下一轮子集中，构成了两个特征候选的子集，</p>
-<h2 id="后向-backward-搜索"><a class="header-anchor" href="#后向-backward-搜索">¶</a>后向 (backward) 搜索</h2>
-<p>每次尝试去掉一个无关特征</p>
-<h3 id="双向-bidirectional-搜索"><a class="header-anchor" href="#双向-bidirectional-搜索">¶</a>双向(bidirectional)搜索</h3>
-<p>上述操作只是贪心策略，仅仅考虑了本轮选定集合最优</p>
-<p>​</p>
-<h2 id="子集评价-subset-evaluation"><a class="header-anchor" href="#子集评价-subset-evaluation">¶</a>子集评价（subset evaluation)</h2>
-<p>已知一个数据集$D$,假定第$i$类样本所占比例$p_i$,对于属性子集$A$,假设根据取值D分成V个子集${D<sup>1,D</sup>2,…,D^V}$,则子集A的信心 增益<br>
-$$<br>
-Gain(A) = Ent(D)-\sum_{i=1}<sup>V\frac{|D</sup>i|}{|D|}Ent(D^i)\<br>
-Ent(D)=\sum_{i=1}<sup>{|y|}p_ilog</sup>{-p_i}<br>
-$$</p>
-<p>​</p>
+<h2 id="特征搜索"><a href="#特征搜索" class="headerlink" title="特征搜索"></a>特征搜索</h2><h3 id="前向（forward-搜索"><a href="#前向（forward-搜索" class="headerlink" title="前向（forward)搜索"></a>前向（forward)搜索</h3><p>对于特征集合$\{a_1,a_2,…,a_d \}$,每个特征看作一个候选集，对这$d$候选的单特征子集进行评价，可选出最优子集，然后，再下一轮子集中，构成了两个特征候选的子集，</p>
+<h2 id="后向-backward-搜索"><a href="#后向-backward-搜索" class="headerlink" title="后向 (backward) 搜索"></a>后向 (backward) 搜索</h2><p>每次尝试去掉一个无关特征</p>
+<h3 id="双向-bidirectional-搜索"><a href="#双向-bidirectional-搜索" class="headerlink" title="双向(bidirectional)搜索"></a>双向(bidirectional)搜索</h3><p>上述操作只是贪心策略，仅仅考虑了本轮选定集合最优</p>
+<p>​            </p>
+<h2 id="子集评价（subset-evaluation"><a href="#子集评价（subset-evaluation" class="headerlink" title="子集评价（subset evaluation)"></a>子集评价（subset evaluation)</h2><p>已知一个数据集$D$,假定第$i$类样本所占比例$p_i$,对于属性子集$A$,假设根据取值D分成V个子集$\{D^1,D^2,…,D^V\}$,则子集A的信心 增益</p>
+<script type="math/tex; mode=display">
+Gain(A) = Ent(D)-\sum_{i=1}^V\frac{|D^i|}{|D|}Ent(D^i)\\
+Ent(D)=\sum_{i=1}^{|y|}p_ilog^{-p_i}</script><p>​    </p>
 <p>信息增益Gain(A)越大，说明特征子集A包含的有助于分类的信息越多，特征子集A是对数据集D的一个划分，样本D的标记信息Y则对应着D的真实划分，就能对A进行评价，对Y对应的划分的差异越小，则说明A越好，</p>
-<h2 id="过滤式选择"><a class="header-anchor" href="#过滤式选择">¶</a>过滤式选择</h2>
-<p>Relief （Relevant Feature）</p>
+<h2 id="过滤式选择"><a href="#过滤式选择" class="headerlink" title="过滤式选择"></a>过滤式选择</h2><p>Relief （Relevant Feature） </p>
 <p>设计一个“相关统计量”来描述度量特征的重要性，该统计量是一个向量，每个分量对应一个初式特征，而特征子集的重要性则是每个特征对应统计量分量之和来决定，最终只需指定一个阙值，根据阙值选择统计量分量对应的特征即可</p>
 <p>如何确定相关统计量</p>
-<p>给定训练集$(x_i,y_i)$,对于实例$x_i$,在其同类样本中找最近邻（near-hit),在从异类样本中寻找其最近邻$x_{x,nm}$称为“猜错近邻”，<br>
-$$<br>
-\delta^j =\sum_i-diff(x_i<sup>j,x_{i.nh}</sup>j)<sup>2+diff(x_i</sup>j,x_{i,nm}<sup>j)</sup>2<br>
-$$<br>
-分值越大，说明对应属性的分类能力越强</p>
-<p>对于多分类问题<br>
-$$<br>
-\delta^j = \sum_i-diff(x_i<sup>j,x_{i,nh}</sup>j)^2+\sum_{l \neq k}p_l\ diff(x_i<sup>j,x_{i,l,nm}</sup>j)<br>
-$$<br>
-这种方法看一个属性（特征）重不重要，先计算出每个属性的统计分量，按照公式，子集的评价就是对于分量的和</p>
-<h2 id="包裹式选择"><a class="header-anchor" href="#包裹式选择">¶</a>包裹式选择</h2>
-<p>直接把最终将要使用的学习器的性能作为特征子集的评价准则，特征选择的目的就是为给定学习期选择有利其性能的特征子集。</p>
+<p>给定训练集$(x_i,y_i)$,对于实例$x_i$,在其同类样本中找最近邻（near-hit),在从异类样本中寻找其最近邻$x_{x,nm}$称为“猜错近邻”，</p>
+<script type="math/tex; mode=display">
+\delta^j =\sum_i-diff(x_i^j,x_{i.nh}^j)^2+diff(x_i^j,x_{i,nm}^j)^2</script><p>分值越大，说明对应属性的分类能力越强</p>
+<p>对于多分类问题</p>
+<script type="math/tex; mode=display">
+\delta^j = \sum_i-diff(x_i^j,x_{i,nh}^j)^2+\sum_{l \neq k}p_l\ diff(x_i^j,x_{i,l,nm}^j)</script><p>这种方法看一个属性（特征）重不重要，先计算出每个属性的统计分量，按照公式，子集的评价就是对于分量的和</p>
+<h2 id="包裹式选择"><a href="#包裹式选择" class="headerlink" title="包裹式选择"></a>包裹式选择</h2><p>直接把最终将要使用的学习器的性能作为特征子集的评价准则，特征选择的目的就是为给定学习期选择有利其性能的特征子集。</p>
 <p>LVW（Las Vegas Wrapper）是典型的包裹式特征选择方法，拉斯维加斯方法（Las Vegas method）框架下使用随机策略来进行子集搜索，并以最终分类器的误差为特征子集评价准则</p>
 <p>算法</p>
-<h2 id="嵌入式选择"><a class="header-anchor" href="#嵌入式选择">¶</a>嵌入式选择</h2>
-<p>学习器自动地进行特征选择</p>
-<p>L-P范数<br>
-$$<br>
-L_P = ||X||<em>P = p\sqrt{\sum</em>{i=1}<sup>{n}x_i</sup>p}<br>
-$$<br>
-<img src="https://img-blog.csdn.net/20160623222921977" alt="这里写图片描述"></p>
-<p>L0范数<br>
-$$<br>
-||X||_0=向量中非零元素的个数<br>
-$$</p>
-<p>L1范数<br>
-$$<br>
-||x||_1 = \sum|x_i|<br>
-$$<br>
-L2范数，最常用<br>
-$$<br>
-||X||_2=\sqrt{x_i^2}<br>
-$$<br>
-无穷范数<br>
-$$<br>
-||x||=max|x_i|<br>
-$$<br>
-对于线性回归模型，防止过拟合，如果使用L2,称为岭回归(ridge regression),如果采取L1范数，则有称为LASSO，L1比L2更易于稀疏解，可以看得出L1范数正则化的过程得到了仅采用一部分初始化特征的模型。</p>
+<h2 id="嵌入式选择"><a href="#嵌入式选择" class="headerlink" title="嵌入式选择"></a>嵌入式选择</h2><p>学习器自动地进行特征选择</p>
+<p>L-P范数</p>
+<script type="math/tex; mode=display">
+L_P = ||X||_P = p\sqrt{\sum_{i=1}^{n}x_i^p}</script><p><img src="https://img-blog.csdn.net/20160623222921977" alt="这里写图片描述"></p>
+<p>L0范数</p>
+<script type="math/tex; mode=display">
+||X||_0=向量中非零元素的个数</script><p>L1范数</p>
+<script type="math/tex; mode=display">
+||x||_1 = \sum|x_i|</script><p>L2范数，最常用</p>
+<script type="math/tex; mode=display">
+||X||_2=\sqrt{x_i^2}</script><p>无穷范数</p>
+<script type="math/tex; mode=display">
+||x||=max|x_i|</script><p>对于线性回归模型，防止过拟合，如果使用L2,称为岭回归(ridge regression),如果采取L1范数，则有称为LASSO，L1比L2更易于稀疏解，可以看得出L1范数正则化的过程得到了仅采用一部分初始化特征的模型。</p>
 <p>L1正则化求解可使用近端梯度下降法(Proximal Gradient Descent)PGD</p>
 <p><strong>L-Lipschitz条件</strong></p>
 <p>设函数$Φ(x)$在有限 区间$[a,b]$上满足如下条件：</p>
 <p>(1) 当$x∈[a,b]$时，$Φ(x)∈[a,b]$，即$a≤Φ(x)≤b$.</p>
 <p>(2) 对任意的$x1，x2∈[a,b]$， 恒成立：$|Φ(x1)-Φ(x2)|≤L|x1-x2|$.</p>
-<p>如果$f(x)$可导，并且$\nabla f$满足L-Lipschitz条件，<br>
-$$<br>
-||\nabla f(x’)-\nabla f(x)||_2<sup>2&lt;L||x’-x||_2</sup>2<br>
-$$<br>
-在$x_k$附近<br>
-$$<br>
-\hat{f}(x)=f(x_k)+f<sup>{’}(x_k)(x-x_k)+\frac{L}{2}||x-x_k||</sup>2\<br>
-=\frac{L}{2}||x-(x_k)-\frac{1}{L}\nabla f(x_k)||<em>2^2+const<br>
-$$<br>
-可知<br>
-$$<br>
-x</em>{k+1}=x_k-\frac{1}{L}\nabla f(x_k)<br>
-$$<br>
-对于原始问题，可先计算$z=x_k-\frac{1}{L}\nabla f(x_k)$,</p>
+<p>如果$f(x)$可导，并且$\nabla f$满足L-Lipschitz条件，</p>
+<script type="math/tex; mode=display">
+||\nabla f(x')-\nabla f(x)||_2^2<L||x'-x||_2^2</script><p>在$x_k$附近</p>
+<script type="math/tex; mode=display">
+\hat{f}(x)=f(x_k)+f^{'}(x_k)(x-x_k)+\frac{L}{2}||x-x_k||^2\\
+=\frac{L}{2}||x-(x_k)-\frac{1}{L}\nabla f(x_k)||_2^2+const</script><p>可知</p>
+<script type="math/tex; mode=display">
+x_{k+1}=x_k-\frac{1}{L}\nabla f(x_k)</script><p>对于原始问题，可先计算$z=x_k-\frac{1}{L}\nabla f(x_k)$,</p>
 <p>$x_{k+1}=arg \ \ min_{x} \frac{L}{2}||x-z||_2^2+\lambda||x||_1$</p>
-<p>由于各个分量相互不影响<br>
-$$<br>
-x_{k+1}<sup>i=\begin{cases}z</sup>i-\frac{\lambda}{L}, \frac{\lambda}{L}&lt;z^i\<br>
-0, |z^i| &lt;= \frac{\lambda}{L} \<br>
-z<sup>i+\frac{\lambda}{L},z</sup>i&lt;-\frac{\lambda}{L}\end{cases}<br>
-$$</p>
-<h2 id="稀疏学习"><a class="header-anchor" href="#稀疏学习">¶</a>稀疏学习</h2>
-
+<p>由于各个分量相互不影响</p>
+<script type="math/tex; mode=display">
+x_{k+1}^i=\begin{cases}z^i-\frac{\lambda}{L}, \frac{\lambda}{L}<z^i\\
+0, |z^i| <= \frac{\lambda}{L} \\
+z^i+\frac{\lambda}{L},z^i<-\frac{\lambda}{L}\end{cases}</script><h2 id="稀疏学习"><a href="#稀疏学习" class="headerlink" title="稀疏学习"></a>稀疏学习</h2>
       
     </div>
 
@@ -995,8 +782,8 @@ $$</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/15/PageRank算法/" rel="next" title="PageRank算法">
-                <i class="fa fa-chevron-left"></i> PageRank算法
+              <a href="/2020/07/17/科研-各行各业标准/" rel="next" title="国际和国内标准">
+                <i class="fa fa-chevron-left"></i> 国际和国内标准
               </a>
             
           </div>
@@ -1005,8 +792,8 @@ $$</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/17/统计学/" rel="prev" title="统计学">
-                统计学 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/20/生活心得/" rel="prev" title="生活心得">
+                生活心得 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1084,7 +871,7 @@ $$</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1271,7 +1058,7 @@ $$</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#阅读目录"><span class="nav-number">1.</span> <span class="nav-text">¶阅读目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章"><span class="nav-number">2.</span> <span class="nav-text">¶第一章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-：-模型评估与选择"><span class="nav-number">3.</span> <span class="nav-text">¶第二章 ： 模型评估与选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经验误差与过拟合-欠拟合"><span class="nav-number">3.1.</span> <span class="nav-text">¶经验误差与过拟合、欠拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估方法"><span class="nav-number">3.2.</span> <span class="nav-text">¶评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何产生training-set-和-testing-set"><span class="nav-number">3.2.1.</span> <span class="nav-text">¶如何产生training set 和 testing set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调参和最终的模型"><span class="nav-number">3.2.2.</span> <span class="nav-text">¶调参和最终的模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能度量-performance-measure"><span class="nav-number">3.2.3.</span> <span class="nav-text">¶性能度量(performance measure)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设检验"><span class="nav-number">3.2.4.</span> <span class="nav-text">¶假设检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差和方差"><span class="nav-number">3.2.5.</span> <span class="nav-text">¶偏差和方差</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-线性模型"><span class="nav-number">4.</span> <span class="nav-text">¶第三章 线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性判别分析-linear-discriminant-analysis-lda"><span class="nav-number">4.1.</span> <span class="nav-text">¶线性判别分析 Linear Discriminant Analysis (LDA)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-决策树"><span class="nav-number">5.</span> <span class="nav-text">¶第四章 决策树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-神经网络"><span class="nav-number">6.</span> <span class="nav-text">¶第五章 神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单的神经网络：神经元模型-neuron-unit"><span class="nav-number">6.1.</span> <span class="nav-text">¶最简单的神经网络：神经元模型(neuron|unit)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知器-perceptron"><span class="nav-number">6.2.</span> <span class="nav-text">¶感知器（Perceptron)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多层前馈神经网络-multi-layer-feddforward-neural-networks"><span class="nav-number">6.3.</span> <span class="nav-text">¶多层前馈神经网络 （multi-layer feddforward neural networks)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差逆传播算法：-error-backpropagation-bp"><span class="nav-number">6.4.</span> <span class="nav-text">¶误差逆传播算法： error BackPropagation (BP)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局最小和局部最小"><span class="nav-number">7.</span> <span class="nav-text">¶全局最小和局部最小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-支持向量机"><span class="nav-number">8.</span> <span class="nav-text">¶第六章 支持向量机</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">第八章 集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text">¶基本思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么有效"><span class="nav-number">1.1.</span> <span class="nav-text">¶为什么有效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建不同的机器学习"><span class="nav-number">1.2.</span> <span class="nav-text">¶构建不同的机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#综合"><span class="nav-number">1.3.</span> <span class="nav-text">¶综合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bagging-boostrap-aggregating"><span class="nav-number">2.</span> <span class="nav-text">¶Bagging = Boostrap AGGregatING</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">2.0.1.</span> <span class="nav-text">¶算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">2.0.2.</span> <span class="nav-text">¶优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#random-forest-rf"><span class="nav-number">2.0.3.</span> <span class="nav-text">¶random forest（RF)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boosting-提高"><span class="nav-number">3.</span> <span class="nav-text">¶Boosting 提高</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gbdt"><span class="nav-number">3.1.</span> <span class="nav-text">¶GBDT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stacking"><span class="nav-number">4.</span> <span class="nav-text">¶Stacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极大似然估计"><span class="nav-number">5.</span> <span class="nav-text">¶极大似然估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十章-降维与度量学习"><span class="nav-number">6.</span> <span class="nav-text">¶第十章 降维与度量学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#k近邻学习"><span class="nav-number">6.1.</span> <span class="nav-text">¶k近邻学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低维嵌入"><span class="nav-number">6.2.</span> <span class="nav-text">¶低维嵌入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多维缩放-multiple-dimensional-scaling"><span class="nav-number">6.2.1.</span> <span class="nav-text">¶多维缩放（Multiple Dimensional,Scaling）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主成分分析"><span class="nav-number">7.</span> <span class="nav-text">¶主成分分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流形学习-表示学习有点困难"><span class="nav-number">8.</span> <span class="nav-text">¶流形学习（表示学习有点困难)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">第十一章 特征选择与稀疏学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征搜索"><span class="nav-number">1.</span> <span class="nav-text">¶特征搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前向-forward-搜索"><span class="nav-number">1.1.</span> <span class="nav-text">¶前向（forward)搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后向-backward-搜索"><span class="nav-number">2.</span> <span class="nav-text">¶后向 (backward) 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#双向-bidirectional-搜索"><span class="nav-number">2.1.</span> <span class="nav-text">¶双向(bidirectional)搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子集评价-subset-evaluation"><span class="nav-number">3.</span> <span class="nav-text">¶子集评价（subset evaluation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过滤式选择"><span class="nav-number">4.</span> <span class="nav-text">¶过滤式选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包裹式选择"><span class="nav-number">5.</span> <span class="nav-text">¶包裹式选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌入式选择"><span class="nav-number">6.</span> <span class="nav-text">¶嵌入式选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稀疏学习"><span class="nav-number">7.</span> <span class="nav-text">¶稀疏学习</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#阅读目录"><span class="nav-number">1.</span> <span class="nav-text">阅读目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章"><span class="nav-number">2.</span> <span class="nav-text">第一章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-：-模型评估与选择"><span class="nav-number">3.</span> <span class="nav-text">第二章 ： 模型评估与选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经验误差与过拟合、欠拟合"><span class="nav-number">3.1.</span> <span class="nav-text">经验误差与过拟合、欠拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评估方法"><span class="nav-number">3.2.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何产生training-set-和-testing-set"><span class="nav-number">3.2.1.</span> <span class="nav-text">如何产生training set 和 testing set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调参和最终的模型"><span class="nav-number">3.2.2.</span> <span class="nav-text">调参和最终的模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能度量-performance-measure"><span class="nav-number">3.2.3.</span> <span class="nav-text">性能度量(performance measure)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设检验"><span class="nav-number">3.2.4.</span> <span class="nav-text">假设检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差和方差"><span class="nav-number">3.2.5.</span> <span class="nav-text">偏差和方差</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-线性模型"><span class="nav-number">4.</span> <span class="nav-text">第三章 线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性判别分析-Linear-Discriminant-Analysis-LDA"><span class="nav-number">4.1.</span> <span class="nav-text">线性判别分析 Linear Discriminant Analysis (LDA)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-决策树"><span class="nav-number">5.</span> <span class="nav-text">第四章 决策树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-神经网络"><span class="nav-number">6.</span> <span class="nav-text">第五章 神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单的神经网络：神经元模型-neuron-unit"><span class="nav-number">6.1.</span> <span class="nav-text">最简单的神经网络：神经元模型(neuron|unit)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知器（Perceptron"><span class="nav-number">6.2.</span> <span class="nav-text">感知器（Perceptron)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多层前馈神经网络-（multi-layer-feddforward-neural-networks"><span class="nav-number">6.3.</span> <span class="nav-text">多层前馈神经网络 （multi-layer feddforward neural networks)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差逆传播算法：-error-BackPropagation-BP"><span class="nav-number">6.4.</span> <span class="nav-text">误差逆传播算法： error BackPropagation (BP)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局最小和局部最小"><span class="nav-number">7.</span> <span class="nav-text">全局最小和局部最小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-支持向量机"><span class="nav-number">8.</span> <span class="nav-text">第六章 支持向量机</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#第八章-集成学习"><span class="nav-number"></span> <span class="nav-text">第八章 集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text">基本思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么有效"><span class="nav-number">1.1.</span> <span class="nav-text">为什么有效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建不同的机器学习"><span class="nav-number">1.2.</span> <span class="nav-text">构建不同的机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#综合"><span class="nav-number">1.3.</span> <span class="nav-text">综合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-Boostrap-AGGregatING"><span class="nav-number">2.</span> <span class="nav-text">Bagging = Boostrap AGGregatING</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">2.0.1.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">2.0.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#random-forest（RF"><span class="nav-number">2.0.3.</span> <span class="nav-text">random forest（RF)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting-提高"><span class="nav-number">3.</span> <span class="nav-text">Boosting 提高</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GBDT"><span class="nav-number">3.1.</span> <span class="nav-text">GBDT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stacking"><span class="nav-number">4.</span> <span class="nav-text">Stacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极大似然估计"><span class="nav-number">5.</span> <span class="nav-text">极大似然估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十章-降维与度量学习"><span class="nav-number">6.</span> <span class="nav-text">第十章 降维与度量学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#k近邻学习"><span class="nav-number">6.1.</span> <span class="nav-text">k近邻学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低维嵌入"><span class="nav-number">6.2.</span> <span class="nav-text">低维嵌入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多维缩放（Multiple-Dimensional-Scaling）"><span class="nav-number">6.2.1.</span> <span class="nav-text">多维缩放（Multiple Dimensional,Scaling）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主成分分析"><span class="nav-number">7.</span> <span class="nav-text">主成分分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流形学习（表示学习有点困难"><span class="nav-number">8.</span> <span class="nav-text">流形学习（表示学习有点困难)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第十一章-特征选择与稀疏学习"><span class="nav-number"></span> <span class="nav-text">第十一章 特征选择与稀疏学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征搜索"><span class="nav-number">1.</span> <span class="nav-text">特征搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前向（forward-搜索"><span class="nav-number">1.1.</span> <span class="nav-text">前向（forward)搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后向-backward-搜索"><span class="nav-number">2.</span> <span class="nav-text">后向 (backward) 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#双向-bidirectional-搜索"><span class="nav-number">2.1.</span> <span class="nav-text">双向(bidirectional)搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子集评价（subset-evaluation"><span class="nav-number">3.</span> <span class="nav-text">子集评价（subset evaluation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过滤式选择"><span class="nav-number">4.</span> <span class="nav-text">过滤式选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包裹式选择"><span class="nav-number">5.</span> <span class="nav-text">包裹式选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌入式选择"><span class="nav-number">6.</span> <span class="nav-text">嵌入式选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稀疏学习"><span class="nav-number">7.</span> <span class="nav-text">稀疏学习</span></a></li></ol></li></div>
             
 
           </div>
@@ -1312,7 +1099,7 @@ $$</p>
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">324k</span>
+    <span title="Symbols count total">284k</span>
   
 
   
@@ -1912,7 +1699,19 @@ $$</p>
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1929,17 +1728,5 @@ $$</p>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

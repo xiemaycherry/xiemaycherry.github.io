@@ -116,18 +116,92 @@
   <meta name="keywords" content="Deep learning,">
 
 
-<meta name="description" content="C2W1 ¶L01 : Train/Dev/Test Sets ¶1. process 应用型机器学习是一个高度迭代的过程，通常在项目启动时，我们会先有一个初步想法，比如构建一个含有特定层数，隐藏单元数量或数据集个数等等的神经网络，然后编码，并尝试运行这些代码，通过运行和测试得到该神经网络或这些配置信息的运行结果，你可能会根据输出结果重新完善自己的想法，改变策略，或者为了找到更好的神经网络不断迭代">
+<meta name="description" content="C2W1L01 : Train/Dev/Test Sets1. process应用型机器学习是一个高度迭代的过程，通常在项目启动时，我们会先有一个初步想法，比如构建一个含有特定层数，隐藏单元数量或数据集个数等等的神经网络，然后编码，并尝试运行这些代码，通过运行和测试得到该神经网络或这些配置信息的运行结果，你可能会根据输出结果重新完善自己的想法，改变策略，或者为了找到更好的神经网络不断迭代更新自己的">
 <meta name="keywords" content="Deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="aiai_">
 <meta property="og:url" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="C2W1 ¶L01 : Train/Dev/Test Sets ¶1. process 应用型机器学习是一个高度迭代的过程，通常在项目启动时，我们会先有一个初步想法，比如构建一个含有特定层数，隐藏单元数量或数据集个数等等的神经网络，然后编码，并尝试运行这些代码，通过运行和测试得到该神经网络或这些配置信息的运行结果，你可能会根据输出结果重新完善自己的想法，改变策略，或者为了找到更好的神经网络不断迭代">
+<meta property="og:description" content="C2W1L01 : Train/Dev/Test Sets1. process应用型机器学习是一个高度迭代的过程，通常在项目启动时，我们会先有一个初步想法，比如构建一个含有特定层数，隐藏单元数量或数据集个数等等的神经网络，然后编码，并尝试运行这些代码，通过运行和测试得到该神经网络或这些配置信息的运行结果，你可能会根据输出结果重新完善自己的想法，改变策略，或者为了找到更好的神经网络不断迭代更新自己的">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_2.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_3.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_5.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_6.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_8.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_9.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_10.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_11.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_12.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_15.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_13.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_14.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_16.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_17.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_18.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_19.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_20.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_21.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_22.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_23.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_24.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_25.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_25.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_1.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_2.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_3.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_4.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_6.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_5.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_7.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_8.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_9.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_10.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_11.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_12.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_13.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_14.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_15.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_18.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_16.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_17.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_19.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_20.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_22.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_23.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_27.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_28.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_29.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_32.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_33.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_34.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_35.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_36.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_37.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_38.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_39.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_40.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_41.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_42.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_43.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_44.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_45.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_46.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_47.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_48.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_49.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_50.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_51.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_52.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_53.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_56.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_54.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week2_55.png">
 <meta property="og:updated_time" content="2020-07-25T07:57:50.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="aiai_">
-<meta name="twitter:description" content="C2W1 ¶L01 : Train/Dev/Test Sets ¶1. process 应用型机器学习是一个高度迭代的过程，通常在项目启动时，我们会先有一个初步想法，比如构建一个含有特定层数，隐藏单元数量或数据集个数等等的神经网络，然后编码，并尝试运行这些代码，通过运行和测试得到该神经网络或这些配置信息的运行结果，你可能会根据输出结果重新完善自己的想法，改变策略，或者为了找到更好的神经网络不断迭代">
+<meta name="twitter:description" content="C2W1L01 : Train/Dev/Test Sets1. process应用型机器学习是一个高度迭代的过程，通常在项目启动时，我们会先有一个初步想法，比如构建一个含有特定层数，隐藏单元数量或数据集个数等等的神经网络，然后编码，并尝试运行这些代码，通过运行和测试得到该神经网络或这些配置信息的运行结果，你可能会根据输出结果重新完善自己的想法，改变策略，或者为了找到更好的神经网络不断迭代更新自己的">
+<meta name="twitter:image" content="http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/L2_week1_2.png">
 
 
 
@@ -440,7 +514,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                30k字
+                21k字
               </span>
               
 
@@ -465,29 +539,23 @@
       
 
       
-        <h1>C2W1</h1>
-<h2 id="l01-train-dev-test-sets"><a class="header-anchor" href="#l01-train-dev-test-sets">¶</a>L01 : Train/Dev/Test Sets</h2>
-<h3 id="1-process"><a class="header-anchor" href="#1-process">¶</a>1. process</h3>
-<p>应用型机器学习是一个高度迭代的过程，通常在项目启动时，我们会先有一个初步想法，比如构建一个含有特定层数，隐藏单元数量或数据集个数等等的神经网络，然后编码，并尝试运行这些代码，通过运行和测试得到该神经网络或这些配置信息的运行结果，你可能会根据输出结果重新完善自己的想法，改变策略，或者为了找到更好的神经网络不断迭代更新自己的方案。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_2.png)</p>
-<h3 id="2-data-split"><a class="header-anchor" href="#2-data-split">¶</a>2. data split</h3>
-<ul>
+        <h1 id="C2W1"><a href="#C2W1" class="headerlink" title="C2W1"></a>C2W1</h1><h2 id="L01-Train-Dev-Test-Sets"><a href="#L01-Train-Dev-Test-Sets" class="headerlink" title="L01 : Train/Dev/Test Sets"></a>L01 : Train/Dev/Test Sets</h2><h3 id="1-process"><a href="#1-process" class="headerlink" title="1. process"></a>1. process</h3><p>应用型机器学习是一个高度迭代的过程，通常在项目启动时，我们会先有一个初步想法，比如构建一个含有特定层数，隐藏单元数量或数据集个数等等的神经网络，然后编码，并尝试运行这些代码，通过运行和测试得到该神经网络或这些配置信息的运行结果，你可能会根据输出结果重新完善自己的想法，改变策略，或者为了找到更好的神经网络不断迭代更新自己的方案。</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_2.png" alt=""></p>
+<h3 id="2-data-split"><a href="#2-data-split" class="headerlink" title="2. data split"></a>2. data split</h3><ul>
 <li>训练集（train set）：用训练集对算法或模型进行<strong>训练</strong>过程；</li>
 <li>验证集（development set）：利用验证集（又称为简单交叉验证集，hold-out cross validation set）进行<strong>交叉验证</strong>，<strong>选择出最好的模型</strong>或者验证不同算法的有效性。</li>
 <li>测试集（test set）：最后利用测试集对模型进行测试，<strong>获取模型运行的无偏估计</strong>（对学习方法进行评估）。</li>
 </ul>
 <p>假设这是训练数据，我用一个长方形表示，我们通常会将这些数据划分成几部分，一部分作为训练集，一部分作为简单交叉验证集，有时也称之为验证集，方便起见，我就叫它验证集（<strong>dev set</strong>），其实都是同一个概念，最后一部分则作为测试集。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_3.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_3.png" alt=""></p>
 <ol>
-<li>
-<p>在机器学习发展的小数据量时代，如 100、1000、10000 的数据量大小，可以将数据集按照以下比例进行划分：</p>
+<li><p>在机器学习发展的小数据量时代，如 100、1000、10000 的数据量大小，可以将数据集按照以下比例进行划分：</p>
 <ul>
 <li>无验证集的情况：70% / 30%；</li>
 <li>有验证集的情况：60% / 20% / 20%；</li>
 </ul>
 </li>
-<li>
-<p>在如今的<strong>大数据时代</strong>，对于一个问题，我们拥有的数据集的规模可能是百万级别的，所以验证集和测试集所占的比重会趋向于变得更小。</p>
+<li><p>在如今的<strong>大数据时代</strong>，对于一个问题，我们拥有的数据集的规模可能是百万级别的，所以验证集和测试集所占的比重会趋向于变得更小。</p>
 <p>验证集的目的是为了验证不同的算法哪种更加有效，所以验证集只要足够大到能够验证大约 2-10 种算法哪种更好，而不需要使用 20% 的数据作为验证集。如百万数据中抽取 1 万的数据作为验证集就可以了。</p>
 <p>测试集的主要目的是评估模型的效果，如在单个分类器中，往往在百万级别的数据中，我们选择其中 1000 条数据足以评估单个模型的效果。</p>
 </li>
@@ -496,11 +564,9 @@
 <li>100 万数据量：98% / 1% / 1%；</li>
 <li>超百万数据量：99.5% / 0.25% / 0.25%（或者99.5% / 0.4% / 0.1%）</li>
 </ul>
-<h3 id="3-建议"><a class="header-anchor" href="#3-建议">¶</a>3. 建议</h3>
-<p><strong>验证集要和训练集来自于同一个分布</strong>（数据来源一致），可以使得机器学习算法变得更快并获得更好的效果。</p>
+<h3 id="3-建议"><a href="#3-建议" class="headerlink" title="3. 建议"></a>3. 建议</h3><p><strong>验证集要和训练集来自于同一个分布</strong>（数据来源一致），可以使得机器学习算法变得更快并获得更好的效果。</p>
 <p>如果不需要用<strong>无偏估计</strong>来评估模型的性能，则可以不需要测试集。如果只有验证集，没有测试集，我们要做的就是，在训练集上训练，尝试不同的模型框架，在验证集上评估这些模型，然后迭代并选出适用的模型。因为验证集中已经涵盖测试集数据，其不再提供无偏性能评估。当然，如果你不需要无偏估计，那就再好不过了。</p>
-<h2 id="l02-bias-variance"><a class="header-anchor" href="#l02-bias-variance">¶</a>L02 : Bias/Variance</h2>
-<p>**“偏差-方差分解”（bias-variance decomposition）**是解释学习算法泛化性能的一种重要工具。</p>
+<h2 id="L02-Bias-Variance"><a href="#L02-Bias-Variance" class="headerlink" title="L02 : Bias/Variance"></a>L02 : Bias/Variance</h2><p><strong>“偏差-方差分解”（bias-variance decomposition）</strong>是解释学习算法泛化性能的一种重要工具。</p>
 <p>泛化误差可分解为偏差、方差与噪声之和：</p>
 <ul>
 <li><strong>偏差</strong>：度量了学习算法的期望预测与真实结果的偏离程度，即刻画了<strong>学习算法本身的拟合能力</strong>；</li>
@@ -510,89 +576,69 @@
 <p>high bias ,underfitting</p>
 <p>high variance, overfitting</p>
 <p>just right</p>
-<h3 id="1-example"><a class="header-anchor" href="#1-example">¶</a>1. example</h3>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_5.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_6.png)</p>
+<h3 id="1-example"><a href="#1-example" class="headerlink" title="1. example"></a>1. example</h3><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_5.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_6.png" alt=""></p>
 <p>Your algorithms ever on the training set and dev set you can try to diganose whether has problems high barriers or high variances or both or neither.</p>
-<h2 id="l03-basic-recipe-for-machine-learning"><a class="header-anchor" href="#l03-basic-recipe-for-machine-learning">¶</a>L03 Basic Recipe for Machine learning</h2>
-<h3 id="1-method"><a class="header-anchor" href="#1-method">¶</a>1. METHOD</h3>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_8.png)</p>
+<h2 id="L03-Basic-Recipe-for-Machine-learning"><a href="#L03-Basic-Recipe-for-Machine-learning" class="headerlink" title="L03 Basic Recipe for Machine learning"></a>L03 Basic Recipe for Machine learning</h2><h3 id="1-METHOD"><a href="#1-METHOD" class="headerlink" title="1. METHOD"></a>1. METHOD</h3><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_8.png" alt=""></p>
 <p>Training a bigger network almost never hurts. And the main cost of training a neural network that’s too big is just computational time, so long as you’re regularizing.</p>
 <p>今天我们讲了如何通过组织机器学习来诊断偏差和方差的基本方法，然后选择解决问题的正确操作，希望大家有所了解和认识。我在课上不止一次提到了正则化，它是一种非常实用的减少方差的方法，正则化时会出现偏差方差权衡问题，偏差可能略有增加，如果网络足够大，增幅通常不会太高，我们下节课再细讲，以便大家更好理解如何实现神经网络的正则化。</p>
 <p>第一点，高偏差和高方差是两种不同的情况，我们后续要尝试的方法也可能完全不同</p>
 <p>只要正则适度，通常构建一个更大的网络便可以，在不影响方差的同时减少偏差，而采用更多数据通常可以在不过多影响偏差的同时减少方差。这两步实际要做的工作是：训练网络，选择网络或者准备更多数据，现在我们有工具可以做到在减少偏差或方差的同时，不对另一方产生过多不良影响。</p>
-<h2 id="l04"><a class="header-anchor" href="#l04">¶</a>L04</h2>
-<h3 id="1-over-fitting"><a class="header-anchor" href="#1-over-fitting">¶</a>1. over fitting</h3>
-<h3 id="regularization"><a class="header-anchor" href="#regularization">¶</a>regularization</h3>
-<p>L2 regularization</p>
+<h2 id="L04"><a href="#L04" class="headerlink" title="L04"></a>L04</h2><h3 id="1-over-fitting"><a href="#1-over-fitting" class="headerlink" title="1. over fitting"></a>1. over fitting</h3><h3 id="regularization"><a href="#regularization" class="headerlink" title="regularization"></a>regularization</h3><p>L2 regularization</p>
 <p>L1 regularizaion: w will be sparse  L1 正则化最后得到 w 向量中将存在大量的 0</p>
 <p>为什么只正则化参数w？为什么不再加上参数b 呢？你可以这么做，只是我习惯省略不写，因为通常w是一个高维参数矢量，w已经可以表达高偏差问题，可能w包含有很多参数，我们不可能拟合所有参数，而只是b单个数字，所以w几乎涵盖所有参数，而不是，如果加了参数b，其实也没太大影响，因为b只是众多参数中的一个，所以我通常省略不计，如果你想加上这个参数，完全没问题。</p>
 <ol>
-<li>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_9.png)</li>
+<li><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_9.png" alt=""></li>
 </ol>
-<p>2.![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_10.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_11.png)矩阵范数被称作“弗罗贝尼乌斯范数”，用下标标注F</p>
-<ol start="3">
-<li>
-<p>反向传播时，填上正则化的一项</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_12.png)</p>
+<p>2.<img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_10.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_11.png" alt="">矩阵范数被称作“弗罗贝尼乌斯范数”，用下标标注F</p>
+<ol>
+<li><p>反向传播时，填上正则化的一项</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_12.png" alt=""></p>
 <p>因此L2正则化也被称为“权重衰减”。</p>
 </li>
 </ol>
 <p>to get more training data</p>
-<h2 id="l05-why-regularization-reduces-overfitting"><a class="header-anchor" href="#l05-why-regularization-reduces-overfitting">¶</a>L05 :Why Regularization Reduces Overfitting</h2>
-<p>我们添加正则项，它可以避免数据权值矩阵过大，这就是弗罗贝尼乌斯范数，为什么压缩范数，或者弗罗贝尼乌斯范数或者参数可以减少过拟合？我们尝试消除或至少减少许多隐藏单元的影响，最终这个网络会变得更简单.Regularization其实是让函数变得<strong>简化</strong>。</p>
+<h2 id="L05-Why-Regularization-Reduces-Overfitting"><a href="#L05-Why-Regularization-Reduces-Overfitting" class="headerlink" title="L05 :Why Regularization Reduces Overfitting"></a>L05 :Why Regularization Reduces Overfitting</h2><p>我们添加正则项，它可以避免数据权值矩阵过大，这就是弗罗贝尼乌斯范数，为什么压缩范数，或者弗罗贝尼乌斯范数或者参数可以减少过拟合？我们尝试消除或至少减少许多隐藏单元的影响，最终这个网络会变得更简单.Regularization其实是让函数变得<strong>简化</strong>。</p>
 <p>直观上理解就是如果正则化设置得足够大，权重矩阵被设置为接近于0的值，直观理解就是把多隐藏单元的权重设为0，于是基本上消除了这些隐藏单元的许多影响。如果是这种情况，这个被大大简化了的神经网络会变成一个很小的网络，小到如同一个逻辑回归单元，可是深度却很大，它会使这个网络从过度拟合的状态更接近左图的高偏差状态。</p>
 <p>总结一下，如果正则化参数变得很大，w参数很小，z也会相对变小，此时忽略的b影响，z会相对变小，实际上，z的取值范围很小，这个激活函数tanh，也就是曲线函数会相对呈线性，整个神经网络会计算离线性函数近的值，这个线性函数非常简单，并不是一个极复杂的高度非线性函数，不会发生过拟合。</p>
 <p><strong>L2 regularization的不足</strong>：要通过不断的选用不同的λ进行测试，计算量加大了。</p>
-<h2 id="l06-dropout-regularization"><a class="header-anchor" href="#l06-dropout-regularization">¶</a>L06 : Dropout Regularization</h2>
-<h3 id="1-工作原理"><a class="header-anchor" href="#1-工作原理">¶</a>1. 工作原理</h3>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_15.png)</p>
+<h2 id="L06-Dropout-Regularization"><a href="#L06-Dropout-Regularization" class="headerlink" title="L06 : Dropout Regularization"></a>L06 : Dropout Regularization</h2><h3 id="1-工作原理"><a href="#1-工作原理" class="headerlink" title="1. 工作原理"></a>1. 工作原理</h3><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_15.png" alt=""></p>
 <p>如果上面这幅图存在over fitting。复制这个神经网络，dropout会遍历网络的每一层。假设网络中的每一层，每个节点都以抛硬币的方式设置概率，每个节点得以保留和消除的概率都是0.5，设置完节点概率，我们会消除一些节点，然后删除掉从该节点进出的连线，最后得到一个节点更少，规模更小的网络，然后用<strong>backprop</strong>方法进行训练。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_13.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_14.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_13.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_14.png" alt=""></p>
 <p>我们针对每个训练样本训练规模极小的网络，最后你可能会认识到为什么要正则化网络，因为我们在训练极小的网络。</p>
-<h3 id="2-inverted-dropout-反向随机失活"><a class="header-anchor" href="#2-inverted-dropout-反向随机失活">¶</a>2. <strong>inverted dropout</strong>（反向随机失活）</h3>
-<p>对第L</p>
+<h3 id="2-inverted-dropout（反向随机失活）"><a href="#2-inverted-dropout（反向随机失活）" class="headerlink" title="2. inverted dropout（反向随机失活）"></a>2. <strong>inverted dropout</strong>（反向随机失活）</h3><p>对第L</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">keep_prob = <span class="number">0.8</span>    <span class="comment"># 设置神经元保留概率</span></span><br><span class="line">dl = np.random.rand(al.shape[<span class="number">0</span>], al.shape[<span class="number">1</span>]) &lt; keep_prob</span><br><span class="line">al = np.multiply(al, dl)</span><br><span class="line">al /= keep_prob</span><br></pre></td></tr></table></figure>
-<p>最后一步<code>al /= keep_prob</code>是因为 a[l]a[l]中的一部分元素失活（相当于被归零），为了在下一层计算时不影响 $Z[l+1]=W[l+1]a[l]+b[l+1]$的期望值，因此除以一个<code>keep_prob</code>。举例解释我们假设第三隐藏层上有50个单元或50个神经元，在一维上是50，我们通过因子分解将它拆分成维的，保留和删除它们的概率分别为80%和20%，这意味着最后被删除或归零的单元平均有10（50×20%=10）个，现在我们看下$z<sup>{[4]}$，，我们的预期是$z</sup>{[4]}=w<sup>{[4]}a</sup>{[3]}$，$a<sup>{[3]}$减少20%，也就是说中有$a</sup>{[3]}$20%的元素被归零，为了不影响的$a<sup>{[4]}$期望值，我们需要用$w</sup>{[4]}a<sup>{[3]}/keep_prob$，它将会修正或弥补我们所需的那20%，$a</sup>{[3]}$的期望值不会变，划线部分就是所谓的<strong>dropout</strong>方法。</p>
-<h2 id="l07-understanding-dropout"><a class="header-anchor" href="#l07-understanding-dropout">¶</a>L07 : Understanding Dropout</h2>
-<p>直观上理解：不要依赖于任何一个特征，因为该单元的输入可能随时被清除，因此该单元通过这种方式传播下去，并为单元的四个输入增加一点权重，通过传播所有权重，<strong>dropout</strong>将产生收缩权重的平方范数的效果，和之前讲的L2正则化类似；实施<strong>dropout</strong>的结果实它会压缩权重，并完成一些预防过拟合的外层正则化；L2对不同权重的衰减是不同的，它取决于激活函数倍增的大小。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_16.png)</p>
+<p>最后一步<code>al /= keep_prob</code>是因为 a[l]a[l]中的一部分元素失活（相当于被归零），为了在下一层计算时不影响 $Z[l+1]=W[l+1]a[l]+b[l+1]$的期望值，因此除以一个<code>keep_prob</code>。举例解释我们假设第三隐藏层上有50个单元或50个神经元，在一维上是50，我们通过因子分解将它拆分成维的，保留和删除它们的概率分别为80%和20%，这意味着最后被删除或归零的单元平均有10（50×20%=10）个，现在我们看下$z^{[4]}$，，我们的预期是$z^{[4]}=w^{[4]}a^{[3]}$，$a^{[3]}$减少20%，也就是说中有$a^{[3]}$20%的元素被归零，为了不影响的$a^{[4]}$期望值，我们需要用$w^{[4]}a^{[3]}/keep_prob$，它将会修正或弥补我们所需的那20%，$a^{[3]}$的期望值不会变，划线部分就是所谓的<strong>dropout</strong>方法。</p>
+<h2 id="L07-Understanding-Dropout"><a href="#L07-Understanding-Dropout" class="headerlink" title="L07 : Understanding Dropout"></a>L07 : Understanding Dropout</h2><p>直观上理解：不要依赖于任何一个特征，因为该单元的输入可能随时被清除，因此该单元通过这种方式传播下去，并为单元的四个输入增加一点权重，通过传播所有权重，<strong>dropout</strong>将产生收缩权重的平方范数的效果，和之前讲的L2正则化类似；实施<strong>dropout</strong>的结果实它会压缩权重，并完成一些预防过拟合的外层正则化；L2对不同权重的衰减是不同的，它取决于激活函数倍增的大小。</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_16.png" alt=""></p>
 <p>计算视觉中的输入量非常大，输入太多像素，以至于没有足够的数据，所以<strong>dropout</strong>在计算机视觉中应用得比较频繁，有些计算机视觉研究人员非常喜欢用它，几乎成了默认的选择，但要牢记一点，<strong>dropout</strong>是一种正则化方法，它有助于预防过拟合，因此除非算法过拟合，不然我是不会使用<strong>dropout</strong>的，所以它在其它领域应用得比较少，主要存在于计算机视觉领域，因为我们通常没有足够的数据，所以一直存在过拟合，这就是有些计算机视觉研究人员如此钟情于<strong>dropout</strong>函数的原因。直观上我认为不能概括其它学科。<strong>dropout</strong>将产生收缩权重的平方范数的效果。当然，不同的层，值可以设置成不同，如果你觉得某一层容易过拟合，把值设置小一点。</p>
 <p>dropout 的一大<strong>缺点</strong>是成本函数无法被明确定义。因为每次迭代都会随机消除一些神经元结点的影响，因此无法确保成本函数单调递减。因此，使用 dropout 时，先将<code>keep_prob</code>全部设置为 1.0 后运行代码，确保 $J(w,b)$函数单调递减，再打开 dropout。</p>
-<h2 id="l08-other-regularization-methods"><a class="header-anchor" href="#l08-other-regularization-methods">¶</a>L08 :  Other Regularization Methods</h2>
-<ul>
-<li>
-<p>数据扩增（Data Augmentation）：通过图片的一些变换（翻转，局部放大后切割等），得到更多的训练集和验证集。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_17.png)</p>
+<h2 id="L08-Other-Regularization-Methods"><a href="#L08-Other-Regularization-Methods" class="headerlink" title="L08 :  Other Regularization Methods"></a>L08 :  Other Regularization Methods</h2><ul>
+<li><p>数据扩增（Data Augmentation）：通过图片的一些变换（翻转，局部放大后切割等），得到更多的训练集和验证集。</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_17.png" alt=""></p>
 </li>
-<li>
-<p>早停止法（Early Stopping）：将训练集和验证集进行梯度下降时的成本变化曲线画在同一个坐标轴内，当训练集误差降低但验证集误差升高，两者开始发生较大偏差时及时停止迭代，并返回具有最小验证集误差的连接权和阈值，以避免过拟合。这种方法的缺点是无法同时达成偏差和方差的最优。</p>
+<li><p>早停止法（Early Stopping）：将训练集和验证集进行梯度下降时的成本变化曲线画在同一个坐标轴内，当训练集误差降低但验证集误差升高，两者开始发生较大偏差时及时停止迭代，并返回具有最小验证集误差的连接权和阈值，以避免过拟合。这种方法的缺点是无法同时达成偏差和方差的最优。</p>
 </li>
 </ul>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_18.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_18.png" alt=""></p>
 <p>但对我来说<strong>early stopping</strong>的主要缺点就是你不能独立地处理这两个问题，因为提早停止梯度下降，也就是停止了优化代价函数，因为现在你不再尝试降低代价函数，所以代价函数的值可能不够小，同时你又希望不出现过拟合，你没有采取不同的方式来解决这两个问题，而是用一种方法同时解决两个问题，这样做的结果是我要考虑的东西变得更复杂。</p>
 <p><strong>Early stopping</strong>的优点是，只运行一次梯度下降，你可以找出的w较小值，中间值和较大值，而无需尝试正则化超级参数的很多值。</p>
-<h2 id="l09-：-normalizing-inputs"><a class="header-anchor" href="#l09-：-normalizing-inputs">¶</a>L09 ： Normalizing inputs</h2>
-<ol>
-<li>
-<p>零均值</p>
+<h2 id="L09-：-Normalizing-inputs"><a href="#L09-：-Normalizing-inputs" class="headerlink" title="L09 ： Normalizing inputs"></a>L09 ： Normalizing inputs</h2><ol>
+<li><p>零均值</p>
 <p>$u=\frac{1}{m}\sum x^{(i)}$,$x-u$</p>
 </li>
-<li>
-<p>归一化方差；</p>
-<p>$\delta<sup>2=\frac{1}{m}(x</sup>{(i)})^2$,每个特征的方差，每个特征数据除以它，就归一化方差了</p>
+<li><p>归一化方差；</p>
+<p>$\delta^2=\frac{1}{m}(x^{(i)})^2$,每个特征的方差，每个特征数据除以它，就归一化方差了</p>
 </li>
 </ol>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_19.png)</p>
-<h3 id="why"><a class="header-anchor" href="#why">¶</a>why</h3>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_20.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_19.png" alt=""></p>
+<h3 id="why"><a href="#why" class="headerlink" title="why"></a>why</h3><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_20.png" alt=""></p>
 <p>在不使用标准化的成本函数中，如果设置一个较小的学习率，可能需要很多次迭代才能到达全局最优解；而如果使用了标准化，那么无论从哪个位置开始迭代，都能以相对较少的迭代次数找到全局最优解。</p>
-<h2 id="l10-vanishing-exploding-gradients"><a class="header-anchor" href="#l10-vanishing-exploding-gradients">¶</a>L10 : Vanishing /Exploding Gradients</h2>
-<p>训练神经网络，尤其是深度神经所面临的一个问题就是梯度消失或梯度爆炸，也就是你训练神经网络的时候，导数或坡度有时会变得非常大，或者非常小，甚至于以指数方式变小，这加大了训练的难度。</p>
+<h2 id="L10-Vanishing-Exploding-Gradients"><a href="#L10-Vanishing-Exploding-Gradients" class="headerlink" title="L10 : Vanishing /Exploding Gradients"></a>L10 : Vanishing /Exploding Gradients</h2><p>训练神经网络，尤其是深度神经所面临的一个问题就是梯度消失或梯度爆炸，也就是你训练神经网络的时候，导数或坡度有时会变得非常大，或者非常小，甚至于以指数方式变小，这加大了训练的难度。</p>
 <p>在深度神经网络中，激活函数将以指数级递减，虽然我只是讨论了激活函数以与相关的指数级数增长或下降，它也适用于与层数相关的导数或梯度函数，也是呈指数级增长或呈指数递减。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_21.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_21.png" alt=""></p>
 <p>假定 g(z)=z,b[l]=0g(z)=z,b[l]=0，对于目标输出有：</p>
 <p>$y^=W[L]W[L−1]…W[2]W[1]X$</p>
 <ul>
@@ -600,70 +646,59 @@
 <li>对于 $W[l]$的值小于 1 的情况，激活函数的值将以指数级递减。</li>
 </ul>
 <p>对于导数同理。因此，在计算梯度时，根据不同情况梯度函数会以指数级递增或递减，导致训练导数难度上升，梯度下降算法的步长会变得非常小，需要训练的时间将会非常长。</p>
-<h2 id="l11-weight-initialization-in-a-deep-network"><a class="header-anchor" href="#l11-weight-initialization-in-a-deep-network">¶</a>L11 : Weight initialization in a deep network</h2>
-<p>为了预防值z过大或过小，你可以看到n越大，你希望w越小，因为z是wx+b的和,最合理的方法$w_i=1/n$</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_22.png)</p>
+<h2 id="L11-Weight-initialization-in-a-deep-network"><a href="#L11-Weight-initialization-in-a-deep-network" class="headerlink" title="L11 : Weight initialization in a deep network"></a>L11 : Weight initialization in a deep network</h2><p>为了预防值z过大或过小，你可以看到n越大，你希望w越小，因为z是wx+b的和,最合理的方法$w_i=1/n$</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_22.png" alt=""></p>
 <p>因此，实际上，你要做的就是设置某层权重矩阵</p>
 <p>$w^{[l]}=n p . random. randn (shape) * np.sqrt \left(\frac{1}{n^{[l-1]}}\right)$</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_23.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_23.png" alt=""></p>
 <p>当多个节点时，也一样的看，使得这个节点$z^{<a href="i">L</a>}$不要太大，单独看每个节点既可以</p>
-<p>relu : var(w(i)) = 2/n or $\frac{2}{n<sup>{[l-1]}*n</sup>{[l]}}$</p>
+<p>relu : var(w(i)) = 2/n or $\frac{2}{n^{[l-1]}*n^{[l]}}$</p>
 <p>tanh: var(w(i)) = 1/n</p>
 <p>通过设置初始化化权重矩阵，使得不会增长太快或者太慢</p>
-<h2 id="l12-：-numerical-approximations-of-gradients"><a class="header-anchor" href="#l12-：-numerical-approximations-of-gradients">¶</a>L12 ： Numerical Approximations of Gradients</h2>
-<p>单边误差</p>
+<h2 id="L12-：-Numerical-Approximations-of-Gradients"><a href="#L12-：-Numerical-Approximations-of-Gradients" class="headerlink" title="L12 ： Numerical Approximations of Gradients"></a>L12 ： Numerical Approximations of Gradients</h2><p>单边误差</p>
 <p>$f^{\prime}(\theta)=\lim _{\varepsilon \rightarrow 0} \frac{f(\theta+\varepsilon)-(\theta)}{\varepsilon}$</p>
 <p>误差$O(\varepsilon)$</p>
 <p>双边误差</p>
 <p>$f^{\prime}(\theta)=\lim _{\varepsilon \rightarrow 0}=\frac{f(\theta+\varepsilon)-(\theta-\varepsilon)}{2 \varepsilon}$</p>
 <p>$O\left(\varepsilon^{2}\right)$</p>
-<h2 id="l-13-gradient-checking"><a class="header-anchor" href="#l-13-gradient-checking">¶</a>L 13 Gradient Checking</h2>
-<p>梯度检验帮我们节省了很多时间，也多次帮我发现<strong>backprop</strong>实施过程中的bug，接下来，我们看看如何利用它来调试或检验<strong>backprop</strong>的实施是否正确。</p>
-<p>首先要做的就是，把所有参数转换成一个巨大的向量数据，你要做的就是把矩阵w转换成一个向量，把所有矩阵w转换成向量之后，做连接运算，得到一个巨型向量$\theta$，该向量表示为参数$\theta$，代价函数J是所有W和b的函数，现在你得到了一个的代价函数（即）。接着，你得到与和顺序相同的数据，你同样可以把$dW<sup>{[l]}$,和$db</sup>{[l]}$ 转换成一个新的向量，用它们来初始化大向量$d\theta$，它与$\theta$具有相同维度。</p>
-<p>梯度的逼近值<br>
-$$<br>
-d \theta_{\text { approx }}[i]=\frac{J\left(\theta_{1}, \theta_{2}, \ldots . \theta_{i}+\varepsilon, \ldots\right)-J\left(\theta_{1}, \theta_{2}, \ldots . \theta_{i}-\varepsilon, \ldots\right)}{2 \varepsilon}<br>
-$$<br>
-![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_24.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_25.png)</p>
+<h2 id="L-13-Gradient-Checking"><a href="#L-13-Gradient-Checking" class="headerlink" title="L 13 Gradient Checking"></a>L 13 Gradient Checking</h2><p>梯度检验帮我们节省了很多时间，也多次帮我发现<strong>backprop</strong>实施过程中的bug，接下来，我们看看如何利用它来调试或检验<strong>backprop</strong>的实施是否正确。</p>
+<p>首先要做的就是，把所有参数转换成一个巨大的向量数据，你要做的就是把矩阵w转换成一个向量，把所有矩阵w转换成向量之后，做连接运算，得到一个巨型向量$\theta$，该向量表示为参数$\theta$，代价函数J是所有W和b的函数，现在你得到了一个的代价函数（即）。接着，你得到与和顺序相同的数据，你同样可以把$dW^{[l]}$,和$db^{[l]}$ 转换成一个新的向量，用它们来初始化大向量$d\theta$，它与$\theta$具有相同维度。</p>
+<p>梯度的逼近值</p>
+<script type="math/tex; mode=display">
+d \theta_{\text { approx }}[i]=\frac{J\left(\theta_{1}, \theta_{2}, \ldots . \theta_{i}+\varepsilon, \ldots\right)-J\left(\theta_{1}, \theta_{2}, \ldots . \theta_{i}-\varepsilon, \ldots\right)}{2 \varepsilon}</script><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_24.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_25.png" alt=""></p>
 <p>现在你已经了解了梯度检验的工作原理，它帮助我在神经网络实施中发现了很多<strong>bug</strong>，希望它对你也有所帮助。</p>
-<h1>L 14 : Gradient Checking Implementation notes</h1>
-<ol>
+<h1 id="L-14-Gradient-Checking-Implementation-notes"><a href="#L-14-Gradient-Checking-Implementation-notes" class="headerlink" title="L 14 : Gradient Checking Implementation notes"></a>L 14 : Gradient Checking Implementation notes</h1><ol>
 <li>不要在训练中使用梯度检验，它只用于调试（debug）。使用完毕关闭梯度检验的功能；太慢了</li>
 <li>如果算法的梯度检验失败，要检查所有项，并试着找出 bug，即确定哪个 dθapprox[i] 与 dθ 的值相差比较大；</li>
 <li>当成本函数包含正则项时，也需要带上正则项进行检验；</li>
 <li>梯度检验不能与 dropout 同时使用。因为每次迭代过程中，dropout 会随机消除隐藏层单元的不同子集，难以计算 dropout 在梯度下降上的成本函数 J。建议关闭 dropout，用梯度检验进行双重检查，确定在没有 dropout 的情况下算法正确，然后打开 dropout；</li>
 </ol>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week1_25.png)</p>
-<h2 id="summary"><a class="header-anchor" href="#summary">¶</a>Summary</h2>
-<p><font color="red">回顾这一周，我们讲了如何配置训练集，验证集和测试集，如何分析偏差和方差，如何处理高偏差或高方差以及高偏差和高方差并存的问题，如何在神经网络中应用不同形式的正则化，如正则化和<strong>dropout</strong>，还有加快神经网络训练速度的技巧，最后是梯度检验。</font></p>
-<h1>C2W2 :Optimization Algorithm</h1>
-<h2 id="l-01-mini-batch-gradient-descent"><a class="header-anchor" href="#l-01-mini-batch-gradient-descent">¶</a>L 01 : Mini Batch Gradient Descent</h2>
-<ol>
-<li>
-<p>Vectorization</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week1_25.png" alt=""></p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><font color="red">回顾这一周，我们讲了如何配置训练集，验证集和测试集，如何分析偏差和方差，如何处理高偏差或高方差以及高偏差和高方差并存的问题，如何在神经网络中应用不同形式的正则化，如正则化和**dropout**，还有加快神经网络训练速度的技巧，最后是梯度检验。</font>
+
+
+
+<h1 id="C2W2-Optimization-Algorithm"><a href="#C2W2-Optimization-Algorithm" class="headerlink" title="C2W2 :Optimization Algorithm"></a>C2W2 :Optimization Algorithm</h1><h2 id="L-01-Mini-Batch-Gradient-Descent"><a href="#L-01-Mini-Batch-Gradient-Descent" class="headerlink" title="L 01 : Mini Batch Gradient Descent"></a>L 01 : Mini Batch Gradient Descent</h2><ol>
+<li><p>Vectorization</p>
 </li>
-<li>
-<p>Mini batch</p>
-<p>not entire training set</p>
-<p>bady training set i，$x^$</p>
+<li><p>Mini batch</p>
+<p>not entire training set </p>
+<p>bady training set i，$x^{\{i\}}$</p>
 <p>mini batch training set</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_1.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_2.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_1.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_2.png" alt=""></p>
 </li>
 </ol>
 <p>mini batch gradient descent</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_3.png)</p>
-<h2 id="l-02-understanding-mini-batch-gradient-decent"><a class="header-anchor" href="#l-02-understanding-mini-batch-gradient-decent">¶</a>L 02 : Understanding Mini-Batch Gradient Decent</h2>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_4.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_6.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_3.png" alt=""></p>
+<h2 id="L-02-Understanding-Mini-Batch-Gradient-Decent"><a href="#L-02-Understanding-Mini-Batch-Gradient-Decent" class="headerlink" title="L 02 : Understanding Mini-Batch Gradient Decent"></a>L 02 : Understanding Mini-Batch Gradient Decent</h2><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_4.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_6.png" alt=""></p>
 <p>左图，随着iterations increased, it should decrease .if it ever goes up on iteration,something is wrong.</p>
-<p>右图 : it’s as if on every iteration you’re training on a different training set or really training on a different mini batch. It should trend downwards, but it’s also going to be a little bit <a href="http://noisier.So" target="_blank" rel="noopener">noisier.So</a> if you plot J{t}, as you’re training mini batch in descent it may be over multiple epochs,you might expect to see a curve like this.</p>
-<h3 id="choosing-your-mini-batch-size"><a class="header-anchor" href="#choosing-your-mini-batch-size">¶</a>Choosing your mini-batch size</h3>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_5.png)</p>
-<h3 id="1-优缺点"><a class="header-anchor" href="#1-优缺点">¶</a>1. 优缺点</h3>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_7.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_8.png)</p>
+<p>右图 : it’s as if on every iteration you’re training on a different training set or really training on a different mini batch. It should trend downwards, but it’s also going to be a little bit noisier.So if you plot J{t}, as you’re training mini batch in descent it may be over multiple epochs,you might expect to see a curve like this.</p>
+<h3 id="Choosing-your-mini-batch-size"><a href="#Choosing-your-mini-batch-size" class="headerlink" title="Choosing your mini-batch size"></a>Choosing your mini-batch size</h3><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_5.png" alt=""></p>
+<h3 id="1-优缺点"><a href="#1-优缺点" class="headerlink" title="1. 优缺点"></a>1. 优缺点</h3><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_7.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_8.png" alt=""></p>
 <p>通过减小学习率，噪声会被改善或有所减小，但随机梯度下降法的一大缺点是，你会失去所有向量化带给你的加速，因为一次性只处理了一个训练样本，这样效率过于低下，所以实践中最好选择不大不小的<strong>mini-batch</strong>尺寸，实际上学习率达到最快。你会发现两个好处，一方面，你得到了大量向量化，上个视频中我们用过的例子中，如果<strong>mini-batch</strong>大小为1000个样本，你就可以对1000个样本向量化，比你一次性处理多个样本快得多。另一方面，你不需要等待整个训练集被处理完就可以开始进行后续工作，再用一下上个视频的数字，每次训练集允许我们采取5000个梯度下降步骤，所以实际上一些位于中间的<strong>mini-batch</strong>大小效果最好。</p>
 <p>使用<strong>batch</strong>梯度下降法时，每次迭代你都需要历遍整个训练集，可以预期每次迭代成本都会下降，所以如果成本函数是迭代次数的一个函数，它应该会随着每次迭代而减少，如果在某次迭代中增加了，那肯定出了问题，也许你的学习率太大。</p>
 <p>在随机梯度下降法中，从某一点开始，我们重新选取一个起始点，每次迭代，你只对一个样本进行梯度下降，大部分时候你向着全局最小值靠近，有时候你会远离最小值，因为那个样本恰好给你指的方向不对，因此随机梯度下降法是有很多噪声的，平均来看，它最终会靠近最小值，不过有时候也会方向错误，因为随机梯度下降法永远不会收敛，而是会一直在最小值附近波动，但它并不会在达到最小值并停留在此。</p>
@@ -671,133 +706,99 @@ $$<br>
 <p>batch : too long,too time</p>
 <p>随机： lose speeding ,噪声大</p>
 <p>mini-batch和stochastic都存在噪声问题，且在local optima附近会徘徊。但设置合适大小的mini-batch size，噪声和徘徊问题可接受的范围内。</p>
-<p>size=1,又叫随机梯度下降法 stochastic gradient descent</p>
-<h3 id="how"><a class="header-anchor" href="#how">¶</a>how</h3>
-<p>如何选择mini-batch size（这是一个hyperparameter）：</p>
+<p>size=1,又叫随机梯度下降法 stochastic gradient descent </p>
+<h3 id="how"><a href="#how" class="headerlink" title="how"></a>how</h3><p>如何选择mini-batch size（这是一个hyperparameter）：</p>
 <ul>
 <li>小数据量，比如总的样本只有几千个，完全可以直接用batch gradient descent</li>
 <li>大数量，mini-batch size倾向于选择2^n个，比如64, 128, 256等</li>
-<li>mini-batch 与CPU/GPU memory的内存容量。</li>
-</ul>
+<li><p>mini-batch 与CPU/GPU memory的内存容量。</p>
 <p>In practice of course the mini batch size is another hyper parameter that you might do a quick search over to try to figure out which one is most sufficient of reducing the cost function j. 按照上面的方法</p>
-<h2 id="l-03-exponentially-weighted-averages"><a class="header-anchor" href="#l-03-exponentially-weighted-averages">¶</a>L 03: Exponentially Weighted Averages</h2>
-<p>In order to understand those algorithms, you need to be able they use something called exponentially weighted averages. Also called exponentially weighted moving averages in statistics.</p>
-<h3 id="1-指数加权平均数-exponentially-weighted-averages"><a class="header-anchor" href="#1-指数加权平均数-exponentially-weighted-averages">¶</a>1. 指数加权平均数（Exponentially weighted averages）</h3>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_9.png)</p>
+</li>
+</ul>
+<h2 id="L-03-Exponentially-Weighted-Averages"><a href="#L-03-Exponentially-Weighted-Averages" class="headerlink" title="L 03: Exponentially Weighted Averages"></a>L 03: Exponentially Weighted Averages</h2><p>In order to understand those algorithms, you need to be able they use something called exponentially weighted averages. Also called exponentially weighted moving averages in statistics.</p>
+<h3 id="1-指数加权平均数（Exponentially-weighted-averages）"><a href="#1-指数加权平均数（Exponentially-weighted-averages）" class="headerlink" title="1. 指数加权平均数（Exponentially weighted averages）"></a>1. 指数加权平均数（Exponentially weighted averages）</h3><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_9.png" alt=""></p>
 <p>$\theta _i$表示每一日的温度值，蓝色的点，$v_t$表示加权平均后的,红色</p>
-<p>权平均方法是：每天的温度值加权值$vt$设置为前一天的温度加权值$vt−1$和当天的温度实际值$θt$做加权平均：<br>
-$$<br>
-v_{t}=\beta v_{t-1}+(1-\beta) \theta_{t}<br>
-$$<br>
-由于以后我们要考虑的原因，在计算时可视$v_T$大概是$\frac{1}{(1-\beta)}$的每日温度的加权平均，</p>
+<p>权平均方法是：每天的温度值加权值$vt$设置为前一天的温度加权值$vt−1$和当天的温度实际值$θt$做加权平均：</p>
+<script type="math/tex; mode=display">
+v_{t}=\beta v_{t-1}+(1-\beta) \theta_{t}</script><p>由于以后我们要考虑的原因，在计算时可视$v_T$大概是$\frac{1}{(1-\beta)}$的每日温度的加权平均，</p>
 <p>如果是$\beta$=0.9，这是十天的平均值，红色</p>
 <p>如果$\beta$=0.98,是50天的结果，绿色</p>
 <p>如果$beta$=0.5,是2day的结果，黄色</p>
 <p>由于仅平均了两天的温度，平均的数据太少，所以得到的曲线有更多的噪声，有可能出现异常值，但是这个曲线能够更快适应温度变化。</p>
 <p>当 $\beta$较大时，指数加权平均值适应地更缓慢一些。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_10.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_10.png" alt=""></p>
 <p>$</p>
-<h2 id="l-04-understanding-exponentially-weighted-averages"><a class="header-anchor" href="#l-04-understanding-exponentially-weighted-averages">¶</a>L 04 : Understanding Exponentially Weighted Averages</h2>
-<p><strong>假如β=0.9，每个v的计算如下：</strong><br>
-$$<br>
-\begin{aligned} v_{100} &amp;=0.9 v_{99}+0.1 \theta_{100} \ v_{99} &amp;=0.9 v_{98}+0.1 \theta_{99} \ v_{98} &amp;=0.9 v_{97}+0.1 \theta_{98} \end{aligned}<br>
-$$<br>
-递推可得：<br>
-$$<br>
-v_{100}=0.1 \theta_{100}+0.1 * 0.9 \theta_{99}+0.1 *(0.9)^{2} \theta_{98}+\ldots<br>
-$$<br>
-指数的衰减规律</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_11.png)</p>
-<p>一般的<br>
-$$<br>
-v_{t}=\sum_{i=1}^{t}(1-\beta) \beta^{t-i} \theta_{i}<br>
-$$<br>
-无穷级数求和：<br>
-$$<br>
-\sum_{t=1}^{n}(1-\beta) \beta^{t}=1<br>
-$$<br>
-因此可以近似的认为所有项的系数之和正好为100%。</p>
+<h2 id="L-04-Understanding-Exponentially-Weighted-Averages"><a href="#L-04-Understanding-Exponentially-Weighted-Averages" class="headerlink" title="L 04 : Understanding Exponentially Weighted Averages"></a>L 04 : Understanding Exponentially Weighted Averages</h2><p><strong>假如β=0.9，每个v的计算如下：</strong></p>
+<script type="math/tex; mode=display">
+\begin{aligned} v_{100} &=0.9 v_{99}+0.1 \theta_{100} \\ v_{99} &=0.9 v_{98}+0.1 \theta_{99} \\ v_{98} &=0.9 v_{97}+0.1 \theta_{98} \end{aligned}</script><p>递推可得：</p>
+<script type="math/tex; mode=display">
+v_{100}=0.1 \theta_{100}+0.1 * 0.9 \theta_{99}+0.1 *(0.9)^{2} \theta_{98}+\ldots</script><p>指数的衰减规律</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_11.png" alt=""></p>
+<p>一般的</p>
+<script type="math/tex; mode=display">
+v_{t}=\sum_{i=1}^{t}(1-\beta) \beta^{t-i} \theta_{i}</script><p>无穷级数求和：</p>
+<script type="math/tex; mode=display">
+\sum_{t=1}^{n}(1-\beta) \beta^{t}=1</script><p>因此可以近似的认为所有项的系数之和正好为100%。</p>
 <p>即，$vt$是对t日之前<strong>所有的实际温度的加权平均</strong>,权重是指数递减的。</p>
 <p>十天后，曲线高度下降到了1/3,赋予权重$\beta^{t-i}$</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_12.png)<br>
-$$<br>
-0.9^{10}<sub>=0.35</sub>=1/e<br>
-$$<br>
-一般认为，$v_t$近似前$\frac{1}{1-\beta}$的加权平均值</p>
-<h2 id="l05-bias-correction-in-exponentially-weighted-averages"><a class="header-anchor" href="#l05-bias-correction-in-exponentially-weighted-averages">¶</a>L05 : Bias correction in exponentially weighted averages</h2>
-<p>指数加权平均的偏差修正</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_12.png" alt=""></p>
+<script type="math/tex; mode=display">
+0.9^{10}~=0.35~=1/e</script><p>一般认为，$v_t$近似前$\frac{1}{1-\beta}$的加权平均值</p>
+<h2 id="L05-Bias-correction-in-exponentially-weighted-averages"><a href="#L05-Bias-correction-in-exponentially-weighted-averages" class="headerlink" title="L05 : Bias correction in exponentially weighted averages"></a>L05 : Bias correction in exponentially weighted averages</h2><p>指数加权平均的偏差修正</p>
 <p>由于计算$v1$的时候，并没有历史值做加权，这个时候令其前一个加权值$v0=0$，则会导致$v_1$远小于$\theta_1$,依次类推，<strong>在靠近前面的值会出现显著的小于实际值的情况</strong></p>
-<p>因此做一个修正<br>
-$$<br>
-v_{t}=\frac{\beta v_{t-1}+(1-\beta) \theta_{t}}{1-\beta^{t}}<br>
-$$<br>
-你会发现随着$\beta^t$增加，接近于0，所以当t很大的时候，偏差修正几乎没有作用，因此当t较大的时候，紫线基本和绿线重合了。不过在开始学习阶段，你才开始预测热身练习，偏差修正可以帮助你更好预测温度，偏差修正可以帮助你使结果从紫线变成绿线。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_13.png)</p>
+<p>因此做一个修正</p>
+<script type="math/tex; mode=display">
+v_{t}=\frac{\beta v_{t-1}+(1-\beta) \theta_{t}}{1-\beta^{t}}</script><p>你会发现随着$\beta^t$增加，接近于0，所以当t很大的时候，偏差修正几乎没有作用，因此当t较大的时候，紫线基本和绿线重合了。不过在开始学习阶段，你才开始预测热身练习，偏差修正可以帮助你更好预测温度，偏差修正可以帮助你使结果从紫线变成绿线。</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_13.png" alt=""></p>
 <p>因为在Machine Learning中看重的是很多次迭代后的结果，初期的偏差影响并不大。</p>
-<h2 id="l-06-gradient-descent-with-momentum"><a class="header-anchor" href="#l-06-gradient-descent-with-momentum">¶</a>L 06 : Gradient Descent With Momentum</h2>
-<p>动量梯度下降法，运行速度几乎总是快于标准的梯度下降算法，</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_14.png)</p>
+<h2 id="L-06-Gradient-Descent-With-Momentum"><a href="#L-06-Gradient-Descent-With-Momentum" class="headerlink" title="L 06 : Gradient Descent With Momentum"></a>L 06 : Gradient Descent With Momentum</h2><p>动量梯度下降法，运行速度几乎总是快于标准的梯度下降算法，</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_14.png" alt=""></p>
 <p>当慢慢下降到最小值，上下波动的梯度下降法的速度减缓，无法使用更大的学习率，</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_15.png)</p>
-<p>在纵轴上，希望学校慢一点，不需要摆动，横着上，加快学校，基于此就有了Gradient descent with momentum。<br>
-$$<br>
-\begin{array}{c}{v_{d W} :=\beta v_{d W}+(1-\beta) d W} \ {v_{d b} :=\beta v_{d b}+(1-\beta) d b} \ {w=w-\alpha v_{d W}} \ {b=b-\alpha v_{d b}}\end{array}<br>
-$$<br>
-这样，可以让gradient更平滑</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_15.png" alt=""></p>
+<p>在纵轴上，希望学校慢一点，不需要摆动，横着上，加快学校，基于此就有了Gradient descent with momentum。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}{v_{d W} :=\beta v_{d W}+(1-\beta) d W} \\ {v_{d b} :=\beta v_{d b}+(1-\beta) d b} \\ {w=w-\alpha v_{d W}} \\ {b=b-\alpha v_{d b}}\end{array}</script><p>这样，可以让gradient更平滑</p>
 <ul>
 <li>对于上图垂直方向，原来是会上下震荡，但引入了exponentially weighted average，相当于对前面的震荡进行了平均，<strong>结果就是上下震荡互相抵消了</strong>。而水平方向都是向右没有震荡，因此平均后还是向右。最终导致呈现上图红色的下降路线。</li>
-<li>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_18.png)</li>
+<li><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_18.png" alt=""></li>
 </ul>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_16.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_17.png)</p>
-<h2 id="l-07-rmsprop"><a class="header-anchor" href="#l-07-rmsprop">¶</a>L 07 : RMSprop</h2>
-<p>RMSprop (Root Mean Square Propagation，均方根传递)，<strong>与momentum一样，也是降低梯度的抖动</strong>。<strong>而是平抑不同大小梯度的更新速率。实际上 作用在α上的</strong></p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_19.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_16.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_17.png" alt=""></p>
+<h2 id="L-07-RMSprop"><a href="#L-07-RMSprop" class="headerlink" title="L 07 : RMSprop"></a>L 07 : RMSprop</h2><p>RMSprop (Root Mean Square Propagation，均方根传递)，<strong>与momentum一样，也是降低梯度的抖动</strong>。<strong>而是平抑不同大小梯度的更新速率。实际上 作用在α上的</strong></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_19.png" alt=""></p>
 <p>回忆一下我们之前的例子，如果你执行梯度下降，虽然横轴方向正在推进，但纵轴方向会有大幅度摆动，为了分析这个例子，假设b纵轴代表参数，横轴代表参数W，可能有w1，或者w2其它重要的参数，为了便于理解，被称为b和w。</p>
 <p>我们希望学习速度快，而在垂直方向，也就是例子中的方向，我们希望减缓纵轴上的摆动，所以有了$S_{d W} $和$ S_{d b}$，我们希望$S_{d W} $会相对较小，所以我们要除以一个较小的数，而希望$ S_{d b}$又较大，所以这里我们要除以较大的数字，这样就可以减缓纵轴上的变化。</p>
 <p>这些微分，垂直方向的要比水平方向的大得多，所以斜率在方向特别大，所以这些微分中，db较大，dw较小，因为函数的倾斜程度，在纵轴上，也就是b方向上要大于在横轴上，也就是方向上W。db的平方较大，所以$Sdb$也会较大，而相比之下，dw会小一些，亦或dw平方会小一些，因此$Sdw$会小一些，结果就是纵轴上的更新要被一个较大的数相除，就能消除摆动，而水平方向的更新则被较小的数相除。</p>
 <p><strong>RMSprop</strong>的影响就是你的更新最后会变成这样（绿色线），纵轴方向上摆动较小，而横轴方向继续推进。还有个影响就是，你可以用一个更大学习率，然后加快学习，而无须在纵轴上垂直方向偏离。</p>
 <p>实际中dw是一个高维度的参数向量，db也是一个高维度参数向量，但是你的直觉是，在你要消除摆动的维度中，最终你要计算一个更大的和值，这个平方和微分的加权平均值，所以你最后去掉了那些有摆动的方向。所以这就是<strong>RMSprop</strong>，全称是均方根，因为你将微分进行平方，然后最后使用平方根。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_20.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_20.png" alt=""></p>
 <p>解释平方：</p>
 <p>垂直方向，比较陡，梯度比较大，但我们又希望它下降的慢。因此对梯度除以一个较大的值，所以用梯度的平方的平均来表示。让不同的参数拥有不同的learning rate。</p>
 <p><strong>从某种角度看，RMSprop会根据当前的梯度自动调整参数的learning rate，梯度大降低learning rate，梯度小的时候提高learning rate，从而一方面避免了震荡，另一方面避免在平坦的地方徘徊太久。</strong></p>
-<p>为了避免出现分母为0<br>
-$$<br>
-\begin{array}{c}{s_{d w}=\beta s_{d w}+(1-\beta)(d w)^{2}} \ {s_{d b}=\beta s_{d b}+(1-\beta)(d b)^{2}} \ {w :=w-\alpha \frac{d w}{\sqrt{s_{d w}+\varepsilon}}} \ {b :=b-\alpha \frac{d b}{\sqrt{s_{d b}+\varepsilon}}}\end{array}<br>
-$$<br>
-$\varepsilon$取$10^{-8}$不错的选择.</p>
+<p>为了避免出现分母为0</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}{s_{d w}=\beta s_{d w}+(1-\beta)(d w)^{2}} \\ {s_{d b}=\beta s_{d b}+(1-\beta)(d b)^{2}} \\ {w :=w-\alpha \frac{d w}{\sqrt{s_{d w}+\varepsilon}}} \\ {b :=b-\alpha \frac{d b}{\sqrt{s_{d b}+\varepsilon}}}\end{array}</script><p>$\varepsilon$取$10^{-8}$不错的选择.</p>
 <p>补充：</p>
 <p>RMSProp算法对梯度计算了<strong>微分平方加权平均数</strong>。这种做法有利于消除了摆动幅度大的方向，用来修正摆动幅度，使得各个维度的摆动幅度都较小。另一方面也使得网络函数收敛更快</p>
-<h2 id="l-08-adam-optimization-algorithm"><a class="header-anchor" href="#l-08-adam-optimization-algorithm">¶</a>L 08 Adam optimization algorithm</h2>
-<p>Adam（Adaptive Moment Estimation，自适应矩估计）就是momentum和RMSprop的结合。momentum负责平滑梯度，而RMSprop负责调解learning rate。</p>
-<h3 id="1-adam"><a class="header-anchor" href="#1-adam">¶</a>1. Adam</h3>
-<p>a. 引入的变量有：</p>
+<h2 id="L-08-Adam-optimization-algorithm"><a href="#L-08-Adam-optimization-algorithm" class="headerlink" title="L 08 Adam optimization algorithm"></a>L 08 Adam optimization algorithm</h2><p>Adam（Adaptive Moment Estimation，自适应矩估计）就是momentum和RMSprop的结合。momentum负责平滑梯度，而RMSprop负责调解learning rate。</p>
+<h3 id="1-Adam"><a href="#1-Adam" class="headerlink" title="1. Adam"></a>1. Adam</h3><p>a. 引入的变量有：</p>
 <ul>
 <li>$v$ : 计算同momentum算法，将梯度进行指数加权平均</li>
 <li>$s$: 计算同RMSprop，将梯度的平方进行指数加权平均</li>
 <li>$β1$ : 计算vv的加权参数</li>
 <li>$β2$ : 计算ss的加权参数</li>
 </ul>
-<p>b. 在迭代前，初始化参数v和s<br>
-$$<br>
-v_{d W}=0, s_{d W}=0, v_{d b}=0, s_{d b}=0<br>
-$$<br>
-c. 对第t次梯度下降的迭代 a. 首先计算dw和db的v和s<br>
-$$<br>
-\begin{array}{c}{v_{d W}=\beta_{1} v_{d W}+\left(1-\beta_{1}\right) d W} \ {s_{d W}=\beta_{2} s_{d W}+\left(1-\beta_{2}\right)(d W)^{2}} \ {v_{d b}=\beta_{1} v_{d b}+\left(1-\beta_{1}\right) d b} \ {s_{d b}=\beta_{2} s_{d b}+\left(1-\beta_{2}\right)(d b)^{2}}\end{array}<br>
-$$<br>
-d. 修正<br>
-$$<br>
-v_{d W}^{\text {corrected}}=\frac{v_{d W}}{1-\left(\beta_{1}\right)^{t}}\<br>
-\begin{aligned} s_{d W}^{\text {corrected}} &amp;=\frac{s_{d W}}{1-\left(\beta_{2}\right)^{t}} \ v_{d b}^{\text {corrected}} &amp;=\frac{v_{d b}}{1-\left(\beta_{1}\right)^{t}} \ s_{d b}^{\text {corrected}} &amp;=\frac{s_{d b}}{1-\left(\beta_{2}\right)^{t}} \end{aligned}</p>
-<p>$$<br>
-e. 最后更新参数W和b<br>
-$$<br>
-W=W-\alpha \frac{v_{d W}^{\text {corrected}}}{\sqrt{s_{d W}^{\text { corrected }}+\varepsilon}}\<br>
-b=b-\alpha \frac{v_{d b}^{\text {corrected}}}{\sqrt{s_{d b}^{\text { corrected }}+\varepsilon}}<br>
-$$<br>
-超参的选择：</p>
+<p>b. 在迭代前，初始化参数v和s</p>
+<script type="math/tex; mode=display">
+v_{d W}=0, s_{d W}=0, v_{d b}=0, s_{d b}=0</script><p>c. 对第t次梯度下降的迭代 a. 首先计算dw和db的v和s</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}{v_{d W}=\beta_{1} v_{d W}+\left(1-\beta_{1}\right) d W} \\ {s_{d W}=\beta_{2} s_{d W}+\left(1-\beta_{2}\right)(d W)^{2}} \\ {v_{d b}=\beta_{1} v_{d b}+\left(1-\beta_{1}\right) d b} \\ {s_{d b}=\beta_{2} s_{d b}+\left(1-\beta_{2}\right)(d b)^{2}}\end{array}</script><p>d. 修正</p>
+<script type="math/tex; mode=display">
+v_{d W}^{\text {corrected}}=\frac{v_{d W}}{1-\left(\beta_{1}\right)^{t}}\\
+\begin{aligned} s_{d W}^{\text {corrected}} &=\frac{s_{d W}}{1-\left(\beta_{2}\right)^{t}} \\ v_{d b}^{\text {corrected}} &=\frac{v_{d b}}{1-\left(\beta_{1}\right)^{t}} \\ s_{d b}^{\text {corrected}} &=\frac{s_{d b}}{1-\left(\beta_{2}\right)^{t}} \end{aligned}</script><p>e. 最后更新参数W和b</p>
+<script type="math/tex; mode=display">
+W=W-\alpha \frac{v_{d W}^{\text {corrected}}}{\sqrt{s_{d W}^{\text { corrected }}+\varepsilon}}\\
+b=b-\alpha \frac{v_{d b}^{\text {corrected}}}{\sqrt{s_{d b}^{\text { corrected }}+\varepsilon}}</script><p>超参的选择：</p>
 <ul>
 <li>α：需要调优</li>
 <li>β1: 通常选择为0.9</li>
@@ -805,29 +806,22 @@ $$<br>
 <li>ε: 一般不需要调优，选择一个小数，比如10−8</li>
 </ul>
 <p>你可以尝试一系列值α，然后看哪个有效</p>
-<h2 id="l09-learning-rate-decay"><a class="header-anchor" href="#l09-learning-rate-decay">¶</a>L09 : Learning Rate Decay</h2>
-<ol>
-<li>
-<p>why</p>
+<h2 id="L09-Learning-Rate-Decay"><a href="#L09-Learning-Rate-Decay" class="headerlink" title="L09 : Learning Rate Decay"></a>L09 : Learning Rate Decay</h2><ol>
+<li><p>why</p>
 <p>为什么要做learning rate decay？ 较大的learning rate虽然在算法开始阶段会加快收敛速度，但在收敛接近到优化点的时候，算法会在优化点附近震荡，如下图：</p>
 </li>
 </ol>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_22.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_22.png" alt=""></p>
 <p>2.如何做learning rate decay？ <strong>思路很简单，就是引入一个函数，让α随着迭代（比如min-batch的epoch）递减</strong>。为此可以采用的decay函数有：</p>
-<p>倒数：<br>
-$$<br>
-\alpha :=\frac{1}{1+\text { decay rate * epoch num}} \alpha<br>
-$$<br>
-![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_23.png)</p>
-<h2 id="l-10-the-problem-of-local-optima"><a class="header-anchor" href="#l-10-the-problem-of-local-optima">¶</a>L 10: The Problem of local Optima</h2>
-<p>事实上，如果你要创建一个神经网络，通常梯度为零的点并不是这个图中的局部最优点，实际上成本函数的零梯度点，通常是鞍点。</p>
+<p>倒数：</p>
+<script type="math/tex; mode=display">
+\alpha :=\frac{1}{1+\text { decay rate * epoch num}} \alpha</script><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_23.png" alt=""></p>
+<h2 id="L-10-The-Problem-of-local-Optima"><a href="#L-10-The-Problem-of-local-Optima" class="headerlink" title="L 10: The Problem of local Optima"></a>L 10: The Problem of local Optima</h2><p>事实上，如果你要创建一个神经网络，通常梯度为零的点并不是这个图中的局部最优点，实际上成本函数的零梯度点，通常是鞍点。</p>
 <p>但是一个具有高维度空间的函数，如果梯度为0，那么在每个方向，它可能是凸函数，也可能是凹函数。如果你在2万维空间中，那么想要得到局部最优，所有的2万个方向都需要是这样，但发生的机率也许很小，也许是$2^{-20000}$，因此更有可能遇到有些方向的曲线会这样向上弯曲，另一些方向曲线向下弯，而不是所有的都向上弯曲，因此在高维度空间，你更可能碰到鞍点。所有，担心收敛到local optima，真是人们想多了，实际上并没有想象的那么多local optima。在高维空间，几乎不太可能被困在一个local optima，这是一个好消息。</p>
 <p>因此，在高维空间遇到的问题是高原问题（Problem of plateaus）</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_27.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_27.png" alt=""></p>
 <p>Adam算法可以加速学习</p>
-<h1>W3 Hyperparameter tuning</h1>
-<h2 id="l01-tuning-process"><a class="header-anchor" href="#l01-tuning-process">¶</a>L01 Tuning process</h2>
-<ol>
+<h1 id="W3-Hyperparameter-tuning"><a href="#W3-Hyperparameter-tuning" class="headerlink" title="W3 Hyperparameter tuning"></a>W3 Hyperparameter tuning</h1><h2 id="L01-Tuning-process"><a href="#L01-Tuning-process" class="headerlink" title="L01 Tuning process"></a>L01 Tuning process</h2><ol>
 <li>到目前为止，我们接触到的hyperparameter有：</li>
 <li>learning rate: αα</li>
 <li>momentum 参数: ββ</li>
@@ -842,110 +836,85 @@ $$<br>
 <li>次重要的： 神经网络隐藏层neuron数 learning rate decay参数</li>
 <li>基本不需调整的 β1β1和 β2β2以及ε</li>
 </ol>
-<h4 id="1-try-random-values-don-t-use-a-grid"><a class="header-anchor" href="#1-try-random-values-don-t-use-a-grid">¶</a>1. Try random values : Don’t use a grid</h4>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_28.png)</p>
+<h4 id="1-Try-random-values-Don’t-use-a-grid"><a href="#1-Try-random-values-Don’t-use-a-grid" class="headerlink" title="1. Try random values : Don’t use a grid"></a>1. Try random values : Don’t use a grid</h4><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_28.png" alt=""></p>
 <p>why:</p>
 <p>举个例子，假设超参数1是（学习速率），取一个极端的例子，假设超参数2是<strong>Adam</strong>算法中，分母中的$\varepsilon$。在这种情况下，a的取值很重要，而$\varepsilon$取值则无关紧要。如果你在网格中取点，接着，你试验了a的5个取值，那你会发现，无论$\varepsilon$取何值，结果基本上都是一样的。所以，你知道共有25种模型，但进行试验的值只有5个，我认为这是很重要的。</p>
 <p>对比而言，如果你随机取值，你会试验25个独立的a,$\varepsilon$，似乎你更有可能发现效果做好的那个。</p>
-<h3 id="2-由粗糙到精细的策略"><a class="header-anchor" href="#2-由粗糙到精细的策略">¶</a>2. 由粗糙到精细的策略</h3>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_29.png)</p>
-<h2 id="l-02-using-an-appropriate-scale-to-pick-hyperparameters"><a class="header-anchor" href="#l-02-using-an-appropriate-scale-to-pick-hyperparameters">¶</a>L 02: Using an Appropriate Scale to pick hyperparameters</h2>
-<p>$a$取值0.0001,1,如果你画一条从0.0001到1的数轴，沿其随机均匀取值，那90%的数值将会落在0.1到1之间，结果就是，在0.1到1之间，应用了90%的资源，而在0.0001到0.1之间，只有10%的搜索资源，这看上去不太对。</p>
+<h3 id="2-由粗糙到精细的策略"><a href="#2-由粗糙到精细的策略" class="headerlink" title="2. 由粗糙到精细的策略"></a>2. 由粗糙到精细的策略</h3><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_29.png" alt=""></p>
+<h2 id="L-02-Using-an-Appropriate-Scale-to-pick-hyperparameters"><a href="#L-02-Using-an-Appropriate-Scale-to-pick-hyperparameters" class="headerlink" title="L 02: Using an Appropriate Scale to pick hyperparameters"></a>L 02: Using an Appropriate Scale to pick hyperparameters</h2><p>$a$取值0.0001,1,如果你画一条从0.0001到1的数轴，沿其随机均匀取值，那90%的数值将会落在0.1到1之间，结果就是，在0.1到1之间，应用了90%的资源，而在0.0001到0.1之间，只有10%的搜索资源，这看上去不太对。</p>
 <p>同时在范围内搜索，也不是均匀分布（uniformly random）的，通常有这个参数的scale，<strong>比如对数scale</strong>。</p>
 <p>反而，用对数标尺搜索超参数的方式会更合理，因此这里不使用线性轴，分别依次取0.0001，0.001，0.01，0.1，1，在对数轴上均匀随机取点，这样，在0.0001到0.001之间，就会有更多的搜索资源可用，还有在0.001到0.01之间等等。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_32.png)</p>
-<h2 id="l-03-hyperparameter-tuning-i-practice"><a class="header-anchor" href="#l-03-hyperparameter-tuning-i-practice">¶</a>L 03 : Hyperparameter tuning i practice</h2>
-<ol>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_32.png" alt=""></p>
+<h2 id="L-03-Hyperparameter-tuning-i-practice"><a href="#L-03-Hyperparameter-tuning-i-practice" class="headerlink" title="L 03 : Hyperparameter tuning i practice"></a>L 03 : Hyperparameter tuning i practice</h2><ol>
 <li>不同的算法和场景，对超参的scale敏感性可能不一样.</li>
-<li>根据计算资源和数据量，可以采取两种策略来调参
-<ul>
+<li>根据计算资源和数据量，可以采取两种策略来调参<ul>
 <li>Panda（熊猫策略）：对一个模型先后修改参数，查看其表现，最终选择最好的参数。就像熊猫一样，一次只抚养一个后代。</li>
-<li>Caviar（鱼子酱策略）：计算资源足够，可以同时运行很多模型实例，采用不同的参数，然后最终选择一个好的。类似鱼类，一次下很多卵，自动竞争成活。</li>
+<li>Caviar（鱼子酱策略）：计算资源足够，可以同时运行很多模型实例，采用不同的参数，然后最终选择一个好的。类似鱼类，一次下很多卵，自动竞争成活。 </li>
 </ul>
 </li>
 </ol>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_33.png)</p>
-<h3 id="l-04-normalizing-activations-in-a-network"><a class="header-anchor" href="#l-04-normalizing-activations-in-a-network">¶</a>L 04: Normalizing Activations in a Network</h3>
-<h4 id="1-implementing-batch-normalizing"><a class="header-anchor" href="#1-implementing-batch-normalizing">¶</a>1. Implementing Batch Normalizing</h4>
-<p><strong>Batch</strong>归一化,<strong>Batch</strong>归一化会使你的参数搜索问题变得很容易，使神经网络对超参数的选择更加稳定，超参数的范围会更加庞大，工作效果也很好，也会是你的训练更加容易，甚至是深层网络。</p>
-<p>可以normalize $a<sup>{[l]},z</sup>{[l]}$,选择$z^{[L]}$</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_33.png" alt=""></p>
+<h3 id="L-04-Normalizing-Activations-in-a-Network"><a href="#L-04-Normalizing-Activations-in-a-Network" class="headerlink" title="L 04: Normalizing Activations in a Network"></a>L 04: Normalizing Activations in a Network</h3><h4 id="1-Implementing-Batch-Normalizing"><a href="#1-Implementing-Batch-Normalizing" class="headerlink" title="1. Implementing Batch Normalizing"></a>1. Implementing Batch Normalizing</h4><p><strong>Batch</strong>归一化,<strong>Batch</strong>归一化会使你的参数搜索问题变得很容易，使神经网络对超参数的选择更加稳定，超参数的范围会更加庞大，工作效果也很好，也会是你的训练更加容易，甚至是深层网络。</p>
+<p>可以normalize $a^{[l]},z^{[l]}$,选择$z^{[L]}$</p>
 <p><strong>设置 γ 和 β 的原因</strong>是，如果各隐藏层的输入均值在靠近 0 的区域，即处于激活函数的线性区域，不利于训练非线性神经网络，从而得到效果较差的模型。因此，需要用 γ 和 β 对标准化后的结果做进一步处理。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_34.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_34.png" alt=""></p>
 <p>需要注意的是，β和γ不是超参，而是梯度下降需学习的参数。</p>
-<h2 id="l-05-fitting-batch-norm-into-neural-networks"><a class="header-anchor" href="#l-05-fitting-batch-norm-into-neural-networks">¶</a>L 05 : Fitting Batch Norm Into Neural Networks</h2>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_35.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_36.png)</p>
+<h2 id="L-05-Fitting-Batch-Norm-Into-Neural-Networks"><a href="#L-05-Fitting-Batch-Norm-Into-Neural-Networks" class="headerlink" title="L 05 : Fitting Batch Norm Into Neural Networks"></a>L 05 : Fitting Batch Norm Into Neural Networks</h2><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_35.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_36.png" alt=""></p>
 <p>注意</p>
-<p>先前我说过每层的参数是$w<sup>{[l]}$和$b</sup>{[l]}$，还有$\beta<sup>{[l]}$和$b</sup>{[l]}$，请注意计算的方式如下，$z<sup>{[l]}=w</sup>{[l]} a<sup>{[l-1]}+b</sup>{[l]}$，但<strong>Batch</strong>归一化做的是，它要看这个<strong>mini-batch</strong>，先将$z<sup>{[l]}$归一化，结果为均值0和标准方差，再由$\beta$和b重缩放，但这意味着，无论$b</sup>{[l]}$的值是多少，都是要被减去的，因为在<strong>Batch</strong>归一化的过程中，你要计算的$z^{[l]}$均值，再减去平均值，在此例中的<strong>mini-batch</strong>中增加任何常数，数值都不会改变，因为加上的任何常数都将会被均值减去所抵消.</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_37.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_38.png)</p>
-<p>最后，请记住的维$z<sup>{[l]}$，因为在这个例子中，维数会是$\left(n</sup>{[l]}, 1\right)$，的尺寸为，如果是l层隐藏单元的数量，那$ \beta^{[l]}$和$ \gamma<sup>{[l]}$的维度也是$\left(n</sup>{[l]}, 1\right)$，因为这是你隐藏层的数量，你有隐藏单元，<strong>所以$\gamma^{[l]}$和</strong>$  \beta^{[l]}$用来将每个隐藏层的均值和方差缩放为网络想要的值。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_39.png)</p>
-<h3 id="l-06-why-doest-batch-norm-work"><a class="header-anchor" href="#l-06-why-doest-batch-norm-work">¶</a>L 06 Why Doest Batch Norm Work?</h3>
-<ol>
+<p>先前我说过每层的参数是$w^{[l]}$和$b^{[l]}$，还有$\beta^{[l]}$和$b^{[l]}$，请注意计算的方式如下，$z^{[l]}=w^{[l]} a^{[l-1]}+b^{[l]}$，但<strong>Batch</strong>归一化做的是，它要看这个<strong>mini-batch</strong>，先将$z^{[l]}$归一化，结果为均值0和标准方差，再由$\beta$和b重缩放，但这意味着，无论$b^{[l]}$的值是多少，都是要被减去的，因为在<strong>Batch</strong>归一化的过程中，你要计算的$z^{[l]}$均值，再减去平均值，在此例中的<strong>mini-batch</strong>中增加任何常数，数值都不会改变，因为加上的任何常数都将会被均值减去所抵消.</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_37.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_38.png" alt=""></p>
+<p>最后，请记住的维$z^{[l]}$，因为在这个例子中，维数会是$\left(n^{[l]}, 1\right)$，的尺寸为，如果是l层隐藏单元的数量，那$ \beta^{[l]}$和$ \gamma^{[l]}$的维度也是$\left(n^{[l]}, 1\right)$，因为这是你隐藏层的数量，你有隐藏单元，<strong>所以$\gamma^{[l]}$和</strong>$  \beta^{[l]}$用来将每个隐藏层的均值和方差缩放为网络想要的值。</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_39.png" alt=""></p>
+<h3 id="L-06-Why-Doest-Batch-Norm-Work"><a href="#L-06-Why-Doest-Batch-Norm-Work" class="headerlink" title="L 06 Why Doest Batch Norm Work?"></a>L 06 Why Doest Batch Norm Work?</h3><ol>
 <li>首先，起到了normalization的作用，同对输入数据X的normalization作用类似。</li>
 </ol>
-<ol start="2">
-<li>
-<p>让每一层的学习，<strong>一定程度解耦了前层参数和后层参数，让各层更加独立的学习</strong>。无论前一层如何变，本层输入的数据总是保持稳定的均值和方差。（主要原因）</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_40.png)</p>
+<ol>
+<li><p>让每一层的学习，<strong>一定程度解耦了前层参数和后层参数，让各层更加独立的学习</strong>。无论前一层如何变，本层输入的数据总是保持稳定的均值和方差。（主要原因）</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_40.png" alt=""></p>
 <p>所以使你数据改变分布的这个想法，有个有点怪的名字“<strong>Covariate shift</strong>”，想法是这样的，如果你已经学习了到 的映射，如果 的分布改变了，那么你可能需要重新训练你的学习算法。这种做法同样适用于，如果真实函数由 到 映射保持不变，正如此例中，因为真实函数是此图片是否是一只猫，训练你的函数的需要变得更加迫切，如果真实函数也改变，情况就更糟了。</p>
 <p>关于第二点，如果实际应用样本和训练样本的数据分布不同（例如，橘猫图片和黑猫图片），我们称发生了“<strong>Covariate Shift</strong>”。这种情况下，一般要对模型进行重新训练。Batch Normalization 的作用就是减小 Covariate Shift 所带来的影响，让模型变得更加健壮，鲁棒性（Robustness）更强。</p>
 <p>即使输入的值改变了，由于 Batch Normalization 的作用，使得均值和方差保持不变（由 γ 和 β 决定），限制了在前层的参数更新对数值分布的影响程度，因此后层的学习变得更容易一些。Batch Normalization 减少了各层 W 和 b 之间的耦合性，让各层更加独立，实现自我训练学习的效果。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_41.png)</p>
-<p>另外，Batch Normalization 也<strong>起到微弱的正则化</strong>（regularization）效果。因为在每个 mini-batch 而非整个数据集上计算均值和方差，只由这一小部分数据估计得出的均值和方差会有一些噪声，因此最终计算出的 z<sub>(i)z</sub>(i)也有一定噪声。类似于 dropout，这种噪声会使得神经元不会再特别依赖于任何一个输入特征。</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_41.png" alt=""></p>
+<p>另外，Batch Normalization 也<strong>起到微弱的正则化</strong>（regularization）效果。因为在每个 mini-batch 而非整个数据集上计算均值和方差，只由这一小部分数据估计得出的均值和方差会有一些噪声，因此最终计算出的 z~(i)z~(i)也有一定噪声。类似于 dropout，这种噪声会使得神经元不会再特别依赖于任何一个输入特征。</p>
 <p>因为 Batch Normalization 只有微弱的正则化效果，因此可以和 dropout 一起使用，以获得更强大的正则化效果。通过应用更大的 mini-batch 大小，可以减少噪声，从而减少这种正则化效果。</p>
 <p>最后，不要将 Batch Normalization 作为正则化的手段，而是当作加速学习的方式。正则化只是一种非期望的副作用，Batch Normalization 解决的还是反向传播过程中的梯度问题（梯度消失和爆炸）。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_42.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_42.png" alt=""></p>
 </li>
 </ol>
-<h3 id="l-07-batch-norm-at-test-time"><a class="header-anchor" href="#l-07-batch-norm-at-test-time">¶</a>L 07 : Batch Norm At Test Time</h3>
-<p>问题：BN算法在训练时是一个批次的数据训练，能算出每一层Z的均值和方差；而在测试时，输入的则是单个数据，<strong>单条数据没法做均值和方差的计算</strong>，怎么在测试期输入均值和方差呢?</p>
+<h3 id="L-07-Batch-Norm-At-Test-Time"><a href="#L-07-Batch-Norm-At-Test-Time" class="headerlink" title="L 07 : Batch Norm At Test Time"></a>L 07 : Batch Norm At Test Time</h3><p>问题：BN算法在训练时是一个批次的数据训练，能算出每一层Z的均值和方差；而在测试时，输入的则是单个数据，<strong>单条数据没法做均值和方差的计算</strong>，怎么在测试期输入均值和方差呢?</p>
 <p>实际应用中一般不使用这种方法，而是使用之前学习过的指数加权平均的方法来预测测试过程单个样本的 μ 和 $σ^2$</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_43.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_43.png" alt=""></p>
 <p>计算$z_{\text { norm }}^{(\hat{2})}$，用$\mu$ 和$ \sigma^{2}$的指数加权平均，用你手头的最新数值来做调整，然后你可以用左边我们刚算出来的和你在神经网络训练过程中得到的$\beta$和$\sigma$参数来计算你那个测试样本的z值。</p>
-<h3 id="l-08-softmax-regression"><a class="header-anchor" href="#l-08-softmax-regression">¶</a>L 08 : Softmax Regression</h3>
-<h4 id="1-multi-class-classification"><a class="header-anchor" href="#1-multi-class-classification">¶</a>1. [Multi-class classification]</h4>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_44.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_45.png)</p>
+<h3 id="L-08-Softmax-Regression"><a href="#L-08-Softmax-Regression" class="headerlink" title="L 08 : Softmax Regression"></a>L 08 : Softmax Regression</h3><h4 id="1-Multi-class-classification"><a href="#1-Multi-class-classification" class="headerlink" title="1. [Multi-class classification]"></a>1. [Multi-class classification]</h4><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_44.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_45.png" alt=""></p>
 <p>最后一层是概率，之和为1，要用到<strong>Softmax</strong>层，<strong>Softmax</strong>激活函数的特殊之处在于，因为需要将所有可能的输出归一化，就需要输入一个向量，最后输出一个向量。</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_46.png)</p>
-<h4 id="2-softmax-example"><a class="header-anchor" href="#2-softmax-example">¶</a>2. Softmax example</h4>
-<p>没有隐藏层的softmax,代表一些决策边界</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_47.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_48.png)</p>
-<h3 id="l-09-training-softmax-classifier"><a class="header-anchor" href="#l-09-training-softmax-classifier">¶</a>L 09 Training SoftMax classifier</h3>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_49.png)</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_46.png" alt=""></p>
+<h4 id="2-Softmax-example"><a href="#2-Softmax-example" class="headerlink" title="2. Softmax example"></a>2. Softmax example</h4><p>没有隐藏层的softmax,代表一些决策边界</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_47.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_48.png" alt=""></p>
+<h3 id="L-09-Training-SoftMax-classifier"><a href="#L-09-Training-SoftMax-classifier" class="headerlink" title="L 09 Training SoftMax classifier"></a>L 09 Training SoftMax classifier</h3><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_49.png" alt=""></p>
 <p><strong>Softmax</strong>这个名称的来源是与所谓<strong>hardmax</strong>对比,<strong>Softmax</strong>回归或<strong>Softmax</strong>激活函数将<strong>logistic</strong>激活函数推广到类，而不仅仅是两类，结果就是如果C=2，那么C=2的<strong>Softmax</strong>实际上变回了<strong>logistic</strong>回归，</p>
-<h4 id="loss-function"><a class="header-anchor" href="#loss-function">¶</a>Loss Function</h4>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_50.png)<br>
-$$<br>
-J\left(w^{[1]}, b^{[1]}, \ldots \ldots\right)=\frac{1}{m} \sum_{i=1}^{m} L\left(\hat{y}^{(i)}, y^{(i)}\right)<br>
-$$<br>
-![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_51.png)</p>
-<h4 id="3-gradient-descent-with-softmax"><a class="header-anchor" href="#3-gradient-descent-with-softmax">¶</a>3. Gradient descent with softmax</h4>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_52.png)</p>
-<p>最后一层求导，softmax激活函数<br>
-$$<br>
-J\left(w^{[1]}, b^{[1]}, \ldots \ldots\right)=\frac{1}{m} \sum_{i=1}^{m} L\left(\hat{y}^{(i)}, y^{(i)}\right)<br>
-$$</p>
-<h2 id="l11-tensorflow"><a class="header-anchor" href="#l11-tensorflow">¶</a>L11 TensorFlow</h2>
-<h4 id="1-基本流程"><a class="header-anchor" href="#1-基本流程">¶</a>1. 基本流程</h4>
-<p>使用tensorflow，只要告诉tensorflow forward prop，它自己就会做backprop，因此不用自己实现backprop</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_53.png)</p>
+<h4 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h4><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_50.png" alt=""></p>
+<script type="math/tex; mode=display">
+J\left(w^{[1]}, b^{[1]}, \ldots \ldots\right)=\frac{1}{m} \sum_{i=1}^{m} L\left(\hat{y}^{(i)}, y^{(i)}\right)</script><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_51.png" alt=""></p>
+<h4 id="3-Gradient-descent-with-softmax"><a href="#3-Gradient-descent-with-softmax" class="headerlink" title="3. Gradient descent with softmax"></a>3. Gradient descent with softmax</h4><p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_52.png" alt=""></p>
+<p>最后一层求导，softmax激活函数</p>
+<script type="math/tex; mode=display">
+J\left(w^{[1]}, b^{[1]}, \ldots \ldots\right)=\frac{1}{m} \sum_{i=1}^{m} L\left(\hat{y}^{(i)}, y^{(i)}\right)</script><h2 id="L11-TensorFlow"><a href="#L11-TensorFlow" class="headerlink" title="L11 TensorFlow"></a>L11 TensorFlow</h2><h4 id="1-基本流程"><a href="#1-基本流程" class="headerlink" title="1. 基本流程"></a>1. 基本流程</h4><p>使用tensorflow，只要告诉tensorflow forward prop，它自己就会做backprop，因此不用自己实现backprop</p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_53.png" alt=""></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="comment">#导入TensorFlow</span></span><br><span class="line">​</span><br><span class="line">w = tf.Variable(<span class="number">0</span>,dtype = tf.float32)</span><br><span class="line"><span class="comment">#接下来，让我们定义参数w，在TensorFlow中，你要用tf.Variable()来定义参数</span></span><br><span class="line">​</span><br><span class="line"><span class="comment">#然后我们定义损失函数：</span></span><br><span class="line">​</span><br><span class="line">cost = tf.add(tf.add(w**<span class="number">2</span>,tf.multiply(- <span class="number">10.</span>,w)),<span class="number">25</span>)</span><br><span class="line"><span class="comment">#然后我们定义损失函数J</span></span><br><span class="line">然后我们再写：</span><br><span class="line">​</span><br><span class="line">train = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cost)</span><br><span class="line"><span class="comment">#(让我们用0.01的学习率，目标是最小化损失)。</span></span><br><span class="line">​</span><br><span class="line"><span class="comment">#最后下面的几行是惯用表达式:</span></span><br><span class="line">​</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">​</span><br><span class="line">session = tf.Session()<span class="comment">#这样就开启了一个TensorFlow session。</span></span><br><span class="line">​</span><br><span class="line">session.run(init)<span class="comment">#来初始化全局变量。</span></span><br><span class="line">​</span><br><span class="line"><span class="comment">#然后让TensorFlow评估一个变量，我们要用到:</span></span><br><span class="line">​</span><br><span class="line">session.run(w)</span><br><span class="line">​</span><br><span class="line"><span class="comment">#上面的这一行将w初始化为0，并定义损失函数，我们定义train为学习算法，它用梯度下降法优化器使损失函数最小化，但实际上我们还没有运行学习算法，所以#上面的这一行将w初始化为0，并定义损失函数，我们定义train为学习算法，它用梯度下降法优化器使损失函数最小化，但实际上我们还没有运行学习算法，所以session.run(w)评估了w，让我：：</span></span><br><span class="line">​</span><br><span class="line">print(session.run(w))</span><br><span class="line">​</span><br><span class="line">所以如果我们运行这个，它评估等于<span class="number">0</span>，因为我们什么都还没运行。</span><br><span class="line"></span><br><span class="line"><span class="comment">#现在让我们输入：</span></span><br><span class="line">​</span><br><span class="line">$session.run(train)，它所做的就是运行一步梯度下降法。</span><br><span class="line"><span class="comment">#接下来在运行了一步梯度下降法后，让我们评估一下w的值，再print：</span></span><br><span class="line">​</span><br><span class="line">print(session.run(w))</span><br><span class="line"><span class="comment">#在一步梯度下降法之后，w现在是0.1。</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-如何用训练数据"><a class="header-anchor" href="#2-如何用训练数据">¶</a>2. 如何用训练数据</h4>
-<p>placeholder 在实际的训练过程中，要用不同的样本反复放到一个待优化函数中的，这个时候就可以用tensorflow的placeholder实现,在run的时候，对应给出<code>feed_dict</code>，表名占位符x的实际值。</p>
+<h4 id="2-如何用训练数据"><a href="#2-如何用训练数据" class="headerlink" title="2. 如何用训练数据"></a>2. 如何用训练数据</h4><p>placeholder 在实际的训练过程中，要用不同的样本反复放到一个待优化函数中的，这个时候就可以用tensorflow的placeholder实现,在run的时候，对应给出<code>feed_dict</code>，表名占位符x的实际值。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf <span class="comment"># 导入Tensorflow</span></span><br><span class="line"></span><br><span class="line">coefficient = np.array([[<span class="number">2.</span>],[<span class="number">-10.</span>],[<span class="number">25.</span>]])</span><br><span class="line"></span><br><span class="line">w = tf.Variable(<span class="number">0</span>, dtype=tf.float32)</span><br><span class="line">x = tf.placeholder(tf.float32, [<span class="number">3</span>,<span class="number">1</span>]) <span class="comment"># 3x1大小的placeholder</span></span><br><span class="line">cost = w**x[<span class="number">0</span>][<span class="number">0</span>] - x[<span class="number">1</span>][<span class="number">0</span>]*w + x[<span class="number">2</span>][<span class="number">0</span>] <span class="comment"># 要优化的cost function（即forward prop的形式）</span></span><br><span class="line">train = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cost) </span><br><span class="line"></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">session = tf.Session()</span><br><span class="line">session.run(init)</span><br><span class="line">print(session.run(w))</span><br><span class="line"></span><br><span class="line">session.run(train, feed_dict=&#123;x:coefficient&#125;) <span class="comment"># x占位符替换为coefficient</span></span><br><span class="line">print(session.run(w))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    session.run(train, feed_dict=&#123;x:coefficient&#125;) <span class="comment"># # x占位符替换为coefficient</span></span><br><span class="line">print(session.run(w))</span><br></pre></td></tr></table></figure>
-<h4 id="3-计算流"><a class="header-anchor" href="#3-计算流">¶</a>3. 计算流</h4>
-<p><strong>TensorFlow</strong>程序的核心是计算损失函数，然后<strong>TensorFlow</strong>自动计算出导数，以及如何最小化损失，因此这个等式或者这行代码所做的就是让<strong>TensorFlow</strong>建立计算图，</p>
+<h4 id="3-计算流"><a href="#3-计算流" class="headerlink" title="3. 计算流"></a>3. 计算流</h4><p><strong>TensorFlow</strong>程序的核心是计算损失函数，然后<strong>TensorFlow</strong>自动计算出导数，以及如何最小化损失，因此这个等式或者这行代码所做的就是让<strong>TensorFlow</strong>建立计算图，</p>
 <p>with 语句适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等。建立计算流的过程，前向传播的过程，operation</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_56.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_54.png)</p>
-<p>![](ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization\L2_week2_55.png)</p>
-<h1>Summary</h1>
-<p><font color="read">how to systematically organize the hyper parameter search process and  batch normalization and framework </font></p>
-<p><a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Improving_Deep_Neural_Networks/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%AE%9E%E7%94%A8%E5%B1%82%E9%9D%A2" target="_blank" rel="noopener">http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Improving_Deep_Neural_Networks/深度学习的实用层面</a></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_56.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_54.png" alt=""></p>
+<p><img src="/2019/04/17/ImprovingDeep learning.ai_Deep Neural NetworksHyperparameter tuning, Regularization and Optimization/L2_week2_55.png" alt=""></p>
+<h1 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h1><font color="read">how to systematically organize the hyper parameter search process and  batch normalization and framework </font>
+
+<p><a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Improving_Deep_Neural_Networks/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%AE%9E%E7%94%A8%E5%B1%82%E9%9D%A2" target="_blank" rel="noopener">http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Improving_Deep_Neural_Networks/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%AE%9E%E7%94%A8%E5%B1%82%E9%9D%A2</a></p>
 <p><a href="http://www.ai-start.com/dl2017/html/lesson2-week1.html#header-n3" target="_blank" rel="noopener">http://www.ai-start.com/dl2017/html/lesson2-week1.html#header-n3</a></p>
 <p><a href="http://dl-notes.imshuai.com/#/c2w1?id=_4-heros-of-deep-learning-yoshua-bengio-interview" target="_blank" rel="noopener">http://dl-notes.imshuai.com/#/c2w1?id=_4-heros-of-deep-learning-yoshua-bengio-interview</a></p>
 <p><a href="https://www.youtube.com/watch?v=4Ct3Yujl1dk&amp;list=PLkDaE6sCZn6Hn0vK8co82zjQtt3T2Nkqc&amp;index=14" target="_blank" rel="noopener">https://www.youtube.com/watch?v=4Ct3Yujl1dk&amp;list=PLkDaE6sCZn6Hn0vK8co82zjQtt3T2Nkqc&amp;index=14</a></p>
@@ -1109,7 +1078,7 @@ $$</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1296,7 +1265,7 @@ $$</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">C2W1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#l01-train-dev-test-sets"><span class="nav-number">1.1.</span> <span class="nav-text">¶L01 : Train/Dev/Test Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-process"><span class="nav-number">1.1.1.</span> <span class="nav-text">¶1. process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-data-split"><span class="nav-number">1.1.2.</span> <span class="nav-text">¶2. data split</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-建议"><span class="nav-number">1.1.3.</span> <span class="nav-text">¶3. 建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l02-bias-variance"><span class="nav-number">1.2.</span> <span class="nav-text">¶L02 : Bias/Variance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-example"><span class="nav-number">1.2.1.</span> <span class="nav-text">¶1. example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l03-basic-recipe-for-machine-learning"><span class="nav-number">1.3.</span> <span class="nav-text">¶L03 Basic Recipe for Machine learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-method"><span class="nav-number">1.3.1.</span> <span class="nav-text">¶1. METHOD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l04"><span class="nav-number">1.4.</span> <span class="nav-text">¶L04</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-over-fitting"><span class="nav-number">1.4.1.</span> <span class="nav-text">¶1. over fitting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#regularization"><span class="nav-number">1.4.2.</span> <span class="nav-text">¶regularization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l05-why-regularization-reduces-overfitting"><span class="nav-number">1.5.</span> <span class="nav-text">¶L05 :Why Regularization Reduces Overfitting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l06-dropout-regularization"><span class="nav-number">1.6.</span> <span class="nav-text">¶L06 : Dropout Regularization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-工作原理"><span class="nav-number">1.6.1.</span> <span class="nav-text">¶1. 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-inverted-dropout-反向随机失活"><span class="nav-number">1.6.2.</span> <span class="nav-text">¶2. inverted dropout（反向随机失活）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l07-understanding-dropout"><span class="nav-number">1.7.</span> <span class="nav-text">¶L07 : Understanding Dropout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l08-other-regularization-methods"><span class="nav-number">1.8.</span> <span class="nav-text">¶L08 :  Other Regularization Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l09-：-normalizing-inputs"><span class="nav-number">1.9.</span> <span class="nav-text">¶L09 ： Normalizing inputs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why"><span class="nav-number">1.9.1.</span> <span class="nav-text">¶why</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l10-vanishing-exploding-gradients"><span class="nav-number">1.10.</span> <span class="nav-text">¶L10 : Vanishing /Exploding Gradients</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l11-weight-initialization-in-a-deep-network"><span class="nav-number">1.11.</span> <span class="nav-text">¶L11 : Weight initialization in a deep network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l12-：-numerical-approximations-of-gradients"><span class="nav-number">1.12.</span> <span class="nav-text">¶L12 ： Numerical Approximations of Gradients</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-13-gradient-checking"><span class="nav-number">1.13.</span> <span class="nav-text">¶L 13 Gradient Checking</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">L 14 : Gradient Checking Implementation notes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-number">2.1.</span> <span class="nav-text">¶Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">C2W2 :Optimization Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#l-01-mini-batch-gradient-descent"><span class="nav-number">3.1.</span> <span class="nav-text">¶L 01 : Mini Batch Gradient Descent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-02-understanding-mini-batch-gradient-decent"><span class="nav-number">3.2.</span> <span class="nav-text">¶L 02 : Understanding Mini-Batch Gradient Decent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#choosing-your-mini-batch-size"><span class="nav-number">3.2.1.</span> <span class="nav-text">¶Choosing your mini-batch size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-优缺点"><span class="nav-number">3.2.2.</span> <span class="nav-text">¶1. 优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how"><span class="nav-number">3.2.3.</span> <span class="nav-text">¶how</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-03-exponentially-weighted-averages"><span class="nav-number">3.3.</span> <span class="nav-text">¶L 03: Exponentially Weighted Averages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-指数加权平均数-exponentially-weighted-averages"><span class="nav-number">3.3.1.</span> <span class="nav-text">¶1. 指数加权平均数（Exponentially weighted averages）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-04-understanding-exponentially-weighted-averages"><span class="nav-number">3.4.</span> <span class="nav-text">¶L 04 : Understanding Exponentially Weighted Averages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l05-bias-correction-in-exponentially-weighted-averages"><span class="nav-number">3.5.</span> <span class="nav-text">¶L05 : Bias correction in exponentially weighted averages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-06-gradient-descent-with-momentum"><span class="nav-number">3.6.</span> <span class="nav-text">¶L 06 : Gradient Descent With Momentum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-07-rmsprop"><span class="nav-number">3.7.</span> <span class="nav-text">¶L 07 : RMSprop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-08-adam-optimization-algorithm"><span class="nav-number">3.8.</span> <span class="nav-text">¶L 08 Adam optimization algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-adam"><span class="nav-number">3.8.1.</span> <span class="nav-text">¶1. Adam</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l09-learning-rate-decay"><span class="nav-number">3.9.</span> <span class="nav-text">¶L09 : Learning Rate Decay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-10-the-problem-of-local-optima"><span class="nav-number">3.10.</span> <span class="nav-text">¶L 10: The Problem of local Optima</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">W3 Hyperparameter tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#l01-tuning-process"><span class="nav-number">4.1.</span> <span class="nav-text">¶L01 Tuning process</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-try-random-values-don-t-use-a-grid"><span class="nav-number">4.1.0.1.</span> <span class="nav-text">¶1. Try random values : Don’t use a grid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-由粗糙到精细的策略"><span class="nav-number">4.1.1.</span> <span class="nav-text">¶2. 由粗糙到精细的策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-02-using-an-appropriate-scale-to-pick-hyperparameters"><span class="nav-number">4.2.</span> <span class="nav-text">¶L 02: Using an Appropriate Scale to pick hyperparameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-03-hyperparameter-tuning-i-practice"><span class="nav-number">4.3.</span> <span class="nav-text">¶L 03 : Hyperparameter tuning i practice</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#l-04-normalizing-activations-in-a-network"><span class="nav-number">4.3.1.</span> <span class="nav-text">¶L 04: Normalizing Activations in a Network</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-implementing-batch-normalizing"><span class="nav-number">4.3.1.1.</span> <span class="nav-text">¶1. Implementing Batch Normalizing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l-05-fitting-batch-norm-into-neural-networks"><span class="nav-number">4.4.</span> <span class="nav-text">¶L 05 : Fitting Batch Norm Into Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#l-06-why-doest-batch-norm-work"><span class="nav-number">4.4.1.</span> <span class="nav-text">¶L 06 Why Doest Batch Norm Work?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l-07-batch-norm-at-test-time"><span class="nav-number">4.4.2.</span> <span class="nav-text">¶L 07 : Batch Norm At Test Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l-08-softmax-regression"><span class="nav-number">4.4.3.</span> <span class="nav-text">¶L 08 : Softmax Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-multi-class-classification"><span class="nav-number">4.4.3.1.</span> <span class="nav-text">¶1. [Multi-class classification]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-softmax-example"><span class="nav-number">4.4.3.2.</span> <span class="nav-text">¶2. Softmax example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l-09-training-softmax-classifier"><span class="nav-number">4.4.4.</span> <span class="nav-text">¶L 09 Training SoftMax classifier</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#loss-function"><span class="nav-number">4.4.4.1.</span> <span class="nav-text">¶Loss Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-gradient-descent-with-softmax"><span class="nav-number">4.4.4.2.</span> <span class="nav-text">¶3. Gradient descent with softmax</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l11-tensorflow"><span class="nav-number">4.5.</span> <span class="nav-text">¶L11 TensorFlow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-基本流程"><span class="nav-number">4.5.0.1.</span> <span class="nav-text">¶1. 基本流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-如何用训练数据"><span class="nav-number">4.5.0.2.</span> <span class="nav-text">¶2. 如何用训练数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-计算流"><span class="nav-number">4.5.0.3.</span> <span class="nav-text">¶3. 计算流</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C2W1"><span class="nav-number">1.</span> <span class="nav-text">C2W1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#L01-Train-Dev-Test-Sets"><span class="nav-number">1.1.</span> <span class="nav-text">L01 : Train/Dev/Test Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-process"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-data-split"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. data split</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-建议"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L02-Bias-Variance"><span class="nav-number">1.2.</span> <span class="nav-text">L02 : Bias/Variance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-example"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L03-Basic-Recipe-for-Machine-learning"><span class="nav-number">1.3.</span> <span class="nav-text">L03 Basic Recipe for Machine learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-METHOD"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. METHOD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L04"><span class="nav-number">1.4.</span> <span class="nav-text">L04</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-over-fitting"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. over fitting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#regularization"><span class="nav-number">1.4.2.</span> <span class="nav-text">regularization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L05-Why-Regularization-Reduces-Overfitting"><span class="nav-number">1.5.</span> <span class="nav-text">L05 :Why Regularization Reduces Overfitting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L06-Dropout-Regularization"><span class="nav-number">1.6.</span> <span class="nav-text">L06 : Dropout Regularization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-工作原理"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-inverted-dropout（反向随机失活）"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. inverted dropout（反向随机失活）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L07-Understanding-Dropout"><span class="nav-number">1.7.</span> <span class="nav-text">L07 : Understanding Dropout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L08-Other-Regularization-Methods"><span class="nav-number">1.8.</span> <span class="nav-text">L08 :  Other Regularization Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L09-：-Normalizing-inputs"><span class="nav-number">1.9.</span> <span class="nav-text">L09 ： Normalizing inputs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#why"><span class="nav-number">1.9.1.</span> <span class="nav-text">why</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L10-Vanishing-Exploding-Gradients"><span class="nav-number">1.10.</span> <span class="nav-text">L10 : Vanishing /Exploding Gradients</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L11-Weight-initialization-in-a-deep-network"><span class="nav-number">1.11.</span> <span class="nav-text">L11 : Weight initialization in a deep network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L12-：-Numerical-Approximations-of-Gradients"><span class="nav-number">1.12.</span> <span class="nav-text">L12 ： Numerical Approximations of Gradients</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-13-Gradient-Checking"><span class="nav-number">1.13.</span> <span class="nav-text">L 13 Gradient Checking</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#L-14-Gradient-Checking-Implementation-notes"><span class="nav-number">2.</span> <span class="nav-text">L 14 : Gradient Checking Implementation notes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">2.1.</span> <span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C2W2-Optimization-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">C2W2 :Optimization Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#L-01-Mini-Batch-Gradient-Descent"><span class="nav-number">3.1.</span> <span class="nav-text">L 01 : Mini Batch Gradient Descent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-02-Understanding-Mini-Batch-Gradient-Decent"><span class="nav-number">3.2.</span> <span class="nav-text">L 02 : Understanding Mini-Batch Gradient Decent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Choosing-your-mini-batch-size"><span class="nav-number">3.2.1.</span> <span class="nav-text">Choosing your mini-batch size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-优缺点"><span class="nav-number">3.2.2.</span> <span class="nav-text">1. 优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how"><span class="nav-number">3.2.3.</span> <span class="nav-text">how</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-03-Exponentially-Weighted-Averages"><span class="nav-number">3.3.</span> <span class="nav-text">L 03: Exponentially Weighted Averages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-指数加权平均数（Exponentially-weighted-averages）"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. 指数加权平均数（Exponentially weighted averages）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-04-Understanding-Exponentially-Weighted-Averages"><span class="nav-number">3.4.</span> <span class="nav-text">L 04 : Understanding Exponentially Weighted Averages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L05-Bias-correction-in-exponentially-weighted-averages"><span class="nav-number">3.5.</span> <span class="nav-text">L05 : Bias correction in exponentially weighted averages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-06-Gradient-Descent-With-Momentum"><span class="nav-number">3.6.</span> <span class="nav-text">L 06 : Gradient Descent With Momentum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-07-RMSprop"><span class="nav-number">3.7.</span> <span class="nav-text">L 07 : RMSprop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-08-Adam-optimization-algorithm"><span class="nav-number">3.8.</span> <span class="nav-text">L 08 Adam optimization algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Adam"><span class="nav-number">3.8.1.</span> <span class="nav-text">1. Adam</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L09-Learning-Rate-Decay"><span class="nav-number">3.9.</span> <span class="nav-text">L09 : Learning Rate Decay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-10-The-Problem-of-local-Optima"><span class="nav-number">3.10.</span> <span class="nav-text">L 10: The Problem of local Optima</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#W3-Hyperparameter-tuning"><span class="nav-number">4.</span> <span class="nav-text">W3 Hyperparameter tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#L01-Tuning-process"><span class="nav-number">4.1.</span> <span class="nav-text">L01 Tuning process</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Try-random-values-Don’t-use-a-grid"><span class="nav-number">4.1.0.1.</span> <span class="nav-text">1. Try random values : Don’t use a grid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-由粗糙到精细的策略"><span class="nav-number">4.1.1.</span> <span class="nav-text">2. 由粗糙到精细的策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-02-Using-an-Appropriate-Scale-to-pick-hyperparameters"><span class="nav-number">4.2.</span> <span class="nav-text">L 02: Using an Appropriate Scale to pick hyperparameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-03-Hyperparameter-tuning-i-practice"><span class="nav-number">4.3.</span> <span class="nav-text">L 03 : Hyperparameter tuning i practice</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#L-04-Normalizing-Activations-in-a-Network"><span class="nav-number">4.3.1.</span> <span class="nav-text">L 04: Normalizing Activations in a Network</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Implementing-Batch-Normalizing"><span class="nav-number">4.3.1.1.</span> <span class="nav-text">1. Implementing Batch Normalizing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-05-Fitting-Batch-Norm-Into-Neural-Networks"><span class="nav-number">4.4.</span> <span class="nav-text">L 05 : Fitting Batch Norm Into Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#L-06-Why-Doest-Batch-Norm-Work"><span class="nav-number">4.4.1.</span> <span class="nav-text">L 06 Why Doest Batch Norm Work?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L-07-Batch-Norm-At-Test-Time"><span class="nav-number">4.4.2.</span> <span class="nav-text">L 07 : Batch Norm At Test Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L-08-Softmax-Regression"><span class="nav-number">4.4.3.</span> <span class="nav-text">L 08 : Softmax Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Multi-class-classification"><span class="nav-number">4.4.3.1.</span> <span class="nav-text">1. [Multi-class classification]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Softmax-example"><span class="nav-number">4.4.3.2.</span> <span class="nav-text">2. Softmax example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L-09-Training-SoftMax-classifier"><span class="nav-number">4.4.4.</span> <span class="nav-text">L 09 Training SoftMax classifier</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Loss-Function"><span class="nav-number">4.4.4.1.</span> <span class="nav-text">Loss Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Gradient-descent-with-softmax"><span class="nav-number">4.4.4.2.</span> <span class="nav-text">3. Gradient descent with softmax</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L11-TensorFlow"><span class="nav-number">4.5.</span> <span class="nav-text">L11 TensorFlow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-基本流程"><span class="nav-number">4.5.0.1.</span> <span class="nav-text">1. 基本流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-如何用训练数据"><span class="nav-number">4.5.0.2.</span> <span class="nav-text">2. 如何用训练数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-计算流"><span class="nav-number">4.5.0.3.</span> <span class="nav-text">3. 计算流</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary-1"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></div>
             
 
           </div>
@@ -1337,7 +1306,7 @@ $$</p>
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">324k</span>
+    <span title="Symbols count total">284k</span>
   
 
   
@@ -1937,7 +1906,19 @@ $$</p>
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1954,17 +1935,5 @@ $$</p>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
