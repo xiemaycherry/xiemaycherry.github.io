@@ -125,7 +125,7 @@
 <meta property="og:description" content="数据挖掘——概念与技术数据挖掘的概念数据挖掘是从大量数据中提取或挖掘知识。强调：从大量的，未加工的材料中发现少量金块这一过程。 基本过程：  数据清理。(消除噪音或者不一致的数据) 数据集成（多种数据集成可以组合在一起） 数据选择（从数据库中提取与分析任务相关的数据) 数据变换。(数据变换或统一成适合挖掘形式) 数据挖掘(使用智能方法提取数据) 模式评估 知识表示（可视化等手段，展示挖掘的知识)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://xiemaycherry.github.io/2020/07/29/Book-Learning/image-20200729213701724.png">
-<meta property="og:updated_time" content="2020-07-30T13:09:27.219Z">
+<meta property="og:updated_time" content="2020-08-07T12:52:27.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Book-Learning">
 <meta name="twitter:description" content="数据挖掘——概念与技术数据挖掘的概念数据挖掘是从大量数据中提取或挖掘知识。强调：从大量的，未加工的材料中发现少量金块这一过程。 基本过程：  数据清理。(消除噪音或者不一致的数据) 数据集成（多种数据集成可以组合在一起） 数据选择（从数据库中提取与分析任务相关的数据) 数据变换。(数据变换或统一成适合挖掘形式) 数据挖掘(使用智能方法提取数据) 模式评估 知识表示（可视化等手段，展示挖掘的知识)">
@@ -442,7 +442,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                841字
+                1.3k字
               </span>
               
 
@@ -519,8 +519,23 @@ v = \frac{v-mean}{\delta}</script><h3 id="数据归约"><a href="#数据归约" 
 <p>数据压缩</p>
 <p>数值压缩</p>
 <h1 id="概念描述：特征与比较"><a href="#概念描述：特征与比较" class="headerlink" title="概念描述：特征与比较"></a>概念描述：特征与比较</h1><p>数据挖掘分为两类: 描述式和预测式挖掘。描述式提供数据的有趣的一般性质。建立一个或一组模型，并试图预测新数据集的行为。</p>
-<p>描述式数据挖掘称为概念描述。不同的粒度和角度描述数据集</p>
-
+<p>描述式数据挖掘称为概念描述。不同的粒度和角度描述数据集。</p>
+<p>度量可以根据其所用的聚集函数分成三类：</p>
+<p>分布的：一个聚集函数是分布的，如果它能以如下分布方式进行计算：设数据被划分为 n 个集合，函数在每一部分上的计算得到一个聚集值。如果将函数用于 n 个聚集值得到的结果，与将函数<br>用于所有数据得到的结果一样，则该函数可以用分布方式计算。  </p>
+<p>代数的：ave(); </p>
+<p>整体的：rank(),median()</p>
+<h3 id="描述性统计度量"><a href="#描述性统计度量" class="headerlink" title="描述性统计度量"></a>描述性统计度量</h3><h4 id="度量中心趋势"><a href="#度量中心趋势" class="headerlink" title="度量中心趋势"></a>度量中心趋势</h4><p>平均值</p>
+<p>加权算术平均（加权平均)</p>
+<p>中位数</p>
+<p>分位数</p>
+<h1 id="挖掘大型数据库中的关联规则"><a href="#挖掘大型数据库中的关联规则" class="headerlink" title="挖掘大型数据库中的关联规则"></a>挖掘大型数据库中的关联规则</h1><p>关联规则挖掘发现大量数据中项集的关联或者相关联系。可用于于分类设计，交叉购物和贱卖分析。</p>
+<p>购买计算机也趋向于同时购买财务管理软件的关联规则</p>
+<script type="math/tex; mode=display">
+computer => finanical_management_software\\
+[support = 2\%, confidence = 60\%]</script><p>支持度：有用性。同时购买计算机和财务管理软件。</p>
+<p>置信度：确定性。购买计算机的顾客有多少购买财务管理软件。</p>
+<p>可最小支持度阙值和最小置信度阙值。</p>
+<h3 id="Apriori-算法：-使用候选项集找频繁项集"><a href="#Apriori-算法：-使用候选项集找频繁项集" class="headerlink" title="Apriori 算法： 使用候选项集找频繁项集"></a>Apriori 算法： 使用候选项集找频繁项集</h3><h1 id="分类和预测"><a href="#分类和预测" class="headerlink" title="分类和预测"></a>分类和预测</h1>
       
     </div>
 
@@ -845,7 +860,7 @@ v = \frac{v-mean}{\delta}</script><h3 id="数据归约"><a href="#数据归约" 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据挖掘——概念与技术"><span class="nav-number">1.</span> <span class="nav-text">数据挖掘——概念与技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据挖掘的概念"><span class="nav-number">1.1.</span> <span class="nav-text">数据挖掘的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据预处理"><span class="nav-number">1.2.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据清洗"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据清洗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#遗漏值"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">遗漏值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#噪音数据"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">噪音数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不一致数据"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">不一致数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集成"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据变换"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据归约"><span class="nav-number">1.2.4.</span> <span class="nav-text">数据归约</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念描述：特征与比较"><span class="nav-number">2.</span> <span class="nav-text">概念描述：特征与比较</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据挖掘——概念与技术"><span class="nav-number">1.</span> <span class="nav-text">数据挖掘——概念与技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据挖掘的概念"><span class="nav-number">1.1.</span> <span class="nav-text">数据挖掘的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据预处理"><span class="nav-number">1.2.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据清洗"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据清洗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#遗漏值"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">遗漏值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#噪音数据"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">噪音数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不一致数据"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">不一致数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集成"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据变换"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据归约"><span class="nav-number">1.2.4.</span> <span class="nav-text">数据归约</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念描述：特征与比较"><span class="nav-number">2.</span> <span class="nav-text">概念描述：特征与比较</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述性统计度量"><span class="nav-number">2.0.1.</span> <span class="nav-text">描述性统计度量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#度量中心趋势"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">度量中心趋势</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#挖掘大型数据库中的关联规则"><span class="nav-number">3.</span> <span class="nav-text">挖掘大型数据库中的关联规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Apriori-算法：-使用候选项集找频繁项集"><span class="nav-number">3.0.1.</span> <span class="nav-text">Apriori 算法： 使用候选项集找频繁项集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分类和预测"><span class="nav-number">4.</span> <span class="nav-text">分类和预测</span></a></li></div>
             
 
           </div>
@@ -886,7 +901,7 @@ v = \frac{v-mean}{\delta}</script><h3 id="数据归约"><a href="#数据归约" 
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">199k</span>
+    <span title="Symbols count total">216k</span>
   
 
   
