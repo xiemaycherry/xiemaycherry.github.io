@@ -447,7 +447,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                549字
+                1.9k字
               </span>
               
 
@@ -473,53 +473,74 @@
 
       
         <p>[TOC]</p>
-<h1 id="KKT-Karush-Kuhn-Tucher-条件"><a href="#KKT-Karush-Kuhn-Tucher-条件" class="headerlink" title="KKT(Karush-Kuhn-Tucher)条件"></a>KKT(Karush-Kuhn-Tucher)条件</h1><a id="more"></a>
-<p>给定优化问题</p>
-<script type="math/tex; mode=display">
-\min f(x)\\
-subject\ to \begin{cases}
-g_i(x) = 0 (i=1,,,,m\\
-h_i(x) <= 0 (i=m+1,...,n)
-\end{cases}</script><p>构造lagrange函数</p>
-<script type="math/tex; mode=display">
-L(x,\lambda) = f(x)+\sum_{i=1}^{m}\lambda_ig_i(x)+\sum_{i=m+1}^{n}\lambda_ih_i(x)</script><p>KKT条件</p>
-<script type="math/tex; mode=display">
-\frac{\partial L}{\partial x}=0\\
-g_i(x)=0\\
-\lambda_i>=0 (i=m+1,...,n)\\
-\lambda_i h_i(x)=0(i=m+1,..,n)</script><h1 id="二次规划问题"><a href="#二次规划问题" class="headerlink" title="二次规划问题"></a>二次规划问题</h1><p>问题的数学表达</p>
-<script type="math/tex; mode=display">
-\min Q(x) = \frac{1}{2}x^THx+g^Tx\\
-s.t. a_i^Tx = b_i (i=1,..,m)\\
-\ \ \  \ \ \ \ a_i^Tx <= b_i(i=m+1,...n)</script><p>KKT条件</p>
-<script type="math/tex; mode=display">
-\bigtriangledown f(x)-A^T\lambda =0\\
-A_{E}x - b_{E}=0\\
-A_{L}x-b_L<=0\\
-\lambda_L>=0\\
-\lambda_L^T(A_LX_L-b_L)=0</script><p>如果$H$半正定，二次规划问题的全局极小值的充要条件，$x^{*}$是一个K-T条件</p>
+<h1>KKT(Karush-Kuhn-Tucher)条件</h1>
+<a id="more"></a>
+<p>给定优化问题<br>
+$$<br>
+\min f(x)\<br>
+subject\ to \begin{cases}<br>
+g_i(x) = 0 (i=1,m\<br>
+h_i(x) &lt;= 0 (i=m+1,…,n)<br>
+\end{cases}<br>
+$$</p>
+<p>构造lagrange函数<br>
+$$<br>
+L(x,\lambda) = f(x)+\sum_{i=1}<sup>{m}\lambda_ig_i(x)+\sum_{i=m+1}</sup>{n}\lambda_ih_i(x)<br>
+$$<br>
+KKT条件<br>
+$$<br>
+\frac{\partial L}{\partial x}=0\<br>
+g_i(x)=0\<br>
+\lambda_i&gt;=0 (i=m+1,…,n)\<br>
+\lambda_i h_i(x)=0(i=m+1,…,n)<br>
+$$</p>
+<h1>二次规划问题</h1>
+<p>问题的数学表达<br>
+$$<br>
+\min Q(x) = \frac{1}{2}x<sup>THx+g</sup>Tx\<br>
+s.t. a_i^Tx = b_i (i=1,…,m)\<br>
+\ \ \  \ \ \ \ a_i^Tx &lt;= b_i(i=m+1,…n)<br>
+$$<br>
+KKT条件<br>
+$$<br>
+\bigtriangledown f(x)-A^T\lambda =0\<br>
+A_{E}x - b_{E}=0\<br>
+A_{L}x-b_L&lt;=0\<br>
+\lambda_L&gt;=0\<br>
+\lambda_L^T(A_LX_L-b_L)=0<br>
+$$</p>
+<p>如果$H$半正定，二次规划问题的全局极小值的充要条件，$x^{*}$是一个K-T条件</p>
 <p>证明：</p>
 <p>必要性：KKT</p>
-<p>充分性：</p>
-<script type="math/tex; mode=display">
-f(x)-f(x^{*})=\frac{1}{2}x^THx+g^Tx-\frac{1}{2}x^{*T}Hx^{*}-g^Tx^{*}\\
-=\frac{1}{2}(x-x^{*})^TH(x-x^{*})+x^{*T}H(x-x^{*})+g^T(x-x^{*})\\
->=x^{*T}H(x-x^{*})+g^T(x-x^{*})=\lambda^TA(x-x^{*})</script><p><a href="http://www.hankcs.com/ml/lagrange-duality.html#h3-7" target="_blank" rel="noopener">http://www.hankcs.com/ml/lagrange-duality.html#h3-7</a></p>
-<h1 id="SMO-：Sequential-minimal-optimization"><a href="#SMO-：Sequential-minimal-optimization" class="headerlink" title="SMO ：Sequential minimal optimization"></a>SMO ：Sequential minimal optimization</h1><p>支持向量机的对偶问题</p>
-<script type="math/tex; mode=display">
-\min \frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^{m}\alpha_i\alpha_jy_iy_jK(x_i,x_j)-\sum_{i=1}^{m}\alpha_i\\
-s.t. \sum_{i=1}^{m}\alpha_iy_i=0\\
-0<=\alpha_i<=C</script><p>这个优化问题，可以根据二次规划求解，但是如果样本 过多，特别慢</p>
+<p>充分性：<br>
+$$<br>
+f(x)-f(x<sup>{*})=\frac{1}{2}x</sup>THx+g<sup>Tx-\frac{1}{2}x</sup>{<em>T}Hx<sup>{*}-g</sup>Tx^{</em>}\<br>
+=\frac{1}{2}(x-x<sup>{*})</sup>TH(x-x<sup>{*})+x</sup>{<em>T}H(x-x<sup>{*})+g</sup>T(x-x^{</em>})\</p>
+<blockquote>
+<p>=x<sup>{*T}H(x-x</sup>{<em>})+g<sup>T(x-x</sup>{</em>})=\lambda<sup>TA(x-x</sup>{*})<br>
+$$</p>
+</blockquote>
+<p><a href="http://www.hankcs.com/ml/lagrange-duality.html#h3-7" target="_blank" rel="noopener">http://www.hankcs.com/ml/lagrange-duality.html#h3-7</a></p>
+<h1>SMO ：Sequential minimal optimization</h1>
+<p>支持向量机的对偶问题<br>
+$$<br>
+\min \frac{1}{2}\sum_{i=1}<sup>{m}\sum_{j=1}</sup>{m}\alpha_i\alpha_jy_iy_jK(x_i,x_j)-\sum_{i=1}^{m}\alpha_i\<br>
+s.t. \sum_{i=1}^{m}\alpha_iy_i=0\<br>
+0&lt;=\alpha_i&lt;=C<br>
+$$<br>
+这个优化问题，可以根据二次规划求解，但是如果样本 过多，特别慢</p>
 <p>Platt提出了一种更快的方法</p>
 <p>SMO算法是一种启发式算法，其基本思路是：</p>
 <p>如果所有变量的解都满足此最优化问题的KKT条件（Karush-Kuhn-Tuckerconditions)，那么这个最优化问题的解就得到了。因为KKT条件是该最优化问题的充分必要条件。</p>
 <p>否则，选择两个变量，固定其他变量，针对这两个变量构建一个二次规划问题。这个二次规划问题关于这两个变量的解应该更接近原始二次规划问题的解，因为这会使得原始二次规划问题的目标函数值变得更小。重要的是，这时子问题可以通过解析方法求解，这样就可以大大提高整个算法的计算速度。子问题有两个变量，一个是违反KKT条件最严重的那一个，另一个由约束条件自动确定。如此，SMO算法将原问题不断分解为子问题并对子问题求解，进而达到求解原问题的目的。</p>
-<p>假设$\alpha_i,\alpha_j$为选择的两个优化变量，则优化问题</p>
-<script type="math/tex; mode=display">
-\min W(\alpha_i,\alpha_j)=\frac{1}{2}\alpha_i\alpha_iy_iy_iK(x_i,x_i)+\frac{1}{2}\alpha_j\alpha_jy_jy_jK(x_j,x_j)+\alpha_i\alpha_jy_iy_jK(x_i,x_j)\\
-+\sum_{k_1,k_2!=i,j}^{m}\alpha_{k_1}\alpha_{k_2}y_{k_1}y_{k_2}K(x_{k_1},x_{k_2})-(\alpha_i+\alpha_j)\\
-s.t\ \ \  \alpha_iy_i+\alpha_jy_j=-\sum_{k!=i,j}^{m}\alpha_ky_k=\xi\\
-0<=\alpha_i<=C</script><p>上述问题就是关于</p>
+<p>假设$\alpha_i,\alpha_j$为选择的两个优化变量，则优化问题<br>
+$$<br>
+\min W(\alpha_i,\alpha_j)=\frac{1}{2}\alpha_i\alpha_iy_iy_iK(x_i,x_i)+\frac{1}{2}\alpha_j\alpha_jy_jy_jK(x_j,x_j)+\alpha_i\alpha_jy_iy_jK(x_i,x_j)\<br>
++\sum_{k_1,k_2!=i,j}^{m}\alpha_{k_1}\alpha_{k_2}y_{k_1}y_{k_2}K(x_{k_1},x_{k_2})-(\alpha_i+\alpha_j)\<br>
+s.t\ \ \  \alpha_iy_i+\alpha_jy_j=-\sum_{k!=i,j}^{m}\alpha_ky_k=\xi\<br>
+0&lt;=\alpha_i&lt;=C<br>
+$$<br>
+上述问题就是关于</p>
 
       
     </div>
@@ -680,7 +701,7 @@ s.t\ \ \  \alpha_iy_i+\alpha_jy_j=-\sum_{k!=i,j}^{m}\alpha_ky_k=\xi\\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -857,7 +878,7 @@ s.t\ \ \  \alpha_iy_i+\alpha_jy_j=-\sum_{k!=i,j}^{m}\alpha_ky_k=\xi\\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#KKT-Karush-Kuhn-Tucher-条件"><span class="nav-number">1.</span> <span class="nav-text">KKT(Karush-Kuhn-Tucher)条件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二次规划问题"><span class="nav-number">2.</span> <span class="nav-text">二次规划问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SMO-：Sequential-minimal-optimization"><span class="nav-number">3.</span> <span class="nav-text">SMO ：Sequential minimal optimization</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">KKT(Karush-Kuhn-Tucher)条件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">二次规划问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">SMO ：Sequential minimal optimization</span></a></li></ol></div>
             
 
           </div>
@@ -898,7 +919,7 @@ s.t\ \ \  \alpha_iy_i+\alpha_jy_j=-\sum_{k!=i,j}^{m}\alpha_ky_k=\xi\\
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">218k</span>
+    <span title="Symbols count total">327k</span>
   
 
   

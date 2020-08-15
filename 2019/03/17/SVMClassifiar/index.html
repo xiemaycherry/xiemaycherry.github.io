@@ -124,14 +124,14 @@
 <meta property="og:site_name" content="welcome">
 <meta property="og:description" content="[TOC]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/MyBlog/hexo/source/_posts/SVMClassifiar/1.png">
-<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/MyBlog/hexo/source/_posts/SVMClassifiar/2.png">
-<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/MyBlog/hexo/source/_posts/SVMClassifiar/3.jpg">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C1.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C2.png">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C3.jpg">
 <meta property="og:updated_time" content="2020-07-25T08:01:02.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机(SVM) ----- 分类器">
 <meta name="twitter:description" content="[TOC]">
-<meta name="twitter:image" content="http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/MyBlog/hexo/source/_posts/SVMClassifiar/1.png">
+<meta name="twitter:image" content="http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C1.png">
 
 
 
@@ -444,7 +444,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                3k字
+                4k字
               </span>
               
 
@@ -471,85 +471,145 @@
       
         <p>[TOC]</p>
 <a id="more"></a>
-<h1 id="预备的数学知识"><a href="#预备的数学知识" class="headerlink" title="预备的数学知识"></a>预备的数学知识</h1><h2 id="约束优化问题"><a href="#约束优化问题" class="headerlink" title="约束优化问题"></a>约束优化问题</h2><p>原问题,带等式约束，也带不等式约束的一般约束问题</p>
-<script type="math/tex; mode=display">
-\begin{cases} \min_{x}f(x)\\
-s.t \begin{cases} m_i(x)>=0, i=1,..,m\\
-n_j(x)=0，j=1,..,m\\
-\end{cases}
-\end{cases}\tag{1}</script><p>构造lagrange乘子法</p>
-<script type="math/tex; mode=display">
-L(x,\lambda_i,\eta_j)= f(x)-\sum_{i=1}^{m}\lambda_im_i(x)-\sum_{j=1}^{n}\eta_j \tag{2}</script><script type="math/tex; mode=display">
-\begin{cases} \min_{x} max_{\lambda_i,\eta_j} L(R^p)\\
-s.t \lambda_i>=0
-\end{cases}</script><p>上述两个问题的等价性证明</p>
-<p>如果x不满足约束$m_i(x)$,则$\lambda_i&gt;=0$,同时$m_i(x)&lt;$,则$L(R^{p},\lambda,\eta)$趋近无穷，反之，则存在最大值</p>
-<script type="math/tex; mode=display">
-min_{x} max_{\lambda,\eta}=min_{x}(max f满足条件,max f不满足约束)\\=min_{x} max_{\lambda,\eta}{f满足条件}</script><p>对偶问题: 关于$\lambda,\eta$的最大化问题</p>
-<script type="math/tex; mode=display">max min L(x,\lambda,\eta)\\
-s.t \lambda_i>=0</script><p><strong>弱对偶问题：对偶问题&lt;=原问题</strong> </p>
-<p>证明: $max_{x} min(\lambda \eta ) L&lt;=min_{\eta,\lambda } max_{x} L$</p>
-<script type="math/tex; mode=display">
-\underbrace{\min_{x}L(x,\lambda,\eta)}_{A(\lambda,\eta)}<=L(x,\lambda,\eta)<=\underbrace{\max_{\lambda,\eta} L(x,\lambda,\eta)}_{B(x)}</script><h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>hard-margin SVM、 soft-margin SVM 、kernel SVM</p>
-<h1 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h1><p><img src="/2019/03/17/SVMClassifiar/MyBlog\hexo\source\_posts\SVMClassifiar\1.png" alt=""></p>
+<h1>预备的数学知识</h1>
+<h2 id="约束优化问题"><a class="header-anchor" href="#约束优化问题">¶</a>约束优化问题</h2>
+<p>原问题,带等式约束，也带不等式约束的一般约束问题<br>
+$$<br>
+\begin{cases} \min_{x}f(x)\<br>
+s.t \begin{cases} m_i(x)&gt;=0, i=1,…,m\<br>
+n_j(x)=0，j=1,…,m\<br>
+\end{cases}<br>
+\end{cases}\tag{1}<br>
+$$<br>
+构造lagrange乘子法<br>
+$$<br>
+L(x,\lambda_i,\eta_j)= f(x)-\sum_{i=1}<sup>{m}\lambda_im_i(x)-\sum_{j=1}</sup>{n}\eta_j \tag{2}<br>
+$$</p>
+<p>$$<br>
+\begin{cases} \min_{x} max_{\lambda_i,\eta_j} L(R^p)\<br>
+s.t \lambda_i&gt;=0<br>
+\end{cases}<br>
+$$</p>
+<p>上述两个问题的等价性证明</p>
+<p>如果x不满足约束$m_i(x)$,则$\lambda_i&gt;=0$,同时$m_i(x)&lt;$,则$L(R^{p},\lambda,\eta)$趋近无穷，反之，则存在最大值<br>
+$$<br>
+min_{x} max_{\lambda,\eta}=min_{x}(max f满足条件,max f不满足约束)\=min_{x} max_{\lambda,\eta}{f满足条件}<br>
+$$<br>
+对偶问题: 关于$\lambda,\eta$的最大化问题</p>
+<p>$$max min L(x,\lambda,\eta)\<br>
+s.t \lambda_i&gt;=0$$</p>
+<p><strong>弱对偶问题：对偶问题&lt;=原问题</strong></p>
+<p>证明: $max_{x} min(\lambda \eta ) L&lt;=min_{\eta,\lambda } max_{x} L$<br>
+$$<br>
+\underbrace{\min_{x}L(x,\lambda,\eta)}<em>{A(\lambda,\eta)}&lt;=L(x,\lambda,\eta)&lt;=\underbrace{\max</em>{\lambda,\eta} L(x,\lambda,\eta)}_{B(x)}<br>
+$$</p>
+<h1>分类</h1>
+<p>hard-margin SVM、 soft-margin SVM 、kernel SVM</p>
+<h1>线性可分支持向量机</h1>
+<p><img src="/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C1.png" alt=""></p>
 <p>对于A子图，可以用一个超平面($w^Tx+b$)去分类两类数据，建立如下的数学模型</p>
-<script type="math/tex; mode=display">f(w,b)=sign(w^Tx+b)</script><p>B,C,D子图提供了超平面都可以分类，显然B,C图的超平面的鲁棒性不如D图。SVM就是找到最好的一个超平面，怎么衡量好呢？找到平面离样本点的距离最大</p>
-<h2 id="hard-margin-SVM：-最大间隔SVM"><a href="#hard-margin-SVM：-最大间隔SVM" class="headerlink" title="hard-margin SVM： 最大间隔SVM"></a>hard-margin SVM： 最大间隔SVM</h2><h2 id="第一宝-间隔"><a href="#第一宝-间隔" class="headerlink" title="第一宝 间隔"></a>第一宝 间隔</h2><p>首先，看下margin的定义</p>
-<p><img src="/2019/03/17/SVMClassifiar/MyBlog\hexo\source\_posts\SVMClassifiar\2.png" alt=""></p>
-<script type="math/tex; mode=display">margin(w,b) = min(\frac{|w^Tx_i+b|}{||w||})</script><p>接下来</p>
+<p>$$ f(w,b)=sign(w^Tx+b)$$</p>
+<p>B,C,D子图提供了超平面都可以分类，显然B,C图的超平面的鲁棒性不如D图。SVM就是找到最好的一个超平面，怎么衡量好呢？找到平面离样本点的距离最大</p>
+<h2 id="hard-margin-svm：-最大间隔svm"><a class="header-anchor" href="#hard-margin-svm：-最大间隔svm">¶</a>hard-margin SVM： 最大间隔SVM</h2>
+<h2 id="第一宝-间隔"><a class="header-anchor" href="#第一宝-间隔">¶</a>第一宝 间隔</h2>
+<p>首先，看下margin的定义</p>
+<p><img src="/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C2.png" alt=""></p>
+<p>$$ margin(w,b) = min(\frac{|w^Tx_i+b|}{||w||})$$</p>
+<p>接下来</p>
 <p>数学模型：</p>
-<script type="math/tex; mode=display">\begin{cases}  \max margin(w,b)\\ st. y_i(w^Tx_i+b)>0\end{cases}</script><script type="math/tex; mode=display">\Longrightarrow\begin{cases}  max \frac{1}{||w||}min(y_i(w^Tx_i+b))\\  st. y_i(w^Tx_i+b)>0\end{cases}</script><p>注意，$y_i(w^Tx_i+b)&gt;0$,所以$\exists r&gt;0, min(y_i(w^Tx_i+b))=r$,可令$r=1$,这是对超平面范数的固定作用，因为$y=w^Tx+b$和$y=2w^T+2b$是同一个超平面，总能找到缩放$w,b$使得，可以将$r$缩放到1</p>
-<script type="math/tex; mode=display">\Longrightarrow\begin{cases}  max \frac{1}{||w||}\\  st. y_i(w^Tx_i+b)>=1\end{cases}</script><script type="math/tex; mode=display">\Longrightarrow\begin{cases}  \min \frac{1}{2}w^Tw\\  st. y_i(w^Tx_i+b)>=1\end{cases}</script><p>这是一个土二次规划问题</p>
-<h2 id="第二宝-对偶"><a href="#第二宝-对偶" class="headerlink" title="第二宝 对偶"></a>第二宝 对偶</h2><p>利用lagrange乘子法得出对偶问题</p>
+<p>$$\begin{cases}  \max margin(w,b)\ st. y_i(w^Tx_i+b)&gt;0\end{cases}$$</p>
+<p>$$\Longrightarrow\begin{cases}  max \frac{1}{||w||}min(y_i(w^Tx_i+b))\  st. y_i(w^Tx_i+b)&gt;0\end{cases}$$</p>
+<p>注意，$y_i(w^Tx_i+b)&gt;0$,所以$\exists r&gt;0, min(y_i(w<sup>Tx_i+b))=r$,可令$r=1$,这是对超平面范数的固定作用，因为$y=w</sup>Tx+b$和$y=2w^T+2b$是同一个超平面，总能找到缩放$w,b$使得，可以将$r$缩放到1</p>
+<p>$$\Longrightarrow\begin{cases}  max \frac{1}{||w||}\  st. y_i(w^Tx_i+b)&gt;=1\end{cases}$$</p>
+<p>$$\Longrightarrow\begin{cases}  \min \frac{1}{2}w^Tw\  st. y_i(w^Tx_i+b)&gt;=1\end{cases}$$</p>
+<p>这是一个土二次规划问题</p>
+<h2 id="第二宝-对偶"><a class="header-anchor" href="#第二宝-对偶">¶</a>第二宝 对偶</h2>
+<p>利用lagrange乘子法得出对偶问题</p>
 <p><strong>带约束</strong></p>
-<script type="math/tex; mode=display">\begin{cases}  \min \frac{1}{2}w^Tw\\  st. y_i(w^Tx_i+b)-1>=0\end{cases}</script><script type="math/tex; mode=display">\Longrightarrow L(w,b,\lambda）=\frac{1}{2}w^Tw-\sum_{i=1}^{N}\lambda_i(1-y_i(w^Tx_i+b)</script><p><strong>无约束</strong></p>
-<script type="math/tex; mode=display">\begin{cases}min_{w,b} max_{\lambda}L(w,b,\lambda) \\ s.t \lambda_i>=0\end{cases}</script><p>此时关于$w,b$无约束的。</p>
-<p>对$(L(w,b,\lambda))$ 对$w$,$b$求偏导</p>
-<script type="math/tex; mode=display">
-\frac{\partial L}{\partial w}=w+\sum_{i=1}^{N}y_ix_i\lambda_i=0 \Longrightarrow w=-\sum_{i=1}^{N}y_ix_i\lambda_i\\
-\frac{\partial L}{\partial b}=-\sum_{i=1}^{N}\lambda_iy_i=0</script><p>带回$L(w,b,\lambda)$,可得<strong>对偶问题</strong></p>
-<script type="math/tex; mode=display">\begin{cases} max_{\lambda}L(w,b,\lambda ) =-\frac{1}{2}\sum_i^N\sum_j^N\lambda_i  \lambda_jy_iy_jx_i^Tx_j +\sum_i^N\lambda_i \\ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i>=0\end{cases} \Longrightarrow\\\begin{cases} min_{\lambda}L(w,b,\lambda ) =\frac{1}{2}\sum_i^N\sum_j^N\lambda_i  \lambda_jy_iy_jx_i^Tx_j -\sum_i^N\lambda_i \\ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i>=0\end{cases}</script><h3 id="原问题和对偶问题有相同解的充要条件"><a href="#原问题和对偶问题有相同解的充要条件" class="headerlink" title="原问题和对偶问题有相同解的充要条件"></a>原问题和对偶问题有相同解的充要条件</h3><p>满足 KKT</p>
-<script type="math/tex; mode=display">
-\begin{cases}
-\frac{\partial L}{\partial w}=0,\frac{\partial L}{\partial b}=0,\frac{\partial L}{\partial \lambda}=0\\
-\lambda_i(y_i(w^Tx_i+b)-1)=0\\
-\lambda_i>=0\\
-y_i(w^Tx_i+b)-1>=0
-\end{cases}</script><p>如果存在$(x_k,y_k)=+1or -1$使得$y_i(w^Tx_i+b)-1=0$即可求解$b=y_k-\sum_{i=0}^{N}\lambda_ix_i^Tx_k$</p>
+<p>$$\begin{cases}  \min \frac{1}{2}w^Tw\  st. y_i(w^Tx_i+b)-1&gt;=0\end{cases}$$</p>
+<p>$$ \Longrightarrow L(w,b,\lambda）=\frac{1}{2}w<sup>Tw-\sum_{i=1}</sup>{N}\lambda_i(1-y_i(w^Tx_i+b)$$</p>
+<p><strong>无约束</strong></p>
+<p>$$  \begin{cases}min_{w,b} max_{\lambda}L(w,b,\lambda) \ s.t \lambda_i&gt;=0\end{cases}$$</p>
+<p>此时关于$w,b$无约束的。</p>
+<p>对$(L(w,b,\lambda))$ 对$w$,$b$求偏导<br>
+$$<br>
+\frac{\partial L}{\partial w}=w+\sum_{i=1}^{N}y_ix_i\lambda_i=0 \Longrightarrow w=-\sum_{i=1}^{N}y_ix_i\lambda_i\<br>
+\frac{\partial L}{\partial b}=-\sum_{i=1}^{N}\lambda_iy_i=0<br>
+$$<br>
+带回$L(w,b,\lambda)$,可得<strong>对偶问题</strong></p>
+<p>$$ \begin{cases} max_{\lambda}L(w,b,\lambda ) =-\frac{1}{2}\sum_i<sup>N\sum_j</sup>N\lambda_i  \lambda_jy_iy_jx_i^Tx_j +\sum_i^N\lambda_i \ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i&gt;=0\end{cases} \Longrightarrow\\begin{cases} min_{\lambda}L(w,b,\lambda ) =\frac{1}{2}\sum_i<sup>N\sum_j</sup>N\lambda_i  \lambda_jy_iy_jx_i^Tx_j -\sum_i^N\lambda_i \ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i&gt;=0\end{cases}$$</p>
+<h3 id="原问题和对偶问题有相同解的充要条件"><a class="header-anchor" href="#原问题和对偶问题有相同解的充要条件">¶</a>原问题和对偶问题有相同解的充要条件</h3>
+<p>满足 KKT<br>
+$$<br>
+\begin{cases}<br>
+\frac{\partial L}{\partial w}=0,\frac{\partial L}{\partial b}=0,\frac{\partial L}{\partial \lambda}=0\<br>
+\lambda_i(y_i(w^Tx_i+b)-1)=0\<br>
+\lambda_i&gt;=0\<br>
+y_i(w^Tx_i+b)-1&gt;=0<br>
+\end{cases}<br>
+$$<br>
+如果存在$(x_k,y_k)=+1or -1$使得$y_i(w<sup>Tx_i+b)-1=0$即可求解$b=y_k-\sum_{i=0}</sup>{N}\lambda_ix_i^Tx_k$</p>
 <p>代入模型</p>
-<script type="math/tex; mode=display">f(x)=sign(\sum_i^Na_iy_ix_i^Tx+y_k-\sum_{i=0}^{N}\lambda_ix_i^Tx_k)</script><p>注意，对于任意的训练样本，总有$\lambda_i=0$或者$y_if(x_i)=1$,如果$\lambda_i&gt;0$,说明样本点落在最大间隔的边界上，这些点就是支持向量，这条边界$w^Tx+b=1or-1$</p>
-<h1 id="soft-marign-软间隔"><a href="#soft-marign-软间隔" class="headerlink" title="soft-marign 软间隔"></a>soft-marign 软间隔</h1><p>  想法：允许一部分样本可以不被正确分类</p>
-<h2 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h2><script type="math/tex; mode=display">
-\min_{w,b} \frac{1}{2}w^Tw+loss</script><h2 id="一些损失函数"><a href="#一些损失函数" class="headerlink" title="一些损失函数"></a>一些损失函数</h2><ol>
-<li><p>0-1损失 个数</p>
-<script type="math/tex; mode=display">loss=\sum_{i=1}^NI\{y_i(w^Tx+b)<1\}</script><p>数学性质不好，不连续</p>
+<p>$$ f(x)=sign(\sum_i<sup>Na_iy_ix_i</sup>Tx+y_k-\sum_{i=0}<sup>{N}\lambda_ix_i</sup>Tx_k)$$</p>
+<p>注意，对于任意的训练样本，总有$\lambda_i=0$或者$y_if(x_i)=1$,如果$\lambda_i&gt;0$,说明样本点落在最大间隔的边界上，这些点就是支持向量，这条边界$w^Tx+b=1or-1$</p>
+<h1>soft-marign 软间隔</h1>
+<p>想法：允许一部分样本可以不被正确分类</p>
+<h2 id="优化目标"><a class="header-anchor" href="#优化目标">¶</a>优化目标</h2>
+<p>$$<br>
+\min_{w,b} \frac{1}{2}w^Tw+loss<br>
+$$</p>
+<h2 id="一些损失函数"><a class="header-anchor" href="#一些损失函数">¶</a>一些损失函数</h2>
+<ol>
+<li>
+<p>0-1损失 个数</p>
+<p>$$loss=\sum_{i=1}<sup>NI{y_i(w</sup>Tx+b)&lt;1}$$</p>
+<p>数学性质不好，不连续</p>
 </li>
-<li><p>0-1损失 距离 <strong>hinge loss</strong></p>
-<script type="math/tex; mode=display">
-loss = \begin{cases}
-0 , y_i(w^Tx_i+b)>=0,\\
-1-y_i(w^tx_i+b),  y_i(w^Tx_i+b)<1\\
-\end{cases}</script><script type="math/tex; mode=display">
-loss_{max} = max(0,1-y_i(w^Tx_i+b)=1-z)</script><p>此时优化问题，令$\xi_i=1-y_i(w^Tx_i+b)$</p>
-<script type="math/tex; mode=display">
-\min \frac{1}{2}w^Tw+\sum_{i=1}^{N}\xi_i\\
-s.t \begin{cases}
-y_i(w^Tx_i+b)>=1-\xi_i\\
-\xi_i>=0
-\end{cases}</script></li>
-<li><p>指数损失（<strong>exponential loss </strong>)</p>
-<script type="math/tex; mode=display">
-l_{exp}(z)=exp(-z)</script></li>
-<li><p>对率损失<strong>logistic loss</strong></p>
-<script type="math/tex; mode=display">
-l_{log}(z)=log(1+exp(-z)）</script></li>
+<li>
+<p>0-1损失 距离 <strong>hinge loss</strong><br>
+$$<br>
+loss = \begin{cases}<br>
+0 , y_i(w^Tx_i+b)&gt;=0,\<br>
+1-y_i(w^tx_i+b),  y_i(w^Tx_i+b)&lt;1\<br>
+\end{cases}<br>
+$$</p>
+<p>$$<br>
+loss_{max} = max(0,1-y_i(w^Tx_i+b)=1-z)<br>
+$$</p>
+<p>此时优化问题，令$\xi_i=1-y_i(w^Tx_i+b)$<br>
+$$<br>
+\min \frac{1}{2}w<sup>Tw+\sum_{i=1}</sup>{N}\xi_i\<br>
+s.t \begin{cases}<br>
+y_i(w^Tx_i+b)&gt;=1-\xi_i\<br>
+\xi_i&gt;=0<br>
+\end{cases}<br>
+$$</p>
+</li>
+<li>
+<p>指数损失（**exponential loss **)<br>
+$$<br>
+l_{exp}(z)=exp(-z)<br>
+$$</p>
+</li>
+<li>
+<p>对率损失<strong>logistic loss</strong><br>
+$$<br>
+l_{log}(z)=log(1+exp(-z)）<br>
+$$</p>
+</li>
 </ol>
-<p><img src="/2019/03/17/SVMClassifiar/MyBlog\hexo\source\_posts\SVMClassifiar\3.jpg" alt=""></p>
-<h1 id="核方法"><a href="#核方法" class="headerlink" title="核方法"></a>核方法</h1><h2 id="核函数的定义"><a href="#核函数的定义" class="headerlink" title="核函数的定义"></a>核函数的定义</h2><p>设 $\chi$为输入空间（Input Space），  $\mathrm{H}$为特征空间(Feature Space,一定是希尔伯特空间），存在一个映射</p>
-<script type="math/tex; mode=display">
-\varphi : \chi \rightarrow \mathrm{H}</script><p>对任意的 $x, y \in \mathrm{X}$，函数  $K(x, y)$，满足</p>
-<script type="math/tex; mode=display">
-K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可以看出，我们并不需要知道输入空间和特征空间满足的映射关系   ，只需要知道核函数就可以算出，输入空间中任意两点映射到特征空间的内积。</p>
+<p><img src="/2019/03/17/SVMClassifiar/K:%5CMyBlog%5Chexo%5Csource_posts%5CSVMClassifiar%5C3.jpg" alt=""></p>
+<h1>核方法</h1>
+<h2 id="核函数的定义"><a class="header-anchor" href="#核函数的定义">¶</a>核函数的定义</h2>
+<p>设 $\chi$为输入空间（Input Space），  $\mathrm{H}$为特征空间(Feature Space,一定是希尔伯特空间），存在一个映射<br>
+$$<br>
+\varphi : \chi \rightarrow \mathrm{H}<br>
+$$<br>
+对任意的 $x, y \in \mathrm{X}$，函数  $K(x, y)$，满足<br>
+$$<br>
+K(x, y)=&lt;\varphi(x), \varphi(y)&gt;<br>
+$$<br>
+则称  $K(x, y)$为核函数。可以看出，我们并不需要知道输入空间和特征空间满足的映射关系   ，只需要知道核函数就可以算出，输入空间中任意两点映射到特征空间的内积。</p>
 
       
     </div>
@@ -710,7 +770,7 @@ K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -887,7 +947,7 @@ K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#预备的数学知识"><span class="nav-number">1.</span> <span class="nav-text">预备的数学知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#约束优化问题"><span class="nav-number">1.1.</span> <span class="nav-text">约束优化问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分类"><span class="nav-number">2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性可分支持向量机"><span class="nav-number">3.</span> <span class="nav-text">线性可分支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hard-margin-SVM：-最大间隔SVM"><span class="nav-number">3.1.</span> <span class="nav-text">hard-margin SVM： 最大间隔SVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一宝-间隔"><span class="nav-number">3.2.</span> <span class="nav-text">第一宝 间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二宝-对偶"><span class="nav-number">3.3.</span> <span class="nav-text">第二宝 对偶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原问题和对偶问题有相同解的充要条件"><span class="nav-number">3.3.1.</span> <span class="nav-text">原问题和对偶问题有相同解的充要条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#soft-marign-软间隔"><span class="nav-number">4.</span> <span class="nav-text">soft-marign 软间隔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优化目标"><span class="nav-number">4.1.</span> <span class="nav-text">优化目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些损失函数"><span class="nav-number">4.2.</span> <span class="nav-text">一些损失函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核方法"><span class="nav-number">5.</span> <span class="nav-text">核方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#核函数的定义"><span class="nav-number">5.1.</span> <span class="nav-text">核函数的定义</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">预备的数学知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#约束优化问题"><span class="nav-number">1.1.</span> <span class="nav-text">¶约束优化问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">线性可分支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hard-margin-svm：-最大间隔svm"><span class="nav-number">3.1.</span> <span class="nav-text">¶hard-margin SVM： 最大间隔SVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一宝-间隔"><span class="nav-number">3.2.</span> <span class="nav-text">¶第一宝 间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二宝-对偶"><span class="nav-number">3.3.</span> <span class="nav-text">¶第二宝 对偶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原问题和对偶问题有相同解的充要条件"><span class="nav-number">3.3.1.</span> <span class="nav-text">¶原问题和对偶问题有相同解的充要条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">soft-marign 软间隔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优化目标"><span class="nav-number">4.1.</span> <span class="nav-text">¶优化目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些损失函数"><span class="nav-number">4.2.</span> <span class="nav-text">¶一些损失函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">核方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#核函数的定义"><span class="nav-number">5.1.</span> <span class="nav-text">¶核函数的定义</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -928,7 +988,7 @@ K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可�
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">218k</span>
+    <span title="Symbols count total">327k</span>
   
 
   
