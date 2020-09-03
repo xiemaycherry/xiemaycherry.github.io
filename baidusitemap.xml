@@ -2,111 +2,192 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://xiemaycherry.github.io/2020/08/15/%E7%A0%94%E4%BA%8C%E3%81%AE%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2020-08-25T16:14:12.967Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/20/%E7%94%9F%E6%B4%BB%E5%BF%83%E5%BE%97/</loc>
-    <lastmod>2020-08-25T15:52:50.482Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/28/prepare-for-work/</loc>
-    <lastmod>2020-08-15T14:20:45.616Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/29/Book-Learning/</loc>
-    <lastmod>2020-08-15T14:19:56.040Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/02/22/%E5%AD%A6%E4%B9%A0Daily/</loc>
-    <lastmod>2020-08-15T14:18:45.059Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/08/11/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AF%AD%E8%A8%80%E7%AF%87/</loc>
-    <lastmod>2020-08-11T15:35:32.178Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/</loc>
-    <lastmod>2020-08-11T15:33:34.501Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2020-08-11T14:51:38.751Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/17/%E7%BB%9F%E8%AE%A1%E5%AD%A6/</loc>
-    <lastmod>2020-07-30T09:28:30.552Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/02/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-07-28T13:07:25.016Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/02/24/python%E5%BA%93/</loc>
-    <lastmod>2020-07-28T11:57:35.933Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/06/11/%E6%AF%8F%E5%A4%A9%E4%BA%86%E8%A7%A3%E5%A4%9A%E4%B8%80%E7%82%B9/</loc>
-    <lastmod>2020-07-28T11:51:53.793Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/06/11/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
-    <lastmod>2020-07-28T09:44:42.090Z</lastmod>
+    <lastmod>2020-09-03T12:44:54.000Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2019/03/25/%E4%BA%8C%E6%AC%A1%E8%A7%84%E5%88%92/</loc>
-    <lastmod>2020-07-26T13:19:58.113Z</lastmod>
+    <lastmod>2020-08-28T07:57:46.000Z</lastmod>
   </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/25/Data-Analysis/</loc>
-    <lastmod>2020-07-25T11:41:24.474Z</lastmod>
+    <loc>http://xiemaycherry.github.io/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD/</loc>
+    <lastmod>2020-08-27T11:58:46.000Z</lastmod>
   </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/03/Xgboost/</loc>
-    <lastmod>2020-07-25T08:01:19.817Z</lastmod>
+    <loc>http://xiemaycherry.github.io/2020/08/27/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%81%8C%E8%B4%A3/</loc>
+    <lastmod>2020-08-27T00:59:04.179Z</lastmod>
   </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/</loc>
-    <lastmod>2020-07-25T08:01:02.585Z</lastmod>
+    <loc>http://xiemaycherry.github.io/2019/11/26/%E6%B8%85%E6%99%B0%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%80%9D%E8%B7%AF/</loc>
+    <lastmod>2020-08-26T13:46:20.000Z</lastmod>
   </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/03/R%E8%AF%AD%E8%A8%80/</loc>
-    <lastmod>2020-07-25T07:59:22.550Z</lastmod>
+    <loc>http://xiemaycherry.github.io/2020/08/25/%E8%8B%B1%E8%AF%ADDaily/</loc>
+    <lastmod>2020-08-25T12:27:42.000Z</lastmod>
   </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/15/PageRank%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2020-07-25T07:58:48.823Z</lastmod>
+    <loc>http://xiemaycherry.github.io/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2020-08-25T09:55:02.000Z</lastmod>
   </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/04/13/machine%20learning/</loc>
-    <lastmod>2020-07-25T07:58:21.432Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/04/13/machine%20learning%20test/</loc>
-    <lastmod>2020-07-25T07:58:11.882Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/06/11/Data-Science/</loc>
-    <lastmod>2020-07-25T07:56:41.633Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/07/17/%E5%AD%A6%E4%B9%A0%E3%81%AE%E5%8E%86%E7%A8%8B-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E5%91%A8%E5%BF%97%E5%8D%8E%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2020-07-25T07:56:06.576Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/03/11/%E5%9B%9E%E5%BD%92%E6%A0%91/</loc>
-    <lastmod>2020-07-25T07:53:37.406Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/06/20/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</loc>
-    <lastmod>2020-07-25T07:53:30.560Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/03/28/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</loc>
-    <lastmod>2020-07-25T07:52:52.037Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2019/03/22/Boosting/</loc>
-    <lastmod>2020-07-24T08:33:15.887Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/06/23/English-Daily/</loc>
-    <lastmod>2020-07-15T14:29:22.446Z</lastmod>
-  </url>  <url>
-    <loc>http://xiemaycherry.github.io/2020/06/22/time-series-01/</loc>
-    <lastmod>2020-07-05T07:15:23.186Z</lastmod>
+    <loc>http://xiemaycherry.github.io/2020/07/20/%E7%94%9F%E6%B4%BB%E5%BF%83%E5%BE%97/</loc>
+    <lastmod>2020-08-24T08:53:52.000Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2020/06/19/%E7%9F%A5%E8%AF%86%E6%B8%85%E5%8D%95/</loc>
-    <lastmod>2020-06-29T13:28:30.498Z</lastmod>
+    <lastmod>2020-08-24T08:25:34.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/02/22/MayMay/</loc>
+    <lastmod>2020-08-22T07:44:22.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/02/22/%E5%AD%A6%E4%B9%A0Daily/</loc>
+    <lastmod>2020-08-22T07:40:04.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/28/prepare-for-work/</loc>
+    <lastmod>2020-08-15T14:20:46.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/29/Book-Learning/</loc>
+    <lastmod>2020-08-15T14:19:58.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/08/11/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%AF%AD%E8%A8%80%E7%AF%87/</loc>
+    <lastmod>2020-08-11T15:35:34.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/</loc>
+    <lastmod>2020-08-11T15:33:36.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2020-08-11T14:51:40.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/17/%E7%BB%9F%E8%AE%A1%E5%AD%A6/</loc>
+    <lastmod>2020-07-30T09:28:32.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/02/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2020-07-28T13:07:26.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/02/24/python%E5%BA%93/</loc>
+    <lastmod>2020-07-28T11:57:36.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/06/11/%E6%AF%8F%E5%A4%A9%E4%BA%86%E8%A7%A3%E5%A4%9A%E4%B8%80%E7%82%B9/</loc>
+    <lastmod>2020-07-28T11:51:54.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/06/11/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
+    <lastmod>2020-07-28T09:44:44.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/25/Data-Analysis/</loc>
+    <lastmod>2020-07-25T11:41:26.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/03/Xgboost/</loc>
+    <lastmod>2020-07-25T08:01:20.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/03/17/SVMClassifiar/</loc>
+    <lastmod>2020-07-25T08:01:04.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/03/R%E8%AF%AD%E8%A8%80/</loc>
+    <lastmod>2020-07-25T07:59:24.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/15/PageRank%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2020-07-25T07:58:50.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/04/13/machine%20learning/</loc>
+    <lastmod>2020-07-25T07:58:22.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/04/13/machine%20learning%20test/</loc>
+    <lastmod>2020-07-25T07:58:12.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/06/11/Data-Science/</loc>
+    <lastmod>2020-07-25T07:56:42.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/07/17/%E5%AD%A6%E4%B9%A0%E3%81%AE%E5%8E%86%E7%A8%8B-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E5%91%A8%E5%BF%97%E5%8D%8E%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2020-07-25T07:56:08.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/03/11/%E5%9B%9E%E5%BD%92%E6%A0%91/</loc>
+    <lastmod>2020-07-25T07:53:38.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/06/20/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2020-07-25T07:53:32.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/03/28/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</loc>
+    <lastmod>2020-07-25T07:52:54.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/03/22/Boosting/</loc>
+    <lastmod>2020-07-24T08:33:16.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/06/23/English-Daily/</loc>
+    <lastmod>2020-07-15T14:29:24.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/06/22/time-series-01/</loc>
+    <lastmod>2020-07-05T07:15:24.000Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2019/03/03/%E5%86%B3%E7%AD%96%E6%A0%91/</loc>
-    <lastmod>2020-06-29T08:27:29.277Z</lastmod>
+    <lastmod>2020-06-29T08:27:30.000Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2019/04/11/tensorflow/</loc>
-    <lastmod>2020-06-29T08:25:28.286Z</lastmod>
+    <lastmod>2020-06-29T08:25:30.000Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2019/03/19/SVR/</loc>
-    <lastmod>2020-06-29T08:25:22.299Z</lastmod>
+    <lastmod>2020-06-29T08:25:24.000Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2019/02/28/SVD/</loc>
-    <lastmod>2020-06-29T08:24:53.739Z</lastmod>
+    <lastmod>2020-06-29T08:24:54.000Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2019/03/05/BP%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2020-06-24T12:29:13.885Z</lastmod>
+    <lastmod>2020-06-24T12:29:14.000Z</lastmod>
   </url>  <url>
     <loc>http://xiemaycherry.github.io/2019/04/07/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2020-06-23T10:07:31.138Z</lastmod>
+    <lastmod>2020-06-23T10:07:32.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/12/01/or/</loc>
+    <lastmod>2019-12-01T07:37:36.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/11/27/linux/</loc>
+    <lastmod>2019-11-27T07:27:48.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/09/03/%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/FeatureExtraction/</loc>
+    <lastmod>2019-11-25T14:13:14.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/11/25/Apriori/</loc>
+    <lastmod>2019-11-25T14:13:10.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/03/03/%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/%E5%86%B3%E7%AD%96%E6%A0%91/</loc>
+    <lastmod>2019-11-25T13:22:08.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/11/20/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2/</loc>
+    <lastmod>2019-11-20T10:55:36.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/09/03/FeatureExtraction/</loc>
+    <lastmod>2019-11-17T14:00:40.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/11/15/test/</loc>
+    <lastmod>2019-11-15T06:37:14.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-11-15T06:16:12.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/03/03/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D/</loc>
+    <lastmod>2019-11-15T03:20:08.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2020/09/03/recording%20of%20master/MyMain/</loc>
+    <lastmod>2019-11-15T03:13:48.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/04/17/ImprovingDeep%20learning.ai_Deep%20Neural%20NetworksHyperparameter%20tuning,%20Regularization%20and%20Optimization/</loc>
+    <lastmod>2019-11-15T03:08:42.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/03/24/kaggle/</loc>
+    <lastmod>2019-11-15T03:08:24.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/03/23/scikit-learn/</loc>
+    <lastmod>2019-11-15T03:08:18.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/05/28/Python-basic/</loc>
+    <lastmod>2019-11-15T03:08:02.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/04/16/%E5%BD%A9%E9%93%85DailyLifeStyle/</loc>
+    <lastmod>2019-11-15T03:08:00.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/05/12/Deel%20Learning%20ai_Convolutional%20Neural%20Networks/</loc>
+    <lastmod>2019-11-15T03:07:34.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/04/03/deeplearningvideo/</loc>
+    <lastmod>2019-11-15T03:07:26.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/04/11/Deep%20Learning.ai_Neural%20Networks%20and%20Deep%20Learning/</loc>
+    <lastmod>2019-11-15T03:07:10.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/05/05/Deep%20Learning%20ai_Deep%20Learning%20Specialization/</loc>
+    <lastmod>2019-11-15T03:06:58.000Z</lastmod>
+  </url>  <url>
+    <loc>http://xiemaycherry.github.io/2019/03/03/%E5%90%B4%E6%81%A9%E8%BE%BE/</loc>
+    <lastmod>2019-11-15T02:44:06.000Z</lastmod>
   </url>
 </urlset>

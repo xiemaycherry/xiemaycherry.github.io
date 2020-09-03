@@ -347,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/05/BP算法/">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/11/25/Apriori/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XieMay">
@@ -366,7 +366,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/05/BP算法/" itemprop="url">BP算法</a></h1>
+                <a class="post-title-link" href="/2019/11/25/Apriori/" itemprop="url">Apriori</a></h1>
         
 
         <div class="post-meta">
@@ -378,7 +378,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T19:24:23+08:00">2019-03-05</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-25T21:21:06+08:00">2019-11-25</time>
             
 
             
@@ -399,7 +399,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数据挖掘/" itemprop="url" rel="index"><span itemprop="name">数据挖掘</span></a></span>
 
                 
                 
@@ -414,8 +414,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/05/BP算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/05/BP算法/" itemprop="commentCount"></span>
+                <a href="/2019/11/25/Apriori/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/25/Apriori/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -438,7 +438,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                11k字
+                483字
               </span>
               
 
@@ -465,256 +465,27 @@
       
         
           
-            <p>[TOC]</p>
-<h1>1. 需要的微积分知识</h1>
-<h2 id="1-1-导数"><a class="header-anchor" href="#1-1-导数">¶</a>1.1 导数</h2>
-<p>对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。<br>
-对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。</p>
-<h2 id="1-2-求导的链式法则"><a class="header-anchor" href="#1-2-求导的链式法则">¶</a>1.2 求导的链式法则</h2>
+            <p>Apriori 算法是一种挖掘关联规则的频繁项集的算法。</p>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>对于特征构成的集合$A$, 如果列出非空集合有$a^{|A|}-1$种，太恐怖了。</p>
+<p>Aprior算法：核心想法是</p>
 <ol>
-<li>
-<p>$x \in R$, $z=g(f(x))$, $y=f(x)$<br>
-$$ \frac{\partial z}{\partial x}=\frac{\partial z}{\partial y} \frac{\partial y}{\partial x}$$</p>
-</li>
-<li>
-<p>$ x \in R^m $, $f(x)$是$R<sup>M$到$R</sup>n$的映射，$g(f)$是$R^n$到R的映射<br>
-$$ \frac{\partial g}{\partial x_i}=\sum_j^n \frac{\partial g}{\partial f_i} \frac{\partial f_i}{\partial x_i}$$<br>
-如果使用向量表示<br>
-$$ \nabla_x^z=(\frac{\partial f}{\partial x})^T \nabla_y^z$$</p>
-</li>
+<li>L_1是频繁的，则其子集也是频繁的。</li>
+<li>L_1是非频繁的，则其超集是非频繁的</li>
 </ol>
-<h1>2. 梯度下降法</h1>
-<h2 id="2-1-梯度"><a class="header-anchor" href="#2-1-梯度">¶</a>2.1 梯度</h2>
-<p>梯度其实本质也是一个向量，对于函数$f(X,y)$<br>
-在$(W,y)$这一点的梯度 $(\frac{\partial f}{\partial X},\frac{\partial f}{\partial y})$<br>
-梯度的几何意义：在该店变化增加最快的地方</p>
-<h2 id="2-2-梯度算法的解释"><a class="header-anchor" href="#2-2-梯度算法的解释">¶</a>2.2 梯度算法的解释</h2>
-<p>图来自吴恩达的机器学习课程<br>
-<img src="/2019/03/05/BP算法/2.1.1.png" alt="tu"><br>
-颜色偏红(A)的地方开始，根据梯度的负方向通过9次更新，达到了最小值(B)。<br>
-现在给定一个点$A(\theta_0,\theta_1)$,干嘛呢，我们想从A到B点（最小值点),类似人类下山，需要知道往那个方向吧、走大多一步呢？<br>
-方向：梯度的负方向 $ \delta=(\frac{\partial L}{\partial \theta_0},\frac{\partial L}{\partial \theta_1})$)<br>
-步长：学习率（$\alpha$)<br>
-因此，计算一次里目标更近了 $(\theta_0,\theta_1)=(\theta_0,\theta_1)-\alpha \dot (\delta)$<br>
-在重复上两步，直到满意为止。</p>
-<h1>3.误差反向传播算法</h1>
-<h2 id="3-1-理论推导"><a class="header-anchor" href="#3-1-理论推导">¶</a>3.1 理论推导</h2>
-<p><img src="/2019/03/05/BP算法/3.1.1.png" alt="计算图"></p>
-<h3 id="3-1-1-符号说明"><a class="header-anchor" href="#3-1-1-符号说明">¶</a>3.1.1 符号说明</h3>
-<p>上图是一个L层的神经网络，输入层为第一层，隐藏层：2至$L-1$层，输出层L</p>
-<p>令 输入向量 $\vec{X}$<br>
-$$ \vec{X} = (x_1,x_2,…,x_{m-1},x_m)$$<br>
-输出向量 $\vec{Y}$<br>
-$$ \vec{Y}=(y_1,y_2,…,y_{n-1},y_n)$$a<br>
-第j层隐藏层的输出向量 $\vec{h^{(j)}}$<br>
-$$\vec{h<sup>{(j)}}=(h_1</sup>{(j)},h_2<sup>&lt;!–￼0–&gt;,…,h_{t-1}</sup>{(j)},h_tj^{(j)})$$<br>
-其中，$tj$:表示第j的隐藏层个数<br>
-第$(l-1)$层的第i个神经元到第$l$层的第j个神经元的连接权重：$w_{ij}^{(l)}$，则第$(l-1)$层神经元到第$l$层神经元的连接权重矩阵</p>
-<p>$$W^{(l)}=\left( \begin{matrix}w_{11}^{(l)}&amp; \cdots &amp; w_{1(tj)}\<br>
-&amp;   \dots &amp;\<br>
-w_{s(l-1)}<sup>{l}&amp;\cdots&amp;w_{s(l-1)s(l)}</sup>{l}<br>
-\end{matrix}\right)$$</p>
-<h3 id="3-1-2-推导过程"><a class="header-anchor" href="#3-1-2-推导过程">¶</a>3.1.2 推导过程</h3>
-<h4 id="3-1-2-1-误差"><a class="header-anchor" href="#3-1-2-1-误差">¶</a>3.1.2.1 误差</h4>
-<p>定义的误差函数,常见的衡量性指标见 <a href="#3.6">戳我</a>,这里选择的误差平方和最小<br>
-第$i$个输出的误差,假设实际输出$(d(1),d(2),…,d(n))$：,一个输入样本对应的误差<br>
-$$E(i)=\frac{1}{2}\sum_{k=1}<sup>n(y(i)-d(i))</sup>2=\frac{1}{2}||y-d||^2$$</p>
-<p>所有训练样本($N$)的误差：<br>
-$$E(i)=\frac{1}{2}\sum_{j=1}<sup>{N}(\sum_{k=1}</sup>n(y(i)-d(i))<sup>2)=\frac{1}{2N}\sum_{j=1}</sup>{N}(||y(i)-d(i)||^2)$$</p>
-<p>因此，<br>
-$$ E = \frac{1}{2N}\sum_{i=1}<sup>N(||y(i)-d(i)||</sup>2)$$<br>
-其实，神经网络的输出是关于节点的复合函数。代价函数是关于$W$和$b$的函数。</p>
-<h4 id="3-1-2-2-正向传播"><a class="header-anchor" href="#3-1-2-2-正向传播">¶</a>3.1.2.2 正向传播</h4>
-<p>输入层$\hat{X}$：<br>
-$$ X =(x_1,x_2,x_3,…,x_m)$$<br>
-当有$N$个训练样本时，可用矩阵表示</p>
-<p>$$ X=\left( \begin{matrix}<br>
-x_{11} &amp;x_{12}&amp;…&amp;x_{1m}\<br>
-x_{21} &amp; x_{22}&amp;…&amp;x_{2m}\<br>
-\vdots &amp; \vdots&amp;\dots&amp;\vdots\<br>
-x_{N1} &amp; \vdots&amp;\vdots&amp;x_{Nm}\<br>
-\end{matrix}  \right)$$</p>
-<p>第二层 $h^{(2)}$,一共$s2$个节点:<br>
-第i个节点的计算<br>
-$$h<sup>{(2)}(i)=f(\sum_{j=1}</sup>{s2}x(j)<em>w_{ji}^{(l)}+b_i)=f(x</em>w(:,i)+b_i)$$<br>
-矩阵表示<br>
-$$ h<sup>{(2)}=f(x*W</sup>{(l)}+b^{(2)})$$<br>
-第i层 矩阵形式<br>
-$$ h<sup>{(l)}=f(h</sup>{(l-1)}*W^{(l)}+b)$$</p>
-<h4 id="3-1-2-3-反向传播"><a class="header-anchor" href="#3-1-2-3-反向传播">¶</a>3.1.2.3 反向传播</h4>
-<p>梯度下降法更新权重，不断迭代到最优解。<br>
-对$w_{ij}$求导数可得,可更新$w_{ij}$更新公式：<br>
-$$ w_{ij}=w_{ij}-\alpha \frac{\partial E}{\partial w_{ij}}$$<br>
-当然简单的情况下，可直接写出公式，当太复杂的时候，引入BP简化求导</p>
-<p>方便书写公式，对于第i的输入$h<sup>{(i-1)}*W</sup>{(i)}+b<sup>{(i)}$记作$net</sup>{(i)}$,其中，第$i$的输入和输出的关系，$输入=f(输出)$<br>
-下面开始推导</p>
-<p>首先，对于$L$层，</p>
-<p>对于$W<sup>{(L)}$，先看对$W_{ij}</sup>{(L)}$求导，<br>
-$$ \frac{\partial E}{\partial W_{ij}^{(L)}}<br>
-=\frac{\partial E}{\partial y(j)} * \frac{\partial y(i)}{\partial net_{j}^{L}} * \frac{\partial net_{j}^{L}}{\partial W_{ij}^{(L)}}\<br>
-=(y(j)-d(j))*f(x)<sup>{’}|_{x=net_j</sup>{(L)}}h_i^{(L-1)}$$</p>
-<p>令$\delta_i^{(L)}=y(i)-d(i)$</p>
-<p>上述给出了单个分量的求偏导的结果，对于$W^{(L)}$<br>
-$$<br>
-\frac{\partial E}{\partial W^{(L)}}<br>
-=\left[\begin{matrix}<br>
-\frac{\partial E}{\partial W_{11}^{(L)}} &amp; \frac{\partial E}{\partial W_{12}^{(L)}}&amp;\dots &amp; \frac{\partial E}{\partial W_{1n}^{(L)}}\<br>
-\frac{\partial E}{\partial W_{21}^{(L)}} &amp; \frac{\partial E}{\partial W_{22}^{(L)}}&amp;\dots&amp; \frac{\partial E}{\partial W_{2n}^{(L)}}\<br>
-\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
-\frac{\partial E}{\partial W_{sL,1}^{(L)}} &amp; \frac{\partial E}{\partial W_{sL,2}^{(L)}}&amp;\dots&amp; \frac{\partial E}{\partial W_{sL,n}^{(L)}}<br>
-\end{matrix}\right]<br>
-\= \left[<br>
-\begin{matrix}<br>
-h<sup>{(L-1)}_1\h</sup>{(L-1)}<em>2\ \dots\h^{(L-1)}<em>n<br>
-\end{matrix}<br>
-\right] *\left[\begin{matrix}<br>
-\delta_1<sup>{(L)}f(x)</sup>{’}|</em>{x=net_1^{(L)}}\<br>
-\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
-\dots\<br>
-\delta_n<sup>{(L)}f(x)</sup>{’}|_{x=net_n^{(L)}}<br>
-\end{matrix}\right] ^T<br>
-=h<sup>{(L-1)}S</sup>{(L)}<br>
-$$<br>
-其中，</p>
-<p>$$<br>
-S^{(L)}=\left[\begin{matrix}</p>
-<p>\delta_1<sup>{(L)}f(x)</sup>{’}|<em>{x=net_1^{(L)}}\<br>
-\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
-\dots\<br>
-\delta_n<sup>{(L)}f(x)</sup>{’}|<em>{x=net_n^{(L)}}<br>
-\end{matrix}\right]^T<br>
-$$<br>
-同理可得，<br>
-$$<br>
-\frac{\partial E}{\partial b_k<sup>{(L)}}=(y(j)-d(j))*f(x)</sup>{’}|</em>{x=net_j^{(L)}}<br>
-$$</p>
-<p>其次，对于隐含层$L-1$层，对$W_{ij}^{(L)}$求导<br>
-$$<br>
-\frac{\partial E}{\partial W_{ij}^{(L-1)}}<br>
-=\sum_{k=1}^{n}\frac{\partial E}{\partial y(k)} * \frac{\partial y(k)}{\partial net_{k}^{L}} * \frac{\partial net_{k}^{L}}{\partial f(net_j^{(L-1)})}<em>\frac{\partial f(net_j^{(L-1)})}{\partial net_j^{(L-1)}}</em>\frac{\partial net_j^{(L-1)}}{\partial W_{ij}^{(L-1)}}\<br>
-=\sum_{k=1}^{n} (y(j)-d(j))*f(x)<sup>{’}|_{x=net_j</sup>{(L)}}W_{kj}<sup>{(L)}f(x)</sup>{’}|<em>{x=net_j<sup>{L-1}}h_i</sup>{L-2}\<br>
-=\sum</em>{k=1}<sup>{n}S_i</sup>{(L)}W_{kj}<sup>{(L)}f(x)</sup>{’}|_{x=net_j<sup>{L-1}}h_i</sup>{L-2}\<br>
-$$</p>
-<p>写出矩阵形式,对$W^{(L-1)}$<br>
-$$<br>
-\frac{\partial E}{\partial W^{(L-1)}}=\left[\begin{matrix} h<sup>{(L-2)}_1\h</sup>{(L-2)}<em>2\\vdots\h^{(L-2)}</em>{s(L-2)}\end{matrix}\right] \left[\begin{matrix}</p>
-<p>\delta_1<sup>{(L)}f(x)</sup>{’}|<em>{x=net_1^{(L)}}\<br>
-\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
-\dots\<br>
-\delta_n<sup>{(L)}f(x)</sup>{’}|<em>{x=net_n^{(L)}}<br>
-\end{matrix}\right]^T<br>
-\left[\begin{matrix}<br>
-W</em>{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
-W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
-\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
-W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}<br>
-\end{matrix}\right]^T<br>
-\<br>
-\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
-0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\<br>
-=h<sup>{(L-2)}S</sup>{(L-1)}<br>
-$$</p>
-<p>$$<br>
-S^{(L-1)}=\left(\left[\begin{matrix}</p>
-<p>f(x)<sup>{’(L)}|_{x=net_1</sup>{(L)}}&amp;0&amp; \dots&amp; 0\<br>
-0&amp;f(x)<sup>{’}|_{x=net_2</sup>{(L)}}0&amp; \dots&amp; 0\<br>
-0&amp;\dots&amp;\dots&amp;0\<br>
-0&amp;0&amp;0&amp;f(x)<sup>{’(L)}|_{x=net_n</sup>{(L)}}<br>
-\end{matrix}\right]\left[\begin{matrix} \delta_1<sup>{(L)}\\delta_2</sup>{(L)}\\vdots\\delta_n^{(L)}\end{matrix}\right] \right)^T\<br>
-\left[\begin{matrix}<br>
-W_{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
-W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
-\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
-W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}*<br>
-\end{matrix}\right]^T<br>
-\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
-0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\<br>
-=S^{(L)}\left[\begin{matrix}<br>
-W_{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
-W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
-\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
-W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}*<br>
-\end{matrix}\right]^T\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
-0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]*\<br>
-$$</p>
-<p>对$1&lt;l&lt;L$,求$W^{(l)}$的偏导,</p>
-<p>最后，根据上述的推导喔，很容易得出$S<sup>{(l)}$和$S</sup>{(l+1)}$,<br>
-$$<br>
-S<sup>{(l)}=S</sup>{(l+1)}W<sup>{(l+1)</sup>T}F<sup>{’(l)}(net</sup>{(l)})\<br>
-S<sup>{(L)}=(Y-\hat{Y})F</sup>{’(L)}(net^{(L)})<br>
-$$</p>
-<p>$$<br>
-\frac{\partial E}{\part W<sup>{(l)}}=\left[\begin{matrix}h</sup>{(l-1)}<em>1\h^{(l-1)}<em>2 \\dots \h<sup>{(l-1)}_{sl}\end{matrix}\right]S</sup>{(l+1)} \left[\begin{matrix}W</em>{11}<sup>{(l+1)}&amp;W_{12}</sup>{(l+1)} &amp;\dots&amp; W</em>{2(sl+1)}^{(l+1)}\<br>
-W_{21}<sup>{(l+1)}&amp;W_{22}</sup>{(l+1)} &amp;\dots&amp; W_{2(sl+1)}^{(l+1)}\<br>
-\dots&amp;\dots&amp;\dots&amp;\dots\<br>
-W_{sl1}<sup>{(l+1)}&amp;W_{sl2}</sup>{(l+1)} &amp;\dots&amp; W_{sl(sl+1)}^{(l+1)}\<br>
-\end{matrix}  \right]^T\left[\begin{matrix} \part f<sup>{’(l)}(net_1</sup>{l})&amp;0&amp;\dots &amp; 0\<br>
-0\0 &amp;\part f<sup>{’(l)}(net_2</sup>{l})&amp;\dots&amp;0\<br>
-0 &amp; 0&amp;\dots&amp;0\<br>
-0&amp;0&amp;\dots&amp;\part f<sup>{’(l)}(net_l</sup>{l})\end{matrix}\right]<br>
-$$</p>
-<h2 id="3-2-bp算法的小结"><a class="header-anchor" href="#3-2-bp算法的小结">¶</a>3.2 BP算法的小结</h2>
-<p>算法分为两个阶段：前向阶段和后向传播阶段</p>
-<p>后向阶段算法：</p>
-<p>Step 1:  计算$\hat{y}^{(L)}$</p>
-<p>Step 2:  for l =L:2</p>
-<p>​		计算$S<sup>{(l)}=S</sup>{(l+1)}W<sup>{(l+1)}F’(net</sup>{(l)})$</p>
-<p>​		计算 $\Delta W<sup>{(l)}=h</sup>{(l-1)}S^{(l)} $</p>
-<p>​		计算$W<sup>{(l)}=W</sup>{(l)}-\delta \Delta W^{(l)}$</p>
-<h2 id="3-3-python实现"><a class="header-anchor" href="#3-3-python实现">¶</a>3.3 Python实现</h2>
-<h3 id="3-3-1-最简单三层网络"><a class="header-anchor" href="#3-3-1-最简单三层网络">¶</a>3.3.1 最简单三层网络</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">不用任何框架，自己写一个三层的神经网络</span></span><br><span class="line"><span class="string"># input-3,hidden-4 output-1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input Matrix</span></span><br><span class="line">X = np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">0</span> ,<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output Matrix</span></span><br><span class="line">y = np.array([[<span class="number">0</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>]])</span><br><span class="line"><span class="comment"># Nonlinear function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X,derive=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-X))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> X*(<span class="number">1</span>-X)</span><br><span class="line"><span class="comment"># relu</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">relu</span><span class="params">(X,derive = False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> np.maximum(<span class="number">0</span>,X)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (X&gt;<span class="number">0</span>).astype(float)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Weight bias</span></span><br><span class="line">W1 = <span class="number">2</span> * np.random.random((<span class="number">3</span>, <span class="number">4</span>))<span class="number">-1</span></span><br><span class="line">b1 = <span class="number">0.1</span> * np.ones((<span class="number">4</span>,))</span><br><span class="line"> </span><br><span class="line">W2 = <span class="number">2</span> * np.random.random((<span class="number">4</span>,<span class="number">1</span>))<span class="number">-1</span></span><br><span class="line">b2 = <span class="number">0.1</span> * np.ones((<span class="number">1</span>,))</span><br><span class="line"> </span><br><span class="line">rate = <span class="number">0.1</span></span><br><span class="line">noline = relu</span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">train_times = <span class="number">200</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> time <span class="keyword">in</span> range(train_times):</span><br><span class="line">    <span class="comment"># Layer one</span></span><br><span class="line">    A1 = np.dot(X,W1)+b1</span><br><span class="line">    Z1 = noline(A1)</span><br><span class="line">    <span class="comment"># Layer two </span></span><br><span class="line">    A2 = np.dot(Z1, W2)+b2</span><br><span class="line">    Z2 = noline(A2)</span><br><span class="line">    </span><br><span class="line">    cost = -y+Z2</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calc deltas </span></span><br><span class="line">    S2= cost*noline(A2,<span class="keyword">True</span>)</span><br><span class="line">    delta_W2 = np.dot(Z1.T,S2)</span><br><span class="line">    bias2 = S2.sum(axis=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    S1 = np.dot(S2, W2.T)*noline(A1,<span class="keyword">True</span>)</span><br><span class="line">    delta_W1= np.dot(X.T, S1)</span><br><span class="line">    bias1 = S1.sum(axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># update</span></span><br><span class="line">    W1 = W1-rate*delta_W1</span><br><span class="line">    b1 = b1-rate*bias1</span><br><span class="line">    W2 = W2-rate*delta_W2</span><br><span class="line">    b2 = b2-rate*bias2</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">'error'</span>,np.mean(((y-Z2)*(y-Z2))**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"prediction"</span>,Z2)</span><br></pre></td></tr></table></figure>
-<h2 id="font-id-3-6-3-4-附录-font-："><a class="header-anchor" href="#font-id-3-6-3-4-附录-font-：">¶</a><font id="3.6">3.4  附录</font>：</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Abbreviation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mean absolute percentage error</td>
-<td>MAPE</td>
-</tr>
-<tr>
-<td>Root mean squares percentage error</td>
-<td>RMSPE</td>
-</tr>
-<tr>
-<td>Mean absolute percentage error</td>
-<td>MAE</td>
-</tr>
-<tr>
-<td>Mean squares error</td>
-<td>MSE</td>
-</tr>
-<tr>
-<td>Index of agreement</td>
-<td>IA</td>
-</tr>
-<tr>
-<td>Theil U statistic 1</td>
-<td>U1</td>
-</tr>
-<tr>
-<td>Theil U statistic 2</td>
-<td>U2</td>
-</tr>
-<tr>
-<td>Correlation coefficient</td>
-<td>R</td>
-</tr>
-</tbody>
-</table>
-<p>MAPE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left|\frac{x</sup>{(0)}(k)-\hat{x}<sup>{(0)}(k)}{x</sup>{(0)}(k)}\right| \times 100$<br>
-RMSPE	=	$\sqrt{\frac{1}{n} \sum_{k=1}<sup>{n}\left(\frac{\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)}{x</sup>{(0)}(k)}\right)^{2}} \times 100$<br>
-MAE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left|\hat{x}</sup>{(0)}(k)-x^{(0)}(k)\right|$<br>
-MSE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}$<br>
-IA	=	$1-\frac{\sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}}{\sum_{k=1}^{n} \left( \left| \hat{x}^{(0)}(k)-\overline{x} \right|+\left| x^{(0)}(k)-\overline{x}\right| \right)^{2}}$<br>
-U1	=	$\frac{\sqrt{\frac{1}{n} \sum_{k=1}<sup>{n}\left(x</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}}}{\sqrt{\frac{1}{n} \sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}}+\sqrt{\frac{1}{n} \sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}}}$<br>
-U2	=	$\frac{\left[\sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}\right]^{1 / 2}}{\left[\sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}\right]^{1 / 2}}$<br>
-R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{Var}[\hat{x}</sup>{(0)}] \operatorname{Var}[x^{(0)}]}}$</p>
+<p>这样的化，就大大减小了搜索空间了。</p>
+<p>Aprior算法的过程：</p>
+<p>$C_i$：表示数据集生成候选项集</p>
+<p>$L_i$:表示生成的频繁项集</p>
+<p>$C_{k-1}$产生$L_k$</p>
+<h3 id="支持度"><a href="#支持度" class="headerlink" title="支持度"></a>支持度</h3><script type="math/tex; mode=display">
+support(\{A,B\}) = num\{AUB\}/W = P(A \ bing \ B)</script><p>W:总的记录，</p>
+<h3 id="置信度"><a href="#置信度" class="headerlink" title="置信度"></a>置信度</h3><script type="math/tex; mode=display">
+Confidence(A->B) = support(\{A,B\})/support(B) = P(B/A)</script><p>注意：support(B)和Confidence(A-&gt;B)的影响，</p>
+<h2 id="序列模型"><a href="#序列模型" class="headerlink" title="序列模型"></a>序列模型</h2><p>考虑时间，如周一买一堆对象，周二买一堆东西</p>
+<script type="math/tex; mode=display">
+t= {t_1,t_2,..,t_n}\\
+s = {s_1,s_2,..,s_n}</script><p>&lt;{s1},{s_2}&gt;是正确的</p>
+<p>&lt;{s1,s2}}&gt;是错误的表达</p>
 
           
         
@@ -770,7 +541,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/决策树/">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/11/20/简单的数据探索/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XieMay">
@@ -789,7 +560,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/03/决策树/" itemprop="url">决策树</a></h1>
+                <a class="post-title-link" href="/2019/11/20/简单的数据探索/" itemprop="url">简单的数据探索</a></h1>
         
 
         <div class="post-meta">
@@ -801,7 +572,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T09:18:39+08:00">2019-03-03</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-20T16:45:03+08:00">2019-11-20</time>
             
 
             
@@ -822,7 +593,14 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数据挖掘/" itemprop="url" rel="index"><span itemprop="name">数据挖掘</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数据挖掘/数据分析/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a></span>
 
                 
                 
@@ -837,8 +615,8 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/03/决策树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/决策树/" itemprop="commentCount"></span>
+                <a href="/2019/11/20/简单的数据探索/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/20/简单的数据探索/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -861,7 +639,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                5.9k字
+                132字
               </span>
               
 
@@ -887,10 +665,10 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
 
       
         
-          <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！😄 😃 😁 😮</p>
+          <h1 id="简单的探索数据的方法"><a href="#简单的探索数据的方法" class="headerlink" title="简单的探索数据的方法"></a>简单的探索数据的方法</h1><p>总结一些简单的数据分析方法，以及常用的python 库 Pandas里面相应的函数。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/03/决策树/#more" rel="contents">
+            <a class="btn" href="/2019/11/20/简单的数据探索/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -948,7 +726,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/02/28/SVD/">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/11/15/test/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XieMay">
@@ -967,7 +745,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/28/SVD/" itemprop="url">我的读书笔记</a></h1>
+                <a class="post-title-link" href="/2019/11/15/test/" itemprop="url">test</a></h1>
         
 
         <div class="post-meta">
@@ -979,7 +757,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-28T14:54:12+08:00">2019-02-28</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-15T14:37:12+08:00">2019-11-15</time>
             
 
             
@@ -989,24 +767,6 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1015,8 +775,8 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/28/SVD/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/SVD/" itemprop="commentCount"></span>
+                <a href="/2019/11/15/test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/15/test/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1039,7 +799,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                6.3k字
+                0字
               </span>
               
 
@@ -1065,24 +825,183 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
 
       
         
-          <h1>目录 😄</h1>
-<p>1️⃣ <a href="#1">简单说一下特征值、特征向量与特征分解</a><br>
-   I. <a href="#1.1">特征值、特征向量与特征分解</a><br>
-   II. <a href="#1.2">几何意义</a><br>
-   III.  <a href="#1.3">如何实现通过Matlab、Python实现</a><br>
-2️⃣<a href="#2">详细解说SVD</a><br>
-   I. <a href="#2.1">几何意义</a><br>
-   I. <a href="#2.2">奇异值分解的推导过程</a><br>
-   I. <a href="#2.3">SVD算例</a><br>
-   I. <a href="#2.4">如何通过Matlab和Python</a><br>
-3️⃣<a href="#3">应用举例</a><br>
-   I. <a href="#3.1">特征值、特征向量与特征分解</a><br>
-4️⃣<a href="#4">特征分解、奇异值分解的区别</a><br>
-   I. <a href="#4">特征分解、奇异值分解的区别</a></p>
-<h1><font id="1" color="blue"> 简单说一下特征值、特征向量与特征分解</font></h1>
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/05/28/Python-basic/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/28/Python-basic/" itemprop="url">Python Basics</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-28T10:18:04+08:00">2019-05-28</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/28/Python-basic/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/28/Python-basic/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                42字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id=""><a href="#" class="headerlink" title=""></a></h1>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/28/SVD/#more" rel="contents">
+            <a class="btn" href="/2019/05/28/Python-basic/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1140,7 +1059,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/02/24/python库/">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/05/12/Deel Learning ai_Convolutional Neural Networks/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XieMay">
@@ -1159,7 +1078,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/24/python库/" itemprop="url">python库</a></h1>
+                <a class="post-title-link" href="/2019/05/12/Deel Learning ai_Convolutional Neural Networks/" itemprop="url">Networks</a></h1>
         
 
         <div class="post-meta">
@@ -1171,7 +1090,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-24T12:29:29+08:00">2019-02-24</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-12T19:31:06+08:00">2019-05-12</time>
             
 
             
@@ -1192,7 +1111,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a></span>
 
                 
                 
@@ -1207,8 +1126,8 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/24/python库/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/24/python库/" itemprop="commentCount"></span>
+                <a href="/2019/05/12/Deel Learning ai_Convolutional Neural Networks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/12/Deel Learning ai_Convolutional Neural Networks/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1231,7 +1150,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                10k字
+                14k字
               </span>
               
 
@@ -1257,289 +1176,14 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
 
       
         
-          <p>开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python</p>
+          <h1 id=""><a href="#" class="headerlink" title=""></a></h1>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/24/python库/#more" rel="contents">
+            <a class="btn" href="/2019/05/12/Deel Learning ai_Convolutional Neural Networks/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/02/22/读书笔记/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/22/读书笔记/" itemprop="url">我的读书笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-22T21:02:12+08:00">2019-02-22</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/读书日常/" itemprop="url" rel="index"><span itemprop="name">读书日常</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/22/读书笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/22/读书笔记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                1.8k字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<h2 id="font-color-red-2019-第十五周-font"><a class="header-anchor" href="#font-color-red-2019-第十五周-font">¶</a><font color="red">2019 第十五周<font></font></font></h2>
-<p>三月份至2019.4.9这段时间，才发现我是如此没有自律的人，充分体现了我是人的特性，那就是我是群体动物，苦笑.jpg,苦笑.jpg,</p>
-<p>en, 最近突然想给自己打上厨娘的身份，如果可以每天花两个小时做饭就好了</p>
-<hr>
-<h2 id="愿你被世界温柔的相待"><a class="header-anchor" href="#愿你被世界温柔的相待">¶</a>愿你被世界温柔的相待</h2>
-<ol>
-<li>接触的东西越多，越深入，就会发现我是如此的菜，开始有些知识焦虑了，知识那么多~~~，可是我只有一个头脑啊~~~</li>
-<li>开始不想写一些特别低俗的博客了，一是觉得浪费时间，二是输出效果太差，引不起特别大的关注，虽然我写博客，完全是站在自己的角度，没有考虑读者的意愿，（滑稽.jpg)。</li>
-<li>现在的自己，不是停留在基本的问题上，更应该去探索未知 的知识世界，虽然离这个flag可能还有几年的时间，能够给世界的知识创造一点点价值，哪怕只是一小点点。离这个目标还需要努力啊！！！！！</li>
-<li>我想我应该去记录学习知识的过程，突破更大的更困难的问题。</li>
-</ol>
-<hr>
-<h2 id="2019-第四周读书笔记"><a class="header-anchor" href="#2019-第四周读书笔记">¶</a>2019-第四周读书笔记</h2>
-<ol>
-<li>
-<p>这周读了一本小说，是张爱玲的《倾城之恋》，原来和电视剧的何晟铭主演《倾城之恋》不是同一个事情啊！</p>
-</li>
-<li>
-<p>看了《阿甘正传》，“生活就像一盒巧克力，你永远不知道下一颗是什么味道。“这是阿甘对生活最好的诠释。小时候，有人骑着自行车羞辱他，他只会跑，拼命的跑，只会再公路上跑。长大后，别人骑着车想打他，阿甘还是跑，但是这次阿甘学会了网草坪上跑！就被大学看上，进入运动大学，还通过参加比赛赢得了冠军，然后，阿甘当兵了，再后来，打乒乓球很出色。阿甘似乎做什么都能成功，也许心无旁骛，最笨的方法+时间=收获。</p>
-</li>
-</ol>
-<p>我觉得很心酸的是，当珍妮告诉他有儿子时候，阿甘问，”他聪明吗“？</p>
-<hr>
-<h2 id="2019第四周安排"><a class="header-anchor" href="#2019第四周安排">¶</a>2019第四周安排</h2>
-<ol>
-<li>
-<p>改论文，改变自己的办事效率喔，拒绝重复工作</p>
-</li>
-<li>
-<p>编程能力</p>
-</li>
-<li>
-<p>慢慢的做事情，先慢后快，</p>
-</li>
-<li>
-<p>生活、学习、交友、文采<br>
-2019-第三周读书笔记<br>
-这次读了《极简思维：颠覆传统思维模式的极简法则》作者：S.J斯科特 巴里.达文波特</p>
-</li>
-</ol>
-<p>我们生活充满了各种诱惑、杂乱信息、导致了生活的混乱，产生知识焦虑、年龄危机、人际关系的淡化。作者给我们介绍了许多问题、许多的解决方法，让我们这个信息爆炸的时代可以过的充实些。</p>
-<p>每天睡8个小时、还剩下16个小时，在减去2个小时解决个人卫生和饮食，那么还有14个小时，一个星期98个小时。那么98个小时，你投入在哪里呢？</p>
-<p>总的来说，这本书传达的东西，我还是很喜欢的，极简主义者，少不得也多不得！！！！！！！！！！！！！！！</p>
-<hr>
-<h2 id="读-拆掉思维里的墙"><a class="header-anchor" href="#读-拆掉思维里的墙">¶</a>读《拆掉思维里的墙》</h2>
-<p>摘录 ：我们的生活也由三个支架组成：自我、家庭与团体和职业。这样的支架支撑着我们的灵魂，它在记录我们的生命。我们一直都在调整着三个位置的平稳，使之成为最稳固的联动三脚架。</p>
-<p>这句大概是结合我的经历，最具有感悟的。因为一旦走出大学，这三者才开始真正的组成我们的生活。</p>
-<p>古典老师，从职业、成功学、爱情、家庭等等不同的案例，给我分析了大多数人会面临的无形的”墙“，给了我们如何拆掉这些墙的方法。但是呢，对于古典老师的爱情观点，我并不是很赞同，因为呢，那些愿意陪你度过余生的人付出的感情，是如此的廉价吗？有的人既可以是白玫瑰，也可以红玫瑰啊！</p>
-<hr>
-<h2 id="2019年第二周安t排"><a class="header-anchor" href="#2019年第二周安t排">¶</a>2019年第二周安T排</h2>
-<p>每天两个小时阅读论文或者专业书籍的阅读<br>
-开题报告修改和PPT制作（3h)<br>
-《拆掉思维里面的墙》（3h)<br>
-看哈利波特（一集）</p>
-<hr>
-<hr>
-<h1>2018年的总结</h1>
-<p>小小的悔恨与遗憾</p>
-<ol>
-<li>大三下，在课堂上，打了半学期的游戏</li>
-<li>生活还是不规律，超喜欢深夜逛知乎、刷B站</li>
-<li>额头上，不停的冒着痘痘啊</li>
-<li>英语单词量在下降ing</li>
-<li>运动量在降低喔</li>
-<li>很讨厌洗衣服</li>
-</ol>
-<p>相比于上一年进步的方面</p>
-<ol>
-<li>愿意去承担更多的责任</li>
-<li>更乐意去交流</li>
-<li>越来越重视健康style</li>
-<li>不会随意发泄自己的情绪了
-<ol start="5">
-<li>更加认识到自身的优势与劣势了<br>
-感到愉快的事情</li>
-</ol>
-</li>
-<li>知道自己想要什么，知道自己在做什么</li>
-<li>整理完了大学期间所有的东西，往事不堪回首， 但也只能是柳暗花明又一村。</li>
-<li>能读研究生了</li>
-</ol>
-<p>聊聊2019年的点点期许<br>
-学习上</p>
-<ol>
-<li>多看19场知乎live</li>
-<li>阅读10本书籍，书单也有了</li>
-<li>在专业学习上，希望有所提升咯<br>
-生活中</li>
-<li>早睡早起身体好</li>
-<li>看十部美剧，尽管我最大的兴趣是睡觉</li>
-<li>时常更新歌单，不想在一年里面都是相同的旋律</li>
-<li>静静静静静静静</li>
-<li>合理安排</li>
-<li>折星星</li>
-<li>番茄闹钟</li>
-<li>偶尔听听 TED<br>
-技术</li>
-<li>清理下了github 仓库</li>
-<li>重新更新了  github page</li>
-<li>多读、多写、多想</li>
-</ol>
-
-          
         
       
     </div>
@@ -1582,7 +1226,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1625,7 +1269,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">63</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1668,7 +1312,23 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1747,7 +1407,35 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                     
                       
                     
-                    <span class="site-state-item-count">33</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1827,7 +1515,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">330k</span>
+    <span title="Symbols count total">425k</span>
   
 
   
@@ -2437,7 +2125,19 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -2454,17 +2154,5 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
