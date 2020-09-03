@@ -116,18 +116,18 @@
   <meta name="keywords" content="关联规则,">
 
 
-<meta name="description" content="Apriori 算法是一种挖掘关联规则的频繁项集的算法。 引言对于特征构成的集合$A$, 如果列出非空集合有$a^{|A|}-1$种，太恐怖了。 Aprior算法：核心想法是  L_1是频繁的，则其子集也是频繁的。 L_1是非频繁的，则其超集是非频繁的  这样的化，就大大减小了搜索空间了。 Aprior算法的过程： $C_i$：表示数据集生成候选项集 $L_i$:表示生成的频繁项集 $C_{k-1">
+<meta name="description" content="Apriori 算法是一种挖掘关联规则的频繁项集的算法。 ¶引言 对于特征构成的集合$A$, 如果列出非空集合有$a^{|A|}-1$种，太恐怖了。 Aprior算法：核心想法是  L_1是频繁的，则其子集也是频繁的。 L_1是非频繁的，则其超集是非频繁的  这样的化，就大大减小了搜索空间了。 Aprior算法的过程： $C_i$：表示数据集生成候选项集 $L_i$:表示生成的频繁项集 $C_{k">
 <meta name="keywords" content="关联规则">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apriori">
 <meta property="og:url" content="http://xiemaycherry.github.io/2019/11/25/Apriori/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="Apriori 算法是一种挖掘关联规则的频繁项集的算法。 引言对于特征构成的集合$A$, 如果列出非空集合有$a^{|A|}-1$种，太恐怖了。 Aprior算法：核心想法是  L_1是频繁的，则其子集也是频繁的。 L_1是非频繁的，则其超集是非频繁的  这样的化，就大大减小了搜索空间了。 Aprior算法的过程： $C_i$：表示数据集生成候选项集 $L_i$:表示生成的频繁项集 $C_{k-1">
+<meta property="og:description" content="Apriori 算法是一种挖掘关联规则的频繁项集的算法。 ¶引言 对于特征构成的集合$A$, 如果列出非空集合有$a^{|A|}-1$种，太恐怖了。 Aprior算法：核心想法是  L_1是频繁的，则其子集也是频繁的。 L_1是非频繁的，则其超集是非频繁的  这样的化，就大大减小了搜索空间了。 Aprior算法的过程： $C_i$：表示数据集生成候选项集 $L_i$:表示生成的频繁项集 $C_{k">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-25T14:13:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apriori">
-<meta name="twitter:description" content="Apriori 算法是一种挖掘关联规则的频繁项集的算法。 引言对于特征构成的集合$A$, 如果列出非空集合有$a^{|A|}-1$种，太恐怖了。 Aprior算法：核心想法是  L_1是频繁的，则其子集也是频繁的。 L_1是非频繁的，则其超集是非频繁的  这样的化，就大大减小了搜索空间了。 Aprior算法的过程： $C_i$：表示数据集生成候选项集 $L_i$:表示生成的频繁项集 $C_{k-1">
+<meta name="twitter:description" content="Apriori 算法是一种挖掘关联规则的频繁项集的算法。 ¶引言 对于特征构成的集合$A$, 如果列出非空集合有$a^{|A|}-1$种，太恐怖了。 Aprior算法：核心想法是  L_1是频繁的，则其子集也是频繁的。 L_1是非频繁的，则其超集是非频繁的  这样的化，就大大减小了搜索空间了。 Aprior算法的过程： $C_i$：表示数据集生成候选项集 $L_i$:表示生成的频繁项集 $C_{k">
 
 
 
@@ -440,7 +440,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                483字
+                503字
               </span>
               
 
@@ -466,7 +466,8 @@
 
       
         <p>Apriori 算法是一种挖掘关联规则的频繁项集的算法。</p>
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>对于特征构成的集合$A$, 如果列出非空集合有$a^{|A|}-1$种，太恐怖了。</p>
+<h2 id="引言"><a class="header-anchor" href="#引言">¶</a>引言</h2>
+<p>对于特征构成的集合$A$, 如果列出非空集合有$a^{|A|}-1$种，太恐怖了。</p>
 <p>Aprior算法：核心想法是</p>
 <ol>
 <li>L_1是频繁的，则其子集也是频繁的。</li>
@@ -477,14 +478,23 @@
 <p>$C_i$：表示数据集生成候选项集</p>
 <p>$L_i$:表示生成的频繁项集</p>
 <p>$C_{k-1}$产生$L_k$</p>
-<h3 id="支持度"><a href="#支持度" class="headerlink" title="支持度"></a>支持度</h3><script type="math/tex; mode=display">
-support(\{A,B\}) = num\{AUB\}/W = P(A \ bing \ B)</script><p>W:总的记录，</p>
-<h3 id="置信度"><a href="#置信度" class="headerlink" title="置信度"></a>置信度</h3><script type="math/tex; mode=display">
-Confidence(A->B) = support(\{A,B\})/support(B) = P(B/A)</script><p>注意：support(B)和Confidence(A-&gt;B)的影响，</p>
-<h2 id="序列模型"><a href="#序列模型" class="headerlink" title="序列模型"></a>序列模型</h2><p>考虑时间，如周一买一堆对象，周二买一堆东西</p>
-<script type="math/tex; mode=display">
-t= {t_1,t_2,..,t_n}\\
-s = {s_1,s_2,..,s_n}</script><p>&lt;{s1},{s_2}&gt;是正确的</p>
+<h3 id="支持度"><a class="header-anchor" href="#支持度">¶</a>支持度</h3>
+<p>$$<br>
+support({A,B}) = num{AUB}/W = P(A \ bing \ B)<br>
+$$</p>
+<p>W:总的记录，</p>
+<h3 id="置信度"><a class="header-anchor" href="#置信度">¶</a>置信度</h3>
+<p>$$<br>
+Confidence(A-&gt;B) = support({A,B})/support(B) = P(B/A)<br>
+$$</p>
+<p>注意：support(B)和Confidence(A-&gt;B)的影响，</p>
+<h2 id="序列模型"><a class="header-anchor" href="#序列模型">¶</a>序列模型</h2>
+<p>考虑时间，如周一买一堆对象，周二买一堆东西<br>
+$$<br>
+t= {t_1,t_2,…,t_n}\<br>
+s = {s_1,s_2,…,s_n}<br>
+$$<br>
+&lt;{s1},{s_2}&gt;是正确的</p>
 <p>&lt;{s1,s2}}&gt;是错误的表达</p>
 
       
@@ -646,7 +656,7 @@ s = {s_1,s_2,..,s_n}</script><p>&lt;{s1},{s_2}&gt;是正确的</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -705,7 +715,11 @@ s = {s_1,s_2,..,s_n}</script><p>&lt;{s1},{s_2}&gt;是正确的</p>
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -812,7 +826,13 @@ s = {s_1,s_2,..,s_n}</script><p>&lt;{s1},{s_2}&gt;是正确的</p>
                     
                       
                     
-                    <span class="site-state-item-count">47</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -867,7 +887,7 @@ s = {s_1,s_2,..,s_n}</script><p>&lt;{s1},{s_2}&gt;是正确的</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#支持度"><span class="nav-number">1.1.</span> <span class="nav-text">支持度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#置信度"><span class="nav-number">1.2.</span> <span class="nav-text">置信度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列模型"><span class="nav-number">2.</span> <span class="nav-text">序列模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">¶引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#支持度"><span class="nav-number">1.1.</span> <span class="nav-text">¶支持度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#置信度"><span class="nav-number">1.2.</span> <span class="nav-text">¶置信度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列模型"><span class="nav-number">2.</span> <span class="nav-text">¶序列模型</span></a></li></ol></div>
             
 
           </div>
@@ -908,7 +928,7 @@ s = {s_1,s_2,..,s_n}</script><p>&lt;{s1},{s_2}&gt;是正确的</p>
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">425k</span>
+    <span title="Symbols count total">272k</span>
   
 
   
@@ -1508,19 +1528,7 @@ s = {s_1,s_2,..,s_n}</script><p>&lt;{s1},{s_2}&gt;是正确的</p>
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1537,5 +1545,17 @@ s = {s_1,s_2,..,s_n}</script><p>&lt;{s1},{s_2}&gt;是正确的</p>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
