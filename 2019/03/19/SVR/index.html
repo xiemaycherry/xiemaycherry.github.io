@@ -116,18 +116,18 @@
   <meta name="keywords" content="支持向量机回归,">
 
 
-<meta name="description" content="[TOC] 支持向量机用于分类:硬间隔和软件间隔支持向量机。尽可能分对 支持向量机回归： 希望$f(x)$与$y$尽可能的接近。">
+<meta name="description" content="[TOC] 支持向量机用于分类:硬间隔和软件间隔支持向量机。尽可能分对 支持向量机回归： 希望$f(x)$与​$y$尽可能的接近。 支持向量机基本思想英文名:support vector regression 简记：SVR 标准的线性支持向量回归模型学习的模型: f(x)=w^Tx+b​假设能容忍$f(x)$与$y$之间差别绝对值$\xi$,这就以$f(x)=w^Tx+b$形成了一个$2\xi$的">
 <meta name="keywords" content="支持向量机回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="支持向量回归">
 <meta property="og:url" content="http://xiemaycherry.github.io/2019/03/19/SVR/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="[TOC] 支持向量机用于分类:硬间隔和软件间隔支持向量机。尽可能分对 支持向量机回归： 希望$f(x)$与$y$尽可能的接近。">
+<meta property="og:description" content="[TOC] 支持向量机用于分类:硬间隔和软件间隔支持向量机。尽可能分对 支持向量机回归： 希望$f(x)$与​$y$尽可能的接近。 支持向量机基本思想英文名:support vector regression 简记：SVR 标准的线性支持向量回归模型学习的模型: f(x)=w^Tx+b​假设能容忍$f(x)$与$y$之间差别绝对值$\xi$,这就以$f(x)=w^Tx+b$形成了一个$2\xi$的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-29T08:25:24.000Z">
+<meta property="og:updated_time" content="2020-09-03T16:03:21.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量回归">
-<meta name="twitter:description" content="[TOC] 支持向量机用于分类:硬间隔和软件间隔支持向量机。尽可能分对 支持向量机回归： 希望$f(x)$与$y$尽可能的接近。">
+<meta name="twitter:description" content="[TOC] 支持向量机用于分类:硬间隔和软件间隔支持向量机。尽可能分对 支持向量机回归： 希望$f(x)$与​$y$尽可能的接近。 支持向量机基本思想英文名:support vector regression 简记：SVR 标准的线性支持向量回归模型学习的模型: f(x)=w^Tx+b​假设能容忍$f(x)$与$y$之间差别绝对值$\xi$,这就以$f(x)=w^Tx+b$形成了一个$2\xi$的">
 
 
 
@@ -440,7 +440,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                3.5k字
+                241字
               </span>
               
 
@@ -467,82 +467,46 @@
       
         <p>[TOC]</p>
 <p>支持向量机用于分类:硬间隔和软件间隔支持向量机。尽可能分对</p>
-<p>支持向量机回归： 希望$f(x)$与$y$尽可能的接近。</p>
-<a id="more"></a>
-<h1>支持向量机基本思想</h1>
-<p>英文名:support vector regression</p>
+<p>支持向量机回归： 希望$f(x)$与​$y$尽可能的接近。</p>
+<h1 id="支持向量机基本思想"><a href="#支持向量机基本思想" class="headerlink" title="支持向量机基本思想"></a>支持向量机基本思想</h1><p>英文名:support vector regression</p>
 <p>简记：SVR</p>
-<h2 id="标准的线性支持向量回归模型"><a class="header-anchor" href="#标准的线性支持向量回归模型">¶</a>标准的线性支持向量回归模型</h2>
-<p>学习的模型:</p>
-<p>$$f(x)=w^Tx+b$$</p>
-<p>假设能容忍$f(x)$与$y$之间差别绝对值$\xi$,这就以$f(x)=w^Tx+b$形成了一个$2\xi$的间隔带，因此模型<br>
-$$<br>
-\min \frac{1}{2}w^Tw\<br>
-s.t -\xi&lt;=f(x_i)-y_i&lt;=\xi<br>
-$$</p>
-<p>但是上述条件太过严苛，因此增加惩罚项，<br>
-$$<br>
-\min \frac{1}{2}w^Tw+C\sum(\epsilon_i+\hat{\epsilon}<em>i)\<br>
-s.t. \begin{cases}f(x_i)-y_i&lt;=\xi+\epsilon_i\<br>
-y_i-f(x_i)&lt;=\xi+\hat{\epsilon}<em>i\<br>
-\hat{\epsilon}<em>i&gt;=0,\epsilon_i&gt;=0<br>
-\end{cases}<br>
-$$<br>
-构造Lagrange函数<br>
-$$<br>
-\begin{aligned} L :=\frac{1}{2}|\omega|^{2} &amp;+C \sum\left(\xi_i+\xi<sup>{\prime}_i\right)-\sum_{i=1}</sup>{N}\left(\eta</em>{i} \xi</em>{i}+\eta</em>{i}^{’} \xi_{i}6{’}\right) \ &amp;+\sum \alpha_{i}\left(y_{i}-\omega^{T} x_{i}-b-\varepsilon-\xi_{i}\right) \ &amp;+\sum \alpha_{i}<sup>{’}\left(\omega</sup>{T} x_{i}+b-y_{i}-\varepsilon-\xi_{i}^{\prime}\right) \end{aligned}\tag{1}<br>
-$$<br>
-求偏导<br>
-$$<br>
-\frac{\partial L}{\partial \omega}=\omega-\sum\left(\alpha_{i}-\alpha_{i}\right) x_{i}=0 \Rightarrow \omega=\sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right) x_{i}\tag{2}<br>
-$$</p>
-<p>$$<br>
-\frac{\partial L}{\partial b}=\sum_{i=1}<sup>{N}\left(\alpha_{i}-\alpha_{i}</sup>{\prime}\right)=0 \tag{3}<br>
-$$</p>
-<p>$$<br>
-\frac{\partial L}{\partial \xi_{i}<sup>{\prime}}=C-\alpha_{i}</sup>{’}-\eta_{i}^{\prime}=0 \tag{4}<br>
-$$</p>
-<p>$$<br>
-\frac{\partial L}{\partial \xi_{i}}=C-\alpha_{i}-\eta_{i}=0 \tag{5}<br>
-$$</p>
-<p>将(2)-(4)带回(1),可得对偶问题<br>
-$$<br>
-\begin{aligned} \min L(\boldsymbol{\alpha})=&amp; \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}<sup>{N}\left(\alpha_{i}-\alpha_{i}</sup>{<em>}\right)\left(\alpha_{j}-\alpha_{j}^{</em>}\right)\left\langle x_{i}, x_{j}\right\rangle \ &amp;+\varepsilon \sum_{i=1}<sup>{N}\left(\alpha_{i}+\alpha_{i}</sup>{<em>}\right)-\sum_{i=1}^{N} y_{i}\left(\alpha_{i}-\alpha_{i}^{</em>}\right) \ \text { s.t. } &amp; \sum_{n=1}<sup>{N}\left(\alpha_{n}-\alpha_{n}</sup>{<em>}\right)=0 \end{aligned}<br>
-$$<br>
-再将(2)带回$Y=w^Tx+b$,可得线性回归模型<br>
-$$<br>
-y(x)=\sum_{i=1}<sup>{N}\left(\alpha_{i}-\alpha_{i}</sup>{</em>}\right) x_{i}^{T} x+b<br>
-$$</p>
-<h2 id="非线性支持向量机"><a class="header-anchor" href="#非线性支持向量机">¶</a>非线性支持向量机</h2>
-<p>考虑模型<br>
-$$<br>
-y=f(x)+b<br>
-$$<br>
-$f(x)$是非线性函数，存在一个由$X$所在空间到希尔伯特空间的映射，使得<br>
-$$<br>
-f(x)=w^T\varphi(x)<br>
-$$<br>
-因此，建立如下的优化问题<br>
-$$<br>
-\min \frac{1}{2}|\omega|^{T}+C \sum_{i}\left(\xi_{i}+\xi_{i}^{\prime}\right)\<br>
-\begin{cases} y\left(x_{i}\right)-\omega^{T} \varphi\left(x_{i}\right)-b \leq \xi_{i} \ \omega^{T} \varphi\left(x_{i}\right)+b-y\left(x_{i}\right) &amp; \leq \xi_{i} \ \xi_{i} &amp; \geq 0 \ \xi_{i} &amp; \geq 0 \end{cases}<br>
-$$<br>
-构造lagrange函数<br>
-$$<br>
-\begin{aligned} L :=\frac{1}{2}|\omega|^{2} &amp;+C \sum\left(\xi+\xi^{\prime}\right)-\sum\left(\eta_{i} \xi_{i}+\eta_{i} \xi_{i}^{\prime}\right) \ &amp;+\sum \alpha_{i}\left(y_{i}-w^{T} \varphi\left(x_{i}\right)-b-\varepsilon_{i}-\xi_{i}\right) \ &amp;+\sum \alpha_{\mathrm{i}}<sup>{\prime}\left(w</sup>{T} \varphi\left(x_{i}\right)+b-y_{i}-\varepsilon_{i}<sup>{’}-\xi_{i}</sup>{\prime}\right) \end{aligned}<br>
-$$<br>
-求偏导<br>
-$$<br>
-\begin{cases}\frac{\partial L}{\partial w}=w-\sum\left(\alpha_{i}-\alpha_{i}\right) \varphi\left(x_{i}\right)=0\<br>
-\frac{\partial L}{\partial b} =\sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right)=0 \ \frac{\partial L}{\partial \xi_{i}^{\prime}} =C-\alpha_{i}<sup>{’}-\eta_{i}</sup>{\prime}=0 \ \frac{\partial L}{\partial \xi_{i}} =C-\alpha_{i}-\eta_{i}=0 \end{cases}<br>
-$$<br>
-再带回优化问题可得</p>
-<p>$$\min <em>{t}-\frac{1}{2} \sum\left(\alpha</em>{i}-\alpha_{i}<sup>{\prime}\right)\left(\alpha_{j}-\alpha_{j}</sup>{\prime}\right) \varphi\left(x_{i}\right)^{T} \varphi\left(x_{j}\right)-\varepsilon \sum\left(\alpha_{i}+\alpha_{i}^{\prime}\right)+\sum y_{i}\left(\alpha_{i}-\alpha_{i}^{’}\right)\s t . \sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right)=0$$</p>
-<p>再次将$w$带回模型<br>
-$$<br>
-y=\sum\left(\alpha_{i}-\alpha_{i}^{’}\right) \varphi\left(x_{i}\right)^{T} \varphi(x)+b<br>
-$$</p>
-
+<h2 id="标准的线性支持向量回归模型"><a href="#标准的线性支持向量回归模型" class="headerlink" title="标准的线性支持向量回归模型"></a>标准的线性支持向量回归模型</h2><p>学习的模型:</p>
+<script type="math/tex; mode=display">f(x)=w^Tx+b​</script><p>假设能容忍$f(x)$与$y$之间差别绝对值$\xi$,这就以$f(x)=w^Tx+b$形成了一个$2\xi$的间隔带，因此模型</p>
+<script type="math/tex; mode=display">
+\min \frac{1}{2}w^Tw\\
+s.t -\xi<=f(x_i)-y_i<=\xi</script><p>但是上述条件太过严苛，因此增加惩罚项，</p>
+<script type="math/tex; mode=display">
+\min \frac{1}{2}w^Tw+C\sum(\epsilon_i+\hat{\epsilon}_i)\\
+s.t. \begin{cases}f(x_i)-y_i<=\xi+\epsilon_i\\
+y_i-f(x_i)<=\xi+\hat{\epsilon}_i\\
+\hat{\epsilon}_i>=0,\epsilon_i>=0
+\end{cases}</script><p>构造Lagrange函数</p>
+<script type="math/tex; mode=display">
+\begin{aligned} L :=\frac{1}{2}\|\omega\|^{2} &+C \sum\left(\xi_i+\xi^{\prime}_i\right)-\sum_{i=1}^{N}\left(\eta_{i} \xi_{i}+\eta_{i}^{'} \xi_{i}6{'}\right) \\ &+\sum \alpha_{i}\left(y_{i}-\omega^{T} x_{i}-b-\varepsilon-\xi_{i}\right) \\ &+\sum \alpha_{i}^{'}\left(\omega^{T} x_{i}+b-y_{i}-\varepsilon-\xi_{i}^{\prime}\right) \end{aligned}\tag{1}</script><p>求偏导</p>
+<script type="math/tex; mode=display">
+\frac{\partial L}{\partial \omega}=\omega-\sum\left(\alpha_{i}-\alpha_{i}\right) x_{i}=0 \Rightarrow \omega=\sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right) x_{i}\tag{2}</script><script type="math/tex; mode=display">
+\frac{\partial L}{\partial b}=\sum_{i=1}^{N}\left(\alpha_{i}-\alpha_{i}^{\prime}\right)=0 \tag{3}</script><script type="math/tex; mode=display">
+\frac{\partial L}{\partial \xi_{i}^{\prime}}=C-\alpha_{i}^{'}-\eta_{i}^{\prime}=0 \tag{4}</script><script type="math/tex; mode=display">
+\frac{\partial L}{\partial \xi_{i}}=C-\alpha_{i}-\eta_{i}=0 \tag{5}</script><p>将(2)-(4)带回(1),可得对偶问题</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \min L(\boldsymbol{\alpha})=& \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}\left(\alpha_{i}-\alpha_{i}^{*}\right)\left(\alpha_{j}-\alpha_{j}^{*}\right)\left\langle x_{i}, x_{j}\right\rangle \\ &+\varepsilon \sum_{i=1}^{N}\left(\alpha_{i}+\alpha_{i}^{*}\right)-\sum_{i=1}^{N} y_{i}\left(\alpha_{i}-\alpha_{i}^{*}\right) \\ \text { s.t. } & \sum_{n=1}^{N}\left(\alpha_{n}-\alpha_{n}^{*}\right)=0 \end{aligned}</script><p>再将(2)带回$Y=w^Tx+b$,可得线性回归模型</p>
+<script type="math/tex; mode=display">
+y(x)=\sum_{i=1}^{N}\left(\alpha_{i}-\alpha_{i}^{*}\right) x_{i}^{T} x+b</script><h2 id="非线性支持向量机"><a href="#非线性支持向量机" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h2><p>考虑模型</p>
+<script type="math/tex; mode=display">
+y=f(x)+b</script><p>$f(x)$是非线性函数，存在一个由$X$所在空间到希尔伯特空间的映射，使得</p>
+<script type="math/tex; mode=display">
+f(x)=w^T\varphi(x)</script><p>因此，建立如下的优化问题</p>
+<script type="math/tex; mode=display">
+\min \frac{1}{2}\|\omega\|^{T}+C \sum_{i}\left(\xi_{i}+\xi_{i}^{\prime}\right)\\
+\begin{cases} y\left(x_{i}\right)-\omega^{T} \varphi\left(x_{i}\right)-b \leq \xi_{i} \\ \omega^{T} \varphi\left(x_{i}\right)+b-y\left(x_{i}\right) & \leq \xi_{i} \\ \xi_{i} & \geq 0 \\ \xi_{i} & \geq 0 \end{cases}</script><p>构造lagrange函数</p>
+<script type="math/tex; mode=display">
+\begin{aligned} L :=\frac{1}{2}\|\omega\|^{2} &+C \sum\left(\xi+\xi^{\prime}\right)-\sum\left(\eta_{i} \xi_{i}+\eta_{i} \xi_{i}^{\prime}\right) \\ &+\sum \alpha_{i}\left(y_{i}-w^{T} \varphi\left(x_{i}\right)-b-\varepsilon_{i}-\xi_{i}\right) \\ &+\sum \alpha_{\mathrm{i}}^{\prime}\left(w^{T} \varphi\left(x_{i}\right)+b-y_{i}-\varepsilon_{i}^{'}-\xi_{i}^{\prime}\right) \end{aligned}</script><p>求偏导</p>
+<script type="math/tex; mode=display">
+\begin{cases}\frac{\partial L}{\partial w}=w-\sum\left(\alpha_{i}-\alpha_{i}\right) \varphi\left(x_{i}\right)=0\\
+ \frac{\partial L}{\partial b} =\sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right)=0 \\ \frac{\partial L}{\partial \xi_{i}^{\prime}} =C-\alpha_{i}^{'}-\eta_{i}^{\prime}=0 \\ \frac{\partial L}{\partial \xi_{i}} =C-\alpha_{i}-\eta_{i}=0 \end{cases}</script><p>再带回优化问题可得</p>
+<script type="math/tex; mode=display">\min _{t}-\frac{1}{2} \sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right)\left(\alpha_{j}-\alpha_{j}^{\prime}\right) \varphi\left(x_{i}\right)^{T} \varphi\left(x_{j}\right)-\varepsilon \sum\left(\alpha_{i}+\alpha_{i}^{\prime}\right)+\sum y_{i}\left(\alpha_{i}-\alpha_{i}^{'}\right)\\s t . \sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right)=0</script><p>再次将$w$带回模型</p>
+<script type="math/tex; mode=display">
+y=\sum\left(\alpha_{i}-\alpha_{i}^{'}\right) \varphi\left(x_{i}\right)^{T} \varphi(x)+b</script>
       
     </div>
 
@@ -613,8 +577,8 @@ $$</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/17/SVMClassifiar/" rel="next" title="支持向量机(SVM) ----- 分类器">
-                <i class="fa fa-chevron-left"></i> 支持向量机(SVM) ----- 分类器
+              <a href="/2019/03/11/回归树/" rel="next" title="回归树">
+                <i class="fa fa-chevron-left"></i> 回归树
               </a>
             
           </div>
@@ -692,7 +656,7 @@ $$</p>
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XieMay</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
           </div>
 
           
@@ -702,7 +666,7 @@ $$</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -765,7 +729,7 @@ $$</p>
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -874,7 +838,11 @@ $$</p>
                     
                       
                     
-                    <span class="site-state-item-count">48</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -929,7 +897,7 @@ $$</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">支持向量机基本思想</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准的线性支持向量回归模型"><span class="nav-number">1.1.</span> <span class="nav-text">¶标准的线性支持向量回归模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非线性支持向量机"><span class="nav-number">1.2.</span> <span class="nav-text">¶非线性支持向量机</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量机基本思想"><span class="nav-number">1.</span> <span class="nav-text">支持向量机基本思想</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准的线性支持向量回归模型"><span class="nav-number">1.1.</span> <span class="nav-text">标准的线性支持向量回归模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非线性支持向量机"><span class="nav-number">1.2.</span> <span class="nav-text">非线性支持向量机</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -970,7 +938,7 @@ $$</p>
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">272k</span>
+    <span title="Symbols count total">260k</span>
   
 
   

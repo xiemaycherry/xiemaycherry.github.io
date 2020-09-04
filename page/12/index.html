@@ -116,13 +116,16 @@
   <meta name="keywords" content="Hexo, NexT">
 
 
+<meta name="description" content="CAT_cat">
 <meta property="og:type" content="website">
 <meta property="og:title" content="welcome">
 <meta property="og:url" content="http://xiemaycherry.github.io/page/12/index.html">
 <meta property="og:site_name" content="welcome">
+<meta property="og:description" content="CAT_cat">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="welcome">
+<meta name="twitter:description" content="CAT_cat">
 
 
 
@@ -347,6 +350,512 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/19/SVR/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/19/SVR/" itemprop="url">支持向量回归</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-19T14:34:14+08:00">2019-03-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/19/SVR/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/19/SVR/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                241字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<p>支持向量机用于分类:硬间隔和软件间隔支持向量机。尽可能分对</p>
+<p>支持向量机回归： 希望$f(x)$与​$y$尽可能的接近。</p>
+<h1 id="支持向量机基本思想"><a href="#支持向量机基本思想" class="headerlink" title="支持向量机基本思想"></a>支持向量机基本思想</h1><p>英文名:support vector regression</p>
+<p>简记：SVR</p>
+<h2 id="标准的线性支持向量回归模型"><a href="#标准的线性支持向量回归模型" class="headerlink" title="标准的线性支持向量回归模型"></a>标准的线性支持向量回归模型</h2><p>学习的模型:</p>
+<script type="math/tex; mode=display">f(x)=w^Tx+b​</script><p>假设能容忍$f(x)$与$y$之间差别绝对值$\xi$,这就以$f(x)=w^Tx+b$形成了一个$2\xi$的间隔带，因此模型</p>
+<script type="math/tex; mode=display">
+\min \frac{1}{2}w^Tw\\
+s.t -\xi<=f(x_i)-y_i<=\xi</script><p>但是上述条件太过严苛，因此增加惩罚项，</p>
+<script type="math/tex; mode=display">
+\min \frac{1}{2}w^Tw+C\sum(\epsilon_i+\hat{\epsilon}_i)\\
+s.t. \begin{cases}f(x_i)-y_i<=\xi+\epsilon_i\\
+y_i-f(x_i)<=\xi+\hat{\epsilon}_i\\
+\hat{\epsilon}_i>=0,\epsilon_i>=0
+\end{cases}</script><p>构造Lagrange函数</p>
+<script type="math/tex; mode=display">
+\begin{aligned} L :=\frac{1}{2}\|\omega\|^{2} &+C \sum\left(\xi_i+\xi^{\prime}_i\right)-\sum_{i=1}^{N}\left(\eta_{i} \xi_{i}+\eta_{i}^{'} \xi_{i}6{'}\right) \\ &+\sum \alpha_{i}\left(y_{i}-\omega^{T} x_{i}-b-\varepsilon-\xi_{i}\right) \\ &+\sum \alpha_{i}^{'}\left(\omega^{T} x_{i}+b-y_{i}-\varepsilon-\xi_{i}^{\prime}\right) \end{aligned}\tag{1}</script><p>求偏导</p>
+<script type="math/tex; mode=display">
+\frac{\partial L}{\partial \omega}=\omega-\sum\left(\alpha_{i}-\alpha_{i}\right) x_{i}=0 \Rightarrow \omega=\sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right) x_{i}\tag{2}</script><script type="math/tex; mode=display">
+\frac{\partial L}{\partial b}=\sum_{i=1}^{N}\left(\alpha_{i}-\alpha_{i}^{\prime}\right)=0 \tag{3}</script><script type="math/tex; mode=display">
+\frac{\partial L}{\partial \xi_{i}^{\prime}}=C-\alpha_{i}^{'}-\eta_{i}^{\prime}=0 \tag{4}</script><script type="math/tex; mode=display">
+\frac{\partial L}{\partial \xi_{i}}=C-\alpha_{i}-\eta_{i}=0 \tag{5}</script><p>将(2)-(4)带回(1),可得对偶问题</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \min L(\boldsymbol{\alpha})=& \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}\left(\alpha_{i}-\alpha_{i}^{*}\right)\left(\alpha_{j}-\alpha_{j}^{*}\right)\left\langle x_{i}, x_{j}\right\rangle \\ &+\varepsilon \sum_{i=1}^{N}\left(\alpha_{i}+\alpha_{i}^{*}\right)-\sum_{i=1}^{N} y_{i}\left(\alpha_{i}-\alpha_{i}^{*}\right) \\ \text { s.t. } & \sum_{n=1}^{N}\left(\alpha_{n}-\alpha_{n}^{*}\right)=0 \end{aligned}</script><p>再将(2)带回$Y=w^Tx+b$,可得线性回归模型</p>
+<script type="math/tex; mode=display">
+y(x)=\sum_{i=1}^{N}\left(\alpha_{i}-\alpha_{i}^{*}\right) x_{i}^{T} x+b</script><h2 id="非线性支持向量机"><a href="#非线性支持向量机" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h2><p>考虑模型</p>
+<script type="math/tex; mode=display">
+y=f(x)+b</script><p>$f(x)$是非线性函数，存在一个由$X$所在空间到希尔伯特空间的映射，使得</p>
+<script type="math/tex; mode=display">
+f(x)=w^T\varphi(x)</script><p>因此，建立如下的优化问题</p>
+<script type="math/tex; mode=display">
+\min \frac{1}{2}\|\omega\|^{T}+C \sum_{i}\left(\xi_{i}+\xi_{i}^{\prime}\right)\\
+\begin{cases} y\left(x_{i}\right)-\omega^{T} \varphi\left(x_{i}\right)-b \leq \xi_{i} \\ \omega^{T} \varphi\left(x_{i}\right)+b-y\left(x_{i}\right) & \leq \xi_{i} \\ \xi_{i} & \geq 0 \\ \xi_{i} & \geq 0 \end{cases}</script><p>构造lagrange函数</p>
+<script type="math/tex; mode=display">
+\begin{aligned} L :=\frac{1}{2}\|\omega\|^{2} &+C \sum\left(\xi+\xi^{\prime}\right)-\sum\left(\eta_{i} \xi_{i}+\eta_{i} \xi_{i}^{\prime}\right) \\ &+\sum \alpha_{i}\left(y_{i}-w^{T} \varphi\left(x_{i}\right)-b-\varepsilon_{i}-\xi_{i}\right) \\ &+\sum \alpha_{\mathrm{i}}^{\prime}\left(w^{T} \varphi\left(x_{i}\right)+b-y_{i}-\varepsilon_{i}^{'}-\xi_{i}^{\prime}\right) \end{aligned}</script><p>求偏导</p>
+<script type="math/tex; mode=display">
+\begin{cases}\frac{\partial L}{\partial w}=w-\sum\left(\alpha_{i}-\alpha_{i}\right) \varphi\left(x_{i}\right)=0\\
+ \frac{\partial L}{\partial b} =\sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right)=0 \\ \frac{\partial L}{\partial \xi_{i}^{\prime}} =C-\alpha_{i}^{'}-\eta_{i}^{\prime}=0 \\ \frac{\partial L}{\partial \xi_{i}} =C-\alpha_{i}-\eta_{i}=0 \end{cases}</script><p>再带回优化问题可得</p>
+<script type="math/tex; mode=display">\min _{t}-\frac{1}{2} \sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right)\left(\alpha_{j}-\alpha_{j}^{\prime}\right) \varphi\left(x_{i}\right)^{T} \varphi\left(x_{j}\right)-\varepsilon \sum\left(\alpha_{i}+\alpha_{i}^{\prime}\right)+\sum y_{i}\left(\alpha_{i}-\alpha_{i}^{'}\right)\\s t . \sum\left(\alpha_{i}-\alpha_{i}^{\prime}\right)=0</script><p>再次将$w$带回模型</p>
+<script type="math/tex; mode=display">
+y=\sum\left(\alpha_{i}-\alpha_{i}^{'}\right) \varphi\left(x_{i}\right)^{T} \varphi(x)+b</script>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/11/回归树/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/11/回归树/" itemprop="url">回归树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-11T14:36:29+08:00">2019-03-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/11/回归树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/11/回归树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                8.8k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h1 id="分类树与回归树"><a href="#分类树与回归树" class="headerlink" title="分类树与回归树"></a>分类树与回归树</h1><p>分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。<br>Classification tree analysis is when the predicted outcome is the class to which the data belongs.</p>
+<p>回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分的两个分支的误差越小越好。</p>
+<p>Regression tree analysis is when the predicted outcome can be considered a real number (e.g. the price of a house, or a patient’s length of stay in a hospital)。</p>
+<h1 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h1><p>英文名字：Regression Tree</p>
+<h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>决策树最直观的理解其实就是，输入特征空间($R^n​$)，然后对特征空间做划分，每一个划分属于同一类或者对于一个输出的预测值。那么这个算法需要解决的问题是1. 如何决策边界(划分点)？2. 尽可能少的比较次数(决策树的形状)</p>
+<p><img src="/2019/03/11/回归树/MyBlog\hexo\source\_posts\回归树\原理介绍1.PNG" alt="原理1"></p>
+<p>如上图，每一个非叶子对于某个特征的划分。</p>
+<h3 id="最小二乘回归树生成算法"><a href="#最小二乘回归树生成算法" class="headerlink" title="最小二乘回归树生成算法"></a>最小二乘回归树生成算法</h3><p>Q1: 选择划分点？遍历所有的特征($n$),对于每一个特征对应$s_i$个取值，尝试完所有特征，以及特征所以有划分，选择使得损失函数最小的那组特征以及特征的划分取值。</p>
+<p>Q2: 叶节点的输出？取每个区域所以结果的平均数作为输出</p>
+<p>节点的损失函数的形式</p>
+<script type="math/tex; mode=display">
+ \min _{j, s}\left[\min _{c_{1}} Loss(y_i,c_1)+\min _{c_{2}} Loss(y_i,c_2)\right]</script><p>节点有两条分支，$c1$是左节点的平均值，$c2$是右节点的平均值，换句话说，分一次划分都是使得划分出的两个分支的误差和最小。最终得到函数是<font color="red">分段函数</font></p>
+<h2 id="CART算法"><a href="#CART算法" class="headerlink" title="CART算法"></a>CART算法</h2><p>输入： 训练数据集</p>
+<p>输出：回归树$f(x)​$</p>
+<ol>
+<li><p>选择最优的特征$j$和分切点$s$</p>
+<script type="math/tex; mode=display">
+\min _{j, s}\left[\min _{c_{1}} \sum_{x_{i} \in R_{1}(j, s)}\left(y_{i}-c_{1}\right)^{2}+\min _{c_{2}} \sum_{x_{i} \in R_{2}(j, s)}\left(y_{i}-c_{2}\right)^{2}\right]</script></li>
+<li><p>对于选定的$(j,s)$划分区域，并确定该区域的预测值</p>
+</li>
+<li><p>对两个区域递归1. 2. 直到满足停止条件</p>
+</li>
+<li><p>返回生成树</p>
+<p>注：分切点选择：先排序，二分。</p>
+</li>
+</ol>
+<h1 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h1><h2 id="节点类"><a href="#节点类" class="headerlink" title="节点类"></a>节点类</h2><p>属性：左右节点、loss、特征编号或者特征、分割点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, score=None)</span>:</span></span><br><span class="line">        <span class="comment"># 构造函数</span></span><br><span class="line">        self.score = score</span><br><span class="line">        self.left = <span class="keyword">None</span></span><br><span class="line">        self.right = <span class="keyword">None</span></span><br><span class="line">        self.feature = <span class="keyword">None</span></span><br><span class="line">        self.split = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<h2 id="回归树类"><a href="#回归树类" class="headerlink" title="回归树类"></a>回归树类</h2><p>构造方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegressionTree</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.root = Node()</span><br><span class="line">        self.height = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>给定特征、划分点，返回计算MAPE</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_split_mse</span><span class="params">(self, X, y, idx, feature, split)</span>:</span></span><br><span class="line">	<span class="string">'''</span></span><br><span class="line"><span class="string">	X:训练样本输入</span></span><br><span class="line"><span class="string">	y:训练样本输出</span></span><br><span class="line"><span class="string">	idx:该分支对应的样本编号</span></span><br><span class="line"><span class="string">	feaure: 特征</span></span><br><span class="line"><span class="string">	split: 划分点</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	split_x1=X[X[idex,feature]&lt;split]</span><br><span class="line">	split_y1=y[X[idex,feature]&lt;split]</span><br><span class="line">	split_x2=X[X[idex,feature]&gt;=split]</span><br><span class="line">	split_y2=y[X[idex,feature]&gt;=split]</span><br><span class="line">	</span><br><span class="line">    split_avg = [np.mean(split_y1), np.mean(split_y2)]</span><br><span class="line">    split_mape = [np.sum((split_y1-split_avg[<span class="number">0</span>])**<span class="number">2</span>),np.sum((split_y2-split_avg[<span class="number">1</span>])**<span class="number">2</span>)]</span><br><span class="line">    <span class="keyword">return</span> split_mse, split, split_avg</span><br></pre></td></tr></table></figure>
+<p>计算给定特征的最佳分割点</p>
+<p>遍历特征某一列的所有的不重复的点，找出MAPE最小的点作为最佳分割点。如果特征中没有不重复的元素则返回None。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_choose_split_point</span><span class="params">(self, X, y, idx, feature)</span>:</span></span><br><span class="line">    feature_x = X[idx,feature]</span><br><span class="line">    uniques = np.unique(feature_x)</span><br><span class="line">    <span class="keyword">if</span> len(uniques)==<span class="number">1</span>:</span><br><span class="line">    	<span class="keyword">return</span> Noe</span><br><span class="line"></span><br><span class="line">    mape, split, split_avg = min(</span><br><span class="line">   (self._get_split_mse(X, y, idx, feature, split)</span><br><span class="line">       <span class="keyword">for</span> split <span class="keyword">in</span> unique[<span class="number">1</span>:]), key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> mape, feature, split, split_avg</span><br></pre></td></tr></table></figure>
+<p>选择特征<br>遍历全部特征，计算mape,然后确定特征和对应的切割点，注意如果某个特征的值是一样的，则返回None<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_choose_feature</span><span class="params">(self, X, y, idx)</span>:</span></span><br><span class="line">    m = len(X[<span class="number">0</span>])</span><br><span class="line">    split_rets = [x <span class="keyword">for</span> x <span class="keyword">in</span> map(<span class="keyword">lambda</span> x: self._choose_split_point(</span><br><span class="line">        X, y, idx, x), range(m)) <span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>]</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> split_rets == []:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    _, feature, split, split_avg = min(</span><br><span class="line">        split_rets, key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line"> </span><br><span class="line">    idx_split = [[], []]</span><br><span class="line">    <span class="keyword">while</span> idx:</span><br><span class="line">        i = idx.pop()</span><br><span class="line">        xi = X[i][feature]</span><br><span class="line">        <span class="keyword">if</span> xi &lt; split:</span><br><span class="line">            idx_split[<span class="number">0</span>].append(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            idx_split[<span class="number">1</span>].append(i)</span><br><span class="line">    <span class="keyword">return</span> feature, split, split_avg, idx_split</span><br></pre></td></tr></table></figure></p>
+<p>对应叶子节点，打印相关的信息<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_expr2literal</span><span class="params">(self, expr)</span>:</span></span><br><span class="line">        feature, op, split = expr</span><br><span class="line">        op = <span class="string">"&gt;="</span> <span class="keyword">if</span> op == <span class="number">1</span> <span class="keyword">else</span> <span class="string">"&lt;"</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Feature%d %s %.4f"</span> % (feature, op, split)</span><br></pre></td></tr></table></figure></p>
+<p>建立好二叉树以后，遍历操作<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_rules</span><span class="params">(self)</span>:</span></span><br><span class="line">    que = [[self.root, []]]</span><br><span class="line">    self.rules = []</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">while</span> que:</span><br><span class="line">        nd, exprs = que.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span>(nd.left <span class="keyword">or</span> nd.right):</span><br><span class="line">            literals = list(map(self._expr2literal, exprs))</span><br><span class="line">            self.rules.append([literals, nd.score])</span><br><span class="line">     </span><br><span class="line">        <span class="keyword">if</span> nd.left:</span><br><span class="line">            rule_left = []</span><br><span class="line">            rule_left.append([nd.feature, <span class="number">-1</span>, nd.split])</span><br><span class="line">            que.append([nd.left, rule_left])</span><br><span class="line">     </span><br><span class="line">        <span class="keyword">if</span> nd.right:</span><br><span class="line">            rule_right =[]</span><br><span class="line">            rule_right.append([nd.feature, <span class="number">1</span>, nd.split])</span><br><span class="line">            que.append([nd.right, rule_right])</span><br></pre></td></tr></table></figure></p>
+<p>建立二叉树的过程，也就是训练的过程          </p>
+<ol>
+<li>控制深度</li>
+<li>控制节叶子节点的最少样本数量</li>
+<li>至少有一个特征是不重复的<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self, X, y, max_depth=<span class="number">5</span>, min_samples_split=<span class="number">2</span>)</span>:</span></span><br><span class="line">        self.root = Node()</span><br><span class="line">        que = [[<span class="number">0</span>, self.root, list(range(len(y)))]]</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">while</span> que:</span><br><span class="line">            depth, nd, idx = que.pop(<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> depth == max_depth:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> len(idx) &lt; min_samples_split <span class="keyword">or</span> set(map(<span class="keyword">lambda</span> i: y[i,<span class="number">0</span>], idx)) == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">    </span><br><span class="line">            feature_rets = self._choose_feature(X, y, idx)</span><br><span class="line">            <span class="keyword">if</span> feature_rets <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">    </span><br><span class="line">            nd.feature, nd.split, split_avg, idx_split = feature_rets</span><br><span class="line">            nd.left = Node(split_avg[<span class="number">0</span>])</span><br><span class="line">            nd.right = Node(split_avg[<span class="number">1</span>])</span><br><span class="line">            que.append([depth+<span class="number">1</span>, nd.left, idx_split[<span class="number">0</span>]])</span><br><span class="line">            que.append([depth+<span class="number">1</span>, nd.right, idx_split[<span class="number">1</span>]])</span><br><span class="line">    </span><br><span class="line">        self.height = depth</span><br><span class="line">        self._get_rules()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>打印叶子节点<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_rules</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i, rule <span class="keyword">in</span> enumerate(self.rules):</span><br><span class="line">            literals, score = rule</span><br><span class="line">            print(<span class="string">"Rule %d: "</span> % i, <span class="string">' | '</span>.join(</span><br><span class="line">                literals) + <span class="string">' =&gt; split_hat %.4f'</span> % score)</span><br></pre></td></tr></table></figure></p>
+<p>预测单样本<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_predict</span><span class="params">(self, row)</span>:</span></span><br><span class="line">        nd = self.root</span><br><span class="line">        <span class="keyword">while</span> nd.left <span class="keyword">and</span> nd.right:</span><br><span class="line">            <span class="keyword">if</span> row[nd.feature] &lt; nd.split:</span><br><span class="line">                nd = nd.left</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nd = nd.right</span><br><span class="line">        <span class="keyword">return</span> nd.score</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 预测多条样本</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, X)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [self._predict(Xi) <span class="keyword">for</span> Xi <span class="keyword">in</span> X]</span><br></pre></td></tr></table></figure></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"Tesing the accuracy of RegressionTree..."</span>)</span><br><span class="line">    X_train=np.array([[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">4</span>],[<span class="number">5</span>],[<span class="number">6</span>],[<span class="number">7</span>],[<span class="number">8</span>],[<span class="number">9</span>],[<span class="number">10</span>]])</span><br><span class="line">    y_train=np.array([[<span class="number">5.56</span> ],[<span class="number">5.7</span>],[<span class="number">5.91</span>],[<span class="number">6.4</span></span><br><span class="line">                      ],[<span class="number">6.8</span>],[<span class="number">7.05</span>],[<span class="number">8.9</span>],[<span class="number">8.7</span></span><br><span class="line">                        ],[<span class="number">9</span> ],[<span class="number">9.05</span>]])</span><br><span class="line">    reg = RegressionTree()</span><br><span class="line">    print(reg)</span><br><span class="line">    reg.fit(X=X_train, y=y_train, max_depth=<span class="number">3</span>)</span><br><span class="line">    reg.print_rules()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><p>训练数据</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th style="text-align:center">1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td style="text-align:center">5.56</td>
+<td>5.7</td>
+<td>5.91</td>
+<td>6.4</td>
+<td>6.8</td>
+<td>7.05</td>
+<td>8.9</td>
+<td>8.7</td>
+<td>9</td>
+<td>9.05</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>根据上表，只有一个特征$x$.</p>
+<ol>
+<li><p>选择最优的特征$j$和分切点$s​$</p>
+<p>| 分切点(s) | 1.5   | 2.5   | 3.5  | 4.5  | 5.5  | 6.5  | 7.5  | 8.5   | 9.5   |<br>| ————- | ——- | ——- | —— | —— | —— | —— | —— | ——- | ——- |<br>| $c_1$     | 5.56  | 5.63  | 5.72 | 5.89 | 6.07 | 6.24 | 6.62 | 6.88  | 7.11  |<br>| $c_2$     | 7.5   | 7.73  | 7.99 | 8.25 | 8.54 | 8.91 | 8.92 | 9.03  | 9.05  |<br>| loss      | 15.72 | 12.07 | 8.36 | 5.78 | 3.91 | 1.93 | 8.01 | 11.73 | 15.74 |</p>
+<p>当分切点取$s=6.5$,损失最小$l(s=6.5)=1.93$,此时划分出两个分支，分别是$R_1=\{1,2,3,4,5,6\}$,$c_1=6.42$,$R_2=\{7,8,9,10\}$,$c_2=8.91$</p>
+<ol>
+<li><p>a) 对R1继续划分</p>
+<p>| x    | 1    | 2    | 3    | 4    | 5    | 6    |<br>| —— | —— | —— | —— | —— | —— | —— |<br>| y    | 5.56 | 5.7  | 5.91 | 6.4  | 6.8  | 7.05 |</p>
+<p>| 分切点(s) | 1.5    | 2.5   | 3.5    | 4.5    | 5.5    |<br>| ————- | ——— | ——- | ——— | ——— | ——— |<br>| $c_1$     | 5.56   | 5.63  | 5.72   | 5.89   | 6.07   |<br>| $c_2$     | 6.37   | 6.54  | 6.75   | 6.93   | 7.05   |<br>| loss      | 1.3087 | 0.754 | 0.2771 | 0.4368 | 1.0644 |</p>
+<p>当分切点取$s=3.5$,损失函数$l(s=3.6)=0.2771$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1=\{1,2,3\}$，$c_1=5.72$,$R_2={4,,5,6}$,$c_2=6.75$</p>
+<p>b) 对R2继续划分</p>
+<p>| x    | 7    | 8    | 9    | 10   |<br>| —— | —— | —— | —— | —— |<br>| y    | 8.9  | 8.7  | 9    | 9.05 |</p>
+<p>| 分切点(s) | 7.5    | 8.5    | 9.5    |<br>| ————- | ——— | ——— | ——— |<br>| $c_1$     | 8.9    | 8.8    | 8.87   |<br>| $c_2$     | 8.92   | 9.03   | 9.05   |<br>| loss      | 0.0717 | 0.0213 | 0.0467 |</p>
+<p>当分切点取$s=8.5​$,损失函数$l(s=8,5)=0.0213​$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1=\{7,8\}​$，$c_1=8.8​$,$R_2=\{9,10\}​$,$c_2=9.03​$</p>
+</li>
+<li><p>函数表达式</p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>  $$
+  \begin{equation}
+  f(x)=\left\{
+  \begin{aligned}
+  5.72 &amp; &amp;  x&lt;3.5\\
+  6.7 5&amp; &amp;3.5&lt;=x&lt;6.5\\
+  8.8&amp; &amp;6.5&lt;=x&lt;8.5\\
+  9.03&amp; &amp;8.5&lt;=x&lt;10\\
+  \end{aligned}
+  \right.
+  \end{equation}
+  $$
+</code></pre><h1 id="Python库"><a href="#Python库" class="headerlink" title="Python库"></a>Python库</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sklearn</span>.<span class="title">tree</span>.<span class="title">DecisionTreeClassifier</span><span class="params">(criterion=’gini’, splitter=’best’, max_depth=None, min_samples_split=<span class="number">2</span>, min_samples_leaf=<span class="number">1</span>, min_weight_fraction_leaf=<span class="number">0.0</span>, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=<span class="number">0.0</span>, min_impurity_split=None, class_weight=None, presort=False)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Created on Wed Mar 13 19:59:53 2019</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@author: 23230</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">X=np.array([[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">4</span>],[<span class="number">5</span>],[<span class="number">6</span>],[<span class="number">7</span>],[<span class="number">8</span>],[<span class="number">9</span>],[<span class="number">10</span>]])</span><br><span class="line">y=np.array([[<span class="number">5.56</span> ],[<span class="number">5.7</span>],[<span class="number">5.91</span>],[<span class="number">6.4</span>],[<span class="number">6.8</span>],[<span class="number">7.05</span>],[<span class="number">8.9</span>],[<span class="number">8.7</span>],[<span class="number">9</span> ],[<span class="number">9.05</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fit regression model</span></span><br><span class="line">regr_1 = DecisionTreeRegressor(max_depth=<span class="number">2</span>)</span><br><span class="line">regr_2 = DecisionTreeRegressor(max_depth=<span class="number">3</span>)</span><br><span class="line">regr_3 = DecisionTreeRegressor(max_depth=<span class="number">4</span>)</span><br><span class="line">regr_1.fit(X, y)</span><br><span class="line">regr_2.fit(X, y)</span><br><span class="line">regr_3.fit(X, y)</span><br><span class="line"></span><br><span class="line">X_test = np.copy(X)</span><br><span class="line">y_1 = regr_1.predict(X_test)</span><br><span class="line">y_2 = regr_2.predict(X_test)</span><br><span class="line">y_3 = regr_3.predict(X_test)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Plot the results</span></span><br><span class="line">plt.figure()</span><br><span class="line">plt.scatter(X, y, s=<span class="number">20</span>, edgecolor=<span class="string">"black"</span>,c=<span class="string">"darkorange"</span>, label=<span class="string">"data"</span>)</span><br><span class="line">plt.plot(X_test, y_1, color=<span class="string">"cornflowerblue"</span>,label=<span class="string">"max_depth=2"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.plot(X_test, y_2, color=<span class="string">"yellowgreen"</span>, label=<span class="string">"max_depth=4"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.plot(X_test, y_3, color=<span class="string">"r"</span>, label=<span class="string">"max_depth=8"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.xlabel(<span class="string">"data"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"target"</span>)</span><br><span class="line">plt.title(<span class="string">"Decision Tree Regression"</span>)</span><br><span class="line">plt.legend()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/11/回归树/re.png" alt="1552478769877"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/05/BP算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -399,7 +908,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
 
                 
                 
@@ -438,7 +947,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                11k字
+                10k字
               </span>
               
 
@@ -466,205 +975,143 @@
         
           
             <p>[TOC]</p>
-<h1>1. 需要的微积分知识</h1>
-<h2 id="1-1-导数"><a class="header-anchor" href="#1-1-导数">¶</a>1.1 导数</h2>
-<p>对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。<br>
-对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。</p>
-<h2 id="1-2-求导的链式法则"><a class="header-anchor" href="#1-2-求导的链式法则">¶</a>1.2 求导的链式法则</h2>
-<ol>
-<li>
-<p>$x \in R$, $z=g(f(x))$, $y=f(x)$<br>
-$$ \frac{\partial z}{\partial x}=\frac{\partial z}{\partial y} \frac{\partial y}{\partial x}$$</p>
-</li>
-<li>
-<p>$ x \in R^m $, $f(x)$是$R<sup>M$到$R</sup>n$的映射，$g(f)$是$R^n$到R的映射<br>
-$$ \frac{\partial g}{\partial x_i}=\sum_j^n \frac{\partial g}{\partial f_i} \frac{\partial f_i}{\partial x_i}$$<br>
-如果使用向量表示<br>
-$$ \nabla_x^z=(\frac{\partial f}{\partial x})^T \nabla_y^z$$</p>
+<h1 id="1-需要的微积分知识"><a href="#1-需要的微积分知识" class="headerlink" title="1. 需要的微积分知识"></a>1. 需要的微积分知识</h1><h2 id="1-1-导数"><a href="#1-1-导数" class="headerlink" title="1.1 导数"></a>1.1 导数</h2><p>对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。<br>对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。</p>
+<h2 id="1-2-求导的链式法则"><a href="#1-2-求导的链式法则" class="headerlink" title="1.2 求导的链式法则"></a>1.2 求导的链式法则</h2><ol>
+<li><p>$x \in R$, $z=g(f(x))$, $y=f(x)$</p>
+<script type="math/tex; mode=display">\frac{\partial z}{\partial x}=\frac{\partial z}{\partial y} \frac{\partial y}{\partial x}</script></li>
+<li><p>$ x \in R^m $, $f(x)$是$R^M$到$R^n$的映射，$g(f)$是$R^n$到R的映射</p>
+<script type="math/tex; mode=display">\frac{\partial g}{\partial x_i}=\sum_j^n \frac{\partial g}{\partial f_i} \frac{\partial f_i}{\partial x_i}</script><p>如果使用向量表示</p>
+<script type="math/tex; mode=display">\nabla_x^z=(\frac{\partial f}{\partial x})^T \nabla_y^z​</script><h1 id="2-梯度下降法"><a href="#2-梯度下降法" class="headerlink" title="2. 梯度下降法"></a>2. 梯度下降法</h1><h2 id="2-1-梯度"><a href="#2-1-梯度" class="headerlink" title="2.1 梯度"></a>2.1 梯度</h2><p>梯度其实本质也是一个向量，对于函数$f(X,y)$<br>在$(W,y)$这一点的梯度 $(\frac{\partial f}{\partial X},\frac{\partial f}{\partial y})​$<br>梯度的几何意义：在该店变化增加最快的地方</p>
 </li>
 </ol>
-<h1>2. 梯度下降法</h1>
-<h2 id="2-1-梯度"><a class="header-anchor" href="#2-1-梯度">¶</a>2.1 梯度</h2>
-<p>梯度其实本质也是一个向量，对于函数$f(X,y)$<br>
-在$(W,y)$这一点的梯度 $(\frac{\partial f}{\partial X},\frac{\partial f}{\partial y})$<br>
-梯度的几何意义：在该店变化增加最快的地方</p>
-<h2 id="2-2-梯度算法的解释"><a class="header-anchor" href="#2-2-梯度算法的解释">¶</a>2.2 梯度算法的解释</h2>
-<p>图来自吴恩达的机器学习课程<br>
-<img src="/2019/03/05/BP算法/2.1.1.png" alt="tu"><br>
-颜色偏红(A)的地方开始，根据梯度的负方向通过9次更新，达到了最小值(B)。<br>
-现在给定一个点$A(\theta_0,\theta_1)$,干嘛呢，我们想从A到B点（最小值点),类似人类下山，需要知道往那个方向吧、走大多一步呢？<br>
-方向：梯度的负方向 $ \delta=(\frac{\partial L}{\partial \theta_0},\frac{\partial L}{\partial \theta_1})$)<br>
-步长：学习率（$\alpha$)<br>
-因此，计算一次里目标更近了 $(\theta_0,\theta_1)=(\theta_0,\theta_1)-\alpha \dot (\delta)$<br>
-在重复上两步，直到满意为止。</p>
-<h1>3.误差反向传播算法</h1>
-<h2 id="3-1-理论推导"><a class="header-anchor" href="#3-1-理论推导">¶</a>3.1 理论推导</h2>
-<p><img src="/2019/03/05/BP算法/3.1.1.png" alt="计算图"></p>
-<h3 id="3-1-1-符号说明"><a class="header-anchor" href="#3-1-1-符号说明">¶</a>3.1.1 符号说明</h3>
-<p>上图是一个L层的神经网络，输入层为第一层，隐藏层：2至$L-1$层，输出层L</p>
-<p>令 输入向量 $\vec{X}$<br>
-$$ \vec{X} = (x_1,x_2,…,x_{m-1},x_m)$$<br>
-输出向量 $\vec{Y}$<br>
-$$ \vec{Y}=(y_1,y_2,…,y_{n-1},y_n)$$a<br>
-第j层隐藏层的输出向量 $\vec{h^{(j)}}$<br>
-$$\vec{h<sup>{(j)}}=(h_1</sup>{(j)},h_2<sup>&lt;!–￼0–&gt;,…,h_{t-1}</sup>{(j)},h_tj^{(j)})$$<br>
-其中，$tj$:表示第j的隐藏层个数<br>
-第$(l-1)$层的第i个神经元到第$l$层的第j个神经元的连接权重：$w_{ij}^{(l)}$，则第$(l-1)$层神经元到第$l$层神经元的连接权重矩阵</p>
-<p>$$W^{(l)}=\left( \begin{matrix}w_{11}^{(l)}&amp; \cdots &amp; w_{1(tj)}\<br>
-&amp;   \dots &amp;\<br>
-w_{s(l-1)}<sup>{l}&amp;\cdots&amp;w_{s(l-1)s(l)}</sup>{l}<br>
-\end{matrix}\right)$$</p>
-<h3 id="3-1-2-推导过程"><a class="header-anchor" href="#3-1-2-推导过程">¶</a>3.1.2 推导过程</h3>
-<h4 id="3-1-2-1-误差"><a class="header-anchor" href="#3-1-2-1-误差">¶</a>3.1.2.1 误差</h4>
-<p>定义的误差函数,常见的衡量性指标见 <a href="#3.6">戳我</a>,这里选择的误差平方和最小<br>
-第$i$个输出的误差,假设实际输出$(d(1),d(2),…,d(n))$：,一个输入样本对应的误差<br>
-$$E(i)=\frac{1}{2}\sum_{k=1}<sup>n(y(i)-d(i))</sup>2=\frac{1}{2}||y-d||^2$$</p>
-<p>所有训练样本($N$)的误差：<br>
-$$E(i)=\frac{1}{2}\sum_{j=1}<sup>{N}(\sum_{k=1}</sup>n(y(i)-d(i))<sup>2)=\frac{1}{2N}\sum_{j=1}</sup>{N}(||y(i)-d(i)||^2)$$</p>
-<p>因此，<br>
-$$ E = \frac{1}{2N}\sum_{i=1}<sup>N(||y(i)-d(i)||</sup>2)$$<br>
-其实，神经网络的输出是关于节点的复合函数。代价函数是关于$W$和$b$的函数。</p>
-<h4 id="3-1-2-2-正向传播"><a class="header-anchor" href="#3-1-2-2-正向传播">¶</a>3.1.2.2 正向传播</h4>
-<p>输入层$\hat{X}$：<br>
-$$ X =(x_1,x_2,x_3,…,x_m)$$<br>
-当有$N$个训练样本时，可用矩阵表示</p>
-<p>$$ X=\left( \begin{matrix}<br>
-x_{11} &amp;x_{12}&amp;…&amp;x_{1m}\<br>
-x_{21} &amp; x_{22}&amp;…&amp;x_{2m}\<br>
-\vdots &amp; \vdots&amp;\dots&amp;\vdots\<br>
-x_{N1} &amp; \vdots&amp;\vdots&amp;x_{Nm}\<br>
-\end{matrix}  \right)$$</p>
-<p>第二层 $h^{(2)}$,一共$s2$个节点:<br>
-第i个节点的计算<br>
-$$h<sup>{(2)}(i)=f(\sum_{j=1}</sup>{s2}x(j)<em>w_{ji}^{(l)}+b_i)=f(x</em>w(:,i)+b_i)$$<br>
-矩阵表示<br>
-$$ h<sup>{(2)}=f(x*W</sup>{(l)}+b^{(2)})$$<br>
-第i层 矩阵形式<br>
-$$ h<sup>{(l)}=f(h</sup>{(l-1)}*W^{(l)}+b)$$</p>
-<h4 id="3-1-2-3-反向传播"><a class="header-anchor" href="#3-1-2-3-反向传播">¶</a>3.1.2.3 反向传播</h4>
-<p>梯度下降法更新权重，不断迭代到最优解。<br>
-对$w_{ij}$求导数可得,可更新$w_{ij}$更新公式：<br>
-$$ w_{ij}=w_{ij}-\alpha \frac{\partial E}{\partial w_{ij}}$$<br>
-当然简单的情况下，可直接写出公式，当太复杂的时候，引入BP简化求导</p>
-<p>方便书写公式，对于第i的输入$h<sup>{(i-1)}*W</sup>{(i)}+b<sup>{(i)}$记作$net</sup>{(i)}$,其中，第$i$的输入和输出的关系，$输入=f(输出)$<br>
-下面开始推导</p>
+<h2 id="2-2-梯度算法的解释"><a href="#2-2-梯度算法的解释" class="headerlink" title="2.2 梯度算法的解释"></a>2.2 梯度算法的解释</h2><p>图来自吴恩达的机器学习课程<br><img src="/2019/03/05/BP算法/2.1.1.png" alt="tu"><br>颜色偏红(A)的地方开始，根据梯度的负方向通过9次更新，达到了最小值(B)。<br>现在给定一个点$A(\theta_0,\theta_1)​$,干嘛呢，我们想从A到B点（最小值点),类似人类下山，需要知道往那个方向吧、走大多一步呢？<br>方向：梯度的负方向 $ \delta=(\frac{\partial L}{\partial \theta_0},\frac{\partial L}{\partial \theta_1})​$)<br>步长：学习率（$\alpha​$)<br>因此，计算一次里目标更近了 $(\theta_0,\theta_1)=(\theta_0,\theta_1)-\alpha \dot (\delta)​$<br>在重复上两步，直到满意为止。</p>
+<h1 id="3-误差反向传播算法"><a href="#3-误差反向传播算法" class="headerlink" title="3.误差反向传播算法"></a>3.误差反向传播算法</h1><h2 id="3-1-理论推导"><a href="#3-1-理论推导" class="headerlink" title="3.1 理论推导"></a>3.1 理论推导</h2><p><img src="/2019/03/05/BP算法/3.1.1.png" alt="计算图"></p>
+<h3 id="3-1-1-符号说明"><a href="#3-1-1-符号说明" class="headerlink" title="3.1.1 符号说明"></a>3.1.1 符号说明</h3><p>上图是一个L层的神经网络，输入层为第一层，隐藏层：2至$L-1$层，输出层L</p>
+<p>令 输入向量 $\vec{X}​$</p>
+<script type="math/tex; mode=display">\vec{X} = (x_1,x_2,...,x_{m-1},x_m)​</script><p>输出向量 $\vec{Y}​$</p>
+<script type="math/tex; mode=display">\vec{Y}=(y_1,y_2,...,y_{n-1},y_n)​$$a
+第j层隐藏层的输出向量 $\vec{h^{(j)}}​$
+$$\vec{h^{(j)}}=(h_1^{(j)},h_2^,...,h_{t-1}^{(j)},h_tj^{(j)})​</script><p>其中，$tj​$:表示第j的隐藏层个数<br>第$(l-1)​$层的第i个神经元到第$l​$层的第j个神经元的连接权重：$w_{ij}^{(l)}​$，则第$(l-1)​$层神经元到第$l​$层神经元的连接权重矩阵</p>
+<script type="math/tex; mode=display">W^{(l)}=\left( \begin{matrix}w_{11}^{(l)}& \cdots & w_{1(tj)}\\
+    &   \dots &\\
+    w_{s(l-1)}^{l}&\cdots&w_{s(l-1)s(l)}^{l}
+\end{matrix}\right)</script><h3 id="3-1-2-推导过程"><a href="#3-1-2-推导过程" class="headerlink" title="3.1.2 推导过程"></a>3.1.2 推导过程</h3><h4 id="3-1-2-1-误差"><a href="#3-1-2-1-误差" class="headerlink" title="3.1.2.1 误差"></a>3.1.2.1 误差</h4><p>定义的误差函数,常见的衡量性指标见 <a href="#3.6">戳我</a>,这里选择的误差平方和最小<br>第$i$个输出的误差,假设实际输出$(d(1),d(2),…,d(n))$：,一个输入样本对应的误差</p>
+<script type="math/tex; mode=display">E(i)=\frac{1}{2}\sum_{k=1}^n(y(i)-d(i))^2=\frac{1}{2}||y-d||^2​</script><p>所有训练样本($N$)的误差：</p>
+<script type="math/tex; mode=display">E(i)=\frac{1}{2}\sum_{j=1}^{N}(\sum_{k=1}^n(y(i)-d(i))^2)=\frac{1}{2N}\sum_{j=1}^{N}(||y(i)-d(i)||^2)</script><p>因此，</p>
+<script type="math/tex; mode=display">E = \frac{1}{2N}\sum_{i=1}^N(||y(i)-d(i)||^2)​</script><p>其实，神经网络的输出是关于节点的复合函数。代价函数是关于$W​$和$b​$的函数。</p>
+<h4 id="3-1-2-2-正向传播"><a href="#3-1-2-2-正向传播" class="headerlink" title="3.1.2.2 正向传播"></a>3.1.2.2 正向传播</h4><p>输入层$\hat{X}$：</p>
+<script type="math/tex; mode=display">X =(x_1,x_2,x_3,...,x_m)</script><p>当有$N$个训练样本时，可用矩阵表示</p>
+<script type="math/tex; mode=display">X=\left( \begin{matrix}
+x_{11} &x_{12}&...&x_{1m}\\
+x_{21} & x_{22}&...&x_{2m}\\
+\vdots & \vdots&\dots&\vdots\\
+x_{N1} & \vdots&\vdots&x_{Nm}\\
+\end{matrix}  \right)</script><p>第二层 $h^{(2)}​$,一共$s2​$个节点:<br>第i个节点的计算</p>
+<script type="math/tex; mode=display">h^{(2)}(i)=f(\sum_{j=1}^{s2}x(j)*w_{ji}^{(l)}+b_i)=f(x*w(:,i)+b_i)​</script><p>矩阵表示</p>
+<script type="math/tex; mode=display">h^{(2)}=f(x*W^{(l)}+b^{(2)})​</script><p>第i层 矩阵形式</p>
+<script type="math/tex; mode=display">h^{(l)}=f(h^{(l-1)}*W^{(l)}+b)​</script><h4 id="3-1-2-3-反向传播"><a href="#3-1-2-3-反向传播" class="headerlink" title="3.1.2.3 反向传播"></a>3.1.2.3 反向传播</h4><p>梯度下降法更新权重，不断迭代到最优解。<br>对$w_{ij}​$求导数可得,可更新$w_{ij}​$更新公式：</p>
+<script type="math/tex; mode=display">w_{ij}=w_{ij}-\alpha \frac{\partial E}{\partial w_{ij}}​</script><p>当然简单的情况下，可直接写出公式，当太复杂的时候，引入BP简化求导</p>
+<p>方便书写公式，对于第i的输入$h^{(i-1)}*W^{(i)}+b^{(i)}$记作$net^{(i)}$,其中，第$i$的输入和输出的关系，$输入=f(输出)$<br>下面开始推导</p>
 <p>首先，对于$L$层，</p>
-<p>对于$W<sup>{(L)}$，先看对$W_{ij}</sup>{(L)}$求导，<br>
-$$ \frac{\partial E}{\partial W_{ij}^{(L)}}<br>
-=\frac{\partial E}{\partial y(j)} * \frac{\partial y(i)}{\partial net_{j}^{L}} * \frac{\partial net_{j}^{L}}{\partial W_{ij}^{(L)}}\<br>
-=(y(j)-d(j))*f(x)<sup>{’}|_{x=net_j</sup>{(L)}}h_i^{(L-1)}$$</p>
-<p>令$\delta_i^{(L)}=y(i)-d(i)$</p>
-<p>上述给出了单个分量的求偏导的结果，对于$W^{(L)}$<br>
-$$<br>
-\frac{\partial E}{\partial W^{(L)}}<br>
-=\left[\begin{matrix}<br>
-\frac{\partial E}{\partial W_{11}^{(L)}} &amp; \frac{\partial E}{\partial W_{12}^{(L)}}&amp;\dots &amp; \frac{\partial E}{\partial W_{1n}^{(L)}}\<br>
-\frac{\partial E}{\partial W_{21}^{(L)}} &amp; \frac{\partial E}{\partial W_{22}^{(L)}}&amp;\dots&amp; \frac{\partial E}{\partial W_{2n}^{(L)}}\<br>
-\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
-\frac{\partial E}{\partial W_{sL,1}^{(L)}} &amp; \frac{\partial E}{\partial W_{sL,2}^{(L)}}&amp;\dots&amp; \frac{\partial E}{\partial W_{sL,n}^{(L)}}<br>
-\end{matrix}\right]<br>
-\= \left[<br>
-\begin{matrix}<br>
-h<sup>{(L-1)}_1\h</sup>{(L-1)}<em>2\ \dots\h^{(L-1)}<em>n<br>
-\end{matrix}<br>
-\right] *\left[\begin{matrix}<br>
-\delta_1<sup>{(L)}f(x)</sup>{’}|</em>{x=net_1^{(L)}}\<br>
-\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
-\dots\<br>
-\delta_n<sup>{(L)}f(x)</sup>{’}|_{x=net_n^{(L)}}<br>
-\end{matrix}\right] ^T<br>
-=h<sup>{(L-1)}S</sup>{(L)}<br>
-$$<br>
-其中，</p>
-<p>$$<br>
-S^{(L)}=\left[\begin{matrix}</p>
-<p>\delta_1<sup>{(L)}f(x)</sup>{’}|<em>{x=net_1^{(L)}}\<br>
-\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
-\dots\<br>
-\delta_n<sup>{(L)}f(x)</sup>{’}|<em>{x=net_n^{(L)}}<br>
-\end{matrix}\right]^T<br>
-$$<br>
-同理可得，<br>
-$$<br>
-\frac{\partial E}{\partial b_k<sup>{(L)}}=(y(j)-d(j))*f(x)</sup>{’}|</em>{x=net_j^{(L)}}<br>
-$$</p>
-<p>其次，对于隐含层$L-1$层，对$W_{ij}^{(L)}$求导<br>
-$$<br>
-\frac{\partial E}{\partial W_{ij}^{(L-1)}}<br>
-=\sum_{k=1}^{n}\frac{\partial E}{\partial y(k)} * \frac{\partial y(k)}{\partial net_{k}^{L}} * \frac{\partial net_{k}^{L}}{\partial f(net_j^{(L-1)})}<em>\frac{\partial f(net_j^{(L-1)})}{\partial net_j^{(L-1)}}</em>\frac{\partial net_j^{(L-1)}}{\partial W_{ij}^{(L-1)}}\<br>
-=\sum_{k=1}^{n} (y(j)-d(j))*f(x)<sup>{’}|_{x=net_j</sup>{(L)}}W_{kj}<sup>{(L)}f(x)</sup>{’}|<em>{x=net_j<sup>{L-1}}h_i</sup>{L-2}\<br>
-=\sum</em>{k=1}<sup>{n}S_i</sup>{(L)}W_{kj}<sup>{(L)}f(x)</sup>{’}|_{x=net_j<sup>{L-1}}h_i</sup>{L-2}\<br>
-$$</p>
-<p>写出矩阵形式,对$W^{(L-1)}$<br>
-$$<br>
-\frac{\partial E}{\partial W^{(L-1)}}=\left[\begin{matrix} h<sup>{(L-2)}_1\h</sup>{(L-2)}<em>2\\vdots\h^{(L-2)}</em>{s(L-2)}\end{matrix}\right] \left[\begin{matrix}</p>
-<p>\delta_1<sup>{(L)}f(x)</sup>{’}|<em>{x=net_1^{(L)}}\<br>
-\delta_2<sup>{(L)}f(x)</sup>{’}|</em>{x=net_2^{(L)}}\<br>
-\dots\<br>
-\delta_n<sup>{(L)}f(x)</sup>{’}|<em>{x=net_n^{(L)}}<br>
-\end{matrix}\right]^T<br>
-\left[\begin{matrix}<br>
-W</em>{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
-W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
-\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
-W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}<br>
-\end{matrix}\right]^T<br>
-\<br>
-\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
-0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\<br>
-=h<sup>{(L-2)}S</sup>{(L-1)}<br>
-$$</p>
-<p>$$<br>
-S^{(L-1)}=\left(\left[\begin{matrix}</p>
-<p>f(x)<sup>{’(L)}|_{x=net_1</sup>{(L)}}&amp;0&amp; \dots&amp; 0\<br>
-0&amp;f(x)<sup>{’}|_{x=net_2</sup>{(L)}}0&amp; \dots&amp; 0\<br>
-0&amp;\dots&amp;\dots&amp;0\<br>
-0&amp;0&amp;0&amp;f(x)<sup>{’(L)}|_{x=net_n</sup>{(L)}}<br>
-\end{matrix}\right]\left[\begin{matrix} \delta_1<sup>{(L)}\\delta_2</sup>{(L)}\\vdots\\delta_n^{(L)}\end{matrix}\right] \right)^T\<br>
-\left[\begin{matrix}<br>
-W_{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
-W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
-\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
-W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}*<br>
-\end{matrix}\right]^T<br>
-\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
-0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\<br>
-=S^{(L)}\left[\begin{matrix}<br>
-W_{11}^{(L)} &amp;  W_{12}^{(L)}&amp;\dots &amp; W_{1n}^{(L)}\<br>
-W_{21}^{(L)} &amp;  W_{22}^{(L)}&amp;\dots&amp; W_{2n}^{(L)}\<br>
-\vdots&amp; \dots&amp; \dots&amp; \dots\<br>
-W_{s(L-1),1}^{(L)} &amp; W_{s(L-1),2}^{(L)}&amp;\dots&amp; W_{s(L-1),n}^{(L)}*<br>
-\end{matrix}\right]^T\left[ \begin{array}{ccc}{f<sup>{’(L-1)}\left(net</sup>{(L-1)}<em>{(1)}\right)} &amp; {0} &amp; {0}&amp;{0} \ {0} &amp; {f<sup>{’(L-1)}\left(net</sup>{(L-1)}</em>{(2)}\right)} &amp; {0} &amp;{0}\<br>
-0 &amp; \dots &amp; \vdots &amp; 0\{0} &amp; {0} &amp; {0}&amp;{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]*\<br>
-$$</p>
-<p>对$1&lt;l&lt;L$,求$W^{(l)}$的偏导,</p>
-<p>最后，根据上述的推导喔，很容易得出$S<sup>{(l)}$和$S</sup>{(l+1)}$,<br>
-$$<br>
-S<sup>{(l)}=S</sup>{(l+1)}W<sup>{(l+1)</sup>T}F<sup>{’(l)}(net</sup>{(l)})\<br>
-S<sup>{(L)}=(Y-\hat{Y})F</sup>{’(L)}(net^{(L)})<br>
-$$</p>
-<p>$$<br>
-\frac{\partial E}{\part W<sup>{(l)}}=\left[\begin{matrix}h</sup>{(l-1)}<em>1\h^{(l-1)}<em>2 \\dots \h<sup>{(l-1)}_{sl}\end{matrix}\right]S</sup>{(l+1)} \left[\begin{matrix}W</em>{11}<sup>{(l+1)}&amp;W_{12}</sup>{(l+1)} &amp;\dots&amp; W</em>{2(sl+1)}^{(l+1)}\<br>
-W_{21}<sup>{(l+1)}&amp;W_{22}</sup>{(l+1)} &amp;\dots&amp; W_{2(sl+1)}^{(l+1)}\<br>
-\dots&amp;\dots&amp;\dots&amp;\dots\<br>
-W_{sl1}<sup>{(l+1)}&amp;W_{sl2}</sup>{(l+1)} &amp;\dots&amp; W_{sl(sl+1)}^{(l+1)}\<br>
-\end{matrix}  \right]^T\left[\begin{matrix} \part f<sup>{’(l)}(net_1</sup>{l})&amp;0&amp;\dots &amp; 0\<br>
-0\0 &amp;\part f<sup>{’(l)}(net_2</sup>{l})&amp;\dots&amp;0\<br>
-0 &amp; 0&amp;\dots&amp;0\<br>
-0&amp;0&amp;\dots&amp;\part f<sup>{’(l)}(net_l</sup>{l})\end{matrix}\right]<br>
-$$</p>
-<h2 id="3-2-bp算法的小结"><a class="header-anchor" href="#3-2-bp算法的小结">¶</a>3.2 BP算法的小结</h2>
-<p>算法分为两个阶段：前向阶段和后向传播阶段</p>
+<p>对于$W^{(L)}​$，先看对$W_{ij}^{(L)}​$求导，</p>
+<script type="math/tex; mode=display">\frac{\partial E}{\partial W_{ij}^{(L)}}
+=\frac{\partial E}{\partial y(j)} * \frac{\partial y(i)}{\partial net_{j}^{L}} * \frac{\partial net_{j}^{L}}{\partial W_{ij}^{(L)}}\\
+=(y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}h_i^{(L-1)}​</script><p>令$\delta_i^{(L)}=y(i)-d(i)​$</p>
+<p>上述给出了单个分量的求偏导的结果，对于$W^{(L)}​$</p>
+<script type="math/tex; mode=display">
+\frac{\partial E}{\partial W^{(L)}}
+=\left[\begin{matrix} 
+\frac{\partial E}{\partial W_{11}^{(L)}} & \frac{\partial E}{\partial W_{12}^{(L)}}&\dots & \frac{\partial E}{\partial W_{1n}^{(L)}}\\
+\frac{\partial E}{\partial W_{21}^{(L)}} & \frac{\partial E}{\partial W_{22}^{(L)}}&\dots& \frac{\partial E}{\partial W_{2n}^{(L)}}\\
+\vdots& \dots& \dots& \dots\\
+\frac{\partial E}{\partial W_{sL,1}^{(L)}} & \frac{\partial E}{\partial W_{sL,2}^{(L)}}&\dots& \frac{\partial E}{\partial W_{sL,n}^{(L)}}
+\end{matrix}\right]
+\\= \left[
+\begin{matrix}
+h^{(L-1)}_1\\h^{(L-1)}_2\\ \dots\\h^{(L-1)}_n
+\end{matrix}
+\right] *\left[\begin{matrix}
+\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
+\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
+\dots\\
+\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
+\end{matrix}\right] ^T
+=h^{(L-1)}S^{(L)}</script><p>其中，</p>
+<script type="math/tex; mode=display">
+S^{(L)}=\left[\begin{matrix}
+
+\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
+\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
+\dots\\
+\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
+\end{matrix}\right]^T</script><p>同理可得，</p>
+<script type="math/tex; mode=display">
+\frac{\partial E}{\partial b_k^{(L)}}=(y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}</script><p>其次，对于隐含层$L-1​$层，对$W_{ij}^{(L)}​$求导</p>
+<script type="math/tex; mode=display">
+\frac{\partial E}{\partial W_{ij}^{(L-1)}}
+=\sum_{k=1}^{n}\frac{\partial E}{\partial y(k)} * \frac{\partial y(k)}{\partial net_{k}^{L}} * \frac{\partial net_{k}^{L}}{\partial f(net_j^{(L-1)})}*\frac{\partial f(net_j^{(L-1)})}{\partial net_j^{(L-1)}}*\frac{\partial net_j^{(L-1)}}{\partial W_{ij}^{(L-1)}}\\
+=\sum_{k=1}^{n} (y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}W_{kj}^{(L)}f(x)^{'}|_{x=net_j^{L-1}}h_i^{L-2}\\
+=\sum_{k=1}^{n}S_i^{(L)}W_{kj}^{(L)}f(x)^{'}|_{x=net_j^{L-1}}h_i^{L-2}\\</script><p>写出矩阵形式,对$W^{(L-1)}​$</p>
+<script type="math/tex; mode=display">
+\frac{\partial E}{\partial W^{(L-1)}}=\left[\begin{matrix} h^{(L-2)}_1\\h^{(L-2)}_2\\\vdots\\h^{(L-2)}_{s(L-2)}\end{matrix}\right] \left[\begin{matrix}
+
+\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
+\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
+\dots\\
+\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
+\end{matrix}\right]^T
+\left[\begin{matrix} 
+W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
+W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
+\vdots& \dots& \dots& \dots\\
+ W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}
+\end{matrix}\right]^T
+ \\
+\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
+0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\\
+=h^{(L-2)}S^{(L-1)}</script><script type="math/tex; mode=display">
+S^{(L-1)}=\left(\left[\begin{matrix}
+
+f(x)^{'(L)}|_{x=net_1^{(L)}}&0& \dots& 0\\
+0&f(x)^{'}|_{x=net_2^{(L)}}0& \dots& 0\\
+0&\dots&\dots&0\\
+0&0&0&f(x)^{'(L)}|_{x=net_n^{(L)}}
+\end{matrix}\right]\left[\begin{matrix} \delta_1^{(L)}\\\delta_2^{(L)}\\\vdots\\\delta_n^{(L)}\end{matrix}\right] \right)^T\\
+\left[\begin{matrix} 
+W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
+W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
+\vdots& \dots& \dots& \dots\\
+ W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}*
+\end{matrix}\right]^T
+\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
+0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\\
+=S^{(L)}\left[\begin{matrix} 
+W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
+W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
+\vdots& \dots& \dots& \dots\\
+ W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}*
+\end{matrix}\right]^T\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
+0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]*\\</script><p>对$1&lt;l&lt;L$,求$W^{(l)}$的偏导,</p>
+<p>最后，根据上述的推导喔，很容易得出$S^{(l)}$和$S^{(l+1)}$,</p>
+<script type="math/tex; mode=display">
+S^{(l)}=S^{(l+1)}W^{(l+1)^T}F^{'(l)}(net^{(l)})\\
+S^{(L)}=(Y-\hat{Y})F^{'(L)}(net^{(L)})</script><script type="math/tex; mode=display">
+\frac{\partial E}{\part W^{(l)}}=\left[\begin{matrix}h^{(l-1)}_1\\h^{(l-1)}_2 \\\dots \\h^{(l-1)}_{sl}\end{matrix}\right]S^{(l+1)} \left[\begin{matrix}W_{11}^{(l+1)}&W_{12}^{(l+1)} &\dots& W_{2(sl+1)}^{(l+1)}\\
+W_{21}^{(l+1)}&W_{22}^{(l+1)} &\dots& W_{2(sl+1)}^{(l+1)}\\
+\dots&\dots&\dots&\dots\\
+W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
+\end{matrix}  \right]^T\left[\begin{matrix} \part f^{'(l)}(net_1^{l})&0&\dots & 0\\
+0\\0 &\part f^{'(l)}(net_2^{l})&\dots&0\\
+0 & 0&\dots&0\\
+0&0&\dots&\part f^{'(l)}(net_l^{l})\end{matrix}\right]</script><h2 id="3-2-BP算法的小结"><a href="#3-2-BP算法的小结" class="headerlink" title="3.2 BP算法的小结"></a>3.2 BP算法的小结</h2><p>算法分为两个阶段：前向阶段和后向传播阶段</p>
 <p>后向阶段算法：</p>
 <p>Step 1:  计算$\hat{y}^{(L)}$</p>
 <p>Step 2:  for l =L:2</p>
-<p>​		计算$S<sup>{(l)}=S</sup>{(l+1)}W<sup>{(l+1)}F’(net</sup>{(l)})$</p>
-<p>​		计算 $\Delta W<sup>{(l)}=h</sup>{(l-1)}S^{(l)} $</p>
-<p>​		计算$W<sup>{(l)}=W</sup>{(l)}-\delta \Delta W^{(l)}$</p>
-<h2 id="3-3-python实现"><a class="header-anchor" href="#3-3-python实现">¶</a>3.3 Python实现</h2>
-<h3 id="3-3-1-最简单三层网络"><a class="header-anchor" href="#3-3-1-最简单三层网络">¶</a>3.3.1 最简单三层网络</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">不用任何框架，自己写一个三层的神经网络</span></span><br><span class="line"><span class="string"># input-3,hidden-4 output-1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input Matrix</span></span><br><span class="line">X = np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">0</span> ,<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output Matrix</span></span><br><span class="line">y = np.array([[<span class="number">0</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>]])</span><br><span class="line"><span class="comment"># Nonlinear function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X,derive=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-X))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> X*(<span class="number">1</span>-X)</span><br><span class="line"><span class="comment"># relu</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">relu</span><span class="params">(X,derive = False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> np.maximum(<span class="number">0</span>,X)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (X&gt;<span class="number">0</span>).astype(float)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Weight bias</span></span><br><span class="line">W1 = <span class="number">2</span> * np.random.random((<span class="number">3</span>, <span class="number">4</span>))<span class="number">-1</span></span><br><span class="line">b1 = <span class="number">0.1</span> * np.ones((<span class="number">4</span>,))</span><br><span class="line"> </span><br><span class="line">W2 = <span class="number">2</span> * np.random.random((<span class="number">4</span>,<span class="number">1</span>))<span class="number">-1</span></span><br><span class="line">b2 = <span class="number">0.1</span> * np.ones((<span class="number">1</span>,))</span><br><span class="line"> </span><br><span class="line">rate = <span class="number">0.1</span></span><br><span class="line">noline = relu</span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">train_times = <span class="number">200</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> time <span class="keyword">in</span> range(train_times):</span><br><span class="line">    <span class="comment"># Layer one</span></span><br><span class="line">    A1 = np.dot(X,W1)+b1</span><br><span class="line">    Z1 = noline(A1)</span><br><span class="line">    <span class="comment"># Layer two </span></span><br><span class="line">    A2 = np.dot(Z1, W2)+b2</span><br><span class="line">    Z2 = noline(A2)</span><br><span class="line">    </span><br><span class="line">    cost = -y+Z2</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calc deltas </span></span><br><span class="line">    S2= cost*noline(A2,<span class="keyword">True</span>)</span><br><span class="line">    delta_W2 = np.dot(Z1.T,S2)</span><br><span class="line">    bias2 = S2.sum(axis=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    S1 = np.dot(S2, W2.T)*noline(A1,<span class="keyword">True</span>)</span><br><span class="line">    delta_W1= np.dot(X.T, S1)</span><br><span class="line">    bias1 = S1.sum(axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># update</span></span><br><span class="line">    W1 = W1-rate*delta_W1</span><br><span class="line">    b1 = b1-rate*bias1</span><br><span class="line">    W2 = W2-rate*delta_W2</span><br><span class="line">    b2 = b2-rate*bias2</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">'error'</span>,np.mean(((y-Z2)*(y-Z2))**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"prediction"</span>,Z2)</span><br></pre></td></tr></table></figure>
-<h2 id="font-id-3-6-3-4-附录-font-："><a class="header-anchor" href="#font-id-3-6-3-4-附录-font-：">¶</a><font id="3.6">3.4  附录</font>：</h2>
+<p>​        计算$S^{(l)}=S^{(l+1)}W^{(l+1)}F’(net^{(l)})$</p>
+<p>​        计算 $\Delta W^{(l)}=h^{(l-1)}S^{(l)} ​$</p>
+<p>​        计算$W^{(l)}=W^{(l)}-\delta \Delta W^{(l)}$</p>
+<h2 id="3-3-Python实现"><a href="#3-3-Python实现" class="headerlink" title="3.3 Python实现"></a>3.3 Python实现</h2><h3 id="3-3-1-最简单三层网络"><a href="#3-3-1-最简单三层网络" class="headerlink" title="3.3.1 最简单三层网络"></a>3.3.1 最简单三层网络</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">不用任何框架，自己写一个三层的神经网络</span></span><br><span class="line"><span class="string"># input-3,hidden-4 output-1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input Matrix</span></span><br><span class="line">X = np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">0</span> ,<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output Matrix</span></span><br><span class="line">y = np.array([[<span class="number">0</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>]])</span><br><span class="line"><span class="comment"># Nonlinear function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X,derive=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-X))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> X*(<span class="number">1</span>-X)</span><br><span class="line"><span class="comment"># relu</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">relu</span><span class="params">(X,derive = False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> np.maximum(<span class="number">0</span>,X)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (X&gt;<span class="number">0</span>).astype(float)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Weight bias</span></span><br><span class="line">W1 = <span class="number">2</span> * np.random.random((<span class="number">3</span>, <span class="number">4</span>))<span class="number">-1</span></span><br><span class="line">b1 = <span class="number">0.1</span> * np.ones((<span class="number">4</span>,))</span><br><span class="line"> </span><br><span class="line">W2 = <span class="number">2</span> * np.random.random((<span class="number">4</span>,<span class="number">1</span>))<span class="number">-1</span></span><br><span class="line">b2 = <span class="number">0.1</span> * np.ones((<span class="number">1</span>,))</span><br><span class="line"> </span><br><span class="line">rate = <span class="number">0.1</span></span><br><span class="line">noline = relu</span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">train_times = <span class="number">200</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> time <span class="keyword">in</span> range(train_times):</span><br><span class="line">    <span class="comment"># Layer one</span></span><br><span class="line">    A1 = np.dot(X,W1)+b1</span><br><span class="line">    Z1 = noline(A1)</span><br><span class="line">    <span class="comment"># Layer two </span></span><br><span class="line">    A2 = np.dot(Z1, W2)+b2</span><br><span class="line">    Z2 = noline(A2)</span><br><span class="line">    </span><br><span class="line">    cost = -y+Z2</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calc deltas </span></span><br><span class="line">    S2= cost*noline(A2,<span class="keyword">True</span>)</span><br><span class="line">    delta_W2 = np.dot(Z1.T,S2)</span><br><span class="line">    bias2 = S2.sum(axis=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    S1 = np.dot(S2, W2.T)*noline(A1,<span class="keyword">True</span>)</span><br><span class="line">    delta_W1= np.dot(X.T, S1)</span><br><span class="line">    bias1 = S1.sum(axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># update</span></span><br><span class="line">    W1 = W1-rate*delta_W1</span><br><span class="line">    b1 = b1-rate*bias1</span><br><span class="line">    W2 = W2-rate*delta_W2</span><br><span class="line">    b2 = b2-rate*bias2</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">'error'</span>,np.mean(((y-Z2)*(y-Z2))**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"prediction"</span>,Z2)</span><br></pre></td></tr></table></figure>
+<h2 id="3-4-附录："><a href="#3-4-附录：" class="headerlink" title="3.4  附录："></a><font id="3.6">3.4  附录</font>：</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -707,552 +1154,10 @@ $$</p>
 </tr>
 </tbody>
 </table>
-<p>MAPE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left|\frac{x</sup>{(0)}(k)-\hat{x}<sup>{(0)}(k)}{x</sup>{(0)}(k)}\right| \times 100$<br>
-RMSPE	=	$\sqrt{\frac{1}{n} \sum_{k=1}<sup>{n}\left(\frac{\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)}{x</sup>{(0)}(k)}\right)^{2}} \times 100$<br>
-MAE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left|\hat{x}</sup>{(0)}(k)-x^{(0)}(k)\right|$<br>
-MSE	=	$\frac{1}{n} \sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}$<br>
-IA	=	$1-\frac{\sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}}{\sum_{k=1}^{n} \left( \left| \hat{x}^{(0)}(k)-\overline{x} \right|+\left| x^{(0)}(k)-\overline{x}\right| \right)^{2}}$<br>
-U1	=	$\frac{\sqrt{\frac{1}{n} \sum_{k=1}<sup>{n}\left(x</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}}}{\sqrt{\frac{1}{n} \sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}}+\sqrt{\frac{1}{n} \sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}}}$<br>
-U2	=	$\frac{\left[\sum_{k=1}<sup>{n}\left(\hat{x}</sup>{(0)}(k)-x<sup>{(0)}(k)\right)</sup>{2}\right]^{1 / 2}}{\left[\sum_{k=1}^{n} x<sup>{(0)}(k)</sup>{2}\right]^{1 / 2}}$<br>
-R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{Var}[\hat{x}</sup>{(0)}] \operatorname{Var}[x^{(0)}]}}$</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
 </div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/希腊字母/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/03/希腊字母/" itemprop="url">希腊字母</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T09:18:39+08:00">2019-03-03</time>
-            
-
-            
-            
-
-            
-          </span>
+<p>MAPE    =    $\frac{1}{n} \sum_{k=1}^{n}\left|\frac{x^{(0)}(k)-\hat{x}^{(0)}(k)}{x^{(0)}(k)}\right| \times 100$<br>RMSPE    =    $\sqrt{\frac{1}{n} \sum_{k=1}^{n}\left(\frac{\hat{x}^{(0)}(k)-x^{(0)}(k)}{x^{(0)}(k)}\right)^{2}} \times 100$<br>MAE    =    $\frac{1}{n} \sum_{k=1}^{n}\left|\hat{x}^{(0)}(k)-x^{(0)}(k)\right|$<br>MSE    =    $\frac{1}{n} \sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}$<br>IA    =    $1-\frac{\sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}}{\sum_{k=1}^{n} \left( \left| \hat{x}^{(0)}(k)-\overline{x} \right|+\left| x^{(0)}(k)-\overline{x}\right| \right)^{2}}$<br>U1    =    $\frac{\sqrt{\frac{1}{n} \sum_{k=1}^{n}\left(x^{(0)}(k)-x^{(0)}(k)\right)^{2}}}{\sqrt{\frac{1}{n} \sum_{k=1}^{n} x^{(0)}(k)^{2}}+\sqrt{\frac{1}{n} \sum_{k=1}^{n} x^{(0)}(k)^{2}}}$<br>U2    =    $\frac{\left[\sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}\right]^{1 / 2}}{\left[\sum_{k=1}^{n} x^{(0)}(k)^{2}\right]^{1 / 2}}$<br>R    =    $\frac{\operatorname{Cov}(\hat{x}^{(0)}, x^{(0)})}{\sqrt{\operatorname{Var}[\hat{x}^{(0)}] \operatorname{Var}[x^{(0)}]}}$</p>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/杂项/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/03/希腊字母/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/希腊字母/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                383字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>$\alpha$	$\beta$	$\gamma$	$\Gamma$	$\delta$	$\Delta$	$\epsilon$	$\varepsilon$	$\zeta$	$\eta$	$\theta$	$\Theta$	$\vartheta$	$\iota$	$\kappa$	$\lambda$	$\Lambda$	$\mu$	$\nu$<br>
-	$\xi$	$\Xi$	$\pi$	$\Pi$	$\varpi$	$\rho$	$\varrho$	$\sigma$	$\Sigma$	$\varsigma$	$\tau$	$\upsilon$	$\Upsilon$	$\phi$	$\Phi$	$\varphi$	$\chi$	$\psi$	$\Psi$	$\Omega$	$\omega$</p>
-<p>alpha</p>
-<p>beta</p>
-<p>gamma</p>
-<p>delta</p>
-<p>epsilon</p>
-<p>theta</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/吴恩达/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/03/吴恩达/" itemprop="url">吴恩达</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T09:18:39+08:00">2019-03-03</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/03/吴恩达/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/吴恩达/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                39字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1></h1>
-<p>Neural Networks and Deep Learning</p>
-<p>4 周</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/决策树/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/03/决策树/" itemprop="url">决策树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T09:18:39+08:00">2019-03-03</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/03/决策树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/决策树/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                5.9k字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！😄 😃 😁 😮</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/03/决策树/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1469,11 +1374,231 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/决策树/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/03/决策树/" itemprop="url">决策树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T09:18:39+08:00">2019-03-03</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/03/决策树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/决策树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                5.8k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:<br>[TOC]</p>
+<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p>英文名字：Descision Tree</p>
+<h2 id="什么是决策树"><a href="#什么是决策树" class="headerlink" title="什么是决策树"></a>什么是决策树</h2><p>举个校园相亲的例子，今天校园的小猫(女)和小狗(男)准备配对，小猫如何才能在众多的优质🐶的心仪的狗呢？于是呢？有一只特乖巧的小猫找到了你，你正在学习机器学习，刚好学习了决策树，准备给这只猫猫挑选优质狗，当然，你不仅仅是直接告诉猫哪些狗是合适你的？你更应该详细的给猫讲解决策树是如何根据它提出的标准选出的符合要求的狗呢？<br>猫给出如下信息：<br>年龄<0.5 不心仪；年龄大于="">=0.5  6.5&lt;=体重&lt;=8.5;心仪; 年龄&gt;=0.5 体重&gt;8.5 长相好 心仪;其余情况不心仪; 根据上述条件可以构造一颗树：<br><img src="/2019/03/03/决策树/1.bmp" alt="tuyi"><br>上面的图就是决策树，最终的结果是心仪或者不心仪。决策树算法以树形结构表示数据分类的结果</0.5></p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>决策树属于也只能非参数学习算法、可以用于解决(多)分类问题，回归问题。 回归问题的结果，叶子结点的平均值是回归问题的解。<br>根节点：决策树具有数据结构里面的二叉树、树的全部属性<br>非叶子节点 ：（决策点） 代表测试的条件，数据的属性的测试<br>叶子节点 ：分类后获得分类标记<br>分支： 测试的结果</p>
+<h2 id="数学问题-熵-Gini系数"><a href="#数学问题-熵-Gini系数" class="headerlink" title="数学问题-熵-Gini系数"></a>数学问题-熵-Gini系数</h2><p>什么是熵：熵的概念源于物理学，用于度量一个热力学系统的无序程度。<br>信息熵：不得不提香农这个大写的人啦！信息论里面的知识。在信息论里面，<font color="red">信息熵衡量信息量的大小，也就是对随机变量不确定度的一个衡量。熵越大，不确定性越大；</font><br>对于某个单符号无记忆信源，发出符号($x_i$)的概率是$p_i$,概率越大，符号的信息量就越小，香农公式 $I(x_i)=-log_{p_i}$。信源所含的信息熵就是信息量的期望]<br>$H(x)=-\sum p_i*log_{p_i}$<br>Gini系数： $Gimi(p) = 1-\sum_{k=1}^{K}p_k^2$</p>
+<h2 id="决策树如何构建的问题"><a href="#决策树如何构建的问题" class="headerlink" title="决策树如何构建的问题"></a>决策树如何构建的问题</h2><p>自我提问阶段：</p>
+<p><font color="green" size="3">每个节点的位置如何确定？</font><br>特征的选择：每次选入的特征作为分裂的标准，都是使得决策树在这个节点的根据你自己选择的标准（信息熵最小、信息增益最大、gini系数最小）.</p>
+<p><font color="green" size="3">每个节点在哪个值上做划分，确定分支结构呢？</font><br>遍历划分的节点的分界值操作来解决这个问题</p>
+<p><font color="green" size="3">可以想象，我们构造的决策树足够庞大，决策树可以把每一个样本都分对，那么决策树的泛化能力就可以很差了</font><br>为了解决这个问题，就需要剪枝操作了</p>
+<h3 id="训练算法"><a href="#训练算法" class="headerlink" title="训练算法"></a>训练算法</h3><h4 id="基于信息熵的构造"><a href="#基于信息熵的构造" class="headerlink" title="基于信息熵的构造"></a>基于信息熵的构造</h4><p>当选择某个特征作为节点时，我们就希望这个特征的信息熵越小越好，那么不确定性越小。<br>计算特征的信息熵公式如下：</p>
+<script type="math/tex; mode=display">H(x) = -p_i(x)log^{p_i(x)}
+= -\frac{n_j}{S}log^{\frac{n_j}{S}}</script><p>$n_j$: 第j个类别，在样本中出现的频数<br>$S$: 样本个数<br>对于离散属性，直接计算信息熵，连续属性，就需要划分区间，按区间计算信息熵。</p>
+<ol>
+<li>基于某一层的数据集<br> a. 遍历计算所有属性，遍历相应属性以不同值为分截点的信息熵<br> b. 选择信息熵最小的作为节点<ol>
+<li>如果到达终止条件，返回相应信息，否则，按照分支重复步骤1<h4 id="ID3算法：-信息增益最大化"><a href="#ID3算法：-信息增益最大化" class="headerlink" title="ID3算法： 信息增益最大化"></a>ID3算法： 信息增益最大化</h4>C:类别<script type="math/tex; mode=display">H(C)=-\sum_{i=1}^{m}p_i log _2^{p_i}</script>按照D组划分C<script type="math/tex; mode=display">H(C/D)=\sum_{i=1}^{v}\frac{|C_i|}{|C|}H(C_i)</script>信息增益<script type="math/tex; mode=display">gain(D) = gain(C)-H(C/D)</script>这里我就以网上给出的数据为例，给出根据信息熵构成决策树的计算过程。</li>
+</ol>
+</li>
+<li><p>确定特征，统计属性值和分解结果，总共四个特征，四种特征的统计结果如下图：<br><img src="/2019/03/03/决策树/2.jpg" alt="图er"></p>
+</li>
+<li><p>根据历史数据，在不知到任何情况下，计算数据本身的熵为</p>
+<script type="math/tex; mode=display">- \frac{9}{14}log_2 \frac{9}{14}-\frac{5}{14}log_2\frac{5}{14}=0.940</script></li>
+<li>计算每个特征做为节点的信息熵<br>以天气为例，天气三种属性，当Outlook = sunny时，H(x) = $-\frac{2}{5}log_2\frac{2}{5}-\frac{3}{5}log_2\frac{3}{5}$; 当Outlook= overcast,$H(x)=0$,当Outlook = rainy ,$H(x) = 0.971$<br>所以，当选天气作为节点时，此时$H(x)=\frac{5}{14}<em>0.971+\frac{4}{14}</em>0+\frac{5}{14}*0.971 = 0.693$,gain(天气) = 0.247<br>同理，可得gain(温度) =0.029  gain(湿度)=0.152，gain(风)=0.048<br>因此选择天气节点，在递归实现其他节点的选择。<br>信息增益的方法偏向选择具有大量值的属性，也就是说某个属性特征索取的不同值越多，那么越有可能作为分裂属性，这样是不合理的；</li>
+</ol>
+<h4 id="C4-5-信息增益率"><a href="#C4-5-信息增益率" class="headerlink" title="C4.5: 信息增益率"></a>C4.5: 信息增益率</h4><p>如果这里考虑了一列ID,每个ID出现一次，所以算出的信息增益大。<br>$ H(x) = 0$,信息增益最大化了，可以引入信息增益率</p>
+<script type="math/tex; mode=display">C(T) = \frac{信息增益}{H(T)}
+=\frac{H(C)-H(C/T)}{H(T)}</script><h4 id="CART-基尼-Gini-系数"><a href="#CART-基尼-Gini-系数" class="headerlink" title="CART:基尼(Gini)系数"></a>CART:基尼(Gini)系数</h4><script type="math/tex; mode=display">G = 1-\sum_{i=l_k}^{k}p_i^2$$,也是对随机变量不确定性的一个衡量，gini越大，不确定性越大
+### 连续属性的处理方法
+选取分解点的问题： 分成不同的区间（二分、三分....)，分别计算增益值，然后比较选择。
+将需要处理的样本（对应根节点）或样本子集（对应子树）按照连续变量的大小从小到大进行排序
+假设该属性对应不同的属性值共N个，那么总共有N-1个可能的候选分割值点，每个候选的分割阈值点的值为上述排序后的属性值中两两前后连续元素的中点
+## 评价
+评价函数：
+$$C(T) = \sum_{releaf} N_t*H(T)</script><p>$ N_t$：每个叶子节点里面含有的样本个数<br>$H(T)$:叶子节点含有的信息熵</p>
+<h3 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h3><p>如果决策树过于庞大，分支太多，可能造成过拟合。对应训练样本都尽可能的分对，也许样本本身就存在异常点呢？<br>I. 预剪枝：边构建，边剪枝</p>
+<ol>
+<li>指定深度d</li>
+<li>节点的min_sample</li>
+<li>节点熵值或者gini值小于阙值<br>熵和基尼值的大小表示数据的复杂程度，当熵或者基尼值过小时，表示数据的纯度比较大，如果熵或者基尼值小于一定程度数，节点停止分裂。</li>
+<li>当所以特征都用完了</li>
+<li>指定节点个数<br>当节点的数据量小于一个指定的数量时，不继续分裂。两个原因：一是数据量较少时，再做分裂容易强化噪声数据的作用；二是降低树生长的复杂性。提前结束分裂一定程度上有利于降低过拟合的影响。</li>
+</ol>
+<p>II. 后剪枝： 构建好后，然后才开始裁剪</p>
+<script type="math/tex; mode=display">C_\alpha(T) = C(T)+\alpha|T_{leaf}|</script><p>在构造含一棵树后，选一些节点做计算，看是否需要剪枝</p>
+<h2 id="决策树单个节点选择的代码实现"><a href="#决策树单个节点选择的代码实现" class="headerlink" title="决策树单个节点选择的代码实现"></a>决策树单个节点选择的代码实现</h2><h3 id="简单实现了单个节点决策构造过程"><a href="#简单实现了单个节点决策构造过程" class="headerlink" title="简单实现了单个节点决策构造过程"></a>简单实现了单个节点决策构造过程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split</span><span class="params">(X,y,d,value)</span>:</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">在d纬度上，按照value进行划分</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">    index_a =(X[:,d]&lt;=value)</span><br><span class="line">    index_b =(X[:,d]&gt;value)</span><br><span class="line">    <span class="keyword">return</span> X[index_a],X[index_b],y[index_a],y[index_b]</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log </span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">entropy</span><span class="params">(y)</span>:</span></span><br><span class="line">    counter = Counter(y) <span class="comment"># 字典</span></span><br><span class="line">    res = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> counter.values():</span><br><span class="line">        p = num/len(y)</span><br><span class="line">        res+=-p*log(p)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gain</span><span class="params">(X,y,d,v)</span>:</span></span><br><span class="line">    X_l,X_r,y_l,y_r = split(X,y,d,v)</span><br><span class="line">    e = len(y_l)/len(y)*entropy(y_l)+len(y_r)/len(y)*entropy(y_r)</span><br><span class="line">    <span class="keyword">return</span> (entropy(y)-e)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gainratio</span><span class="params">(X,y,d,v)</span>:</span></span><br><span class="line">    X_l,X_r,y_l,y_r = split(X,y,d,v)</span><br><span class="line">    gain =entropy(y) - len(y_l)/len(y)*entropy(y_l)+len(y_r)/len(y)*entropy(y_r)</span><br><span class="line">    <span class="keyword">return</span> gain/(entropy(y_l)+entropy(y_r))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gini</span><span class="params">(y)</span>:</span></span><br><span class="line">    counter = Counter(y)</span><br><span class="line">    res = <span class="number">1.0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> counter.values():</span><br><span class="line">        p = num / len(y)</span><br><span class="line">        res += -p**<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">    <span class="comment">#X_l,X_r,y_l,y_r = split(X,y,d,v)</span></span><br><span class="line">    <span class="comment">#return 1-(len(y_l)/len(y))**2-(len(y_r)/len(y))**2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">try_split</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    best_entropy = float(<span class="string">'inf'</span>)</span><br><span class="line">    best_d,best_v=<span class="number">-1</span>,<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> range(X.shape[<span class="number">1</span>]):</span><br><span class="line">        sorted_index = np.argsort(X[:,d])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(X)):</span><br><span class="line">            <span class="keyword">if</span> (X[sorted_index[i],d] != X[sorted_index[i<span class="number">-1</span>],d]):</span><br><span class="line">                v = (X[sorted_index[i<span class="number">-1</span>],d]+X[sorted_index[i],d])/<span class="number">2</span></span><br><span class="line">                X_l,X_r,y_l,y_r = split(X,y,d,v)</span><br><span class="line">                <span class="comment"># 信息熵</span></span><br><span class="line">                e = entropy(y_l)+entropy(y_r)</span><br><span class="line">                <span class="comment">#gini</span></span><br><span class="line">                e = gini(y_l) + gini(y_r)</span><br><span class="line">                <span class="comment"># 信息增益</span></span><br><span class="line">                e = -gain(X,y,d,v)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> e &lt; best_entropy:</span><br><span class="line">                    best_entropy, best_d,best_v = e,d,v</span><br><span class="line">    <span class="keyword">return</span> best_entropy, best_d, best_v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动来划分</span></span><br><span class="line"></span><br><span class="line">data =np.array([[	<span class="number">0.3</span>	,	<span class="number">5</span>	,	<span class="number">2</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.4</span>	,	<span class="number">6</span>	,	<span class="number">0</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.5</span>	,	<span class="number">6.5</span>	,	<span class="number">1</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">0.6</span>	,	<span class="number">6</span>	,	<span class="number">0</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.7</span>	,	<span class="number">9</span>	,	<span class="number">2</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">0.5</span>	,	<span class="number">7</span>	,	<span class="number">1</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.4</span>	,	<span class="number">6</span>	,	<span class="number">0</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.6</span>	,	<span class="number">8.5</span>	,	<span class="number">0</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">0.3</span>	,	<span class="number">5.5</span>	,	<span class="number">2</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.9</span>	,	<span class="number">10</span>	,	<span class="number">0</span>	,	<span class="number">1</span>	],</span><br><span class="line">[	<span class="number">1</span>	,	<span class="number">12</span>	,	<span class="number">1</span>	,	<span class="number">0</span>	],</span><br><span class="line">[	<span class="number">0.6</span>	,	<span class="number">9</span>	,	<span class="number">1</span>	,	<span class="number">0</span>	],</span><br><span class="line">])</span><br><span class="line">X =data[:,<span class="number">0</span>:<span class="number">3</span>]</span><br><span class="line">y = data[:,<span class="number">-1</span>]</span><br><span class="line"><span class="comment"># 手动来划分</span></span><br><span class="line">best_entropy, best_d, best_v = try_split(X, y)</span><br><span class="line">print(best_entropy, best_d, best_v)</span><br><span class="line">X1_l, X1_r, y1_l, y1_r = split(X,y,best_d,best_v)</span><br><span class="line">print(X1_l, X1_r, y1_l, y1_r)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">best_entropy2, best_d2, best_v2 = try_split(X1_r, y1_r)</span><br><span class="line">X2_l, X2_r, y2_l, y2_r = split(X1_r,y1_r,best_d2,best_v2)</span><br><span class="line">entropy(y2_l)</span><br></pre></td></tr></table></figure>
+<h3 id="Python-sklean里面tree模块里面的DecisionTreeClassifier"><a href="#Python-sklean里面tree模块里面的DecisionTreeClassifier" class="headerlink" title="Python sklean里面tree模块里面的DecisionTreeClassifier"></a>Python sklean里面tree模块里面的DecisionTreeClassifier</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line">clf =tree.DecisionTreeClassifier(max_depth=<span class="number">1</span>,criterion =<span class="string">'gini'</span>) <span class="comment"># criterion='entropy|gini'</span></span><br><span class="line"></span><br><span class="line">clf = clf.fit(X,y)</span><br></pre></td></tr></table></figure>
+<p>训练好一颗决策树之后，我们可以使用export_graphviz导出器以Graphviz格式导出树。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> graphviz </span><br><span class="line">dot_data = tree.export_graphviz(clf, out_file=<span class="keyword">None</span>,) </span><br><span class="line">graph = graphviz.Source(dot_data) </span><br><span class="line">graph.render(<span class="string">"data"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>在运行时可以出错：<br>ExecutableNotFound: failed to execute [‘dot’, ‘-Tpdf’, ‘-O’, ‘data’], make sure the Graphviz executables are on your systems’ PATH<br>原因：graphviz本身是一个软件，需要额外下载，并将其bin加入环境变量之中。<a href="https://graphviz.gitlab.io/_pages/Download/Download_windows.html" target="_blank" rel="noopener">下载</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1506,7 +1631,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XieMay</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
           </div>
 
           
@@ -1516,7 +1641,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1579,7 +1704,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1688,7 +1813,11 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
                     
                       
                     
-                    <span class="site-state-item-count">48</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1768,7 +1897,7 @@ R	=	$\frac{\operatorname{Cov}(\hat{x}^{(0)}, x<sup>{(0)})}{\sqrt{\operatorname{V
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">272k</span>
+    <span title="Symbols count total">260k</span>
   
 
   

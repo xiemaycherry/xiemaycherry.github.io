@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="baidu-site-verification" content="E1Di33CelZ">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="WsojkhmMcOefku3B2Vxp02NtxlUt_JzBP1fVPrFk3Gw">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'WGLQQAQKBA',
+      apiKey: '',
+      indexName: 'xiemay',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="baidu-site-verification" content="z0tVDge8Pe">
+
+  
+  <meta name="keywords" content="Daily,">
+
+
+<meta name="description" content="2020-6-6  今天又是元气满满的一天，和外婆、姨妈等亲人到我家里面做客，吃了🐟；还有邻居老人赠送的🍑 温习了numpy的用法，numpy,pandas,list直接的相互转换关系，以及sklearn metric里面的各类指标，什么叫指标的鲁棒性，怎么按需求选或者构造适合自己的评估指标。 读了高见师兄的综述。 做了指标体系图和高铁站点（Edraw中文坑，怎么不是矢量图啊，Visio破解不">
+<meta name="keywords" content="Daily">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习の历程">
+<meta property="og:url" content="http://xiemaycherry.github.io/2019/02/22/学习Daily/index.html">
+<meta property="og:site_name" content="welcome">
+<meta property="og:description" content="2020-6-6  今天又是元气满满的一天，和外婆、姨妈等亲人到我家里面做客，吃了🐟；还有邻居老人赠送的🍑 温习了numpy的用法，numpy,pandas,list直接的相互转换关系，以及sklearn metric里面的各类指标，什么叫指标的鲁棒性，怎么按需求选或者构造适合自己的评估指标。 读了高见师兄的综述。 做了指标体系图和高铁站点（Edraw中文坑，怎么不是矢量图啊，Visio破解不">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-03T16:03:21.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习の历程">
+<meta name="twitter:description" content="2020-6-6  今天又是元气满满的一天，和外婆、姨妈等亲人到我家里面做客，吃了🐟；还有邻居老人赠送的🍑 温习了numpy的用法，numpy,pandas,list直接的相互转换关系，以及sklearn metric里面的各类指标，什么叫指标的鲁棒性，怎么按需求选或者构造适合自己的评估指标。 读了高见师兄的综述。 做了指标体系图和高铁站点（Edraw中文坑，怎么不是矢量图啊，Visio破解不">
+
+
+
+
+
+
+  <link rel="canonical" href="http://xiemaycherry.github.io/2019/02/22/学习Daily/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>学习の历程 | welcome</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<meta name="baidu-site-verification" content="3BmH9zSH5h"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">welcome</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言">
+          <a href="/guestbook/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>留言</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>Sitemap</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidusitmap">
+          <a href="/baidusitmap.xml" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>baidusitmap</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/02/22/学习Daily/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">学习の历程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-22T14:54:12+08:00">2019-02-22</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习の历程-Journal-of-Studying/" itemprop="url" rel="index"><span itemprop="name">学习の历程(Journal of Studying)</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/22/学习Daily/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/22/学习Daily/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                6.2k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>2020-6-6</p>
+<ol>
+<li>今天又是元气满满的一天，和外婆、姨妈等亲人到我家里面做客，吃了🐟；还有邻居老人赠送的🍑</li>
+<li>温习了numpy的用法，numpy,pandas,list直接的相互转换关系，以及sklearn metric里面的各类指标，什么叫指标的鲁棒性，怎么按需求选或者构造适合自己的评估指标。</li>
+<li>读了高见师兄的综述。</li>
+<li>做了指标体系图和高铁站点（Edraw中文坑，怎么不是矢量图啊，Visio破解不安全，AI还不知道怎么操作）</li>
+<li>明天录视频，</li>
+<li>突然好想去实习啊，希望早点过上舒服的独居生活，不管做什么，一定要早点忙完手头的事情，完成自己的研究生小目标，早点达到毕业条件，后面才有充裕时间考虑其他事情。数据~分析~</li>
+</ol>
+<hr>
+<p>2020-6-5</p>
+<ol>
+<li>今天熟悉了时间序列流程；1. 平稳性。序列平稳性是做分析的基础。平稳性检测—单位根；非平稳性处理：差分~log~分解~平滑处理；2. ARIMA模型 基本思路；相关性和偏相关性定阶数 3. 网格+信息准则 调参：惩罚性 nbeats工具封装好了 4. predict样本内，动态和静态预测 forecase外推，timedelt 绘图，指标</li>
+<li>假设检验：统计量和显著性水平，总感觉理解起来太难了，等忙了一定要好好复习统计学，参数估计，显著性检测，好好补。</li>
+<li>记不住的函数<ol>
+<li>pd.date_range(start = sub.index[-1],end = sub.index[-1]+timedelta(days = 2),freq = ‘1h’)</li>
+<li>stat_rawdata = rawdata[rawdata[‘站点名称’]==stat] 布尔类型的切片，不上很明白原理</li>
+<li>plt.xlim(sub.index[0],sub.index[-1]+timedelta(days = 2))</li>
+<li>绘制热力图<ol>
+<li>seaborn里面的heamap()<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import seaborn as sns</span><br><span class="line"></span><br><span class="line">x = np.random.rand(10, 10)</span><br><span class="line">sns.heatmap(x, vmin=0, vmax=1, center=0)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<hr>
+<p>2020-6-5<br>2020-6-4<br>今天最大的头疼之处和领悟就是，跑大型程序，一定要准备一份下程序，调好结果才放在服务器上面跑，不然结果难以想象。。。。。。。。。。。。。</p>
+<ol>
+<li>感觉调包侠也不是想象中那么好当的，一是现实中的数据一般般不规则，我发誓以后一定要做个合格的客户，二是参数默认是最讨厌的</li>
+<li>今天又改程序，数据预处理果然头疼啊！希望周末可以出个大概结果，再重新跑数据</li>
+</ol>
+<p>绝知此事要躬行，原因觉得自己学各种库还不错，实践的时候还是用不上的时候，😔</p>
+<ol>
+<li>还有就是命名的重要性，</li>
+<li>准备出一篇实践的心得，月末，主要是现在写程序太安逸了，</li>
+<li>知识<ol>
+<li>pandas新增列</li>
+<li>更改索引</li>
+<li>range()</li>
+<li>行政单位，变更情况</li>
+<li>函数，写函数，不知道为什么，像python这种解释型的语言，自己老是重复，不好，不好，</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>2020-6-3<br>今天还是学了不少东西，效率不高，主要是记不住函数传参数！</p>
+<ol>
+<li>掌握了一些pythonic的用法，想in for if ; if else 的一行代码；lambda单行函数功能的简化等等</li>
+<li>一些常用的数据分析函数，sort_values();concat; append; time_range();绘图功能；就是就不知道，肯定是别人已经封装好了！</li>
+</ol>
+<hr>
+<p>2020-6-2<br>今天总体还是满不错的！</p>
+<ol>
+<li>跑了大程序，自己的电脑和服务器的效果还真是不相同。不过，能够做到200行内不调试就能好了，现在找到了写代码的感觉，虽然还是bug~bug~bug, 原因在于开始交接工作没有做好，导致反反复复的修改codes.</li>
+<li>在师兄的介绍下，接了一个时间序列的项目。在毕业设计那会，跑天然气数据，出来了的结果太差了，也不知道why,这次希望能够跟进这个项目。</li>
+<li>感觉自己还留有余地，还没有恢复到最佳状态呐<del>~</del></li>
+<li>希望早点完成手头的东西，已经滞后太久太久了，越发觉得大数据+社会经济太有意思了，不知道能不能出一篇大数据感知社会经济发展（预测）的文章，如果可以，那太有价值了！</li>
+</ol>
+<hr>
+<p>2020-6-1<br>今天刚好是2020年的一半，忙完第一学期（半梦半醒）,最终如梦初醒！<br>今天接触许多新鲜的玩意：</p>
+<ol>
+<li>ArcMap绘制地图、流向图（关键是起点和终点坐标，如何根据名称获取坐标，要做连接。Arc ToolBox中提供了许多工具，方便了用户完成一些简单的操作，如Join、Excel to Tabel常用的工具箱。今天学习绘制地图和流向图涉及的操作包括：文件夹链接到工作目录；ArcMap导入Excel坐标数据并显示；XY to Line工具流向图；提取面要素的质心点；多表链接操作；属性设置（bar)。渲染结果的确漂亮</li>
+<li>linux系统后端运行 nohup &amp;命令的使用，如何记录日志文件，定向输出；学了ps命令 ps 查看进程；还有|通道，grep查找； ps -ef| grep pyton</li>
+<li><p>matplotlib绘图的原理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">创建figure后，还需要轴</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax1 = fig.add_subplot(221)</span><br><span class="line">ax2 = fig.add_subplot(222)</span><br><span class="line">ax3 = fig.add_subplot(224)</span><br><span class="line"></span><br><span class="line">fig, axes = plt.subplots(nrows=2, ncols=2)</span><br><span class="line">axes[0,0].set(title=&apos;Upper Left&apos;)</span><br><span class="line">axes[0,1].set(title=&apos;Upper Right&apos;)</span><br><span class="line">axes[1,0].set(title=&apos;Lower Left&apos;)</span><br><span class="line">axes[1,1].set(title=&apos;Lower Right&apos;)</span><br><span class="line"></span><br><span class="line">axes[0,0].plot()</span><br><span class="line">axes[0,0].set_xlim([-1,6])</span><br><span class="line">axes[0,0].legend()</span><br></pre></td></tr></table></figure>
+<p>matplotlib.plot的基础绘图流程：</p>
+</li>
+</ol>
+<p>创建画布（选择是否绘制子图，指定画布大小，像素）<br>添加标题—添加x轴的名称，刻度与范围—添加y轴的名称，刻度与范围<br>绘制图形，设置图形的样式，颜色，背景，并添加图例<br>保存图形，显示图形</p>
+<ol>
+<li>感谢爷爷提供的CSDN账号 下载不少资料，一次性解决完了！</li>
+</ol>
+<p>2020-5-31</p>
+<p>这是上完研究生第一学期上，第二学期下中旬！也是隔了很久才更新个人记录。<br>研一上，换了一个新环境，终于有个特别舒适的环境了！大屏幕，柔软的凳子,太舒服了！怎可辜负呢。<br>电科的课程实在是太多了，都不能安心玩耍了！<br>这段时间算个积淀吧！</p>
+<h2 id="给我一个杠杆，我就能撬动地球。"><a href="#给我一个杠杆，我就能撬动地球。" class="headerlink" title="给我一个杠杆，我就能撬动地球。"></a><font size="10">给我一个杠杆，我就能撬动地球。</font></h2><p>2019.6.2</p>
+<p>今天才来写，罪过啊！老师不在，室友不在，无聊至极，只能以视频唯友，解闷也！睡了一个星期，但是我瘦了2斤了。开始不在懒惰了，在这样下去我就完蛋了。。。。。。。</p>
+<p>不知道怎么回事，VPN老是 time out ,明明还有$啊！</p>
+<p>造成了只能一段一段翻译，无语凝噎ing</p>
+<p>还有百度上说是两篇，可是要求是一篇，于是我多花了2h,天杀的！！！</p>
+<p>下午跑了个步，</p>
+<p>越来越发现，事先计划一下，再去做，效率更好了！</p>
+<hr>
+<p>2019.5.12</p>
+<p>今天才来更新这个日常，真是罪过，上段时间一直忙其他的事情，毕业设计，回家，处理家务啊。直到今天学完了Course 3,如何改善神经网络的性能，还有英语学习，一定要加油啊！</p>
+<hr>
+<p>2019.4.18</p>
+<p>今天学了一部分course two week two的课程，终于学到精彩的部分了，由于今天想练彩铅和帮忙收拾教室，所以就没有学完了，学了几种变种的梯度下降法，提高速度，太棒了，太棒了，太棒了！！！！！！</p>
+<hr>
+<p>2019.4.17 </p>
+<p>今天学完国course two的第一周课程，大概记时4h，还是颇多收获，学到了以前完全没有接触的东西，正则化方法，梯度消失的和爆炸的问题，感觉很棒，</p>
+<p>2019.4.16</p>
+<p>今天学了吴恩达老师的第一周关于神经网络的基础的课程，好厉害的</p>
+<p>2019.4.15</p>
+<p>今天学习了deep-layer neural network的正向传播和反向传播的过程，矩阵化计算的方式。</p>
+<hr>
+<p>2019.4.14</p>
+<p>今天学习了第三周课程，shallow (2层)神经网络的正向传播和反向传播，以及矩阵化的计算方式，以及和logistics regression的表示上的不同地方</p>
+<hr>
+<p>2019.4.13</p>
+<p>今天继续学习第二周课程，logistics regression 的模型，策略，算法的相关，如何把学习的到数学知识应用上去。</p>
+<hr>
+<p>2019.4.12</p>
+<p>今天没有去跑步，处理一些情感问题去了，学了Androw Ng的 第二周的部分课程，主要是链式求导法则，通过计算图，一步一步的复合求导，复合函数用计算图表示，并链式求导</p>
+<p>2019.4.11</p>
+<p>今天是很愉快的一天，起的很早，精神很足，学了学习，写完了吴恩达老师的第一周深度学习。</p>
+<hr>
+<p>2019.4.10</p>
+<font color="red" size="6">今天刷完了第一遍，完了西瓜书第一章到第十一章，不过呢，还是要继续在刷基础还看论文</font><font>
+
+这段时间，跑步锻炼第一，睡觉，贪睡第二，第三，开始散漫了，自律的我，在哪里去了啊！ 争取在上研究生这段时间，把机器学习、Python编程能力提升上去
+
+今天晚上弄了一个，吴恩达的deep Learning Ai课程笔记，<font color="blue" size="5">开始学习这个系列的课程了</font>
+
+<p>笔记模板</p>
+<p>英文：<a href="http://dl-notes.imshuai.com/#/" target="_blank" rel="noopener">http://dl-notes.imshuai.com/#/</a>](<a href="http://dl-notes.imshuai.com/#/c1w1" target="_blank" rel="noopener">http://dl-notes.imshuai.com/#/c1w1</a>)</p>
+<p>什么都有的 <a href="https://redstonewill.com/category/deeplearning/" target="_blank" rel="noopener">https://redstonewill.com/category/deeplearning/</a></p>
+<p>中文笔记：</p>
+<p>详细，相当于翻译： <a href="http://www.ai-start.com/dl2017/html/lesson1-week1.html" target="_blank" rel="noopener">http://www.ai-start.com/dl2017/html/lesson1-week1.html</a></p>
+<p>思考和总结： <a href="https://link.zhihu.com/?target=http%3A//kyonhuang.top/Andrew-Ng-Deep-Learning-notes/" target="_blank" rel="noopener">https://link.zhihu.com/?target=http%3A//kyonhuang.top/Andrew-Ng-Deep-Learning-notes/</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/35333489" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35333489</a></p>
+<p><a href="http://imshuai.com/tag/deeplearning-ai-notes/" target="_blank" rel="noopener">http://imshuai.com/tag/deeplearning-ai-notes/</a></p>
+<p><a href="https://zhuanlan.zhihu.com/koalatree" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/koalatree</a></p>
+<p>上班族的学习时长：<br>  整理笔记要明显消耗更多的时间，基本上10分钟的视频，做笔记至少要50分钟才能看完。每周的视频大概在2-3个小时，这就意味着看学习视频就要10-15个小时。编程作业3个小时左右，每周平均在15个小时，16周的课，净时间就花了240个小时！</p>
+<p>video  <a href="https://www.youtube.com/channel/UCcIXc5mJsHVYTZR1maL5l9w/playlists" target="_blank" rel="noopener">https://www.youtube.com/channel/UCcIXc5mJsHVYTZR1maL5l9w/playlists</a></p>
+<p>西瓜书的公式推导：</p>
+<p> <a href="https://datawhalechina.github.io/pumpkin-book/#/chapter1/chapter1" target="_blank" rel="noopener">https://datawhalechina.github.io/pumpkin-book/#/chapter1/chapter1</a></p>
+<p>统计机器学习：</p>
+<p><a href="https://github.com/SmirkCao/Lihang" target="_blank" rel="noopener">https://github.com/SmirkCao/Lihang</a></p>
+<hr>
+<p>2019.3.23-2019.3.24 </p>
+<p>今天（今天）是周末，两个早上都睡觉去了，处理一下，我弟弟的问题，和孩子交流的重要性，晚上什么都没有干，周日下午跑了步，学习了python sci-learn里面的交叉验证、超参数选择，集成学习库的用法，终于不再迷茫了，慢慢来</p>
+<ol>
+<li><p>及时的记录学习过程</p>
+</li>
+<li><p>多去看别人的进展</p>
+</li>
+<li><p>去做别人没有做过的事情</p>
+<p>只有你努力，努力的方向是正确的，就可以做出伟大的成就</p>
+<p><a href="https://zhuanlan.zhihu.com/p/29704017" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29704017</a></p>
+<hr>
+</li>
+</ol>
+<p>2019.3.21</p>
+<p>今天了解一下操盘，就是那个股票，感觉做数据科学家好吃香啊，加油，接下来有得忙了</p>
+<hr>
+<p>2019.3.20 </p>
+<p>今天终于看了文献，想出了一个创新点子，可以发文章了，加油喔。</p>
+<p>编写完了测试程序，加油</p>
+<hr>
+<p>2019.3.19</p>
+<p>今天早上看了关于许多灰色模型的现阶段文献，很受启发，感觉读文献真的对能力、思维的提高很大，也发现自己的潜力很大，加油，加油，加油，继续读，产生一些小点子，虽然不够好，但是也是突破</p>
+<hr>
+<p>2019.3.18</p>
+<p>今天看病去了，睡了好久，药物作用果然出乎意料，</p>
+<p>2019.3.17</p>
+<p>今天主要学习支持向量机的前世今生，怎么由来的</p>
+<hr>
+<p>2019.3.16</p>
+<p>今天周六，放松了一下自己，重新回归一下灰色预测模型，尤其是离散方程，其实去掉背景，抓住数学模型，才知道其实就是这样的，希望早日突破自己的界限</p>
+<hr>
+<p>2019.3.14</p>
+<p>今天改了论文，感觉快完了；学习了BP矩阵推导，人真的是越来越聪明和灵活</p>
+<p>2019.3.13</p>
+<p>今天晚上学完了回归树，好棒，虽然原理给人的感觉很直接，但是也是一种体现</p>
+<hr>
+<p>2019.3.12</p>
+<p>今天跑了步，早上改了毕业设计，下午配置了新手机，晚上写了日记</p>
+<p>2019.3.11</p>
+<p>今天早上听了听力，修改了毕业设计，核函数还是不是很懂；下午看了决策回归树，感觉很棒，过拟合才是该解决的关键问题！跑了步，感觉自己身体状况很不好啊！ 晚上听力电台，写了程序！</p>
+<p>慢慢的学习，慢慢的努力，慢慢的加油，慢慢的遇见自己的憧憬天空</p>
+<hr>
+<p>2019.3.10</p>
+<p>今天写了日记，说不上自己哪里郁闷，哪里开心！希望早点跑完程序，早点完事</p>
+<hr>
+<p>2019.3.9</p>
+<p>今天才发现，最近状态非常的不好，可能是无所事事吧，可是我有很多事情要做，加油，少女，加油，少女，以后一定要记得写了!总觉得自己逃不出自己的羁绊，被束缚</p>
+<hr>
+<p>2019.2.28<br>今天调整自己的心态，回顾自己的生活，自己太急于求成了，心急吃不了热豆腐啊！！！！！<br>中国有句老话说得对，积少成多，不积跬步无以至千里，不积小流无以成江河，慢慢来，弄透弄清楚</p>
+<p>最后，英语+数学+编程+解决问题的能力</p>
+<hr>
+<p>2019.2.27<br>今天早上，我读了同校同学写的简书文章，实在是感到好想笑，搜索了别人的解决方法，还是自己的知识量不足啊！！！！！！！！<br>下午看了下假设检验的视频，再去跑了两个小时的步</p>
+<p>晚上逛了一下午各位网站</p>
+<hr>
+<p>2019.2.26<br>今天看了下某个计算机大佬的历程，深深地感到佩服。<br>《梦想小镇》又多了一块地盘了，</p>
+<p>又重新学习了matplotlib,才发现,然后了玩了一下sklearn里面的带cross-validation的lasso的regression 再kaggle housr-prices 里面，rmse=$0.15386$,rank = 2903,不过做得也相当</p>
+<hr>
+<p>2019.02.25</p>
+<p>今天好像不在状态，可能是焦虑+迷茫，有动力，动力的方向在哪里啊！，还是好好的做好当下吧！ 阿西吧</p>
+<hr>
+<p>2019.02.24<br>今天特别不想起床，有点小感冒，整理周志华的第一章笔记<br>下午总结日前学习的python库<br>顺便去kaggle做了小练习，数据的预处理工作。</p>
+</font>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author: </strong>XieMay</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://xiemaycherry.github.io/2019/02/22/学习Daily/" title="学习の历程">http://xiemaycherry.github.io/2019/02/22/学习Daily/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Daily/" rel="tag"># Daily</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/22/学习の历程-《机器学习》周志华学习记录/" rel="prev" title="<<机器学习>>(周志华)">
+                <<机器学习>>(周志华) <i class="fa fa-chevron-right"></i>
+              </机器学习></a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieMay</p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.cnblogs.com/shiyiandchuixue/" target="_blank" title="BLOGS"><i class="fa fa-fw fa-globe"></i>BLOGS</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:2323020965@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/shiyichuixue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#给我一个杠杆，我就能撬动地球。"><span class="nav-number">1.</span> <span class="nav-text">给我一个杠杆，我就能撬动地球。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Symbols count total&#58;</span>
+    
+    <span title="Symbols count total">260k</span>
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.4</div>
+
+
+
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+    
+  
+  <script src="[object Object]"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '1Dfsb4DwGQPCIlbyCKt9egUR-gzGzoHsz',
+        appKey: '8OKqJPeMRRQnxx2vaAwIkM8y',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end --></body>
+</html>

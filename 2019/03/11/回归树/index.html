@@ -116,21 +116,21 @@
   <meta name="keywords" content="回归树,">
 
 
-<meta name="description" content="[TOC] 分类树与回归树 分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。 Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分">
+<meta name="description" content="[TOC] 分类树与回归树分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分的两">
 <meta name="keywords" content="回归树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="回归树">
 <meta property="og:url" content="http://xiemaycherry.github.io/2019/03/11/回归树/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="[TOC] 分类树与回归树 分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。 Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分">
+<meta property="og:description" content="[TOC] 分类树与回归树分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分的两">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%9B%9E%E5%BD%92%E6%A0%91%5C%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D1.PNG">
+<meta property="og:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/MyBlog/hexo/source/_posts/回归树/原理介绍1.PNG">
 <meta property="og:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/re.png">
-<meta property="og:updated_time" content="2020-07-25T07:53:38.000Z">
+<meta property="og:updated_time" content="2020-09-03T16:03:21.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="回归树">
-<meta name="twitter:description" content="[TOC] 分类树与回归树 分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。 Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分">
-<meta name="twitter:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%9B%9E%E5%BD%92%E6%A0%91%5C%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D1.PNG">
+<meta name="twitter:description" content="[TOC] 分类树与回归树分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分的两">
+<meta name="twitter:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/MyBlog/hexo/source/_posts/回归树/原理介绍1.PNG">
 
 
 
@@ -404,7 +404,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
 
                 
                 
@@ -443,7 +443,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                8.3k字
+                8.8k字
               </span>
               
 
@@ -469,80 +469,56 @@
 
       
         <p>[TOC]</p>
-<h1>分类树与回归树</h1>
-<p>分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。<br>
-Classification tree analysis is when the predicted outcome is the class to which the data belongs.</p>
+<h1 id="分类树与回归树"><a href="#分类树与回归树" class="headerlink" title="分类树与回归树"></a>分类树与回归树</h1><p>分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。<br>Classification tree analysis is when the predicted outcome is the class to which the data belongs.</p>
 <p>回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分的两个分支的误差越小越好。</p>
 <p>Regression tree analysis is when the predicted outcome can be considered a real number (e.g. the price of a house, or a patient’s length of stay in a hospital)。</p>
-<a id="more"></a>
-<h1>回归树</h1>
-<p>英文名字：Regression Tree</p>
-<h2 id="原理介绍"><a class="header-anchor" href="#原理介绍">¶</a>原理介绍</h2>
-<p>决策树最直观的理解其实就是，输入特征空间($R^n$)，然后对特征空间做划分，每一个划分属于同一类或者对于一个输出的预测值。那么这个算法需要解决的问题是1. 如何决策边界(划分点)？2. 尽可能少的比较次数(决策树的形状)</p>
-<p><img src="/2019/03/11/回归树/K:%5CMyBlog%5Chexo%5Csource_posts%5C%E5%9B%9E%E5%BD%92%E6%A0%91%5C%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D1.PNG" alt="原理1"></p>
+<h1 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h1><p>英文名字：Regression Tree</p>
+<h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>决策树最直观的理解其实就是，输入特征空间($R^n​$)，然后对特征空间做划分，每一个划分属于同一类或者对于一个输出的预测值。那么这个算法需要解决的问题是1. 如何决策边界(划分点)？2. 尽可能少的比较次数(决策树的形状)</p>
+<p><img src="/2019/03/11/回归树/MyBlog\hexo\source\_posts\回归树\原理介绍1.PNG" alt="原理1"></p>
 <p>如上图，每一个非叶子对于某个特征的划分。</p>
-<h3 id="最小二乘回归树生成算法"><a class="header-anchor" href="#最小二乘回归树生成算法">¶</a>最小二乘回归树生成算法</h3>
-<p>Q1: 选择划分点？遍历所有的特征($n$),对于每一个特征对应$s_i$个取值，尝试完所有特征，以及特征所以有划分，选择使得损失函数最小的那组特征以及特征的划分取值。</p>
+<h3 id="最小二乘回归树生成算法"><a href="#最小二乘回归树生成算法" class="headerlink" title="最小二乘回归树生成算法"></a>最小二乘回归树生成算法</h3><p>Q1: 选择划分点？遍历所有的特征($n$),对于每一个特征对应$s_i$个取值，尝试完所有特征，以及特征所以有划分，选择使得损失函数最小的那组特征以及特征的划分取值。</p>
 <p>Q2: 叶节点的输出？取每个区域所以结果的平均数作为输出</p>
 <p>节点的损失函数的形式</p>
-<p>$$<br>
-\min _{j, s}\left[\min <em>{c</em>{1}} Loss(y_i,c_1)+\min <em>{c</em>{2}} Loss(y_i,c_2)\right]<br>
-$$<br>
-节点有两条分支，$c1$是左节点的平均值，$c2$是右节点的平均值，换句话说，分一次划分都是使得划分出的两个分支的误差和最小。最终得到函数是<font color="red">分段函数</font></p>
-<h2 id="cart算法"><a class="header-anchor" href="#cart算法">¶</a>CART算法</h2>
-<p>输入： 训练数据集</p>
-<p>输出：回归树$f(x)$</p>
+<script type="math/tex; mode=display">
+ \min _{j, s}\left[\min _{c_{1}} Loss(y_i,c_1)+\min _{c_{2}} Loss(y_i,c_2)\right]</script><p>节点有两条分支，$c1$是左节点的平均值，$c2$是右节点的平均值，换句话说，分一次划分都是使得划分出的两个分支的误差和最小。最终得到函数是<font color="red">分段函数</font></p>
+<h2 id="CART算法"><a href="#CART算法" class="headerlink" title="CART算法"></a>CART算法</h2><p>输入： 训练数据集</p>
+<p>输出：回归树$f(x)​$</p>
 <ol>
-<li>
-<p>选择最优的特征$j$和分切点$s$<br>
-$$<br>
-\min <em>{j, s}\left[\min <em>{c</em>{1}} \sum</em>{x_{i} \in R_{1}(j, s)}\left(y_{i}-c_{1}\right)^{2}+\min <em>{c</em>{2}} \sum_{x_{i} \in R_{2}(j, s)}\left(y_{i}-c_{2}\right)^{2}\right]<br>
-$$</p>
+<li><p>选择最优的特征$j$和分切点$s$</p>
+<script type="math/tex; mode=display">
+\min _{j, s}\left[\min _{c_{1}} \sum_{x_{i} \in R_{1}(j, s)}\left(y_{i}-c_{1}\right)^{2}+\min _{c_{2}} \sum_{x_{i} \in R_{2}(j, s)}\left(y_{i}-c_{2}\right)^{2}\right]</script></li>
+<li><p>对于选定的$(j,s)$划分区域，并确定该区域的预测值</p>
 </li>
-<li>
-<p>对于选定的$(j,s)$划分区域，并确定该区域的预测值</p>
+<li><p>对两个区域递归1. 2. 直到满足停止条件</p>
 </li>
-<li>
-<p>对两个区域递归1. 2. 直到满足停止条件</p>
-</li>
-<li>
-<p>返回生成树</p>
+<li><p>返回生成树</p>
 <p>注：分切点选择：先排序，二分。</p>
 </li>
 </ol>
-<h1>Python代码</h1>
-<h2 id="节点类"><a class="header-anchor" href="#节点类">¶</a>节点类</h2>
-<p>属性：左右节点、loss、特征编号或者特征、分割点</p>
+<h1 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h1><h2 id="节点类"><a href="#节点类" class="headerlink" title="节点类"></a>节点类</h2><p>属性：左右节点、loss、特征编号或者特征、分割点</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, score=None)</span>:</span></span><br><span class="line">        <span class="comment"># 构造函数</span></span><br><span class="line">        self.score = score</span><br><span class="line">        self.left = <span class="keyword">None</span></span><br><span class="line">        self.right = <span class="keyword">None</span></span><br><span class="line">        self.feature = <span class="keyword">None</span></span><br><span class="line">        self.split = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
-<h2 id="回归树类"><a class="header-anchor" href="#回归树类">¶</a>回归树类</h2>
-<p>构造方法</p>
+<h2 id="回归树类"><a href="#回归树类" class="headerlink" title="回归树类"></a>回归树类</h2><p>构造方法</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegressionTree</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.root = Node()</span><br><span class="line">        self.height = <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p>给定特征、划分点，返回计算MAPE</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_split_mse</span><span class="params">(self, X, y, idx, feature, split)</span>:</span></span><br><span class="line">	<span class="string">'''</span></span><br><span class="line"><span class="string">	X:训练样本输入</span></span><br><span class="line"><span class="string">	y:训练样本输出</span></span><br><span class="line"><span class="string">	idx:该分支对应的样本编号</span></span><br><span class="line"><span class="string">	feaure: 特征</span></span><br><span class="line"><span class="string">	split: 划分点</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	split_x1=X[X[idex,feature]&lt;split]</span><br><span class="line">	split_y1=y[X[idex,feature]&lt;split]</span><br><span class="line">	split_x2=X[X[idex,feature]&gt;=split]</span><br><span class="line">	split_y2=y[X[idex,feature]&gt;=split]</span><br><span class="line">	</span><br><span class="line">    split_avg = [np.mean(split_y1), np.mean(split_y2)]</span><br><span class="line">    split_mape = [np.sum((split_y1-split_avg[<span class="number">0</span>])**<span class="number">2</span>),np.sum((split_y2-split_avg[<span class="number">1</span>])**<span class="number">2</span>)]</span><br><span class="line">    <span class="keyword">return</span> split_mse, split, split_avg</span><br></pre></td></tr></table></figure>
 <p>计算给定特征的最佳分割点</p>
 <p>遍历特征某一列的所有的不重复的点，找出MAPE最小的点作为最佳分割点。如果特征中没有不重复的元素则返回None。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_choose_split_point</span><span class="params">(self, X, y, idx, feature)</span>:</span></span><br><span class="line">    feature_x = X[idx,feature]</span><br><span class="line">    uniques = np.unique(feature_x)</span><br><span class="line">    <span class="keyword">if</span> len(uniques)==<span class="number">1</span>:</span><br><span class="line">    	<span class="keyword">return</span> Noe</span><br><span class="line"></span><br><span class="line">    mape, split, split_avg = min(</span><br><span class="line">   (self._get_split_mse(X, y, idx, feature, split)</span><br><span class="line">       <span class="keyword">for</span> split <span class="keyword">in</span> unique[<span class="number">1</span>:]), key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> mape, feature, split, split_avg</span><br></pre></td></tr></table></figure>
-<p>选择特征<br>
-遍历全部特征，计算mape,然后确定特征和对应的切割点，注意如果某个特征的值是一样的，则返回None</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_choose_feature</span><span class="params">(self, X, y, idx)</span>:</span></span><br><span class="line">    m = len(X[<span class="number">0</span>])</span><br><span class="line">    split_rets = [x <span class="keyword">for</span> x <span class="keyword">in</span> map(<span class="keyword">lambda</span> x: self._choose_split_point(</span><br><span class="line">        X, y, idx, x), range(m)) <span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>]</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> split_rets == []:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    _, feature, split, split_avg = min(</span><br><span class="line">        split_rets, key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line"> </span><br><span class="line">    idx_split = [[], []]</span><br><span class="line">    <span class="keyword">while</span> idx:</span><br><span class="line">        i = idx.pop()</span><br><span class="line">        xi = X[i][feature]</span><br><span class="line">        <span class="keyword">if</span> xi &lt; split:</span><br><span class="line">            idx_split[<span class="number">0</span>].append(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            idx_split[<span class="number">1</span>].append(i)</span><br><span class="line">    <span class="keyword">return</span> feature, split, split_avg, idx_split</span><br></pre></td></tr></table></figure>
-<p>对应叶子节点，打印相关的信息</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_expr2literal</span><span class="params">(self, expr)</span>:</span></span><br><span class="line">        feature, op, split = expr</span><br><span class="line">        op = <span class="string">"&gt;="</span> <span class="keyword">if</span> op == <span class="number">1</span> <span class="keyword">else</span> <span class="string">"&lt;"</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Feature%d %s %.4f"</span> % (feature, op, split)</span><br></pre></td></tr></table></figure>
-<p>建立好二叉树以后，遍历操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_rules</span><span class="params">(self)</span>:</span></span><br><span class="line">    que = [[self.root, []]]</span><br><span class="line">    self.rules = []</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">while</span> que:</span><br><span class="line">        nd, exprs = que.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span>(nd.left <span class="keyword">or</span> nd.right):</span><br><span class="line">            literals = list(map(self._expr2literal, exprs))</span><br><span class="line">            self.rules.append([literals, nd.score])</span><br><span class="line">     </span><br><span class="line">        <span class="keyword">if</span> nd.left:</span><br><span class="line">            rule_left = []</span><br><span class="line">            rule_left.append([nd.feature, <span class="number">-1</span>, nd.split])</span><br><span class="line">            que.append([nd.left, rule_left])</span><br><span class="line">     </span><br><span class="line">        <span class="keyword">if</span> nd.right:</span><br><span class="line">            rule_right =[]</span><br><span class="line">            rule_right.append([nd.feature, <span class="number">1</span>, nd.split])</span><br><span class="line">            que.append([nd.right, rule_right])</span><br></pre></td></tr></table></figure>
-<p>建立二叉树的过程，也就是训练的过程</p>
+<p>选择特征<br>遍历全部特征，计算mape,然后确定特征和对应的切割点，注意如果某个特征的值是一样的，则返回None<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_choose_feature</span><span class="params">(self, X, y, idx)</span>:</span></span><br><span class="line">    m = len(X[<span class="number">0</span>])</span><br><span class="line">    split_rets = [x <span class="keyword">for</span> x <span class="keyword">in</span> map(<span class="keyword">lambda</span> x: self._choose_split_point(</span><br><span class="line">        X, y, idx, x), range(m)) <span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>]</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> split_rets == []:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    _, feature, split, split_avg = min(</span><br><span class="line">        split_rets, key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line"> </span><br><span class="line">    idx_split = [[], []]</span><br><span class="line">    <span class="keyword">while</span> idx:</span><br><span class="line">        i = idx.pop()</span><br><span class="line">        xi = X[i][feature]</span><br><span class="line">        <span class="keyword">if</span> xi &lt; split:</span><br><span class="line">            idx_split[<span class="number">0</span>].append(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            idx_split[<span class="number">1</span>].append(i)</span><br><span class="line">    <span class="keyword">return</span> feature, split, split_avg, idx_split</span><br></pre></td></tr></table></figure></p>
+<p>对应叶子节点，打印相关的信息<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_expr2literal</span><span class="params">(self, expr)</span>:</span></span><br><span class="line">        feature, op, split = expr</span><br><span class="line">        op = <span class="string">"&gt;="</span> <span class="keyword">if</span> op == <span class="number">1</span> <span class="keyword">else</span> <span class="string">"&lt;"</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Feature%d %s %.4f"</span> % (feature, op, split)</span><br></pre></td></tr></table></figure></p>
+<p>建立好二叉树以后，遍历操作<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_get_rules</span><span class="params">(self)</span>:</span></span><br><span class="line">    que = [[self.root, []]]</span><br><span class="line">    self.rules = []</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">while</span> que:</span><br><span class="line">        nd, exprs = que.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span>(nd.left <span class="keyword">or</span> nd.right):</span><br><span class="line">            literals = list(map(self._expr2literal, exprs))</span><br><span class="line">            self.rules.append([literals, nd.score])</span><br><span class="line">     </span><br><span class="line">        <span class="keyword">if</span> nd.left:</span><br><span class="line">            rule_left = []</span><br><span class="line">            rule_left.append([nd.feature, <span class="number">-1</span>, nd.split])</span><br><span class="line">            que.append([nd.left, rule_left])</span><br><span class="line">     </span><br><span class="line">        <span class="keyword">if</span> nd.right:</span><br><span class="line">            rule_right =[]</span><br><span class="line">            rule_right.append([nd.feature, <span class="number">1</span>, nd.split])</span><br><span class="line">            que.append([nd.right, rule_right])</span><br></pre></td></tr></table></figure></p>
+<p>建立二叉树的过程，也就是训练的过程          </p>
 <ol>
 <li>控制深度</li>
 <li>控制节叶子节点的最少样本数量</li>
-<li>至少有一个特征是不重复的</li>
+<li>至少有一个特征是不重复的<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self, X, y, max_depth=<span class="number">5</span>, min_samples_split=<span class="number">2</span>)</span>:</span></span><br><span class="line">        self.root = Node()</span><br><span class="line">        que = [[<span class="number">0</span>, self.root, list(range(len(y)))]]</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">while</span> que:</span><br><span class="line">            depth, nd, idx = que.pop(<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> depth == max_depth:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> len(idx) &lt; min_samples_split <span class="keyword">or</span> set(map(<span class="keyword">lambda</span> i: y[i,<span class="number">0</span>], idx)) == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">    </span><br><span class="line">            feature_rets = self._choose_feature(X, y, idx)</span><br><span class="line">            <span class="keyword">if</span> feature_rets <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">    </span><br><span class="line">            nd.feature, nd.split, split_avg, idx_split = feature_rets</span><br><span class="line">            nd.left = Node(split_avg[<span class="number">0</span>])</span><br><span class="line">            nd.right = Node(split_avg[<span class="number">1</span>])</span><br><span class="line">            que.append([depth+<span class="number">1</span>, nd.left, idx_split[<span class="number">0</span>]])</span><br><span class="line">            que.append([depth+<span class="number">1</span>, nd.right, idx_split[<span class="number">1</span>]])</span><br><span class="line">    </span><br><span class="line">        self.height = depth</span><br><span class="line">        self._get_rules()</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self, X, y, max_depth=<span class="number">5</span>, min_samples_split=<span class="number">2</span>)</span>:</span></span><br><span class="line">        self.root = Node()</span><br><span class="line">        que = [[<span class="number">0</span>, self.root, list(range(len(y)))]]</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">while</span> que:</span><br><span class="line">            depth, nd, idx = que.pop(<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> depth == max_depth:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> len(idx) &lt; min_samples_split <span class="keyword">or</span> set(map(<span class="keyword">lambda</span> i: y[i,<span class="number">0</span>], idx)) == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">    </span><br><span class="line">            feature_rets = self._choose_feature(X, y, idx)</span><br><span class="line">            <span class="keyword">if</span> feature_rets <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">    </span><br><span class="line">            nd.feature, nd.split, split_avg, idx_split = feature_rets</span><br><span class="line">            nd.left = Node(split_avg[<span class="number">0</span>])</span><br><span class="line">            nd.right = Node(split_avg[<span class="number">1</span>])</span><br><span class="line">            que.append([depth+<span class="number">1</span>, nd.left, idx_split[<span class="number">0</span>]])</span><br><span class="line">            que.append([depth+<span class="number">1</span>, nd.right, idx_split[<span class="number">1</span>]])</span><br><span class="line">    </span><br><span class="line">        self.height = depth</span><br><span class="line">        self._get_rules()</span><br></pre></td></tr></table></figure>
-<p>打印叶子节点</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_rules</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i, rule <span class="keyword">in</span> enumerate(self.rules):</span><br><span class="line">            literals, score = rule</span><br><span class="line">            print(<span class="string">"Rule %d: "</span> % i, <span class="string">' | '</span>.join(</span><br><span class="line">                literals) + <span class="string">' =&gt; split_hat %.4f'</span> % score)</span><br></pre></td></tr></table></figure>
-<p>预测单样本</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_predict</span><span class="params">(self, row)</span>:</span></span><br><span class="line">        nd = self.root</span><br><span class="line">        <span class="keyword">while</span> nd.left <span class="keyword">and</span> nd.right:</span><br><span class="line">            <span class="keyword">if</span> row[nd.feature] &lt; nd.split:</span><br><span class="line">                nd = nd.left</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nd = nd.right</span><br><span class="line">        <span class="keyword">return</span> nd.score</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 预测多条样本</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, X)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [self._predict(Xi) <span class="keyword">for</span> Xi <span class="keyword">in</span> X]</span><br></pre></td></tr></table></figure>
+<p>打印叶子节点<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_rules</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i, rule <span class="keyword">in</span> enumerate(self.rules):</span><br><span class="line">            literals, score = rule</span><br><span class="line">            print(<span class="string">"Rule %d: "</span> % i, <span class="string">' | '</span>.join(</span><br><span class="line">                literals) + <span class="string">' =&gt; split_hat %.4f'</span> % score)</span><br></pre></td></tr></table></figure></p>
+<p>预测单样本<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_predict</span><span class="params">(self, row)</span>:</span></span><br><span class="line">        nd = self.root</span><br><span class="line">        <span class="keyword">while</span> nd.left <span class="keyword">and</span> nd.right:</span><br><span class="line">            <span class="keyword">if</span> row[nd.feature] &lt; nd.split:</span><br><span class="line">                nd = nd.left</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nd = nd.right</span><br><span class="line">        <span class="keyword">return</span> nd.score</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 预测多条样本</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, X)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [self._predict(Xi) <span class="keyword">for</span> Xi <span class="keyword">in</span> X]</span><br></pre></td></tr></table></figure></p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"Tesing the accuracy of RegressionTree..."</span>)</span><br><span class="line">    X_train=np.array([[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">4</span>],[<span class="number">5</span>],[<span class="number">6</span>],[<span class="number">7</span>],[<span class="number">8</span>],[<span class="number">9</span>],[<span class="number">10</span>]])</span><br><span class="line">    y_train=np.array([[<span class="number">5.56</span> ],[<span class="number">5.7</span>],[<span class="number">5.91</span>],[<span class="number">6.4</span></span><br><span class="line">                      ],[<span class="number">6.8</span>],[<span class="number">7.05</span>],[<span class="number">8.9</span>],[<span class="number">8.7</span></span><br><span class="line">                        ],[<span class="number">9</span> ],[<span class="number">9.05</span>]])</span><br><span class="line">    reg = RegressionTree()</span><br><span class="line">    print(reg)</span><br><span class="line">    reg.fit(X=X_train, y=y_train, max_depth=<span class="number">3</span>)</span><br><span class="line">    reg.print_rules()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
-<h1>简单的例子</h1>
-<p>训练数据</p>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><p>训练数据</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -575,186 +551,23 @@ $$</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>根据上表，只有一个特征$x$.</p>
 <ol>
-<li>
-<p>选择最优的特征$j$和分切点$s$</p>
-<table>
-<thead>
-<tr>
-<th>分切点(s)</th>
-<th>1.5</th>
-<th>2.5</th>
-<th>3.5</th>
-<th>4.5</th>
-<th>5.5</th>
-<th>6.5</th>
-<th>7.5</th>
-<th>8.5</th>
-<th>9.5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$c_1$</td>
-<td>5.56</td>
-<td>5.63</td>
-<td>5.72</td>
-<td>5.89</td>
-<td>6.07</td>
-<td>6.24</td>
-<td>6.62</td>
-<td>6.88</td>
-<td>7.11</td>
-</tr>
-<tr>
-<td>$c_2$</td>
-<td>7.5</td>
-<td>7.73</td>
-<td>7.99</td>
-<td>8.25</td>
-<td>8.54</td>
-<td>8.91</td>
-<td>8.92</td>
-<td>9.03</td>
-<td>9.05</td>
-</tr>
-<tr>
-<td>loss</td>
-<td>15.72</td>
-<td>12.07</td>
-<td>8.36</td>
-<td>5.78</td>
-<td>3.91</td>
-<td>1.93</td>
-<td>8.01</td>
-<td>11.73</td>
-<td>15.74</td>
-</tr>
-</tbody>
-</table>
-<p>当分切点取$s=6.5$,损失最小$l(s=6.5)=1.93$,此时划分出两个分支，分别是$R_1={1,2,3,4,5,6}$,$c_1=6.42$,$R_2={7,8,9,10}$,$c_2=8.91$</p>
+<li><p>选择最优的特征$j$和分切点$s​$</p>
+<p>| 分切点(s) | 1.5   | 2.5   | 3.5  | 4.5  | 5.5  | 6.5  | 7.5  | 8.5   | 9.5   |<br>| ————- | ——- | ——- | —— | —— | —— | —— | —— | ——- | ——- |<br>| $c_1$     | 5.56  | 5.63  | 5.72 | 5.89 | 6.07 | 6.24 | 6.62 | 6.88  | 7.11  |<br>| $c_2$     | 7.5   | 7.73  | 7.99 | 8.25 | 8.54 | 8.91 | 8.92 | 9.03  | 9.05  |<br>| loss      | 15.72 | 12.07 | 8.36 | 5.78 | 3.91 | 1.93 | 8.01 | 11.73 | 15.74 |</p>
+<p>当分切点取$s=6.5$,损失最小$l(s=6.5)=1.93$,此时划分出两个分支，分别是$R_1=\{1,2,3,4,5,6\}$,$c_1=6.42$,$R_2=\{7,8,9,10\}$,$c_2=8.91$</p>
 <ol>
-<li>
-<p>a) 对R1继续划分</p>
-<table>
-<thead>
-<tr>
-<th>x</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>y</td>
-<td>5.56</td>
-<td>5.7</td>
-<td>5.91</td>
-<td>6.4</td>
-<td>6.8</td>
-<td>7.05</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>分切点(s)</th>
-<th>1.5</th>
-<th>2.5</th>
-<th>3.5</th>
-<th>4.5</th>
-<th>5.5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$c_1$</td>
-<td>5.56</td>
-<td>5.63</td>
-<td>5.72</td>
-<td>5.89</td>
-<td>6.07</td>
-</tr>
-<tr>
-<td>$c_2$</td>
-<td>6.37</td>
-<td>6.54</td>
-<td>6.75</td>
-<td>6.93</td>
-<td>7.05</td>
-</tr>
-<tr>
-<td>loss</td>
-<td>1.3087</td>
-<td>0.754</td>
-<td>0.2771</td>
-<td>0.4368</td>
-<td>1.0644</td>
-</tr>
-</tbody>
-</table>
-<p>当分切点取$s=3.5$,损失函数$l(s=3.6)=0.2771$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1={1,2,3}$，$c_1=5.72$,$R_2={4,5,6}$,$c_2=6.75$</p>
+<li><p>a) 对R1继续划分</p>
+<p>| x    | 1    | 2    | 3    | 4    | 5    | 6    |<br>| —— | —— | —— | —— | —— | —— | —— |<br>| y    | 5.56 | 5.7  | 5.91 | 6.4  | 6.8  | 7.05 |</p>
+<p>| 分切点(s) | 1.5    | 2.5   | 3.5    | 4.5    | 5.5    |<br>| ————- | ——— | ——- | ——— | ——— | ——— |<br>| $c_1$     | 5.56   | 5.63  | 5.72   | 5.89   | 6.07   |<br>| $c_2$     | 6.37   | 6.54  | 6.75   | 6.93   | 7.05   |<br>| loss      | 1.3087 | 0.754 | 0.2771 | 0.4368 | 1.0644 |</p>
+<p>当分切点取$s=3.5$,损失函数$l(s=3.6)=0.2771$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1=\{1,2,3\}$，$c_1=5.72$,$R_2={4,,5,6}$,$c_2=6.75$</p>
 <p>b) 对R2继续划分</p>
-<table>
-<thead>
-<tr>
-<th>x</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>y</td>
-<td>8.9</td>
-<td>8.7</td>
-<td>9</td>
-<td>9.05</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>分切点(s)</th>
-<th>7.5</th>
-<th>8.5</th>
-<th>9.5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$c_1$</td>
-<td>8.9</td>
-<td>8.8</td>
-<td>8.87</td>
-</tr>
-<tr>
-<td>$c_2$</td>
-<td>8.92</td>
-<td>9.03</td>
-<td>9.05</td>
-</tr>
-<tr>
-<td>loss</td>
-<td>0.0717</td>
-<td>0.0213</td>
-<td>0.0467</td>
-</tr>
-</tbody>
-</table>
-<p>当分切点取$s=8.5$,损失函数$l(s=8,5)=0.0213$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1={7,8}$，$c_1=8.8$,$R_2={9,10}$,$c_2=9.03$</p>
+<p>| x    | 7    | 8    | 9    | 10   |<br>| —— | —— | —— | —— | —— |<br>| y    | 8.9  | 8.7  | 9    | 9.05 |</p>
+<p>| 分切点(s) | 7.5    | 8.5    | 9.5    |<br>| ————- | ——— | ——— | ——— |<br>| $c_1$     | 8.9    | 8.8    | 8.87   |<br>| $c_2$     | 8.92   | 9.03   | 9.05   |<br>| loss      | 0.0717 | 0.0213 | 0.0467 |</p>
+<p>当分切点取$s=8.5​$,损失函数$l(s=8,5)=0.0213​$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1=\{7,8\}​$，$c_1=8.8​$,$R_2=\{9,10\}​$,$c_2=9.03​$</p>
 </li>
-<li>
-<p>函数表达式</p>
+<li><p>函数表达式</p>
 </li>
 </ol>
 </li>
@@ -771,9 +584,7 @@ $$</p>
   \right.
   \end{equation}
   $$
-</code></pre>
-<h1>Python库</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sklearn</span>.<span class="title">tree</span>.<span class="title">DecisionTreeClassifier</span><span class="params">(criterion=’gini’, splitter=’best’, max_depth=None, min_samples_split=<span class="number">2</span>, min_samples_leaf=<span class="number">1</span>, min_weight_fraction_leaf=<span class="number">0.0</span>, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=<span class="number">0.0</span>, min_impurity_split=None, class_weight=None, presort=False)</span></span></span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="Python库"><a href="#Python库" class="headerlink" title="Python库"></a>Python库</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sklearn</span>.<span class="title">tree</span>.<span class="title">DecisionTreeClassifier</span><span class="params">(criterion=’gini’, splitter=’best’, max_depth=None, min_samples_split=<span class="number">2</span>, min_samples_leaf=<span class="number">1</span>, min_weight_fraction_leaf=<span class="number">0.0</span>, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=<span class="number">0.0</span>, min_impurity_split=None, class_weight=None, presort=False)</span></span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Created on Wed Mar 13 19:59:53 2019</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@author: 23230</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">X=np.array([[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">4</span>],[<span class="number">5</span>],[<span class="number">6</span>],[<span class="number">7</span>],[<span class="number">8</span>],[<span class="number">9</span>],[<span class="number">10</span>]])</span><br><span class="line">y=np.array([[<span class="number">5.56</span> ],[<span class="number">5.7</span>],[<span class="number">5.91</span>],[<span class="number">6.4</span>],[<span class="number">6.8</span>],[<span class="number">7.05</span>],[<span class="number">8.9</span>],[<span class="number">8.7</span>],[<span class="number">9</span> ],[<span class="number">9.05</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fit regression model</span></span><br><span class="line">regr_1 = DecisionTreeRegressor(max_depth=<span class="number">2</span>)</span><br><span class="line">regr_2 = DecisionTreeRegressor(max_depth=<span class="number">3</span>)</span><br><span class="line">regr_3 = DecisionTreeRegressor(max_depth=<span class="number">4</span>)</span><br><span class="line">regr_1.fit(X, y)</span><br><span class="line">regr_2.fit(X, y)</span><br><span class="line">regr_3.fit(X, y)</span><br><span class="line"></span><br><span class="line">X_test = np.copy(X)</span><br><span class="line">y_1 = regr_1.predict(X_test)</span><br><span class="line">y_2 = regr_2.predict(X_test)</span><br><span class="line">y_3 = regr_3.predict(X_test)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Plot the results</span></span><br><span class="line">plt.figure()</span><br><span class="line">plt.scatter(X, y, s=<span class="number">20</span>, edgecolor=<span class="string">"black"</span>,c=<span class="string">"darkorange"</span>, label=<span class="string">"data"</span>)</span><br><span class="line">plt.plot(X_test, y_1, color=<span class="string">"cornflowerblue"</span>,label=<span class="string">"max_depth=2"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.plot(X_test, y_2, color=<span class="string">"yellowgreen"</span>, label=<span class="string">"max_depth=4"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.plot(X_test, y_3, color=<span class="string">"r"</span>, label=<span class="string">"max_depth=8"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.xlabel(<span class="string">"data"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"target"</span>)</span><br><span class="line">plt.title(<span class="string">"Decision Tree Regression"</span>)</span><br><span class="line">plt.legend()</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/03/11/回归树/re.png" alt="1552478769877"></p>
 
@@ -857,8 +668,8 @@ $$</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/17/SVMClassifiar/" rel="prev" title="支持向量机(SVM) ----- 分类器">
-                支持向量机(SVM) ----- 分类器 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/19/SVR/" rel="prev" title="支持向量回归">
+                支持向量回归 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -926,7 +737,7 @@ $$</p>
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XieMay</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
           </div>
 
           
@@ -936,7 +747,7 @@ $$</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -999,7 +810,7 @@ $$</p>
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1108,7 +919,11 @@ $$</p>
                     
                       
                     
-                    <span class="site-state-item-count">48</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1163,7 +978,7 @@ $$</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">分类树与回归树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">回归树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理介绍"><span class="nav-number">2.1.</span> <span class="nav-text">¶原理介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小二乘回归树生成算法"><span class="nav-number">2.1.1.</span> <span class="nav-text">¶最小二乘回归树生成算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cart算法"><span class="nav-number">2.2.</span> <span class="nav-text">¶CART算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Python代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#节点类"><span class="nav-number">3.1.</span> <span class="nav-text">¶节点类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归树类"><span class="nav-number">3.2.</span> <span class="nav-text">¶回归树类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">简单的例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Python库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分类树与回归树"><span class="nav-number">1.</span> <span class="nav-text">分类树与回归树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回归树"><span class="nav-number">2.</span> <span class="nav-text">回归树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理介绍"><span class="nav-number">2.1.</span> <span class="nav-text">原理介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小二乘回归树生成算法"><span class="nav-number">2.1.1.</span> <span class="nav-text">最小二乘回归树生成算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CART算法"><span class="nav-number">2.2.</span> <span class="nav-text">CART算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python代码"><span class="nav-number">3.</span> <span class="nav-text">Python代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#节点类"><span class="nav-number">3.1.</span> <span class="nav-text">节点类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归树类"><span class="nav-number">3.2.</span> <span class="nav-text">回归树类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单的例子"><span class="nav-number">4.</span> <span class="nav-text">简单的例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python库"><span class="nav-number">5.</span> <span class="nav-text">Python库</span></a></li></ol></div>
             
 
           </div>
@@ -1204,7 +1019,7 @@ $$</p>
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">272k</span>
+    <span title="Symbols count total">260k</span>
   
 
   

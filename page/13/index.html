@@ -116,13 +116,16 @@
   <meta name="keywords" content="Hexo, NexT">
 
 
+<meta name="description" content="CAT_cat">
 <meta property="og:type" content="website">
 <meta property="og:title" content="welcome">
 <meta property="og:url" content="http://xiemaycherry.github.io/page/13/index.html">
 <meta property="og:site_name" content="welcome">
+<meta property="og:description" content="CAT_cat">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="welcome">
+<meta name="twitter:description" content="CAT_cat">
 
 
 
@@ -438,7 +441,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                6.3k字
+                6.1k字
               </span>
               
 
@@ -464,28 +467,61 @@
 
       
         
-          <h1>目录 😄</h1>
-<p>1️⃣ <a href="#1">简单说一下特征值、特征向量与特征分解</a><br>
-   I. <a href="#1.1">特征值、特征向量与特征分解</a><br>
-   II. <a href="#1.2">几何意义</a><br>
-   III.  <a href="#1.3">如何实现通过Matlab、Python实现</a><br>
-2️⃣<a href="#2">详细解说SVD</a><br>
-   I. <a href="#2.1">几何意义</a><br>
-   I. <a href="#2.2">奇异值分解的推导过程</a><br>
-   I. <a href="#2.3">SVD算例</a><br>
-   I. <a href="#2.4">如何通过Matlab和Python</a><br>
-3️⃣<a href="#3">应用举例</a><br>
-   I. <a href="#3.1">特征值、特征向量与特征分解</a><br>
-4️⃣<a href="#4">特征分解、奇异值分解的区别</a><br>
-   I. <a href="#4">特征分解、奇异值分解的区别</a></p>
-<h1><font id="1" color="blue"> 简单说一下特征值、特征向量与特征分解</font></h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/28/SVD/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="目录-smile"><a href="#目录-smile" class="headerlink" title="目录 :smile:"></a>目录 :smile:</h1><p>:one: <a href="#1">简单说一下特征值、特征向量与特征分解</a><br>&nbsp;&nbsp; I. <a href="#1.1">特征值、特征向量与特征分解</a><br>&nbsp;&nbsp; II. <a href="#1.2">几何意义</a><br>&nbsp;&nbsp; III.  <a href="#1.3">如何实现通过Matlab、Python实现</a><br>:two:<a href="#2">详细解说SVD</a><br>&nbsp;&nbsp; I. <a href="#2.1">几何意义</a><br>&nbsp;&nbsp; I. <a href="#2.2">奇异值分解的推导过程</a><br>&nbsp;&nbsp; I. <a href="#2.3">SVD算例</a><br>&nbsp;&nbsp; I. <a href="#2.4">如何通过Matlab和Python</a><br>:three:<a href="#3">应用举例</a><br>&nbsp;&nbsp; I. <a href="#3.1">特征值、特征向量与特征分解</a><br>:four:<a href="#4">特征分解、奇异值分解的区别</a><br>&nbsp;&nbsp; I. <a href="#4">特征分解、奇异值分解的区别</a></p>
+<h1 id="简单说一下特征值、特征向量与特征分解"><a href="#简单说一下特征值、特征向量与特征分解" class="headerlink" title=" 简单说一下特征值、特征向量与特征分解"></a><font id="1" color="blue"> 简单说一下特征值、特征向量与特征分解</font></h1><h2 id="特征值、特征向量与特征分解"><a href="#特征值、特征向量与特征分解" class="headerlink" title="特征值、特征向量与特征分解"></a><font id="1.1">特征值、特征向量与特征分解</font></h2><p><font color="red">Theory:</font><br>对于一个正阵$M$，满足如下：</p>
+<script type="math/tex; mode=display">Mx=\lambda x</script><p>其中$\lambda$被成为特征值，满足$||M-\lambda E||=0$再有$(M-\lambda E)x=0$，可计算其特征向量。<br>如果有了特征值和特征向量后呢，则可以将矩阵$M$用特征分解：</p>
+<script type="math/tex; mode=display">M=W\sum W^{-1}</script><p>$W={w_1,w_2,…,w_n}$分别是特征值$\lambda_1,\lambda_2,…,\lambda_n$对应的特征向量构成的方阵</p>
+<h2 id="几何意义"><a href="#几何意义" class="headerlink" title=" 几何意义 "></a><font id="1.2"> 几何意义 </font></h2><p>对应矩阵M,其对应的线性变化</p>
+<script type="math/tex; mode=display">Mx = x'</script><p>上面这个式子，$Mx，x’$是一个向量，$x,x’$可能是不共线的(如图(b))，如果向量$Mx,x’$满足$Mx=x’=\lambda x$,则如图(b)，这说明了这个变换就是对向量x做一个拉伸或者压缩。<br><img src="/2019/02/28/SVD/SVD1.png" alt="图一"></p>
+<h2 id="如何实现通过Matlab、Python实现"><a href="#如何实现通过Matlab、Python实现" class="headerlink" title="如何实现通过Matlab、Python实现"></a><font id="1.2">如何实现通过Matlab、Python实现</font></h2><p>数学推导：</p>
+<script type="math/tex; mode=display">Mx = \lambda x</script><script type="math/tex; mode=display">Mx-\lambda x=(M-\lambda E)x=0</script><p>齐次线性方程组有非零解，则$||M-\lambda E||=0$可求得特征向量<br>再带回，可得特征向量。<br>Matlab:<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = eig(M) <span class="comment">% 求取矩阵M的特征值，向量形式存储</span></span><br><span class="line">[V,D] = eig(M) <span class="comment">% 计算M的特征值对角阵D和特征向量V，使得MV = VD成立</span></span><br><span class="line">[V,D] = eig(M,<span class="string">'nobalance'</span>)   <span class="comment">%当矩阵M中有与截断误差数量级相差不远的值时，该指令可能更精确。'nobalance'起误差调节作用</span></span><br></pre></td></tr></table></figure></p>
+<p>Python<br>numpy科学计算库提供相应的方法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.diag((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)) <span class="comment"># 这是你想要求取特征值的数组</span></span><br><span class="line">a,b = numpy.linalg.elg(x) <span class="comment"># 特征值赋值给a,对应的特征向量赋值给b</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="详细解说SVD"><a href="#详细解说SVD" class="headerlink" title="详细解说SVD"></a><font id="2" color="blue">详细解说SVD</font></h1><p>SVD的英文全称： Singular Value Decomposition，中文名字：奇异值分解</p>
+<h2 id="几何意义-1"><a href="#几何意义-1" class="headerlink" title="几何意义"></a><font id="2.1">几何意义</font></h2><p><a href="http://www.ams.org/publicoutreach/feature-column/fcarc-svd" target="_blank" rel="noopener">图来源</a><br>以二维空间为例<br><img src="/2019/02/28/SVD/SVD3.png" alt="图二"><img src="/2019/02/28/SVD/SVD4.png" alt="图二"><br>几何意义就是把一个单位正交的网格，转换为另外一个单位正交的网格</p>
+<p>假如选取了一组单位正交基{$\vec{v}_1$,$\vec{v}_2$},刚好矩阵$M$的线性变化$M\vec{v}_1 $,$M\vec{v}_2 $ 也正交，用$\vec{u}_1,\vec{u}_2 $分别表示$M\vec{v}_1 $,$M\vec{v}_2 $ 的单位向量，用$\lambda_1,\lambda_2 $表示$M\vec{v}_1 $,$M\vec{v}_2$的长度，描述网格在这些特定方向上的拉伸量，也被称作矩阵M的奇异值。<br>$M\vec{v}_1 =\lambda_1\vec{u}_1 $<br>$M\vec{v}_2 =\lambda_2\vec{u}_2 $<br>对任意给定的向量 $\vec{x}$ ,则有</p>
+<script type="math/tex; mode=display">
+\mathbf{x}=\left(\mathbf{v}_{1} \cdot \mathbf{x}\right) \mathbf{v}_{1}+\left(\mathbf{v}_{2} \cdot \mathbf{x}\right) \mathbf{v}_{2}</script><p> 再将M的线性变换</p>
+<script type="math/tex; mode=display">
+\begin{aligned} M \mathbf{x} &=\left(\mathbf{v}_{1} \cdot \mathbf{x}\right) M \mathbf{N}_{1}+\left(\mathbf{v}_{2} \cdot \mathbf{x}\right) M \mathbf{v}_{2} \\ M \mathbf{x} &=\left(\mathbf{v}_{1} \cdot \mathbf{x}\right) \sigma_{1} \mathbf{u}_{1}+\left(\mathbf{v}_{2} \cdot \mathbf{x}\right) \sigma_{2} \mathbf{u}_{2} \end{aligned}</script><script type="math/tex; mode=display">
+\begin{array}{c}{M \mathbf{x}=\mathbf{u}_{1} \sigma_{1} \mathbf{v}_{1}^{\top} \mathbf{x}+\mathbf{u}_{2} \sigma_{2} \mathbf{v}_{2}^{\top} \mathbf{x}} \\ {M=\mathbf{u}_{1} \sigma_{1} \mathbf{v}_{1}^{\top}+\mathbf{u}_{2} \sigma_{2} \mathbf{v}_{2}^{\top}}\end{array}</script><p> so</p>
+<script type="math/tex; mode=display">
+M=U \Sigma V^{T}</script><h2 id="奇异值分解的推导过程"><a href="#奇异值分解的推导过程" class="headerlink" title="奇异值分解的推导过程"></a><font id="2.2">奇异值分解的推导过程</font></h2><p>$u=(u_1,u_2,…,u_m)$<br>$v=(v_1,v_2,…,v_n)$<br>$u,v$都是空间的基,是正交矩阵 $u^Tu=E,v^Tv = E$<br><img src="/2019/02/28/SVD/SVD2.png" alt="图二"><br>任何一个矩阵$M_{m*n}$，$rank(M)=k$，一定存在ＳＶＤ,换句话说，M可以将一组单位正交基映射到另一组单位正交基。答案是肯定的<br>证明如下：<br>在n为空间中，有一组单位正交基{$\vec{v}_1,\vec{v}_2,…,\vec{v}_n$},线性变化作用以后</p>
+<script type="math/tex; mode=display">
+{M\vec{v}_1,M\vec{v}_2,...,M\vec{v}_n}</script><p>也是正交的，则有</p>
+<script type="math/tex; mode=display">
+(M\vec{v}_i,M\vec{v}_j) = (M\vec{x}_i)^TM\vec{v}_j=\vec{v}_i^TM^TM\vec{v}_j=0</script><p>注意喔，$M^TM$是矩阵喔，则会有$M^TM\vec{v}_j=\lambda \vec{v}_j$<br>接下去，</p>
+<script type="math/tex; mode=display">
+\begin{aligned} v_{i}^{T} M^{T} \mathrm{M} v_{j}=& v_{i}^{T} \lambda_{j} v_{j} \\ &=\lambda_{j} v_{i}^{T} v_{j} \\ &=\lambda_{j} v_{i}\dot v_{j}=0 \end{aligned}</script><p> 上述就证明了是有的：任何一个矩阵，都可以将一组单位正交基转换成另外一组正交基。<br> 当$i=j$,$<m\vec{v}_i,m \vec{v}_i="">=\lambda_i \vec{v}_i \vec{v}_i=\lambda_i$<br> 进行一些单位化，记$u_i=\frac{A\vec{v}_i}{|M\vec{v}_i|}=\frac{1}{\sqrt{\lambda_i}}M\vec{v}_i$<br>则</m\vec{v}_i,m></p>
+<script type="math/tex; mode=display">
+A v_{i}=\sigma_{i} u_{i}, \sigma_{i}(\operatorname{奇异值})=\sqrt{\lambda_{i}}, 0 \leq i \leq \mathrm{k}, \mathrm{k}=\operatorname{Rank}(\mathrm{A})</script><p> 当$k &lt; i &lt;= m$时，对$u1，u2，…，uk$进行扩展$u(k+1),…,um$，使得$u1，u2，…，um$为$m$维空间中的一组正交基.也可对$\vec{v}_1,\vec{v}_2,…,\vec{v}_k$进行扩展，扩展的$\vec{v}_{k+1},…,\vec{v}_{n}$存在零子空间里面。</p>
+<script type="math/tex; mode=display">
+M\left[ \begin{array}{lll}{\vec{v}_{1}} & {\cdots} & {\vec{v}_{k}}\end{array}\right| \vec{v}_{k+1} \quad \cdots \quad \vec{v}_{m} ]=
+\left[ \begin{array}{c}{\vec{u}_{1}^{T}} \\ {\vdots} \\ {\frac{\vec{u}_{k}^{T}}{\vec{u}_{k+1}}} \\ {\vdots} \\ {\vec{u}_{n}^{T}}\end{array}\right] \left[ \begin{array}{ccc|c}\sigma_{1} &   & 0 & 0\\  & {\ddots} & \sigma_{k} & 0 \\ \hline 0 &  & 0 &0\end{array}\right]</script><script type="math/tex; mode=display">
+M=\left[ \begin{array}{lll}{\vec{u}_{1}} & {\cdots} & {\vec{u}_{k}}\end{array}\right] \left
+[ \begin{array}{ccc}\sigma_{1} &  & \\  & {\ddots} & \\  &  & {\sigma_{k}}\end{array}\right] 
+\left[ \begin{array}{c}{\vec{v}_{1}^{T}} \\ {\vdots} \\ {\vec{v}_{k}^{T}}\end{array}\right]+
+\left[ \begin{array}{ccc}{\vec{u}_{k+1}} & {\cdots} & {\vec{u}_{m}}\end{array}\right] 
+\left[\begin{array}{c} 0 \end{array} \right] 
+\left[ \begin{array}{c}{\vec{v}_{k+1}^{T}} \\ {\vdots} \\ {\vec{v}_{n}^{T}}\end{array}\right]</script><h2 id="SVD算例"><a href="#SVD算例" class="headerlink" title="SVD算例"></a><font id="2.3">SVD算例</font></h2><p>U：$AA^T$的特征值和特征向量，用单位化的特征向量构成 U<br>V: $A^TA$ 的特征值和特征向量，用单位化的特征向量构成 V<br>$\sum_{mn} $ :将$ AA^{T} $或者 A^{T}A 的特征值求平方根，然后构成 Σ<br>以矩阵$A = \left[\begin{matrix} 1 &amp; 1\\1 &amp;1\\ 0 &amp;0\\\end{matrix} \right]$<br>第一步 U ，下面是一种计算方法<br>对矩阵</p>
+<script type="math/tex; mode=display">
+A A^{T}=\left[ \begin{array}{lll}{2} & {2} & {0} \\ {2} & {2} & {0} \\ {0} & {0} & {0}\end{array}\right]</script><p> 特征分解，<br> 特征是4，0，0<br> 特征向量是<br> $\left[\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0\right]^{T},\left[-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0\right]^{T},[0,0,1]^{T}$,可得到</p>
+<script type="math/tex; mode=display">
+U=\left[ \begin{array}{ccc}{\frac{1}{\sqrt{2}}} & {-\frac{1}{\sqrt{2}}} & {0} \\ {\frac{1}{\sqrt{2}}} & {\frac{1}{\sqrt{2}}} & {0} \\ {0} & {0} & {1}\end{array}\right]</script><p> 第二步<br> 计算矩阵$A^TA$的特征分解，可得<br> 特征值4，0，</p>
+<script type="math/tex; mode=display">
+V=\left[ \begin{array}{cc}{\frac{1}{\sqrt{2}}} & {-\frac{1}{\sqrt{2}}} \\ {\frac{1}{\sqrt{2}}} & {\frac{1}{\sqrt{2}}}\end{array}\right]</script><p>第三步<br>计算$\sum_{mn}$</p>
+<script type="math/tex; mode=display">
+\Sigma=\left[ \begin{array}{ll}{2} & {0} \\ {0} & {0} \\ {0} & {0}\end{array}\right]</script><p> 最后，</p>
+<script type="math/tex; mode=display">
+A=U \Sigma V^{T}=\left[ \begin{array}{ccc}{\frac{1}{\sqrt{2}}} & {-\frac{1}{\sqrt{2}}} & {0} \\ {\frac{1}{\sqrt{2}}} & {\frac{1}{\sqrt{2}}} & {0} \\ {0} & {0} & {1}\end{array}\right] \left[ \begin{array}{ll}{2} & {0} \\ {0} & {0} \\ {0} & {0}\end{array}\right] \left[ \begin{array}{cc}{\frac{1}{\sqrt{2}}} & {-\frac{1}{\sqrt{2}}} \\ {\frac{1}{\sqrt{2}}} & {\frac{1}{\sqrt{2}}}\end{array}\right]^{T}=\left[ \begin{array}{cc}{1} & {1} \\ {1} & {1} \\ {0} & {0}\end{array}\right]</script><h2 id="如何通过Matlab和Python"><a href="#如何通过Matlab和Python" class="headerlink" title="如何通过Matlab和Python"></a><font id="2.4">如何通过Matlab和Python</font></h2><p>Matlab：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">s = svd(A)</span><br><span class="line">[U,S,V] = svd(A)</span><br><span class="line">[U,S,V] = svd(A,<span class="string">'econ'</span>)</span><br><span class="line">[U,S,V] = svd(A,<span class="number">0</span>)</span><br><span class="line">input: A 矩阵</span><br><span class="line">output:</span><br><span class="line">        s:奇异值，以列向量形式返回。奇异值是以降序顺序列出的非负实数</span><br><span class="line">        S：</span><br><span class="line">        U:左奇异向量，以矩阵的列形式返回。</span><br><span class="line">        V:奇异值，以对角矩阵形式返回。S 的对角元素是以降序排列的非负奇异值。</span><br><span class="line">        右奇异向量，以矩阵的列形式返回。</span><br></pre></td></tr></table></figure></p>
+<p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">M = np.array([ [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]])</span><br><span class="line">U,S,V  = np.linalg.svd(M)</span><br></pre></td></tr></table></figure></p>
+<h1 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a><font id="3" color="blue">应用举例</font></h1><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a><font id="3.1">应用</font></h2><p> 2.1 信息检索<br> 2.2 推荐系统<br> 2.3 基于协同过滤的推荐系统<br> 2.4 图像压缩</p>
+<h1 id="特征值分解和奇异值分解的区别"><a href="#特征值分解和奇异值分解的区别" class="headerlink" title="特征值分解和奇异值分解的区别"></a><font id="4" color="blue">特征值分解和奇异值分解的区别</font></h1><ol>
+<li>特征值分解只能是方阵，而奇异值分解是矩阵就可以</li>
+<li>特征值分解只考虑了对矩阵缩放效果，奇异值分解对矩阵有选择、收缩、投影的效果<br><img src="/2019/02/28/SVD/SVD5.png" alt="图二"><img src="/2019/02/28/SVD/SVD6.png" alt="图二"><img src="/2019/02/28/SVD/SVD7.png" alt="图二"></li>
+</ol>
+
+          
         
       
     </div>
@@ -591,7 +627,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
@@ -630,7 +666,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                10k字
+                6.2k字
               </span>
               
 
@@ -656,14 +692,84 @@
 
       
         
-          <p>开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/24/python库/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python</p>
+<h2 id="Python-高级用法总结"><a href="#Python-高级用法总结" class="headerlink" title="Python 高级用法总结"></a>Python 高级用法总结</h2><p>基本数据类型：整型、浮点型、布尔类型</p>
+<h3 id="容器：-Containers"><a href="#容器：-Containers" class="headerlink" title="容器： Containers"></a>容器： Containers</h3><p>容器是一种把多个元素组织在一起的数据结构，容器中的元素可以逐个地迭代获取，可以用in, not in关键字判断元素是否包含在容器中。通常这类数据结构把所有的元素存储在内存中（也有一些特例，并不是所有的元素都放在内存，比如迭代器和生成器对象）在Python中，常见的容器对象有：<br>list, deque<br>set, frozensets<br>dict, defaultdict, OrderedDict, Counter<br>tuple, namedtuple<br>str</p>
+<h2 id="list推导（list-comprehensions"><a href="#list推导（list-comprehensions" class="headerlink" title="list推导（list comprehensions)"></a>list推导（list comprehensions)</h2><p>官方解释：列表解析式是Python内置的非常<strong>简单</strong>却<strong>强大</strong>的可以用来创建list的生成式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于一个列表，既要遍历索引又要遍历元素。</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = [<span class="string">'I'</span>, <span class="string">'love'</span>, <span class="string">'Python'</span>]</span><br><span class="line"><span class="keyword">for</span> i, element <span class="keyword">in</span> enumerate(array):</span><br><span class="line">    array[i] = <span class="string">'%d: %s'</span> % (i, seq[i])</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getitem</span><span class="params">(index, element)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'%d: %s'</span> % (index, element)</span><br><span class="line"></span><br><span class="line">array = [<span class="string">'I'</span>, <span class="string">'love'</span>, <span class="string">'Python'</span>]</span><br><span class="line">arrayIndex = [getitem(index, element) <span class="keyword">for</span> index, element <span class="keyword">in</span> enumerate(array)]</span><br></pre></td></tr></table></figure>
+<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h2><h3 id="可迭代对象："><a href="#可迭代对象：" class="headerlink" title="可迭代对象："></a>可迭代对象：</h3><p>凡是可以返回一个迭代器的对象都可称之为可迭代对象<br>例如：list    dic    str     set     tuple     range()     enumerate(枚举)     f=open()（文件句柄）<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 迭代器(iterator)</span></span><br><span class="line">是一个带状态的对象，他能在你调用next()方法的时候返回容器中的下一个值，任何实现了__iter__和__next__()（python2中实现next()）方法的对象都是迭代器，__iter__返回迭代器自身，__next__返回容器中的下一个值，如果容器中没有更多元素了，则抛出StopIteration异常</span><br><span class="line"><span class="comment">### 生成器(generator)</span></span><br><span class="line">生成器其实是一种特殊的迭代器，不过这种迭代器更加优雅。它不需要再像上面的类一样写__iter__()和__next__()方法了，只需要一个yiled关键字。 生成器一定是迭代器（反之不成立）</span><br><span class="line"><span class="comment">#列表生成式</span></span><br><span class="line">lis = [x*x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"><span class="comment"># 受到内存限制，列表容量肯定是有限的</span></span><br><span class="line"><span class="comment">#生成器表达式</span></span><br><span class="line">generator_ex = (x*x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</span><br></pre></td></tr></table></figure></p>
+<p>生成器： 不用创建完整的list，为节省大量的空间，在Python中，这种一边循环一边计算的机制，称为生成器：generator<br>Tuples:()<br> 字典：{：，}<br> Sets: {,}<br>函数<br>类</p>
+<h2 id="Python库——numpy"><a href="#Python库——numpy" class="headerlink" title="Python库——numpy"></a>Python库——numpy</h2><h3 id="What"><a href="#What" class="headerlink" title="What"></a>What</h3><p>NumPy=Numerical+Python<br>主要是提供了高性能多维数组这个对象，以及处理相关的方法</p>
+<h3 id="How"><a href="#How" class="headerlink" title="How"></a>How</h3><ol>
+<li>自定义一个（1D or MD)数组或者特殊的数组,一维，二维</li>
+<li>数组切片（也就是提取数组元素），注意 a[:,0]和a[:,0:1]是不同的喔</li>
+<li>关于数组属性的方法</li>
+<li>数组运算</li>
+<li>索引<br> where 函数<br> 索引的布尔数组</li>
+<li>广播（Broadcasting）<br>用于处理不同性状的 数组。 Broadcasting提供了一种矢量化数组操作的方法，使得循环发生在C而不是Python。标量乘以一个矢量的时候，用Boradcasting更快，因为 broadcasting在乘法期间移动较少的内存</li>
+<li><p>array 和 matrix 选择哪个?<br> <a href="https://www.numpy.org.cn/user_guide/numpy_for_matlab_users.html" target="_blank" rel="noopener">戳我</a></p>
+</li>
+<li><p>矢量化和广播、索引<br>在Python中循环数组或任何数据结构时，会涉及很多开销。 NumPy中的向量化操作将内部循环委托给高度优化的C和Fortran函数，从而实现更清晰，更快速的Python代码。</p>
+<h2 id="Python库——pandas"><a href="#Python库——pandas" class="headerlink" title="Python库——pandas"></a>Python库——pandas</h2><p>记得学习pandas是在大三时候的美赛，花了一天多时间学习pandas，然后预处理数据，当时三个队友都是各自的家，是非常愉快的！！！</p>
+<h3 id="what"><a href="#what" class="headerlink" title="what"></a>what</h3><p>Python Data Analysis Library</p>
+</li>
+<li>三种数据结构<br>序列： Series 1D<br>数据帧： DataFrame 2D<br>面板： Panel &gt;2D</li>
+<li>自定义创建<ol>
+<li>可以通过字段、数据、series、列表</li>
+<li>列表传入的时候，主要行列，如果单个列表：列；如果是[[],[]]是按行[]</li>
+<li>如果位置不对可转置</li>
+<li>创建空 pd.DataFrame()</li>
+</ol>
+</li>
+<li>选择区块<br> a) Series<br> []<br> b) DataFrame<br> 列选择 [‘colums的名字’]<br> 行列选择：.loc[列名,行名]名称 .iloc[列索引,行索引]整数</li>
+<li>array<br>.value</li>
+<li>统计描述<br> .descibe(include = ‘all’) .head() .tail()<br> .select_dtype(include=[])<br> .columns<br> .dtype</li>
+<li><p>缺少数据</p>
+<ol>
+<li>查看缺失值<br>isnull() notnull() 也可以 做一些统计，sum, any,all </li>
+<li>清理缺失值<br> dropna(axis=0)：axis = 0:index axis=1,columns</li>
+<li>填充缺少指<br> fillna() 标量替换</li>
+<li>替换</li>
+</ol>
+</li>
+<li><p>统计函数</p>
+</li>
+</ol>
+<ol>
+<li><p>Pandas 函数应用<br>表合理函数应用：pipe()<br>行或列函数应用：apply()<br>元素函数应用：applymap()<br>eg： pd.pipe(lambda x: x*100)</p>
+</li>
+<li><p>类别变量向量化<br>非数值类型的处理方法</p>
+</li>
+<li><p>时间序列生成 data_range</p>
+<ol>
+<li>pandas.date_range(“11:00”, “21:30”, freq=”30min”)</li>
+<li>参数<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">    Return a fixed frequency DatetimeIndex.</span><br><span class="line"></span><br><span class="line">Parameters</span><br><span class="line">startstr <span class="keyword">or</span> datetime-like, optional</span><br><span class="line">Left bound <span class="keyword">for</span> generating dates.</span><br><span class="line"></span><br><span class="line">endstr <span class="keyword">or</span> datetime-like, optional</span><br><span class="line">Right bound <span class="keyword">for</span> generating dates.</span><br><span class="line"></span><br><span class="line">periodsint, optional</span><br><span class="line">Number of periods to generate.</span><br><span class="line"></span><br><span class="line">freqstr <span class="keyword">or</span> DateOffset, default ‘D’</span><br><span class="line">Frequency strings can have multiples, e.g. ‘<span class="number">5</span>H’. See here <span class="keyword">for</span> a list of frequency aliases.</span><br><span class="line"></span><br><span class="line">tzstr <span class="keyword">or</span> tzinfo, optional</span><br><span class="line">Time zone name <span class="keyword">for</span> returning localized DatetimeIndex, <span class="keyword">for</span> example ‘Asia/Hong_Kong’. By default, the resulting DatetimeIndex <span class="keyword">is</span> timezone-naive.</span><br><span class="line"></span><br><span class="line">normalizebool, default <span class="keyword">False</span></span><br><span class="line">Normalize start/end dates to midnight before generating date range.</span><br><span class="line"></span><br><span class="line">namestr, default <span class="keyword">None</span></span><br><span class="line">Name of the resulting DatetimeIndex.</span><br><span class="line"></span><br><span class="line">closed&#123;<span class="keyword">None</span>, ‘left’, ‘right’&#125;, optional</span><br><span class="line">Make the interval closed <span class="keyword">with</span> respect to the given frequency to the ‘left’, ‘right’, <span class="keyword">or</span> both sides (<span class="keyword">None</span>, the default).</span><br><span class="line"></span><br><span class="line">**kwargs</span><br><span class="line">For compatibility. Has no effect on the result.</span><br><span class="line"></span><br><span class="line">Returns</span><br><span class="line">rngDatetimeIndex</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>DataFrame.stack<br>Parameters<br>levelint, str, list, default -1<br>Level(s) to stack from the column axis onto the index axis, defined as one index or label, or a list of indices or labels.</p>
+</li>
+</ol>
+<p>dropnabool, default True<br>Whether to drop rows in the resulting Frame/Series with missing values. Stacking a column level onto the index axis can create combinations of index and column values that are missing from the original dataframe. See Examples section.</p>
+<p>Returns<br>DataFrame or Series<br>Stacked dataframe or series.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df_single_level_cols</span><br><span class="line">     weight height</span><br><span class="line">cat       <span class="number">0</span>      <span class="number">1</span></span><br><span class="line">dog       <span class="number">2</span>      <span class="number">3</span></span><br><span class="line">df_single_level_cols.stack()</span><br><span class="line">cat  weight    <span class="number">0</span></span><br><span class="line">     height    <span class="number">1</span></span><br><span class="line">dog  weight    <span class="number">2</span></span><br><span class="line">     height</span><br></pre></td></tr></table></figure></p>
+<p>DataFrame.value_connts()返回序列，index=统计值，值：统计个数</p>
+<h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>matplotlib.pyplot as plt</p>
+<ol>
+<li>窗口：figure: 一个窗口，plt.figure(num=,figsize=(h,w))下面数据都属于当前的figure,有一定的顺序喔</li>
+<li>画图：plt.plot(x,y,color=,linewidth=,linestyle,label=)</li>
+<li>标注信息： plt.xlim((,)), plt.yxlim((,)),plt.xlabel(),plt.ylabel(),ticks:图像的小标，plt.xticks(),plt.yticks([值1，值2],[r’$值1\ 对应的文字$’,r’值2的文字 \alpha])</li>
+<li>坐标轴：axis gac=’get current axis’<br>ax = plt.gca() # 轴<br># 获取四个轴<br>ax.spines[‘right|left|top|’].set_color(‘none’)<br>ax.xaxis.set_ticks_position(‘bottom’)<br>ax.spines[‘bottom’].set_position((‘data’,-1))</li>
+<li>图例：legend:<br> a. plt.plot(,label=), plt.legend()<br> b. l1, = plt.plot() plt.legend(handles=[l1,],labels=[,],loc=’best|upper right|’)</li>
+<li>注解 annotation<br>a. 点的位置(x0，y0) plt.scatter(). plt.plot([x0,y0],[y0,0],’k—‘,lw=)<br>b . method 1:<br>plt.annotate(r’name’,xy=(,)起始点，xycoords=’data’//基于xy,xytext=(+30,30),textcoords=’offseet points’//文本基于xy,arrowprops=dict(arrowstyle=’-&gt;’箭头,connectionstyle=’arc3,rad=.2’)弧度)</li>
+<li>Bar 柱状图<br>plt.bar(x,+|-y,facecolor=””,edgecolor,)<br>|# ha horizontal alignment 对齐方式<br>for x,y in zip(x,y):<br> plt.text(x+0,4,y+0.05,’%.2f’%y,ha=’center’,va=’bottom’)</li>
+<li>很多自动 subplot(总行，当前行的列，总的按最小分的第几个)<br>subplot(,,)<h2 id="scikit-learn"><a href="#scikit-learn" class="headerlink" title="scikit-learn"></a>scikit-learn</h2>官方教程绝对是最好最棒的选择，有简单数学指导、直观立马就能上手的案例，还能提阅读英文的能力喔，实在是一举多得啊！！！！ <a href="https://scikit-learn.org/" target="_blank" rel="noopener">scikit-learn.org</a></li>
+</ol>
+<h2 id="最小二乘法：Ordinary-Least-Squares"><a href="#最小二乘法：Ordinary-Least-Squares" class="headerlink" title="最小二乘法：Ordinary Least Squares"></a>最小二乘法：Ordinary Least Squares</h2><p><img src="" alt="原理"><br>详细的案例<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error, r2_score</span><br><span class="line"><span class="comment"># Create some train data</span></span><br><span class="line">train_x = np.array([[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">3</span>]])</span><br><span class="line">train_y = np.array([[<span class="number">0</span>],[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">4</span>]])</span><br><span class="line"><span class="comment"># Create linear regression object</span></span><br><span class="line">regr = linear_model.LinearRegression()</span><br><span class="line"><span class="comment"># Create the model using training sets</span></span><br><span class="line">regr.fit(train_x,train_y)</span><br><span class="line"><span class="comment"># Make predictions using the testing set</span></span><br><span class="line">y_pred = regr.predict(train_x)</span><br><span class="line"><span class="comment"># Get same parm</span></span><br><span class="line"><span class="comment"># The coefficients w</span></span><br><span class="line">print(<span class="string">'Coefficients:'</span>, regr.coef_)</span><br><span class="line"><span class="comment"># The intercept b</span></span><br><span class="line">print(<span class="string">'intercept'</span>, regr.intercept_)</span><br><span class="line"><span class="comment"># The mean squared error</span></span><br><span class="line">print(<span class="string">"Mean squared error: %.2f"</span>, mean_squared_error(train_y ,y_pred))</span><br><span class="line"><span class="comment"># Explained variance score: 1 is perfect prediction</span></span><br><span class="line">print(<span class="string">'Variance score: %.2f'</span>,r2_score(train_y, y_pred))</span><br></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
@@ -835,95 +941,66 @@
       
         
           
-            <a id="more"></a>
-<h2 id="font-color-red-2019-第十五周-font"><a class="header-anchor" href="#font-color-red-2019-第十五周-font">¶</a><font color="red">2019 第十五周<font></font></font></h2>
-<p>三月份至2019.4.9这段时间，才发现我是如此没有自律的人，充分体现了我是人的特性，那就是我是群体动物，苦笑.jpg,苦笑.jpg,</p>
+            <hr>
+<h2 id="2019-第十五周"><a href="#2019-第十五周" class="headerlink" title="2019 第十五周"></a><font color="red">2019 第十五周<font></font></font></h2><p>三月份至2019.4.9这段时间，才发现我是如此没有自律的人，充分体现了我是人的特性，那就是我是群体动物，苦笑.jpg,苦笑.jpg,</p>
 <p>en, 最近突然想给自己打上厨娘的身份，如果可以每天花两个小时做饭就好了</p>
 <hr>
-<h2 id="愿你被世界温柔的相待"><a class="header-anchor" href="#愿你被世界温柔的相待">¶</a>愿你被世界温柔的相待</h2>
-<ol>
-<li>接触的东西越多，越深入，就会发现我是如此的菜，开始有些知识焦虑了，知识那么多~~~，可是我只有一个头脑啊~~~</li>
+<h2 id="愿你被世界温柔的相待"><a href="#愿你被世界温柔的相待" class="headerlink" title="愿你被世界温柔的相待"></a>愿你被世界温柔的相待</h2><ol>
+<li>接触的东西越多，越深入，就会发现我是如此的菜，开始有些知识焦虑了，知识那么多<del>~，可是我只有一个头脑啊</del>~</li>
 <li>开始不想写一些特别低俗的博客了，一是觉得浪费时间，二是输出效果太差，引不起特别大的关注，虽然我写博客，完全是站在自己的角度，没有考虑读者的意愿，（滑稽.jpg)。</li>
 <li>现在的自己，不是停留在基本的问题上，更应该去探索未知 的知识世界，虽然离这个flag可能还有几年的时间，能够给世界的知识创造一点点价值，哪怕只是一小点点。离这个目标还需要努力啊！！！！！</li>
-<li>我想我应该去记录学习知识的过程，突破更大的更困难的问题。</li>
+<li>我想我应该去记录学习知识的过程，突破更大的更困难的问题。 </li>
 </ol>
 <hr>
-<h2 id="2019-第四周读书笔记"><a class="header-anchor" href="#2019-第四周读书笔记">¶</a>2019-第四周读书笔记</h2>
-<ol>
-<li>
-<p>这周读了一本小说，是张爱玲的《倾城之恋》，原来和电视剧的何晟铭主演《倾城之恋》不是同一个事情啊！</p>
+<h2 id="2019-第四周读书笔记"><a href="#2019-第四周读书笔记" class="headerlink" title="2019-第四周读书笔记"></a>2019-第四周读书笔记</h2><ol>
+<li><p>这周读了一本小说，是张爱玲的《倾城之恋》，原来和电视剧的何晟铭主演《倾城之恋》不是同一个事情啊！</p>
 </li>
-<li>
-<p>看了《阿甘正传》，“生活就像一盒巧克力，你永远不知道下一颗是什么味道。“这是阿甘对生活最好的诠释。小时候，有人骑着自行车羞辱他，他只会跑，拼命的跑，只会再公路上跑。长大后，别人骑着车想打他，阿甘还是跑，但是这次阿甘学会了网草坪上跑！就被大学看上，进入运动大学，还通过参加比赛赢得了冠军，然后，阿甘当兵了，再后来，打乒乓球很出色。阿甘似乎做什么都能成功，也许心无旁骛，最笨的方法+时间=收获。</p>
+<li><p>看了《阿甘正传》，“生活就像一盒巧克力，你永远不知道下一颗是什么味道。“这是阿甘对生活最好的诠释。小时候，有人骑着自行车羞辱他，他只会跑，拼命的跑，只会再公路上跑。长大后，别人骑着车想打他，阿甘还是跑，但是这次阿甘学会了网草坪上跑！就被大学看上，进入运动大学，还通过参加比赛赢得了冠军，然后，阿甘当兵了，再后来，打乒乓球很出色。阿甘似乎做什么都能成功，也许心无旁骛，最笨的方法+时间=收获。</p>
 </li>
 </ol>
 <p>我觉得很心酸的是，当珍妮告诉他有儿子时候，阿甘问，”他聪明吗“？</p>
 <hr>
-<h2 id="2019第四周安排"><a class="header-anchor" href="#2019第四周安排">¶</a>2019第四周安排</h2>
-<ol>
-<li>
-<p>改论文，改变自己的办事效率喔，拒绝重复工作</p>
+<h2 id="2019第四周安排"><a href="#2019第四周安排" class="headerlink" title="2019第四周安排"></a>2019第四周安排</h2><ol>
+<li><p>改论文，改变自己的办事效率喔，拒绝重复工作</p>
 </li>
-<li>
-<p>编程能力</p>
+<li><p>编程能力</p>
 </li>
-<li>
-<p>慢慢的做事情，先慢后快，</p>
+<li><p>慢慢的做事情，先慢后快，</p>
 </li>
-<li>
-<p>生活、学习、交友、文采<br>
-2019-第三周读书笔记<br>
-这次读了《极简思维：颠覆传统思维模式的极简法则》作者：S.J斯科特 巴里.达文波特</p>
+<li><p>生活、学习、交友、文采<br>2019-第三周读书笔记<br>这次读了《极简思维：颠覆传统思维模式的极简法则》作者：S.J斯科特 巴里.达文波特</p>
 </li>
 </ol>
 <p>我们生活充满了各种诱惑、杂乱信息、导致了生活的混乱，产生知识焦虑、年龄危机、人际关系的淡化。作者给我们介绍了许多问题、许多的解决方法，让我们这个信息爆炸的时代可以过的充实些。</p>
 <p>每天睡8个小时、还剩下16个小时，在减去2个小时解决个人卫生和饮食，那么还有14个小时，一个星期98个小时。那么98个小时，你投入在哪里呢？</p>
 <p>总的来说，这本书传达的东西，我还是很喜欢的，极简主义者，少不得也多不得！！！！！！！！！！！！！！！</p>
 <hr>
-<h2 id="读-拆掉思维里的墙"><a class="header-anchor" href="#读-拆掉思维里的墙">¶</a>读《拆掉思维里的墙》</h2>
-<p>摘录 ：我们的生活也由三个支架组成：自我、家庭与团体和职业。这样的支架支撑着我们的灵魂，它在记录我们的生命。我们一直都在调整着三个位置的平稳，使之成为最稳固的联动三脚架。</p>
+<h2 id="读《拆掉思维里的墙》"><a href="#读《拆掉思维里的墙》" class="headerlink" title="读《拆掉思维里的墙》"></a>读《拆掉思维里的墙》</h2><p>摘录 ：我们的生活也由三个支架组成：自我、家庭与团体和职业。这样的支架支撑着我们的灵魂，它在记录我们的生命。我们一直都在调整着三个位置的平稳，使之成为最稳固的联动三脚架。</p>
 <p>这句大概是结合我的经历，最具有感悟的。因为一旦走出大学，这三者才开始真正的组成我们的生活。</p>
 <p>古典老师，从职业、成功学、爱情、家庭等等不同的案例，给我分析了大多数人会面临的无形的”墙“，给了我们如何拆掉这些墙的方法。但是呢，对于古典老师的爱情观点，我并不是很赞同，因为呢，那些愿意陪你度过余生的人付出的感情，是如此的廉价吗？有的人既可以是白玫瑰，也可以红玫瑰啊！</p>
 <hr>
-<h2 id="2019年第二周安t排"><a class="header-anchor" href="#2019年第二周安t排">¶</a>2019年第二周安T排</h2>
-<p>每天两个小时阅读论文或者专业书籍的阅读<br>
-开题报告修改和PPT制作（3h)<br>
-《拆掉思维里面的墙》（3h)<br>
-看哈利波特（一集）</p>
-<hr>
-<hr>
-<h1>2018年的总结</h1>
-<p>小小的悔恨与遗憾</p>
+<h2 id="2019年第二周安T排"><a href="#2019年第二周安T排" class="headerlink" title="2019年第二周安T排"></a>2019年第二周安T排</h2><p>每天两个小时阅读论文或者专业书籍的阅读<br>开题报告修改和PPT制作（3h)<br>《拆掉思维里面的墙》（3h)<br>看哈利波特（一集）</p>
+<h2 id="—"><a href="#—" class="headerlink" title="—-"></a>—-</h2><h1 id="2018年的总结"><a href="#2018年的总结" class="headerlink" title="2018年的总结"></a>2018年的总结</h1><p>小小的悔恨与遗憾</p>
 <ol>
 <li>大三下，在课堂上，打了半学期的游戏</li>
 <li>生活还是不规律，超喜欢深夜逛知乎、刷B站</li>
 <li>额头上，不停的冒着痘痘啊</li>
 <li>英语单词量在下降ing</li>
 <li>运动量在降低喔</li>
-<li>很讨厌洗衣服</li>
-</ol>
-<p>相比于上一年进步的方面</p>
-<ol>
+<li>很讨厌洗衣服<br>相比于上一年进步的方面</li>
 <li>愿意去承担更多的责任</li>
 <li>更乐意去交流</li>
 <li>越来越重视健康style</li>
-<li>不会随意发泄自己的情绪了
-<ol start="5">
-<li>更加认识到自身的优势与劣势了<br>
-感到愉快的事情</li>
-</ol>
-</li>
+<li>不会随意发泄自己的情绪了</li>
+<li>更加认识到自身的优势与劣势了<br>感到愉快的事情</li>
 <li>知道自己想要什么，知道自己在做什么</li>
 <li>整理完了大学期间所有的东西，往事不堪回首， 但也只能是柳暗花明又一村。</li>
 <li>能读研究生了</li>
 </ol>
-<p>聊聊2019年的点点期许<br>
-学习上</p>
+<p>聊聊2019年的点点期许<br>学习上</p>
 <ol>
 <li>多看19场知乎live</li>
 <li>阅读10本书籍，书单也有了</li>
-<li>在专业学习上，希望有所提升咯<br>
-生活中</li>
+<li>在专业学习上，希望有所提升咯<br>生活中</li>
 <li>早睡早起身体好</li>
 <li>看十部美剧，尽管我最大的兴趣是睡觉</li>
 <li>时常更新歌单，不想在一年里面都是相同的旋律</li>
@@ -931,8 +1008,7 @@
 <li>合理安排</li>
 <li>折星星</li>
 <li>番茄闹钟</li>
-<li>偶尔听听 TED<br>
-技术</li>
+<li>偶尔听听 TED<br>技术</li>
 <li>清理下了github 仓库</li>
 <li>重新更新了  github page</li>
 <li>多读、多写、多想</li>
@@ -1065,7 +1141,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                131字
+                129字
               </span>
               
 
@@ -1092,10 +1168,421 @@
       
         
           
-            <a id="more"></a>
-<p><a href="https://www.kaggle.com/dgawlik/house-prices-eda/data" target="_blank" rel="noopener">https://www.kaggle.com/dgawlik/house-prices-eda/data</a><br>
-<a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python" target="_blank" rel="noopener">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
+            <p><a href="https://www.kaggle.com/dgawlik/house-prices-eda/data" target="_blank" rel="noopener">https://www.kaggle.com/dgawlik/house-prices-eda/data</a><br><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python" target="_blank" rel="noopener">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
 
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/02/22/学习の历程-《机器学习》周志华学习记录/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/22/学习の历程-《机器学习》周志华学习记录/" itemprop="url"><<机器学习>>(周志华)</机器学习></a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-22T14:54:12+08:00">2019-02-22</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习の历程-Journal-of-Studying/" itemprop="url" rel="index"><span itemprop="name">学习の历程(Journal of Studying)</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/22/学习の历程-《机器学习》周志华学习记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/22/学习の历程-《机器学习》周志华学习记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                12k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="阅读目录"><a href="#阅读目录" class="headerlink" title="阅读目录"></a><em>阅读目录</em></h2><p>[TOC]</p>
+<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><ol>
+<li><p>What is the machine learning?<br>非常官方的定义： Tom mitchell(1998) Well-posed Learning<br>Problem:A compute program is said to learn from experience E with respect to same task T and some performance measure P,if its performance on T,as measured by P, improves with experience E。（这个我莫法翻译喔）<br>大概意思是强大的计算机能够事先地完成人为非显示编程好的任务，怎么完成呢？对于某个任务T,给定一个性能度量方法P,在经验E的影响下，如果P对T的测量结果得到了改进，则说明该程序从E中学习了<br>机器学习的过程大致如此：让计算机从数据中产生模型(model)，首先提供经验数据，给定学习算法(learning algorithm)和性能测量方法，它就能根据数据产生模型。<br>模型： 泛指从数据中学得的结果<br>模式： 局部性的结果</p>
+<ol>
+<li>基本术语<br>数据集: data set<br>样本： sample<br>属性（特征）： attribute（feature)<br>属性值： attribute value<br>属性空间（特征空间）： attribute space （ sample space）<br>特征向量： feature vector<br>学习（训练）：learning（training）<br>训练数据： training data<br>训练集： training set<br>假设：hypothesis 学得模型对应了关于数据的某种潜在规律<br>泛函能力: generalization</li>
+<li>假设空间<br>归纳（induction）： 从特殊到一般的“泛化”(generalization)过程<br>演绎（deduction)： 从一般到特殊的“特化”(specialization)过程<br>机器学习显然是归纳学习（inductive learning)<br>归纳学习分狭义与广义，狭义是指要求从training set 中学得概念，广义是指从sample中学习</li>
+</ol>
+<p>学习过程（训练过程）看作是在所以假设组成的空间中进行搜索的过程，搜索目标是找到与training set匹配的假设。如果假设的表示一旦确定，假设空间与其规模就确定了。想更详细了解假设空间，<a href="http://www.deeplearningbook.org/contents/ml.html" target="_blank" rel="noopener">戳我啦</a>5.2<br>现实问题中常面临很大的假设空间，我们可以寻找一个与训练集一致的假设集合，称之为版本空间。版本空间从假设空间剔除了与正例不一致和与反例一致的假设，它可以看成是对正例的最大泛化。<br>归纳偏好<br>机器学习算法在学习过程中对某种类型假设的偏好，称为“归纳偏好”（inductive bias),也就是学习算法在一个可能很庞大的假设空间中对假设进行选择的启发式或者“价值观”<br>奥卡姆剃刀定律： 若有多个假设与观测一致，则选择做简单的哪个。<br>没有免费的无餐定理（No Free Lunch Theorem[NFL]) 在所以问题出现的机会相同，或者所以问题同等重要下，所有算法的期望一样。但在实际问题中，针对具体的问题，不同的算法才会出现相对优劣。                        </p>
+<ol>
+<li>发展历程<br>推理期：二十世纪五十年代到七十年代初，AI处于推理区，代表性工作主要是A.Newell 和H.Simon的“逻辑理论家”程序和此后的“通用问题求解”程序等。“逻辑理论家”程序证明了数学家罗素和怀特海的《数学原理》里面的某些定理，获得图灵奖。<br>知识期：从二十世纪七十年代中期开始，AI的研究进入了“知识期”，大量的专家系统出现，E.A.Feigenbaum（知识工程之父）在1994获得图灵奖。人们意识到，专家系统面临“知识工程瓶颈”,在那个时候，有人把知识总结出来再教给计算机是相当困难的。<br>1950年，图灵再关于图灵测试的文章中，曾提到机器学习的可能<br>二十世纪五十年代初，A.Samuel著名跳棋程序。五十年代中后期，基于神经网络的”连接主义“学习，如F.Rosenblatt的感知器（Perceptro），B.Widrem的Adaline,六七十年代，基于逻辑表示的”符号主义学习技术蓬勃发展<br>学习期：二十世纪八十年代是机器学习百花初放的时期。一大主流是符号主义学习，代表决策树（decision tree).二十世纪九十年代中期之前，另外一大主流技术是基于神经网络的连接主义学习。二十世纪九十年代中期，”统计学习“占据主流，代表支持向量机。二十一世纪初，连接主义学习掀起了”深度学习“为名的热潮。</li>
+</ol>
+</li>
+</ol>
+<h2 id="第二章-：-模型评估与选择"><a href="#第二章-：-模型评估与选择" class="headerlink" title="第二章 ： 模型评估与选择"></a>第二章 ： 模型评估与选择</h2><h3 id="经验误差与过拟合、欠拟合"><a href="#经验误差与过拟合、欠拟合" class="headerlink" title="经验误差与过拟合、欠拟合"></a>经验误差与过拟合、欠拟合</h3><p>训练误差（training error) or 经验误差（empirical error): 学习器在训练集上的输出与训练集之间的差异<br>过拟合（over fitting）：在训练集上表现非常好，泛化能力太差，最常见的情况是学习能力太强学习到不太一般的特性，无法彻底避免，只能“缓解”<br>欠拟合（under fitting）：这种情况容易克服<br>模型选择(model selection): 不同的参数配置，产生不同的模型。理论上最好的模型是对泛化能力进行评估，最好的就是泛化误差最小的，泛化误差是无法直接获取的</p>
+<h3 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h3><p>设置一个”测试集（testing set)”来测试学习器在新样本的判断能力，用测试误差近似泛化误差<br>要求：</p>
+<ol>
+<li>测试样本与训练样本独立同分布的</li>
+<li>测试集应该尽可能与训练集互斥，测试样本尽量不出现在训练集中<h4 id="如何产生training-set-和-testing-set"><a href="#如何产生training-set-和-testing-set" class="headerlink" title="如何产生training set 和 testing set"></a>如何产生training set 和 testing set</h4></li>
+<li>留出法（hold-out)<br>要求：数据集($D$)划分成两个互斥的集合（训练集($S$,测试集$T$),需要注意的是，划分后，尽量可能的保持数据分布的一致性。<br>不同的划分结果，得到不同的测试误差。单次使用留出法得到的结果是不够稳定的，所以一般采用若干次的随机划分，重复进行实验评估后去平均值</li>
+<li>交叉验证法（cross validation)<br>I. 将数据($D$)划分成$k$个大小相似的互斥子集，每个子集$D_i$都尽可能保持数据分布的一致性<br>II. 每次都用$k-1$作为训练集，余下的哪个子集作为测试集，于是乎都到了k个测试结果的均值<br>值得注意的是，$k$的取值对结果的稳定性和保真性有很大的影响，因此也叫k者交叉验证（k-flold cross validation) k的通常取值是10<br>同样的，数据集$D$划分为$k$个子集有很多的划分方式，可重复$P$次$k$折交叉验证。</li>
+<li>自助法 (bootstrapping)<br>注意的是我们希望通过所以的训练集（$D$)训练出模型，但是流出法和交叉验证的方法，都保留一部分作为测试集，因此实际评估的模型所使用的训练集更下，这也许会导致估计偏差。<br>自助法： 可重复采样或者有放回采样</li>
+<li>记采样产生的数据集（$D’$),每次从$D$中挑选应该样本，将其拷贝至($D’$),并再将采样的样本放回数据集($D$),重复($m$)次以后，得到了包含($m$)个样本的数据集($D’$)</li>
+<li><p>对于可重复采样，样本始终不采到的概率是$(1-\frac{1}{m})^m$,取极限得到：初式数据集中$36.8%$为出现在采样数据集中，因此可将($D$)作为训练集，($D\D’$)作为测试集，又称外包估计(out-of-bag estimate)<br>自助法适用于数据量少，难区别测试集和训练集时，自助法会改变初始数据的分布，在初始数据足够的情况下，流出法和交叉验证更常用一些</p>
+<h4 id="调参和最终的模型"><a href="#调参和最终的模型" class="headerlink" title="调参和最终的模型"></a>调参和最终的模型</h4><p>学习算法都有参数(parameter),不同的参数配置，学得模型的性能也往往不同<br>验证集(validation set): 模型评估和选择中用于估计测试的数据集称为的数据集<br>往往将训练集划分为训练集和验证集，基于验证集上的性能来进行模型选择和调参</p>
+<h4 id="性能度量-performance-measure"><a href="#性能度量-performance-measure" class="headerlink" title="性能度量(performance measure)"></a>性能度量(performance measure)</h4><h4 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h4><p>（其实我一直都并不是特别了解）</p>
+<ol>
+<li>假设检验的基本原理<br>是重要的统计推断问题之一，根据样本提供的信息，检验关于总体某个假设是否正确。包括参数的假设检验（均值、方差等）和非参数（分布啊）的假设检验。 </li>
+</ol>
+</li>
+<li>参数检验： 提出假设H—-&gt;在构造统计量，确定统计量的分布—-&gt; 确定拒绝域和接受域的分界线—-&gt; 在根据样本计算统计量的值u —-&gt; 推断</li>
+<li>分布拟合检验</li>
+</ol>
+<h4 id="偏差和方差"><a href="#偏差和方差" class="headerlink" title="偏差和方差"></a>偏差和方差</h4><p>通过概率论分析对学习算法的期望泛化错误率进行拆解<br>$x$: 测试样本<br>$y_D$： $x$在数据集中的标记<br>$y$: $x$的真实标记<br>$f(x:D)$: 在训练集上学得的模型$f$在$x$上预测输出<br>以回归任务为例子：<br>学习算法的期望预测为：</p>
+<script type="math/tex; mode=display">\hat{f}(x) = E_D[f(x;D)]</script><p>方差：度量同样的样本大小的训练集的变动所导致的学习性能的变化，即刻画数据扰动所造成的影响</p>
+<script type="math/tex; mode=display">var(x)= E_D[(f(x;D)-\hat{f}(x))^2]</script><p>噪声： 表达了当前任务上任务学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度。</p>
+<script type="math/tex; mode=display">\epsilon^2=E_D[(y_D-y)^2]</script><p>期望输出和真实标记的差别称为偏差(bias): 度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力</p>
+<script type="math/tex; mode=display">bias^2(x)=(f(x)-y)^2</script><p>若假设噪声期望为零，那么算法的期望泛化误差：</p>
+<script type="math/tex; mode=display">
+E(f;D)=E_D[(f(x;D)-y)^2]\\
+=....=E_D[(f(x;D)-\hat{f}(x))^2]+(\hat{f}(x)-y)^2+E_D[(y_D-y)^2]</script><script type="math/tex; mode=display">E(f;D)=bias^2(x)+var(x)+\epsilon^2​</script><p>由上式可知，泛化能力由学习算法的能力、数据的充分性、学习任务本身的难度共同决定的。<br>underfitting: 偏差主导泛化误差<br>over fitting： 训练数据发生的扰动渐渐被学习到，方差主导了泛化误差</p>
+<h2 id="第三章-线性模型"><a href="#第三章-线性模型" class="headerlink" title="第三章 线性模型"></a>第三章 线性模型</h2><p>我自己其实是一直停留在线性模型学习过程，因为每次开头都是这一张，所以我就学习了很多次。这次不准备再细看了。</p>
+<h3 id="线性判别分析-Linear-Discriminant-Analysis-LDA"><a href="#线性判别分析-Linear-Discriminant-Analysis-LDA" class="headerlink" title="线性判别分析 Linear Discriminant Analysis (LDA)"></a>线性判别分析 Linear Discriminant Analysis (LDA)</h3><p>基本思想： 在训练样例集上，设法将样本例子投影到一条直线上使得同类样例的投影尽可能接近、异类投影点尽可能远离。<br>数学表达：<br>$D={(x_i,y_i)}_{i=1}^{m}$: data set<br>$X_i$: 第$i$类集合<br>$u_i$: 第$i$类集合均值向量<br>$\sum{i}$: 第$i$类集合协方差矩阵<br>$ w^Tu_i$： 第$i$类集合在直线上的投影<br>$ w^T\sum_{i}w$: 样本点的在直线上的投影<br>学习算法：<br>同类更近：<br>$\min \sum_{i=1}^{n}(w^T\sum_{i}w)$<br>类中心越大：<br>$\max ||w^{T}u_1-(\sum_{i=2}(w^{T}u_i))||_2^2$<br>因此，想最大化的目标<br>考虑$i = 2​$的情况</p>
+<script type="math/tex; mode=display">J  = \frac{||w^Tu_0-w^Tu_1||_2^2}{w^T\sum_{i=1}w+w^T\sum_{i=2}w}
+=\frac{w^T(u_0-u_1)(u_0-u_1)^Tw}{w^T(\sum_1+\sum_2)w}</script><script type="math/tex; mode=display">
+应用空间几何和矩阵的关系描述
+类内散度矩阵($S_W$)</script><script type="math/tex; mode=display">\sum_1+\sum_2​</script><script type="math/tex; mode=display">
+类间散度矩阵：</script><script type="math/tex; mode=display">(u_0-u_1)(u_0-u_1)^T</script><script type="math/tex; mode=display">
+所以，我们想优化目标如下：</script><script type="math/tex; mode=display">J = \frac{w^T_Sbw}{w^TS_ww}​</script><p>如何确定$w$呢？注意到分子分母都是关于$w$的二次型，因此解这和w的方向有关系，因此，可令 $w^TS_ww=1$<br>,优化问题可是如下：</p>
+<script type="math/tex; mode=display">\min -w^TS_bw \\
+s.t. w^TS_ww = 1</script><p>构造lagrange 函数</p>
+<script type="math/tex; mode=display">L = -w^TS_bw+r(w^TS_ww-1)</script><p>对$w$求导可得：</p>
+<script type="math/tex; mode=display">S_bw =rS_ww​</script><p>$S_b w​$和$ u_0 - u_1 ​$ 方向是$u_0-u_1​$,不妨设</p>
+<script type="math/tex; mode=display">S_nw=r(u_0-u_1)​</script><p>so,<script type="math/tex">w = s_w^{-1}(u_0-u_1)​</script><br>这里考虑到数值解的稳定性，因此往往把$S_w​$进行<a href="https://www.cnblogs.com/xiemaycherry/p/10460464.html" target="_blank" rel="noopener">奇异值分解</a></p>
+<h2 id="第四章-决策树"><a href="#第四章-决策树" class="headerlink" title="第四章 决策树"></a>第四章 决策树</h2><p>决策树是一种特别普通的符合生活做决策的过程。</p>
+<h2 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h2><p>神经网络最开始出现是根据生物神经网络来的。</p>
+<h3 id="最简单的神经网络：神经元模型-neuron-unit"><a href="#最简单的神经网络：神经元模型-neuron-unit" class="headerlink" title="最简单的神经网络：神经元模型(neuron|unit)"></a>最简单的神经网络：神经元模型(neuron|unit)</h3><p>McCulloch and Pitts抽象出“M-P神经元模型”<br><img src="/2019/02/22/学习の历程-《机器学习》周志华学习记录/5.1.png" alt="tup"></p>
+<h3 id="感知器（Perceptron"><a href="#感知器（Perceptron" class="headerlink" title="感知器（Perceptron)"></a>感知器（Perceptron)</h3><p>输入层和输出层，输出层：M-P神经元<br>感知器的学习过程一定是收敛的</p>
+<h3 id="多层前馈神经网络-（multi-layer-feddforward-neural-networks"><a href="#多层前馈神经网络-（multi-layer-feddforward-neural-networks" class="headerlink" title="多层前馈神经网络 （multi-layer feddforward neural networks)"></a>多层前馈神经网络 （multi-layer feddforward neural networks)</h3><p>前馈：网络的拓扑结构不存在环或者回路<br>神经元的学习过程：就是根据训练数据来调整神经元之间的”连接权”(connection weight),以及每个功能神经元的阙值</p>
+<h3 id="误差逆传播算法：-error-BackPropagation-BP"><a href="#误差逆传播算法：-error-BackPropagation-BP" class="headerlink" title="误差逆传播算法： error BackPropagation (BP)"></a>误差逆传播算法： error BackPropagation (BP)</h3><h2 id="全局最小和局部最小"><a href="#全局最小和局部最小" class="headerlink" title="全局最小和局部最小"></a>全局最小和局部最小</h2><p>神经网络的训练过程其实也就是参数寻优的过程，基于梯度的搜素是使用最为广泛的参数寻优方法，但是如果误差函数在当前点的梯度为零，则很有可能达到局部极小。</p>
+<h2 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h2><p>支持向量机的学习原理很简单也很有趣，从分类问题，怎么一步一步建立的优化问题，一步一步的完善优化问题以及求解，从硬间隔到软间隔，分类问题是考虑分对，而回归问题希望预测值和原始值尽可能的接近，这样就造成了约束条件，目标性的不同。</p>
+<p>最重要的是引入了核方法，低维空间的非线性关系映射成了高维空间线性关系，这是特别重要的思想</p>
+<h1 id="第八章-集成学习"><a href="#第八章-集成学习" class="headerlink" title="第八章 集成学习"></a>第八章 集成学习</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>构建一组基学习器（base learner)，在结合</p>
+<p>a. 如果集成中是相同类型的个体学习器，如决策树，全是神经网络的集成“同质”（homogeneous),个体学习器叫基学习器</p>
+<p>b. 不同的学习器，异质（heterogeneous)，个体学习器叫组件学习器</p>
+<h3 id="为什么有效"><a href="#为什么有效" class="headerlink" title="为什么有效"></a>为什么有效</h3><ol>
+<li><p>多样性的基学习器</p>
+<ol>
+<li>不同的模型取长补短</li>
+<li>每个基学习器都犯错误，综合起来可能性不大</li>
+</ol>
+<p>举个栗子</p>
+<ol>
+<li>也许一个线性模型不能简单分类，但是多个线性模型综合，可将数据集成功分类</li>
+</ol>
+</li>
+</ol>
+<h3 id="构建不同的机器学习"><a href="#构建不同的机器学习" class="headerlink" title="构建不同的机器学习"></a>构建不同的机器学习</h3><p>Q 1: 如何建立基学习器</p>
+<p>尽量满足多样性</p>
+<p>M1: 不同的学习算法</p>
+<p>M2: 相同学习算法、不同的参数</p>
+<p>M3: 不同的数据集（不同的样本子集、数据集上不同的特征）</p>
+<p>homogenous ensemble</p>
+<ol>
+<li><p>采用相同的学习算法、不同的训练集</p>
+<p>Bagging Boosting</p>
+</li>
+<li><p>相同算法，不同的参数设置</p>
+</li>
+<li><p>相同的训练集，不同的学习算法</p>
+</li>
+</ol>
+<p>Q2: 如何综合呢？</p>
+<ol>
+<li><p>t投票法：majority voting</p>
+</li>
+<li><p>weighted voting</p>
+</li>
+<li><p>训练一个新模型确定如何综合</p>
+<ol>
+<li>Stacking</li>
+<li>偏好的简单模型</li>
+</ol>
+</li>
+</ol>
+<h3 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h3><h2 id="Bagging-Boostrap-AGGregatING"><a href="#Bagging-Boostrap-AGGregatING" class="headerlink" title="Bagging = Boostrap AGGregatING"></a>Bagging = Boostrap AGGregatING</h2><p>有放回采样，同质学习器</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input : </span><br><span class="line">	训练集 D=&#123;(x1,y1)&#125;</span><br><span class="line">	基学习算法A</span><br><span class="line">	训练轮数 T</span><br><span class="line">过程</span><br><span class="line">	for t = 1,2,...,T do</span><br><span class="line">		h_t= A(D,Dt) // Dt第t次采样的分布</span><br><span class="line">	end for</span><br><span class="line">输出</span><br><span class="line">	回归：Average</span><br><span class="line">	分类：投票法</span><br></pre></td></tr></table></figure>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>没有用于建模的样本，可以用作验证集来对泛化能力进行包外估计，可以得出Bagging泛化误差的包外估计</p>
+<h4 id="random-forest（RF"><a href="#random-forest（RF" class="headerlink" title="random forest（RF)"></a>random forest（RF)</h4><p>输入为样本集$D={(x,y1),(x2,y2),…(xm,ym)}$，弱分类器迭代次数T。</p>
+<p>输出为最终的强分类器f(x)f(x)</p>
+<p>1）对于t=1,2…,T:</p>
+<p>a)对训练集进行第t次随机采样，共采集m次，得到包含m个样本的采样集$Dt$</p>
+<p>b)用采样集$Dt$训练第t个决策树模型$Gt(x)​$，在训练决策树模型的节点的时候， 在节点上所有的样本特征中选择一部分样本特征， 在这些随机选择的部分样本特征中选择一个最优的特征来做决策树的左右子树划分</p>
+<p>2) 如果是分类算法预测，则T个弱学习器投出最多票数的类别或者类别之一为最终类别。如果是回归算法，T个弱学习器得到的回归结果进行算术平均得到的值为最终的模型输出。</p>
+<p>参数设置</p>
+<p>利用00B样本评估变量的重要性</p>
+<h2 id="Boosting-提高"><a href="#Boosting-提高" class="headerlink" title="Boosting 提高"></a>Boosting 提高</h2><p>顺次建立学习器，就是先从训练集上训练一个基学习器，再根据学习器的表现对训练集分布进行调整，让先学习器错误训练的样本在后续收到更多的关注，然后基于调整的分布训练下一个学习器，最后，在将这T个学习器进行加权结合</p>
+<p>基学习器的线性组合</p>
+<script type="math/tex; mode=display">
+H_N(x;P)=\sum_{t=1}^{N}\alpha_th_t(x;a_t)</script><p>$a_t$是第$i$个弱学习器的最优参数，$\alpha_t$是在强分类器中的比重，$P$是$a_t$和$\alpha_t$的组合</p>
+<p>最小化指数损失函数</p>
+<script type="math/tex; mode=display">
+l_{exp}(H|D)=E_{x~D}[e^{-f(x)H(x)}]</script><script type="math/tex; mode=display">
+H_n(x)=H_{n-1}(x)+\alpha_{n}h_{n}(x,a_n)</script><script type="math/tex; mode=display">l(h_i(x,a_t)|D)=E_{x~D}(exp(-f(x)h_i(x)))\\=p(f(x)=1)exp(-h_i(x))+p(f(x)=-1)exp(h_i(x))</script><script type="math/tex; mode=display">\frac{\partial l(h_i(x,a_t)|D)}{\partial h_i(x,a_t)}=\\
+-p(f(x)=1)exp(-h_i(x))+p(f(x)=-1)exp(h_i(x))=0</script><script type="math/tex; mode=display">h(x)=\frac{1}{2}ln\frac{P(f(x)=1)}{P(f(x)=-1)}</script><p>采取不同的损失函数，得到不同的类型</p>
+<p><a href="https://blog.csdn.net/luanpeng825485697/article/details/79383492" target="_blank" rel="noopener">https://blog.csdn.net/luanpeng825485697/article/details/79383492</a></p>
+<h3 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h3><h2 id="Stacking"><a href="#Stacking" class="headerlink" title="Stacking"></a>Stacking</h2><p><img src="/2019/02/22/学习の历程-《机器学习》周志华学习记录/MyBlog\hexo\source\_posts\学习の历程-《机器学习》周志华学习记录\Stacking.png" alt=""></p>
+<p>不同学习器，相同数据集</p>
+<p>第一层</p>
+<p>第二层：不用第一层的数据</p>
+<p>可用交叉验证</p>
+<p>注意事项：</p>
+<p>过拟合问题：第二层线性回归</p>
+<p>第一层尽可能的多样性：</p>
+<p>综合好的模型</p>
+<p>防止过拟合</p>
+<pre><code> 1. 随机性
+ 2. 
+</code></pre><p>Bagging Boosting Stacking</p>
+<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>似然： 相似的样子</p>
+<p>对于一组数据，假设符合正态分布，希望已知点在这个正态分布的情况下，所有点对于的概率之和或者积最大，</p>
+<p><img src="/2019/02/22/学习の历程-《机器学习》周志华学习记录/MyBlog\hexo\source\_posts\学习の历程-《机器学习》周志华学习记录\极大似然估计.jpg" alt="">，蓝色表示数据，红色就是做得正态分布</p>
+<h2 id="第十章-降维与度量学习"><a href="#第十章-降维与度量学习" class="headerlink" title="第十章 降维与度量学习"></a>第十章 降维与度量学习</h2><h3 id="k近邻学习"><a href="#k近邻学习" class="headerlink" title="k近邻学习"></a>k近邻学习</h3><p>k-Nearest Neighbor</p>
+<p>原理： 基于某种距离度量找出训练集中与其最靠近的k个训练样本，根据k个邻居的信息进行预测。</p>
+<p>给定测试样本$x$,如果最邻近样本$z$,最邻近分类器出错的概率就是$x$与$z$不再同一类</p>
+<script type="math/tex; mode=display">
+p(err) = 1-\sum_{c \in y}p(c|x)P(c|z)</script><h3 id="低维嵌入"><a href="#低维嵌入" class="headerlink" title="低维嵌入"></a>低维嵌入</h3><p>缓解维数灾难的重要途经之一是降维（dimension reduction）这样使得子空间中样本密度大幅度提高，距离计算变得更容易，</p>
+<h4 id="多维缩放（Multiple-Dimensional-Scaling）"><a href="#多维缩放（Multiple-Dimensional-Scaling）" class="headerlink" title="多维缩放（Multiple Dimensional,Scaling）"></a>多维缩放（Multiple Dimensional,Scaling）</h4><p>MDS</p>
+<p>假定m个样本在原始空间的距离矩阵$D$,在低维空间中，两个样本欧式距离等于原空间的距离，$||z_i-z_j|| = dist_{ij}$, 令$B=Z^TZ$为降维后样本的内积矩阵,</p>
+<script type="math/tex; mode=display">
+dist_{ij}^2=||z_i||^2+||z_j||^2-2z_iz_j=b_{ii}+b_{jj}-2b_{ij}</script><p>对降维后数据中心化，均值为0,$\sum_{i=1}^{m}z_i$,于是乎就有$\sum_{i=1}^{M}b_{ij}=z_j(z_1+z_2+…+z_m)=0=\sum_{j=1}^{m}x_{ij}$</p>
+<p>,可得</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{m}dist_{ij}^2=\sum_{i=1}^{m}(b_{ii}+b_{jj}-2b_{ij})=tr(B)_mb_{jj}\\
+\sum_{i=1}^{m}\sum_{j=1}^{m}dist_{ij}^2 = 2m tr(B)\\
+tr(B)=\sum_{i=1}^{m}||z_i||^2</script><p>可得</p>
+<script type="math/tex; mode=display">
+b_{ij}=-\frac{1}{2}(dist_{ij}^2-dist_{i.}^2-dist_{.j}^2+dist{..}^2)</script><p>对矩阵B做特征值分解(eigenvalue decomposition)，$B = V \land V$,则</p>
+<script type="math/tex; mode=display">
+Z = \land_{*}^{1/2}V_{*}</script><p>欲获得低维子空间，最简单是对原始高维空间进行线性变换，$Z = W^TX$,特别的，$W$取正交变换，$W={w_1,w_2,…,w_{d’}}$W是d’个d维基向量，</p>
+<h2 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h2><p>Principal Component Analysis ：PCA</p>
+<p>在正交空间里面的样本，用一个超平面对样本进行恰当的表达，至少这个样本点满足</p>
+<p>最近重构性： 样本点到这个超平面的距离足够近</p>
+<p>最大可分性： 样本点在这超平面上的投影尽可能分开</p>
+<p>对于最近重构性：</p>
+<p>假设样本去中心化，再假设投影变换后得到欣的正交坐标系${w_1,w_2,…,w_d}$,d维空间里面的一组单位正交基，$||w_i||_2=0$,$||w_i^Tw_j||=0$,如果再新坐标系中丢掉一部分坐标，样本点在新坐标的投影是$z_i={w_1^Tx_{i1}},..,w_{d’}^Tx_{i}$,于是又$z_{ij} =w_{j}^Tx_i$,$\hat{x_i}=\sum_{j}^{d’}w_jx_i$</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{m}||\sum_{j=1}^{d'}z_{ij}w_j-x_i||_2^2=\sum_{i=1}^{m}z_i^Tz_i-2\sum_{i=1}^{m}z_i^TW^Tx_i+x_i^Tx_i\\
+=\sum_{i=1}^{m}x_i^TWW^Tx_i-2\sum_{i=1}^{m}x_i^TWW^Tx_i+x_i^Tx_i\\
+min -\sum_{i=1}^{m}z_i^Tz_i=-tr(Z^TZ)\\
+min -tr(\sum_{i=1}^{m}W^Tx_ix_i^TW)=-tr(W^T(\sum_{i=1}^{m}x_i^Tx_i)W）=-tr(W^TXX^TW)\\
+s.t W^TW = I</script><p>对于最大可分性$(W^T\hat{X}=0)$</p>
+<script type="math/tex; mode=display">
+max tr(W^TXX^TW)\\s.t W^TW = I</script><p>根据lagrange</p>
+<script type="math/tex; mode=display">
+L(W,\lambda)=-tr(W^TXX^TW)-\lambda(W^TW-I)\\
+\frac{\partial L}{\partial w_i}=-2w_iXX^T-2\lambda_i w_i=0\\
+XX^Tw_i = \lambda w_i</script><p>$XX^T$是协方差矩阵,$\lambda$是特征值，$w_i$是特征向量</p>
+<p>特别提示，$x$需要中心化</p>
+<p>对于线性PCA降维方法是从高维空间映射到低维空间，$Z= W^TX$,然而不少情况，则需要非线性映射才能找到恰当的低维嵌入， $\phi(x)$</p>
+<script type="math/tex; mode=display">
+\max tr(\phi(X)\phi(X)^T)=tr( W^T\varphi(x)\varphi(x)^TW)\\
+W^TW = I</script><p>于是有</p>
+<script type="math/tex; mode=display">
+\varphi(x)^T\varphi(x)w_i=\lambda_iw_i\\
+w_i=\frac{tr(\varphi(x)^T\varphi(x))}{\lambda_iw_i}</script><script type="math/tex; mode=display">
+z_j = \frac{\sum_{i=1}^{m}\varphi(x)^T\varphi(x)}{\lambda_iw_i}\varphi(x_i)\
+=\frac{\sum_{i=1}^{m}\varphi(x_i)K(x_i,x)}{\lambda_iw_i}</script><h2 id="流形学习（表示学习有点困难"><a href="#流形学习（表示学习有点困难" class="headerlink" title="流形学习（表示学习有点困难)"></a>流形学习（表示学习有点困难)</h2><h1 id="第十一章-特征选择与稀疏学习"><a href="#第十一章-特征选择与稀疏学习" class="headerlink" title="第十一章 特征选择与稀疏学习"></a>第十一章 特征选择与稀疏学习</h1><p>对于一个学习任务，对任务有用的特征,称为”relevant feature”，对于没有用的属性”irrelevant feature”,因此从给定特征集选择出相关特征子集的过程，特征选择（feature selection),原因一，降维；原因二：降低学习的任务。</p>
+<p>无关特征，包括一类冗余特征（redundant feature），能够从其他特征里面推演出来。</p>
+<h2 id="特征搜索"><a href="#特征搜索" class="headerlink" title="特征搜索"></a>特征搜索</h2><h3 id="前向（forward-搜索"><a href="#前向（forward-搜索" class="headerlink" title="前向（forward)搜索"></a>前向（forward)搜索</h3><p>对于特征集合$\{a_1,a_2,…,a_d \}$,每个特征看作一个候选集，对这$d$候选的单特征子集进行评价，可选出最优子集，然后，再下一轮子集中，构成了两个特征候选的子集，</p>
+<h2 id="后向-backward-搜索"><a href="#后向-backward-搜索" class="headerlink" title="后向 (backward) 搜索"></a>后向 (backward) 搜索</h2><p>每次尝试去掉一个无关特征</p>
+<h3 id="双向-bidirectional-搜索"><a href="#双向-bidirectional-搜索" class="headerlink" title="双向(bidirectional)搜索"></a>双向(bidirectional)搜索</h3><p>上述操作只是贪心策略，仅仅考虑了本轮选定集合最优</p>
+<p>​            </p>
+<h2 id="子集评价（subset-evaluation"><a href="#子集评价（subset-evaluation" class="headerlink" title="子集评价（subset evaluation)"></a>子集评价（subset evaluation)</h2><p>已知一个数据集$D$,假定第$i$类样本所占比例$p_i$,对于属性子集$A$,假设根据取值D分成V个子集$\{D^1,D^2,…,D^V\}$,则子集A的信心 增益</p>
+<script type="math/tex; mode=display">
+Gain(A) = Ent(D)-\sum_{i=1}^V\frac{|D^i|}{|D|}Ent(D^i)\\
+Ent(D)=\sum_{i=1}^{|y|}p_ilog^{-p_i}</script><p>​    </p>
+<p>信息增益Gain(A)越大，说明特征子集A包含的有助于分类的信息越多，特征子集A是对数据集D的一个划分，样本D的标记信息Y则对应着D的真实划分，就能对A进行评价，对Y对应的划分的差异越小，则说明A越好，</p>
+<h2 id="过滤式选择"><a href="#过滤式选择" class="headerlink" title="过滤式选择"></a>过滤式选择</h2><p>Relief （Relevant Feature） </p>
+<p>设计一个“相关统计量”来描述度量特征的重要性，该统计量是一个向量，每个分量对应一个初式特征，而特征子集的重要性则是每个特征对应统计量分量之和来决定，最终只需指定一个阙值，根据阙值选择统计量分量对应的特征即可</p>
+<p>如何确定相关统计量</p>
+<p>给定训练集$(x_i,y_i)$,对于实例$x_i$,在其同类样本中找最近邻（near-hit),在从异类样本中寻找其最近邻$x_{x,nm}$称为“猜错近邻”，</p>
+<script type="math/tex; mode=display">
+\delta^j =\sum_i-diff(x_i^j,x_{i.nh}^j)^2+diff(x_i^j,x_{i,nm}^j)^2</script><p>分值越大，说明对应属性的分类能力越强</p>
+<p>对于多分类问题</p>
+<script type="math/tex; mode=display">
+\delta^j = \sum_i-diff(x_i^j,x_{i,nh}^j)^2+\sum_{l \neq k}p_l\ diff(x_i^j,x_{i,l,nm}^j)</script><p>这种方法看一个属性（特征）重不重要，先计算出每个属性的统计分量，按照公式，子集的评价就是对于分量的和</p>
+<h2 id="包裹式选择"><a href="#包裹式选择" class="headerlink" title="包裹式选择"></a>包裹式选择</h2><p>直接把最终将要使用的学习器的性能作为特征子集的评价准则，特征选择的目的就是为给定学习期选择有利其性能的特征子集。</p>
+<p>LVW（Las Vegas Wrapper）是典型的包裹式特征选择方法，拉斯维加斯方法（Las Vegas method）框架下使用随机策略来进行子集搜索，并以最终分类器的误差为特征子集评价准则</p>
+<p>算法</p>
+<h2 id="嵌入式选择"><a href="#嵌入式选择" class="headerlink" title="嵌入式选择"></a>嵌入式选择</h2><p>学习器自动地进行特征选择</p>
+<p>L-P范数</p>
+<script type="math/tex; mode=display">
+L_P = ||X||_P = p\sqrt{\sum_{i=1}^{n}x_i^p}</script><p><img src="https://img-blog.csdn.net/20160623222921977" alt="这里写图片描述"></p>
+<p>L0范数</p>
+<script type="math/tex; mode=display">
+||X||_0=向量中非零元素的个数</script><p>L1范数</p>
+<script type="math/tex; mode=display">
+||x||_1 = \sum|x_i|</script><p>L2范数，最常用</p>
+<script type="math/tex; mode=display">
+||X||_2=\sqrt{x_i^2}</script><p>无穷范数</p>
+<script type="math/tex; mode=display">
+||x||=max|x_i|</script><p>对于线性回归模型，防止过拟合，如果使用L2,称为岭回归(ridge regression),如果采取L1范数，则有称为LASSO，L1比L2更易于稀疏解，可以看得出L1范数正则化的过程得到了仅采用一部分初始化特征的模型。</p>
+<p>L1正则化求解可使用近端梯度下降法(Proximal Gradient Descent)PGD</p>
+<p><strong>L-Lipschitz条件</strong></p>
+<p>设函数$Φ(x)$在有限 区间$[a,b]$上满足如下条件：</p>
+<p>(1) 当$x∈[a,b]​$时，$Φ(x)∈[a,b]​$，即$a≤Φ(x)≤b​$.</p>
+<p>(2) 对任意的$x1，x2∈[a,b]$， 恒成立：$|Φ(x1)-Φ(x2)|≤L|x1-x2|$.</p>
+<p>如果$f(x)​$可导，并且$\nabla f​$满足L-Lipschitz条件，</p>
+<script type="math/tex; mode=display">
+||\nabla f(x')-\nabla f(x)||_2^2<L||x'-x||_2^2</script><p>在$x_k$附近</p>
+<script type="math/tex; mode=display">
+\hat{f}(x)=f(x_k)+f^{'}(x_k)(x-x_k)+\frac{L}{2}||x-x_k||^2\\
+=\frac{L}{2}||x-(x_k)-\frac{1}{L}\nabla f(x_k)||_2^2+const</script><p>可知</p>
+<script type="math/tex; mode=display">
+x_{k+1}=x_k-\frac{1}{L}\nabla f(x_k)</script><p>对于原始问题，可先计算$z=x_k-\frac{1}{L}\nabla f(x_k)$,</p>
+<p>$x_{k+1}=arg \ \ min_{x} \frac{L}{2}||x-z||_2^2+\lambda||x||_1$</p>
+<p>由于各个分量相互不影响</p>
+<script type="math/tex; mode=display">
+x_{k+1}^i=\begin{cases}z^i-\frac{\lambda}{L}, \frac{\lambda}{L}<z^i\\
+0, |z^i| <= \frac{\lambda}{L} \\
+z^i+\frac{\lambda}{L},z^i<-\frac{\lambda}{L}\end{cases}</script><h2 id="稀疏学习"><a href="#稀疏学习" class="headerlink" title="稀疏学习"></a>稀疏学习</h2>
           
         
       
@@ -1139,7 +1626,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1172,7 +1659,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XieMay</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
           </div>
 
           
@@ -1182,7 +1669,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1245,7 +1732,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1354,7 +1841,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">48</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1434,7 +1925,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">272k</span>
+    <span title="Symbols count total">260k</span>
   
 
   
@@ -1974,6 +2465,8 @@
     
       
         
+      
+    
       
     
       

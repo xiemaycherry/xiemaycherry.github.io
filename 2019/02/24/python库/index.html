@@ -116,20 +116,18 @@
   <meta name="keywords" content="Python,">
 
 
-<meta name="description" content="开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python">
+<meta name="description" content="开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python Python 高级用法总结基本数据类型：整型、浮点型、布尔类型 容器： Containers容器是一种把多个元素组织在一起的数据结构，容器中的元素可以逐个地迭代获取，可以用in, not in关键字判断元素是否包">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python库">
 <meta property="og:url" content="http://xiemaycherry.github.io/2019/02/24/python库/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python">
+<meta property="og:description" content="开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python Python 高级用法总结基本数据类型：整型、浮点型、布尔类型 容器： Containers容器是一种把多个元素组织在一起的数据结构，容器中的元素可以逐个地迭代获取，可以用in, not in关键字判断元素是否包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190216223007343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ryb2tlX1pob3U=,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:updated_time" content="2020-07-28T11:57:36.000Z">
+<meta property="og:updated_time" content="2020-09-03T16:03:21.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python库">
-<meta name="twitter:description" content="开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190216223007343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ryb2tlX1pob3U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta name="twitter:description" content="开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python Python 高级用法总结基本数据类型：整型、浮点型、布尔类型 容器： Containers容器是一种把多个元素组织在一起的数据结构，容器中的元素可以逐个地迭代获取，可以用in, not in关键字判断元素是否包">
 
 
 
@@ -403,7 +401,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
@@ -442,7 +440,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                10k字
+                6.2k字
               </span>
               
 
@@ -468,242 +466,80 @@
 
       
         <p>开始接触Python是大二结束的时候，到现在都快两年了，其实一直并不是很细节的学习，只是希望能够跑个结果。不过呢？，以后肯定是会经常用Python，所以呢？我接下来会认真学习Python</p>
-<a id="more"></a>
-<h2 id="python-高级用法总结"><a class="header-anchor" href="#python-高级用法总结">¶</a>Python 高级用法总结</h2>
-<p>基本数据类型：整型、浮点型、布尔类型</p>
-<h3 id="容器：-containers"><a class="header-anchor" href="#容器：-containers">¶</a>容器： Containers</h3>
-<p>容器是一种把多个元素组织在一起的数据结构，容器中的元素可以逐个地迭代获取，可以用in, not in关键字判断元素是否包含在容器中。通常这类数据结构把所有的元素存储在内存中（也有一些特例，并不是所有的元素都放在内存，比如迭代器和生成器对象）在Python中，常见的容器对象有：<br>
-list, deque<br>
-set, frozensets<br>
-dict, defaultdict, OrderedDict, Counter<br>
-tuple, namedtuple<br>
-str</p>
-<h2 id="list推导-list-comprehensions"><a class="header-anchor" href="#list推导-list-comprehensions">¶</a>list推导（list comprehensions)</h2>
-<p>官方解释：列表解析式是Python内置的非常<strong>简单</strong>却<strong>强大</strong>的可以用来创建list的生成式。</p>
+<h2 id="Python-高级用法总结"><a href="#Python-高级用法总结" class="headerlink" title="Python 高级用法总结"></a>Python 高级用法总结</h2><p>基本数据类型：整型、浮点型、布尔类型</p>
+<h3 id="容器：-Containers"><a href="#容器：-Containers" class="headerlink" title="容器： Containers"></a>容器： Containers</h3><p>容器是一种把多个元素组织在一起的数据结构，容器中的元素可以逐个地迭代获取，可以用in, not in关键字判断元素是否包含在容器中。通常这类数据结构把所有的元素存储在内存中（也有一些特例，并不是所有的元素都放在内存，比如迭代器和生成器对象）在Python中，常见的容器对象有：<br>list, deque<br>set, frozensets<br>dict, defaultdict, OrderedDict, Counter<br>tuple, namedtuple<br>str</p>
+<h2 id="list推导（list-comprehensions"><a href="#list推导（list-comprehensions" class="headerlink" title="list推导（list comprehensions)"></a>list推导（list comprehensions)</h2><p>官方解释：列表解析式是Python内置的非常<strong>简单</strong>却<strong>强大</strong>的可以用来创建list的生成式。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于一个列表，既要遍历索引又要遍历元素。</span><br></pre></td></tr></table></figure>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = [<span class="string">'I'</span>, <span class="string">'love'</span>, <span class="string">'Python'</span>]</span><br><span class="line"><span class="keyword">for</span> i, element <span class="keyword">in</span> enumerate(array):</span><br><span class="line">    array[i] = <span class="string">'%d: %s'</span> % (i, seq[i])</span><br></pre></td></tr></table></figure>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getitem</span><span class="params">(index, element)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'%d: %s'</span> % (index, element)</span><br><span class="line"></span><br><span class="line">array = [<span class="string">'I'</span>, <span class="string">'love'</span>, <span class="string">'Python'</span>]</span><br><span class="line">arrayIndex = [getitem(index, element) <span class="keyword">for</span> index, element <span class="keyword">in</span> enumerate(array)]</span><br></pre></td></tr></table></figure>
-<h2 id="迭代器和生成器"><a class="header-anchor" href="#迭代器和生成器">¶</a>迭代器和生成器</h2>
-<h3 id="可迭代对象："><a class="header-anchor" href="#可迭代对象：">¶</a>可迭代对象：</h3>
-<p>凡是可以返回一个迭代器的对象都可称之为可迭代对象<br>
-例如：list    dic    str     set     tuple     range()     enumerate(枚举)     f=open()（文件句柄）</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 迭代器(iterator)</span></span><br><span class="line">是一个带状态的对象，他能在你调用next()方法的时候返回容器中的下一个值，任何实现了__iter__和__next__()（python2中实现next()）方法的对象都是迭代器，__iter__返回迭代器自身，__next__返回容器中的下一个值，如果容器中没有更多元素了，则抛出StopIteration异常</span><br><span class="line"><span class="comment">### 生成器(generator)</span></span><br><span class="line">生成器其实是一种特殊的迭代器，不过这种迭代器更加优雅。它不需要再像上面的类一样写__iter__()和__next__()方法了，只需要一个yiled关键字。 生成器一定是迭代器（反之不成立）</span><br><span class="line"><span class="comment">#列表生成式</span></span><br><span class="line">lis = [x*x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"><span class="comment"># 受到内存限制，列表容量肯定是有限的</span></span><br><span class="line"><span class="comment">#生成器表达式</span></span><br><span class="line">generator_ex = (x*x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
-<p>生成器： 不用创建完整的list，为节省大量的空间，在Python中，这种一边循环一边计算的机制，称为生成器：generator<br>
-Tuples:()<br>
-字典：{：，}<br>
-Sets: {,}<br>
-函数<br>
-类</p>
-<h2 id="python库-numpy"><a class="header-anchor" href="#python库-numpy">¶</a>Python库----numpy</h2>
-<h3 id="what"><a class="header-anchor" href="#what">¶</a>What</h3>
-<p>NumPy=Numerical+Python<br>
-主要是提供了高性能多维数组这个对象，以及处理相关的方法</p>
-<h3 id="how"><a class="header-anchor" href="#how">¶</a>How</h3>
-<ol>
+<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h2><h3 id="可迭代对象："><a href="#可迭代对象：" class="headerlink" title="可迭代对象："></a>可迭代对象：</h3><p>凡是可以返回一个迭代器的对象都可称之为可迭代对象<br>例如：list    dic    str     set     tuple     range()     enumerate(枚举)     f=open()（文件句柄）<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 迭代器(iterator)</span></span><br><span class="line">是一个带状态的对象，他能在你调用next()方法的时候返回容器中的下一个值，任何实现了__iter__和__next__()（python2中实现next()）方法的对象都是迭代器，__iter__返回迭代器自身，__next__返回容器中的下一个值，如果容器中没有更多元素了，则抛出StopIteration异常</span><br><span class="line"><span class="comment">### 生成器(generator)</span></span><br><span class="line">生成器其实是一种特殊的迭代器，不过这种迭代器更加优雅。它不需要再像上面的类一样写__iter__()和__next__()方法了，只需要一个yiled关键字。 生成器一定是迭代器（反之不成立）</span><br><span class="line"><span class="comment">#列表生成式</span></span><br><span class="line">lis = [x*x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"><span class="comment"># 受到内存限制，列表容量肯定是有限的</span></span><br><span class="line"><span class="comment">#生成器表达式</span></span><br><span class="line">generator_ex = (x*x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</span><br></pre></td></tr></table></figure></p>
+<p>生成器： 不用创建完整的list，为节省大量的空间，在Python中，这种一边循环一边计算的机制，称为生成器：generator<br>Tuples:()<br> 字典：{：，}<br> Sets: {,}<br>函数<br>类</p>
+<h2 id="Python库——numpy"><a href="#Python库——numpy" class="headerlink" title="Python库——numpy"></a>Python库——numpy</h2><h3 id="What"><a href="#What" class="headerlink" title="What"></a>What</h3><p>NumPy=Numerical+Python<br>主要是提供了高性能多维数组这个对象，以及处理相关的方法</p>
+<h3 id="How"><a href="#How" class="headerlink" title="How"></a>How</h3><ol>
 <li>自定义一个（1D or MD)数组或者特殊的数组,一维，二维</li>
 <li>数组切片（也就是提取数组元素），注意 a[:,0]和a[:,0:1]是不同的喔</li>
 <li>关于数组属性的方法</li>
 <li>数组运算</li>
-<li>索引<br>
-where 函数<br>
-索引的布尔数组</li>
-<li>广播（Broadcasting）<br>
-用于处理不同性状的 数组。 Broadcasting提供了一种矢量化数组操作的方法，使得循环发生在C而不是Python。标量乘以一个矢量的时候，用Boradcasting更快，因为 broadcasting在乘法期间移动较少的内存</li>
-<li>array 和 matrix 选择哪个?<br>
-<a href="https://www.numpy.org.cn/user_guide/numpy_for_matlab_users.html" target="_blank" rel="noopener">戳我</a></li>
-<li>矢量化和广播、索引<br>
-在Python中循环数组或任何数据结构时，会涉及很多开销。 NumPy中的向量化操作将内部循环委托给高度优化的C和Fortran函数，从而实现更清晰，更快速的Python代码。</li>
-</ol>
-<h2 id="stack-vstack-hstack"><a class="header-anchor" href="#stack-vstack-hstack">¶</a>stack|vstack|hstack</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">np.stack((a, b))</span><br><span class="line">array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">       [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line"></span><br><span class="line">% hstack</span><br><span class="line">a = np.array((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">b = np.array((<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">np.hstack((a,b))</span><br><span class="line">array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">a = np.array([[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">3</span>]])</span><br><span class="line">b = np.array([[<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">4</span>]])</span><br><span class="line">np.hstack((a,b))</span><br><span class="line">array([[<span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">       [<span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line">% vstack</span><br><span class="line">a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">np.vstack((a,b))</span><br><span class="line">array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">       [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line">a = np.array([[<span class="number">1</span>], [<span class="number">2</span>], [<span class="number">3</span>]])</span><br><span class="line">b = np.array([[<span class="number">2</span>], [<span class="number">3</span>], [<span class="number">4</span>]])</span><br><span class="line">np.vstack((a,b))</span><br><span class="line">array([[<span class="number">1</span>],</span><br><span class="line">       [<span class="number">2</span>],</span><br><span class="line">       [<span class="number">3</span>],</span><br><span class="line">       [<span class="number">2</span>],</span><br><span class="line">       [<span class="number">3</span>],</span><br><span class="line">       [<span class="number">4</span>]])</span><br></pre></td></tr></table></figure>
-<h2 id="mean"><a class="header-anchor" href="#mean">¶</a>mean</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[1, 2], [3, 4]])</span><br><span class="line">np.mean(a)</span><br><span class="line"></span><br><span class="line">np.mean(a, axis=0)</span><br><span class="line"></span><br><span class="line">np.mean(a, axis=1)</span><br></pre></td></tr></table></figure>
-<h2 id="reshape"><a class="header-anchor" href="#reshape">¶</a>reshape</h2>
-<p>reshape(x, y)，其中x表示转换后数组的行数，y表示转换后数组的列数。当x或者y为-1时，表示该元素随机分配，如reshape(2, -1)表示列数随机，行数为两行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">格式：np.reshape((x, y, z))</span><br><span class="line"></span><br><span class="line">参数的含义：</span><br><span class="line"></span><br><span class="line">x：表示生成的三维数组中二维数组的个数</span><br><span class="line"></span><br><span class="line">y：表示单个二维数组中一维数组的个数</span><br><span class="line"></span><br><span class="line">z：表示三维数组的列数</span><br></pre></td></tr></table></figure>
-<h2 id="numpy数组去掉冗余的维度-squeeze-函数"><a class="header-anchor" href="#numpy数组去掉冗余的维度-squeeze-函数">¶</a>numpy数组去掉冗余的维度-----squeeze()函数</h2>
-<p>import numpy as np a = [[[10, 2, 3]]] a = np.array(a) a_sque = np.squeeze(a) print(a) print(a_sque)</p>
-<h2 id="python库-pandas"><a class="header-anchor" href="#python库-pandas">¶</a>Python库----pandas</h2>
-<p>记得学习pandas是在大三时候的美赛，花了一天多时间学习pandas，然后预处理数据，当时三个队友都是各自的家，是非常愉快的！！！</p>
-<h3 id="what-v2"><a class="header-anchor" href="#what-v2">¶</a>what</h3>
-<p>Python Data Analysis Library</p>
-<ol>
-<li>
-<p>三种数据结构<br>
-序列： Series 1D<br>
-数据帧： DataFrame 2D<br>
-面板： Panel &gt;2D</p>
+<li>索引<br> where 函数<br> 索引的布尔数组</li>
+<li>广播（Broadcasting）<br>用于处理不同性状的 数组。 Broadcasting提供了一种矢量化数组操作的方法，使得循环发生在C而不是Python。标量乘以一个矢量的时候，用Boradcasting更快，因为 broadcasting在乘法期间移动较少的内存</li>
+<li><p>array 和 matrix 选择哪个?<br> <a href="https://www.numpy.org.cn/user_guide/numpy_for_matlab_users.html" target="_blank" rel="noopener">戳我</a></p>
 </li>
-<li>
-<p>自定义创建</p>
-<ol>
+<li><p>矢量化和广播、索引<br>在Python中循环数组或任何数据结构时，会涉及很多开销。 NumPy中的向量化操作将内部循环委托给高度优化的C和Fortran函数，从而实现更清晰，更快速的Python代码。</p>
+<h2 id="Python库——pandas"><a href="#Python库——pandas" class="headerlink" title="Python库——pandas"></a>Python库——pandas</h2><p>记得学习pandas是在大三时候的美赛，花了一天多时间学习pandas，然后预处理数据，当时三个队友都是各自的家，是非常愉快的！！！</p>
+<h3 id="what"><a href="#what" class="headerlink" title="what"></a>what</h3><p>Python Data Analysis Library</p>
+</li>
+<li>三种数据结构<br>序列： Series 1D<br>数据帧： DataFrame 2D<br>面板： Panel &gt;2D</li>
+<li>自定义创建<ol>
 <li>可以通过字段、数据、series、列表</li>
 <li>列表传入的时候，主要行列，如果单个列表：列；如果是[[],[]]是按行[]</li>
 <li>如果位置不对可转置</li>
 <li>创建空 pd.DataFrame()</li>
 </ol>
 </li>
-<li>
-<p>选择区块<br>
-a) Series<br>
-[]<br>
-b) DataFrame<br>
-列选择 [‘colums的名字’]<br>
-行列选择：.loc[列名,行名]名称 .iloc[列索引,行索引]整数</p>
-</li>
-<li>
-<p>array<br>
-.value</p>
-</li>
-<li>
-<p>统计描述<br>
-.descibe(include = ‘all’) .head() .tail()<br>
-.select_dtype(include=[])<br>
-.columns<br>
-.dtype</p>
-</li>
-<li>
-<p>缺少数据</p>
+<li>选择区块<br> a) Series<br> []<br> b) DataFrame<br> 列选择 [‘colums的名字’]<br> 行列选择：.loc[列名,行名]名称 .iloc[列索引,行索引]整数</li>
+<li>array<br>.value</li>
+<li>统计描述<br> .descibe(include = ‘all’) .head() .tail()<br> .select_dtype(include=[])<br> .columns<br> .dtype</li>
+<li><p>缺少数据</p>
 <ol>
-<li>查看缺失值<br>
-isnull() notnull() 也可以 做一些统计，sum, any,all</li>
-<li>清理缺失值<br>
-dropna(axis=0)：axis = 0:index axis=1,columns</li>
-<li>填充缺少指<br>
-fillna() 标量替换</li>
+<li>查看缺失值<br>isnull() notnull() 也可以 做一些统计，sum, any,all </li>
+<li>清理缺失值<br> dropna(axis=0)：axis = 0:index axis=1,columns</li>
+<li>填充缺少指<br> fillna() 标量替换</li>
 <li>替换</li>
 </ol>
 </li>
-<li>
-<p>统计函数</p>
+<li><p>统计函数</p>
 </li>
 </ol>
-<ol start="8">
-<li>
-<p>Pandas 函数应用<br>
-表合理函数应用：pipe()<br>
-行或列函数应用：apply()<br>
-元素函数应用：applymap()<br>
-eg： pd.pipe(lambda x: x*100)</p>
-</li>
-<li>
-<p>类别变量向量化<br>
-非数值类型的处理方法</p>
-</li>
-<li>
-<p>时间序列生成 data_range</p>
 <ol>
-<li>pandas.date_range(“11:00”, “21:30”, freq=“30min”)</li>
-<li>参数</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Return a fixed frequency DatetimeIndex.</span><br></pre></td></tr></table></figure>
+<li><p>Pandas 函数应用<br>表合理函数应用：pipe()<br>行或列函数应用：apply()<br>元素函数应用：applymap()<br>eg： pd.pipe(lambda x: x*100)</p>
+</li>
+<li><p>类别变量向量化<br>非数值类型的处理方法</p>
+</li>
+<li><p>时间序列生成 data_range</p>
+<ol>
+<li>pandas.date_range(“11:00”, “21:30”, freq=”30min”)</li>
+<li>参数<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">    Return a fixed frequency DatetimeIndex.</span><br><span class="line"></span><br><span class="line">Parameters</span><br><span class="line">startstr <span class="keyword">or</span> datetime-like, optional</span><br><span class="line">Left bound <span class="keyword">for</span> generating dates.</span><br><span class="line"></span><br><span class="line">endstr <span class="keyword">or</span> datetime-like, optional</span><br><span class="line">Right bound <span class="keyword">for</span> generating dates.</span><br><span class="line"></span><br><span class="line">periodsint, optional</span><br><span class="line">Number of periods to generate.</span><br><span class="line"></span><br><span class="line">freqstr <span class="keyword">or</span> DateOffset, default ‘D’</span><br><span class="line">Frequency strings can have multiples, e.g. ‘<span class="number">5</span>H’. See here <span class="keyword">for</span> a list of frequency aliases.</span><br><span class="line"></span><br><span class="line">tzstr <span class="keyword">or</span> tzinfo, optional</span><br><span class="line">Time zone name <span class="keyword">for</span> returning localized DatetimeIndex, <span class="keyword">for</span> example ‘Asia/Hong_Kong’. By default, the resulting DatetimeIndex <span class="keyword">is</span> timezone-naive.</span><br><span class="line"></span><br><span class="line">normalizebool, default <span class="keyword">False</span></span><br><span class="line">Normalize start/end dates to midnight before generating date range.</span><br><span class="line"></span><br><span class="line">namestr, default <span class="keyword">None</span></span><br><span class="line">Name of the resulting DatetimeIndex.</span><br><span class="line"></span><br><span class="line">closed&#123;<span class="keyword">None</span>, ‘left’, ‘right’&#125;, optional</span><br><span class="line">Make the interval closed <span class="keyword">with</span> respect to the given frequency to the ‘left’, ‘right’, <span class="keyword">or</span> both sides (<span class="keyword">None</span>, the default).</span><br><span class="line"></span><br><span class="line">**kwargs</span><br><span class="line">For compatibility. Has no effect on the result.</span><br><span class="line"></span><br><span class="line">Returns</span><br><span class="line">rngDatetimeIndex</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>Parameters<br>
-startstr or datetime-like, optional<br>
-Left bound for generating dates.</p>
-<p>endstr or datetime-like, optional<br>
-Right bound for generating dates.</p>
-<p>periodsint, optional<br>
-Number of periods to generate.</p>
-<p>freqstr or DateOffset, default ‘D’<br>
-Frequency strings can have multiples, e.g. ‘5H’. See here for a list of frequency aliases.</p>
-<p>tzstr or tzinfo, optional<br>
-Time zone name for returning localized DatetimeIndex, for example ‘Asia/Hong_Kong’. By default, the resulting DatetimeIndex is timezone-naive.</p>
-<p>normalizebool, default False<br>
-Normalize start/end dates to midnight before generating date range.</p>
-<p>namestr, default None<br>
-Name of the resulting DatetimeIndex.</p>
-<p>closed{None, ‘left’, ‘right’}, optional<br>
-Make the interval closed with respect to the given frequency to the ‘left’, ‘right’, or both sides (None, the default).</p>
-<p>**kwargs<br>
-For compatibility. Has no effect on the result.</p>
-<p>Returns<br>
-rngDatetimeIndex</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">11. DataFrame.stack</span><br><span class="line">Parameters</span><br><span class="line">levelint, str, list, default -1</span><br><span class="line">Level(s) to stack from the column axis onto the index axis, defined as one index or label, or a list of indices or labels.</span><br><span class="line"></span><br><span class="line">dropnabool, default True</span><br><span class="line">Whether to drop rows in the resulting Frame/Series with missing values. Stacking a column level onto the index axis can create combinations of index and column values that are missing from the original dataframe. See Examples section.</span><br><span class="line"></span><br><span class="line">Returns</span><br><span class="line">DataFrame or Series</span><br><span class="line">Stacked dataframe or series.</span><br><span class="line">​```python</span><br><span class="line">df_single_level_cols</span><br><span class="line">     weight height</span><br><span class="line">cat       0      1</span><br><span class="line">dog       2      3</span><br><span class="line">df_single_level_cols.stack()</span><br><span class="line">cat  weight    0</span><br><span class="line">     height    1</span><br><span class="line">dog  weight    2</span><br><span class="line">     height</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DataFrame.stack<br>Parameters<br>levelint, str, list, default -1<br>Level(s) to stack from the column axis onto the index axis, defined as one index or label, or a list of indices or labels.</p>
+</li>
+</ol>
+<p>dropnabool, default True<br>Whether to drop rows in the resulting Frame/Series with missing values. Stacking a column level onto the index axis can create combinations of index and column values that are missing from the original dataframe. See Examples section.</p>
+<p>Returns<br>DataFrame or Series<br>Stacked dataframe or series.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df_single_level_cols</span><br><span class="line">     weight height</span><br><span class="line">cat       <span class="number">0</span>      <span class="number">1</span></span><br><span class="line">dog       <span class="number">2</span>      <span class="number">3</span></span><br><span class="line">df_single_level_cols.stack()</span><br><span class="line">cat  weight    <span class="number">0</span></span><br><span class="line">     height    <span class="number">1</span></span><br><span class="line">dog  weight    <span class="number">2</span></span><br><span class="line">     height</span><br></pre></td></tr></table></figure></p>
 <p>DataFrame.value_connts()返回序列，index=统计值，值：统计个数</p>
-<h2 id="matplotlib"><a class="header-anchor" href="#matplotlib">¶</a>Matplotlib</h2>
-<p>matplotlib.pyplot as plt</p>
+<h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>matplotlib.pyplot as plt</p>
 <ol>
 <li>窗口：figure: 一个窗口，plt.figure(num=,figsize=(h,w))下面数据都属于当前的figure,有一定的顺序喔</li>
 <li>画图：plt.plot(x,y,color=,linewidth=,linestyle,label=)</li>
 <li>标注信息： plt.xlim((,)), plt.yxlim((,)),plt.xlabel(),plt.ylabel(),ticks:图像的小标，plt.xticks(),plt.yticks([值1，值2],[r’$值1\ 对应的文字$’,r’值2的文字 \alpha])</li>
-<li>坐标轴：axis gac='get current axis’<br>
-ax = plt.gca() # 轴<br>
-# 获取四个轴<br>
-ax.spines[‘right|left|top|’].set_color(‘none’)<br>
-ax.xaxis.set_ticks_position(‘bottom’)<br>
-ax.spines[‘bottom’].set_position((‘data’,-1))</li>
-<li>图例：legend:<br>
-a. plt.plot(,label=), plt.legend()<br>
-b. l1, = plt.plot() plt.legend(handles=[l1,],labels=[,],loc=‘best|upper right|’)</li>
-<li>注解 annotation<br>
-a. 点的位置(x0，y0) plt.scatter(). plt.plot([x0,y0],[y0,0],‘k–’,lw=)<br>
-b . method 1:<br>
-plt.annotate(r’name’,xy=(,)起始点，xycoords=‘data’//基于xy,xytext=(+30,30),textcoords=‘offseet points’//文本基于xy,arrowprops=dict(arrowstyle=’-&gt;'箭头,connectionstyle=‘arc3,rad=.2’)弧度)</li>
-<li>Bar 柱状图<br>
-plt.bar(x,+|-y,facecolor=&quot;&quot;,edgecolor,)<br>
-|# ha horizontal alignment 对齐方式<br>
-for x,y in zip(x,y):<br>
-plt.text(x+0,4,y+0.05,’%.2f’%y,ha=‘center’,va=‘bottom’)</li>
-<li>很多自动 subplot(总行，当前行的列，总的按最小分的第几个)<br>
-subplot(,)</li>
+<li>坐标轴：axis gac=’get current axis’<br>ax = plt.gca() # 轴<br># 获取四个轴<br>ax.spines[‘right|left|top|’].set_color(‘none’)<br>ax.xaxis.set_ticks_position(‘bottom’)<br>ax.spines[‘bottom’].set_position((‘data’,-1))</li>
+<li>图例：legend:<br> a. plt.plot(,label=), plt.legend()<br> b. l1, = plt.plot() plt.legend(handles=[l1,],labels=[,],loc=’best|upper right|’)</li>
+<li>注解 annotation<br>a. 点的位置(x0，y0) plt.scatter(). plt.plot([x0,y0],[y0,0],’k—‘,lw=)<br>b . method 1:<br>plt.annotate(r’name’,xy=(,)起始点，xycoords=’data’//基于xy,xytext=(+30,30),textcoords=’offseet points’//文本基于xy,arrowprops=dict(arrowstyle=’-&gt;’箭头,connectionstyle=’arc3,rad=.2’)弧度)</li>
+<li>Bar 柱状图<br>plt.bar(x,+|-y,facecolor=””,edgecolor,)<br>|# ha horizontal alignment 对齐方式<br>for x,y in zip(x,y):<br> plt.text(x+0,4,y+0.05,’%.2f’%y,ha=’center’,va=’bottom’)</li>
+<li>很多自动 subplot(总行，当前行的列，总的按最小分的第几个)<br>subplot(,,)<h2 id="scikit-learn"><a href="#scikit-learn" class="headerlink" title="scikit-learn"></a>scikit-learn</h2>官方教程绝对是最好最棒的选择，有简单数学指导、直观立马就能上手的案例，还能提阅读英文的能力喔，实在是一举多得啊！！！！ <a href="https://scikit-learn.org/" target="_blank" rel="noopener">scikit-learn.org</a></li>
 </ol>
-<h2 id="index"><a class="header-anchor" href="#index">¶</a>index</h2>
-<p>reset_index:限于DataFrame</p>
-<p>set_index</p>
-<p>index</p>
-<h1>scikit-learn</h1>
-<p>官方教程绝对是最好最棒的选择，有简单数学推导、直观立马就能上手的案例，还能提阅读英文的能力喔，实在是一举多得啊！！！！ <a href="https://scikit-learn.org/" target="_blank" rel="noopener">scikit-learn.org</a></p>
-<h2 id="regression"><a class="header-anchor" href="#regression">¶</a>regression</h2>
-<h2 id="feature-selection"><a class="header-anchor" href="#feature-selection">¶</a>Feature selection</h2>
-<h3 id="method-from-sklearn-feature-selection-import-variancethreshold"><a class="header-anchor" href="#method-from-sklearn-feature-selection-import-variancethreshold">¶</a>Method from sklearn.feature_selection import VarianceThreshold</h3>
-<h3 id="sklearn-feature-selection-selectfrommodel"><a class="header-anchor" href="#sklearn-feature-selection-selectfrommodel">¶</a>sklearn.feature_selection.SelectFromModel</h3>
-<p><em>class</em> sklearn.feature_selection.SelectFromModel(<em>estimator</em>, , <em>threshold=None</em>, <em>prefit=False</em>, <em>norm_order=1</em>, <em>max_features=None</em>)</p>
-<h1></h1>
-<h1>seaborn</h1>
-<p>seaborn.jointplot(x, y, data=None, kind=‘scatter’, stat_func=None, color=None, height=6, ratio=5, space=0.2, dropna=True, xlim=None, ylim=None, joint_kws=None, marginal_kws=None, annot_kws=None, **kwargs)</p>
-<ul>
-<li>
-<p>Parameters</p>
-<p><strong>x, y</strong>strings or vectorsData or names of variables in <code>data</code>.<strong>data</strong>DataFrame, optionalDataFrame when <code>x</code> and <code>y</code> are variable names.<strong>kind</strong>{ “scatter” | “reg” | “resid” | “kde” | “hex” }, optionalKind of plot to draw.<strong>stat_func</strong>callable or None, optional<em>Deprecated</em><strong>color</strong>matplotlib color, optionalColor used for the plot elements.<strong>height</strong>numeric, optionalSize of the figure (it will be square).<strong>ratio</strong>numeric, optionalRatio of joint axes height to marginal axes height.<strong>space</strong>numeric, optionalSpace between the joint and marginal axes<strong>dropna</strong>bool, optionalIf True, remove observations that are missing from <code>x</code> and <code>y</code>.<strong>{x, y}lim</strong>two-tuples, optionalAxis limits to set before plotting.<strong>{joint, marginal, annot}_kws</strong>dicts, optionalAdditional keyword arguments for the plot components.<strong>kwargs</strong>key, value pairingsAdditional keyword arguments are passed to the function used to draw the plot on the joint Axes, superseding items in the <code>joint_kws</code> dictionary.</p>
-</li>
-<li>
-<p>Returns</p>
-<p><strong>grid</strong><a href="https://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid" target="_blank" rel="noopener"><code>JointGrid</code></a><a href="https://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid" target="_blank" rel="noopener"><code>JointGrid</code></a> object with the plot on it.</p>
-</li>
-</ul>
-<p><a href="http://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid" target="_blank" rel="noopener">http://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid</a></p>
-<p>g = sns.jointplot(x=“x”, y=“y”, kind = ‘reg’ , space=0,color = ‘g’, data=df11,stat_func=sci.pearsonr)</p>
-<p>sns.set()</p>
-<p>sns.axes_style(“darkgrid”)</p>
-<p>sns.set_context(“paper”)</p>
-<p><a href="https://blog.mazhangjing.com/2018/03/29/learn_seaborn/" target="_blank" rel="noopener">https://blog.mazhangjing.com/2018/03/29/learn_seaborn/</a></p>
-<p><a href="https://blog.csdn.net/weiyudang11/article/details/51549672" target="_blank" rel="noopener">https://blog.csdn.net/weiyudang11/article/details/51549672</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#初始化类</span><br><span class="line">g=sns.JointGrid(x=&apos;v_ma5&apos;,y=&apos;price_change&apos;,data=stock,space=0.5,ratio=5)</span><br><span class="line"></span><br><span class="line">g=sns.JointGrid(x=&apos;v_ma5&apos;,y=&apos;price_change&apos;,data=stock,space=0.5,ratio=5)</span><br><span class="line">g=g.plot_joint(plt.scatter,color=&apos;.3&apos;,edgecolor=&apos;r&apos;)</span><br><span class="line">g=g.plot_marginals(sns.distplot,kde=False)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from scipy import stats</span><br><span class="line">g=sns.JointGrid(x=&apos;v_ma5&apos;,y=&apos;price_change&apos;,data=stock,space=0.5,ratio=5)</span><br><span class="line">g=g.plot_joint(plt.scatter,color=&apos;.3&apos;,edgecolor=&apos;r&apos;)</span><br><span class="line">_=g.ax_marg_x.hist(stock.v_ma10,color=&apos;r&apos;,alpha=.6,bins=50)</span><br><span class="line">_=g.ax_marg_y.hist(stock.low,color=&apos;y&apos;,orientation=&quot;horizontal&quot;,bins=20)</span><br><span class="line">rquare=lambda a,b:stats.pearsonr(a,b)[0]**2</span><br><span class="line">g=g.annotate(rquare,template=&apos;&#123;stat&#125;:&#123;val:.2f&#125;&apos;,stat=&apos;$R^2$&apos;,loc=&apos;upper left&apos;,fontsize=12)</span><br></pre></td></tr></table></figure>
-<h2 id="颜色和风格设置"><a class="header-anchor" href="#颜色和风格设置">¶</a>颜色和风格设置</h2>
-<h2 id="调色板"><a class="header-anchor" href="#调色板">¶</a>调色板</h2>
-<p>主要使用以下几个函数设置颜色：<br>
-color_palette() 能传入任何Matplotlib所有支持的颜色<br>
-color_palette() 不写参数则默认颜色</p>
-<p>current_palette = sns.color_palette() sns.palplot(current_palette) plt.show()</p>
-<p>set_palette() 设置所有图的颜色</p>
-<p>sns.palplot(sns.color_palette(“hls”,8)) plt.show()</p>
-<h2 id="颜色的亮度及饱和度"><a class="header-anchor" href="#颜色的亮度及饱和度">¶</a>颜色的亮度及饱和度</h2>
-<p>l-光度 lightness<br>
-s-饱和 saturation</p>
-<p>sns.palplot(sns.hls_palette(8,l=.7,s=.9)) plt.show()</p>
-<h2 id="xkcd选取颜色"><a class="header-anchor" href="#xkcd选取颜色">¶</a>xkcd选取颜色</h2>
-<p>xkcd包含了一套众包努力的针对随机RGB色的命名。产生了954个可以随时通过xkcd_rgb字典中调用的命名颜色</p>
-<p>plt.plot([0,1],[0,1],sns.xkcd_rgb[‘pale red’],lw = 3) #lw = 线宽度<br>
-plt.plot([0,1],[0,2],sns.xkcd_rgb[‘medium green’],lw = 3)<br>
-plt.plot([0,1],[0,3],sns.xkcd_rgb[‘denim blue’],lw = 3)<br>
-plt.show()</p>
-<p><img src="https://img-blog.csdnimg.cn/20190216223007343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ryb2tlX1pob3U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="汇总"><a class="header-anchor" href="#汇总">¶</a>汇总</h2>
-<p><a href="http://seaborn.pydata.org/api.html#" target="_blank" rel="noopener">http://seaborn.pydata.org/api.html#</a></p>
-<p><a href="https://github.com/mwaskom/seaborn/blob/master/seaborn/rcmod.py" target="_blank" rel="noopener">https://github.com/mwaskom/seaborn/blob/master/seaborn/rcmod.py</a></p>
-<p><a href="https://xkcd.com/color/rgb/" target="_blank" rel="noopener">https://xkcd.com/color/rgb/</a></p>
+<h2 id="最小二乘法：Ordinary-Least-Squares"><a href="#最小二乘法：Ordinary-Least-Squares" class="headerlink" title="最小二乘法：Ordinary Least Squares"></a>最小二乘法：Ordinary Least Squares</h2><p><img src="" alt="原理"><br>详细的案例<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error, r2_score</span><br><span class="line"><span class="comment"># Create some train data</span></span><br><span class="line">train_x = np.array([[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">3</span>]])</span><br><span class="line">train_y = np.array([[<span class="number">0</span>],[<span class="number">1</span>],[<span class="number">2</span>],[<span class="number">4</span>]])</span><br><span class="line"><span class="comment"># Create linear regression object</span></span><br><span class="line">regr = linear_model.LinearRegression()</span><br><span class="line"><span class="comment"># Create the model using training sets</span></span><br><span class="line">regr.fit(train_x,train_y)</span><br><span class="line"><span class="comment"># Make predictions using the testing set</span></span><br><span class="line">y_pred = regr.predict(train_x)</span><br><span class="line"><span class="comment"># Get same parm</span></span><br><span class="line"><span class="comment"># The coefficients w</span></span><br><span class="line">print(<span class="string">'Coefficients:'</span>, regr.coef_)</span><br><span class="line"><span class="comment"># The intercept b</span></span><br><span class="line">print(<span class="string">'intercept'</span>, regr.intercept_)</span><br><span class="line"><span class="comment"># The mean squared error</span></span><br><span class="line">print(<span class="string">"Mean squared error: %.2f"</span>, mean_squared_error(train_y ,y_pred))</span><br><span class="line"><span class="comment"># Explained variance score: 1 is perfect prediction</span></span><br><span class="line">print(<span class="string">'Variance score: %.2f'</span>,r2_score(train_y, y_pred))</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -854,7 +690,7 @@ plt.show()</p>
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XieMay</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">CAT_cat</p>
           </div>
 
           
@@ -864,7 +700,7 @@ plt.show()</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -927,7 +763,7 @@ plt.show()</p>
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1036,7 +872,11 @@ plt.show()</p>
                     
                       
                     
-                    <span class="site-state-item-count">48</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1091,7 +931,7 @@ plt.show()</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python-高级用法总结"><span class="nav-number">1.</span> <span class="nav-text">¶Python 高级用法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#容器：-containers"><span class="nav-number">1.1.</span> <span class="nav-text">¶容器： Containers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list推导-list-comprehensions"><span class="nav-number">2.</span> <span class="nav-text">¶list推导（list comprehensions)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">3.</span> <span class="nav-text">¶迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可迭代对象："><span class="nav-number">3.1.</span> <span class="nav-text">¶可迭代对象：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python库-numpy"><span class="nav-number">4.</span> <span class="nav-text">¶Python库----numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what"><span class="nav-number">4.1.</span> <span class="nav-text">¶What</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how"><span class="nav-number">4.2.</span> <span class="nav-text">¶How</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stack-vstack-hstack"><span class="nav-number">5.</span> <span class="nav-text">¶stack|vstack|hstack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mean"><span class="nav-number">6.</span> <span class="nav-text">¶mean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reshape"><span class="nav-number">7.</span> <span class="nav-text">¶reshape</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy数组去掉冗余的维度-squeeze-函数"><span class="nav-number">8.</span> <span class="nav-text">¶numpy数组去掉冗余的维度-----squeeze()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python库-pandas"><span class="nav-number">9.</span> <span class="nav-text">¶Python库----pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-v2"><span class="nav-number">9.1.</span> <span class="nav-text">¶what</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib"><span class="nav-number">10.</span> <span class="nav-text">¶Matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index"><span class="nav-number">11.</span> <span class="nav-text">¶index</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">scikit-learn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#regression"><span class="nav-number">1.</span> <span class="nav-text">¶regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#feature-selection"><span class="nav-number">2.</span> <span class="nav-text">¶Feature selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#method-from-sklearn-feature-selection-import-variancethreshold"><span class="nav-number">2.1.</span> <span class="nav-text">¶Method from sklearn.feature_selection import VarianceThreshold</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sklearn-feature-selection-selectfrommodel"><span class="nav-number">2.2.</span> <span class="nav-text">¶sklearn.feature_selection.SelectFromModel</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">seaborn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色和风格设置"><span class="nav-number">1.</span> <span class="nav-text">¶颜色和风格设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调色板"><span class="nav-number">2.</span> <span class="nav-text">¶调色板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色的亮度及饱和度"><span class="nav-number">3.</span> <span class="nav-text">¶颜色的亮度及饱和度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xkcd选取颜色"><span class="nav-number">4.</span> <span class="nav-text">¶xkcd选取颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇总"><span class="nav-number">5.</span> <span class="nav-text">¶汇总</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-高级用法总结"><span class="nav-number">1.</span> <span class="nav-text">Python 高级用法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#容器：-Containers"><span class="nav-number">1.1.</span> <span class="nav-text">容器： Containers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list推导（list-comprehensions"><span class="nav-number">2.</span> <span class="nav-text">list推导（list comprehensions)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">3.</span> <span class="nav-text">迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可迭代对象："><span class="nav-number">3.1.</span> <span class="nav-text">可迭代对象：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python库——numpy"><span class="nav-number">4.</span> <span class="nav-text">Python库——numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What"><span class="nav-number">4.1.</span> <span class="nav-text">What</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How"><span class="nav-number">4.2.</span> <span class="nav-text">How</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python库——pandas"><span class="nav-number">5.</span> <span class="nav-text">Python库——pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what"><span class="nav-number">5.1.</span> <span class="nav-text">what</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib"><span class="nav-number">6.</span> <span class="nav-text">Matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scikit-learn"><span class="nav-number">7.</span> <span class="nav-text">scikit-learn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小二乘法：Ordinary-Least-Squares"><span class="nav-number">8.</span> <span class="nav-text">最小二乘法：Ordinary Least Squares</span></a></li></ol></div>
             
 
           </div>
@@ -1132,7 +972,7 @@ plt.show()</p>
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">272k</span>
+    <span title="Symbols count total">260k</span>
   
 
   
