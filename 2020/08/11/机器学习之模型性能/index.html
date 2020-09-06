@@ -116,17 +116,20 @@
   <meta name="keywords" content="正则化,交叉验证,特征工程,">
 
 
+<meta name="description" content="机器学习模型的性能评价训练误差和泛化误差训练误差即经验误差；学习器在新样本上的误差称为泛化误差。 模型评估的方法留出法 交叉验证法 性能度量预测分类准确度和错误率准确率：指的是分类正确的样本数量占样本总数的比例 错误率：指分类错误的样本占样本总数的比例 准确率和召回率精确率，也被称作查准率，是指所有预测为正类的结果中，真正的正类的比例。 召回率，也被称作查全率，是指所有正类中，被分类器找出来的比">
 <meta name="keywords" content="正则化,交叉验证,特征工程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习之模型性能">
 <meta property="og:url" content="http://xiemaycherry.github.io/2020/08/11/机器学习之模型性能/index.html">
 <meta property="og:site_name" content="welcome">
+<meta property="og:description" content="机器学习模型的性能评价训练误差和泛化误差训练误差即经验误差；学习器在新样本上的误差称为泛化误差。 模型评估的方法留出法 交叉验证法 性能度量预测分类准确度和错误率准确率：指的是分类正确的样本数量占样本总数的比例 错误率：指分类错误的样本占样本总数的比例 准确率和召回率精确率，也被称作查准率，是指所有预测为正类的结果中，真正的正类的比例。 召回率，也被称作查全率，是指所有正类中，被分类器找出来的比">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://xiemaycherry.github.io/2020/08/11/机器学习之模型性能/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD%5C%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD.png">
-<meta property="og:updated_time" content="2020-08-11T15:33:36.000Z">
+<meta property="og:image" content="http://xiemaycherry.github.io/2020/08/11/机器学习之模型性能/模型性能.png">
+<meta property="og:updated_time" content="2020-09-06T16:13:12.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习之模型性能">
-<meta name="twitter:image" content="http://xiemaycherry.github.io/2020/08/11/机器学习之模型性能/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD%5C%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD.png">
+<meta name="twitter:description" content="机器学习模型的性能评价训练误差和泛化误差训练误差即经验误差；学习器在新样本上的误差称为泛化误差。 模型评估的方法留出法 交叉验证法 性能度量预测分类准确度和错误率准确率：指的是分类正确的样本数量占样本总数的比例 错误率：指分类错误的样本占样本总数的比例 准确率和召回率精确率，也被称作查准率，是指所有预测为正类的结果中，真正的正类的比例。 召回率，也被称作查全率，是指所有正类中，被分类器找出来的比">
+<meta name="twitter:image" content="http://xiemaycherry.github.io/2020/08/11/机器学习之模型性能/模型性能.png">
 
 
 
@@ -439,7 +442,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                1字
+                287字
               </span>
               
 
@@ -464,7 +467,33 @@
       
 
       
-        <p><img src="/2020/08/11/机器学习之模型性能/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD%5C%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD.png" alt="模型性能"></p>
+        <p><img src="/2020/08/11/机器学习之模型性能/模型性能.png" alt="模型性能"></p>
+<h1 id="机器学习模型的性能评价"><a href="#机器学习模型的性能评价" class="headerlink" title="机器学习模型的性能评价"></a>机器学习模型的性能评价</h1><h2 id="训练误差和泛化误差"><a href="#训练误差和泛化误差" class="headerlink" title="训练误差和泛化误差"></a>训练误差和泛化误差</h2><p>训练误差即经验误差；学习器在新样本上的误差称为泛化误差。</p>
+<h2 id="模型评估的方法"><a href="#模型评估的方法" class="headerlink" title="模型评估的方法"></a>模型评估的方法</h2><p>留出法</p>
+<p>交叉验证法</p>
+<h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><h3 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h3><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><h3 id="准确度和错误率"><a href="#准确度和错误率" class="headerlink" title="准确度和错误率"></a>准确度和错误率</h3><p><strong>准确率</strong>：指的是分类正确的样本数量占样本总数的比例</p>
+<p><strong>错误率</strong>：指分类错误的样本占样本总数的比例</p>
+<h2 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h2><p>精确率，也被称作查准率，是指<strong>所有预测为正类的结果中，真正的正类的比例</strong>。</p>
+<p>召回率，也被称作查全率，是指所有正类中，被分类器找出来的比例。</p>
+<h2 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h2><p>学习器在未知数据上的表现差</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ol>
+<li>数据上<ol>
+<li>建模样本。样本数量少；</li>
+<li>噪音干扰大</li>
+</ol>
+</li>
+<li>模型<ol>
+<li>参数过得，模型太复杂</li>
+</ol>
+</li>
+</ol>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li>交叉验证</li>
+<li>添加正则项<ol>
+<li>范数；</li>
+</ol>
+</li>
+</ol>
 
       
     </div>
@@ -604,8 +633,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -620,7 +658,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -683,7 +721,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -796,7 +840,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -842,6 +894,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习模型的性能评价"><span class="nav-number">1.</span> <span class="nav-text">机器学习模型的性能评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#训练误差和泛化误差"><span class="nav-number">1.1.</span> <span class="nav-text">训练误差和泛化误差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型评估的方法"><span class="nav-number">1.2.</span> <span class="nav-text">模型评估的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能度量"><span class="nav-number">1.3.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#预测"><span class="nav-number">1.3.1.</span> <span class="nav-text">预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类"><span class="nav-number">1.3.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准确度和错误率"><span class="nav-number">1.3.3.</span> <span class="nav-text">准确度和错误率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准确率和召回率"><span class="nav-number">1.4.</span> <span class="nav-text">准确率和召回率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过拟合"><span class="nav-number">1.5.</span> <span class="nav-text">过拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原因"><span class="nav-number">1.5.1.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">1.5.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -876,7 +944,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">260k</span>
+    <span title="Symbols count total">294k</span>
   
 
   

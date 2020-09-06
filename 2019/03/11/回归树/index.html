@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/MyBlog/hexo/source/_posts/回归树/原理介绍1.PNG">
 <meta property="og:image" content="http://xiemaycherry.github.io/2019/03/11/回归树/re.png">
-<meta property="og:updated_time" content="2020-09-03T16:03:21.431Z">
+<meta property="og:updated_time" content="2020-07-25T07:53:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="回归树">
 <meta name="twitter:description" content="[TOC] 分类树与回归树分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。Classification tree analysis is when the predicted outcome is the class to which the data belongs. 回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分的两">
@@ -404,7 +404,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
 
                 
                 
@@ -472,8 +472,9 @@
 <h1 id="分类树与回归树"><a href="#分类树与回归树" class="headerlink" title="分类树与回归树"></a>分类树与回归树</h1><p>分类树用于分类问题。分类决策树在选取划分点，用信息熵、信息增益、或者信息增益率、或者基尼系数为标准。<br>Classification tree analysis is when the predicted outcome is the class to which the data belongs.</p>
 <p>回归决策树用于处理输出为连续型的数据。回归决策树在选取划分点，就希望划分的两个分支的误差越小越好。</p>
 <p>Regression tree analysis is when the predicted outcome can be considered a real number (e.g. the price of a house, or a patient’s length of stay in a hospital)。</p>
+<a id="more"></a>
 <h1 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h1><p>英文名字：Regression Tree</p>
-<h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>决策树最直观的理解其实就是，输入特征空间($R^n​$)，然后对特征空间做划分，每一个划分属于同一类或者对于一个输出的预测值。那么这个算法需要解决的问题是1. 如何决策边界(划分点)？2. 尽可能少的比较次数(决策树的形状)</p>
+<h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>决策树最直观的理解其实就是，输入特征空间($R^n$)，然后对特征空间做划分，每一个划分属于同一类或者对于一个输出的预测值。那么这个算法需要解决的问题是1. 如何决策边界(划分点)？2. 尽可能少的比较次数(决策树的形状)</p>
 <p><img src="/2019/03/11/回归树/MyBlog\hexo\source\_posts\回归树\原理介绍1.PNG" alt="原理1"></p>
 <p>如上图，每一个非叶子对于某个特征的划分。</p>
 <h3 id="最小二乘回归树生成算法"><a href="#最小二乘回归树生成算法" class="headerlink" title="最小二乘回归树生成算法"></a>最小二乘回归树生成算法</h3><p>Q1: 选择划分点？遍历所有的特征($n$),对于每一个特征对应$s_i$个取值，尝试完所有特征，以及特征所以有划分，选择使得损失函数最小的那组特征以及特征的划分取值。</p>
@@ -482,7 +483,7 @@
 <script type="math/tex; mode=display">
  \min _{j, s}\left[\min _{c_{1}} Loss(y_i,c_1)+\min _{c_{2}} Loss(y_i,c_2)\right]</script><p>节点有两条分支，$c1$是左节点的平均值，$c2$是右节点的平均值，换句话说，分一次划分都是使得划分出的两个分支的误差和最小。最终得到函数是<font color="red">分段函数</font></p>
 <h2 id="CART算法"><a href="#CART算法" class="headerlink" title="CART算法"></a>CART算法</h2><p>输入： 训练数据集</p>
-<p>输出：回归树$f(x)​$</p>
+<p>输出：回归树$f(x)$</p>
 <ol>
 <li><p>选择最优的特征$j$和分切点$s$</p>
 <script type="math/tex; mode=display">
@@ -554,7 +555,7 @@
 </div>
 <p>根据上表，只有一个特征$x$.</p>
 <ol>
-<li><p>选择最优的特征$j$和分切点$s​$</p>
+<li><p>选择最优的特征$j$和分切点$s$</p>
 <p>| 分切点(s) | 1.5   | 2.5   | 3.5  | 4.5  | 5.5  | 6.5  | 7.5  | 8.5   | 9.5   |<br>| ————- | ——- | ——- | —— | —— | —— | —— | —— | ——- | ——- |<br>| $c_1$     | 5.56  | 5.63  | 5.72 | 5.89 | 6.07 | 6.24 | 6.62 | 6.88  | 7.11  |<br>| $c_2$     | 7.5   | 7.73  | 7.99 | 8.25 | 8.54 | 8.91 | 8.92 | 9.03  | 9.05  |<br>| loss      | 15.72 | 12.07 | 8.36 | 5.78 | 3.91 | 1.93 | 8.01 | 11.73 | 15.74 |</p>
 <p>当分切点取$s=6.5$,损失最小$l(s=6.5)=1.93$,此时划分出两个分支，分别是$R_1=\{1,2,3,4,5,6\}$,$c_1=6.42$,$R_2=\{7,8,9,10\}$,$c_2=8.91$</p>
 <ol>
@@ -565,7 +566,7 @@
 <p>b) 对R2继续划分</p>
 <p>| x    | 7    | 8    | 9    | 10   |<br>| —— | —— | —— | —— | —— |<br>| y    | 8.9  | 8.7  | 9    | 9.05 |</p>
 <p>| 分切点(s) | 7.5    | 8.5    | 9.5    |<br>| ————- | ——— | ——— | ——— |<br>| $c_1$     | 8.9    | 8.8    | 8.87   |<br>| $c_2$     | 8.92   | 9.03   | 9.05   |<br>| loss      | 0.0717 | 0.0213 | 0.0467 |</p>
-<p>当分切点取$s=8.5​$,损失函数$l(s=8,5)=0.0213​$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1=\{7,8\}​$，$c_1=8.8​$,$R_2=\{9,10\}​$,$c_2=9.03​$</p>
+<p>当分切点取$s=8.5$,损失函数$l(s=8,5)=0.0213$(假设此时满足停止条件）,此时得到两个分支，分别是$R_1=\{7,8\}$，$c_1=8.8$,$R_2=\{9,10\}$,$c_2=9.03$</p>
 </li>
 <li><p>函数表达式</p>
 </li>
@@ -668,8 +669,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/19/SVR/" rel="prev" title="支持向量回归">
-                支持向量回归 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/17/SVMClassifiar/" rel="prev" title="支持向量机(SVM) ----- 分类器">
+                支持向量机(SVM) ----- 分类器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -747,7 +748,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -810,7 +811,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -923,7 +930,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1019,7 +1034,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">260k</span>
+    <span title="Symbols count total">294k</span>
   
 
   

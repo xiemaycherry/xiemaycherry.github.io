@@ -116,21 +116,18 @@
   <meta name="keywords" content="Python,">
 
 
-<meta name="description" content="Cross-validation: evaluating estimator performance¶ 12345import numpy as npfrom sklearn.model_selection import train_test_split# 调用train_test_split函数 自动划分数据集 40%for testingX_train, X_test, y_train, y_">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scikit-learn">
 <meta property="og:url" content="http://xiemaycherry.github.io/2019/03/23/scikit-learn/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="Cross-validation: evaluating estimator performance¶ 12345import numpy as npfrom sklearn.model_selection import train_test_split# 调用train_test_split函数 自动划分数据集 40%for testingX_train, X_test, y_train, y_">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://scikit-learn.org/stable/_images/grid_search_workflow.png">
 <meta property="og:image" content="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png">
 <meta property="og:image" content="https://scikit-learn.org/stable/_images/sphx_glr_plot_cv_indices_0101.png">
-<meta property="og:updated_time" content="2020-09-03T16:03:21.410Z">
+<meta property="og:updated_time" content="2019-11-15T03:08:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scikit-learn">
-<meta name="twitter:description" content="Cross-validation: evaluating estimator performance¶ 12345import numpy as npfrom sklearn.model_selection import train_test_split# 调用train_test_split函数 自动划分数据集 40%for testingX_train, X_test, y_train, y_">
 <meta name="twitter:image" content="https://scikit-learn.org/stable/_images/grid_search_workflow.png">
 
 
@@ -469,7 +466,7 @@
       
 
       
-        <h1 id="Cross-validation-evaluating-estimator-performance¶"><a href="#Cross-validation-evaluating-estimator-performance¶" class="headerlink" title="Cross-validation: evaluating estimator performance¶"></a>Cross-validation: evaluating estimator performance<a href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-evaluating-estimator-performance" target="_blank" rel="noopener">¶</a></h1><p><img src="https://scikit-learn.org/stable/_images/grid_search_workflow.png" alt="Grid Search Workflow"></p>
+        <h1 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h1><h1 id="Cross-validation-evaluating-estimator-performance¶"><a href="#Cross-validation-evaluating-estimator-performance¶" class="headerlink" title="Cross-validation: evaluating estimator performance¶"></a>Cross-validation: evaluating estimator performance<a href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-evaluating-estimator-performance" target="_blank" rel="noopener">¶</a></h1><p><img src="https://scikit-learn.org/stable/_images/grid_search_workflow.png" alt="Grid Search Workflow"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line"># 调用train_test_split函数 自动划分数据集 40%for testing</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(iris.data,iris.target, test_size=0.4, random_state=0)</span><br></pre></td></tr></table></figure>
 <h2 id="corss-validation"><a href="#corss-validation" class="headerlink" title="corss validation"></a>corss validation</h2><p><img src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" alt="../_images/grid_search_cross_validation.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import cross_validate</span><br><span class="line">from sklearn.metrics import recall_score</span><br><span class="line">scoring = [&apos;precision_macro&apos;, &apos;recall_macro&apos;]</span><br><span class="line">clf = svm.SVC(kernel=&apos;linear&apos;, C=1, random_state=0)</span><br><span class="line">scores = cross_validate(clf, iris.data, iris.target, scoring=scoring,</span><br><span class="line">                        cv=5, return_train_score=False)</span><br><span class="line">sorted(scores.keys())</span><br></pre></td></tr></table></figure>
@@ -656,7 +653,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -719,7 +716,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -832,7 +835,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -887,7 +898,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cross-validation-evaluating-estimator-performance¶"><span class="nav-number">1.</span> <span class="nav-text">Cross-validation: evaluating estimator performance¶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#corss-validation"><span class="nav-number">1.1.</span> <span class="nav-text">corss validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-validation-of-time-series-data"><span class="nav-number">1.2.</span> <span class="nav-text">Cross validation of time series data</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tuning-the-hyper-parameters-of-an-estimator"><span class="nav-number">2.</span> <span class="nav-text">Tuning the hyper-parameters of an estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Grid-Search"><span class="nav-number">2.1.</span> <span class="nav-text">Grid Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Randomized-Parameter-Optimization"><span class="nav-number">2.2.</span> <span class="nav-text">Randomized Parameter Optimization</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cross-validation-evaluating-estimator-performance¶"><span class="nav-number">2.</span> <span class="nav-text">Cross-validation: evaluating estimator performance¶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#corss-validation"><span class="nav-number">2.1.</span> <span class="nav-text">corss validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-validation-of-time-series-data"><span class="nav-number">2.2.</span> <span class="nav-text">Cross validation of time series data</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tuning-the-hyper-parameters-of-an-estimator"><span class="nav-number">3.</span> <span class="nav-text">Tuning the hyper-parameters of an estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Grid-Search"><span class="nav-number">3.1.</span> <span class="nav-text">Grid Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Randomized-Parameter-Optimization"><span class="nav-number">3.2.</span> <span class="nav-text">Randomized Parameter Optimization</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -928,7 +939,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">260k</span>
+    <span title="Symbols count total">294k</span>
   
 
   

@@ -116,20 +116,20 @@
   <meta name="keywords" content="决策树,">
 
 
-<meta name="description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:[TOC] 决策树英文名字：Descision Tree 什么是决策树举个校园相亲的例子，今天校园的小猫(女)和小狗(男)准备配对，小猫如何才能在众多的优质🐶的心仪的狗呢？于是呢？有一只特乖巧的小猫找到了你，你正在学">
+<meta name="description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:">
 <meta name="keywords" content="决策树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="决策树">
 <meta property="og:url" content="http://xiemaycherry.github.io/2019/03/03/决策树/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:[TOC] 决策树英文名字：Descision Tree 什么是决策树举个校园相亲的例子，今天校园的小猫(女)和小狗(男)准备配对，小猫如何才能在众多的优质🐶的心仪的狗呢？于是呢？有一只特乖巧的小猫找到了你，你正在学">
+<meta property="og:description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://xiemaycherry.github.io/2019/03/03/决策树/1.bmp">
 <meta property="og:image" content="http://xiemaycherry.github.io/2019/03/03/决策树/2.jpg">
-<meta property="og:updated_time" content="2020-09-03T16:03:21.422Z">
+<meta property="og:updated_time" content="2020-06-29T08:27:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树">
-<meta name="twitter:description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:[TOC] 决策树英文名字：Descision Tree 什么是决策树举个校园相亲的例子，今天校园的小猫(女)和小狗(男)准备配对，小猫如何才能在众多的优质🐶的心仪的狗呢？于是呢？有一只特乖巧的小猫找到了你，你正在学">
+<meta name="twitter:description" content="主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:">
 <meta name="twitter:image" content="http://xiemaycherry.github.io/2019/03/03/决策树/1.bmp">
 
 
@@ -468,7 +468,9 @@
       
 
       
-        <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:<br>[TOC]</p>
+        <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:</p>
+<a id="more"></a>
+<p>[TOC]</p>
 <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p>英文名字：Descision Tree</p>
 <h2 id="什么是决策树"><a href="#什么是决策树" class="headerlink" title="什么是决策树"></a>什么是决策树</h2><p>举个校园相亲的例子，今天校园的小猫(女)和小狗(男)准备配对，小猫如何才能在众多的优质🐶的心仪的狗呢？于是呢？有一只特乖巧的小猫找到了你，你正在学习机器学习，刚好学习了决策树，准备给这只猫猫挑选优质狗，当然，你不仅仅是直接告诉猫哪些狗是合适你的？你更应该详细的给猫讲解决策树是如何根据它提出的标准选出的符合要求的狗呢？<br>猫给出如下信息：<br>年龄<0.5 不心仪；年龄大于="">=0.5  6.5&lt;=体重&lt;=8.5;心仪; 年龄&gt;=0.5 体重&gt;8.5 长相好 心仪;其余情况不心仪; 根据上述条件可以构造一颗树：<br><img src="/2019/03/03/决策树/1.bmp" alt="tuyi"><br>上面的图就是决策树，最终的结果是心仪或者不心仪。决策树算法以树形结构表示数据分类的结果</0.5></p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>决策树属于也只能非参数学习算法、可以用于解决(多)分类问题，回归问题。 回归问题的结果，叶子结点的平均值是回归问题的解。<br>根节点：决策树具有数据结构里面的二叉树、树的全部属性<br>非叶子节点 ：（决策点） 代表测试的条件，数据的属性的测试<br>叶子节点 ：分类后获得分类标记<br>分支： 测试的结果</p>
@@ -586,8 +588,8 @@ $$C(T) = \sum_{releaf} N_t*H(T)</script><p>$ N_t$：每个叶子节点里面含�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/28/SVD/" rel="next" title="我的读书笔记">
-                <i class="fa fa-chevron-left"></i> 我的读书笔记
+              <a href="/2019/03/03/吴恩达/" rel="next" title="吴恩达">
+                <i class="fa fa-chevron-left"></i> 吴恩达
               </a>
             
           </div>
@@ -675,7 +677,7 @@ $$C(T) = \sum_{releaf} N_t*H(T)</script><p>$ N_t$：每个叶子节点里面含�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -738,7 +740,13 @@ $$C(T) = \sum_{releaf} N_t*H(T)</script><p>$ N_t$：每个叶子节点里面含�
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -851,7 +859,15 @@ $$C(T) = \sum_{releaf} N_t*H(T)</script><p>$ N_t$：每个叶子节点里面含�
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -947,7 +963,7 @@ $$C(T) = \sum_{releaf} N_t*H(T)</script><p>$ N_t$：每个叶子节点里面含�
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">260k</span>
+    <span title="Symbols count total">294k</span>
   
 
   

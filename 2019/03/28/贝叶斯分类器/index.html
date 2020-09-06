@@ -116,20 +116,20 @@
   <meta name="keywords" content="贝叶斯分类器,">
 
 
-<meta name="description" content="[TOC] 概率论的知识条件概率 P(A|B)=P(A\cap B)/P(B)已知B发生的概率，求A发生的概率 全概率 P(B) = \sum_{i=1}^{N}P(B \cap A_i)P(A_i)贝叶斯推断 P(A|B)=P(A)\frac{P(B|A)}{P(B)} P(A_i|B)=P(A_i)\frac{P(B|A_i)}{\sum P(A_i)P(B|A_i)}$P(A)$：Prior">
+<meta name="description" content="[TOC] 概率论的知识">
 <meta name="keywords" content="贝叶斯分类器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="贝叶斯分类器">
 <meta property="og:url" content="http://xiemaycherry.github.io/2019/03/28/贝叶斯分类器/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="[TOC] 概率论的知识条件概率 P(A|B)=P(A\cap B)/P(B)已知B发生的概率，求A发生的概率 全概率 P(B) = \sum_{i=1}^{N}P(B \cap A_i)P(A_i)贝叶斯推断 P(A|B)=P(A)\frac{P(B|A)}{P(B)} P(A_i|B)=P(A_i)\frac{P(B|A_i)}{\sum P(A_i)P(B|A_i)}$P(A)$：Prior">
+<meta property="og:description" content="[TOC] 概率论的知识">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://xiemaycherry.github.io/2019/03/28/贝叶斯分类器/MyBlog/hexo/source/_posts/贝叶斯分类器/熵.png">
 <meta property="og:image" content="http://xiemaycherry.github.io/2019/03/28/贝叶斯分类器/MyBlog/hexo/source/_posts/贝叶斯分类器/2.png">
-<meta property="og:updated_time" content="2020-09-03T16:03:21.456Z">
+<meta property="og:updated_time" content="2020-07-25T07:52:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="贝叶斯分类器">
-<meta name="twitter:description" content="[TOC] 概率论的知识条件概率 P(A|B)=P(A\cap B)/P(B)已知B发生的概率，求A发生的概率 全概率 P(B) = \sum_{i=1}^{N}P(B \cap A_i)P(A_i)贝叶斯推断 P(A|B)=P(A)\frac{P(B|A)}{P(B)} P(A_i|B)=P(A_i)\frac{P(B|A_i)}{\sum P(A_i)P(B|A_i)}$P(A)$：Prior">
+<meta name="twitter:description" content="[TOC] 概率论的知识">
 <meta name="twitter:image" content="http://xiemaycherry.github.io/2019/03/28/贝叶斯分类器/MyBlog/hexo/source/_posts/贝叶斯分类器/熵.png">
 
 
@@ -469,7 +469,8 @@
 
       
         <p>[TOC]</p>
-<h1 id="概率论的知识"><a href="#概率论的知识" class="headerlink" title="概率论的知识"></a>概率论的知识</h1><h2 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h2><script type="math/tex; mode=display">
+<h1 id="概率论的知识"><a href="#概率论的知识" class="headerlink" title="概率论的知识"></a>概率论的知识</h1><a id="more"></a>
+<h2 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h2><script type="math/tex; mode=display">
 P(A|B)=P(A\cap B)/P(B)</script><p>已知B发生的概率，求A发生的概率</p>
 <h2 id="全概率"><a href="#全概率" class="headerlink" title="全概率"></a>全概率</h2><script type="math/tex; mode=display">
 P(B) = \sum_{i=1}^{N}P(B \cap A_i)P(A_i)</script><h2 id="贝叶斯推断"><a href="#贝叶斯推断" class="headerlink" title="贝叶斯推断"></a>贝叶斯推断</h2><script type="math/tex; mode=display">
@@ -502,7 +503,7 @@ LL(\theta_c)=log  P(D_c|\theta_c)</script><h1 id="朴素贝叶斯分类器"><a h
 <script type="math/tex; mode=display">
 P(c|x)=\frac{P(c)P(x|c)}{P(x)}=\frac{P(c)\Pi_{i=1}^{d}P(x_i|c)}{P(x)}</script><p>对于一个$x$，$P(x)$都是相同的，因此贝叶斯模型可写为</p>
 <script type="math/tex; mode=display">
-h_{nb}(x)=arg max_{c\in y}P(c)\Pi_{i=1}^{d}P(x_i|c)</script><h2 id="计算过程"><a href="#计算过程" class="headerlink" title="计算过程"></a>计算过程</h2><p>假设$D_{c_i}​$表示第i类的样本集合，</p>
+h_{nb}(x)=arg max_{c\in y}P(c)\Pi_{i=1}^{d}P(x_i|c)</script><h2 id="计算过程"><a href="#计算过程" class="headerlink" title="计算过程"></a>计算过程</h2><p>假设$D_{c_i}$表示第i类的样本集合，</p>
 <ol>
 <li><p>$P(c_i)=\frac{|D_{c_i}|}{|D|}$</p>
 </li>
@@ -575,7 +576,7 @@ P(c_i|X)正比于 \sum_{i=1,|D_{x_i}>=m}p(c,x_i)\Pi_{j=1}^{d}p(x_j|c_i,x_i)</scr
 <script type="math/tex; mode=display">
 P(c,x_i)=\frac{|D_{c,x_i}|+1}{|{D}|+N*N_i}\\
 P(x_j|c,x_i)=\frac{|D_{c,x_i,x_j}+1|}{|D_{c,xi}|+N_j}</script><h1 id="贝叶斯网-Bayesian-network"><a href="#贝叶斯网-Bayesian-network" class="headerlink" title="贝叶斯网(Bayesian network)"></a>贝叶斯网(Bayesian network)</h1><p>借助有向无环图来刻画属性之间的依赖关系，条件概率表来描述属性的联合概率分布。</p>
-<p>一个贝叶斯网络$B$,包括结构$G$和参数$\Theta$ ,$B(G,\Theta)$,如果两个属性有直接依赖关系，用边连接，对于属性$x_i$,其父节点集合$G_i$,则$\Theta$包括每个属性条件概率$\Theta_{x_i|\pi_i}=P_B(x_i|\pi_i)​$</p>
+<p>一个贝叶斯网络$B$,包括结构$G$和参数$\Theta$ ,$B(G,\Theta)$,如果两个属性有直接依赖关系，用边连接，对于属性$x_i$,其父节点集合$G_i$,则$\Theta$包括每个属性条件概率$\Theta_{x_i|\pi_i}=P_B(x_i|\pi_i)$</p>
 <h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><script type="math/tex; mode=display">
 p(x_1,x_2,...,x_n)=\Pi_{i=1}^{n}p_{B}(x_i|\pi_i)=\Pi_{i=1}^{d}\Theta_{xi|\pi_i}\\
 =\Pi_{i=1}^{d}P(x_i|Parents(x_i))</script><h2 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h2><p>一旦训练好贝叶斯网后，就能回答query,通过一些属性的观测者来推断其他属性变量的取值，其中，已知变量的值观测推测待查询的过程“推断”,已知变量的观测者”证据“</p>
@@ -660,8 +661,8 @@ p(x_1,x_2,...,x_n)=\Pi_{i=1}^{n}p_{B}(x_i|\pi_i)=\Pi_{i=1}^{d}\Theta_{xi|\pi_i}\
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/02/吴恩达/" rel="prev" title="吴恩达">
-                吴恩达 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/03/deeplearningvideo/" rel="prev" title="deeplearningvideo">
+                deeplearningvideo <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -739,7 +740,7 @@ p(x_1,x_2,...,x_n)=\Pi_{i=1}^{n}p_{B}(x_i|\pi_i)=\Pi_{i=1}^{d}\Theta_{xi|\pi_i}\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -802,7 +803,13 @@ p(x_1,x_2,...,x_n)=\Pi_{i=1}^{n}p_{B}(x_i|\pi_i)=\Pi_{i=1}^{d}\Theta_{xi|\pi_i}\
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -915,7 +922,15 @@ p(x_1,x_2,...,x_n)=\Pi_{i=1}^{n}p_{B}(x_i|\pi_i)=\Pi_{i=1}^{d}\Theta_{xi|\pi_i}\
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1011,7 +1026,7 @@ p(x_1,x_2,...,x_n)=\Pi_{i=1}^{n}p_{B}(x_i|\pi_i)=\Pi_{i=1}^{d}\Theta_{xi|\pi_i}\
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">260k</span>
+    <span title="Symbols count total">294k</span>
   
 
   
