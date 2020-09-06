@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/05/BP算法/">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/吴恩达/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XieMay">
@@ -369,7 +369,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/05/BP算法/" itemprop="url">BP算法</a></h1>
+                <a class="post-title-link" href="/2019/03/03/吴恩达/" itemprop="url">吴恩达</a></h1>
         
 
         <div class="post-meta">
@@ -381,7 +381,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T19:24:23+08:00">2019-03-05</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T09:18:39+08:00">2019-03-03</time>
             
 
             
@@ -417,8 +417,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/05/BP算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/05/BP算法/" itemprop="commentCount"></span>
+                <a href="/2019/03/03/吴恩达/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/吴恩达/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -441,7 +441,7 @@
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                10k字
+                40字
               </span>
               
 
@@ -468,188 +468,8 @@
       
         
           
-            <p>[TOC]</p>
-<h1 id="1-需要的微积分知识"><a href="#1-需要的微积分知识" class="headerlink" title="1. 需要的微积分知识"></a>1. 需要的微积分知识</h1><h2 id="1-1-导数"><a href="#1-1-导数" class="headerlink" title="1.1 导数"></a>1.1 导数</h2><p>对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。<br>对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。</p>
-<h2 id="1-2-求导的链式法则"><a href="#1-2-求导的链式法则" class="headerlink" title="1.2 求导的链式法则"></a>1.2 求导的链式法则</h2><ol>
-<li><p>$x \in R$, $z=g(f(x))$, $y=f(x)$</p>
-<script type="math/tex; mode=display">\frac{\partial z}{\partial x}=\frac{\partial z}{\partial y} \frac{\partial y}{\partial x}</script></li>
-<li><p>$ x \in R^m $, $f(x)$是$R^M$到$R^n$的映射，$g(f)$是$R^n$到R的映射</p>
-<script type="math/tex; mode=display">\frac{\partial g}{\partial x_i}=\sum_j^n \frac{\partial g}{\partial f_i} \frac{\partial f_i}{\partial x_i}</script><p> 如果使用向量表示</p>
-<script type="math/tex; mode=display">\nabla_x^z=(\frac{\partial f}{\partial x})^T \nabla_y^z</script><h1 id="2-梯度下降法"><a href="#2-梯度下降法" class="headerlink" title="2. 梯度下降法"></a>2. 梯度下降法</h1><h2 id="2-1-梯度"><a href="#2-1-梯度" class="headerlink" title="2.1 梯度"></a>2.1 梯度</h2><p>梯度其实本质也是一个向量，对于函数$f(X,y)$<br>在$(W,y)$这一点的梯度 $(\frac{\partial f}{\partial X},\frac{\partial f}{\partial y})$<br>梯度的几何意义：在该店变化增加最快的地方</p>
-</li>
-</ol>
-<h2 id="2-2-梯度算法的解释"><a href="#2-2-梯度算法的解释" class="headerlink" title="2.2 梯度算法的解释"></a>2.2 梯度算法的解释</h2><p>图来自吴恩达的机器学习课程<br><img src="/2019/03/05/BP算法/2.1.1.png" alt="tu"><br>颜色偏红(A)的地方开始，根据梯度的负方向通过9次更新，达到了最小值(B)。<br>现在给定一个点$A(\theta_0,\theta_1)$,干嘛呢，我们想从A到B点（最小值点),类似人类下山，需要知道往那个方向吧、走大多一步呢？<br>方向：梯度的负方向 $ \delta=(\frac{\partial L}{\partial \theta_0},\frac{\partial L}{\partial \theta_1})$)<br>步长：学习率（$\alpha$)<br>因此，计算一次里目标更近了 $(\theta_0,\theta_1)=(\theta_0,\theta_1)-\alpha \dot (\delta)$<br>在重复上两步，直到满意为止。</p>
-<h1 id="3-误差反向传播算法"><a href="#3-误差反向传播算法" class="headerlink" title="3.误差反向传播算法"></a>3.误差反向传播算法</h1><h2 id="3-1-理论推导"><a href="#3-1-理论推导" class="headerlink" title="3.1 理论推导"></a>3.1 理论推导</h2><p><img src="/2019/03/05/BP算法/3.1.1.png" alt="计算图"></p>
-<h3 id="3-1-1-符号说明"><a href="#3-1-1-符号说明" class="headerlink" title="3.1.1 符号说明"></a>3.1.1 符号说明</h3><p>上图是一个L层的神经网络，输入层为第一层，隐藏层：2至$L-1$层，输出层L</p>
-<p>令 输入向量 $\vec{X}$</p>
-<script type="math/tex; mode=display">\vec{X} = (x_1,x_2,...,x_{m-1},x_m)</script><p>输出向量 $\vec{Y}$</p>
-<script type="math/tex; mode=display">\vec{Y}=(y_1,y_2,...,y_{n-1},y_n)$$a
-第j层隐藏层的输出向量 $\vec{h^{(j)}}$
-$$\vec{h^{(j)}}=(h_1^{(j)},h_2^,...,h_{t-1}^{(j)},h_tj^{(j)})</script><p>其中，$tj$:表示第j的隐藏层个数<br>第$(l-1)$层的第i个神经元到第$l$层的第j个神经元的连接权重：$w_{ij}^{(l)}$，则第$(l-1)$层神经元到第$l$层神经元的连接权重矩阵</p>
-<script type="math/tex; mode=display">W^{(l)}=\left( \begin{matrix}w_{11}^{(l)}& \cdots & w_{1(tj)}\\
-    &   \dots &\\
-    w_{s(l-1)}^{l}&\cdots&w_{s(l-1)s(l)}^{l}
-\end{matrix}\right)</script><h3 id="3-1-2-推导过程"><a href="#3-1-2-推导过程" class="headerlink" title="3.1.2 推导过程"></a>3.1.2 推导过程</h3><h4 id="3-1-2-1-误差"><a href="#3-1-2-1-误差" class="headerlink" title="3.1.2.1 误差"></a>3.1.2.1 误差</h4><p>定义的误差函数,常见的衡量性指标见 <a href="#3.6">戳我</a>,这里选择的误差平方和最小<br>第$i$个输出的误差,假设实际输出$(d(1),d(2),…,d(n))$：,一个输入样本对应的误差</p>
-<script type="math/tex; mode=display">E(i)=\frac{1}{2}\sum_{k=1}^n(y(i)-d(i))^2=\frac{1}{2}||y-d||^2</script><p>所有训练样本($N$)的误差：</p>
-<script type="math/tex; mode=display">E(i)=\frac{1}{2}\sum_{j=1}^{N}(\sum_{k=1}^n(y(i)-d(i))^2)=\frac{1}{2N}\sum_{j=1}^{N}(||y(i)-d(i)||^2)</script><p>因此，</p>
-<script type="math/tex; mode=display">E = \frac{1}{2N}\sum_{i=1}^N(||y(i)-d(i)||^2)</script><p>其实，神经网络的输出是关于节点的复合函数。代价函数是关于$W$和$b$的函数。</p>
-<h4 id="3-1-2-2-正向传播"><a href="#3-1-2-2-正向传播" class="headerlink" title="3.1.2.2 正向传播"></a>3.1.2.2 正向传播</h4><p>输入层$\hat{X}$：</p>
-<script type="math/tex; mode=display">X =(x_1,x_2,x_3,...,x_m)</script><p>当有$N$个训练样本时，可用矩阵表示</p>
-<script type="math/tex; mode=display">X=\left( \begin{matrix}
-x_{11} &x_{12}&...&x_{1m}\\
-x_{21} & x_{22}&...&x_{2m}\\
-\vdots & \vdots&\dots&\vdots\\
-x_{N1} & \vdots&\vdots&x_{Nm}\\
-\end{matrix}  \right)</script><p>第二层 $h^{(2)}$,一共$s2$个节点:<br>第i个节点的计算</p>
-<script type="math/tex; mode=display">h^{(2)}(i)=f(\sum_{j=1}^{s2}x(j)*w_{ji}^{(l)}+b_i)=f(x*w(:,i)+b_i)</script><p>矩阵表示</p>
-<script type="math/tex; mode=display">h^{(2)}=f(x*W^{(l)}+b^{(2)})</script><p>第i层 矩阵形式</p>
-<script type="math/tex; mode=display">h^{(l)}=f(h^{(l-1)}*W^{(l)}+b)</script><h4 id="3-1-2-3-反向传播"><a href="#3-1-2-3-反向传播" class="headerlink" title="3.1.2.3 反向传播"></a>3.1.2.3 反向传播</h4><p>梯度下降法更新权重，不断迭代到最优解。<br>对$w_{ij}$求导数可得,可更新$w_{ij}$更新公式：</p>
-<script type="math/tex; mode=display">w_{ij}=w_{ij}-\alpha \frac{\partial E}{\partial w_{ij}}</script><p>当然简单的情况下，可直接写出公式，当太复杂的时候，引入BP简化求导</p>
-<p>方便书写公式，对于第i的输入$h^{(i-1)}*W^{(i)}+b^{(i)}$记作$net^{(i)}$,其中，第$i$的输入和输出的关系，$输入=f(输出)$<br>下面开始推导</p>
-<p>首先，对于$L$层，</p>
-<p>对于$W^{(L)}$，先看对$W_{ij}^{(L)}$求导，</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial W_{ij}^{(L)}}
-=\frac{\partial E}{\partial y(j)} * \frac{\partial y(i)}{\partial net_{j}^{L}} * \frac{\partial net_{j}^{L}}{\partial W_{ij}^{(L)}}\\
-=(y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}h_i^{(L-1)}</script><p>令$\delta_i^{(L)}=y(i)-d(i)$</p>
-<p>上述给出了单个分量的求偏导的结果，对于$W^{(L)}$</p>
-<script type="math/tex; mode=display">
-\frac{\partial E}{\partial W^{(L)}}
-=\left[\begin{matrix} 
-\frac{\partial E}{\partial W_{11}^{(L)}} & \frac{\partial E}{\partial W_{12}^{(L)}}&\dots & \frac{\partial E}{\partial W_{1n}^{(L)}}\\
-\frac{\partial E}{\partial W_{21}^{(L)}} & \frac{\partial E}{\partial W_{22}^{(L)}}&\dots& \frac{\partial E}{\partial W_{2n}^{(L)}}\\
-\vdots& \dots& \dots& \dots\\
-\frac{\partial E}{\partial W_{sL,1}^{(L)}} & \frac{\partial E}{\partial W_{sL,2}^{(L)}}&\dots& \frac{\partial E}{\partial W_{sL,n}^{(L)}}
-\end{matrix}\right]
-\\= \left[
-\begin{matrix}
-h^{(L-1)}_1\\h^{(L-1)}_2\\ \dots\\h^{(L-1)}_n
-\end{matrix}
-\right] *\left[\begin{matrix}
-\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
-\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
-\dots\\
-\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
-\end{matrix}\right] ^T
-=h^{(L-1)}S^{(L)}</script><p>其中，</p>
-<script type="math/tex; mode=display">
-S^{(L)}=\left[\begin{matrix}
-
-\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
-\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
-\dots\\
-\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
-\end{matrix}\right]^T</script><p>同理可得，</p>
-<script type="math/tex; mode=display">
-\frac{\partial E}{\partial b_k^{(L)}}=(y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}</script><p>其次，对于隐含层$L-1$层，对$W_{ij}^{(L)}$求导</p>
-<script type="math/tex; mode=display">
-\frac{\partial E}{\partial W_{ij}^{(L-1)}}
-=\sum_{k=1}^{n}\frac{\partial E}{\partial y(k)} * \frac{\partial y(k)}{\partial net_{k}^{L}} * \frac{\partial net_{k}^{L}}{\partial f(net_j^{(L-1)})}*\frac{\partial f(net_j^{(L-1)})}{\partial net_j^{(L-1)}}*\frac{\partial net_j^{(L-1)}}{\partial W_{ij}^{(L-1)}}\\
-=\sum_{k=1}^{n} (y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}W_{kj}^{(L)}f(x)^{'}|_{x=net_j^{L-1}}h_i^{L-2}\\
-=\sum_{k=1}^{n}S_i^{(L)}W_{kj}^{(L)}f(x)^{'}|_{x=net_j^{L-1}}h_i^{L-2}\\</script><p>写出矩阵形式,对$W^{(L-1)}$</p>
-<script type="math/tex; mode=display">
-\frac{\partial E}{\partial W^{(L-1)}}=\left[\begin{matrix} h^{(L-2)}_1\\h^{(L-2)}_2\\\vdots\\h^{(L-2)}_{s(L-2)}\end{matrix}\right] \left[\begin{matrix}
-
-\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
-\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
-\dots\\
-\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
-\end{matrix}\right]^T
-\left[\begin{matrix} 
-W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
-W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
-\vdots& \dots& \dots& \dots\\
- W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}
-\end{matrix}\right]^T
- \\
-\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
-0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\\
-=h^{(L-2)}S^{(L-1)}</script><script type="math/tex; mode=display">
-S^{(L-1)}=\left(\left[\begin{matrix}
-
-f(x)^{'(L)}|_{x=net_1^{(L)}}&0& \dots& 0\\
-0&f(x)^{'}|_{x=net_2^{(L)}}0& \dots& 0\\
-0&\dots&\dots&0\\
-0&0&0&f(x)^{'(L)}|_{x=net_n^{(L)}}
-\end{matrix}\right]\left[\begin{matrix} \delta_1^{(L)}\\\delta_2^{(L)}\\\vdots\\\delta_n^{(L)}\end{matrix}\right] \right)^T\\
-\left[\begin{matrix} 
-W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
-W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
-\vdots& \dots& \dots& \dots\\
- W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}*
-\end{matrix}\right]^T
-\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
-0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\\
-=S^{(L)}\left[\begin{matrix} 
-W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
-W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
-\vdots& \dots& \dots& \dots\\
- W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}*
-\end{matrix}\right]^T\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
-0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]*\\</script><p>对$1&lt;l&lt;L$,求$W^{(l)}$的偏导,</p>
-<p>最后，根据上述的推导喔，很容易得出$S^{(l)}$和$S^{(l+1)}$,</p>
-<script type="math/tex; mode=display">
-S^{(l)}=S^{(l+1)}W^{(l+1)^T}F^{'(l)}(net^{(l)})\\
-S^{(L)}=(Y-\hat{Y})F^{'(L)}(net^{(L)})</script><script type="math/tex; mode=display">
-\frac{\partial E}{\part W^{(l)}}=\left[\begin{matrix}h^{(l-1)}_1\\h^{(l-1)}_2 \\\dots \\h^{(l-1)}_{sl}\end{matrix}\right]S^{(l+1)} \left[\begin{matrix}W_{11}^{(l+1)}&W_{12}^{(l+1)} &\dots& W_{2(sl+1)}^{(l+1)}\\
-W_{21}^{(l+1)}&W_{22}^{(l+1)} &\dots& W_{2(sl+1)}^{(l+1)}\\
-\dots&\dots&\dots&\dots\\
-W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
-\end{matrix}  \right]^T\left[\begin{matrix} \part f^{'(l)}(net_1^{l})&0&\dots & 0\\
-0\\0 &\part f^{'(l)}(net_2^{l})&\dots&0\\
-0 & 0&\dots&0\\
-0&0&\dots&\part f^{'(l)}(net_l^{l})\end{matrix}\right]</script><h2 id="3-2-BP算法的小结"><a href="#3-2-BP算法的小结" class="headerlink" title="3.2 BP算法的小结"></a>3.2 BP算法的小结</h2><p>算法分为两个阶段：前向阶段和后向传播阶段</p>
-<p>后向阶段算法：</p>
-<p>Step 1:  计算$\hat{y}^{(L)}$</p>
-<p>Step 2:  for l =L:2</p>
-<p>​        计算$S^{(l)}=S^{(l+1)}W^{(l+1)}F’(net^{(l)})$</p>
-<p>​        计算 $\Delta W^{(l)}=h^{(l-1)}S^{(l)} $</p>
-<p>​        计算$W^{(l)}=W^{(l)}-\delta \Delta W^{(l)}$</p>
-<h2 id="3-3-Python实现"><a href="#3-3-Python实现" class="headerlink" title="3.3 Python实现"></a>3.3 Python实现</h2><h3 id="3-3-1-最简单三层网络"><a href="#3-3-1-最简单三层网络" class="headerlink" title="3.3.1 最简单三层网络"></a>3.3.1 最简单三层网络</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">不用任何框架，自己写一个三层的神经网络</span></span><br><span class="line"><span class="string"># input-3,hidden-4 output-1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input Matrix</span></span><br><span class="line">X = np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">0</span> ,<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output Matrix</span></span><br><span class="line">y = np.array([[<span class="number">0</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>]])</span><br><span class="line"><span class="comment"># Nonlinear function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X,derive=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-X))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> X*(<span class="number">1</span>-X)</span><br><span class="line"><span class="comment"># relu</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">relu</span><span class="params">(X,derive = False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> np.maximum(<span class="number">0</span>,X)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (X&gt;<span class="number">0</span>).astype(float)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Weight bias</span></span><br><span class="line">W1 = <span class="number">2</span> * np.random.random((<span class="number">3</span>, <span class="number">4</span>))<span class="number">-1</span></span><br><span class="line">b1 = <span class="number">0.1</span> * np.ones((<span class="number">4</span>,))</span><br><span class="line"> </span><br><span class="line">W2 = <span class="number">2</span> * np.random.random((<span class="number">4</span>,<span class="number">1</span>))<span class="number">-1</span></span><br><span class="line">b2 = <span class="number">0.1</span> * np.ones((<span class="number">1</span>,))</span><br><span class="line"> </span><br><span class="line">rate = <span class="number">0.1</span></span><br><span class="line">noline = relu</span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">train_times = <span class="number">200</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> time <span class="keyword">in</span> range(train_times):</span><br><span class="line">    <span class="comment"># Layer one</span></span><br><span class="line">    A1 = np.dot(X,W1)+b1</span><br><span class="line">    Z1 = noline(A1)</span><br><span class="line">    <span class="comment"># Layer two </span></span><br><span class="line">    A2 = np.dot(Z1, W2)+b2</span><br><span class="line">    Z2 = noline(A2)</span><br><span class="line">    </span><br><span class="line">    cost = -y+Z2</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calc deltas </span></span><br><span class="line">    S2= cost*noline(A2,<span class="keyword">True</span>)</span><br><span class="line">    delta_W2 = np.dot(Z1.T,S2)</span><br><span class="line">    bias2 = S2.sum(axis=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    S1 = np.dot(S2, W2.T)*noline(A1,<span class="keyword">True</span>)</span><br><span class="line">    delta_W1= np.dot(X.T, S1)</span><br><span class="line">    bias1 = S1.sum(axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># update</span></span><br><span class="line">    W1 = W1-rate*delta_W1</span><br><span class="line">    b1 = b1-rate*bias1</span><br><span class="line">    W2 = W2-rate*delta_W2</span><br><span class="line">    b2 = b2-rate*bias2</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">'error'</span>,np.mean(((y-Z2)*(y-Z2))**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"prediction"</span>,Z2)</span><br></pre></td></tr></table></figure>
-<h2 id="3-4-附录："><a href="#3-4-附录：" class="headerlink" title="3.4  附录："></a><font id="3.6">3.4  附录</font>：</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Abbreviation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mean absolute percentage error</td>
-<td>MAPE</td>
-</tr>
-<tr>
-<td>Root mean squares percentage error</td>
-<td>RMSPE</td>
-</tr>
-<tr>
-<td>Mean absolute percentage error</td>
-<td>MAE</td>
-</tr>
-<tr>
-<td>Mean squares error</td>
-<td>MSE</td>
-</tr>
-<tr>
-<td>Index of agreement</td>
-<td>IA</td>
-</tr>
-<tr>
-<td>Theil U statistic 1</td>
-<td>U1</td>
-</tr>
-<tr>
-<td>Theil U statistic 2</td>
-<td>U2</td>
-</tr>
-<tr>
-<td>Correlation coefficient</td>
-<td>R</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>MAPE    =    $\frac{1}{n} \sum_{k=1}^{n}\left|\frac{x^{(0)}(k)-\hat{x}^{(0)}(k)}{x^{(0)}(k)}\right| \times 100$<br>RMSPE    =    $\sqrt{\frac{1}{n} \sum_{k=1}^{n}\left(\frac{\hat{x}^{(0)}(k)-x^{(0)}(k)}{x^{(0)}(k)}\right)^{2}} \times 100$<br>MAE    =    $\frac{1}{n} \sum_{k=1}^{n}\left|\hat{x}^{(0)}(k)-x^{(0)}(k)\right|$<br>MSE    =    $\frac{1}{n} \sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}$<br>IA    =    $1-\frac{\sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}}{\sum_{k=1}^{n} \left( \left| \hat{x}^{(0)}(k)-\overline{x} \right|+\left| x^{(0)}(k)-\overline{x}\right| \right)^{2}}$<br>U1    =    $\frac{\sqrt{\frac{1}{n} \sum_{k=1}^{n}\left(x^{(0)}(k)-x^{(0)}(k)\right)^{2}}}{\sqrt{\frac{1}{n} \sum_{k=1}^{n} x^{(0)}(k)^{2}}+\sqrt{\frac{1}{n} \sum_{k=1}^{n} x^{(0)}(k)^{2}}}$<br>U2    =    $\frac{\left[\sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}\right]^{1 / 2}}{\left[\sum_{k=1}^{n} x^{(0)}(k)^{2}\right]^{1 / 2}}$<br>R    =    $\frac{\operatorname{Cov}(\hat{x}^{(0)}, x^{(0)})}{\sqrt{\operatorname{Var}[\hat{x}^{(0)}] \operatorname{Var}[x^{(0)}]}}$</p>
+            <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><p>Neural Networks and Deep Learning </p>
+<p>4 周</p>
 
           
         
@@ -886,184 +706,6 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/算法汇总/决策树/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/03/算法汇总/决策树/" itemprop="url">决策树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T09:18:39+08:00">2019-03-03</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/03/算法汇总/决策树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/算法汇总/决策树/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                6.3k字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！😄 😃 😁 😮</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/03/算法汇总/决策树/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/决策树/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1182,6 +824,8 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
       
         
           <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:</p>
+<p>[TOC]</p>
+<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p>英文名字：Descision Tree</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/03/03/决策树/#more" rel="contents">
@@ -1242,7 +886,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/吴恩达/">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/03/03/算法汇总/决策树/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XieMay">
@@ -1261,7 +905,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/03/吴恩达/" itemprop="url">吴恩达</a></h1>
+                <a class="post-title-link" href="/2019/03/03/算法汇总/决策树/" itemprop="url">决策树</a></h1>
         
 
         <div class="post-meta">
@@ -1309,8 +953,8 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/03/吴恩达/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/吴恩达/" itemprop="commentCount"></span>
+                <a href="/2019/03/03/算法汇总/决策树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/算法汇总/决策树/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1333,7 +977,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
                   <span class="post-meta-item-text">Symbols count in article&#58;</span>
                 
                 <span title="Symbols count in article">
-                40字
+                6.3k字
               </span>
               
 
@@ -1359,11 +1003,193 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
 
       
         
-          
-            <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><p>Neural Networks and Deep Learning </p>
-<p>4 周</p>
+          <p>主要是分享决策的基本知识点，重点在分类决策树上，对于回归的决策树后面在给出。希望大家和我一起做知识的传播者啦！:smile: :smiley: :grin: :open_mouth:</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/03/算法汇总/决策树/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2019/02/28/SVD/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/28/SVD/" itemprop="url">我的读书笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-28T14:54:12+08:00">2019-02-28</time>
+            
+
+            
+            
+
+            
+          </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/28/SVD/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/SVD/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                6.1k字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="目录-smile"><a href="#目录-smile" class="headerlink" title="目录 :smile:"></a>目录 :smile:</h1><p>:one: <a href="#1">简单说一下特征值、特征向量与特征分解</a><br>&nbsp;&nbsp; I. <a href="#1.1">特征值、特征向量与特征分解</a><br>&nbsp;&nbsp; II. <a href="#1.2">几何意义</a><br>&nbsp;&nbsp; III.  <a href="#1.3">如何实现通过Matlab、Python实现</a><br>:two:<a href="#2">详细解说SVD</a><br>&nbsp;&nbsp; I. <a href="#2.1">几何意义</a><br>&nbsp;&nbsp; I. <a href="#2.2">奇异值分解的推导过程</a><br>&nbsp;&nbsp; I. <a href="#2.3">SVD算例</a><br>&nbsp;&nbsp; I. <a href="#2.4">如何通过Matlab和Python</a><br>:three:<a href="#3">应用举例</a><br>&nbsp;&nbsp; I. <a href="#3.1">特征值、特征向量与特征分解</a><br>:four:<a href="#4">特征分解、奇异值分解的区别</a><br>&nbsp;&nbsp; I. <a href="#4">特征分解、奇异值分解的区别</a></p>
+<h1 id="简单说一下特征值、特征向量与特征分解"><a href="#简单说一下特征值、特征向量与特征分解" class="headerlink" title=" 简单说一下特征值、特征向量与特征分解"></a><font id="1" color="blue"> 简单说一下特征值、特征向量与特征分解</font></h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/28/SVD/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1449,7 +1275,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1639,7 +1465,11 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
                     
                       
                     
-                    <span class="site-state-item-count">52</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1719,7 +1549,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">294k</span>
+    <span title="Symbols count total">284k</span>
   
 
   
@@ -2329,19 +2159,7 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -2358,5 +2176,17 @@ W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

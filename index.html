@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/09/06/FeatureExtraction/">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/09/06/算法汇总/FeatureExtraction/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XieMay">
@@ -369,7 +369,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/09/06/FeatureExtraction/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2020/09/06/算法汇总/FeatureExtraction/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -381,7 +381,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-06T23:44:45+08:00">2020-09-06</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-06T23:44:47+08:00">2020-09-06</time>
             
 
             
@@ -399,8 +399,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/09/06/FeatureExtraction/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/06/FeatureExtraction/" itemprop="commentCount"></span>
+                <a href="/2020/09/06/算法汇总/FeatureExtraction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/06/算法汇总/FeatureExtraction/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -451,24 +451,184 @@
         
           
             <h1 id="Principal-Component-Analysis-主成分分析"><a href="#Principal-Component-Analysis-主成分分析" class="headerlink" title="Principal Component Analysis**  : 主成分分析"></a>Principal Component Analysis**  : 主成分分析</h1><h2 id="形象理解"><a href="#形象理解" class="headerlink" title="形象理解"></a>形象理解</h2><p>如图，下面是一张3d的图片，从不同的方向投影出来的二维图，可以看出右往左投影的含有更多信息。</p>
-<p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133219347.png" alt="image-20191102133219347"></p>
+<p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133219347.png" alt="image-20191102133219347"></p>
 <p>如图，下面是一个高斯分布，二维点往两个正交的方向投影，长轴含有的信息更多。</p>
-<p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133339237.png" alt="image-20191102133339237"></p>
+<p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133339237.png" alt="image-20191102133339237"></p>
 <h2 id="PCA的过程示意"><a href="#PCA的过程示意" class="headerlink" title="PCA的过程示意"></a>PCA的过程示意</h2><p><strong>Step 1 </strong> : 去中心。中心在坐标轴在（0,0)，均值在坐标轴原点</p>
-<p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133416190.png" alt="image-20191102133416190"></p>
-<p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133422942.png" alt="image-20191102133422942"></p>
+<p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133416190.png" alt="image-20191102133416190"></p>
+<p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133422942.png" alt="image-20191102133422942"></p>
 <p><strong>Step 2</strong>  : Remove correlation(去除相关性)</p>
 <p>通过坐标变化，坐标旋转，矩阵作用</p>
-<p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133442399.png" alt="image-20191102133442399"></p>
+<p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133442399.png" alt="image-20191102133442399"></p>
 <h3 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h3><p>目标：变换后的矩阵，对角非零，非对角线全为零。S(Y)有非零的对角元素，所有非对角元素都是零 </p>
-<p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133714679.png" alt="image-20191102133714679"></p>
-<h3 id="理论推导"><a href="#理论推导" class="headerlink" title="理论推导"></a>理论推导</h3><p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133819074.png" alt="image-20191102133819074"></p>
-<p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133929665.png" alt="image-20191102133929665"></p>
-<h3 id="PCA-Examples"><a href="#PCA-Examples" class="headerlink" title="PCA Examples"></a>PCA Examples</h3><p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133956360.png" alt="image-20191102133956360"></p>
-<h3 id="PCA-bias"><a href="#PCA-bias" class="headerlink" title="PCA bias"></a>PCA bias</h3><p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102134003219.png" alt="image-20191102134003219"></p>
-<p><img src="/2020/09/06/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102134023435.png" alt="image-20191102134023435"></p>
+<p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133714679.png" alt="image-20191102133714679"></p>
+<h3 id="理论推导"><a href="#理论推导" class="headerlink" title="理论推导"></a>理论推导</h3><p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133819074.png" alt="image-20191102133819074"></p>
+<p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133929665.png" alt="image-20191102133929665"></p>
+<h3 id="PCA-Examples"><a href="#PCA-Examples" class="headerlink" title="PCA Examples"></a>PCA Examples</h3><p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102133956360.png" alt="image-20191102133956360"></p>
+<h3 id="PCA-bias"><a href="#PCA-bias" class="headerlink" title="PCA bias"></a>PCA bias</h3><p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102134003219.png" alt="image-20191102134003219"></p>
+<p><img src="/2020/09/06/算法汇总/FeatureExtraction/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20191102134023435.png" alt="image-20191102134023435"></p>
 
           
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/09/06/recording of master/MyMain/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/06/recording of master/MyMain/" itemprop="url">心路历程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-06T23:44:46+08:00">2020-09-06</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/09/06/recording of master/MyMain/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/06/recording of master/MyMain/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                403字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/06/recording of master/MyMain/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -700,345 +860,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/09/03/算法汇总/FeatureExtraction/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/03/算法汇总/FeatureExtraction/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-03T23:14:48+08:00">2020-09-03</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/09/03/算法汇总/FeatureExtraction/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/03/算法汇总/FeatureExtraction/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                328字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1>Principal Component Analysis**  : 主成分分析</h1>
-<h2 id="形象理解"><a class="header-anchor" href="#形象理解">¶</a>形象理解</h2>
-<p>如图，下面是一张3d的图片，从不同的方向投影出来的二维图，可以看出右往左投影的含有更多信息。</p>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102133219347.png" alt="image-20191102133219347"></p>
-<p>如图，下面是一个高斯分布，二维点往两个正交的方向投影，长轴含有的信息更多。</p>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102133339237.png" alt="image-20191102133339237"></p>
-<h2 id="pca的过程示意"><a class="header-anchor" href="#pca的过程示意">¶</a>PCA的过程示意</h2>
-<p>**Step 1 ** : 去中心。中心在坐标轴在（0,0)，均值在坐标轴原点</p>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102133416190.png" alt="image-20191102133416190"></p>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102133422942.png" alt="image-20191102133422942"></p>
-<p><strong>Step 2</strong>  : Remove correlation(去除相关性)</p>
-<p>通过坐标变化，坐标旋转，矩阵作用</p>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102133442399.png" alt="image-20191102133442399"></p>
-<h3 id="数学推导"><a class="header-anchor" href="#数学推导">¶</a>数学推导</h3>
-<p>目标：变换后的矩阵，对角非零，非对角线全为零。S(Y)有非零的对角元素，所有非对角元素都是零</p>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102133714679.png" alt="image-20191102133714679"></p>
-<h3 id="理论推导"><a class="header-anchor" href="#理论推导">¶</a>理论推导</h3>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102133819074.png" alt="image-20191102133819074"></p>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102133929665.png" alt="image-20191102133929665"></p>
-<h3 id="pca-examples"><a class="header-anchor" href="#pca-examples">¶</a>PCA Examples</h3>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102133956360.png" alt="image-20191102133956360"></p>
-<h3 id="pca-bias"><a class="header-anchor" href="#pca-bias">¶</a>PCA bias</h3>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102134003219.png" alt="image-20191102134003219"></p>
-<p><img src="/2020/09/03/算法汇总/FeatureExtraction/C:%5CUsers%5CADMIN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191102134023435.png" alt="image-20191102134023435"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/09/03/recording of master/MyMain/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XieMay">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/03/recording of master/MyMain/" itemprop="url">心路历程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-03T23:14:48+08:00">2020-09-03</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/09/03/recording of master/MyMain/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/03/recording of master/MyMain/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
-                
-                <span title="Symbols count in article">
-                405字
-              </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1></h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/09/03/recording of master/MyMain/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/08/28/目录——数据分析/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1197,6 +1018,179 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xiemaycherry.github.io/2020/08/28/目录——深度学习/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/28/目录——深度学习/" itemprop="url">目录——深度学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-28T16:50:58+08:00">2020-08-28</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/08/28/目录——深度学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/28/目录——深度学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article&#58;</span>
+                
+                <span title="Symbols count in article">
+                0字
+              </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1244,7 +1238,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1434,7 +1428,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">52</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1514,7 +1512,7 @@
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">294k</span>
+    <span title="Symbols count total">284k</span>
   
 
   
@@ -2055,9 +2053,9 @@
       
     
       
-        
-      
     
+      
+        
       
     
       
@@ -2124,19 +2122,7 @@
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -2153,5 +2139,17 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

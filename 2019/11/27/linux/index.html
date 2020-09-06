@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://doc.shiyanlou.com/linux_base/1-1.png/wm">
 <meta property="og:image" content="https://img-blog.csdn.net/20180719122550321?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTAzNjcwMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://doc.shiyanlou.com/linux_base/4-1.png/wm">
-<meta property="og:updated_time" content="2019-11-27T07:27:48.000Z">
+<meta property="og:updated_time" content="2019-11-27T07:27:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux">
 <meta name="twitter:description" content="linux内核，linux发行版（带桌面环境），服务器的访问方式（三种），linux操作系统的相关使用，通过命令行和键盘输入搞定（用户权限，用户分组，用户之间的关系，用户操作；文件结构，文件使用，文件权限，文件编辑，文件压缩和解压，这系列操作类比操作系统，只是linux系统里面，都是命令行完成，不是可视化界面罢了；帮助，终止操作，root，sudo,超级管理员，管理员组，普通用户）windows操">
@@ -470,34 +470,29 @@
 
       
         <p>linux内核，linux发行版（带桌面环境），服务器的访问方式（三种），linux操作系统的相关使用，通过命令行和键盘输入搞定（用户权限，用户分组，用户之间的关系，用户操作；文件结构，文件使用，文件权限，文件编辑，文件压缩和解压，这系列操作类比操作系统，只是linux系统里面，都是命令行完成，不是可视化界面罢了；帮助，终止操作，root，sudo,超级管理员，管理员组，普通用户）windows操作系统可以干的事情，在linux服务器里面，都可以干，通过命令行配置，安装，完成！</p>
-<h1>Linux</h1>
-<h2 id="linux-的科普"><a class="header-anchor" href="#linux-的科普">¶</a>Linux 的科普</h2>
-<p>Linux 是一套免费使用和自由传播的类 Unix 操作系统 ，支持多用户，多任务，支持多线程和对CPU的操作系统。，就像你多少已经了解的 Windows（xp，7，8）和 Mac OS 。</p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="Linux-的科普"><a href="#Linux-的科普" class="headerlink" title="Linux 的科普"></a>Linux 的科普</h2><p> Linux 是一套免费使用和自由传播的类 Unix 操作系统 ，支持多用户，多任务，支持多线程和对CPU的操作系统。，就像你多少已经了解的 Windows（xp，7，8）和 Mac OS 。</p>
 <p><img src="https://doc.shiyanlou.com/linux_base/1-1.png/wm" alt="图1-1"></p>
-<p>或许你之前不知道 Linux ，要知道，你之前在 Windows 使用百度、谷歌，上淘宝，聊 QQ 时，支撑这些软件和服务的，是后台成千上万的 Linux 服务器主机，它们时时刻刻都在忙碌地进行着数据处理和运算，可以说世界上大部分软件和服务都是运行在 Linux 之上的。</p>
-<p>明确目的：你是要用 Linux 来干什么，搭建服务器、做程序开发、日常办公，还是娱乐游戏；</p>
-<p>兼具图形界面操作（需要使用带有桌面环境的发行版）和完全的命令行操作，可以只用键盘完成一切操作，新手入门较困难，需要一些学习和指导（这正是我们要做的事情），一旦熟练之后效率极高。</p>
+<p> 或许你之前不知道 Linux ，要知道，你之前在 Windows 使用百度、谷歌，上淘宝，聊 QQ 时，支撑这些软件和服务的，是后台成千上万的 Linux 服务器主机，它们时时刻刻都在忙碌地进行着数据处理和运算，可以说世界上大部分软件和服务都是运行在 Linux 之上的。 </p>
+<p> 明确目的：你是要用 Linux 来干什么，搭建服务器、做程序开发、日常办公，还是娱乐游戏； </p>
+<p> 兼具图形界面操作（需要使用带有桌面环境的发行版）和完全的命令行操作，可以只用键盘完成一切操作，新手入门较困难，需要一些学习和指导（这正是我们要做的事情），一旦熟练之后效率极高。 </p>
 <p>一般命令行操作，通过键盘完成</p>
-<p>因为linux的哲学就是：没有结果就是最好的结果</p>
-<p>如果只是执行，执行失败会告诉你哪里错了，如果执行成功那么会没有输出，因为linux的哲学就是：没有结果就是最好的结果</p>
-<h2 id="linux的发行版"><a class="header-anchor" href="#linux的发行版">¶</a>Linux的发行版</h2>
-<p>Linux发行版 = linux内核+应用软件的打包</p>
+<p> 因为linux的哲学就是：没有结果就是最好的结果 </p>
+<p> 如果只是执行，执行失败会告诉你哪里错了，如果执行成功那么会没有输出，因为linux的哲学就是：没有结果就是最好的结果 </p>
+<h2 id="Linux的发行版"><a href="#Linux的发行版" class="headerlink" title="Linux的发行版"></a>Linux的发行版</h2><p>Linux发行版 = linux内核+应用软件的打包</p>
 <p>知名的发行版： ubuntu，redhat,centos</p>
 <p>Linux系统</p>
 <ol>
-<li>
-<p>用户登录系统</p>
+<li><p>用户登录系统</p>
 <p>（1）命令行</p>
 <p>（2）ssh登录</p>
-<p>SSH 为 [Secure Shell](<a href="https://baike.baidu.com/item/Secure" target="_blank" rel="noopener">https://baike.baidu.com/item/Secure</a> Shell) 的缩写 ，用于远程登陆的协议</p>
+<p> SSH 为 <a href="https://baike.baidu.com/item/Secure Shell" target="_blank" rel="noopener">Secure Shell</a> 的缩写 ，用于远程登陆的协议</p>
 <p>远程连接工具客户端：xshell, putty,</p>
-<p>(3)   图形界面登录</p>
+<p>  (3)   图形界面登录</p>
 </li>
 </ol>
 <p><img src="https://img-blog.csdn.net/20180719122550321?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTAzNjcwMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<ol start="2">
-<li>
-<p>文件目录以及权限</p>
+<ol>
+<li><p>文件目录以及权限</p>
 <ol>
 <li>Linux 中创建、删除用户，及用户组等操作。</li>
 <li>Linux 中的文件权限设置。</li>
@@ -508,62 +503,48 @@
 <li>Linux <strong>权限管理</strong></li>
 </ul>
 <ol>
-<li>
-<p>用户管理</p>
-<p>通过第一节课程的学习，你应该已经知道，Linux 是一个可以实现多用户登录的操作系统，比如“李雷”和“韩梅梅”都可以同时登录同一台主机，他们共享一些主机的资源，但他们也分别有自己的用户空间，用于存放各自的文件。但实际上他们的文件都是放在同一个物理磁盘上的甚至同一个逻辑分区或者目录里，但是由于 Linux 的 <strong>用户管理</strong>和 <strong>权限机制</strong>，不同用户不可以轻易地查看、修改彼此的文件。</p>
+<li><p>用户管理</p>
+<p>通过第一节课程的学习，你应该已经知道，Linux 是一个可以实现多用户登录的操作系统，比如“李雷”和“韩梅梅”都可以同时登录同一台主机，他们共享一些主机的资源，但他们也分别有自己的用户空间，用于存放各自的文件。但实际上他们的文件都是放在同一个物理磁盘上的甚至同一个逻辑分区或者目录里，但是由于 Linux 的 <strong>用户管理</strong>和 <strong>权限机制</strong>，不同用户不可以轻易地查看、修改彼此的文件。 </p>
 </li>
-<li>
-<p>在 Linux 系统里， <code>root</code> 账户拥有整个系统至高无上的权利，比如 新建/添加 用户。</p>
+<li><p>在 Linux 系统里， <code>root</code> 账户拥有整个系统至高无上的权利，比如 新建/添加 用户。</p>
 <p>sudo adduser lilei</p>
 </li>
-<li>
-<p>创建用户（sudo 组）</p>
+<li><p>创建用户（sudo 组）</p>
 <p>我们一般登录系统时都是以普通账户的身份登录的，要创建用户需要 root 权限，这里就要用到 <code>sudo</code> 这个命令了。不过使用这个命令有两个大前提，一是你要知道当前登录用户的密码，二是当前用户必须在 <code>sudo</code> 用户组。 sudo命令：获得root权限</p>
 </li>
-<li>
-<p>用户组</p>
+<li><p>用户组</p>
 <p>查看：</p>
-</li>
-</ol>
 <p>在 Linux 里面每个用户都有一个归属（用户组），用户组简单地理解就是一组用户的集合，它们共享一些资源和权限，同时拥有私有资源 。</p>
-<pre><code> groups shiyanlou 
-</code></pre>
+<p> groups shiyanlou </p>
 <p>加入sudo用户组</p>
 <p>su <user>：切换用户user，需要输入目标用户和密码</user></p>
 <p>sudo usermod -G sudo lilei</p>
-<ol start="5">
-<li>文件所以者</li>
-</ol>
+</li>
+<li><p>文件所以者</p>
 <p>su -l lilei</p>
 <p>su chown 修改权限</p>
-<pre><code>`sudo ` 可以以特权级别运行 cmd 命令，需要当前用户属于 sudo 组，且需要输入当前用户的密码。 
-</code></pre>
-</li>
-<li>
-<p>文档编辑</p>
+<p><code>sudo</code> 可以以特权级别运行 cmd 命令，需要当前用户属于 sudo 组，且需要输入当前用户的密码。 </p>
 </li>
 </ol>
+</li>
+<li><p>文档编辑</p>
 <p>vim编辑器</p>
 <p>i esc :wq</p>
-<ol start="4">
-<li>
-<p>linux文件系统与磁盘管理</p>
 </li>
-<li>
-<p><img src="https://doc.shiyanlou.com/linux_base/4-1.png/wm" alt="img"></p>
-<p>$ tree /</p>
+<li><p>linux文件系统与磁盘管理</p>
+</li>
+<li><p><img src="https://doc.shiyanlou.com/linux_base/4-1.png/wm" alt="img"></p>
+<p>  $ tree /  </p>
 <p>pwd</p>
-<p>cd …: 上一级目录</p>
-<p>…/</p>
+<p>cd ..: 上一级目录</p>
+<p>../</p>
 <p>/:根目录：绝对路径</p>
-<p>cd /home/shiyanlou</p>
+<p> cd /home/shiyanlou</p>
 <p>touch test</p>
-<p>mkdir mydir</p>
-<p><code>cp</code>（copy）命令复制一个文件到指定目录</p>
-<p>要成功复制目录需要加上 <code>-r</code> 或者 <code>-R</code> 参数，表示递归复制</p>
-<p>cd /home/shiyanlou<br>
-mkdir family<br>
-​ cp -r father family</p>
+<p> mkdir mydir </p>
+<p>  <code>cp</code>（copy）命令复制一个文件到指定目录 </p>
+<p> 要成功复制目录需要加上 <code>-r</code> 或者 <code>-R</code> 参数，表示递归复制 </p>
+<p>cd /home/shiyanlou<br> mkdir family<br>​ cp -r father family</p>
 </li>
 </ol>
 <pre><code>rm test 
@@ -571,72 +552,41 @@ mkdir family<br>
 跟复制目录一样，要删除一个目录，也需要加上 `-r` 或 `-R` 参数 
 
 mv 源目录文件 目的目录 ，可以用来重命名文件
-</code></pre>
-<p>$ cd /home/shiyanlou/</p>
-<p>使用通配符批量创建 5 个文件:</p>
-<p>$ touch file{1…5}.txt</p>
-<p>批量将这 5 个后缀为 .txt 的文本文件重命名为以 .c 为后缀的文件:</p>
-<p>$ rename ‘s/.txt/.c/’ *.txt</p>
-<p>批量将这 5 个文件，文件名和后缀改为大写:</p>
-<p>$ rename ‘y/a-z/A-Z/’ *.c</p>
-<p>文件打包和解压缩</p>
+</code></pre><p>   $ cd /home/shiyanlou/</p>
+<p>   使用通配符批量创建 5 个文件:</p>
+<p>   $ touch file{1..5}.txt</p>
+<p>   批量将这 5 个后缀为 .txt 的文本文件重命名为以 .c 为后缀的文件:</p>
+<p>   $ rename ‘s/.txt/.c/‘ *.txt</p>
+<p>   批量将这 5 个文件，文件名和后缀改为大写:</p>
+<p>   $ rename ‘y/a-z/A-Z/‘ *.c</p>
+<p>   文件打包和解压缩</p>
 <ul>
-<li>zip：
-<ul>
+<li>zip：<ul>
 <li>打包 ：zip something.zip something （目录请加 -r 参数）</li>
 <li>解包：unzip something.zip</li>
 <li>指定路径：-d 参数</li>
 </ul>
 </li>
-<li>tar：
+<li><p>tar：</p>
 <ul>
 <li>打包：tar -cf something.tar something</li>
 <li>解包：tar -xf something.tar</li>
 <li>指定路径：-C 参数、</li>
 </ul>
+<p>tar -cf shiyanlou.tar /home/shiyanlou/Desktop </p>
+<p><code>-c</code> 表示创建一个 tar 包文件，<code>-f</code> 用于指定创建的文件名，注意文件名必须紧跟在 <code>-f</code> 参数之后 </p>
+<p>tar -xf shiyanlou.tar -C tardir </p>
+<p>解包一个文件（<code>-x</code> 参数）到指定路径的<strong>已存在</strong>目录（<code>-C</code> 参数） </p>
+<p>tar -xzf shiyanlou.tar.gz </p>
 </li>
 </ul>
-<pre><code>tar -cf shiyanlou.tar /home/shiyanlou/Desktop 
-
-`-c` 表示创建一个 tar 包文件，`-f` 用于指定创建的文件名，注意文件名必须紧跟在 `-f` 参数之后 
-
-tar -xf shiyanlou.tar -C tardir 
-
-解包一个文件（`-x` 参数）到指定路径的**已存在**目录（`-C` 参数） 
-
-tar -xzf shiyanlou.tar.gz 
-</code></pre>
-<ol start="6">
-<li>
-<table>
-<thead>
-<tr>
-<th>压缩文件格式</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>*.tar.gz</code></td>
-<td><code>-z</code></td>
-</tr>
-<tr>
-<td><code>*.tar.xz</code></td>
-<td><code>-J</code></td>
-</tr>
-<tr>
-<td><code>*tar.bz2</code></td>
-<td><code>-j</code></td>
-</tr>
-</tbody>
-</table>
+<ol>
+<li><p>| 压缩文件格式 | 参数 |<br>| —————— | —— |<br>| <code>*.tar.gz</code>   | <code>-z</code> |<br>| <code>*.tar.xz</code>   | <code>-J</code> |<br>| <code>*tar.bz2</code>   | <code>-j</code> |</p>
 </li>
-<li>
-<p>linux安装软件</p>
+<li><p>linux安装软件</p>
 </li>
 </ol>
-<h3 id="输入-输出"><a class="header-anchor" href="#输入-输出">¶</a>输入，输出</h3>
-<p>输入：输入当然就是打开终端，然后按键盘输入，然后按回车，输入格式一般就是这类的</p>
+<h3 id="输入，输出"><a href="#输入，输出" class="headerlink" title="输入，输出"></a>输入，输出</h3><p>   输入：输入当然就是打开终端，然后按键盘输入，然后按回车，输入格式一般就是这类的</p>
 <p>输出：</p>
 <p>输出会返回你想要的结果，比如你要看什么文件，就会返回文件的内容。</p>
 <p>如果只是执行，执行失败会告诉你哪里错了，如果执行成功那么会没有输出，因为linux的哲学就是：没有结果就是最好的结果</p>
@@ -644,6 +594,7 @@ tar -xzf shiyanlou.tar.gz
 <p>Ctrl+C:强制终止</p>
 <p>学会使用通配符：通配符：*,?</p>
 <p>学会在命令行中获取帮助：man命令调用手册页，</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -686,6 +637,7 @@ tar -xzf shiyanlou.tar.gz
 </tr>
 </tbody>
 </table>
+</div>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man 1 ls</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls --help</span><br></pre></td></tr></table></figure>
 
@@ -848,7 +800,7 @@ tar -xzf shiyanlou.tar.gz
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1038,7 +990,11 @@ tar -xzf shiyanlou.tar.gz
                     
                       
                     
-                    <span class="site-state-item-count">52</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1093,7 +1049,7 @@ tar -xzf shiyanlou.tar.gz
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux-的科普"><span class="nav-number">1.1.</span> <span class="nav-text">¶Linux 的科普</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux的发行版"><span class="nav-number">1.2.</span> <span class="nav-text">¶Linux的发行版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-输出"><span class="nav-number">1.2.1.</span> <span class="nav-text">¶输入，输出</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-number">1.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-的科普"><span class="nav-number">1.1.</span> <span class="nav-text">Linux 的科普</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux的发行版"><span class="nav-number">1.2.</span> <span class="nav-text">Linux的发行版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入，输出"><span class="nav-number">1.2.1.</span> <span class="nav-text">输入，输出</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1134,7 +1090,7 @@ tar -xzf shiyanlou.tar.gz
     
       <span class="post-meta-item-text">Symbols count total&#58;</span>
     
-    <span title="Symbols count total">294k</span>
+    <span title="Symbols count total">284k</span>
   
 
   
@@ -1711,19 +1667,7 @@ tar -xzf shiyanlou.tar.gz
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1740,5 +1684,17 @@ tar -xzf shiyanlou.tar.gz
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"wanko","bottom":-30,"mobileShow":false,"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
