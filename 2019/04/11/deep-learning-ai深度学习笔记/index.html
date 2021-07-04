@@ -17,46 +17,46 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"mycherrymay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="C5: Sequence Models#W1 : Recurrent Neural Networks (循环序列模型)#L1 ： Why Sequence Models?#循环神经网络（RNN）之类的模型在语音识别、自然语言处理和其他领域中引起变革。 序列模型的列子  L2 : Notation 数学符号#NLP 我们用$X^{(i)}$来表示第个i训练样本，所以为了指代第个t元素，或者说是训练样">
 <meta property="og:type" content="article">
 <meta property="og:title" content="deep_learning.ai深度学习笔记&lt;Andrew Ng&gt;">
-<meta property="og:url" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Welcome to shiyi&#39;s world">
 <meta property="og:description" content="C5: Sequence Models#W1 : Recurrent Neural Networks (循环序列模型)#L1 ： Why Sequence Models?#循环神经网络（RNN）之类的模型在语音识别、自然语言处理和其他领域中引起变革。 序列模型的列子  L2 : Notation 数学符号#NLP 我们用$X^{(i)}$来表示第个i训练样本，所以为了指代第个t元素，或者说是训练样">
 <meta property="og:locale">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c11.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c12.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c13.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c14.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c15.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c16.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c17.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c18.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c19.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c110.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c111.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c112.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c113.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c114.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c115.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c116.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c117.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c118.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c119.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c120.png">
-<meta property="og:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c121.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c11.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c12.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c13.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c14.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c15.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c16.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c17.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c18.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c19.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c110.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c111.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c112.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c113.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c114.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c115.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c116.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c117.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c118.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c119.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c120.png">
+<meta property="og:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c121.png">
 <meta property="article:published_time" content="2019-04-11T01:15:23.000Z">
 <meta property="article:modified_time" content="2020-10-05T13:47:45.877Z">
 <meta property="article:author" content="XieMay">
 <meta property="article:tag" content="我的读书笔记">
 <meta property="article:tag" content="deep learning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c11.png">
+<meta name="twitter:image" content="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/c11.png">
 
-<link rel="canonical" href="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -202,7 +202,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://mycherrymay.github.io/2019/04/11/deep-learning-ai%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
