@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据分析之数据分析思思维">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/06/03/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%80%9D%E6%80%9D%E7%BB%B4/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="学习">
+<meta property="og:locale">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-f19953ace16a329f5174c1c32d8a61b3.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-bf5de83ff6f7c9ce357e9faa9d2a71a1.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-b560a77f6bc8c51c0f56307d1c58dfb2.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-f5d8cc3ced0d2dc2358c74496e502515.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-6fdde867e7f408d0278622edc64fcff3.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-bf06907a0d5fbd9837e291a6c47b33a7.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-04d47605fc1422853e3da98bd98213b8.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-2d1a969c6b71a697bfb9debbb734fc49.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-47a77966130dde10bd14439e853fc5d4.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-2dce345f05f7ed347489397fa038ac2d.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-a0e3b50366e8059367176c1320b091fe.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-365330cd680347009bbe41173c8456a1.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-9c60c6594e413f5e76a8fefada30db31.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-4e17d1a28c2a1a1c3c18cfb6dd137bda.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-09a53d7faafd5168ee13f21e4ef63e51.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-a664735acda44c1d3ddc2ecc5a070139.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-4d14147162b7301543d906288f229ff4.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-04091c51eba2d7c9edb350ce1d0a910f.jpg">
+<meta property="article:published_time" content="2020-06-03T13:35:29.000Z">
+<meta property="article:modified_time" content="2021-06-23T13:14:25.888Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="数据分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic4.zhimg.com/v2-f19953ace16a329f5174c1c32d8a61b3.jpg">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/06/03/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%80%9D%E6%80%9D%E7%BB%B4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>数据分析之数据分析思思维 | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/06/03/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%80%9D%E6%80%9D%E7%BB%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据分析之数据分析思思维
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-03 21:35:29" itemprop="dateCreated datePublished" datetime="2020-06-03T21:35:29+08:00">2020-06-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-23 21:14:25" itemprop="dateModified" datetime="2021-06-23T21:14:25+08:00">2021-06-23</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>学习</p>
+<a id="more"></a>
+<h1><span id="fang-fa">方法</span><a href="#fang-fa" class="header-anchor">#</a></h1><h2><span id="ye-wu-zhi-biao">业务指标</span><a href="#ye-wu-zhi-biao" class="header-anchor">#</a></h2><p>Why: 要解读、解读数据，想要建立指标，从中得到数据的含义和现象</p>
+<h3><span id="ru-he-li-jie-shu-ju">如何理解数据</span><a href="#ru-he-li-jie-shu-ju" class="header-anchor">#</a></h3><p><img src="https://pic4.zhimg.com/v2-f19953ace16a329f5174c1c32d8a61b3.jpg" alt="img" style="zoom:33%;"></p>
+<p>两个步骤：每一列含义（定义）-》 数据分类（三大分类）</p>
+<p>｜）用户数据:我呈谁<br>用户数据是指用户的基本情况’包括姓名、性别、邮箱、年龄、家庭住址＼教育水平、职业等·<br>2）行为数据:我做了什么</p>
+<p>用户行为：鼠标点击，停留时间，浏览内容</p>
+<p>行为数据是记录用户做过什么的数据°例如淘宝上,用户行为可以是用户在某个产品页面的停留时间、测览过哪些产品、购买了哪些产品等°行为数据主要包括用户做了哪些行为、发生行为的时间等°<br>3）产品数据:卖什么<br>-个平台里的东西都可以看作产品’例如淘宝里的商品、优酷上的视频、公众号里的文章都可以看作产品°产品数据包括产品名称、产品类别、产品评论、库存等°  </p>
+<h3><span id="zhi-biao">指标</span><a href="#zhi-biao" class="header-anchor">#</a></h3><p>如果你不能衡量’那么你就不能有效增长  </p>
+<p>定量：需要指标。</p>
+<p>数据的基础上=》指标刻画，定量业务</p>
+<p><img src="https://pic1.zhimg.com/v2-bf5de83ff6f7c9ce357e9faa9d2a71a1.jpg" alt="img"></p>
+<h4><span id="yong-hu-zhi-biao">用户指标</span><a href="#yong-hu-zhi-biao" class="header-anchor">#</a></h4><p>用户分类： 新增用户、（不）活跃用户、留存用户、流失用户</p>
+<p><img src="https://pic1.zhimg.com/v2-b560a77f6bc8c51c0f56307d1c58dfb2.jpg" alt="img" style="zoom:33%;"></p>
+<p>l）对于新增用户使用的指标: 日新增用户数°<br>（2）对于活跃用户使用的指标:活跃率。<br>（3）对于留存用户使用的指标:留存率。  </p>
+<h5><span id="xin-zeng-yong-hu">新增用户</span><a href="#xin-zeng-yong-hu" class="header-anchor">#</a></h5><p>渠道</p>
+<p>日新增用户数就是产品每天新增的用户是多少  </p>
+<p>新增用户来自产品推广的渠道,如果按渠道维度来拆解新增用户,可以看出不同渠道分别新增了多少用户,从而判断出渠道推广的效果·  </p>
+<h5><span id="huo-yue-lu">活跃率</span><a href="#huo-yue-lu" class="header-anchor">#</a></h5><p>在讲解活跃率之前’需要先知道活跃用户数°怎么定义活跃呢?是某个用户登录了App算活跃用户?还是打开使用了App里哪个功能算活跃用户?不同的产品定义不—样’所以看到这样的指标’—定要搞清楚活跃是怎么定义的°活跃用户数按时间又分为日活跃用户数、周活跃用户数、月活跃用户数。<br>日活跃用户数:＿天之内活跃的用户数。例如把打开公众号文章定义为活跃, 日活跃用户数就是＿天内打开公众号文章的人数。<br>周活跃用户数:＿周之内至少活跃—次的用户总数。例如把打开公众号文章定义为活跃’周活跃用户数就是＿周内打开公众号文章的人数°月活跃用户数:＿个月之内至少活跃—次的用户总数°例如把打开公众号又章定义为活跃,月活跃用户数就是-个月内打开公众号文章的人数°  </p>
+<p>需要注意的是’统计人数要去掉重复的数据。  </p>
+<h5><span id="liu-cun-lu">留存率</span><a href="#liu-cun-lu" class="header-anchor">#</a></h5><p>留存可以评估产品功能对用户的勃性°如果-个产品留存低’那么说明产品对用户的熟性就小,就要想办法来提高留存了°留存反映了不同时期获得新用户的流失情况’如果留存低,就要找到用户流失的原因°反映用户留存的指标,用留存率来表示。第l天新增的用户中’在第N天还使用过产品的用户数’除以第l天新增总用户数’就是留存率。  </p>
+<p>根据时间, 留存率又分为次日留存率、第3日留存率、第7日留存率、第30日留存率等’<br>法如下:<br>日留存率:第l天新增的用户中,在第2天使用过产品的用户数／第l天新增总用户数;<br>3日留存率:第1天新增的用户中’在第3天使用过产品的用户数／第l天新增总用户数;<br>7日留存率:第l天新增的用户中,在第7天使用过产品的用户数／第l天新增总用户数;<br>30日留存率:第l天新增的用户中’在第30天使用过产品的用户数／第1天新增总用户数°<br>如某个App’把打开App定义为使用过产品,这款App每天的留存用户数如图Iˉ9所示  </p>
+<h4><span id="xing-wei-shu-ju-zhi-biao">行为数据指标</span><a href="#xing-wei-shu-ju-zhi-biao" class="header-anchor">#</a></h4><h5><span id="1-pv-he-uv">1）pV和UV</span><a href="#1-pv-he-uv" class="header-anchor">#</a></h5><p>PV（访问次数’PageView）‘ <strong>＿定时间内某个页面的测览次数</strong>,用户每打开—个网页可以看作-个PV°例如’某-个网页l天中被打开l0次,那么PV为l0。<br>UV（访问人数’UmqueVisitor）:<strong>-定时间内访问某个页面的人数°</strong>例如’某—个网页l天中被］个人打开过l0次’那么UV是l。虽然这位用户在l天中打开该网页l0次’但是这位用户都只能算—个人’所以UV是｜’而不是l0。  </p>
+<p>通过pv,uv就可以观测用户的喜好</p>
+<h5><span id="2-zhuan-fa-lu">2）转发率</span><a href="#2-zhuan-fa-lu" class="header-anchor">#</a></h5><p>转发率=转发人数、看到该功能的用户数</p>
+<h5><span id="3-zhuan-hua-lu">3）转化率</span><a href="#3-zhuan-hua-lu" class="header-anchor">#</a></h5><p><img src="https://pic2.zhimg.com/v2-f5d8cc3ced0d2dc2358c74496e502515.jpg" alt="img" style="zoom:33%;"></p>
+<h5><span id="4-k-yin-zi">4） K因子</span><a href="#4-k-yin-zi" class="header-anchor">#</a></h5><p>看推荐效果</p>
+<p>K因子= 平均每个用户向多少人发出邀请*转化率</p>
+<p>》1：增长；《1： 增长后停止</p>
+<h4><span id="chan-ye-shu-ju-zhi-biao">产业数据指标</span><a href="#chan-ye-shu-ju-zhi-biao" class="header-anchor">#</a></h4><p>产品数据相关的指标包括: 用来衡量业务总量的指标’例如成交总额、成交数量;用来衡量  人均情况的指标’例如客单价;用来衡量付费情况的指标’例如付费率、复购率; 以及与产品相关的指标  </p>
+<p><img src="https://pic4.zhimg.com/v2-6fdde867e7f408d0278622edc64fcff3.jpg" alt="img"></p>
+<h5><span id="zong-liang">总量</span><a href="#zong-liang" class="header-anchor">#</a></h5><p>交总额、成交数量、访问时长（ </p>
+<h5><span id="ping-jun">平均</span><a href="#ping-jun" class="header-anchor">#</a></h5><p>用来衡量人均情况的指标有人均付费、付费用户人均付费、人均访问时长。  </p>
+<h5><span id="fu-fei">付费</span><a href="#fu-fei" class="header-anchor">#</a></h5><h5><span id><img src="https://pic4.zhimg.com/v2-bf06907a0d5fbd9837e291a6c47b33a7.jpg" alt="img" style="zoom:33%;"></span><a href="#" class="header-anchor">#</a></h5><p>付费相关的指标有付费率、复购率（</p>
+<p>付费率＝付费人数／总用户数  </p>
+<p>复购率是指重复购买频率’用于反映用户的付费频率·复购率指—定时间内’消费两次以上的用户数／付费人数  </p>
+<p><img src="https://pic1.zhimg.com/v2-04d47605fc1422853e3da98bd98213b8.jpg" alt="img" style="zoom:33%;"></p>
+<h5><span id="4-chan-pin">4）产品</span><a href="#4-chan-pin" class="header-anchor">#</a></h5><p>常见的几个指标是热销产品数、好评产品数、差评产品数  </p>
+<p><img src="https://pic4.zhimg.com/v2-2d1a969c6b71a697bfb9debbb734fc49.jpg" alt="img" style="zoom:33%;"></p>
+<h3><span id="ru-he-xuan-ze-zhi-biao">如何选择指标</span><a href="#ru-he-xuan-ze-zhi-biao" class="header-anchor">#</a></h3><p>1）比例</p>
+<p>2）业务重点（核心），北极星指标</p>
+<p><img src="https://pic1.zhimg.com/v2-47a77966130dde10bd14439e853fc5d4.jpg" alt="img" style="zoom:33%;"></p>
+<h3><span id="zhi-biao-ti-xi-he-bao-biao">指标体系和报表</span><a href="#zhi-biao-ti-xi-he-bao-biao" class="header-anchor">#</a></h3><p>l）什么是指标体系?<br>（2）指标体系有什么用?<br>（3）如何建立指标体系?<br>（4）建立指标体系有哪些注意事项?  </p>
+<p>够监控业务情况;<br>感通过拆解指标寻找当前业务问题;  </p>
+<p>锣评估业务可改进的地方’找出下＿步工作的方向  </p>
+<h4><span id="da-jian-zhi-biao-ti-xi">搭建指标体系</span><a href="#da-jian-zhi-biao-ti-xi" class="header-anchor">#</a></h4><p><img src="https://pic3.zhimg.com/v2-2dce345f05f7ed347489397fa038ac2d.jpg" alt="img" style="zoom:50%;"></p>
+<p>（l）明确部门KPI’找到＿级指标  </p>
+<p>级指标是用来评价公司或部门运营情况最核心的指标  </p>
+<p>可以多个</p>
+<p>（2）了解业务运营情况,找到二级指标  </p>
+<p>有了-级指标以后’可以进-步将-级指标拆解为二级指标°具体如何拆解’要看业务是如何运营的。例如销售部门＿般按地区运营’就可以从地区维度拆解°市场部门—般按用户运营’就可以从用户维度拆解  </p>
+<p>（3）梳理业务流程’找到三级指标。  </p>
+<h4><span id="bao-biao">报表</span><a href="#bao-biao" class="header-anchor">#</a></h4><p>报表就是报告状况的表’是通过表格、图表来展示指标,从而方便业务部门掌握业务的情况°每天汇总更新的报表叫做日报’每周汇总更新的报表叫做周报°  </p>
+<h1><span id="fen-xi-fang-fa">分析方法</span><a href="#fen-xi-fang-fa" class="header-anchor">#</a></h1><h2><span id="5w2h">5W2H</span><a href="#5w2h" class="header-anchor">#</a></h2><p>5W是指对于所有的现象都追问5个问题:what（是什么）、when（何时）、where（何<br>地）、why（为什么）、who（是谁）°<br>2H是指再追问2个问题; how（怎么做）、howmuch（多少钱）°  </p>
+<h2><span id="luo-ji-shu-fen-xi-fang-fa">逻辑树分析方法</span><a href="#luo-ji-shu-fen-xi-fang-fa" class="header-anchor">#</a></h2><h2><span id="xing-ye-fen-xi-fang-fa">行业分析方法</span><a href="#xing-ye-fen-xi-fang-fa" class="header-anchor">#</a></h2><p><img src="https://pic1.zhimg.com/v2-a0e3b50366e8059367176c1320b091fe.jpg" alt="img"></p>
+<p>政策环境主要包括政府的政策、法律等°例如可以从这样几个问题去展开研究:  </p>
+<p>经济环境主要指—个国家的国民收入、消费者的收入水平等。经济环境决定着公司未来市场<br>能做多大。  </p>
+<p>社会环境主要包括＿个地区的人□、年龄、收入分布、购买习惯、教盲水平等  </p>
+<p>技术环境是指外部技术对公司发展的影响。  </p>
+<h2><span id="duo-wei-du-chai-jie-fang-fa">多维度拆解方法</span><a href="#duo-wei-du-chai-jie-fang-fa" class="header-anchor">#</a></h2><p>↑）从指标构成来拆解  </p>
+<p>2）从业务流程来拆解  </p>
+<h2><span id="dui-bi-fen-xi-fang-fa">对比分析方法</span><a href="#dui-bi-fen-xi-fang-fa" class="header-anchor">#</a></h2><p>1）对象</p>
+<p>自己还是行业</p>
+<p>2）如何比较</p>
+<p><img src="https://pic4.zhimg.com/v2-365330cd680347009bbe41173c8456a1.jpg" alt="img" style="zoom: 50%;"></p>
+<h2><span id="jia-she-jian-yan-fen-xi-fang-fa">假设检验分析方法</span><a href="#jia-she-jian-yan-fen-xi-fang-fa" class="header-anchor">#</a></h2><p><img src="https://pic3.zhimg.com/v2-9c60c6594e413f5e76a8fefada30db31.jpg" alt="img"></p>
+<p>从这3个维度我们可以提出3种假设:<br>（1）假设斥户有问题:可以从用户来源渠道这个维度来拆解分析’或者画出用户使用产品<br>的业务流程图来分析原因;<br>（2）假设产品有问题:可以研究这段时间销售的产品是否符合用户的需求;<br>（3）假设是竞品导致的问题:可以看竞品是不是在搞什么优惠活动,用户跑到竞争对手那里了。  </p>
+<p>们还可以从4P营销理论出发来提出假设°什么是4P营销理论呢?  </p>
+<p>（1）产品:公司提供给目标市场的有形或无形产品,包括产品实体、品牌、包装、样式、<br>服务、技术等;<br>（2）价格:用户购买产品时的价格’包括基本价格、折扣价格、付款期限及各种定价方法<br>和定价技巧等;<br>（3）渠道:产品从生产公司到消费用户所经历的销售路径。<br>（4）促销:是指企业利用各种方法刺激用户消费’来促进销售的增长°包括广告、人员推<br>销、营业推广等°例如买＿送<img src="https://pic4.zhimg.com/v2-4e17d1a28c2a1a1c3c18cfb6dd137bda.jpg" alt="img">＿、过节打折等°  </p>
+<p><img src="https://pic1.zhimg.com/v2-09a53d7faafd5168ee13f21e4ef63e51.jpg" alt="img" style="zoom:50%;"></p>
+<p><img src="https://pic1.zhimg.com/v2-a664735acda44c1d3ddc2ecc5a070139.jpg" alt="img" style="zoom: 50%;"></p>
+<h2><span id="xiang-guan-xing-fen-xi-fang-fa">相关性分析方法</span><a href="#xiang-guan-xing-fen-xi-fang-fa" class="header-anchor">#</a></h2><p><img src="https://pic4.zhimg.com/v2-4d14147162b7301543d906288f229ff4.jpg" alt="img"></p>
+<h2><span id="qun-zu-fen-xi-fang-fa">群组分析方法</span><a href="#qun-zu-fen-xi-fang-fa" class="header-anchor">#</a></h2><h2><span id="rfm-fang-fa">RFM方法</span><a href="#rfm-fang-fa" class="header-anchor">#</a></h2><p><img src="https://pic1.zhimg.com/v2-04091c51eba2d7c9edb350ce1d0a910f.jpg" alt="img"></p>
+<h2><span id="aarrr-mo-xing-fen-xi-fang-fa">AARRR模型分析方法</span><a href="#aarrr-mo-xing-fen-xi-fang-fa" class="header-anchor">#</a></h2><p>AARRR模型对应产品运营的5个重要环节（图2ˉl4l）’分别是:<br>获取用户（Acquisition）:用户如何找到我们?<br>激活用户（Ac恤vation）:用户的首次体验如何?<br>提高留存（Retention）:用户会回来吗?<br>增加收入（Revenue）:如何赚到更多钱?<br>推荐（Referral）: 用户会告诉其他人吗?</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"><i class="fa fa-tag"></i> 数据分析</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/01/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%80%9D%E7%BB%B4/" rel="prev" title="数据分析之数据分析思维">
+      <i class="fa fa-chevron-left"></i> 数据分析之数据分析思维
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/11/Data-Science/" rel="next" title="Data-Science">
+      Data-Science <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">业务指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">如何理解数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.2.</span> <span class="nav-text">指标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">用户指标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">新增用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">活跃率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">留存率</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">行为数据指标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.2.1.</span> <span class="nav-text">1）pV和UV</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.2.2.</span> <span class="nav-text">2）转发率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.2.3.</span> <span class="nav-text">3）转化率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.2.4.</span> <span class="nav-text">4） K因子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">产业数据指标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.3.1.</span> <span class="nav-text">总量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.3.2.</span> <span class="nav-text">平均</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.3.3.</span> <span class="nav-text">付费</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.3.4.</span> <span class="nav-text">#</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.2.3.5.</span> <span class="nav-text">4）产品</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.3.</span> <span class="nav-text">如何选择指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.4.</span> <span class="nav-text">指标体系和报表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">搭建指标体系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">报表</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">分析方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">5W2H</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">逻辑树分析方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">行业分析方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">多维度拆解方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.5.</span> <span class="nav-text">对比分析方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.6.</span> <span class="nav-text">假设检验分析方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.7.</span> <span class="nav-text">相关性分析方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.8.</span> <span class="nav-text">群组分析方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.9.</span> <span class="nav-text">RFM方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.10.</span> <span class="nav-text">AARRR模型分析方法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

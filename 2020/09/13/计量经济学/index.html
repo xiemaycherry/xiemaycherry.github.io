@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="就是呈现一些关于计量经济学的相关实践方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计量经济学">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="就是呈现一些关于计量经济学的相关实践方法">
+<meta property="og:locale">
+<meta property="og:image" content="file:///C:/Users/ADMIN/AppData/Roaming/Tencent/Users/2323020965/QQ/WinTemp/RichOle/%RD8D0A3HLYAMXPV831%60S%7DX.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1045132-24aa6e61e9ea3868.png?imageMogr2/auto-orient/strip|imageView2/2/w/873/format/webp">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006161241325.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006110349569.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006110508755.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006110654746.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006111253388.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006124927754.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006125117457.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006125335017.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006112428053.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006112510991.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006111902652.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006112111251.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006112012221.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006112035220.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006131019054.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006131522580.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006132238571.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201006132615287.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/MyBlog/MyBlog/hexo/source/_posts/计量经济学/image-20210405131646510.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201121093752887.png">
+<meta property="article:published_time" content="2020-09-13T07:58:36.000Z">
+<meta property="article:modified_time" content="2021-04-05T05:47:21.454Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="计量经济学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:///C:/Users/ADMIN/AppData/Roaming/Tencent/Users/2323020965/QQ/WinTemp/RichOle/%RD8D0A3HLYAMXPV831%60S%7DX.png">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>计量经济学 | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计量经济学
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-13 15:58:36" itemprop="dateCreated datePublished" datetime="2020-09-13T15:58:36+08:00">2020-09-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-05 13:47:21" itemprop="dateModified" datetime="2021-04-05T13:47:21+08:00">2021-04-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>就是呈现一些关于计量经济学的相关实践方法</p>
+<a id="more"></a>
+<h1><span id="gai-nian">概念</span><a href="#gai-nian" class="header-anchor">#</a></h1><ol>
+<li><p>标准误差</p>
+<p>标准误STANDARD ERRORS</p>
+<p>调整方差：稳健标准误（“Robust” standard errors）把误差项聚类了。</p>
+<pre><code>1. 异方差~（T)
+ 2. 聚类~(at level)
+</code></pre><p>Robust standard errors in parentheses</p>
+</li>
+<li><p>固定效应</p>
+<ol>
+<li><p>非常重要</p>
+</li>
+<li><p>时间和个人，城市上固定效应，控制不可观测因素的影响</p>
+</li>
+</ol>
+</li>
+</ol>
+<h1><span id="ji-liang-jing-ji-xue">计量经济学</span><a href="#ji-liang-jing-ji-xue" class="header-anchor">#</a></h1><p>计量经济学的模型估计的含义，不是确定的值，而是随机变量，反映了平均影响（期望)。还有随机误差项和普通方程的区别</p>
+<p>面板模型bai引入固定时间效应stata操作方法：<br>xi: xtreg y x1 x2 x3 i.year,fe 双向固定du效应，既可以控制年度效zhi应，又可以用固dao定效应消除部分内生性<br>xi: xtreg y x1 x2 x3 i.year LSDV法 就是虚拟变量最小二乘回归<br>另外，建议用聚类稳健标准差,这是解决异方差的良药<br>xi: xtreg y x1 x2 x3 i.year,fe vce(cluster.个体变量)<br>xi: xtreg y x1 x2 x3 i.year ，vce(cluster.个体变量)</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/baef9e9bc75d">https://www.jianshu.com/p/baef9e9bc75d</a></p>
+<p><a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/6cd81d7be518964bcf847c75.html">https://wenku.baidu.com/view/6cd81d7be518964bcf847c75.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.stata.com/manuals13/xtxtreg.pdf">https://www.stata.com/manuals13/xtxtreg.pdf</a></p>
+<p><a target="_blank" rel="noopener" href="https://stata-club.github.io/stata_article/2017-06-02.html">https://stata-club.github.io/stata_article/2017-06-02.html</a></p>
+<h1><span id="san-da-mo-xing">三大模型</span><a href="#san-da-mo-xing" class="header-anchor">#</a></h1><p>固定效应模型，随机效应模型和混合效应模型</p>
+<h2><span id="hun-he-gu-ji-mo-xing">混合估计模型</span><a href="#hun-he-gu-ji-mo-xing" class="header-anchor">#</a></h2><p>reg cp ip</p>
+<h2><span id="gu-ding-xiao-ying-mo-xing">固定效应模型</span><a href="#gu-ding-xiao-ying-mo-xing" class="header-anchor">#</a></h2><p>个体，时间，时间和个体</p>
+<h2><span id="sui-ji-xiao-ying-mo-xing">随机效应模型</span><a href="#sui-ji-xiao-ying-mo-xing" class="header-anchor">#</a></h2><p>tsset id year<br>xtreg cp ip,re</p>
+<p>五、针对固定效应和随机效应模型选择主要根据Hausman检验结果判定：　　　<br>xtreg cp ip, fe<br>est store FE<br>xtreg cp ip, re<br>est store RE<br>hausman FE RE　由于原假设是随机效应和固定效应无差异，如果拒绝原假设，则采用固定效应模型，否则随机效应模型。</p>
+<p><a target="_blank" rel="noopener" href="http://www.jeepxie.net/article/928076.html">http://www.jeepxie.net/article/928076.html</a></p>
+<p>Three econometric models—a pooled model, a fixed-effect<br>8 model, and a random-effect model  </p>
+<p>方差分析主要有三种模型：即固定效应模型（fixed effects model），随机效应模型（random effects model），混合效应模型（mixed effects model）。</p>
+<p>所谓的固定、随机、混合，主要是针对分组变量而言的。</p>
+<p>固定效应模型，表示你打算比较的就是你现在选中的这几组。例如，我想比较3种药物的疗效，我的目的就是为了比较这三种药的差别，不想往外推广。这三种药不是从很多种药中抽样出来的，不想推广到其他的药物，结论仅限于这三种药。“固定”的含义正在于此，这三种药是固定的，不是随机选择的。</p>
+<p>随机效应模型，表示你打算比较的不仅是你的设计中的这几组，而是想通过对这几组的比较，推广到他们所能代表的总体中去。例如，你想知道是否名牌大学的就业率高于普通大学，你选择了北大、清华、北京工商大学、北京科技大学4所学校进行比较，你的目的不是为了比较这4所学校之间的就业率差异，而是为了说明他们所代表的名牌和普通大学之间的差异。你的结论不会仅限于这4所大学，而是要推广到名牌和普通这样的一个更广泛的范围。“随机”的含义就在于此，这4所学校是从名牌和普通大学中随机挑选出来的。混合效应模型就比较好理解了，就是既有固定的因素，也有随机的因素。</p>
+<p>一般来说，只有固定效应模型，才有必要进行两两比较，随机效应模型没有必要进行两两比较，因为研究的目的不是为了比较随机选中的这些组别。</p>
+<p>固定效应和随机效应的选择是大家做面板数据常常要遇到的问题，一个常见的方法是做huasman检验，即先估计一个随机效应，然后做检验，如果拒绝零假设，则可以使用固定效应，反之如果接受零假设，则使用随机效应。但这种方法往往得到事与愿违的结果。另一个想法是在建立模型前根据数据性质确定使用那种模型，比如数据是从总体中抽样得到的，则可以使用随机效应，比如从N个家庭中抽出了M个样本，则由于存在随机抽样，则建议使用随机效应，反之如果数据是总体数据，比如31个省市的Gdp，则不存在随机抽样问题，可以使用固定效应。同时，从估计自由度角度看，由于固定效应模型要估计每个截面的参数，因此随机效应比固定效应有较大的自由度.</p>
+<p>固定效应模型<br>　　固定效应模型（fixed effects model）的应用前提是假定全部研究结果的方向与效应大小基本相同，即各独立研究的结果趋于一致，一致性检验差异无显著性。因此固定效应模型适用于各独立研究间无差异，或差异较小的研究。<br>　　固定效应模型是指实验结果只想比较每一自变项之特定类目或类别间的差异及其与其他自变项之特定类目或类别间交互作用效果，而不想依此推论到同一自变项未包含在内的其他类目或类别的实验设计。例如：研究者想知道教师的认知类型在不同教学方法情境中，对儿童学习数学的效果有何不同，其中教师和学生的认知类型，均指场地依赖型和场地独立型，而不同的教学方法，则指启发式、讲演式、编序式。当实验结束时，研究者仅就两种类型间的交互作用效果及类型间的差异进行说明，而未推论到其他认知类型，或第四种教学方法。象此种实验研究模式，即称为固定效果模式。与本词相对者是随机效应模型（random effect model）、混合效应模型（mixed effect model）。</p>
+<p>随机效应模型 random effects models<br>　　随机效应模型(random effects models)是经典的线性模型的一种推广，就是把原来（固定）的回归系数看作是随机变量，一般都是假设是来自正态分布。如果模型里一部分系数是随机的，另外一些是固定的，一般就叫做混合模型（mixed models）。<br>　　虽然定义很简单，对线性混合模型的研究与应用也已经比较成熟了，但是如果从不同的侧面来看，可以把很多的统计思想方法综合联系起来。概括地来说，这个模型是频率派和贝叶斯模型的结合，是经典的参数统计到高维数据分析的先驱，是拟合具有一定相关结构的观测的典型工具。<br>　　随机效应最直观的用处就是把固定效应推广到随机效应。注意，这时随机效应是一个群体概念，代表了一个分布的信息 or 特征，而对固定效应而言，我们所做的推断仅限于那几个固定的（未知的）参数。例如，如果要研究一些水稻的品种是否与产量有影响，如果用于分析的品种是从一个很大的品种集合里随机选取的，那么这时用随机效应模型分析就可以推断所有品种构成的整体的一些信息。这里，就体现了经典的频率派的思想-任何样本都来源于一个无限的群体(population)。<br>同时，引入随机效应就可以使个体观测之间就有一定的相关性，所以就可以用来拟合非独立观测的数据。经典的就有重复观测的数据，多时间点的记录等等，很多时候就叫做纵向数据(longitudinal data)，已经成为很大的一个统计分支。</p>
+<p>随机效应模型(random effects models)，简称REM，是经典的线性模型的一种推广，就是把原来（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/固定效应模型/628635">固定效应模型</a>）的回归系数看作是随机变量，一般都是假设是来自正态分布。如果模型里一部分系数是随机的，另外一些是固定的，一般就叫做<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/混合模型/6048939">混合模型</a>（mixed models）</p>
+<h2><span id="xtref">xtref</span><a href="#xtref" class="header-anchor">#</a></h2><h2><span id="reg">reg</span><a href="#reg" class="header-anchor">#</a></h2><h2><span id="gu-ding-xiao-ying-hui-gui">固定效应回归</span><a href="#gu-ding-xiao-ying-hui-gui" class="header-anchor">#</a></h2><p>实际上是个体效应</p>
+<p>如果要时间效应，效应自己添加时间固定效应</p>
+<p><img src="file:///C:\Users\ADMIN\AppData\Roaming\Tencent\Users\2323020965\QQ\WinTemp\RichOle\%RD8D0A3HLYAMXPV831`S}X.png" alt="img"></p>
+<p> 最后一个可以添加很多个虚拟变量</p>
+<h1><span id="stata-mian-ban-shu-ju-mo-xing-jin-xing-hausman-jian-yan"><strong>STATA面板数据模型进行Hausman检验</strong></span><a href="#stata-mian-ban-shu-ju-mo-xing-jin-xing-hausman-jian-yan" class="header-anchor">#</a></h1><h2><span id="shi-jian-gu-ding-xiao-ying-he-ge-ti-xiao-ying-mo-xing-he-sui-ji-xiao-ying-mo-xing">时间固定效应和个体效应模型和随机效应模型</span><a href="#shi-jian-gu-ding-xiao-ying-he-ge-ti-xiao-ying-mo-xing-he-sui-ji-xiao-ying-mo-xing" class="header-anchor">#</a></h2><p>二、固定效应模型<br>1.个体固定效应模型：<br> tsset id year　　　　<br> xtreg Y X, fe 或者xtreg Y X , fe i(id)　　　　<br> 针对个体固定效应（H0：不存在个体固定效应）的F检验自动生成，如果p&lt;=10%则应该选择个体固定效应。　　<br>2.时刻固定效应模型：<br>（1）麻烦的间接方法<br> tsset id year　　　　<br> xi:reg Y X i.year<br>  对于时间固定效应模型的检验不是很直接，要用wald检验，相应的命令为：<br>  建设是四年数据，时间虚变量为_Iyear_2、 _Iyear_3、 _Iyear_4，那么wald检验<br>  test _Iyear_2=_Iyear_3= _Iyear_4<br>  test _Iyear_2=_Iyear_3= _Iyear_4=0<br>（2）巧妙的方法<br>   这个方法有点麻烦，后来论坛中有人聪明的提出一种方法，让人眼前一亮，就是将时间和截面变量交换位置，之前得到的是个体固定效应，之后就是时间固定效应，具体如下：<br> tsset year id<br> xtreg Y X,fe<br>  针对时期固定效应（H0：不存在时期固定效应）的F检验自动生成。<br>我刚开始对此方法不是很有信心，最后自己将其与第一种方法做了对比发觉，估计的参数值和其他统计量均为一致性，因此推荐后面这种方法。　<br>（3）直接的方法<br>  参照个体固定效应的方法，我们再推荐一种简便直接方法：<br>  tsset id year　　　　<br>  xtreg Y X ,fe i(year)</p>
+<p>  针对时期固定效应（H0：不存在时期固定效应）的F检验自动生成。<br>  比较三种方法，第二、三种方法更为直接和有效，第一种与他们的区别还有一点就是常数项估计值不同，而第二种方法缺乏理论依据和现实做的人比较少，因此综合来看，第三种方法最为有效和直接。　　　<br>3.时刻个体双固定效应模型　<br>  实际上连玉君讲义中的时间效应（人大经济论坛出的stata论文专题讲义的p230）是时间个体双固定效应，可以这样理解fe只是固定个体效应，比如在个体固定效应模型中，输入fe和输入fe i(id)，得到的F值和p值均一致，另外从stata命令的中看sigma_u：panel-level standard deviation，F_f：F for u_i=0，均在说个体效应问题而时间效应已经通过设置时间虚拟变量进行了控制。具体方法如下：<br>　<br>  xtset id year<br>  xi:xtreg y x1 x2 i.year,fe<br>  这种方法有个问题是，估计的时候可能会出现：<br>“independent variables are collinear with the panel variable year”<br>解决的办法是从新生成一个panel varible比如code，此code是id和year的综合,前提是提前设置了<br>tsset id year。然后按照如下命令进行：<br>  gen code =year+id<br>  tsset code year<br>xi:xtreg y x1 x2 i.year,fe<br>针对时期固定效应（H0：不存在时期固定效应）的F检验自动生成。<br>最后在三种模型中到底选择哪个，主要根据F检验值是否显著进行判断，第一个显著后面不显著就选个体固定效应模型，第 二个显著其他不显著选择时间固定效应模型，第 三个显著意味着前两个均显著，那么选择个体时间双固定模型。<br>三、随机效应模型　　　　<br>tsset id year　<br> xtreg cp ip,re　　　　<br>　　　<br>四、回归系数不同的面板数据模型<br>by id: reg cp ip　　　　<br>然后把斜率＆截距整理合成一下就ok。</p>
+<p>五、针对固定效应和随机效应模型选择主要根据Hausman检验结果判定：　　　<br>  xtreg cp ip, fe　　<br>  est store FE 　<br>  xtreg cp ip, re<br>　　est store RE　<br>  hausman FE  RE　由于原假设是随机效应和固定效应无差异，如果拒绝原假设，则采用固定效应模型，否则随机效应模型。　</p>
+<h2><span id="sui-ji-xiao-ying-he-gu-ding-xiao-ying-de-xuan-ze">随机效应和固定效应的选择</span><a href="#sui-ji-xiao-ying-he-gu-ding-xiao-ying-de-xuan-ze" class="header-anchor">#</a></h2><p>tsset id year　 </p>
+<p>  xtreg cp ip, fe　　<br>  est store FE 　<br>  xtreg cp ip, re<br>　　est store RE　<br>  hausman FE  RE</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1045132-24aa6e61e9ea3868.png?imageMogr2/auto-orient/strip|imageView2/2/w/873/format/webp" alt="img"></p>
+<p>这里最重要的还是检验P值，P&lt;0.05说明可以拒绝原假设（随机效应回归模型），因此我们的模型采用固定效应回归模型更为合适。</p>
+<h1><span id="did">DID</span><a href="#did" class="header-anchor">#</a></h1><p>政策前后，时间前，时间后，至少要知道两期</p>
+<p>处理组和对照组：受不受影响。</p>
+<p>截面数据：设置的方法</p>
+<p>面板数据</p>
+<p>**PSM-DID方法———————————————-</p>
+<p>** PSM的部分<br>set seed 0001 //定义种子<br>gen tmp = runiform() //生成随机数<br>sort tmp //把数据库随机整理<br>psmatch2 treated $xlist, out(ln_w) logit ate neighbor(1) common caliper(.05) ties //通过近邻匹配，这里可以要outcome，也可以不要它</p>
+<p>pstest $xlist, both graph //检验协变量在处理组与控制组之间是否平衡<br>gen common=_support<br>drop if common == 0 //去掉不满足共同区域假定的观测值</p>
+<p>** DID的部分，根据上面匹配好的数据<br>reg ln_w did time treated $xlist </p>
+<p>xtreg ln_w did time treated $xlist i.year, fe</p>
+<p>**PSM-DID部分结束———————————————————</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/yNZ95g8poUzyDGin7JMalA">https://mp.weixin.qq.com/s/yNZ95g8poUzyDGin7JMalA</a></p>
+<p>控制组和对照组受政策影响的时间是否一致</p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006161241325.png" alt="image-20201006161241325"></p>
+<h1><span id="yi-fang-chai">异方差</span><a href="#yi-fang-chai" class="header-anchor">#</a></h1><p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006110349569.png" alt="image-20201006110349569"></p>
+<p>对于每一个X,对应一个相同的分布。但实际上，可能不是。</p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006110508755.png" alt="image-20201006110508755"></p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006110654746.png" alt="image-20201006110654746"></p>
+<p>WLS: 加权最小二乘法(WLS)</p>
+<p>white调整（最大)</p>
+<p>截面数据</p>
+<p>异方差检验：方法</p>
+<p>如果存在：怀特调整； 变换方程的形式；重新定义变量；</p>
+<p>纯异方差：</p>
+<p>非纯异方差:</p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006111253388.png" alt="image-20201006111253388"></p>
+<p><a target="_blank" rel="noopener" href="https://mlln.cn/2018/12/11/stata%E6%95%99%E7%A8%8B03-%E5%BC%82%E6%96%B9%E5%B7%AE%E7%9A%84%E6%A3%80%E9%AA%8C%E5%92%8C%E5%A4%84%E7%90%86/">https://mlln.cn/2018/12/11/stata%E6%95%99%E7%A8%8B03-%E5%BC%82%E6%96%B9%E5%B7%AE%E7%9A%84%E6%A3%80%E9%AA%8C%E5%92%8C%E5%A4%84%E7%90%86/</a></p>
+<p>为了减少异方差和使结果更加稳健，我们使用“OLS+稳健标准误”的办法，通过加robust选项来求稳健标准误。使用“OLS+稳健标准误”的好处是，它对回归系数及标准误的估计都是一致的，并不需要知道条件方差函数的形式，更适用于一般的情形。</p>
+<p>线性模型的基本假设中有Var(μ|x1,x2,⋯,xk)=dVar(μ|x1,x2,⋯,xk)=d，即<strong>随机干扰项的方差不因自变量的不同而不同</strong>。表现在现实的经济生活中，以消费水平受到收入水平的影响为例。C=b0+b1∗Y+μC=b0+b1∗Y+μ,对于收入水平Y较低的群众而言，消费情况的变化是比较小的，但是对于收入水平较大的群体而言，其消费水平的变化差异可能就非常大了。用公式表示，即为var(μ|x1,x2,⋯,xk)=f(xi,d)</p>
+<h1><span id="xu-lie-xiang-guan-xing">序列相关性</span><a href="#xu-lie-xiang-guan-xing" class="header-anchor">#</a></h1><p>什么是？</p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006124927754.png" alt="image-20201006124927754"></p>
+<p>检测</p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006125117457.png" alt="image-20201006125117457"></p>
+<p>补救措施</p>
+<p>GLS: </p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006125335017.png" alt="image-20201006125335017"></p>
+<h1><span id="yi-lou-bian-liang">遗漏变量</span><a href="#yi-lou-bian-liang" class="header-anchor">#</a></h1><h1><span id="xu-ni-bian-liang">虚拟变量</span><a href="#xu-ni-bian-liang" class="header-anchor">#</a></h1><h2><span id="zheng-ce-bian-liang">政策变量</span><a href="#zheng-ce-bian-liang" class="header-anchor">#</a></h2><p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006112428053.png" alt="image-20201006112428053"></p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006112510991.png" alt="image-20201006112510991"></p>
+<h2><span id="xu-ni-bian-liang-de-yin-ru">虚拟变量的引入</span><a href="#xu-ni-bian-liang-de-yin-ru" class="header-anchor">#</a></h2><p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006111902652.png" alt="image-20201006111902652"></p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006112111251.png" alt="image-20201006112111251"></p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006112012221.png" alt="image-20201006112012221"></p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006112035220.png" alt="image-20201006112035220"></p>
+<h1><span id="mian-ban-shu-ju">面板数据</span><a href="#mian-ban-shu-ju" class="header-anchor">#</a></h1><ol>
+<li><p>不变参数模型和变截距模型</p>
+<p>混合回归模型与截面固定效应（P&lt;5%,拒绝混合回归模型）</p>
+<p>混合回归模型与时间固定效应模型的检测</p>
+<p>不变参数模型与截面和时间的联合检测</p>
+</li>
+<li><p>变截距模型是固定还是随机效应模型</p>
+<p>Wald统计量</p>
+<p>显著：固定效应</p>
+<p>截面上检验</p>
+<p>时间上检验</p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006131019054.png" alt="image-20201006131019054"></p>
+</li>
+</ol>
+<p>   混合回归模型：</p>
+<p>   变截距模型</p>
+<p>   <img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006131522580.png" alt="image-20201006131522580"></p>
+<p>   混合回归模型</p>
+<p>   变截距模型</p>
+<p>   ​    固定效应模型</p>
+<p>   ​    随机效应模型</p>
+<p>   变系数模型（不考虑</p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006132238571.png" alt="image-20201006132238571"></p>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201006132615287.png" alt="image-20201006132615287"></p>
+<p>OLS的假设。如果不满足相应的假设，则需要补救。</p>
+<p>常用的三大问题。</p>
+<p>面板数据的模型设置和检测。有哪些类别。</p>
+<h1><span id="zong-jie">总结</span><a href="#zong-jie" class="header-anchor">#</a></h1><ol>
+<li><p>截面数据</p>
+<ol>
+<li>异方差</li>
+</ol>
+</li>
+<li><p>面板数据</p>
+<ol>
+<li>模型设置的形式</li>
+<li>检测方法</li>
+</ol>
+</li>
+<li><p>虚拟变量</p>
+<ol>
+<li><p>应用</p>
+<ol>
+<li>双重差分模型(原理)</li>
+<li>基本</li>
+<li>固定的</li>
+</ol>
+</li>
+<li><p>虚拟变量设置方法</p>
+<p>n-1</p>
+</li>
+</ol>
+</li>
+<li><p>普通最小二乘法的假设</p>
+<ol>
+<li>三大问题的检测方法和补救措施</li>
+</ol>
+</li>
+</ol>
+<h1><span id="ke-cheng-da-gang">课程大纲</span><a href="#ke-cheng-da-gang" class="header-anchor">#</a></h1><p>01</p>
+<p>回归分析概述</p>
+<p>课时</p>
+<p>1.1 计量经济学引论</p>
+<p>1.2 回归分析的基本概念</p>
+<p>1.3 回归方程的设定与估计</p>
+<p>02</p>
+<p>普通最小二乘法</p>
+<p>课时</p>
+<p>2.1 一元回归模型的OLS估计</p>
+<p>2.2 多元回归模型的OLS估计</p>
+<p>2.3 OLS估计量的性质</p>
+<p>2.4 多元回归模型实例</p>
+<p>2.5 回归模型的拟合优度</p>
+<p>03</p>
+<p>假设检验</p>
+<p>课时</p>
+<p>3.1 假设检验的基本原理</p>
+<p>3.2 假设检验的方法</p>
+<p>3.3 F检验及其应用</p>
+<p>3.4 正态性检验</p>
+<p>04</p>
+<p>模型设定</p>
+<p>课时</p>
+<p>4.1 选择解释变量</p>
+<p>4.2 选择函数形式</p>
+<p>05</p>
+<p>多重共线性</p>
+<p>课时</p>
+<p>5.1 多重共线性的定义和后果</p>
+<p>5.2 多重共线性的诊断与补救</p>
+<p>5.3 多重共线性的案例</p>
+<p>06</p>
+<p>序列相关性</p>
+<p>课时</p>
+<p>6.1 序列相关性的概念与类型</p>
+<p><strong>随机误差项之间是相关的，OLS的假定是不相关。</strong></p>
+<p>时间序列上的</p>
+<p>6.2 序列相关性的后果和检验</p>
+<p>6.3 序列相关性的补救措施</p>
+<p>07</p>
+<p>异方差性</p>
+<p>课时</p>
+<p>7.1 异方差性的概念和后果</p>
+<p><strong>随机误差项的方差相同了</strong></p>
+<p>7.2 异方差性的检验</p>
+<p>7.3 异方差性的补救措施</p>
+<p>7.4 异方差性的案例</p>
+<h4><span id="yi-fang-chai">异方差</span><a href="#yi-fang-chai" class="header-anchor">#</a></h4><script type="math/tex; mode=display">
+Var(u_i) = \delta^2</script><p><strong>聚类调整标准误</strong></p>
+<p>即<strong>对于不同的样本点</strong>，<strong>随机误差项的方差不再是常数</strong>，<strong>而互不相同</strong>，<strong>则认为出现了异方差性(Heteroskedasticity)</strong>。</p>
+<p>标准误在统计推断中发挥着至关重要的作用，直接影响着系数的显著性和置信区间，并最终影响到假设检验的结论。因此，正确地估计标准误在实证分析的过程中显得尤为重要。当干扰项满足「独立同分布 (iid)」 条件时， OLS 所估计的标准误是无偏的。但是当误差项之间存在相关性时，OLS 所估计的标准误是有偏的，不能很好地反映估计系数的真实变异性 (Petersen, 2009)，故需要对标准误进行调整。在多种调整标准误的方式中，「聚类调整标准误 (cluster)」是一种有效的方法 (Petersen, 2009)。</p>
+<p>随机误差项的方差是常数。稳健标准误修正异方差</p>
+<p>到底在什么级别上进行聚类，即如何获得合理的聚类稳健标准误—clustered robust standard errors。 到底是在个体、县、市、省还是行业、时间聚类？有没有一个统一的标准或者指导准则？看一下这下面的黄色标注，即采取保守策略，先倾向于在一个更大层面进行聚类，然后比较聚类稳健标准误和原始的标准误的差异，可以在进一步的聚类稳健标准误变化很小的时候停止。</p>
+<p>聚类标准误</p>
+<p><strong>聚类稳健的标准误&gt;异方差稳健的标准误&gt;普通标准误</strong></p>
+<p>聚类的方法有两种：</p>
+<pre><code> 1. **异方差—稳健标准误**（Heteroskedasticity-Robust+Standard+Error）是指其标准差对于模型中可能存在的异方差或自相关问题不敏感，基于稳健 标准差计算的稳健t统计量仍然渐进分布t分布。 因此，在Stata中利用**robust**选项可以得到异方差—稳健标准误（Heteroskedasticity-Robust+Standard+Error）估计量。标准误
+</code></pre><ol>
+<li><p>聚类稳健标准误：reg y x ,vce(cluster xxx)</p>
+<p>聚类稳健标准误实质上是<strong>允许组内自相关</strong>，所以如果你假定一个企业的观测值在不同时间内存在相关性，但是不同的企业之间是独立的，就聚类到企业层面；如果你假定一个企业的观测值在不同的时间内存在相关性，且一个城市内的所有企业也存在相关性（即一个城市内的所有观测值中，任意两个都存在相关性），但不同城市之间的观测值是独立的，就聚类到城市层面。</p>
+<p>​     <strong>standard errors clustered at the xx level</strong></p>
+<p>提问1：老师，您好！请问一下在使用面板数据回归时，一般控制聚类稳健标准误应该聚类到哪个层面，具体代表哪些含义？具体来说，比如我现在的数据是地级市层面的面板数据，我控制了时间和地级市固定效应，进一步我想在模型中控制聚类稳健标准误，那么我可以选择聚类到地级市层面，也可以选择聚类到省级层面，想请问有一下这两者之间有什么区别，他们分别表示模型控制了哪些干扰因素（他们具体的经济含义是什么）？</p>
+<p>解答1：聚类标准误反映了不同观测值之间是如何关联的。在你的例子中，如果聚类到地级市层面，就相当于假设同一个地级市在不同时间上的观测值之间是相互关联的，但是不同地级市的观测值之间是没有关联的。如果聚类到省级层面，要求就更严格——同一个省内任何两个观测值之间都是相互关联的（不管是不是在同一个地级市），而不同省的观测值之间是没有关联的。一般来说，你的研究情形可以聚类到地级市层面，此时等价于面板数据回归在控制地级市固定效应之后计算常规的稳健标准误。</p>
+</li>
+</ol>
+<p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/MyBlog\MyBlog\hexo\source\_posts\计量经济学\image-20210405131646510.png" alt="image-20210405131646510"></p>
+<p>08</p>
+<p>虚拟变量</p>
+<p>课时</p>
+<p>8.1 虚拟变量的含义</p>
+<p>8.2 虚拟变量的设置与引入</p>
+<p>8.3 虚拟变量的应用</p>
+<p>09</p>
+<p>虚拟应变量</p>
+<p>课时</p>
+<p>9.1 虚拟应变量的概念</p>
+<p>9.2 线性概率模型</p>
+<p>9.3 Logit模型和Probit模型</p>
+<p>10</p>
+<p>预测</p>
+<p>课时</p>
+<p>10.1 预测及其步骤</p>
+<p>10.2 精度指标</p>
+<p>10.3 时间序列模型预测</p>
+<p>11</p>
+<p>时间序列模型</p>
+<p>课时</p>
+<p>11.1 分布滞后模型及其估计</p>
+<p>11.2 Granger因果关系</p>
+<p>11.3 平稳性与单位根检验</p>
+<p>11.4 协整与误差修正模型</p>
+<p>12</p>
+<p>面板数据模型</p>
+<p>课时</p>
+<p>12.1 认识面板数据</p>
+<p>12.2 面板数据模型的设定</p>
+<p>12.3 面板数据模型的参数估计</p>
+<p>12.4 面板数据模型的设定检验</p>
+<h1><span id="fen-zu-hui-gui-he-jiao-hu-xing-qu-bie">分组回归和交互性区别</span><a href="#fen-zu-hui-gui-he-jiao-hu-xing-qu-bie" class="header-anchor">#</a></h1><p>分组回归：控制变量系数不一样，样本量少了，估计不太好</p>
+<p>稳健性检测</p>
+<h1><span id="summary">summary</span><a href="#summary" class="header-anchor">#</a></h1><p>截面数据</p>
+<p>面板数据</p>
+<p>时间序列</p>
+<p>DID的特殊性（两种形式)</p>
+<p>模型的形式</p>
+<p>估计方法（OLS,GLS)</p>
+<p>标准稳健性偏误</p>
+<h2><span id="duo-chong-gong-xian-xing">多重共线性</span><a href="#duo-chong-gong-xian-xing" class="header-anchor">#</a></h2><p>0.8 </p>
+<h2><span id="xiang-guan-xing-xi-shu">相关性系数</span><a href="#xiang-guan-xing-xi-shu" class="header-anchor">#</a></h2><h2><span id="hui-gui-jie-guo-fen-xi">回归结果分析</span><a href="#hui-gui-jie-guo-fen-xi" class="header-anchor">#</a></h2><h2><span id="fang-chai-peng-zhang-yin-zi-vif">方差膨胀因子 VIF</span><a href="#fang-chai-peng-zhang-yin-zi-vif" class="header-anchor">#</a></h2><p><img src="/2020/09/13/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201121093752887.png" alt="image-20201121093752887"></p>
+<ol>
+<li>删除支配变量</li>
+<li>增加样本容量</li>
+<li><p>删除多余变量</p>
+</li>
+<li><p>主成分分析</p>
+</li>
+<li>因子分析</li>
+<li>如果不严重，可以不处理。除非是出现了严重的问题（符号问题)</li>
+<li></li>
+</ol>
+<p><a target="_blank" rel="noopener" href="http://ulsonhu.cn/%E6%9C%AC%E7%A7%91%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%E4%B9%8B%E5%9B%9E%E7%82%89%E9%87%8D%E9%80%A0%E7%AF%87.html">http://ulsonhu.cn/%E6%9C%AC%E7%A7%91%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%E4%B9%8B%E5%9B%9E%E7%82%89%E9%87%8D%E9%80%A0%E7%AF%87.html</a></p>
+<h1><span id="nei-sheng-xing-wen-ti">内生性问题</span><a href="#nei-sheng-xing-wen-ti" class="header-anchor">#</a></h1><h2><span id="yi-lou-bian-liang">遗漏变量</span><a href="#yi-lou-bian-liang" class="header-anchor">#</a></h2><h2><span id="hu-wei-yin-guo">互为因果</span><a href="#hu-wei-yin-guo" class="header-anchor">#</a></h2><h2><span id="xuan-ze-xing-pian-chai">选择性偏差</span><a href="#xuan-ze-xing-pian-chai" class="header-anchor">#</a></h2><h2><span id="jie-jue-fang-fa">解决方法</span><a href="#jie-jue-fang-fa" class="header-anchor">#</a></h2><h3><span id="did">DID</span><a href="#did" class="header-anchor">#</a></h3><h3><span id="duan-dian-hui-gui">断点回归</span><a href="#duan-dian-hui-gui" class="header-anchor">#</a></h3><h3><span id="mian-ban-shu-ju-gu-ding-xiao-ying-mo-xing">面板数据固定效应模型</span><a href="#mian-ban-shu-ju-gu-ding-xiao-ying-mo-xing" class="header-anchor">#</a></h3><h4><span id="iv">IV</span><a href="#iv" class="header-anchor">#</a></h4><h4><span id="psm">PSM</span><a href="#psm" class="header-anchor">#</a></h4><p>豪斯曼检验：是否是内生变量</p>
+<p>内生变量：与随机误差项相关</p>
+<p>heckman </p>
+<h2><span id="hui-gui-mo-xing-yao-jian-ce-de-zhi-biao-yi-ji-xiu-zheng-fang-fa">回归模型要检测的指标以及修正方法</span><a href="#hui-gui-mo-xing-yao-jian-ce-de-zhi-biao-yi-ji-xiu-zheng-fang-fa" class="header-anchor">#</a></h2><p>内生检测</p>
+<p>异方差检测</p>
+<p>诊断：</p>
+<p>补救措施：</p>
+<p>多重共线性</p>
+<h1><span id="yin-guo-fen-xi">因果分析</span><a href="#yin-guo-fen-xi" class="header-anchor">#</a></h1>
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 计量经济学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/11/%E7%A7%91%E7%A0%94-%E7%A7%91%E7%A0%94tool/" rel="prev" title="科研-科研tool">
+      <i class="fa fa-chevron-left"></i> 科研-科研tool
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/16/%E7%A7%91%E7%A0%94%E4%B9%8B%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/" rel="next" title="科研之分析方法论">
+      科研之分析方法论 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">计量经济学</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">三大模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">混合估计模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">固定效应模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">随机效应模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">xtref</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.5.</span> <span class="nav-text">reg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.6.</span> <span class="nav-text">固定效应回归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">STATA面板数据模型进行Hausman检验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">时间固定效应和个体效应模型和随机效应模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">随机效应和固定效应的选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">DID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">异方差</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">序列相关性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">遗漏变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">虚拟变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">9.1.</span> <span class="nav-text">政策变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">9.2.</span> <span class="nav-text">虚拟变量的引入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">面板数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text">课程大纲</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">12.0.0.1.</span> <span class="nav-text">异方差</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">13.</span> <span class="nav-text">分组回归和交互性区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">14.</span> <span class="nav-text">summary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">14.1.</span> <span class="nav-text">多重共线性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">14.2.</span> <span class="nav-text">相关性系数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">14.3.</span> <span class="nav-text">回归结果分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">14.4.</span> <span class="nav-text">方差膨胀因子 VIF</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">15.</span> <span class="nav-text">内生性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">15.1.</span> <span class="nav-text">遗漏变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">15.2.</span> <span class="nav-text">互为因果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">15.3.</span> <span class="nav-text">选择性偏差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">15.4.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">15.4.1.</span> <span class="nav-text">DID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">15.4.2.</span> <span class="nav-text">断点回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">15.4.3.</span> <span class="nav-text">面板数据固定效应模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">15.4.3.1.</span> <span class="nav-text">IV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">15.4.3.2.</span> <span class="nav-text">PSM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">15.5.</span> <span class="nav-text">回归模型要检测的指标以及修正方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">16.</span> <span class="nav-text">因果分析</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '[object Object]';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

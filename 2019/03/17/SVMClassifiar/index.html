@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="[TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="支持向量机(SVM) ----- 分类器">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2019/03/17/SVMClassifiar/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="[TOC]">
+<meta property="og:locale">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2019/03/17/SVMClassifiar/MyBlog/hexo/source/_posts/SVMClassifiar/1.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2019/03/17/SVMClassifiar/MyBlog/hexo/source/_posts/SVMClassifiar/2.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2019/03/17/SVMClassifiar/MyBlog/hexo/source/_posts/SVMClassifiar/3.jpg">
+<meta property="article:published_time" content="2019-03-17T00:50:59.000Z">
+<meta property="article:modified_time" content="2020-07-25T08:01:04.000Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="支持向量机">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiemayshiyi.github.io/2019/03/17/SVMClassifiar/MyBlog/hexo/source/_posts/SVMClassifiar/1.png">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2019/03/17/SVMClassifiar/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>支持向量机(SVM) ----- 分类器 | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2019/03/17/SVMClassifiar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          支持向量机(SVM) ----- 分类器
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-17 08:50:59" itemprop="dateCreated datePublished" datetime="2019-03-17T08:50:59+08:00">2019-03-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-25 16:01:04" itemprop="dateModified" datetime="2020-07-25T16:01:04+08:00">2020-07-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>[TOC]</p>
+<a id="more"></a>
+<h1><span id="yu-bei-de-shu-xue-zhi-shi">预备的数学知识</span><a href="#yu-bei-de-shu-xue-zhi-shi" class="header-anchor">#</a></h1><h2><span id="yue-shu-you-hua-wen-ti">约束优化问题</span><a href="#yue-shu-you-hua-wen-ti" class="header-anchor">#</a></h2><p>原问题,带等式约束，也带不等式约束的一般约束问题</p>
+<script type="math/tex; mode=display">
+\begin{cases} \min_{x}f(x)\\
+s.t \begin{cases} m_i(x)>=0, i=1,..,m\\
+n_j(x)=0，j=1,..,m\\
+\end{cases}
+\end{cases}\tag{1}</script><p>构造lagrange乘子法</p>
+<script type="math/tex; mode=display">
+L(x,\lambda_i,\eta_j)= f(x)-\sum_{i=1}^{m}\lambda_im_i(x)-\sum_{j=1}^{n}\eta_j \tag{2}</script><script type="math/tex; mode=display">
+\begin{cases} \min_{x} max_{\lambda_i,\eta_j} L(R^p)\\
+s.t \lambda_i>=0
+\end{cases}</script><p>上述两个问题的等价性证明</p>
+<p>如果x不满足约束$m_i(x)$,则$\lambda_i&gt;=0$,同时$m_i(x)&lt;$,则$L(R^{p},\lambda,\eta)$趋近无穷，反之，则存在最大值</p>
+<script type="math/tex; mode=display">
+min_{x} max_{\lambda,\eta}=min_{x}(max f满足条件,max f不满足约束)\\=min_{x} max_{\lambda,\eta}{f满足条件}</script><p>对偶问题: 关于$\lambda,\eta$的最大化问题</p>
+<script type="math/tex; mode=display">max min L(x,\lambda,\eta)\\
+s.t \lambda_i>=0</script><p><strong>弱对偶问题：对偶问题&lt;=原问题</strong> </p>
+<p>证明: $max_{x} min(\lambda \eta ) L&lt;=min_{\eta,\lambda } max_{x} L$</p>
+<script type="math/tex; mode=display">
+\underbrace{\min_{x}L(x,\lambda,\eta)}_{A(\lambda,\eta)}<=L(x,\lambda,\eta)<=\underbrace{\max_{\lambda,\eta} L(x,\lambda,\eta)}_{B(x)}</script><h1><span id="fen-lei">分类</span><a href="#fen-lei" class="header-anchor">#</a></h1><p>hard-margin SVM、 soft-margin SVM 、kernel SVM</p>
+<h1><span id="xian-xing-ke-fen-zhi-chi-xiang-liang-ji">线性可分支持向量机</span><a href="#xian-xing-ke-fen-zhi-chi-xiang-liang-ji" class="header-anchor">#</a></h1><p><img src="/2019/03/17/SVMClassifiar/MyBlog\hexo\source\_posts\SVMClassifiar\1.png" alt></p>
+<p>对于A子图，可以用一个超平面($w^Tx+b$)去分类两类数据，建立如下的数学模型</p>
+<script type="math/tex; mode=display">f(w,b)=sign(w^Tx+b)</script><p>B,C,D子图提供了超平面都可以分类，显然B,C图的超平面的鲁棒性不如D图。SVM就是找到最好的一个超平面，怎么衡量好呢？找到平面离样本点的距离最大</p>
+<h2><span id="hard-margin-svm-zui-da-jian-ge-svm">hard-margin SVM： 最大间隔SVM</span><a href="#hard-margin-svm-zui-da-jian-ge-svm" class="header-anchor">#</a></h2><h2><span id="di-yi-bao-jian-ge">第一宝 间隔</span><a href="#di-yi-bao-jian-ge" class="header-anchor">#</a></h2><p>首先，看下margin的定义</p>
+<p><img src="/2019/03/17/SVMClassifiar/MyBlog\hexo\source\_posts\SVMClassifiar\2.png" alt></p>
+<script type="math/tex; mode=display">margin(w,b) = min(\frac{|w^Tx_i+b|}{||w||})</script><p>接下来</p>
+<p>数学模型：</p>
+<script type="math/tex; mode=display">\begin{cases}  \max margin(w,b)\\ st. y_i(w^Tx_i+b)>0\end{cases}</script><script type="math/tex; mode=display">\Longrightarrow\begin{cases}  max \frac{1}{||w||}min(y_i(w^Tx_i+b))\\  st. y_i(w^Tx_i+b)>0\end{cases}</script><p>注意，$y_i(w^Tx_i+b)&gt;0$,所以$\exists r&gt;0, min(y_i(w^Tx_i+b))=r$,可令$r=1$,这是对超平面范数的固定作用，因为$y=w^Tx+b$和$y=2w^T+2b$是同一个超平面，总能找到缩放$w,b$使得，可以将$r$缩放到1</p>
+<script type="math/tex; mode=display">\Longrightarrow\begin{cases}  max \frac{1}{||w||}\\  st. y_i(w^Tx_i+b)>=1\end{cases}</script><script type="math/tex; mode=display">\Longrightarrow\begin{cases}  \min \frac{1}{2}w^Tw\\  st. y_i(w^Tx_i+b)>=1\end{cases}</script><p>这是一个土二次规划问题</p>
+<h2><span id="di-er-bao-dui-ou">第二宝 对偶</span><a href="#di-er-bao-dui-ou" class="header-anchor">#</a></h2><p>利用lagrange乘子法得出对偶问题</p>
+<p><strong>带约束</strong></p>
+<script type="math/tex; mode=display">\begin{cases}  \min \frac{1}{2}w^Tw\\  st. y_i(w^Tx_i+b)-1>=0\end{cases}</script><script type="math/tex; mode=display">\Longrightarrow L(w,b,\lambda）=\frac{1}{2}w^Tw-\sum_{i=1}^{N}\lambda_i(1-y_i(w^Tx_i+b)</script><p><strong>无约束</strong></p>
+<script type="math/tex; mode=display">\begin{cases}min_{w,b} max_{\lambda}L(w,b,\lambda) \\ s.t \lambda_i>=0\end{cases}</script><p>此时关于$w,b$无约束的。</p>
+<p>对$(L(w,b,\lambda))$ 对$w$,$b$求偏导</p>
+<script type="math/tex; mode=display">
+\frac{\partial L}{\partial w}=w+\sum_{i=1}^{N}y_ix_i\lambda_i=0 \Longrightarrow w=-\sum_{i=1}^{N}y_ix_i\lambda_i\\
+\frac{\partial L}{\partial b}=-\sum_{i=1}^{N}\lambda_iy_i=0</script><p>带回$L(w,b,\lambda)$,可得<strong>对偶问题</strong></p>
+<script type="math/tex; mode=display">\begin{cases} max_{\lambda}L(w,b,\lambda ) =-\frac{1}{2}\sum_i^N\sum_j^N\lambda_i  \lambda_jy_iy_jx_i^Tx_j +\sum_i^N\lambda_i \\ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i>=0\end{cases} \Longrightarrow\\\begin{cases} min_{\lambda}L(w,b,\lambda ) =\frac{1}{2}\sum_i^N\sum_j^N\lambda_i  \lambda_jy_iy_jx_i^Tx_j -\sum_i^N\lambda_i \\ s .t. \sum_{i=1}^N\lambda_iy_i,\lambda_i>=0\end{cases}</script><h3><span id="yuan-wen-ti-he-dui-ou-wen-ti-you-xiang-tong-jie-de-chong-yao-tiao-jian">原问题和对偶问题有相同解的充要条件</span><a href="#yuan-wen-ti-he-dui-ou-wen-ti-you-xiang-tong-jie-de-chong-yao-tiao-jian" class="header-anchor">#</a></h3><p>满足 KKT</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\frac{\partial L}{\partial w}=0,\frac{\partial L}{\partial b}=0,\frac{\partial L}{\partial \lambda}=0\\
+\lambda_i(y_i(w^Tx_i+b)-1)=0\\
+\lambda_i>=0\\
+y_i(w^Tx_i+b)-1>=0
+\end{cases}</script><p>如果存在$(x_k,y_k)=+1or -1$使得$y_i(w^Tx_i+b)-1=0$即可求解$b=y_k-\sum_{i=0}^{N}\lambda_ix_i^Tx_k$</p>
+<p>代入模型</p>
+<script type="math/tex; mode=display">f(x)=sign(\sum_i^Na_iy_ix_i^Tx+y_k-\sum_{i=0}^{N}\lambda_ix_i^Tx_k)</script><p>注意，对于任意的训练样本，总有$\lambda_i=0$或者$y_if(x_i)=1$,如果$\lambda_i&gt;0$,说明样本点落在最大间隔的边界上，这些点就是支持向量，这条边界$w^Tx+b=1or-1$</p>
+<h1><span id="soft-marign-ruan-jian-ge">soft-marign 软间隔</span><a href="#soft-marign-ruan-jian-ge" class="header-anchor">#</a></h1><p>  想法：允许一部分样本可以不被正确分类</p>
+<h2><span id="you-hua-mu-biao">优化目标</span><a href="#you-hua-mu-biao" class="header-anchor">#</a></h2><script type="math/tex; mode=display">
+\min_{w,b} \frac{1}{2}w^Tw+loss</script><h2><span id="yi-xie-sun-shi-han-shu">一些损失函数</span><a href="#yi-xie-sun-shi-han-shu" class="header-anchor">#</a></h2><ol>
+<li><p>0-1损失 个数</p>
+<script type="math/tex; mode=display">loss=\sum_{i=1}^NI\{y_i(w^Tx+b)<1\}</script><p>数学性质不好，不连续</p>
+</li>
+<li><p>0-1损失 距离 <strong>hinge loss</strong></p>
+<script type="math/tex; mode=display">
+loss = \begin{cases}
+0 , y_i(w^Tx_i+b)>=0,\\
+1-y_i(w^tx_i+b),  y_i(w^Tx_i+b)<1\\
+\end{cases}</script><script type="math/tex; mode=display">
+loss_{max} = max(0,1-y_i(w^Tx_i+b)=1-z)</script><p>此时优化问题，令$\xi_i=1-y_i(w^Tx_i+b)$</p>
+<script type="math/tex; mode=display">
+\min \frac{1}{2}w^Tw+\sum_{i=1}^{N}\xi_i\\
+s.t \begin{cases}
+y_i(w^Tx_i+b)>=1-\xi_i\\
+\xi_i>=0
+\end{cases}</script></li>
+<li><p>指数损失（<strong>exponential loss </strong>)</p>
+<script type="math/tex; mode=display">
+l_{exp}(z)=exp(-z)</script></li>
+<li><p>对率损失<strong>logistic loss</strong></p>
+<script type="math/tex; mode=display">
+l_{log}(z)=log(1+exp(-z)）</script></li>
+</ol>
+<p><img src="/2019/03/17/SVMClassifiar/MyBlog\hexo\source\_posts\SVMClassifiar\3.jpg" alt></p>
+<h1><span id="he-fang-fa">核方法</span><a href="#he-fang-fa" class="header-anchor">#</a></h1><h2><span id="he-han-shu-de-ding-yi">核函数的定义</span><a href="#he-han-shu-de-ding-yi" class="header-anchor">#</a></h2><p>设 $\chi$为输入空间（Input Space），  $\mathrm{H}$为特征空间(Feature Space,一定是希尔伯特空间），存在一个映射</p>
+<script type="math/tex; mode=display">
+\varphi : \chi \rightarrow \mathrm{H}</script><p>对任意的 $x, y \in \mathrm{X}$，函数  $K(x, y)$，满足</p>
+<script type="math/tex; mode=display">
+K(x, y)=<\varphi(x), \varphi(y)></script><p>则称  $K(x, y)$为核函数。可以看出，我们并不需要知道输入空间和特征空间满足的映射关系   ，只需要知道核函数就可以算出，输入空间中任意两点映射到特征空间的内积。</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/" rel="tag"><i class="fa fa-tag"></i> 支持向量机</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/11/%E5%9B%9E%E5%BD%92%E6%A0%91/" rel="prev" title="回归树">
+      <i class="fa fa-chevron-left"></i> 回归树
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/19/SVR/" rel="next" title="支持向量回归">
+      支持向量回归 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">预备的数学知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">约束优化问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">线性可分支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">hard-margin SVM： 最大间隔SVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">第一宝 间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">第二宝 对偶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.1.</span> <span class="nav-text">原问题和对偶问题有相同解的充要条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">soft-marign 软间隔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">优化目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">一些损失函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">核方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.1.</span> <span class="nav-text">核函数的定义</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '[object Object]';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="计量经济学专题薪资分解法日常资源整理。 就是关于两个组(群体)差异性分析工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科研-分解">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/12/07/%E7%A7%91%E7%A0%94-%E5%88%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="计量经济学专题薪资分解法日常资源整理。 就是关于两个组(群体)差异性分析工具">
+<meta property="og:locale">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/12/07/%E7%A7%91%E7%A0%94-%E5%88%86%E8%A7%A3/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201217094849728.png">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D%3D1">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D%3D1">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Y%3D%5Cbeta%5E%7B%5Cprime%7D+X%2B%5Ctheta+D%2Bu+%5Ctag1++">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=X">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Y">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D%5E%7B%2A%7D%3Da_%7B0%7D%5E%7B%5Cprime%7D+Z%2Ba_%7B1%7D%5E%7B%5Cprime%7D+X%2Bv+%5Ctag2++">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D%5E%7B%2A%7D%5Cgeq+0">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D+%3D+1">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D%5E%7B%2A%7D+%3C+0">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D+%3D+0">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=u">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=v">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=+%5Cleft%5B%5Cbegin%7Barray%7D%7Bcc%7D+%5Csigma%5E%7B2%7D+%26+%5Crho+%5Csigma+%5C%5C+%5Crho+%5Csigma+%26+1+%5Cend%7Barray%7D%5Cright%5D+%5C%5C">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=u">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=v">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Crho+%5Cneq+0">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=E%28u%7CD%29+%5Cneq+0">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctheta">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=+%5Ctext%7BIMR%7D%3DE%28u+%7C+D%29%3D%5Cleft%5C%7B%5Cbegin%7Barray%7D%7Bcc%7D+%5Cvarphi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%2F+%5CPhi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%26+%5Ctext+%7B+if+%7D+D%3D1+%5C%5C+-%5Cvarphi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%2F%5Cleft%281-%5CPhi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29%5Cright%29+%26+%5Ctext+%7B+if+%7D+D%3D0+%5Cend%7Barray%7D%5Cright.+%5C%5C">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cvarphi%28.%29">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5CPhi%28.%29">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Y%3D%5Cbeta%5E%7B%5Cprime%7D+X%2B%5Ctheta+D%2B%5Crho+%5Csigma%5Ctext%7BIMR%7D%2B%5Cvarepsilon+%5Ctag3++">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cvarepsilon">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctheta">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Y">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D%3D1">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Y%3D%5Cbeta%5E%7B%5Cprime%7DX%2B%5Ctheta%2B%5Crho%5Csigma%5Ctext%7BIMR%7D_%7B1%7D%2B%5Cvarepsilon">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D_%7B1%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D_%7B1%7D%3D%5Cvarphi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%2F+%5CPhi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29++%5C%5C">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D%3D0">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Y%3D%5Cbeta%5E%7B%5Cprime%7DX%2B%5Crho%5Csigma%5Ctext%7BIMR%7D_%7B0%7D%2B%5Cvarepsilon">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D_%7B0%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D_%7B0%7D%3D-%5Cvarphi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%2F%5Cleft%281-%5CPhi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29%5Cright%29++%5C%5C">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=X">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Y">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Y">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=X">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-f5bff5b36f25a13c8f690755ccb2bcc9_720w.jpg">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Big_%7Bit%7D">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-ba61406538c27895b4154e683729ecff_720w.jpg">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-a2a6bec7f20e75be021c5ea96c891293_720w.jpg">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D+%3D+1">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=D+%3D+0">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=Z">
+<meta property="og:image" content="https://www.gravatar.com/avatar/a007be5a61f6aa8f3e85ae2fc18dd66e?s=32&amp;d=identicon&amp;r=PG">
+<meta property="og:image" content="https://i.stack.imgur.com/pnvqN.png?s=32&amp;g=1">
+<meta property="article:published_time" content="2020-12-07T02:29:19.000Z">
+<meta property="article:modified_time" content="2021-06-22T13:35:50.846Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="工资分解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiemayshiyi.github.io/2020/12/07/%E7%A7%91%E7%A0%94-%E5%88%86%E8%A7%A3/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201217094849728.png">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/12/07/%E7%A7%91%E7%A0%94-%E5%88%86%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>科研-分解 | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/12/07/%E7%A7%91%E7%A0%94-%E5%88%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          科研-分解
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-07 10:29:19" itemprop="dateCreated datePublished" datetime="2020-12-07T10:29:19+08:00">2020-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-22 21:35:50" itemprop="dateModified" datetime="2021-06-22T21:35:50+08:00">2021-06-22</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>20k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>18 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1><span id="ji-liang-jing-ji-xue-zhuan-ti">计量经济学专题</span><a href="#ji-liang-jing-ji-xue-zhuan-ti" class="header-anchor">#</a></h1><h2><span id="xin-zi-fen-jie-fa">薪资分解法</span><a href="#xin-zi-fen-jie-fa" class="header-anchor">#</a></h2><p>日常资源整理。</p>
+<p>就是关于两个组(群体)差异性分析工具</p>
+<a id="more"></a>
+<h3><span id="summary">Summary</span><a href="#summary" class="header-anchor">#</a></h3><h4><span id="oaxaca-blinder">Oaxaca-Blinder</span><a href="#oaxaca-blinder" class="header-anchor">#</a></h4><p>经典文献：</p>
+<p>1、David Neumark 1988  Employers’ Discriminatory Behavior and the Estimation of Wage Discrimination<br>2、Ronald Oaxaca and Michael R Ransom 1994 On discrimination and the decomposition of wage differentials<br><strong>3、Moshe Buchinsky and Jinyong Hahn 1998</strong> An Alternative Estimator for the Censored Quantile Regression Model,<strong>On discrimination and the decomposition of wage differentials</strong></p>
+<p>特征效应（可解释部分）和不可解释部分（归结为歧视)</p>
+<h5><span id="mo-xing">模型</span><a href="#mo-xing" class="header-anchor">#</a></h5><p>论文： The Blinder–Oaxaca decomposition for linear regression models</p>
+<p>The counterfactual decomposition technique popularized by Blinder (1973, Journal of Human Resources, 436–455) and Oaxaca (1973, International Economic Review, 693–709) is widely used to study <strong>mean outcome differences between groups</strong>. 用于研究两个组的平均差异</p>
+<p>For example, the technique is often used to analyze wage gaps by  sex or race. This article summarizes the technique and addresses several complications, such as the identification of effects of categorical predictors in the detailed  decomposition or the estimation of standard errors. A new command called oaxaca  is introduced, and examples illustrating its usage are given.</p>
+<p>An often used methodology to study labor-market outcomes by groups (sex, race, and  so on) is to decompose mean differences in log wages based on linear regression models  in a counterfactual manner. The procedure is known in the literature as the Blinder–<br>Oaxaca decomposition (Blinder 1973; Oaxaca 1973). It divides the wage differential  between two groups into a part that is “explained” by group differences in productivity characteristics, such as education or work experience, and a residual part that  cannot be accounted for by such differences in wage determinants. This “unexplained”  part is often used as a measure for discrimination, but it also subsumes the effects of  group differences in unobserved predictors.</p>
+<h5><span id="gai-jin">改进</span><a href="#gai-jin" class="header-anchor">#</a></h5><h6><span id="cotton-fen-jie">Cotton 分解</span><a href="#cotton-fen-jie" class="header-anchor">#</a></h6><p>Cotton分解方法是针对Oaxaca-Blinder方法分解存在“指数基准”问题，因为Oaxaca-Blinder分解未考虑到“选择差异效应”,如男女之间选择工作类型的机会不相等。Cotton认为在无歧视状态下，两个组的工资结构会收敛于无歧视的工资结构，</p>
+<h6><span id="neumark-fen-jie">Neumark分解</span><a href="#neumark-fen-jie" class="header-anchor">#</a></h6><p>Neumark将工资歧视和雇主歧视理论相结合，Neumark也认为雇主对某个群体有偏袒。</p>
+<p>提出了没有歧视的（反事实）薪资结构</p>
+<h4><span id="stata">stata</span><a href="#stata" class="header-anchor">#</a></h4><p><img src="/2020/12/07/%E7%A7%91%E7%A0%94-%E5%88%86%E8%A7%A3/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201217094849728.png" alt="image-20201217094849728"></p>
+<p> Neumark  </p>
+<p><a target="_blank" rel="noopener" href="https://journals.sagepub.com/doi/pdf/10.1177/1536867X0800800401">https://journals.sagepub.com/doi/pdf/10.1177/1536867X0800800401</a></p>
+<p>oaxaca lnwage educ exper tenure, by(female) pooled  fixed() vce(robust)</p>
+<p>oaxaca, eform</p>
+<p><a target="_blank" rel="noopener" href="http://econweb.umd.edu/~sarzosa/teach/2/Disc2_Cluster_handout.pdf">http://econweb.umd.edu/~sarzosa/teach/2/Disc2_Cluster_handout.pdf</a></p>
+<p>vce(robust)- accounts for hetreoskedasticity in residual distribution,</p>
+<p>White (1980) 异方差稳健型标准误 异方差性，</p>
+<p>vce(cluster)- accounts for residual autocorrelation</p>
+<p><a target="_blank" rel="noopener" href="https://bbs.pinggu.org/forum.php?mod=viewthread&amp;action=printable&amp;tid=2151565">https://bbs.pinggu.org/forum.php?mod=viewthread&amp;action=printable&amp;tid=2151565</a></p>
+<h4><span id="lun-wen">论文</span><a href="#lun-wen" class="header-anchor">#</a></h4><p>Economic development, human capital, and gender earnings  differentials in China</p>
+<p>Economic Reforms and Gender Inequality in Urban China  </p>
+<p>Glass Ceiling or Sticky Floor? Examining the Gender Pay Gap across the Wage Distribution in Urban China, 1987-2004  </p>
+<p>Decomposition of Changes in Earnings Inequality in China: A Distributional Approach  </p>
+<p>布朗分解</p>
+<p>布朗等人将职业隔离引入了差异分解，最终将差异分解为职业内和职业间的特征效应和系数效应，职业间的特征效应和系数效应。包含四项。</p>
+<h4><span id> </span><a href="#" class="header-anchor">#</a></h4><h5><span id="fen-wei-shu-hui-gui">分位数回归</span><a href="#fen-wei-shu-hui-gui" class="header-anchor">#</a></h5><h5><span id="fen-wei-shu-fen-jie">分位数分解</span><a href="#fen-wei-shu-fen-jie" class="header-anchor">#</a></h5><p>2007 Decomposition of Changes in Earnings Inequality in China: A Distributional Approach</p>
+<p>GENDER WAGE DISCRIMINATION IN INDIA: GLASS CEILING OR STICKY FLOOR?  </p>
+<p><a target="_blank" rel="noopener" href="https://sociologist.cn/2020/08/29/memo-of-Decomposing-causes-of-se-related-health-inequality-urban-and-rural.html">https://sociologist.cn/2020/08/29/memo-of-Decomposing-causes-of-se-related-health-inequality-urban-and-rural.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/75401490">https://zhuanlan.zhihu.com/p/75401490</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ershicimi.com/p/478172ed5b38ec6c9a996b81124de73e">https://www.ershicimi.com/p/478172ed5b38ec6c9a996b81124de73e</a></p>
+<h3><span id="ge-chi">隔离</span><a href="#ge-chi" class="header-anchor">#</a></h3><p>性别隔离，职业隔离，城乡隔离，区域隔离</p>
+<p>隔离指数：邓肯指数</p>
+<p>Duncan Dissimilarity Index  </p>
+<h3><span id="zhong-guo-xiang-guan-wen-xian">中国相关文献</span><a href="#zhong-guo-xiang-guan-wen-xian" class="header-anchor">#</a></h3><p>World Development  </p>
+<p>Understanding Urban Wage Inequality in China 1988–2008:<br>Evidence from Quantile Analysis  </p>
+<h1><span id="xing-bie-shou-ru-de-bu-ping-deng">性别收入的不平等</span><a href="#xing-bie-shou-ru-de-bu-ping-deng" class="header-anchor">#</a></h1><h2><span id="bu-ping-deng-zhi-shu">不平等指数</span><a href="#bu-ping-deng-zhi-shu" class="header-anchor">#</a></h2><h4><span id="ji-ni-xi-shu-tai-er-zhi-shu-fen-wei-shu">基尼系数、泰尔指数、分位数</span><a href="#ji-ni-xi-shu-tai-er-zhi-shu-fen-wei-shu" class="header-anchor">#</a></h4><h2><span id="yang-ben-xuan-ze-pian-wu">样本选择偏误</span><a href="#yang-ben-xuan-ze-pian-wu" class="header-anchor">#</a></h2><p>Heckman two-step method  </p>
+<p>选择的样本非完全随机</p>
+<p>我们得到的样本是有偏差的。</p>
+<p>被解释变量是缺失的</p>
+<h2><span id="xiu-zheng">修正</span><a href="#xiu-zheng" class="header-anchor">#</a></h2><p>哈克曼</p>
+<h3><span id="1-bei-jing"><strong>1. 背景</strong></span><a href="#1-bei-jing" class="header-anchor">#</a></h3><p>社会科学数据大部分都是非随机分配，使得选择模型在研究中的作用越来越重要，编辑和审稿人也通常会要求作者控制内生性和选择偏差。但是，学者在使用中也存在一些问题，如忽视了排他性约束变量的重要性。选择模型通常很脆弱，任意或不设排他性约束变量，会使得结论非常不稳健。接下来，将针对该问题予以说明，并提供一些有益的建议。</p>
+<h3><span id="2-xuan-ze-xing-pian-chai-xiao-zheng"><strong>2. 选择性偏差校正</strong></span><a href="#2-xuan-ze-xing-pian-chai-xiao-zheng" class="header-anchor">#</a></h3><p><strong>2.1 选择模型</strong></p>
+<p><strong>选择模型</strong>有两种主要应用，一是 <strong>处理效应 (treatment effect model)</strong>，即回归模型中包含一个内生的指示变量 (<img src="https://www.zhihu.com/equation?tex=D" alt="[公式]">)。例如，管理层是否发布盈余预测 (<img src="https://www.zhihu.com/equation?tex=D%3D1" alt="[公式]"> 或 0) 对资本成本影响。二是 <strong>样本选择 (sample selection model)</strong>，即回归样本为一个子样本。例如，在管理层发布盈余预测子样本中 (<img src="https://www.zhihu.com/equation?tex=D%3D1" alt="[公式]">)，对管理层盈余预测精确度的影响因素进行分析。在上述模型中，内生的 <img src="https://www.zhihu.com/equation?tex=D" alt="[公式]"> 都会导致有偏估计。</p>
+<p>处理效应模型 (treatment effect model) 如下：</p>
+<p><img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbeta%5E%7B%5Cprime%7D+X%2B%5Ctheta+D%2Bu+%5Ctag1++" alt="[公式]"></p>
+<p>其中，<img src="https://www.zhihu.com/equation?tex=X" alt="[公式]"> 包含截距项和一组影响 <img src="https://www.zhihu.com/equation?tex=Y" alt="[公式]"> 的外生解释变量。指示性变量 <img src="https://www.zhihu.com/equation?tex=D" alt="[公式]"> 可以通过以下二元选择模型进行回归得到：</p>
+<p><img src="https://www.zhihu.com/equation?tex=D%5E%7B%2A%7D%3Da_%7B0%7D%5E%7B%5Cprime%7D+Z%2Ba_%7B1%7D%5E%7B%5Cprime%7D+X%2Bv+%5Ctag2++" alt="[公式]"></p>
+<p>如果 <img src="https://www.zhihu.com/equation?tex=D%5E%7B%2A%7D%5Cgeq+0" alt="[公式]">，则 <img src="https://www.zhihu.com/equation?tex=D+%3D+1" alt="[公式]">，反之 <img src="https://www.zhihu.com/equation?tex=D%5E%7B%2A%7D+%3C+0" alt="[公式]">，则 <img src="https://www.zhihu.com/equation?tex=D+%3D+0" alt="[公式]">。</p>
+<p>通常，式 (1) 和式 (2) 的随机误差项 <img src="https://www.zhihu.com/equation?tex=u" alt="[公式]"> 和 <img src="https://www.zhihu.com/equation?tex=v" alt="[公式]"> 服从二元正态分布，其均值为 0，协方差矩阵为：</p>
+<p><img src="https://www.zhihu.com/equation?tex=+%5Cleft%5B%5Cbegin%7Barray%7D%7Bcc%7D+%5Csigma%5E%7B2%7D+%26+%5Crho+%5Csigma+%5C%5C+%5Crho+%5Csigma+%26+1+%5Cend%7Barray%7D%5Cright%5D+%5C%5C" alt="[公式]"></p>
+<p>如果随机误差项 <img src="https://www.zhihu.com/equation?tex=u" alt="[公式]"> 和 <img src="https://www.zhihu.com/equation?tex=v" alt="[公式]"> 相关 (<img src="https://www.zhihu.com/equation?tex=%5Crho+%5Cneq+0" alt="[公式]">)，则 <img src="https://www.zhihu.com/equation?tex=E%28u%7CD%29+%5Cneq+0" alt="[公式]">，使得式 (1) 中的 <strong>OLS</strong> 估计量 <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="[公式]"> 有偏。<strong>Heckman</strong> 方法就是通过式 (2) 构造 <strong>逆米尔斯比率</strong> (<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]">) 控制这个偏差。<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 计算如下：</p>
+<p><img src="https://www.zhihu.com/equation?tex=+%5Ctext%7BIMR%7D%3DE%28u+%7C+D%29%3D%5Cleft%5C%7B%5Cbegin%7Barray%7D%7Bcc%7D+%5Cvarphi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%2F+%5CPhi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%26+%5Ctext+%7B+if+%7D+D%3D1+%5C%5C+-%5Cvarphi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%2F%5Cleft%281-%5CPhi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29%5Cright%29+%26+%5Ctext+%7B+if+%7D+D%3D0+%5Cend%7Barray%7D%5Cright.+%5C%5C" alt="[公式]"></p>
+<p>其中，<img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28.%29" alt="[公式]"> 和 <img src="https://www.zhihu.com/equation?tex=%5CPhi%28.%29" alt="[公式]"> 分别为标准正态分布的密度函数和累积分布函数。然后，将计算得到 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 加入式 (1) 进行回归：</p>
+<p><img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbeta%5E%7B%5Cprime%7D+X%2B%5Ctheta+D%2B%5Crho+%5Csigma%5Ctext%7BIMR%7D%2B%5Cvarepsilon+%5Ctag3++" alt="[公式]"></p>
+<p>此时，式 (3) 中随机误差项 <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="[公式]"> 与 <img src="https://www.zhihu.com/equation?tex=D" alt="[公式]"> 不相关，<img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="[公式]"> 为无偏估计量。并且，可以通过 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 显著性和系数判断选择偏差是否存在以及方向。当然，式 (2) 和 式 (3) 可以用传统两步法或最大似然估计法。</p>
+<p>上述为处理效应模型 (treatment effect model)，除式 (3) 是以子样本回归外，样本选择模型与处理效应模型 (sample selection model)类似。例如，对管理层预测精确度 (<img src="https://www.zhihu.com/equation?tex=Y" alt="[公式]">) 分析中，回归样本为发布盈余预测的公司 (<img src="https://www.zhihu.com/equation?tex=D%3D1" alt="[公式]">)。此时，式 (3) 为 <img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbeta%5E%7B%5Cprime%7DX%2B%5Ctheta%2B%5Crho%5Csigma%5Ctext%7BIMR%7D_%7B1%7D%2B%5Cvarepsilon" alt="[公式]">。其中，<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D_%7B1%7D" alt="[公式]"> 计算公式如下：</p>
+<p><img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D_%7B1%7D%3D%5Cvarphi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%2F+%5CPhi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29++%5C%5C" alt="[公式]"></p>
+<p>或者，对于 <img src="https://www.zhihu.com/equation?tex=D%3D0" alt="[公式]"> 的子样本回归中，式 (3) 为 <img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbeta%5E%7B%5Cprime%7DX%2B%5Crho%5Csigma%5Ctext%7BIMR%7D_%7B0%7D%2B%5Cvarepsilon" alt="[公式]">。其中，<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D_%7B0%7D" alt="[公式]"> 计算如下：</p>
+<p><img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D_%7B0%7D%3D-%5Cvarphi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29+%2F%5Cleft%281-%5CPhi%5Cleft%28%5Chat%7B%5Calpha%7D_%7B0%7D%5E%7B%5Cprime%7D+Z%2B%5Chat%7B%5Calpha%7D_%7B1%7D%5E%7B%5Cprime%7D+X%5Cright%29%5Cright%29++%5C%5C" alt="[公式]"></p>
+<h3><span id="2-2-ying-yong-zhong-cun-zai-de-wen-ti"><strong>2.2 应用中存在的问题</strong></span><a href="#2-2-ying-yong-zhong-cun-zai-de-wen-ti" class="header-anchor">#</a></h3><p>选择模型式 (3) 与 OLS 模型式 (1) 的区别在于前者加入了逆米尔斯比率 (<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]">)。<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 可以识别选择性偏差主要是以下原因：</p>
+<ul>
+<li><img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 是 <img src="https://www.zhihu.com/equation?tex=X" alt="[公式]"> 和 <img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量的非线性函数</li>
+<li><img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量从式 (3) 中已经排除</li>
+</ul>
+<p>其中，<img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量被假定为不会对 <img src="https://www.zhihu.com/equation?tex=Y" alt="[公式]"> 变量产生直接的影响，只能通过 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 产生间接影响，因此也被称为<strong>排他性约束 (exclusion restrictions)</strong>。</p>
+<p>排他性约束变量，也就是 <img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量，在控制选择模型内生性问题过程中具有非常重要的作用。首先，<img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量必须是外生的，否则选择模型第一阶段回归 (式 2) 系数以及 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 会产生偏误；其次，<img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量对 <img src="https://www.zhihu.com/equation?tex=D" alt="[公式]"> 具有较强的解释能力，使得 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 能够更好的检测和控制选择偏差；最后，式 (3) 中必须有效排除 <img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量的影响，即 <img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量只能通过 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 对 <img src="https://www.zhihu.com/equation?tex=Y" alt="[公式]"> 产生间接影响，否则 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 与随机误差项相关，使得 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 系数估计有偏，不能有效控制 <img src="https://www.zhihu.com/equation?tex=D" alt="[公式]"> 变量的内生性。</p>
+<p>找到一个好的 <img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量是困难的。在没有排他性约束情况下，即没有 <img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量，仍可以通过 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 的非线性去识别偏差。但可能面临以下两个问题：</p>
+<ul>
+<li>由于只能通过 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 的非线性识别偏差，非线性模型被错误设定为线性模型会被 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 吸收。</li>
+<li>在式 (3) 中，<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 与 <img src="https://www.zhihu.com/equation?tex=X" alt="[公式]"> 和 <img src="https://www.zhihu.com/equation?tex=D" alt="[公式]"> 相关，这种相关性在没有排他性约束变量 (<img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]">) 情况下更加严重。</li>
+</ul>
+<p>进一步，高的共线性会产生以下两个问题：</p>
+<ul>
+<li>高共线性会使得系数的标准差变大，降低了系数的显著性。<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 系数可能会变得不显著，进而得出错误结论。</li>
+<li>在模型被正确设定下，即使存在高的共线性问题，系数也可以被无偏的估计。但是，事实上，选择模型被错误设定概率是很高的。若模型被错误设定，共线性会吸收这种偏差，导致系数估计有偏。</li>
+</ul>
+<h3><span id="3-xuan-ze-mo-xing-zai-yan-jiu-zhong-ying-yong-qing-kuang"><strong>3. 选择模型在研究中应用情况</strong></span><a href="#3-xuan-ze-mo-xing-zai-yan-jiu-zhong-ying-yong-qing-kuang" class="header-anchor">#</a></h3><p>接下来，以审计机构是否是前 5 大对审计费用的研究为例，说明 <strong>没有排他性约束变量</strong> 和 <strong>任意排他性约束变量</strong> 对结果的影响。为了说明前者，将第一阶段回归中所有自变量都包括在第二阶段回归中。为了说明后者，将第一阶段中企业规模从第二阶段排除。</p>
+<p>下表为选择模型第一阶段回归结果，其中被解释变量为是否是前五大审计机构，<strong>Model 1</strong> 是以总资产自然对数衡量公司规模，<strong>Model 2</strong> 是以营业收入自然对数衡量公司规模。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-f5bff5b36f25a13c8f690755ccb2bcc9_720w.jpg" alt="img"></p>
+<p>下表 (1)-(4)为选择模型第二阶段回归结果，(5) 和 (6) 普通 OLS 回归结果，其中，被解释变量为审计费用自然对数，(1) 和 (2) 中的 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 是根据上表 <strong>Model 1</strong> 计算，(3) 和 (4) 中的 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 是根据上表 <strong>Model 2</strong> 计算，同时，(1)、(4)、(5) 是以总资产自然对数控制公司规模，(2)、(3)、(6) 则是以营业收入自然对数衡量公司规模。由于(1) 和 (3) 在第一阶段和第二阶段都是用相同方式控制公司规模，所以没有排他性约束变量，(2) 和 (4) 排除约束变量分别为总资产自然对数和营业收入自然对数。</p>
+<p>从结果可以看出，在选择模型第二阶段，<img src="https://www.zhihu.com/equation?tex=Big_%7Bit%7D" alt="[公式]"> 系数对排他性约束的不同设置较为敏感，同时共线性问题也比较严重，相反，OLS 的回归结果更为稳健和共线性也更小。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-ba61406538c27895b4154e683729ecff_720w.jpg" alt="img"></p>
+<p>下表为 2000-2009 年会计顶级期刊使用选择模型情况的描述统计。在选择模型第二阶段，有 54 篇具有一个或多个排除约束变量，有 6 篇同时报告了具有和不具有排他性约束变量结果；有 3 篇报告了使用不同排除约束变量的稳健性结果；有3篇报告了排除约束变量经济机制；有3篇报告了内生性变量和 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 的多重共线性。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-a2a6bec7f20e75be021c5ea96c891293_720w.jpg" alt="img"></p>
+<h3><span id="4-ying-yong-an-li"><strong>4. 应用案例</strong></span><a href="#4-ying-yong-an-li" class="header-anchor">#</a></h3><h5><span id="4-1-yang-ben-xuan-ze-mo-xing"><strong>4.1 样本选择模型</strong></span><a href="#4-1-yang-ben-xuan-ze-mo-xing" class="header-anchor">#</a></h5><p>以工作和教育经历对女性工资影响研究为例，只有参加工作的女性工资数据才能被观察到，而未参加的工作女性工资数据缺失，因此在研究女性工资影响因素时存在偏差。为克服该问题，采用选择模型进行处理。第一阶段，选择女性是否结婚 (<em>married</em>) 和孩子数量 (<em>children</em>) 作为排他性约束 <img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量，同时控制影响女性工资 (<em>wage</em>) 的工作经历 (<em>age</em>) 和教育程度 (<em>educ</em>) 变量。第二阶段，加入逆米尔斯比率 (<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]">) 进行回归。接下来，将分别以 <strong>OLS</strong>、<strong>Heckman Maximum Likelihood</strong>、<strong>Heckman Two-Step</strong>、以及手工计算两步法进行回归对比。</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">* 下载数据值当前工作路径</span><br><span class="line">* 网址: https://gitee.com/arlionn/data</span><br><span class="line">. copy "https://gitee.com/arlionn/data/raw/master/data01womenwk.dta" womenwk.dta</span><br><span class="line"></span><br><span class="line">*-调入数据</span><br><span class="line">. use womenwk.dta, clear</span><br><span class="line"></span><br><span class="line">/* 也可以在线导入数据</span><br><span class="line">. use "https://gitee.com/arlionn/data/raw/master/data01/womenwk.dta", clear</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">*ols</span><br><span class="line">reg wage educ age</span><br><span class="line">est store OLS</span><br><span class="line"></span><br><span class="line">*heckman maximum likelihood</span><br><span class="line">heckman wage educ age, select(married children educ age) //默认最大似然估计</span><br><span class="line">est store HeckMLE</span><br><span class="line"></span><br><span class="line">*heckman two-step  all-in-one 不可以进行cluster调整</span><br><span class="line">heckman wage educ age, select(married children educ age) twostep</span><br><span class="line">est store Heck2s</span><br><span class="line"></span><br><span class="line">*heckman two-step  step-by-step 可以进行cluster调整</span><br><span class="line">probit work married children educ age</span><br><span class="line">est store First</span><br><span class="line">predict y_hat, xb</span><br><span class="line">gen pdf = normalden(y_hat)  //概率密度函数</span><br><span class="line">gen cdf = normal(y_hat)     //累积分布函数</span><br><span class="line">gen imr = pdf/cdf           //计算逆米尔斯比率</span><br><span class="line">reg  wage educ age imr if work == 1  //女性工作子样本</span><br><span class="line">est store Second</span><br><span class="line">vif  //方差膨胀因子</span><br><span class="line"></span><br><span class="line">*对比结果</span><br><span class="line">local m "OLS HeckMLE Heck2s First Second"</span><br><span class="line">esttab `m', mtitle(`m') nogap compress pr2 ar2</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">                 (1)          (2)          (3)          (4)          (5)   </span><br><span class="line">                 OLS      HeckMLE       Heck2s        First       Second   </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">main                                                                       </span><br><span class="line">education      0.897***     0.990***     0.983***    0.0584***     0.983***</span><br><span class="line">             (18.00)      (18.59)      (18.23)       (5.32)      (19.46)   </span><br><span class="line">age            0.147***     0.213***     0.212***    0.0347***     0.212***</span><br><span class="line">              (7.83)      (10.34)       (9.61)       (8.21)      (10.25)   </span><br><span class="line">married                                               0.431***             </span><br><span class="line">                                                     (5.81)                </span><br><span class="line">children                                              0.447***             </span><br><span class="line">                                                    (15.56)                </span><br><span class="line">imr                                                                4.002***</span><br><span class="line">                                                                  (6.93)   </span><br><span class="line">_cons          6.085***     0.486        0.734       -2.467***     0.734   </span><br><span class="line">              (6.84)       (0.45)       (0.59)     (-12.81)       (0.63)   </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">select                                                                     </span><br><span class="line">married                     0.445***     0.431***                          </span><br><span class="line">                           (6.61)       (5.81)                             </span><br><span class="line">children                    0.439***     0.447***                          </span><br><span class="line">                          (15.79)      (15.56)                             </span><br><span class="line">education                  0.0557***    0.0584***                          </span><br><span class="line">                           (5.19)       (5.32)                             </span><br><span class="line">age                        0.0365***    0.0347***                          </span><br><span class="line">                           (8.79)       (8.21)                             </span><br><span class="line">_cons                      -2.491***    -2.467***                          </span><br><span class="line">                         (-13.16)     (-12.81)                             </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">/                                                                          </span><br><span class="line">athrho                      0.874***                                       </span><br><span class="line">                           (8.62)                                          </span><br><span class="line">lnsigma                     1.793***                                       </span><br><span class="line">                          (64.95)                                          </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">/mills                                                                     </span><br><span class="line">lambda                                   4.002***                          </span><br><span class="line">                                        (6.60)                             </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">N               1343         2000         2000         2000         1343   </span><br><span class="line">adj. R-sq      0.252                                               0.278   </span><br><span class="line">pseudo R~q                                            0.189                </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">t statistics in parentheses</span><br><span class="line">* p&lt;0.05, ** p&lt;0.01, *** p&lt;0.001</span><br><span class="line"></span><br><span class="line">. vif  //方差膨胀因子</span><br><span class="line">    Variable |       VIF       1/VIF  </span><br><span class="line">-------------+----------------------</span><br><span class="line">         imr |      1.39    0.719868</span><br><span class="line">         age |      1.31    0.764000</span><br><span class="line">   education |      1.10    0.906166</span><br><span class="line">-------------+----------------------</span><br><span class="line">    Mean VIF |      1.27</span><br></pre></td></tr></tbody></table></figure>
+<h5><span id="4-2-chu-li-xiao-ying-mo-xing"><strong>4.2 处理效应模型</strong></span><a href="#4-2-chu-li-xiao-ying-mo-xing" class="header-anchor">#</a></h5><p>以女性工会成员身份对工资影响研究为例。女性是否加入工会是一种自选择行为，会受到许多因素影响。为克服该问题，采用选择模型进行处理。第一阶段，选择女性是否生活在南方州 (<em>south</em>) 作为排他性约束 <img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量，同时控制是否非洲裔 (<em>black</em>) 和工作年限 (<em>tenure</em>)。第二阶段，加入逆米尔斯比率 (<img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]">) 进行回归。接下来，将分别以 <strong>OLS</strong>、<strong>etregress Maximum Likelihood</strong>、<strong>etregress Two-Step</strong>、以及手工计算两步法进行回归对比。值得注意的是，逆米尔斯比率要在 <img src="https://www.zhihu.com/equation?tex=D+%3D+1" alt="[公式]"> 和 <img src="https://www.zhihu.com/equation?tex=D+%3D+0" alt="[公式]"> 两种情况下分别计算，正如本文在 <strong><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141907939/edit#jump">2.1</a></strong> 部分所列示的 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 计算过程一样。具体可参考 <a href="https://link.zhihu.com/?target=https%3A//www.stata.com/support/faqs/statistics/inverse-mills-ratio/">IMR’ ratios and censoring direction in the Heckman selection model</a>。</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">*--------------处理效应模型-------------</span><br><span class="line">* 下载数据值当前工作路径</span><br><span class="line">* 网址: https://gitee.com/arlionn/data</span><br><span class="line">. copy "https://gitee.com/arlionn/data/raw/master/data01/union3.dta" union3.dta</span><br><span class="line"></span><br><span class="line">*-调入数据</span><br><span class="line">. use union3.dta, clear</span><br><span class="line"></span><br><span class="line">/* 也可以在线导入数据</span><br><span class="line">. use "https://gitee.com/arlionn/data/raw/master/data01/union3.dta", clear</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">*ols</span><br><span class="line">reg wage age grade smsa black tenure union</span><br><span class="line">est store OLS</span><br><span class="line"></span><br><span class="line">*etregress maximum likelihood</span><br><span class="line">etregress wage age grade smsa black tenure,  ///</span><br><span class="line">          treat(union = south black tenure) twostep </span><br><span class="line">est store etrMLE</span><br><span class="line"></span><br><span class="line">*etregress two-step all-in-one  不可以进行cluster调整</span><br><span class="line">etregress wage age grade smsa black tenure,  ///</span><br><span class="line">          treat(union = south black tenure) twostep </span><br><span class="line">est store etr2s	</span><br><span class="line"></span><br><span class="line">*etregress two-step  step-by-step 可以进行cluster调整</span><br><span class="line">probit union south black tenure</span><br><span class="line">est store First</span><br><span class="line">predict y_hat, xb</span><br><span class="line">gen pdf = normalden(y_hat)</span><br><span class="line">gen cdf = normal(y_hat)</span><br><span class="line">gen imr1 = pdf/cdf            //union = 1算法</span><br><span class="line">gen imr2 = (-pdf) / (1 - cdf) //union = 0算法</span><br><span class="line">gen imr = imr1 </span><br><span class="line">replace imr = imr2 if union == 0</span><br><span class="line">reg wage age grade smsa black tenure union imr</span><br><span class="line">est store Second</span><br><span class="line">vif</span><br><span class="line"></span><br><span class="line">*对比结果</span><br><span class="line">local m "OLS etrMLE etr2s First Second"</span><br><span class="line">esttab `m', mtitle(`m') nogap compress pr2 ar2</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">                 (1)          (2)          (3)          (4)          (5)   </span><br><span class="line">                 OLS       etrMLE        etr2s        First       Second   </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">main                                                                       </span><br><span class="line">age            0.148***     0.154***     0.154***                  0.154***</span><br><span class="line">              (7.56)       (7.92)       (7.92)                    (7.94)   </span><br><span class="line">grade          0.437***     0.423***     0.423***                  0.423***</span><br><span class="line">             (14.82)      (14.56)      (14.56)                   (14.35)   </span><br><span class="line">smsa           0.975***     0.863***     0.863***                  0.863***</span><br><span class="line">              (7.79)       (6.71)       (6.71)                    (6.79)   </span><br><span class="line">black         -0.618***    -0.921***    -0.921***     0.440***    -0.921***</span><br><span class="line">             (-4.94)      (-5.19)      (-5.19)       (4.52)      (-6.45)   </span><br><span class="line">tenure         0.212***     0.100        0.100       0.0998***     0.100*  </span><br><span class="line">              (6.26)       (1.93)       (1.93)       (4.22)       (2.37)   </span><br><span class="line">union          1.004***     4.564***     4.564***                  4.564***</span><br><span class="line">              (7.50)       (4.53)       (4.53)                    (5.45)   </span><br><span class="line">south                                                -0.490***             </span><br><span class="line">                                                    (-5.24)                </span><br><span class="line">imr                                                               -2.093***</span><br><span class="line">                                                                 (-4.31)   </span><br><span class="line">_cons         -4.326***    -4.670***    -4.670***    -0.968***    -4.670***</span><br><span class="line">             (-8.14)      (-8.65)      (-8.65)     (-12.97)      (-8.75)   </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">union                                                                      </span><br><span class="line">south                      -0.490***    -0.490***                          </span><br><span class="line">                          (-5.24)      (-5.24)                             </span><br><span class="line">black                       0.440***     0.440***                          </span><br><span class="line">                           (4.52)       (4.52)                             </span><br><span class="line">tenure                     0.0998***    0.0998***                          </span><br><span class="line">                           (4.22)       (4.22)                             </span><br><span class="line">_cons                      -0.968***    -0.968***                          </span><br><span class="line">                         (-12.97)     (-12.97)                             </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">hazard                                                                     </span><br><span class="line">lambda                     -2.093***    -2.093***                          </span><br><span class="line">                          (-3.61)      (-3.61)                             </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">N               1210         1210         1210         1210         1210   </span><br><span class="line">adj. R-sq      0.337                                               0.346   </span><br><span class="line">pseudo R~q                                            0.046                </span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">t statistics in parentheses</span><br><span class="line">* p&lt;0.05, ** p&lt;0.01, *** p&lt;0.001</span><br><span class="line"></span><br><span class="line">. vif</span><br><span class="line">    Variable |       VIF       1/VIF  </span><br><span class="line">-------------+----------------------</span><br><span class="line">       union |     40.76    0.024532</span><br><span class="line">         imr |     39.72    0.025173</span><br><span class="line">      tenure |      1.79    0.558305</span><br><span class="line">       black |      1.37    0.730327</span><br><span class="line">         age |      1.14    0.878075</span><br><span class="line">       grade |      1.08    0.928859</span><br><span class="line">        smsa |      1.06    0.939479</span><br><span class="line">-------------+----------------------</span><br><span class="line">    Mean VIF |     12.42</span><br></pre></td></tr></tbody></table></figure>
+<p>关于选择模型 all-in-one 和 step-by-step 两种方法差别，参考 <a href="https://link.zhihu.com/?target=https%3A//www.statalist.org/forums/forum/general-stata-discussion/general/1484793-heckman-two-step-model">Heckman Two-Step Model</a> 和 <a href="https://link.zhihu.com/?target=http%3A//kaichen.work/%3Fp%3D1198">Stata commands to do Heckman two steps</a>。关于选择模型第一阶段是否要包含第二阶段全部外生解释变量，请参考 <a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s/pw5lRQxkj20iUntSGltLSw">工具变量法（五）: 为何第一阶段回归应包括所有外生解释变量</a>，值得注意的是，选择模型中 <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIMR%7D" alt="[公式]"> 是一种非线性，因此不包含第二阶段全部外生解释变量引起的内生性问题可能并没有工具变量法那么严重。</p>
+<h3><span id="5-xuan-ze-mo-xing-shi-yong-jian-yi"><strong>5. 选择模型使用建议</strong></span><a href="#5-xuan-ze-mo-xing-shi-yong-jian-yi" class="header-anchor">#</a></h3><ul>
+<li>选择模型要有排他性约束变量，即在第一阶段回归中包含，而在第二阶段回归中排除。</li>
+<li>选择模型要报告第一阶段回归结果，否则不清楚哪个变量是排他性约束变量或评估排他性约束变量的解释能力。</li>
+<li>需要证明为什么排他性约束变量，即 <img src="https://www.zhihu.com/equation?tex=Z" alt="[公式]"> 变量，可以从第二阶段回归中有效排除。</li>
+<li>由于选择模型是脆弱的，敏感性分析是必要的，如与不同排他性约束变量结果和OLS 结果对比、以及报告内生性变量和逆米尔斯比率的 VIF 值。</li>
+<li>在使用过程中，可以综合借鉴 Lennox and Francis(2012)<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141907939/edit#refer-anchor-1">1</a>，Kim and Zhang(2016)<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141907939/edit#refer-anchor-2">2</a>，李小荣和刘行 (2012)<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141907939/edit#refer-anchor-3">3</a>。</li>
+</ul>
+<h3><span id="6-jie-lun"><strong>6. 结论</strong></span><a href="#6-jie-lun" class="header-anchor">#</a></h3><p>最后，借用文章作者原话予以总结。</p>
+<blockquote>
+<p>In short, researchers are faced with the following trade-off. On the one hand, selection models can be fragile and suffer from multicollinearity problems, which hinder their reliability. On the other hand, the selection model potentially provides more reliable inferences by controlling for endogeneity bias if the researcher can find good exclusion restrictions, and if the models are found to be robust to minor specification changes. The importance of these advantages and disadvantages depends on the specific empirical setting, so it would be inappropriate for us to make a general statement about when the selection model should be used. Instead, researchers need to critically appraise the quality of their exclusion restrictions and assess whether there are problems of fragility and multicollinearity in their specific empirical setting that might limit the effectiveness of selection models relative to OLS.</p>
+</blockquote>
+<h3><span id="7-can-kao-wen-xian"><strong>7. 参考文献</strong></span><a href="#7-can-kao-wen-xian" class="header-anchor">#</a></h3><p>[1] <a href="https://link.zhihu.com/?target=https%3A//doi.org/10.2308/accr-10195">Lennox C S, Francis J R, Wang Z. Selection models in accounting research[J]. The accounting review, 2012, 87(2): 589-616.</a></p>
+<p>[2] <a href="https://link.zhihu.com/?target=https%3A//doi.org/10.1111/1911-3846.12150">Kim C, Zhang L. Corporate political connections and tax aggressiveness[J]. Contemporary Accounting Research, 2016, 33(1): 78-114.</a></p>
+<p>[3] <a href="https://link.zhihu.com/?target=http%3A//www.cnki.com.cn/Article/CJFDTotal-SJJJ201212009.htm">李小荣, 刘行. CEO vs CFO: 性别与股价崩盘风险[J]. 世界经济, 2012, 12: 102-129.</a></p>
+<h2><span id="zi-xuan-ze-pian-wu">自选择偏误</span><a href="#zi-xuan-ze-pian-wu" class="header-anchor">#</a></h2><p>解释变量不是随机的。如参加培训，有人愿意，有的人不愿意</p>
+<h3><span id="psm">PSM</span><a href="#psm" class="header-anchor">#</a></h3><h1><span id="nei-sheng-xing-lai-yuan-he-jie-jue-fang-fa">内生性来源和解决方法</span><a href="#nei-sheng-xing-lai-yuan-he-jie-jue-fang-fa" class="header-anchor">#</a></h1><p>PSM</p>
+<p>IV</p>
+<p>反向因果</p>
+<p>遗漏变量</p>
+<h1><span id="yang-ben-xuan-ze-pian-wu-de-yuan-yin-he-jie-jue-fang-fa">样本选择偏误的原因和解决方法</span><a href="#yang-ben-xuan-ze-pian-wu-de-yuan-yin-he-jie-jue-fang-fa" class="header-anchor">#</a></h1><p>样本缺失</p>
+<p>heckman</p>
+<h1><span id="two-stage-models-difference-between-heckman-models-to-deal-with-sample-selection-and-instrumental-variables-to-deal-with-endogenity"></span><a href="#two-stage-models-difference-between-heckman-models-to-deal-with-sample-selection-and-instrumental-variables-to-deal-with-endogenity" class="header-anchor">#</a></h1><p><strong>To answer your first question,</strong> you are correct that sample selection is a specific form of endogeneity (See Antonakis et al. 2010 for a good basic review of endogeneity and common remedies), however you are not correct in saying that the likelihood of being treated is the endogenous variable, as it is the treatment variable itself (“non-random treatment assignment”)—rather than the likelihood of being treated—that is endogenous in sample selection. Recall that endogeneity refers to a situation where you have incorrectly identified a causal relationship between factor X and factor Y, when the observed “relationship” is actually due to another factor Z that affects both X and Y. Put another way, given a regression model:</p>
+<p>yi=β0+β1xi+…+ϵiyi=β0+β1xi+…+ϵi</p>
+<p>endogeneity occurs when one or more than one of your predictors is related to the error term in the model. That is, when Cov(x,ϵ)≠0Cov(x,ϵ)≠0.</p>
+<p>The common causes of endogenity include:</p>
+<ol>
+<li>Omitted variables</li>
+</ol>
+<p>   (some things we just can’t measure)</p>
+<ul>
+<li>Motivation/choice</li>
+<li>Ability/talent</li>
+<li><strong><em>Self-selection\</em></strong></li>
+</ul>
+<ol>
+<li><p><strong>Measurement error</strong> (we would like to include xjxj, but we only observe xj∗xj∗)</p>
+</li>
+<li><p><strong>Simultaneity/bidirectionality</strong> (in children under 5, the relationship between the nutritional status indicator “weight for age” and whether the child had a recent illness might be simultaneous.</p>
+</li>
+</ol>
+<p>Different types of problems require slightly different solutions, which is where the difference between IV and Heckman-type corrections lie. Of course there are differences in the underlying mechanics of these methods, but the premise is the same: which is to remove endogeneity, ideally via an exclusion restriction, i.e. one or more instruments in the case of IV or a variable that affects selection but not the outcome in the case of Heckman.</p>
+<p><strong>To answer your second question,</strong> you have to think about the differences in the types of data limitations that gave rise to the development of these solutions. I like to think that the instrumental variable (IV) approach is used when one or more variables is endogenous, and there are simply no good proxies to stick in the model to remove the endogeneity, but the covariates and outcomes are observed for all observations. Heckman-type corrections, on the other hand, are used when you have truncation, i.e. the information is not observed for those in sample where the value of the selection variable == 0.</p>
+<p><strong>The instrumental variable (IV) approach</strong></p>
+<p>Think of the classic econometric example for IV regression with the two-stage least squares (2SLS) estimator: the effect of education on earnings.</p>
+<p>Earningsi=β0+β1OwnEdi+ϵiEarningsi=β0+β1OwnEdi+ϵi (1)</p>
+<p>Here level of educational achievement is endogenous because it is determined partly by the individual’s motivation and ability, both of which also affect a person’s earnings. Motivation and Ability are not typically measured in household or economic surveys. Equation 1 can therefore be written to explicitly include motivation and ability:</p>
+<p>Earningsi=β0+{β1OwnEdi+β2Motivi+β3Abili}+ϵiEarningsi=β0+{β1OwnEdi+β2Motivi+β3Abili}+ϵi (2)</p>
+<p>Since MotivMotiv and AbilAbil are not actually observed, Equation 2 can be written as:</p>
+<p>Earningsi=β0+β1OwnEdi+uiEarningsi=β0+β1OwnEdi+ui (3),</p>
+<p>where ui=β2Motivi+β3Abili+ϵiui=β2Motivi+β3Abili+ϵi (4).</p>
+<p>Therefore a naïve estimation of the effect of education on earnings via OLS would be biased. This part you already know.</p>
+<p>In the past, people have used parents’ education as instruments for the subject’s own level of education, as they fit the 3 requirements for a valid instrument (zz):</p>
+<ol>
+<li>zz must be related to the endogenous predictor – Cov(z,x)≠0𝐶𝑜𝑣(𝑧,𝑥)≠0,</li>
+<li>zz cannot be directly related to the outcome – Cov(z,y)=0𝐶𝑜𝑣(𝑧,𝑦)=0, and</li>
+<li>zz cannot be related to the unobservable (u) characteristic (that is, zz is exogenous) – Cov(z,u)=0𝐶𝑜𝑣(𝑧,𝑢)=0</li>
+</ol>
+<p>When you estimate the subject’s education (OwnEdOwnEd) using parents’ education (MomEdMomEd and DadEdDadEd) at first stage and use the predicted value of education (OwnEdˆOwnEd^) to estimate EarningsEarnings at second stage, you are (in very simplistic terms), estimating EarningsEarnings based on the portion of OwnEdOwnEd that is not determined by motivation/ability.</p>
+<p><strong>Heckman-type corrections</strong></p>
+<p>As we have established before, non-random sample selection is a specific type of endogeneity. In this case, the omitted variable is how people were selected into the sample. Typically, when you have a sample selection problem, your outcome is observed only for those for whom the sample selection <code>variable == 1</code>. This problem is also known as “incidental truncation,” and the solution is commonly known as a Heckman correction. The classic example in econometrics is the wage offer of married women:</p>
+<p>Wagei=β0+β1Educi+β2Experiencei+β3Experience2i+ϵiWagei=β0+β1Educi+β2Experiencei+β3Experiencei2+ϵi (5)</p>
+<p>The problem here is that Wage is only observed for women who worked for wages, so a naïve estimator would be biased, as we do not know what the wage offer is for those who do not participate in the labor force, the selection variable ss. Equation 5 can be rewritten to show that it is jointly determined by two latent models:</p>
+<p>Wage∗i=Xβ′+ϵiWagei∗=Xβ′+ϵi (6)</p>
+<p>LaborForce∗i=Zγ′+νiLaborForcei∗=Zγ′+νi (7)</p>
+<p>That is, Wage=Wage∗iWage=Wagei∗ IFF LaborForce∗i&gt;0LaborForcei∗&gt;0 and Wage=.Wage=. IFF LaborForce∗i≤0LaborForcei∗≤0</p>
+<p>The solution here is therefore to predict the likelihood of participation in the labor force at first stage using a probit model and the exclusion restriction (the same criteria （条件）for valid instruments apply here), calculate the predicted inverse Mills ratio (λ^λ^) for each observation, and in second stage, estimate the wage offer using the λ^λ^ as a predictor in the model (Wooldridge 2009). If the coefficient on λ^λ^ is statistically equal to zero, there is no evidence of sample selection (endogeneity), and OLS results are consistent and can be presented. If the coefficient on λ^λ^ is statistically significantly different from zero, you will need to report the coefficients from the corrected model.</p>
+<p><strong>References</strong></p>
+<ol>
+<li>Antonakis, John, Samuel Bendahan, Philippe Jacquart, and Rafael Lalive. 2010. “On Making Causal Claims: A Review and Recommendations.” <em>The Leadership Quarterly</em> 21 (6): 1086–1120. doi:10.1016/j.leaqua.2010.10.010.</li>
+<li>Wooldridge, Jeffrey M. 2009. Introductory Econometrics: A Modern Approach. 4th ed. Mason, OH, USA: South-Western, Cengage Learning.</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://stats.stackexchange.com/a/172524">Share</a></p>
+<p>Cite</p>
+<p><a target="_blank" rel="noopener" href="https://stats.stackexchange.com/posts/172524/edit">Improve this answer</a></p>
+<p>Follow</p>
+<p><a target="_blank" rel="noopener" href="https://stats.stackexchange.com/posts/172524/revisions">edited Jul 16 ‘17 at 18:27</a></p>
+<p><a target="_blank" rel="noopener" href="https://stats.stackexchange.com/users/-1/community"><img src="https://www.gravatar.com/avatar/a007be5a61f6aa8f3e85ae2fc18dd66e?s=32&amp;d=identicon&amp;r=PG" alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://stats.stackexchange.com/users/-1/community">Community</a><strong>♦</strong></p>
+<p><strong>1</strong></p>
+<p>answered Sep 14 ‘15 at 23:37</p>
+<p><a target="_blank" rel="noopener" href="https://stats.stackexchange.com/users/40230/marquis-de-carabas"><img src="https://i.stack.imgur.com/pnvqN.png?s=32&amp;g=1" alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://stats.stackexchange.com/users/40230/marquis-de-carabas">Marquis de Carabas</a></p>
+<p><strong>1,572</strong>1818 silver badges3030 bronze badges</p>
+<ul>
+<li><p>1</p>
+<p>In Heckman-type correction, how to interprete inverse Mills ratio values for each observation? Does it says the number of people who will work from the non-working population at a given moment? – <a target="_blank" rel="noopener" href="https://stats.stackexchange.com/users/43204/quirik">Quirik</a> <a target="_blank" rel="noopener" href="https://stats.stackexchange.com/questions/172508/two-stage-models-difference-between-heckman-models-to-deal-with-sample-selecti#comment397107_172524">Apr 23 ‘16 at 20:34</a></p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://stats.stackexchange.com/questions/172508/two-stage-models-difference-between-heckman-models-to-deal-with-sample-selecti#">Add a comment</a></p>
+<p>6</p>
+<p>One should make a distinction between the specific <strong>Heckman sample selection</strong> model (where only one sample is observed) and <strong>Heckman-type corrections</strong> for self-selection, which can also work for the case where the two samples are observed. The latter is referred to as <em>control function</em> approach, and amounts to include into your second stage a term controlling for the endogeneity.</p>
+<p>Let us have a standard case with an endogeneous dummy variable D, an instrument Z:</p>
+<p>Y=β+β1D+ϵY=β+β1D+ϵ</p>
+<p>D=γ+γ1Z+uD=γ+γ1Z+u</p>
+<p>Both approaches run a first stage (D on Z). IV uses a standard OLS (even if D is a dummy) Heckman uses a probit. But besides this, the main difference is on the way they use this first stage into the main equation:</p>
+<ul>
+<li><strong>IV</strong>: break the endogeneity by decomposing D into parts uncorrelated with ϵϵ, given by the prediction of D: Y=β+β1D^+ϵY=β+β1D^+ϵ</li>
+<li><strong>Heckman</strong>: model the endogeneity: keep the endogenous D, but add a function of the predicted values of the first stage. For this case, it is a pretty complicated function: Y=β+β1D+β2[λ(D^)−λ(−D^)]+ϵY=β+β1D+β2[λ(D^)−λ(−D^)]+ϵ where λ()λ() is the inverse <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Mills_ratio">Mills ratio</a></li>
+</ul>
+<p>The advantage of the Heckman procedure is that it provides a direct test for endogeneity: the coefficient β2β2. On the other side, the Heckman procedure relies on the assumption of joint normality of the errors, while the IV does not make any such assumption.</p>
+<p>So you have the standard story that with normal errors, the control function will be more efficient (especially if ones uses the MLE instead of the two-step shown here) than the IV, but that if the assumption does not hold, IV would be better. As researchers have become more suspicious about the assumption of normality, the IV is used more often.</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E8%B5%84%E5%88%86%E8%A7%A3/" rel="tag"><i class="fa fa-tag"></i> 工资分解</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/03/%E5%9B%A0%E6%9E%9C%E5%88%86%E6%9E%90/" rel="prev" title="因果分析">
+      <i class="fa fa-chevron-left"></i> 因果分析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/" rel="next" title="科研-sharepaper">
+      科研-sharepaper <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">计量经济学专题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">薪资分解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Oaxaca-Blinder</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.1.2.</span> <span class="nav-text">改进</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link"><span class="nav-number">1.1.1.1.2.1.</span> <span class="nav-text">Cotton 分解</span></a></li><li class="nav-item nav-level-6"><a class="nav-link"><span class="nav-number">1.1.1.1.2.2.</span> <span class="nav-text">Neumark分解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">stata</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">论文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.4.</span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.4.1.</span> <span class="nav-text">分位数回归</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.4.2.</span> <span class="nav-text">分位数分解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.2.</span> <span class="nav-text">隔离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.3.</span> <span class="nav-text">中国相关文献</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">性别收入的不平等</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">不平等指数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">基尼系数、泰尔指数、分位数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">样本选择偏误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">修正</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. 选择性偏差校正</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.2 应用中存在的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.4.</span> <span class="nav-text">3. 选择模型在研究中应用情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.5.</span> <span class="nav-text">4. 应用案例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">2.3.5.0.1.</span> <span class="nav-text">4.1 样本选择模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">2.3.5.0.2.</span> <span class="nav-text">4.2 处理效应模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.6.</span> <span class="nav-text">5. 选择模型使用建议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.7.</span> <span class="nav-text">6. 结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.8.</span> <span class="nav-text">7. 参考文献</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">自选择偏误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.4.1.</span> <span class="nav-text">PSM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">内生性来源和解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">样本选择偏误的原因和解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">#</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

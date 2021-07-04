@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="此篇将详细给出如何利用origin绘制常用的图，包括单变量，双变量，以及多变量相关的图。同时，也要讲解如何配色，字体设置，子图设置等等技巧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可视化">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="此篇将详细给出如何利用origin绘制常用的图，包括单变量，双变量，以及多变量相关的图。同时，也要讲解如何配色，字体设置，子图设置等等技巧。">
+<meta property="og:locale">
+<meta property="og:image" content="https://picb.zhimg.com/v2-57401ff1fa2474eebebbdb4cd88730d1_r.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-1464719076c4c95e903e67d54ea60e98_r.jpg">
+<meta property="og:image" content="https://img-blog.csdn.net/20180514122113530?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1emx1bg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://i.stack.imgur.com/F1LYt.png">
+<meta property="og:image" content="https://qph.fs.quoracdn.net/main-qimg-36b54c8efc0221302924e558384bdfdd">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/MyBlog/MyBlog/hexo/source/_posts/可视化之origin/Figure_1.svg">
+<meta property="og:image" content="https://i.stack.imgur.com/WTQV2.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/image-20200909143450645.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/image-20200909143444890.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201017151830388.png">
+<meta property="og:image" content="https://pic1.zhimg.com/d7fc70f4a60ffc10c495167b494e72d4_r.jpg">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201017154840184.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/Users/ADMIN/AppData/Roaming/Typora/typora-user-images/image-20201017160310517.png">
+<meta property="article:published_time" content="2020-09-04T05:11:18.000Z">
+<meta property="article:modified_time" content="2020-10-17T12:10:13.781Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="绘图">
+<meta property="article:tag" content="origin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picb.zhimg.com/v2-57401ff1fa2474eebebbdb4cd88730d1_r.jpg">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>可视化 | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          可视化
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-04 13:11:18" itemprop="dateCreated datePublished" datetime="2020-09-04T13:11:18+08:00">2020-09-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-17 20:10:13" itemprop="dateModified" datetime="2020-10-17T20:10:13+08:00">2020-10-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">数据可视化</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>此篇将详细给出如何利用origin绘制常用的图，包括单变量，双变量，以及多变量相关的图。同时，也要讲解如何配色，字体设置，子图设置等等技巧。</p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1><span id="ke-shi-hua">可视化</span><a href="#ke-shi-hua" class="header-anchor">#</a></h1><h2><span id="ji-ben-yao-su">基本要素</span><a href="#ji-ben-yao-su" class="header-anchor">#</a></h2><p><img src="https://picb.zhimg.com/v2-57401ff1fa2474eebebbdb4cd88730d1_r.jpg" alt="img"></p>
+<p>线条：标记符，线性（实线，双划线，虚线，点），粗细，颜色</p>
+<h2><span id="lei-xing">类型</span><a href="#lei-xing" class="header-anchor">#</a></h2><p>数据间的关系大致可以分为：构成；比较；趋势；分布；联系。</p>
+<p><img src="https://pic3.zhimg.com/v2-1464719076c4c95e903e67d54ea60e98_r.jpg" alt="img"></p>
+<p>数据间的流向：和弦图和桑基图</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27746129">https://zhuanlan.zhihu.com/p/27746129</a></p>
+<p><a target="_blank" rel="noopener" href="https://echarts.apache.org/examples/zh/index.html#chart-type-graphGL">https://echarts.apache.org/examples/zh/index.html#chart-type-graphGL</a></p>
+<h1><span id="origin">Origin</span><a href="#origin" class="header-anchor">#</a></h1><h2><span id="origin-hui-zhi-bian-ji-zhi-fang-tu">Origin绘制边际直方图</span><a href="#origin-hui-zhi-bian-ji-zhi-fang-tu" class="header-anchor">#</a></h2><p>plot-statistics-边际直方图</p>
+<h2><span id="origin-hui-zhi-xiang-guan-xing-tu">Origin绘制相关性图</span><a href="#origin-hui-zhi-xiang-guan-xing-tu" class="header-anchor">#</a></h2><p>Step1: 绘制散点图</p>
+<p>Step2：analysis 增加线性回归</p>
+<p>可以得到回归曲线，回归系数和相关性系数</p>
+<p>当然也可以通过计算，直接添加到图里面</p>
+<p>注意：回归分析+图形是通过多部完成的。先绘制你需要的图形，在加入统计分析，以及一些计算数据。</p>
+<h2><span id="origin-zhi-zuo-xiang-guan-xi-shu-ju-zhen-tu">Origin制作相关系数矩阵图</span><a href="#origin-zhi-zuo-xiang-guan-xi-shu-ju-zhen-tu" class="header-anchor">#</a></h2><h1><span id="python">Python</span><a href="#python" class="header-anchor">#</a></h1><h2><span id="jian-jie-python-de-hui-tu-ku">简介Python的绘图库</span><a href="#jian-jie-python-de-hui-tu-ku" class="header-anchor">#</a></h2><h4><span id="linestyle">linestyle</span><a href="#linestyle" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">'-'       solid line style  </span><br><span class="line">'--'      dashed line style  </span><br><span class="line">'-.'      dash-dot line style  </span><br><span class="line">':'       dotted line style  </span><br></pre></td></tr></tbody></table></figure>
+<h4><span id="marker">marker</span><a href="#marker" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">'.'       point marker  </span><br><span class="line">','       pixel marker  </span><br><span class="line">'o'       circle marker  </span><br><span class="line">'v'       triangle_down marker  </span><br><span class="line">'^'       triangle_up marker  </span><br><span class="line">'&lt;'       triangle_left marker  </span><br><span class="line">'&gt;'       triangle_right marker  </span><br><span class="line">'1'       tri_down marker  </span><br><span class="line">'2'       tri_up marker  </span><br><span class="line">'3'       tri_left marker  </span><br><span class="line">'4'       tri_right marker  </span><br><span class="line">'s'       square marker  </span><br><span class="line">'p'       pentagon marker  </span><br><span class="line">'*'       star marker  </span><br><span class="line">'h'       hexagon1 marker  </span><br><span class="line">'H'       hexagon2 marker  </span><br><span class="line">'+'       plus marker  </span><br><span class="line">'x'       x marker  </span><br><span class="line">'D'       diamond marker  </span><br><span class="line">'d'       thin_diamond marker  </span><br><span class="line">'|'       vline marker  </span><br><span class="line">'_'       hline marker  </span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="yao-su-cao-zuo">要素操作</span><a href="#yao-su-cao-zuo" class="header-anchor">#</a></h2><p><img src="https://img-blog.csdn.net/20180514122113530?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1emx1bg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<h3><span id="xian-tiao-lei-xing-yan-se-he-san-dian-lei-xing">线条类型，颜色和散点类型</span><a href="#xian-tiao-lei-xing-yan-se-he-san-dian-lei-xing" class="header-anchor">#</a></h3><h3><span id="tu-li">图例</span><a href="#tu-li" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">font1 = {'family' : 'Times New Roman',</span><br><span class="line">'weight' : 'normal',</span><br><span class="line">'size'   : 23,</span><br><span class="line">}</span><br><span class="line">A,=plt.plot(x1,y1,'-r',label='A',linewidth=5.0,ms=10)</span><br><span class="line">legend = plt.legend(handles=[A,B],prop=font1)</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="zuo-biao-zhou-ke-du">坐标轴刻度</span><a href="#zuo-biao-zhou-ke-du" class="header-anchor">#</a></h3><p>方法一：利用matplotlib库</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.rc("legend", fontsize=15)</span><br><span class="line">plt.xlabel('Longitude', fontsize=15)</span><br><span class="line">plt.ylabel('Latitude', fontsize=15)</span><br><span class="line">plt.title('Spatial Location Plot', fontsize=15 )</span><br><span class="line">plt.tick_params(axis="both", labelsize=15)</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="zuo-biao-zhou-biao-qian">坐标轴标签</span><a href="#zuo-biao-zhou-biao-qian" class="header-anchor">#</a></h3><h2><span id="seaborn">Seaborn</span><a href="#seaborn" class="header-anchor">#</a></h2><h2><span id="ju-zhen-tu">矩阵图</span><a href="#ju-zhen-tu" class="header-anchor">#</a></h2><h4><span id="v1">v1</span><a href="#v1" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from scipy import stats</span><br><span class="line">import seaborn as sns</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">def corrdot(*args, **kwargs):</span><br><span class="line">    corr_r = args[0].corr(args[1], 'pearson')</span><br><span class="line">    corr_text = round(corr_r, 2)</span><br><span class="line">    ax = plt.gca()</span><br><span class="line">    font_size = abs(corr_r) * 80 + 5</span><br><span class="line">    ax.annotate(corr_text, [.5, .5,],  xycoords="axes fraction",</span><br><span class="line">                ha='center', va='center', fontsize=font_size)</span><br><span class="line"></span><br><span class="line">def corrfunc(x, y, **kws):</span><br><span class="line">    r, p = stats.pearsonr(x, y)</span><br><span class="line">    p_stars = ''</span><br><span class="line">    if p &lt;= 0.05:</span><br><span class="line">        p_stars = '*'</span><br><span class="line">    if p &lt;= 0.01:</span><br><span class="line">        p_stars = '**'</span><br><span class="line">    if p &lt;= 0.001:</span><br><span class="line">        p_stars = '***'</span><br><span class="line">    ax = plt.gca()</span><br><span class="line">    ax.annotate(p_stars, xy=(0.65, 0.6), xycoords=ax.transAxes,</span><br><span class="line">                color='red', fontsize=70)</span><br><span class="line"></span><br><span class="line">sns.set(style='white', font_scale=1.6)</span><br><span class="line">iris = sns.load_dataset('iris')</span><br><span class="line">g = sns.PairGrid(iris, aspect=1.5, diag_sharey=False, despine=False)</span><br><span class="line">g.map_lower(sns.regplot, lowess=True, ci=False,</span><br><span class="line">            line_kws={'color': 'red', 'lw': 1},</span><br><span class="line">            scatter_kws={'color': 'black', 's': 20})</span><br><span class="line">g.map_diag(sns.distplot, color='black',</span><br><span class="line">           kde_kws={'color': 'red', 'cut': 0.7, 'lw': 1},</span><br><span class="line">           hist_kws={'histtype': 'bar', 'lw': 2,</span><br><span class="line">                     'edgecolor': 'k', 'facecolor':'grey'})</span><br><span class="line">g.map_diag(sns.rugplot, color='black')</span><br><span class="line">g.map_upper(corrdot)</span><br><span class="line">g.map_upper(corrfunc)</span><br><span class="line">g.fig.subplots_adjust(wspace=0, hspace=0)</span><br><span class="line"></span><br><span class="line"># Remove axis labels</span><br><span class="line">for ax in g.axes.flatten():</span><br><span class="line">    ax.set_ylabel('')</span><br><span class="line">    ax.set_xlabel('')</span><br><span class="line"></span><br><span class="line"># Add titles to the diagonal axes/subplots</span><br><span class="line">for ax, col in zip(np.diag(g.axes), iris.columns):</span><br><span class="line">    ax.set_title(col, y=0.82, fontsize=26)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://i.stack.imgur.com/F1LYt.png" alt="enter image description here"></p>
+<h4><span id="zi-ding-yi">自定义</span><a href="#zi-ding-yi" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line"></span><br><span class="line">def corrdot(*args, **kwargs):</span><br><span class="line">    corr_r = args[0].corr(args[1], 'pearson')</span><br><span class="line">    corr_text = f"{corr_r:2.2f}".replace("0.", ".")</span><br><span class="line">    ax = plt.gca()</span><br><span class="line">    ax.set_axis_off()</span><br><span class="line">    marker_size = abs(corr_r) * 10000</span><br><span class="line">    ax.scatter([.5], [.5], marker_size, [corr_r], alpha=0.6, cmap="coolwarm",</span><br><span class="line">               vmin=-1, vmax=1, transform=ax.transAxes)</span><br><span class="line">    font_size = abs(corr_r) * 40 + 5</span><br><span class="line">    ax.annotate(corr_text, [.5, .5,],  xycoords="axes fraction",</span><br><span class="line">                ha='center', va='center', fontsize=font_size)</span><br><span class="line"></span><br><span class="line">sns.set(style='white', font_scale=1.6)</span><br><span class="line">iris = sns.load_dataset('iris')</span><br><span class="line">g = sns.PairGrid(iris, aspect=1.4, diag_sharey=False)</span><br><span class="line">g.map_lower(sns.regplot, lowess=True, ci=False, line_kws={'color': 'black'})</span><br><span class="line">g.map_diag(sns.distplot, kde_kws={'color': 'black'})</span><br><span class="line">g.map_upper(corrdot)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://qph.fs.quoracdn.net/main-qimg-36b54c8efc0221302924e558384bdfdd" alt="img"></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">from scipy import stats</span><br><span class="line">i = 0</span><br><span class="line">j =0 </span><br><span class="line">def corrfunc(x, y, **kws):</span><br><span class="line">    # global j</span><br><span class="line">    # j = j+1</span><br><span class="line">    # print(j)</span><br><span class="line">    r, p = stats.pearsonr(x, y)</span><br><span class="line">    p_stars = ''</span><br><span class="line">    if p &lt;= 0.05:</span><br><span class="line">        p_stars = '*'</span><br><span class="line">    if p &lt;= 0.01:</span><br><span class="line">        p_stars = '**'</span><br><span class="line">    if p &lt;= 0.001:</span><br><span class="line">        p_stars = '***'</span><br><span class="line">    ax = plt.gca()</span><br><span class="line">    if i%3==0:</span><br><span class="line">        ax.annotate(p_stars, xy=(0.2, 0.2), xycoords=ax.transAxes,</span><br><span class="line">                color='red', fontsize=20)</span><br><span class="line">    if i%3==1:</span><br><span class="line">        ax.annotate(p_stars, xy=(0.65, 0.6), xycoords=ax.transAxes,</span><br><span class="line">                color='red', fontsize=40)</span><br><span class="line"></span><br><span class="line">def corrdot(*args, **kwargs):</span><br><span class="line">    global i</span><br><span class="line">    # print(args[0])</span><br><span class="line">    corr_r = args[0].corr(args[1], 'pearson')</span><br><span class="line">    # print('r',corr_r)</span><br><span class="line">    </span><br><span class="line">    corr_text = f"{corr_r:2.2f}"</span><br><span class="line">    #.replace("0.", ".")</span><br><span class="line">    ax = plt.gca()</span><br><span class="line">    # ax.set_axis_off()</span><br><span class="line">    marker_size = abs(corr_r) * 1000</span><br><span class="line">    if i%3==0:</span><br><span class="line">        ax.scatter([.2], [.2], marker_size, [corr_r], alpha=0.6, cmap="coolwarm",</span><br><span class="line">               vmin=-1, vmax=1, transform=ax.transAxes)</span><br><span class="line">        font_size = abs(corr_r) * 20 + 5</span><br><span class="line">        ax.annotate(corr_text, [.2, .2,],  xycoords="axes fraction",</span><br><span class="line">                ha='center', va='center', fontsize=font_size)</span><br><span class="line">    if i%3==1:</span><br><span class="line">        ax.scatter([.5], [.5], marker_size, [corr_r], alpha=0.6, cmap="coolwarm",</span><br><span class="line">               vmin=-1, vmax=1, transform=ax.transAxes)</span><br><span class="line">        font_size = abs(corr_r) * 20 + 5</span><br><span class="line">        ax.annotate(corr_text, [.5, .5,],  xycoords="axes fraction",</span><br><span class="line">                ha='center', va='center', fontsize=font_size)</span><br><span class="line"></span><br><span class="line">    i = i+1</span><br><span class="line">    # font_size = abs(corr_r) * 40 + 5</span><br><span class="line">    # ax.annotate(corr_text, [.5, .5,],  xycoords="axes fraction",</span><br><span class="line">    #             ha='center', va='center', fontsize=font_size)</span><br><span class="line"></span><br><span class="line">sns.set(style='white', font_scale=1.6)</span><br><span class="line">iris = sns.load_dataset('iris')</span><br><span class="line">g = sns.PairGrid(iris,hue="species", aspect=1.4, diag_sharey=False)</span><br><span class="line">g.map_lower(sns.regplot)</span><br><span class="line"># , lowess=True, ci=False, line_kws={'color': 'black'}</span><br><span class="line">g.map_diag(sns.distplot, kde_kws={'color': 'black'})</span><br><span class="line">g.map_upper(corrdot)</span><br><span class="line">g.map_upper(corrfunc)</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/MyBlog\MyBlog\hexo\source\_posts\可视化之origin\Figure_1.svg" alt></p>
+<h2><span id="can-kao">参考</span><a href="#can-kao" class="header-anchor">#</a></h2><p><a target="_blank" rel="noopener" href="https://www.coder.work/article/383225">https://www.coder.work/article/383225</a></p>
+<h1><span id="r">R</span><a href="#r" class="header-anchor">#</a></h1><h2><span id="r-hui-zhi-xiang-guan-xi-shu-ju-zhen">R绘制相关系数矩阵</span><a href="#r-hui-zhi-xiang-guan-xi-shu-ju-zhen" class="header-anchor">#</a></h2><p><code>PerformanceAnalytics</code>r包的相关矩阵：<br><a target="_blank" rel="noopener" href="https://www.rdocumentation.org/packages/PerformanceAnalytics/versions/1.4.3541/topics/chart.Correlation"><code>chart.Correlation</code> function</a></p>
+<p><img src="https://i.stack.imgur.com/WTQV2.png" alt="PerformanceAnalytics chart.Correlation result"></p>
+<p>Pairwise scatter plot matrix, histogram and correlation coefficients of all related variables for the microinverters connected with different brands of PV module. Pairwise scatter plots are in lower triangle boxes, histograms are in the diagonal boxes, and upper triangle boxes give the correlation coefficients between variables. Brand, Ambient. T, Wind speed, Module. T, Power and Micro. T denote PV module brand, ambient temperature, 5 point moving average wind speed, PV module temperature, AC power output and microinverter temperature respectively.</p>
+<p><a target="_blank" rel="noopener" href="https://ask.hellobi.com/blog/R_shequ/18431">https://ask.hellobi.com/blog/R_shequ/18431</a></p>
+<h2><span id="r-hui-zhi-sang-ji-tu">R绘制桑基图</span><a href="#r-hui-zhi-sang-ji-tu" class="header-anchor">#</a></h2><h1><span id="arcgis">Arcgis</span><a href="#arcgis" class="header-anchor">#</a></h1><p>感觉Arcgis 是专门针对地理信息绘图的，明显使用起来方便很多。</p>
+<h2><span id="arcgis-hui-zhi-di-tu">Arcgis绘制地图</span><a href="#arcgis-hui-zhi-di-tu" class="header-anchor">#</a></h2><h2><span id="arcgis-hui-zhi-jing-xiang-tu">Arcgis绘制径向图</span><a href="#arcgis-hui-zhi-jing-xiang-tu" class="header-anchor">#</a></h2><h2><span id="global-mapper">Global Mapper</span><a href="#global-mapper" class="header-anchor">#</a></h2><h1><span id="ai">AI</span><a href="#ai" class="header-anchor">#</a></h1><p>origin对eps编辑会出问题。最好是对wmf文件进行修改。</p>
+<h2><span id="tu-pian-yan-se-xiu-gai">图片颜色修改</span><a href="#tu-pian-yan-se-xiu-gai" class="header-anchor">#</a></h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1D4411P7s2?p=9">https://www.bilibili.com/video/BV1D4411P7s2?p=9</a></p>
+<p>编辑-&gt;编辑颜色-&gt;重新着色图稿。在此界面，可以建立自己的颜色面板，可以调整颜色，调节饱和度等等。</p>
+<p><img src="/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/image-20200909143450645.png" alt="image-20200909143450645" style="zoom: 50%;"></p>
+<p><img src="/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/image-20200909143444890.png" alt="image-20200909143444890" style="zoom:50%;"></p>
+<h2><span id="tu-xing-xiu-gai">图形修改</span><a href="#tu-xing-xiu-gai" class="header-anchor">#</a></h2><p>图片填色和描边设置：shift选择区域内的内容</p>
+<h3><span id="fang-suo">放缩</span><a href="#fang-suo" class="header-anchor">#</a></h3><p>alt+鼠标</p>
+<p>放缩shift等比例</p>
+<h1><span id="echart">Echart</span><a href="#echart" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://echarts.apache.org/examples/zh/index.html#chart-type-map">https://echarts.apache.org/examples/zh/index.html#chart-type-map</a></p>
+<h2><span id="shang-shou-di-yi-ge">上手第一个</span><a href="#shang-shou-di-yi-ge" class="header-anchor">#</a></h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;ECharts&lt;/title&gt;</span><br><span class="line">    &lt;!-- 引入 echarts.js --&gt;</span><br><span class="line">    &lt;script src=<span class="string">"echarts.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 为ECharts准备一个具备大小（宽高）的Dom --&gt;</span><br><span class="line">    &lt;div id=<span class="string">"main"</span> style=<span class="string">"width: 600px;height:400px;"</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">        <span class="comment">// 基于准备好的dom，初始化echarts实例</span></span><br><span class="line">        <span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main'</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 指定图表的配置项和数据</span></span><br><span class="line">        <span class="keyword">var</span> option = {</span><br><span class="line">            title: {</span><br><span class="line">                text: <span class="string">'ECharts 入门示例'</span></span><br><span class="line">            },</span><br><span class="line">            tooltip: {},</span><br><span class="line">            legend: {</span><br><span class="line">                data:[<span class="string">'销量'</span>]</span><br><span class="line">            },</span><br><span class="line">            xAxis: {</span><br><span class="line">                data: [<span class="string">"衬衫"</span>,<span class="string">"羊毛衫"</span>,<span class="string">"雪纺衫"</span>,<span class="string">"裤子"</span>,<span class="string">"高跟鞋"</span>,<span class="string">"袜子"</span>]</span><br><span class="line">            },</span><br><span class="line">            yAxis: {},</span><br><span class="line">            series: [{</span><br><span class="line">                name: <span class="string">'销量'</span>,</span><br><span class="line">                type: <span class="string">'bar'</span>,</span><br><span class="line">                data: [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">20</span>]</span><br><span class="line">            }]</span><br><span class="line">        };</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用刚指定的配置项和数据显示图表。</span></span><br><span class="line">        myChart.setOption(option);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="pei-zhi">配置</span><a href="#pei-zhi" class="header-anchor">#</a></h3><p>需要配置什么找到需要的标签，然后设置成对应的值就好了！</p>
+<h1><span id="stata">Stata</span><a href="#stata" class="header-anchor">#</a></h1><h1><span id="matlab">Matlab</span><a href="#matlab" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/creating_plots/types-of-matlab-plots.html">https://ww2.mathworks.cn/help/matlab/creating_plots/types-of-matlab-plots.html</a></p>
+<h1><span id="delphi">Delphi</span><a href="#delphi" class="header-anchor">#</a></h1><h1><span id="liu-cheng-tu">流程图</span><a href="#liu-cheng-tu" class="header-anchor">#</a></h1><h2><span id="visio">Visio</span><a href="#visio" class="header-anchor">#</a></h2><h2><span id="yi-tu">亿图</span><a href="#yi-tu" class="header-anchor">#</a></h2><h1><span id="origin-lab-2020-amp-python">Origin lab 2020 &amp; python</span><a href="#origin-lab-2020-amp-python" class="header-anchor">#</a></h1><h1><span id="se-cai-da-pei">色彩搭配</span><a href="#se-cai-da-pei" class="header-anchor">#</a></h1><h2><span id="se-xiang-liang-du-bao-he-du">色相，亮度，饱和度</span><a href="#se-xiang-liang-du-bao-he-du" class="header-anchor">#</a></h2><p>从可视化编码的角度对颜色进行分析，可以将颜色分为色相、亮度和饱和度三个视觉通道。</p>
+<p><strong>色相</strong> 即色彩的相貌和特征。自然界中色彩的种类很多，色相指色彩的种类和名称。如；红、橙、黄、绿、青、蓝、紫等等颜色的种类变化就叫色相。</p>
+<p><strong>明度</strong> 指色彩的亮度。颜色有深浅、明暗的变化。比如，深黄、中黄、淡黄、柠檬黄等黄色在明度上就不一样，紫红、深红、玫瑰红、大红、朱红、桔红等红颜色在亮度上也不尽相同。这些颜色在明暗、深浅上的不同变化，也就是色彩的又一重要特征一一明度变化。</p>
+<p><strong>饱和度</strong> 色彩的鲜艳程度，饱和度越高,表现越鲜明,饱和度较低,表现则较黯淡。</p>
+<p><a target="_blank" rel="noopener" href="https://vis.baidu.com/chartcolor/color/">https://vis.baidu.com/chartcolor/color/</a></p>
+<p><a target="_blank" rel="noopener" href="https://antv.vision/zh/docs/specification/principles/visual">https://antv.vision/zh/docs/specification/principles/visual</a></p>
+<p><a target="_blank" rel="noopener" href="https://flourish.studio/2019/03/18/pokemon-go/">https://flourish.studio/2019/03/18/pokemon-go/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.webdesignrankings.com/resources/lolcolors/">https://www.webdesignrankings.com/resources/lolcolors/</a></p>
+<p><a target="_blank" rel="noopener" href="https://nipponcolors.com/#sodenkaracha">https://nipponcolors.com/#sodenkaracha</a></p>
+<h1><span id="zi-ti-he-zi-hao-chu-li">字体和字号处理</span><a href="#zi-ti-he-zi-hao-chu-li" class="header-anchor">#</a></h1><h1><span id="ai-xuan-ran-hou-qi-chu-li">AI渲染——后期处理</span><a href="#ai-xuan-ran-hou-qi-chu-li" class="header-anchor">#</a></h1><ol>
+<li>可以自备一些搭配较好的颜色方案。</li>
+</ol>
+<h2><span id="sci">SCI</span><a href="#sci" class="header-anchor">#</a></h2><h3><span id="ban-mian">版面</span><a href="#ban-mian" class="header-anchor">#</a></h3><p>一般占半个版面宽度，是8cm。高度不限但不能太高。</p>
+<p>2/3版图</p>
+<p>一般占2/3个版面宽度，是12-15cm，高度不限，但不能太高。</p>
+<p>全版图</p>
+<p>总宽度是17cm，占两栏，高度不限，但不能太高。</p>
+<p>A4 21cm * 29.7cm</p>
+<p><img src="/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201017151830388.png" alt="image-20201017151830388"></p>
+<p><img src="https://pic1.zhimg.com/d7fc70f4a60ffc10c495167b494e72d4_r.jpg" alt="preview"></p>
+<p><img src="/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201017154840184.png" alt="image-20201017154840184"></p>
+<p><img src="/2020/09/04/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Borigin/Users\ADMIN\AppData\Roaming\Typora\typora-user-images\image-20201017160310517.png" alt="image-20201017160310517"></p>
+<p><a target="_blank" rel="noopener" href="http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWtablefigs.html">http://abacus.bates.edu/~ganderso/biology/resources/writing/HTWtablefigs.html</a></p>
+<p>字号的对应关系 复制图形时，会根据Preferences-Options菜单下Page选项卡中Ratio进行缩放，在默认设置下，Ratio为40%，则字号的对应关系就是： 复制到Word中的字号 = Origin中的字号 <em> Ratio 简单的说，Origin中设置字号30，复制到Word就是30</em>40%=12磅。线宽同理计算。 导出图形时，默认比例为100%，则相应的字号为30磅。  重要提示！重要提示：以上字号对应关系成立的重要前提是： ①Scale Factor = 1，如图5所示。（否则在Origin中字形的大小会随着图层大小而变化，但字号显示却不会变） ②复制到Word之后不要缩放图形！！！但是有时候图形尺寸（Page或Layer的尺寸）过大，Word会自动适应宽度，等于是压缩了图形大小，这个也一定要注意！！ Tips：我的Ratio习惯设为50%，是由于旧版本Origin字号不支持10.5号的输入，所以输入21复制到Word中就是10.5，但Origin2017及之后的版本可以直接输入10.5号字。</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 绘图</a>
+              <a href="/tags/origin/" rel="tag"><i class="fa fa-tag"></i> origin</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/" rel="prev" title="数据分析之业务分析">
+      <i class="fa fa-chevron-left"></i> 数据分析之业务分析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/11/%E7%A7%91%E7%A0%94-%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="next" title="科研-文献阅读">
+      科研-文献阅读 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">可视化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">基本要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Origin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">Origin绘制边际直方图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">Origin绘制相关性图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">Origin制作相关系数矩阵图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Python</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">简介Python的绘图库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">linestyle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.1.0.2.</span> <span class="nav-text">marker</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">要素操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.1.</span> <span class="nav-text">线条类型，颜色和散点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.2.</span> <span class="nav-text">图例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.3.</span> <span class="nav-text">坐标轴刻度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.4.</span> <span class="nav-text">坐标轴标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">Seaborn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">矩阵图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.4.0.1.</span> <span class="nav-text">v1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.4.0.2.</span> <span class="nav-text">自定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.5.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">R</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">R绘制相关系数矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">R绘制桑基图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Arcgis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.1.</span> <span class="nav-text">Arcgis绘制地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.2.</span> <span class="nav-text">Arcgis绘制径向图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.3.</span> <span class="nav-text">Global Mapper</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">AI</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.1.</span> <span class="nav-text">图片颜色修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.2.</span> <span class="nav-text">图形修改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.2.1.</span> <span class="nav-text">放缩</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">Echart</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">7.1.</span> <span class="nav-text">上手第一个</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.1.1.</span> <span class="nav-text">配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">Stata</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">Matlab</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">Delphi</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">流程图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">11.1.</span> <span class="nav-text">Visio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">11.2.</span> <span class="nav-text">亿图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text">Origin lab 2020 &amp; python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">13.</span> <span class="nav-text">色彩搭配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">13.1.</span> <span class="nav-text">色相，亮度，饱和度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">14.</span> <span class="nav-text">字体和字号处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">15.</span> <span class="nav-text">AI渲染——后期处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">15.1.</span> <span class="nav-text">SCI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">15.1.1.</span> <span class="nav-text">版面</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '[object Object]';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

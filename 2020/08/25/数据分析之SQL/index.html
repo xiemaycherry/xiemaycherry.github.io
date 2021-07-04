@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据分析之SQL">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="SQL">
+<meta property="og:locale">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/MyBlog/MyBlog/hexo/source/_posts/数据分析技能/数据分析——SQL.png">
+<meta property="og:image" content="https://iknow-pic.cdn.bcebos.com/eaf81a4c510fd9f9d19723c3202dd42a2934a493?x-bce-process%3Dimage%2Fresize%2Cm_lfit%2Cw_600%2Ch_800%2Climit_1%2Fquality%2Cq_85%2Fformat%2Cf_jpg">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1206977/201911/1206977-20191101141406910-243495753.png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz/1OYP1AZw0W3tSUvjyS5cAyXmHujLfFa9Nx5d8OQokkByCJDol5JspFxKsbia9FRJ8ANcHFqcdPI2bdLVSpODPGw/640?wx_fmt=other&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz/1OYP1AZw0W3tSUvjyS5cAyXmHujLfFa97gYf9gzDQG7UiczUibHqbo8tnvODSkEuXBPybu4PTeHA1DR5u1080PfQ/640?wx_fmt=other&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-ad1d86f5a5b9f0ef684907b20b341099_720w.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-7b63c571dfa285c0aa0c8f944ca89482_720w.jpg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz/1OYP1AZw0W3tSUvjyS5cAyXmHujLfFa93MKeQLibXS0JeqQP7GoTE5Z9L5AyCJoptyZsewuKciaXMibmz2OSYP3Og/640?wx_fmt=other&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/rfaNuFeWzwDHicVppcn3zqs3KdvibEXJW7plQCCOZzNDxoSs1luiafuTqA4kkiaGk8DoP5MlQDib9GS29DvHsTaIIaw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/rfaNuFeWzwDHicVppcn3zqs3KdvibEXJW7TXfSLE4UOhfch0DgHlHInViaVsMsyYvzGS4cUWGnfgk0LAOPUpWb6jg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/rfaNuFeWzwDHicVppcn3zqs3KdvibEXJW7hkXZFfUHia6uia0OvoI2tZ3N87UTqVLWz6EfXHZ8dMwudXHNIxtA5yFQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/MyBlog/MyBlog/hexo/source/_posts/数据分析之SQL/image-20210601135359672.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/MyBlog/MyBlog/hexo/source/_posts/数据分析之SQL/FN9$IYZ7_T%7D%6054_@5_YEAF1.png">
+<meta property="article:published_time" content="2020-08-25T09:55:15.000Z">
+<meta property="article:modified_time" content="2021-06-01T06:16:30.666Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="SQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiemayshiyi.github.io/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/MyBlog/MyBlog/hexo/source/_posts/数据分析技能/数据分析——SQL.png">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>数据分析之SQL | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据分析之SQL
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-25 17:55:15" itemprop="dateCreated datePublished" datetime="2020-08-25T17:55:15+08:00">2020-08-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-01 14:16:30" itemprop="dateModified" datetime="2021-06-01T14:16:30+08:00">2021-06-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1><span id="sql">SQL</span><a href="#sql" class="header-anchor">#</a></h1><p><img src="/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/MyBlog/MyBlog/hexo/source/_posts/数据分析技能/数据分析——SQL.png" alt></p>
+<a id="more"></a>
+<h2><span id="xue-hui-zhi-jie-ba-bie-ren-de-zhi-shi-zhuang-jin-zi-ji-de-nao-zi-li">学会直接把别人的知识装进自己的脑子里</span><a href="#xue-hui-zhi-jie-ba-bie-ren-de-zhi-shi-zhuang-jin-zi-ji-de-nao-zi-li" class="header-anchor">#</a></h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/xen/market/personal-works-all/houziliaorenwu?zh_hide_tab_bar=true">https://www.zhihu.com/xen/market/personal-works-all/houziliaorenwu?zh_hide_tab_bar=true</a></p>
+<h2><span id="leetcode-amp-nowcoder">LeetCode &amp; NowCoder</span><a href="#leetcode-amp-nowcoder" class="header-anchor">#</a></h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problemset/database/">https://leetcode.com/problemset/database/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/ta/sql">https://www.nowcoder.com/ta/sql</a></p>
+<h2><span id="guan-xi-xing-shu-ju-ku">关系型数据库</span><a href="#guan-xi-xing-shu-ju-ku" class="header-anchor">#</a></h2><h3><span id="mysql-shu-ju-lei-xing">MySQL数据类型</span><a href="#mysql-shu-ju-lei-xing" class="header-anchor">#</a></h3><p>主要提供了三种类型，分别是文本，数字和日期。</p>
+<h2><span id="mysql-shu-ju-lei-xing">MySQL 数据类型</span><a href="#mysql-shu-ju-lei-xing" class="header-anchor">#</a></h2><p>在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。</p>
+<h3><span id="text-lei-xing">Text 类型：</span><a href="#text-lei-xing" class="header-anchor">#</a></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CHAR(size)</td>
+<td style="text-align:left">保存固定长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的长度。最多 255 个字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">VARCHAR(size)</td>
+<td style="text-align:left">保存可变长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的最大长度。最多 255 个字符。注释：如果值的长度大于 255，则被转换为 TEXT 类型。</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYTEXT</td>
+<td style="text-align:left">存放最大长度为 255 个字符的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">TEXT</td>
+<td style="text-align:left">存放最大长度为 65,535 个字符的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">BLOB</td>
+<td style="text-align:left">用于 BLOBs (Binary Large OBjects)。存放最多 65,535 字节的数据。</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMTEXT</td>
+<td style="text-align:left">存放最大长度为 16,777,215 个字符的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMBLOB</td>
+<td style="text-align:left">用于 BLOBs (Binary Large OBjects)。存放最多 16,777,215 字节的数据。</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGTEXT</td>
+<td style="text-align:left">存放最大长度为 4,294,967,295 个字符的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGBLOB</td>
+<td style="text-align:left">用于 BLOBs (Binary Large OBjects)。存放最多 4,294,967,295 字节的数据。</td>
+</tr>
+<tr>
+<td style="text-align:left">ENUM(x,y,z,etc.)</td>
+<td style="text-align:left">允许你输入可能值的列表。可以在 ENUM 列表中列出最大 65535 个值。如果列表中不存在插入的值，则插入空值。注释：这些值是按照你输入的顺序存储的。可以按照此格式输入可能的值：ENUM(‘X’,’Y’,’Z’)</td>
+</tr>
+<tr>
+<td style="text-align:left">SET</td>
+<td style="text-align:left">与 ENUM 类似，SET 最多只能包含 64 个列表项，不过 SET 可存储一个以上的值。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="number-lei-xing">Number 类型：</span><a href="#number-lei-xing" class="header-anchor">#</a></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">TINYINT(size)</td>
+<td style="text-align:left">-128 到 127 常规。0 到 255 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">SMALLINT(size)</td>
+<td style="text-align:left">-32768 到 32767 常规。0 到 65535 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMINT(size)</td>
+<td style="text-align:left">-8388608 到 8388607 普通。0 to 16777215 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">INT(size)</td>
+<td style="text-align:left">-2147483648 到 2147483647 常规。0 到 4294967295 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">BIGINT(size)</td>
+<td style="text-align:left">-9223372036854775808 到 9223372036854775807 常规。0 到 18446744073709551615 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOAT(size,d)</td>
+<td style="text-align:left">带有浮动小数点的小数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">DOUBLE(size,d)</td>
+<td style="text-align:left">带有浮动小数点的大数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">DECIMAL(size,d)</td>
+<td style="text-align:left">作为字符串存储的 DOUBLE 类型，允许固定的小数点。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>* 这些整数类型拥有额外的选项 UNSIGNED。通常，整数可以是负数或正数。如果添加 UNSIGNED 属性，那么范围将从 0 开始，而不是某个负数。</p>
+<h3><span id="date-lei-xing">Date 类型：</span><a href="#date-lei-xing" class="header-anchor">#</a></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">DATE()</td>
+<td style="text-align:left">日期。格式：YYYY-MM-DD注释：支持的范围是从 ‘1000-01-01’ 到 ‘9999-12-31’</td>
+</tr>
+<tr>
+<td style="text-align:left">DATETIME()</td>
+<td style="text-align:left">*日期和时间的组合。格式：YYYY-MM-DD HH:MM:SS注释：支持的范围是从 ‘1000-01-01 00:00:00’ 到 ‘9999-12-31 23:59:59’</td>
+</tr>
+<tr>
+<td style="text-align:left">TIMESTAMP()</td>
+<td style="text-align:left">*时间戳。TIMESTAMP 值使用 Unix 纪元(‘1970-01-01 00:00:00’ UTC) 至今的描述来存储。格式：YYYY-MM-DD HH:MM:SS注释：支持的范围是从 ‘1970-01-01 00:00:01’ UTC 到 ‘2038-01-09 03:14:07’ UTC</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME()</td>
+<td style="text-align:left">时间。格式：HH:MM:SS 注释：支持的范围是从 ‘-838:59:59’ 到 ‘838:59:59’</td>
+</tr>
+<tr>
+<td style="text-align:left">YEAR()</td>
+<td style="text-align:left">2 位或 4 位格式的年。注释：4 位格式所允许的值：1901 到 2155。2 位格式所允许的值：70 到 69，表示从 1970 到 2069。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>* 即便 DATETIME 和 TIMESTAMP 返回相同的格式，它们的工作方式很不同。在 INSERT 或 UPDATE 查询中，TIMESTAMP 自动把自身设置为当前的日期和时间。TIMESTAMP 也接受不同的格式，比如 YYYYMMDDHHMMSS、YYMMDDHHMMSS、YYYYMMDD 或 YYMMDD。</p>
+<h2><span id="day-ox00-ru-men">Day Ox00 入门：</span><a href="#day-ox00-ru-men" class="header-anchor">#</a></h2><p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/sql_syntax.asp">https://www.w3school.com.cn/sql/sql_syntax.asp</a></p>
+<p>通过SQL使得数据操作员有能力查询，修改数据库。</p>
+<h3><span id="what">What</span><a href="#what" class="header-anchor">#</a></h3><p>SQL：结构化查询语言。SQL对大小写不敏感。</p>
+<p>SQL语句后面的分号？有些数据库系统要求每条SQL命令的末端使用分号，来表示语句的结束。</p>
+<p>分类：</p>
+<ol>
+<li><p>数据操作语言（DML)</p>
+<p>这部分包括查询和更新指令。</p>
+<ul>
+<li>SELECT - 从数据库表中获取数据</li>
+<li>UPDATE - 更新数据库表中的数据</li>
+<li>DELETE - 从数据库表中删除数据</li>
+<li>INSERT INTO - 向数据库表中插入数据</li>
+</ul>
+</li>
+<li><p>数据定义语言 (DDL)</p>
+<p>这部分包括创建和删除表格，还有定义索引(键)，规定表之间的链接，和表间的约束。</p>
+<p>SQL 中最重要的 DDL 语句:</p>
+<p>​        CREATE DATABASE - 创建新数据库</p>
+<p>​        ALTER DATABASE - 修改数据库</p>
+<p>​        CREATE TABLE - 创建新表</p>
+<p>​        ALTER TABLE - 变更（改变）数据库表</p>
+<p>​        DROP TABLE - 删除表</p>
+<p>​        CREATE INDEX - 创建索引（搜索键）</p>
+<p>​        DROP INDEX - 删除索引</p>
+</li>
+</ol>
+<h2><span id="day-ox00-jian-dan-cha-xun">Day Ox00 简单查询：</span><a href="#day-ox00-jian-dan-cha-xun" class="header-anchor">#</a></h2><h3><span id="select-cha-xun-yu-ju">SELECT : 查询语句</span><a href="#select-cha-xun-yu-ju" class="header-anchor">#</a></h3><p>不带条件查询语句</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称1, 列名称2 FROM 表名称</span><br><span class="line">SELECT * FROM 表名称</span><br><span class="line">SELECT DISTINCT 列名称 FROM 表名称 //去除重复值</span><br></pre></td></tr></tbody></table></figure>
+<p>有条件查询语句</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 WHERE 列 运算符 值</span><br></pre></td></tr></tbody></table></figure>
+<p>WHERE 过滤单条记录</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">操作符	描述</span><br><span class="line">=	等于</span><br><span class="line">&lt;&gt;	不等于</span><br><span class="line">&gt;	大于</span><br><span class="line">&lt;	小于</span><br><span class="line">&gt;=	大于等于</span><br><span class="line">&lt;=	小于等于</span><br><span class="line">BETWEEN	在某个范围内</span><br><span class="line">LIKE	搜索某种模式</span><br><span class="line">注释：在某些版本的 SQL 中，操作符 &lt;&gt; 可以写为 !=。</span><br></pre></td></tr></tbody></table></figure>
+<p>WHERE 过滤两个以上的条件记录</p>
+<p> AND / OR </p>
+<p>select 查询出来的结果相当于一个表：结果表</p>
+<h3><span id="qu-chong-distinct">去重 distinct</span><a href="#qu-chong-distinct" class="header-anchor">#</a></h3><p>select distinct</p>
+<p>select count(distinct )</p>
+<h3><span id="cha-ru-geng-xin-shan-chu">插入、更新、删除</span><a href="#cha-ru-geng-xin-shan-chu" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DELETE 语句</span><br><span class="line">DELETE 语句用于删除表中的行。</span><br><span class="line">DELETE FROM 表名称 WHERE 列名称 = 值</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="lian-jie">连接</span><a href="#lian-jie" class="header-anchor">#</a></h2><p>在使用 <strong>join</strong> 时，<strong>on</strong> 和 <strong>where</strong> 条件的区别如下：</p>
+<ul>
+<li>1、 <strong>on</strong> 条件是在生成临时表时使用的条件，它不管 <strong>on</strong> 中的条件是否为真，都会返回左边表中的记录。</li>
+<li>2、<strong>where</strong> 条件是在临时表生成好后，再对临时表进行过滤的条件。这时已经没有 <strong>left join</strong> 的含义（必须返回左边表的记录）了，条件不为真的就全部过滤掉。</li>
+<li>on是筛选调节</li>
+</ul>
+<p>交叉连接</p>
+<p>左</p>
+<p>右</p>
+<p>全</p>
+<p>内</p>
+<h4><span id="cross-join">cross join</span><a href="#cross-join" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select *from 日销 as a cross join 日销 as b      on datediff(a.日期, b.日期) = 1;</span><br></pre></td></tr></tbody></table></figure>
+<h1><span id="mian-shi-ti">面试题</span><a href="#mian-shi-ti" class="header-anchor">#</a></h1><h3><span id="na-xie-wei-zhi-ke-yi-shi-yong-cha-xun-select-de-jie-guo-zuo-wei-biao-ge">那些位置可以使用查询select的结果作为表格</span><a href="#na-xie-wei-zhi-ke-yi-shi-yong-cha-xun-select-de-jie-guo-zuo-wei-biao-ge" class="header-anchor">#</a></h3><h2><span id="ji-shu">计数</span><a href="#ji-shu" class="header-anchor">#</a></h2><h3><span id="if">if</span><a href="#if" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT IF(sva=1,"男","女") AS s FROM table_name </span><br><span class="line">WHERE sva != '';</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="case-when">case when</span><a href="#case-when" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT CASE sva</span><br><span class="line">WHEN 1 THEN '男' </span><br><span class="line">　　ELSE '女' END AS s FROM table_name</span><br><span class="line">WHERE sva != '';</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT CASE 1 </span><br><span class="line">WHEN 1 THEN 'one'</span><br><span class="line">WHEN 2 THEN 'two' </span><br><span class="line">   ELSE 'more' END AS test</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="tong-ji">统计</span><a href="#tong-ji" class="header-anchor">#</a></h2><h2><span id="shi-jian">时间</span><a href="#shi-jian" class="header-anchor">#</a></h2><h3><span id="ge-shi">格式</span><a href="#ge-shi" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SQL Date 数据类型</span><br><span class="line">MySQL 使用下列数据类型在数据库中存储日期或日期/时间值：</span><br><span class="line"></span><br><span class="line">DATE - 格式 YYYY-MM-DD</span><br><span class="line">DATETIME - 格式: YYYY-MM-DD HH:MM:SS</span><br><span class="line">TIMESTAMP - 格式: YYYY-MM-DD HH:MM:SS</span><br><span class="line">YEAR - 格式 YYYY 或 YY</span><br><span class="line">SQL Server 使用下列数据类型在数据库中存储日期或日期/时间值：</span><br><span class="line"></span><br><span class="line">DATE - 格式 YYYY-MM-DD</span><br><span class="line">DATETIME - 格式: YYYY-MM-DD HH:MM:SS</span><br><span class="line">SMALLDATETIME - 格式: YYYY-MM-DD HH:MM:SS</span><br><span class="line">TIMESTAMP - 格式: 唯一的数字</span><br></pre></td></tr></tbody></table></figure>
+<p>DATEDIFF ( datepart , startdate , enddate )</p>
+<p><img src="https://iknow-pic.cdn.bcebos.com/eaf81a4c510fd9f9d19723c3202dd42a2934a493?x-bce-process%3Dimage%2Fresize%2Cm_lfit%2Cw_600%2Ch_800%2Climit_1%2Fquality%2Cq_85%2Fformat%2Cf_jpg" alt="img"></p>
+<h3><span id="wen-ben-he-ri-qi-zhuan-hua">文本和日期转化</span><a href="#wen-ben-he-ri-qi-zhuan-hua" class="header-anchor">#</a></h3><h4><span id="to-date-to-char">to_date,to_char</span><a href="#to-date-to-char" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select to_char(to_date('2002-08-26','yyyy-mm-dd'),'day') from dual;&nbsp;&nbsp;&nbsp;&nbsp; //星期一&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><br><span class="line">select to_char(to_date('2002-08-26','yyyy-mm-dd'),'day',</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「天堂地址不详Y」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/tiantangdizhibuxiang/article/details/81035305</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="ri-qi-bi-jiao">日期比较</span><a href="#ri-qi-bi-jiao" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line"> b_table.career_level,</span><br><span class="line"> COUNT (a_table.uid ) </span><br><span class="line">FROM</span><br><span class="line"> "и߼data1" AS a_table</span><br><span class="line"> INNER JOIN "и߼data2" AS b_table ON a_table.uid = b_table.uid </span><br><span class="line">WHERE</span><br><span class="line"> a_table.d &gt;= to_date('2021-01-01', 'YYYY-MM-DD') </span><br><span class="line"> AND a_table.d &lt;= to_date('2021-01-31', 'YYYY-MM-DD') </span><br><span class="line">GROUP BY</span><br><span class="line"> b_table.career_level;</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="geng-gai-shu-ju-lei-xing">更改数据类型</span><a href="#geng-gai-shu-ju-lei-xing" class="header-anchor">#</a></h3><h4><span id="cast-expression-as-type-han-shu-ke-yi-jiang-ren-he-lei-xing-de-zhi-zhuan-huan-wei-ju-you-zhi-ding-lei-xing-de-zhi-li-yong-gai-han-shu-ke-yi-zhi-jie-zai-shu-ju-ku-ceng-chu-li-bu-fen-yin-shu-ju-lei-xing-yin-qi-de-wen-ti">CAST(expression AS TYPE) 函数可以将任何类型的值转换为具有指定类型的值,利用该函数可以直接在数据库层处理部分因数据类型引起的问题。</span><a href="#cast-expression-as-type-han-shu-ke-yi-jiang-ren-he-lei-xing-de-zhi-zhuan-huan-wei-ju-you-zhi-ding-lei-xing-de-zhi-li-yong-gai-han-shu-ke-yi-zhi-jie-zai-shu-ju-ku-ceng-chu-li-bu-fen-yin-shu-ju-lei-xing-yin-qi-de-wen-ti" class="header-anchor">#</a></h4><p>SELECT CAST( 1231 AS BINARY ) AS result </p>
+<p>SELECT CAST(1995 AS CHAR) as result</p>
+<p>SELECT CAST(‘2019-08-29 16:50:21’ as date) as result</p>
+<h3><span id="data-cao-zuo-han-shu">Data 操作函数</span><a href="#data-cao-zuo-han-shu" class="header-anchor">#</a></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/func_now.asp">NOW()</a></td>
+<td style="text-align:left">返回当前的日期和时间</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/func_curdate.asp">CURDATE()</a></td>
+<td style="text-align:left">返回当前的日期</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/func_curtime.asp">CURTIME()</a></td>
+<td style="text-align:left">返回当前的时间</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/func_date.asp">DATE()</a></td>
+<td style="text-align:left">提取日期或日期/时间表达式的日期部分</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/func_extract.asp">EXTRACT()</a></td>
+<td style="text-align:left">返回日期/时间按的单独部分</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/func_date_add.asp">DATE_ADD()</a></td>
+<td style="text-align:left">给日期添加指定的时间间隔</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/func_date_sub.asp">DATE_SUB()</a></td>
+<td style="text-align:left">从日期减去指定的时间间隔</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/func_datediff_mysql.asp">DATEDIFF()</a></td>
+<td style="text-align:left">返回两个日期之间的天数</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/sql/func_date_format.asp">DATE_FORMAT()</a></td>
+<td style="text-align:left">用不同的格式显示日期/时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="datediff-ri-qi-chai">datediff 日期差</span><a href="#datediff-ri-qi-chai" class="header-anchor">#</a></h4><ol>
+<li>datediff 返回跨两个指定日期的日期和时间边界数。<br>select datediff(day,’2004-09-01’,’2004-09-18’)   —返回：17</li>
+</ol>
+<p>datediff(日期1, 日期2)：</p>
+<p>得到的结果是日期1与日期2相差的天数。</p>
+<p>如果日期1比日期2大，结果为正；如果日期1比日期2小，结果为负。</p>
+<p>timestampdiff(时间类型, 日期1, 日期2)</p>
+<p>这个函数和上面diffdate的正、负号规则刚好相反。</p>
+<p>日期1大于日期2，结果为负，日期1小于日期2，结果为正。</p>
+<h4><span id="dateadd-ri-qi-jia-jian-dateadd-type-zeng-jia-zhi-ri-qi-ji-chu">dateadd 日期加减 dateadd(type, 增加值，日期基础)</span><a href="#dateadd-ri-qi-jia-jian-dateadd-type-zeng-jia-zhi-ri-qi-ji-chu" class="header-anchor">#</a></h4><p>DATEADD(datepart,number,date)</p>
+<p>datepart：y-年份，m-月份，d-日期<br>date 参数是合法的日期表达式。number 是您希望添加的间隔数；对于未来的时间，此数是正数，对于过去的时间，此数是负数。</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select DATEADD(m,1,getdate()),DATEADD(m,1,CONVERT(datetime,'08/01/2019',101))</span><br></pre></td></tr></tbody></table></figure>
+<h4><span id="datepart-ti-qu-ri-qi-zhong-de-nian-yue-ri-datepart-m-y-d-ri-qi"><strong>datepart 提取日期中的年月日</strong>(datepart(m/y/d), 日期)</span><a href="#datepart-ti-qu-ri-qi-zhong-de-nian-yue-ri-datepart-m-y-d-ri-qi" class="header-anchor">#</a></h4><h4><span id="day-month-year-ke-yi-yu-datepart-dui-zhao-yi-xia">day(), month(),year() —可以与datepart对照一下</span><a href="#day-month-year-ke-yi-yu-datepart-dui-zhao-yi-xia" class="header-anchor">#</a></h4><ol>
+<li>datepart 返回代表指定日期的指定日期部分的整数。<br> SELECT DATEPART(month, ‘2004-10-15’)  —返回 10</li>
+</ol>
+<p><strong>DATEPART(param,date)</strong></p>
+<p><img src="https://img2018.cnblogs.com/blog/1206977/201911/1206977-20191101141406910-243495753.png" alt="img"></p>
+<h4><span id="ti-qu-zi-fu-chuan">提取字符串</span><a href="#ti-qu-zi-fu-chuan" class="header-anchor">#</a></h4><ol>
+<li>datename 返回代表指定日期的指定日期部分的字符串<br>SELECT datename(weekday, ‘2004-10-15’)  —返回：星期五</li>
+</ol>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">在SQL数据库中，有一类函数是不得不提的，那就是Sql Server日期时间函数，这是Sql Server处理日期和时间最常用的函数，下面就将为介绍这类函数。</span><br><span class="line"></span><br><span class="line">Sql Server日期与时间函数:</span><br><span class="line">.&nbsp; 当前系统日期、时间</span><br><span class="line">&nbsp;&nbsp;&nbsp; select getdate()&nbsp;</span><br><span class="line"></span><br><span class="line">2. dateadd&nbsp; 在向指定日期加上一段时间的基础上，返回新的 datetime 值</span><br><span class="line">&nbsp;&nbsp; 例如：向日期加上2天</span><br><span class="line">&nbsp;&nbsp; select dateadd(day,2,'2004-10-15')&nbsp; --返回：2004-10-17 00:00:00.000</span><br><span class="line"></span><br><span class="line">3. datediff 返回跨两个指定日期的日期和时间边界数。</span><br><span class="line">&nbsp;&nbsp; select datediff(day,'2004-09-01','2004-09-18')&nbsp;&nbsp; --返回：17</span><br><span class="line"></span><br><span class="line">4. datepart 返回代表指定日期的指定日期部分的整数。</span><br><span class="line">&nbsp; SELECT DATEPART(month, '2004-10-15')&nbsp; --返回 10</span><br><span class="line"></span><br><span class="line">5. datename 返回代表指定日期的指定日期部分的字符串</span><br><span class="line">&nbsp;&nbsp; SELECT datename(weekday, '2004-10-15')&nbsp; --返回：星期五</span><br><span class="line"></span><br><span class="line">6. day(), month(),year() --可以与datepart对照一下</span><br><span class="line"></span><br><span class="line">select 当前日期=convert(varchar(10),getdate(),120)</span><br><span class="line">,当前时间=convert(varchar(8),getdate(),114)</span><br><span class="line"></span><br><span class="line">select datename(dw,'2004-10-15')</span><br><span class="line"></span><br><span class="line">select 本年第多少周=datename(week,'2004-10-15')</span><br><span class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,今天是周几=datename(weekday,'2004-10-15')#p#</span><br><span class="line"></span><br><span class="line">Sql Server日期函数 参数/功能</span><br><span class="line">GetDate( )&nbsp; 返回系统目前的日期与时间</span><br><span class="line">DateDiff (interval,date1,date2) 以interval 指定的方式，返回date2 与date1两个日期之间的差值 date2-date1</span><br><span class="line">DateAdd (interval,number,date) 以interval指定的方式，加上number之后的日期</span><br><span class="line">DatePart (interval,date) 返回日期date中，interval指定部分所对应的整数值</span><br><span class="line">DateName (interval,date) 返回日期date中，interval指定部分所对应的字符串名称</span><br><span class="line"></span><br><span class="line">参数 interval的设定值如下：</span><br><span class="line"></span><br><span class="line">值 缩 写（Sql Server） (Access 和 ASP) 说明</span><br><span class="line">Year Yy yyyy 年 1753 ~ 9999</span><br><span class="line">Quarter Qq q&nbsp;&nbsp; 季 1 ~ 4</span><br><span class="line">Month Mm m&nbsp;&nbsp; 月1 ~ 12</span><br><span class="line">Day of year Dy y&nbsp; 一年的日数,一年中的第几日 1-366</span><br><span class="line">Day Dd d&nbsp;&nbsp; 日，1-31</span><br><span class="line">Weekday Dw w 一周的日数，一周中的第几日 1-7</span><br><span class="line">Week Wk ww&nbsp; 周，一年中的第几周 0 ~ 51</span><br><span class="line">Hour Hh h&nbsp;&nbsp; 时0 ~ 23</span><br><span class="line">Minute Mi n&nbsp; 分钟0 ~ 59</span><br><span class="line">Second Ss s 秒 0 ~ 59</span><br><span class="line">Millisecond Ms - 毫秒 0 ~ 999</span><br><span class="line"></span><br><span class="line">access 和 asp 中用date()和now()取得系统日期时间；其中DateDiff,DateAdd,DatePart也同是能用于Access和asp中，这些函数的用法也类似</span><br><span class="line"></span><br><span class="line">Sql Server日期函数举例：</span><br><span class="line">1.GetDate() 用于sql server :select GetDate()</span><br><span class="line"></span><br><span class="line">2.DateDiff('s','2005-07-20','2005-7-25 22:56:32')返回值为 514592 秒</span><br><span class="line">DateDiff('d','2005-07-20','2005-7-25 22:56:32')返回值为 5 天</span><br><span class="line"></span><br><span class="line">3.DatePart('w','2005-7-25 22:56:32')返回值为 2 即星期一(周日为1，周六为7)</span><br><span class="line">DatePart('d','2005-7-25 22:56:32')返回值为 25即25号</span><br><span class="line">DatePart('y','2005-7-25 22:56:32')返回值为 206即这一年中第206天</span><br><span class="line">DatePart('yyyy','2005-7-25 22:56:32')返回值为 2005即2005年</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="lian-xu">连续</span><a href="#lian-xu" class="header-anchor">#</a></h2><p><strong>连续3天登录用户</strong></p>
+<h4><span id="guan-jian-xing-si-lu">关键性思路</span><a href="#guan-jian-xing-si-lu" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 窗口函数排序，rank()</span><br><span class="line">2. 相减（新变量）</span><br><span class="line">3. 分组新变量</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/1OYP1AZw0W3tSUvjyS5cAyXmHujLfFa9Nx5d8OQokkByCJDol5JspFxKsbia9FRJ8ANcHFqcdPI2bdLVSpODPGw/640?wx_fmt=other&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/1OYP1AZw0W3tSUvjyS5cAyXmHujLfFa97gYf9gzDQG7UiczUibHqbo8tnvODSkEuXBPybu4PTeHA1DR5u1080PfQ/640?wx_fmt=other&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<h3><span id="kuo-zhan">扩展</span><a href="#kuo-zhan" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="pai-xu">排序</span><a href="#pai-xu" class="header-anchor">#</a></h2><h2><span id="ji-qiao">技巧</span><a href="#ji-qiao" class="header-anchor">#</a></h2><h3><span id="qu-chong">去重</span><a href="#qu-chong" class="header-anchor">#</a></h3><p>distinct</p>
+<h3><span id="limit">limit</span><a href="#limit" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">limit子句用于限制查询结果返回的数量。</span><br><span class="line"></span><br><span class="line">用法：【select * from tableName limit i,n 】</span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line"></span><br><span class="line">tableName : 为数据表；</span><br><span class="line">i : 为查询结果的索引值（默认从0开始）；下标是0</span><br><span class="line">n : 为查询结果返回的数量</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="bian-liang">变量</span><a href="#bian-liang" class="header-anchor">#</a></h2><h2><span id="chuang-kou-han-shu">窗口函数</span><a href="#chuang-kou-han-shu" class="header-anchor">#</a></h2><h3><span id="xu-qiu">需求</span><a href="#xu-qiu" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">排名问题：每个部门按业绩来排名</span><br><span class="line">topN问题：找出每个部门排名前N的员工进行奖励</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;窗口函数&gt; over (partition by &lt;用于分组的列名&gt;</span><br><span class="line">                order by &lt;用于排序的列名&gt;)</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="shi-yong-fang-fa">使用方法</span><a href="#shi-yong-fang-fa" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">窗口函数的基本语法如下：</span><br><span class="line"></span><br><span class="line">&lt;窗口函数&gt; over (partition by &lt;用于分组的列名&gt;</span><br><span class="line">                order by &lt;用于排序的列名&gt;)</span><br><span class="line">那么语法中的&lt;窗口函数&gt;都有哪些呢？</span><br><span class="line"></span><br><span class="line">&lt;窗口函数&gt;的位置，可以放以下两种函数：</span><br><span class="line"></span><br><span class="line">1） 专用窗口函数，包括后面要讲到的rank, dense_rank, row_number等专用窗口函数。</span><br><span class="line"></span><br><span class="line">2） 聚合函数，如sum. avg, count, max, min等</span><br><span class="line"></span><br><span class="line">因为窗口函数是对where或者group by子句处理后的结果进行操作，所以窗口函数原则上只能写在select子句中。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">简单来说，窗口函数有以下功能：</span><br><span class="line"></span><br><span class="line">1）同时具有分组和排序的功能</span><br><span class="line"></span><br><span class="line">2）不减少原表的行数</span><br><span class="line"></span><br><span class="line">3）语法如下：</span><br><span class="line"></span><br><span class="line">&lt;窗口函数&gt; over (partition by &lt;用于分组的列名&gt;</span><br><span class="line">                order by &lt;用于排序的列名&gt;)</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="an-li">案例</span><a href="#an-li" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select *,</span><br><span class="line">   rank() over (partition by 班级</span><br><span class="line">                 order by 成绩 desc) as ranking</span><br><span class="line">from 班级表</span><br></pre></td></tr></tbody></table></figure>
+<p>我们来解释下这个sql语句里的select子句。rank是排序的函数。要求是“每个班级内按成绩排名”，这句话可以分为两部分：</p>
+<p>1）每个班级内：按班级分组</p>
+<p><strong>partition by用来对表分组</strong>。在这个例子中，所以我们指定了按“班级”分组（partition by 班级）<br>2）按成绩排名</p>
+<p><strong>order by子句的功能是对分组后的结果进行排序</strong>，默认是按照升序（asc）排列。在本例中（order by 成绩 desc）是按成绩这一列排序，加了desc关键词表示降序排列。</p>
+<p>通过下图，我们就可以理解partiition by（分组）和order by（在组内排序）的作用了。</p>
+<p>窗口函数具备了我们之前学过的group by子句分组的功能和order by子句排序的功能。那么，为什么还要用窗口函数呢？</p>
+<p>这是因为，<strong>group by分组汇总后改变了表的行数，一行只有一个类别。而partiition by和rank函数不会减少原表中的行数</strong>。例如下面统计每个班级的人数。</p>
+<h3><span id="zhuan-yong-chuang-kou-han-shu-rank-dense-rank-row-number">专用窗口函数rank, dense_rank, row_number</span><a href="#zhuan-yong-chuang-kou-han-shu-rank-dense-rank-row-number" class="header-anchor">#</a></h3><figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select *,</span><br><span class="line">   rank() over (order by 成绩 desc) as ranking,</span><br><span class="line">   dense_rank() over (order by 成绩 desc) as dese_rank,</span><br><span class="line">   row_number() over (order by 成绩 desc) as row_num</span><br><span class="line">from 班级表</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://pic2.zhimg.com/80/v2-ad1d86f5a5b9f0ef684907b20b341099_720w.jpg" alt="img"></p>
+<p><img src="https://pic3.zhimg.com/80/v2-7b63c571dfa285c0aa0c8f944ca89482_720w.jpg" alt="img"></p>
+<h3><span id="geng-chang-jian-de-fang-fa">更常见的方法</span><a href="#geng-chang-jian-de-fang-fa" class="header-anchor">#</a></h3><h5><span id="lead-he-lag-zhe-liang-ge-han-shu-du-shi-yong-lai-ji-suan-pian-yi-liang-de-fen-xi-han-shu-zhe-liang-ge-han-shu-de-yong-fa-xiang-tong">LEAD和LAG，这两个函数都是用来计算偏移量的分析函数，这两个函数的用法相同。</span><a href="#lead-he-lag-zhe-liang-ge-han-shu-du-shi-yong-lai-ji-suan-pian-yi-liang-de-fen-xi-han-shu-zhe-liang-ge-han-shu-de-yong-fa-xiang-tong" class="header-anchor">#</a></h5><p>LEAD函数是一个分析函数，它可以在不用自连接的情况下，同时访问一个表的多行数据。查询返回的一系列的数据行和游标，LEAD函数在当前位置上根据偏移量访问该表中的另一行数据。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">lead(e.hiredate,1(偏移量，默认1）,null（如果超过了）) over(partition by e.deptno order by e.hiredate) as next_hiredate  </span><br><span class="line"></span><br><span class="line">--5、lead函数的default参数  </span><br><span class="line">select e.empno,  </span><br><span class="line">       e.ename,  </span><br><span class="line">       e.deptno,  </span><br><span class="line">       e.hiredate,  </span><br><span class="line">       lead(e.hiredate,1,to_date('2013-01-01','yyyy-MM-dd')) over(partition by e.deptno order by e.hiredate) as next_hiredate  </span><br><span class="line">from emp e  </span><br><span class="line">where deptno=30;  </span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/1OYP1AZw0W3tSUvjyS5cAyXmHujLfFa93MKeQLibXS0JeqQP7GoTE5Z9L5AyCJoptyZsewuKciaXMibmz2OSYP3Og/640?wx_fmt=other&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<h4><span id="chang-jian-chuang-kou-han-shu">常见窗口函数</span><a href="#chang-jian-chuang-kou-han-shu" class="header-anchor">#</a></h4><p><img src="https://mmbiz.qpic.cn/mmbiz_png/rfaNuFeWzwDHicVppcn3zqs3KdvibEXJW7plQCCOZzNDxoSs1luiafuTqA4kkiaGk8DoP5MlQDib9GS29DvHsTaIIaw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" style="zoom:33%;"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/rfaNuFeWzwDHicVppcn3zqs3KdvibEXJW7TXfSLE4UOhfch0DgHlHInViaVsMsyYvzGS4cUWGnfgk0LAOPUpWb6jg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" style="zoom:50%;"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/rfaNuFeWzwDHicVppcn3zqs3KdvibEXJW7hkXZFfUHia6uia0OvoI2tZ3N87UTqVLWz6EfXHZ8dMwudXHNIxtA5yFQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" style="zoom:50%;"></p>
+<h2><span id="lian-jie">连接</span><a href="#lian-jie" class="header-anchor">#</a></h2><h3><span id="nei-lian-jie">内连接</span><a href="#nei-lian-jie" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Persons.LastName, Persons.FirstName, Orders.OrderNo</span><br><span class="line">FROM Persons, Orders</span><br><span class="line">WHERE Persons.Id_P = Orders.Id_P </span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="wai-lian-jie">外连接</span><a href="#wai-lian-jie" class="header-anchor">#</a></h3><h3><span id="zi-lian-jie">自连接</span><a href="#zi-lian-jie" class="header-anchor">#</a></h3><h3><span id="jiao-cha-lian-jie">交叉连接</span><a href="#jiao-cha-lian-jie" class="header-anchor">#</a></h3><p>交叉联结（corss join）</p>
+<h2><span id="case-when">case when</span><a href="#case-when" class="header-anchor">#</a></h2><h1><span id="ti-ku">题库</span><a href="#ti-ku" class="header-anchor">#</a></h1><h2><span id="select">select</span><a href="#select" class="header-anchor">#</a></h2><h3><span id="where">where</span><a href="#where" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select emp_no </span><br><span class="line">from employees</span><br><span class="line">where emp_no not in (select distinct emp_no from dept_manager)</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="pai-ming-chuang-kou-han-shu-xin-zeng-yi-lie">排名(窗口函数新增一列)</span><a href="#pai-ming-chuang-kou-han-shu-xin-zeng-yi-lie" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">select dept_no, emp_no, salary </span><br><span class="line">from </span><br><span class="line">(</span><br><span class="line">select  </span><br><span class="line">    dept_no, </span><br><span class="line">    a.emp_no,</span><br><span class="line">    salary,</span><br><span class="line">    row_number()  over( partition  by  dept_no order by salary desc) as ranking</span><br><span class="line">from (</span><br><span class="line">    salaries as a </span><br><span class="line">    inner join </span><br><span class="line">    dept_emp as b </span><br><span class="line">    on a.emp_no = b.emp_no</span><br><span class="line">    )</span><br><span class="line"> )</span><br><span class="line">where ranking =1 </span><br><span class="line">group by dept_no</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="ji-chu-yu-fa">基础语法</span><a href="#ji-chu-yu-fa" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CASE input_expression</span><br><span class="line">WHEN when_expression THEN</span><br><span class="line">    result_expression [...n ] [</span><br><span class="line">ELSE</span><br><span class="line">    else_result_expression</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CASE</span><br><span class="line">WHEN Boolean_expression THEN</span><br><span class="line">    result_expression [...n ] [</span><br><span class="line">ELSE</span><br><span class="line">    else_result_expression</span><br><span class="line">END</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="pei-he-count-sum">配合 count sum</span><a href="#pei-he-count-sum" class="header-anchor">#</a></h3><p>行列互换</p>
+<p>group by 行</p>
+<p>count/sum列统计</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">COUNT(DISTINCT CASE phoneType WHEN 'iOS' THEN id END) AS iOSPush,</span><br><span class="line">COUNT(DISTINCT CASE phoneType WHEN 'WeChat' THEN id END) AS weChatPush,</span><br><span class="line">COUNT(DISTINCT CASE phoneType WHEN 'Android' THEN id END) AS androidPush,</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="lian-xu-ji-tian-zi-lian-jie-tong-yi-lie-xiang-hu">连续几天+自连接（同一列相互)</span><a href="#lian-xu-ji-tian-zi-lian-jie-tong-yi-lie-xiang-hu" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select *</span><br><span class="line">from score as a,</span><br><span class="line">   score as b,</span><br><span class="line">   score as c;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">select distinct a.成绩 as 最终答案</span><br><span class="line">from score as a,</span><br><span class="line">   score as b,</span><br><span class="line">   score as c;</span><br><span class="line"> where a.学号 = b.学号 - 1</span><br><span class="line">   and b.学号 = c.学号 - 1</span><br><span class="line">   and a.成绩 = b.成绩</span><br><span class="line">   and b.成绩 = c.成绩;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>【本题考点】</strong></p>
+<p>• 本题考察的是连续出现，会有同学忽略“连续”二字</p>
+<p>• 考察对自关联的灵活应用</p>
+<p>• 从题目连续3次成绩相等，判断出“成绩相等”和“学号连续”这2个条件。考察构建“连续学号成绩相等”的思维构建能力</p>
+<p><strong>【举一反三】</strong></p>
+<p>遇到类似“连续出N次的问题”可以回想本题的解答思路，如：查询至少连续3天没有出勤的员工。</p>
+<h3><span id="xing-lie-hu-huan">行列互换</span><a href="#xing-lie-hu-huan" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 学号,-- 第2步，在行列互换结果表中，其他列里的值分别使用case和max来获取max(case 课程 when '语文' then 成绩 else 0 end) as 语文成绩,max(case 课程 when '数学' then 成绩 else 0 end) as 数学成绩from 成绩表-- 第1步，在行列互换结果表中按第1列分组group by 学号;</span><br></pre></td></tr></tbody></table></figure>
+<p>1.考查用case语句进行数据替换，和条件判断</p>
+<p>2.遇到行列互换的问题，可以用下面的万能模版来解决。</p>
+<h3><span id="zui-da-zui-xiao-de-n-ge-shu">最大最小的N个数</span><a href="#zui-da-zui-xiao-de-n-ge-shu" class="header-anchor">#</a></h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAxMTMwNTMxMQ==&amp;mid=2649248455&amp;idx=1&amp;sn=57539b783e2f4a0bdc54c7ca63e162a6&amp;chksm=835fdaf7b42853e19fea0c1ecdf2e62dc70591c37129e3fd53193773ca372c7958b5b450f4b7&amp;cur_album_id=1398781984763428865&amp;scene=189#rd">https://mp.weixin.qq.com/s?__biz=MzAxMTMwNTMxMQ==&amp;mid=2649248455&amp;idx=1&amp;sn=57539b783e2f4a0bdc54c7ca63e162a6&amp;chksm=835fdaf7b42853e19fea0c1ecdf2e62dc70591c37129e3fd53193773ca372c7958b5b450f4b7&amp;cur_album_id=1398781984763428865&amp;scene=189#rd</a></p>
+<p><strong>【本题考点】</strong></p>
+<p>1.使用<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzAxMTMwNTMxMQ==&amp;mid=2649246563&amp;idx=2&amp;sn=3ffe509999d144d23dec5acc101fc2ef&amp;chksm=835fc353b4284a45ce01391453fe2fec1b225bbd6bbdb67dd7f304aacdd4f21f60d0b27ba309&amp;scene=21#wechat_redirect">逻辑树分析方法</a>将复杂问题变成简单问题的能力</p>
+<p>2.当遇到“每个”问题的时候，要想到用分组汇总</p>
+<p>3.查询最小n个数据的问题：先排序（order by），然后使用limit取出前n行数据</p>
+<p>4.遇到有筛选条件的统计数量问题时，使用case表达式筛选出符合条件的行为1，否则为0。然后用汇总函数（sum）对case表达式输出列求和。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.班级,人数,人数占比from 学生表 as a left join 临时表 as bon a.学号=b.学号group by 班级;</span><br></pre></td></tr></tbody></table></figure>
+<h1><span id="zhu-yi-dian">注意点</span><a href="#zhu-yi-dian" class="header-anchor">#</a></h1><h2><span id="group-by">group by</span><a href="#group-by" class="header-anchor">#</a></h2><p>简而言之：使用GROUP BY子句时，SELECT子句中只能有聚合键、聚合函数、常数。</p>
+<h2><span id="zi-cha-xun-yao-qu-ming-zi">子查询要取名字</span><a href="#zi-cha-xun-yao-qu-ming-zi" class="header-anchor">#</a></h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select emp_no, max(salary), last_name, first_name</span><br><span class="line">from </span><br><span class="line">   </span><br><span class="line">    (select * from </span><br><span class="line">           employees  as a inner join salaries as b </span><br><span class="line">           on a.emp_no = b.emp_no</span><br><span class="line">   ) as c</span><br><span class="line"> where salary&lt; (select max(salary) from salaries)</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="qian-tao-cha-xun-he-cha-xun-zi-ji">嵌套查询和查询子集</span><a href="#qian-tao-cha-xun-he-cha-xun-zi-ji" class="header-anchor">#</a></h3><h3><span id="tong-ji-mei-nian-mei-yue-mei-nian-de-shu-ju">统计每年，每月，每年的数据</span><a href="#tong-ji-mei-nian-mei-yue-mei-nian-de-shu-ju" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">1、每年</span><br><span class="line">select year(ordertime) 年，</span><br><span class="line">sum(Total) 销售合计</span><br><span class="line">from 订单表</span><br><span class="line">group by year(ordertime)</span><br><span class="line"> </span><br><span class="line">2、每月</span><br><span class="line">select year(ordertime) 年，</span><br><span class="line">month(ordertime) 月,</span><br><span class="line">sum(Total) 销售合计</span><br><span class="line">from 订单表</span><br><span class="line">group by year(ordertime)，</span><br><span class="line">month(ordertime</span><br><span class="line"> </span><br><span class="line">3、每日</span><br><span class="line">select year(ordertime) 年，</span><br><span class="line">month(ordertime) 月,</span><br><span class="line">day(ordertime) 日，</span><br><span class="line">sum(Total) 销售合计</span><br><span class="line">from 订单表</span><br><span class="line">group by year(ordertime)，</span><br><span class="line">month(ordertime),</span><br><span class="line">day(ordertime)</span><br><span class="line"> </span><br><span class="line">另外每日也可以这样:</span><br><span class="line">select convert(char(8),ordertime,112) dt，</span><br><span class="line">sum(Total) 销售合计</span><br><span class="line">from 订单表</span><br><span class="line">group by convert(char(8),ordertime,112)</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="ji-shu-chong-xin-ying-she-zhi">计数重新映射值</span><a href="#ji-shu-chong-xin-ying-she-zhi" class="header-anchor">#</a></h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT IF(sva=1,"男","女") AS s FROM table_name </span><br><span class="line">WHERE sva != '';</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT CASE sva</span><br><span class="line">WHEN 1 THEN '男' </span><br><span class="line">　　ELSE '女' END AS s FROM table_name</span><br><span class="line">WHERE sva != '';</span><br></pre></td></tr></tbody></table></figure>
+<p>可以在count, sum中select 中使用</p>
+<p>1.考查用case语句进行数据替换，和条件判断</p>
+<h2><span id="sql-zhi-xing-shun-xu">sql执行顺序</span><a href="#sql-zhi-xing-shun-xu" class="header-anchor">#</a></h2><p><img src="/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/MyBlog\MyBlog\hexo\source\_posts\数据分析之SQL\image-20210601135359672.png" alt="image-20210601135359672"></p>
+<p>where:顾虑</p>
+<p>group by</p>
+<p>having:分组筛选</p>
+<p><img src="/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BSQL/MyBlog\MyBlog\hexo\source\_posts\数据分析之SQL\FN9$IYZ7_T}`54_@5_YEAF1.png" alt="img"></p>
+<p>执行顺序：from join where group by  haveing: 中  select distinct; order by limit</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" rel="prev" title="机器学习之模型性能">
+      <i class="fa fa-chevron-left"></i> 机器学习之模型性能
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/25/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%80%E8%83%BD/" rel="next" title="数据分析技能">
+      数据分析技能 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">学会直接把别人的知识装进自己的脑子里</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">LeetCode &amp; NowCoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">关系型数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.1.</span> <span class="nav-text">MySQL数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">MySQL 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.1.</span> <span class="nav-text">Text 类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.2.</span> <span class="nav-text">Number 类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.3.</span> <span class="nav-text">Date 类型：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">Day Ox00 入门：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.5.1.</span> <span class="nav-text">What</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.6.</span> <span class="nav-text">Day Ox00 简单查询：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.1.</span> <span class="nav-text">SELECT : 查询语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.2.</span> <span class="nav-text">去重 distinct</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.3.</span> <span class="nav-text">插入、更新、删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.7.</span> <span class="nav-text">连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.7.0.1.</span> <span class="nav-text">cross join</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.0.1.</span> <span class="nav-text">那些位置可以使用查询select的结果作为表格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">计数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.1.</span> <span class="nav-text">if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.2.</span> <span class="nav-text">case when</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">时间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.2.</span> <span class="nav-text">文本和日期转化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">to_date,to_char</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.3.</span> <span class="nav-text">日期比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.4.</span> <span class="nav-text">更改数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">CAST(expression AS TYPE) 函数可以将任何类型的值转换为具有指定类型的值,利用该函数可以直接在数据库层处理部分因数据类型引起的问题。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.5.</span> <span class="nav-text">Data 操作函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.5.1.</span> <span class="nav-text">datediff 日期差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.5.2.</span> <span class="nav-text">dateadd 日期加减 dateadd(type, 增加值，日期基础)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.5.3.</span> <span class="nav-text">datepart 提取日期中的年月日(datepart(m&#x2F;y&#x2F;d), 日期)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.5.4.</span> <span class="nav-text">day(), month(),year() —可以与datepart对照一下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.5.5.</span> <span class="nav-text">提取字符串</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">连续</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.4.0.1.</span> <span class="nav-text">关键性思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.4.1.</span> <span class="nav-text">扩展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.5.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.6.</span> <span class="nav-text">技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.1.</span> <span class="nav-text">去重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.2.</span> <span class="nav-text">limit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.7.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.8.</span> <span class="nav-text">窗口函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.8.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.8.2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.8.3.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.8.4.</span> <span class="nav-text">专用窗口函数rank, dense_rank, row_number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.8.5.</span> <span class="nav-text">更常见的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">2.8.5.0.1.</span> <span class="nav-text">LEAD和LAG，这两个函数都是用来计算偏移量的分析函数，这两个函数的用法相同。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.8.5.1.</span> <span class="nav-text">常见窗口函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.9.</span> <span class="nav-text">连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.9.1.</span> <span class="nav-text">内连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.9.2.</span> <span class="nav-text">外连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.9.3.</span> <span class="nav-text">自连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.9.4.</span> <span class="nav-text">交叉连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.10.</span> <span class="nav-text">case when</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">题库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">select</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.1.</span> <span class="nav-text">where</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.2.</span> <span class="nav-text">排名(窗口函数新增一列)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.3.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.4.</span> <span class="nav-text">配合 count sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.5.</span> <span class="nav-text">连续几天+自连接（同一列相互)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.6.</span> <span class="nav-text">行列互换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.7.</span> <span class="nav-text">最大最小的N个数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">group by</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">子查询要取名字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.1.</span> <span class="nav-text">嵌套查询和查询子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.2.</span> <span class="nav-text">统计每年，每月，每年的数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.3.</span> <span class="nav-text">计数重新映射值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.4.</span> <span class="nav-text">sql执行顺序</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

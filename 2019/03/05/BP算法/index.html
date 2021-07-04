@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="[TOC]BP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BP算法">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2019/03/05/BP%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="[TOC]BP">
+<meta property="og:locale">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2019/03/05/BP%E7%AE%97%E6%B3%95/2.1.1.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2019/03/05/BP%E7%AE%97%E6%B3%95/3.1.1.png">
+<meta property="article:published_time" content="2019-03-05T11:24:23.000Z">
+<meta property="article:modified_time" content="2020-10-08T08:34:43.615Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="BP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiemayshiyi.github.io/2019/03/05/BP%E7%AE%97%E6%B3%95/2.1.1.png">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2019/03/05/BP%E7%AE%97%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>BP算法 | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2019/03/05/BP%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BP算法
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-05 19:24:23" itemprop="dateCreated datePublished" datetime="2019-03-05T19:24:23+08:00">2019-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-08 16:34:43" itemprop="dateModified" datetime="2020-10-08T16:34:43+08:00">2020-10-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>[TOC]<br>BP</p>
+<a id="more"></a>
+<h1><span id="1-xu-yao-de-wei-ji-fen-zhi-shi">1. 需要的微积分知识</span><a href="#1-xu-yao-de-wei-ji-fen-zhi-shi" class="header-anchor">#</a></h1><h2><span id="1-1-dao-shu">1.1 导数</span><a href="#1-1-dao-shu" class="header-anchor">#</a></h2><p>对于一元函数，在导数存在的情况下，在某一点的导数，也就是该点的斜率。<br>对于多元函数，对于某一点求导，则需要指明方向，两个特殊的方向，1. 偏导：在坐标轴方向的导数 2. 梯度的方向:总有一个方向是变化最快的。</p>
+<h2><span id="1-2-qiu-dao-de-lian-shi-fa-ze">1.2 求导的链式法则</span><a href="#1-2-qiu-dao-de-lian-shi-fa-ze" class="header-anchor">#</a></h2><ol>
+<li><p>$x \in R$, $z=g(f(x))$, $y=f(x)$</p>
+<script type="math/tex; mode=display">\frac{\partial z}{\partial x}=\frac{\partial z}{\partial y} \frac{\partial y}{\partial x}</script></li>
+<li><p>$ x \in R^m $, $f(x)$是$R^M$到$R^n$的映射，$g(f)$是$R^n$到R的映射</p>
+<script type="math/tex; mode=display">\frac{\partial g}{\partial x_i}=\sum_j^n \frac{\partial g}{\partial f_i} \frac{\partial f_i}{\partial x_i}</script><p> 如果使用向量表示</p>
+<script type="math/tex; mode=display">\nabla_x^z=(\frac{\partial f}{\partial x})^T \nabla_y^z</script><h1><span id="2-ti-du-xia-jiang-fa">2. 梯度下降法</span><a href="#2-ti-du-xia-jiang-fa" class="header-anchor">#</a></h1><h2><span id="2-1-ti-du">2.1 梯度</span><a href="#2-1-ti-du" class="header-anchor">#</a></h2><p>梯度其实本质也是一个向量，对于函数$f(X,y)$<br>在$(W,y)$这一点的梯度 $(\frac{\partial f}{\partial X},\frac{\partial f}{\partial y})$<br>梯度的几何意义：在该店变化增加最快的地方</p>
+</li>
+</ol>
+<h2><span id="2-2-ti-du-suan-fa-de-jie-shi">2.2 梯度算法的解释</span><a href="#2-2-ti-du-suan-fa-de-jie-shi" class="header-anchor">#</a></h2><p>图来自吴恩达的机器学习课程<br><img src="/2019/03/05/BP%E7%AE%97%E6%B3%95/2.1.1.png" alt="tu"><br>颜色偏红(A)的地方开始，根据梯度的负方向通过9次更新，达到了最小值(B)。<br>现在给定一个点$A(\theta_0,\theta_1)$,干嘛呢，我们想从A到B点（最小值点),类似人类下山，需要知道往那个方向吧、走大多一步呢？<br>方向：梯度的负方向 $ \delta=(\frac{\partial L}{\partial \theta_0},\frac{\partial L}{\partial \theta_1})$)<br>步长：学习率（$\alpha$)<br>因此，计算一次里目标更近了 $(\theta_0,\theta_1)=(\theta_0,\theta_1)-\alpha \dot (\delta)$<br>在重复上两步，直到满意为止。</p>
+<h1><span id="3-wu-chai-fan-xiang-chuan-bo-suan-fa">3.误差反向传播算法</span><a href="#3-wu-chai-fan-xiang-chuan-bo-suan-fa" class="header-anchor">#</a></h1><h2><span id="3-1-li-lun-tui-dao">3.1 理论推导</span><a href="#3-1-li-lun-tui-dao" class="header-anchor">#</a></h2><p><img src="/2019/03/05/BP%E7%AE%97%E6%B3%95/3.1.1.png" alt="计算图"></p>
+<h3><span id="3-1-1-fu-hao-shuo-ming">3.1.1 符号说明</span><a href="#3-1-1-fu-hao-shuo-ming" class="header-anchor">#</a></h3><p>上图是一个L层的神经网络，输入层为第一层，隐藏层：2至$L-1$层，输出层L</p>
+<p>令 输入向量 $\vec{X}$</p>
+<script type="math/tex; mode=display">\vec{X} = (x_1,x_2,...,x_{m-1},x_m)</script><p>输出向量 $\vec{Y}$</p>
+<script type="math/tex; mode=display">\vec{Y}=(y_1,y_2,...,y_{n-1},y_n)</script><p>第j层隐藏层的输出向量 $\vec{h^{(j)}}$,有 </p>
+<script type="math/tex; mode=display">\vec{h^{(j)}}=(h_1^{(j)},h_2^{(j)},...,h_{t-1}^{(j)},h_tj^{(j)})</script><p>其中，$t_j$:表示第j的隐藏层个数<br>第$(l-1)$层的第i个神经元到第$l$层的第j个神经元的连接权重：$w_{ij}^{(l)}$，则第$(l-1)$层神经元到第$l$层神经元的连接权重矩阵<script type="math/tex">W^{(l)}=\left( \begin{matrix}w_{11}^{(l)}& \cdots & w_{1(tj)}\\
+    &   \dots &\\
+    w_{s(l-1)}^{l}&\cdots&w_{s(l-1)s(l)}^{l}
+\end{matrix}\right)</script></p>
+<h3><span id="3-1-2-tui-dao-guo-cheng">3.1.2 推导过程</span><a href="#3-1-2-tui-dao-guo-cheng" class="header-anchor">#</a></h3><h4><span id="3-1-2-1-wu-chai">3.1.2.1 误差</span><a href="#3-1-2-1-wu-chai" class="header-anchor">#</a></h4><p>定义的误差函数,常见的衡量性指标见 <a href="#3.6">戳我</a>,这里选择的误差平方和最小<br>第$i$个输出的误差,假设实际输出$(d(1),d(2),…,d(n))$：,一个输入样本对应的误差</p>
+<script type="math/tex; mode=display">E(i)=\frac{1}{2}\sum_{k=1}^n(y(i)-d(i))^2=\frac{1}{2}||y-d||^2</script><p>所有训练样本($N$)的误差：</p>
+<script type="math/tex; mode=display">E(i)=\frac{1}{2}\sum_{j=1}^{N}(\sum_{k=1}^n(y(i)-d(i))^2)=\frac{1}{2N}\sum_{j=1}^{N}(||y(i)-d(i)||^2)</script><p>因此，</p>
+<script type="math/tex; mode=display">E = \frac{1}{2N}\sum_{i=1}^N(||y(i)-d(i)||^2)</script><p>其实，神经网络的输出是关于节点的复合函数。代价函数是关于$W$和$b$的函数。</p>
+<h4><span id="3-1-2-2-zheng-xiang-chuan-bo">3.1.2.2 正向传播</span><a href="#3-1-2-2-zheng-xiang-chuan-bo" class="header-anchor">#</a></h4><p>输入层$\hat{X}$：</p>
+<script type="math/tex; mode=display">X =(x_1,x_2,x_3,...,x_m)</script><p>当有$N$个训练样本时，可用矩阵表示</p>
+<script type="math/tex; mode=display">X=\left( \begin{matrix}
+x_{11} &x_{12}&...&x_{1m}\\
+x_{21} & x_{22}&...&x_{2m}\\
+\vdots & \vdots&\dots&\vdots\\
+x_{N1} & \vdots&\vdots&x_{Nm}\\
+\end{matrix}  \right)</script><p>第二层 $h^{(2)}$,一共$s2$个节点:<br>第i个节点的计算</p>
+<script type="math/tex; mode=display">h^{(2)}(i)=f(\sum_{j=1}^{s2}x(j)*w_{ji}^{(l)}+b_i)=f(x*w(:,i)+b_i)</script><p>矩阵表示</p>
+<script type="math/tex; mode=display">h^{(2)}=f(x*W^{(l)}+b^{(2)})</script><p>第i层 矩阵形式</p>
+<script type="math/tex; mode=display">h^{(l)}=f(h^{(l-1)}*W^{(l)}+b)</script><h4><span id="3-1-2-3-fan-xiang-chuan-bo">3.1.2.3 反向传播</span><a href="#3-1-2-3-fan-xiang-chuan-bo" class="header-anchor">#</a></h4><p>梯度下降法更新权重，不断迭代到最优解。<br>对$w_{ij}$求导数可得,可更新$w_{ij}$更新公式：</p>
+<script type="math/tex; mode=display">w_{ij}=w_{ij}-\alpha \frac{\partial E}{\partial w_{ij}}</script><p>当然简单的情况下，可直接写出公式，当太复杂的时候，引入BP简化求导</p>
+<p>方便书写公式，对于第i的输入$h^{(i-1)}*W^{(i)}+b^{(i)}$记作$net^{(i)}$,其中，第$i$的输入和输出的关系，$输入=f(输出)$<br>下面开始推导</p>
+<p>首先，对于$L$层，</p>
+<p>对于$W^{(L)}$，先看对$W_{ij}^{(L)}$求导，</p>
+<script type="math/tex; mode=display">\frac{\partial E}{\partial W_{ij}^{(L)}}
+=\frac{\partial E}{\partial y(j)} * \frac{\partial y(i)}{\partial net_{j}^{L}} * \frac{\partial net_{j}^{L}}{\partial W_{ij}^{(L)}}\\
+=(y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}h_i^{(L-1)}</script><p>令$\delta_i^{(L)}=y(i)-d(i)$</p>
+<p>上述给出了单个分量的求偏导的结果，对于$W^{(L)}$</p>
+<script type="math/tex; mode=display">
+\frac{\partial E}{\partial W^{(L)}}
+=\left[\begin{matrix} 
+\frac{\partial E}{\partial W_{11}^{(L)}} & \frac{\partial E}{\partial W_{12}^{(L)}}&\dots & \frac{\partial E}{\partial W_{1n}^{(L)}}\\
+\frac{\partial E}{\partial W_{21}^{(L)}} & \frac{\partial E}{\partial W_{22}^{(L)}}&\dots& \frac{\partial E}{\partial W_{2n}^{(L)}}\\
+\vdots& \dots& \dots& \dots\\
+\frac{\partial E}{\partial W_{sL,1}^{(L)}} & \frac{\partial E}{\partial W_{sL,2}^{(L)}}&\dots& \frac{\partial E}{\partial W_{sL,n}^{(L)}}
+\end{matrix}\right]
+\\= \left[
+\begin{matrix}
+h^{(L-1)}_1\\h^{(L-1)}_2\\ \dots\\h^{(L-1)}_n
+\end{matrix}
+\right] *\left[\begin{matrix}
+\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
+\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
+\dots\\
+\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
+\end{matrix}\right] ^T
+=h^{(L-1)}S^{(L)}</script><p>其中，</p>
+<script type="math/tex; mode=display">
+S^{(L)}=\left[\begin{matrix}
+
+\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
+\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
+\dots\\
+\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
+\end{matrix}\right]^T</script><p>同理可得，</p>
+<script type="math/tex; mode=display">
+\frac{\partial E}{\partial b_k^{(L)}}=(y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}</script><p>其次，对于隐含层$L-1$层，对$W_{ij}^{(L)}$求导</p>
+<script type="math/tex; mode=display">
+\frac{\partial E}{\partial W_{ij}^{(L-1)}}
+=\sum_{k=1}^{n}\frac{\partial E}{\partial y(k)} * \frac{\partial y(k)}{\partial net_{k}^{L}} * \frac{\partial net_{k}^{L}}{\partial f(net_j^{(L-1)})}*\frac{\partial f(net_j^{(L-1)})}{\partial net_j^{(L-1)}}*\frac{\partial net_j^{(L-1)}}{\partial W_{ij}^{(L-1)}}\\
+=\sum_{k=1}^{n} (y(j)-d(j))*f(x)^{'}|_{x=net_j^{(L)}}W_{kj}^{(L)}f(x)^{'}|_{x=net_j^{L-1}}h_i^{L-2}\\
+=\sum_{k=1}^{n}S_i^{(L)}W_{kj}^{(L)}f(x)^{'}|_{x=net_j^{L-1}}h_i^{L-2}\\</script><p>写出矩阵形式,对$W^{(L-1)}$</p>
+<script type="math/tex; mode=display">
+\frac{\partial E}{\partial W^{(L-1)}}=\left[\begin{matrix} h^{(L-2)}_1\\h^{(L-2)}_2\\\vdots\\h^{(L-2)}_{s(L-2)}\end{matrix}\right] \left[\begin{matrix}
+
+\delta_1^{(L)}f(x)^{'}|_{x=net_1^{(L)}}\\
+\delta_2^{(L)}f(x)^{'}|_{x=net_2^{(L)}}\\
+\dots\\
+\delta_n^{(L)}f(x)^{'}|_{x=net_n^{(L)}}
+\end{matrix}\right]^T
+\left[\begin{matrix} 
+W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
+W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
+\vdots& \dots& \dots& \dots\\
+ W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}
+\end{matrix}\right]^T
+ \\
+\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
+0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\\
+=h^{(L-2)}S^{(L-1)}</script><script type="math/tex; mode=display">
+S^{(L-1)}=\left(\left[\begin{matrix}
+
+f(x)^{'(L)}|_{x=net_1^{(L)}}&0& \dots& 0\\
+0&f(x)^{'}|_{x=net_2^{(L)}}0& \dots& 0\\
+0&\dots&\dots&0\\
+0&0&0&f(x)^{'(L)}|_{x=net_n^{(L)}}
+\end{matrix}\right]\left[\begin{matrix} \delta_1^{(L)}\\\delta_2^{(L)}\\\vdots\\\delta_n^{(L)}\end{matrix}\right] \right)^T\\
+\left[\begin{matrix} 
+W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
+W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
+\vdots& \dots& \dots& \dots\\
+ W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}*
+\end{matrix}\right]^T
+\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
+0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]\\
+=S^{(L)}\left[\begin{matrix} 
+W_{11}^{(L)} &  W_{12}^{(L)}&\dots & W_{1n}^{(L)}\\
+W_{21}^{(L)} &  W_{22}^{(L)}&\dots& W_{2n}^{(L)}\\
+\vdots& \dots& \dots& \dots\\
+ W_{s(L-1),1}^{(L)} & W_{s(L-1),2}^{(L)}&\dots& W_{s(L-1),n}^{(L)}*
+\end{matrix}\right]^T\left[ \begin{array}{ccc}{f^{'(L-1)}\left(net^{(L-1)}_{(1)}\right)} & {0} & {0}&{0} \\ {0} & {f^{'(L-1)}\left(net^{(L-1)}_{(2)}\right)} & {0} &{0}\\
+0 & \dots & \vdots & 0\\{0} & {0} & {0}&{f^{(L-1)}\left(ne t_{s(L-1)}^{(L-1)}\right)}\end{array}\right]*\\</script><p>对$1&lt;l&lt;L$,求$W^{(l)}$的偏导,</p>
+<p>最后，根据上述的推导喔，很容易得出$S^{(l)}$和$S^{(l+1)}$,</p>
+<script type="math/tex; mode=display">
+S^{(l)}=S^{(l+1)}W^{(l+1)^T}F^{'(l)}(net^{(l)})\\
+S^{(L)}=(Y-\hat{Y})F^{'(L)}(net^{(L)})</script><script type="math/tex; mode=display">
+\frac{\partial E}{\part W^{(l)}}=\left[\begin{matrix}h^{(l-1)}_1\\h^{(l-1)}_2 \\\dots \\h^{(l-1)}_{sl}\end{matrix}\right]S^{(l+1)} \left[\begin{matrix}W_{11}^{(l+1)}&W_{12}^{(l+1)} &\dots& W_{2(sl+1)}^{(l+1)}\\
+W_{21}^{(l+1)}&W_{22}^{(l+1)} &\dots& W_{2(sl+1)}^{(l+1)}\\
+\dots&\dots&\dots&\dots\\
+W_{sl1}^{(l+1)}&W_{sl2}^{(l+1)} &\dots& W_{sl(sl+1)}^{(l+1)}\\
+\end{matrix}  \right]^T\left[\begin{matrix} \part f^{'(l)}(net_1^{l})&0&\dots & 0\\
+0\\0 &\part f^{'(l)}(net_2^{l})&\dots&0\\
+0 & 0&\dots&0\\
+0&0&\dots&\part f^{'(l)}(net_l^{l})\end{matrix}\right]</script><h2><span id="3-2-bp-suan-fa-de-xiao-jie">3.2 BP算法的小结</span><a href="#3-2-bp-suan-fa-de-xiao-jie" class="header-anchor">#</a></h2><p>算法分为两个阶段：前向阶段和后向传播阶段</p>
+<p>后向阶段算法：</p>
+<p>Step 1:  计算$\hat{y}^{(L)}$</p>
+<p>Step 2:  for l =L:2</p>
+<p>​        计算$S^{(l)}=S^{(l+1)}W^{(l+1)}F’(net^{(l)})$</p>
+<p>​        计算 $\Delta W^{(l)}=h^{(l-1)}S^{(l)} $</p>
+<p>​        计算$W^{(l)}=W^{(l)}-\delta \Delta W^{(l)}$</p>
+<h2><span id="3-3-python-shi-xian">3.3 Python实现</span><a href="#3-3-python-shi-xian" class="header-anchor">#</a></h2><h3><span id="3-3-1-zui-jian-dan-san-ceng-wang-luo">3.3.1 最简单三层网络</span><a href="#3-3-1-zui-jian-dan-san-ceng-wang-luo" class="header-anchor">#</a></h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">不用任何框架，自己写一个三层的神经网络</span></span><br><span class="line"><span class="string"># input-3,hidden-4 output-1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input Matrix</span></span><br><span class="line">X = np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">0</span> ,<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output Matrix</span></span><br><span class="line">y = np.array([[<span class="number">0</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">1</span>],</span><br><span class="line">              [<span class="number">0</span>]])</span><br><span class="line"><span class="comment"># Nonlinear function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span>(<span class="params">X,derive=False</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-X))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> X*(<span class="number">1</span>-X)</span><br><span class="line"><span class="comment"># relu</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">relu</span>(<span class="params">X,derive = False</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> derive:</span><br><span class="line">        <span class="keyword">return</span> np.maximum(<span class="number">0</span>,X)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (X&gt;<span class="number">0</span>).astype(float)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Weight bias</span></span><br><span class="line">W1 = <span class="number">2</span> * np.random.random((<span class="number">3</span>, <span class="number">4</span>))<span class="number">-1</span></span><br><span class="line">b1 = <span class="number">0.1</span> * np.ones((<span class="number">4</span>,))</span><br><span class="line"> </span><br><span class="line">W2 = <span class="number">2</span> * np.random.random((<span class="number">4</span>,<span class="number">1</span>))<span class="number">-1</span></span><br><span class="line">b2 = <span class="number">0.1</span> * np.ones((<span class="number">1</span>,))</span><br><span class="line"> </span><br><span class="line">rate = <span class="number">0.1</span></span><br><span class="line">noline = relu</span><br><span class="line"><span class="comment"># Training</span></span><br><span class="line">train_times = <span class="number">200</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> time <span class="keyword">in</span> range(train_times):</span><br><span class="line">    <span class="comment"># Layer one</span></span><br><span class="line">    A1 = np.dot(X,W1)+b1</span><br><span class="line">    Z1 = noline(A1)</span><br><span class="line">    <span class="comment"># Layer two </span></span><br><span class="line">    A2 = np.dot(Z1, W2)+b2</span><br><span class="line">    Z2 = noline(A2)</span><br><span class="line">    </span><br><span class="line">    cost = -y+Z2</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calc deltas </span></span><br><span class="line">    S2= cost*noline(A2,<span class="literal">True</span>)</span><br><span class="line">    delta_W2 = np.dot(Z1.T,S2)</span><br><span class="line">    bias2 = S2.sum(axis=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    S1 = np.dot(S2, W2.T)*noline(A1,<span class="literal">True</span>)</span><br><span class="line">    delta_W1= np.dot(X.T, S1)</span><br><span class="line">    bias1 = S1.sum(axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># update</span></span><br><span class="line">    W1 = W1-rate*delta_W1</span><br><span class="line">    b1 = b1-rate*bias1</span><br><span class="line">    W2 = W2-rate*delta_W2</span><br><span class="line">    b2 = b2-rate*bias2</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">'error'</span>,np.mean(((y-Z2)*(y-Z2))**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"prediction"</span>,Z2)</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="3-4-fu-lu"><font id="3.6">3.4  附录</font>：</span><a href="#3-4-fu-lu" class="header-anchor">#</a></h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean absolute percentage error</td>
+<td>MAPE</td>
+</tr>
+<tr>
+<td>Root mean squares percentage error</td>
+<td>RMSPE</td>
+</tr>
+<tr>
+<td>Mean absolute percentage error</td>
+<td>MAE</td>
+</tr>
+<tr>
+<td>Mean squares error</td>
+<td>MSE</td>
+</tr>
+<tr>
+<td>Index of agreement</td>
+<td>IA</td>
+</tr>
+<tr>
+<td>Theil U statistic 1</td>
+<td>U1</td>
+</tr>
+<tr>
+<td>Theil U statistic 2</td>
+<td>U2</td>
+</tr>
+<tr>
+<td>Correlation coefficient</td>
+<td>R</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>MAPE    =    $\frac{1}{n} \sum_{k=1}^{n}\left|\frac{x^{(0)}(k)-\hat{x}^{(0)}(k)}{x^{(0)}(k)}\right| \times 100$<br>RMSPE    =    $\sqrt{\frac{1}{n} \sum_{k=1}^{n}\left(\frac{\hat{x}^{(0)}(k)-x^{(0)}(k)}{x^{(0)}(k)}\right)^{2}} \times 100$<br>MAE    =    $\frac{1}{n} \sum_{k=1}^{n}\left|\hat{x}^{(0)}(k)-x^{(0)}(k)\right|$<br>MSE    =    $\frac{1}{n} \sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}$<br>IA    =    $1-\frac{\sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}}{\sum_{k=1}^{n} \left( \left| \hat{x}^{(0)}(k)-\overline{x} \right|+\left| x^{(0)}(k)-\overline{x}\right| \right)^{2}}$<br>U1    =    $\frac{\sqrt{\frac{1}{n} \sum_{k=1}^{n}\left(x^{(0)}(k)-x^{(0)}(k)\right)^{2}}}{\sqrt{\frac{1}{n} \sum_{k=1}^{n} x^{(0)}(k)^{2}}+\sqrt{\frac{1}{n} \sum_{k=1}^{n} x^{(0)}(k)^{2}}}$<br>U2    =    $\frac{\left[\sum_{k=1}^{n}\left(\hat{x}^{(0)}(k)-x^{(0)}(k)\right)^{2}\right]^{1 / 2}}{\left[\sum_{k=1}^{n} x^{(0)}(k)^{2}\right]^{1 / 2}}$<br>R    =    $\frac{\operatorname{Cov}(\hat{x}^{(0)}, x^{(0)})}{\sqrt{\operatorname{Var}[\hat{x}^{(0)}] \operatorname{Var}[x^{(0)}]}}$</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/BP/" rel="tag"><i class="fa fa-tag"></i> BP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/03/%E5%86%B3%E7%AD%96%E6%A0%91/" rel="prev" title="决策树">
+      <i class="fa fa-chevron-left"></i> 决策树
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/11/%E5%9B%9E%E5%BD%92%E6%A0%91/" rel="next" title="回归树">
+      回归树 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1. 需要的微积分知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 导数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 求导的链式法则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2. 梯度下降法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 梯度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 梯度算法的解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3.误差反向传播算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 理论推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 符号说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 推导过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">3.1.2.1 误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">3.1.2.2 正向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">3.1.2.3 反向传播</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 BP算法的小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Python实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 最简单三层网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">3.4  附录：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '[object Object]';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

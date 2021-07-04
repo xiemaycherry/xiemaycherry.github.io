@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Reading">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科研-sharepaper">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="Reading">
+<meta property="og:locale">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/image-20210305133945903.png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnyATMFdE2kicwr19mXJdSdfuDzMmKQvLKXKicLrias9rKZB5mTeBqicZ6vw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnRdOupmKwbdjoXB66U1acwYwh3VImtMwxlxy90nW1U71Gw3XJZNbFibA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnM03zY1iawcMncs5iaXBy8ILSIY1bh9v6ic1plawQibPWxbKOcwc5OPbDxw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnjKmgkPaWJ49w0epDLUePtpTNQ95jaNEuTadJN2Tx0utI91LEUicQfww/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnoIJIUpSMUjLNniaPVqH00CGJniay535vchupbmzRLzBhqDKyceffaU8Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnfgq8ZnJrpV4srzL2ZBicPXqNNF9jsNwRvwhIibuicSpup9ynoibuQbn49w/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn76VYnKicABB85Bl7sNSb3NB7ECibIPPYqLjyCTk3yJiaXV6PH41zFUk4A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn4hpcrpGaBo9RkNRJUO04Jn2rhwBOjSxrC0ehE645LMU0p4UJqggvDw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnv2nTDzLfGrZQUltfRt04otMDAJCc5yqsotnfsWfJv71jPDicdYhJwmQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnFKrPExVzGMsCXX4sCxgIcDPbQ5bdHJJEZdIcNyQmuibqBIrNAH3yYZw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnvFQA78IEQ6m9QfnWZdQd4SGDLnUCr5sJWY3kqPrKus0Y5By8U45CJg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnO4cGrqGx4yy7tGKtc5VJlxqPzicDMyEpfqlpUN3Ay7ZCc47hdaTiaJgA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn8icWPmOCOBRSHvRSIdVEcofJVZlZLv2yx4iapVtUekgppiawRRV6eRHicA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn3icBuT86DAJX2KFmymwheoYhfvcelWAVy2xHMlrzpA3AjYiaxGPYL1yg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnnpMQh2CvvmrukcmZfvcllQ5Rz6oDD6v7R1zWOTlIbkIPWe9RbFOA3Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnIFjFIQFB5E9icEvv3y1R0u0iczUCZrKqAice8H7b4BgFgNAsg3Ln5VtHg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnfZDwS3tgvuhDKayzJucrmSg7VRvTeKRJjaWpyAODjib3wuaC4dWVbCA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn8icWPmOCOBRSHvRSIdVEcofJVZlZLv2yx4iapVtUekgppiawRRV6eRHicA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnNS4r9wBfoicTFicAM0Aps2bWd5B138sA24V2vXUWkBXl3hqj6zWB77OQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn8icWPmOCOBRSHvRSIdVEcofJVZlZLv2yx4iapVtUekgppiawRRV6eRHicA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnmVxQXMnfeibnP05Mb1d2H5Sprfhnq3bxBMiagsHZNWz1GAvUia6G8ehHg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnjQkCibiaJQDgF3q9VJhZibMLugYia9wqNW21iaXSribWnGoHJ5ibwdjxQUJ3w/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnlkuSvGo1Noxvq4FTIIrtmQwbebndNvALDomFCmeVnGmCBhy2Z6fQZA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPngpXnqEv9QibPiaW4F4HcMQMnZUQOwHfYvGwwdGmicfwRdJZsBr5Vbbwzg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnVDMvCK2UDVmvel5KD7URWFZCSKnts9MaibgLJIo48MVwAVl4jJEYNibA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/Specialization%20Then%20and%20Now_%20Marriage,Children,%20and%20the%20Gender%20Earnings%20Gapacross%20Cohorts%20.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/image-20210223130537148.png">
+<meta property="article:published_time" content="2020-12-25T05:08:07.000Z">
+<meta property="article:modified_time" content="2021-06-26T07:51:47.245Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="paper">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiemayshiyi.github.io/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/image-20210305133945903.png">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>科研-sharepaper | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          科研-sharepaper
+        </h1>
+
+        <div class="post-meta">
+			
+			  <i class="fa fa-thumb-tack"></i>
+			  <font color=7D26CD>置顶</font>
+			  <span class="post-meta-divider">|</span>
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-25 13:08:07" itemprop="dateCreated datePublished" datetime="2020-12-25T13:08:07+08:00">2020-12-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-26 15:51:47" itemprop="dateModified" datetime="2021-06-26T15:51:47+08:00">2021-06-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper-reading/" itemprop="url" rel="index"><span itemprop="name">paper reading</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>21k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>19 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Reading </p>
+<a id="more"></a>
+<h1><span id="2021">2021</span><a href="#2021" class="header-anchor">#</a></h1><h2><span id="04">04</span><a href="#04" class="header-anchor">#</a></h2><h4><span id="14-kong-qi-wu-ran-yu-lao-dong-li-qian-yi">14 空气污染与劳动力迁移</span><a href="#14-kong-qi-wu-ran-yu-lao-dong-li-qian-yi" class="header-anchor">#</a></h4><p>Khanna, Gaurav, Wenquan Liang, Ahmed Mushfiq Mobarak, and Ran Song, 2021, The Productivity Consequences of Pollution-Induced Migration in China. NBER Working Paper Series.</p>
+<p>Manesh, S. N., Choi, J. O., Shrestha, B. K., Lim, J., Shrestha, P. P. (2020). Spatial Analysis of the Gender Wage Gap in Architecture, Civil Engineering, and Construction Occupations in the United States. <em>Journal of Management in Engineering, 36</em>(4), 1-15.<br><a target="_blank" rel="noopener" href="http://dx.doi.org/10.1061/(ASCE)ME.1943-5479.0000780">http://dx.doi.org/10.1061/(ASCE)ME.1943-5479.0000780</a></p>
+<p>性别收入的分布：自相关分析工具非常棒，用于非常广泛</p>
+<h4><span id="zhong-guo-xing-bie-shou-ru-chai-ju-duo-wei-jie-gou-fen-xi">中国性别收入差距多维解构分析</span><a href="#zhong-guo-xing-bie-shou-ru-chai-ju-duo-wei-jie-gou-fen-xi" class="header-anchor">#</a></h4><p>理论——实证</p>
+<h4><span id="narrow-gender-earnings-gap-in-the-urban-areas-of-the-people-s-republic-of-china-to-what-extent-does-service-economy-matter">Narrow Gender Earnings Gap in the Urban Areas of the People’s Republic of China: To What Extent Does Service Economy Matter?</span><a href="#narrow-gender-earnings-gap-in-the-urban-areas-of-the-people-s-republic-of-china-to-what-extent-does-service-economy-matter" class="header-anchor">#</a></h4><h3><span id="family-companionship-and-elderly-suicide-evidence-from-the-chinese-lunar-new-year">FAMILY COMPANIONSHIP AND ELDERLY SUICIDE: EVIDENCE FROM THE CHINESE LUNAR NEW YEAR</span><a href="#family-companionship-and-elderly-suicide-evidence-from-the-chinese-lunar-new-year" class="header-anchor">#</a></h3><ol>
+<li>性别和年龄的分类的讨论</li>
+<li></li>
+</ol>
+<h2><span id="03">03</span><a href="#03" class="header-anchor">#</a></h2><h4><span id="0323">0323</span><a href="#0323" class="header-anchor">#</a></h4><h5><span id="relationship-of-gender-differences-in-preferences-to-economic-development-and-gender-equality">Relationship of gender differences in  preferences to economic development  and gender equality</span><a href="#relationship-of-gender-differences-in-preferences-to-economic-development-and-gender-equality" class="header-anchor">#</a></h5><p>研究核心：经济发展、性别平等于性别偏好的相关性</p>
+<p>性别偏好的指标:</p>
+<p>We tested these competing predictions using data on experimentally validated measures of willingness to take risks, patience, altruism,<br>positive and negative reciprocity, and trust for 80,000 individuals in 76 representative country samples.  </p>
+<h4><span id="0318">0318</span><a href="#0318" class="header-anchor">#</a></h4><h5><span id="beauty-and-job-accessibility-new-evidence-from-a-field-experiment">Beauty and job accessibility: new evidence from a field experiment</span><a href="#beauty-and-job-accessibility-new-evidence-from-a-field-experiment" class="header-anchor">#</a></h5><ol>
+<li>实验（相当于构造出了反事实）</li>
+<li>简历的回复率</li>
+<li>性别</li>
+<li>教育</li>
+<li>区域等等方面的异质性分析</li>
+<li></li>
+</ol>
+<h4><span id="0317">0317</span><a href="#0317" class="header-anchor">#</a></h4><h5><span id="returns-to-higher-education-in-china-what-is-the-role-of-college-quality">Returns to higher education in China: What is the role of college quality?</span><a href="#returns-to-higher-education-in-china-what-is-the-role-of-college-quality" class="header-anchor">#</a></h5><h6><span id="selection-bias-omitted-ability-and-measurement-error">Selection bias, omitted ability, and measurement error</span><a href="#selection-bias-omitted-ability-and-measurement-error" class="header-anchor">#</a></h6><p>收入回报率，如何解决遗留变量、内生性、选择偏误、样本选择偏误</p>
+<p>IV:很难的。</p>
+<h6><span id="abstract">Abstract</span><a href="#abstract" class="header-anchor">#</a></h6><p>When there is substantial variation in the quality of colleges and universities, estimating returns to higher education based on quantity of education alone can be misleading. This paper examines the relationship between returns to higher education and college quality in China. </p>
+<p>大学教育质量的回报率</p>
+<p>We find that returns to higher education vary significantly depending on school quality. In addition, we find that the relationship between earnings and school quality is stronger for cohorts of workers that have entered the workforce more recently. </p>
+<p>大学教育质量相关回报率</p>
+<p>This finding may result from the fact that as the transition toward a market system progresses in China, the wage system becomes increasingly responsive to key components of human capital.</p>
+<p> We also find that the earning gap between graduates from lower-quality colleges and those from vocational/technical schools decreases over time. </p>
+<p>Our results may help to inform individual decision-making on investment in education, effective expansion of the higher education system, and efficient resource allocation across different levels of the education system.</p>
+<h4><span id="0317">0317</span><a href="#0317" class="header-anchor">#</a></h4><p>计量分析的问题：</p>
+<ol>
+<li><p>内生性</p>
+<p>高铁</p>
+<ol>
+<li><p>选择偏误</p>
+<p>收入</p>
+<h2><span id="yi-zi-xuan-ze-pian-wu-self-selection-bias"><strong>一、自选择偏误（self selection bias）</strong></span><a href="#yi-zi-xuan-ze-pian-wu-self-selection-bias" class="header-anchor">#</a></h2><p><strong>1.概念界定：*</strong>解释变量*不是随机的，而是选择的结果，而这个选择的过程会对我们研究的主效应的估计产生偏差。</p>
+<p><strong>2.举例：</strong>参加培训x对找工作y的帮助，正常的理解是参加培训的人比未参加的人更容易找到理想的工作。但可能出现相反的情况，因为未参加培训的人可能自身能力就强，就没选择参加培训，因此结论也可能是未参加培训的人比参加培训的人有更大的概率找到心仪的offer。简而言之，个人的能力z会影响我们未来就业的情况y，同样也会影响我们是否选择参加培训x，此时变量x不再外生，这种xyz的三角关系便是自选择偏误。</p>
+<p>这个例子的问题就在于未能严格控制无关变量，比如性格、家庭背景、教育背景、沟通能力等，导致我们得出的回归结果无法正确解释培训对就业的影响。</p>
+<p><strong>3.修正办法：*</strong>PSM<em> 倾向得分匹配和 </em>DID* 双重差分分析进行反事实分析，通过对照组和实验组的差异得出实验变量（研究中关注的解释变量）的作用。思想可以参考高中学过的生物，控制变量法。</p>
+<p><strong>4. 概念区分——样本选择偏误（sample selection bias）</strong></p>
+<p>4.1 概念界定：研究中选择的 <em>样本</em> 非完全随机。</p>
+<p>4.2 举例：研究工业企业研发投入对股利政策的影响，我们能搜集到的数据都是规模以上的（一般是500万以上），这样的样本缺少了规模以下的工业企业数据，不是随机抽样。其他例子还有是否加入公会对工资的影响，教育程度对工资的影响，都因为无法观测到未就业人群的情况，回归都会导致样本选择问题。</p>
+<p>4.3 修正办法：<em>heckman两步法</em> 和在heckman模型上发展出来的<em>treatment effect模型</em> 。被解释变量y样本选择偏误采用heckman两阶段模型，也称heckman两步法估计。解释变量x存在样本自选择偏误采用处理效应模型。</p>
+<h2><span id="er-shuang-xiang-yin-guo-simultaneous"><strong>二、双向因果（simultaneous</strong></span><a href="#er-shuang-xiang-yin-guo-simultaneous" class="header-anchor">#</a></h2></li>
+</ol>
+</li>
+</ol>
+<pre><code>作者：问题锅
+链接：https://www.zhihu.com/question/311199969/answer/1011192804
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre><h4><span id="0308">0308</span><a href="#0308" class="header-anchor">#</a></h4><h5><span id="xing-bie-zhuan-ti">性别专题：</span><a href="#xing-bie-zhuan-ti" class="header-anchor">#</a></h5><p>年龄与性别收入差距的影响：较为简单。</p>
+<h6><span id="the-expanding-gender-earnings-gap-evidence-from-the-lehd-2000-census">The Expanding Gender Earnings Gap:Evidence from the LEHD-2000 Census</span><a href="#the-expanding-gender-earnings-gap-evidence-from-the-lehd-2000-census" class="header-anchor">#</a></h6><p>男女在通勤偏好对性别收入差距影响：虽然有过类似的文章。计量模型难。</p>
+<p>Gender Differences in Job Search: Trading off Commute against Wage</p>
+<p>Zhuo Chen, Kakoli Roy &amp; Gotway Crawford.2010.“Examining the Role of Gender in Career Advancement at the Centers for Disease Control and Prevention.” American Journal of Public Health, 100(3), 426–434. </p>
+<p>计量模型难：统计分析简单</p>
+<p>Kuhn P, Shen K. Gender Discrimination in Job Ads: Evidence from China[J]. Quarterly Journal of Economics, 2013, 128(1):287-336</p>
+<h6><span id="some-evidence-of-the-importance-of-sticky-wages">Some evidence of the importance of sticky wages</span><a href="#some-evidence-of-the-importance-of-sticky-wages" class="header-anchor">#</a></h6><p>孩子对女性的影响：随时间变化。</p>
+<p>Kleven, H., Landais, C., &amp; Søgaard, J. E. (2018). Children and gender inequality: Evidence from Denmark (No. w24219). <em>National Bureau of Economic Research</em>.</p>
+<p>婚姻和孩子的性别收入差距的影响</p>
+<p>“Specialization Then and Now: Marriage, Children, and the Gender Earnings Gap across Cohorts”，The Journal of Economic Perspectives, Vol. 31, No. 1 (Winter 2017), pp. 183-204.</p>
+<h4><span id="0307">0307</span><a href="#0307" class="header-anchor">#</a></h4><h3><span id="xue-li-qi-shi">学历歧视</span><a href="#xue-li-qi-shi" class="header-anchor">#</a></h3><h5><span id="xue-li-de-xin-hao-ji-zhi-lai-zi-jian-li-tou-di-shi-yan-de-zheng-ju">学历的信号机制: 来自简历投递实验的证据</span><a href="#xue-li-de-xin-hao-ji-zhi-lai-zi-jian-li-tou-di-shi-yan-de-zheng-ju" class="header-anchor">#</a></h5><p>What is discrimintation?</p>
+<p>劳动力市场歧视( discrimination) 是指根据一些可观察的群体特征( 例如种族、族群、性别等) ，<br>具有相同生产率( 工作能力) 的不同工人群体受到不平等对待的现象， 包括工资差异、工作机会的<br>不平等。劳动力市场中存在着许多类型的身份歧视， 研究中最常见的包括种族、族群、性别、年龄歧视等( Bertrand ＆ Mullainathan， 2004; Riach ＆ Rich， 2006; Lang ＆ Manove， 2011) ， 这些群体特征构成了招聘方区别对待劳动者( 不同的工资或雇佣行为) 的身份基础。  </p>
+<p>劳动力市场中存在着各种类型的身份歧视， 求职者是否会因为<strong>大学本科第一学历差异</strong>而受到招聘方的歧视对待? 这在中国当前的劳动力市场中是一个存在争论的问题。目前鲜有直接的证据表明第一学历歧视系统地存在于招聘过程中， 也缺乏对此类歧视背后原因的研究。  </p>
+<p>What is 211 project?985 project?</p>
+<p>1995 年 11 月， 经国务院批准， 原国家计委、原国家教委和财政部联合下发了《“211 工程”总体<br>建设规划》， 即面向 21 世纪、重点建设 100 所左右的高等学校。1998 年 5 月， 江泽民同志在北大发言指出: “我国要有若干所具有世界先进水平的一流大学。”1999 年， 国务院批转教育部《面向 21 世纪教育振兴行动计划》， 重点支持建设一批一流大学， 即所谓的“985 工程”院校。政府通过更多的财政倾斜和政策配套提高这些高校的人才培养和学科建设水平， 同时在客观上创造了中国普通高<br>等院校的分类依据， 并促成了国人对于国内大学差异的基本观念.<a target="_blank" rel="noopener" href="http://www.moe.gov.cn/srcsite/A03/moe_634/201706/t20170614_306900.html">http://www.moe.gov.cn/srcsite/A03/moe_634/201706/t20170614_306900.html</a></p>
+<p>截至 2017 年 5 月， 全国高等院校共有 985 院校 39 所， 占全国高等院校( 2914 所) 的 1. 3% ， 占<br>本科院校( 1243 所) 的 3. 13% ; 共有 211 院校( 包含所有 985 院校) 112 所， 占全国高等院校的</p>
+<ol>
+<li>8% ， 占本科院校的 9% 。① 全国 211 院校 2016 年计划招收硕士研究生 27. 7 万人， 占所有高校硕士研究生招生总数的 46. 9% 。② 因此， 211 院校研究生中会有相当大比例的学生是出身于非 211院校的本科毕业生。本科第一学历的身份标签若构成歧视的基础( 尤其是在劳动力市场中) ， 那么按照这类学生的总量， 第一学历歧视必然构成非常重要的社会问题， 并可能降低劳动力市场的效率</li>
+</ol>
+<p>截至2020年6月30日，全国高等学校共计3005所，其中：普通高等学校2740所，含本科院校1272所、高职（专科）院校1468所；成人高等学校265所。本名单未包含港澳台地区高等学校。</p>
+<h4><span id="0305">0305</span><a href="#0305" class="header-anchor">#</a></h4><h4><span id="zi-liao">资料</span><a href="#zi-liao" class="header-anchor">#</a></h4><h5><span id="xuan-ze-pian-wu">选择偏误</span><a href="#xuan-ze-pian-wu" class="header-anchor">#</a></h5><h2><span id="nei-sheng-xing-wen-ti-he-qing-xiang-de-fen-pi-pei-xian-gei-zhun-zi-ran-shi-yan-de-hou-li">内生性问题和倾向得分匹配, 献给准自然试验的厚礼</span><a href="#nei-sheng-xing-wen-ti-he-qing-xiang-de-fen-pi-pei-xian-gei-zhun-zi-ran-shi-yan-de-hou-li" class="header-anchor">#</a></h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qYwv4Sv9XqIpi4NTUv5ehA">https://mp.weixin.qq.com/s/qYwv4Sv9XqIpi4NTUv5ehA</a></p>
+<h5><span id="lun-wen">论文</span><a href="#lun-wen" class="header-anchor">#</a></h5><h2><span id="ya-li-mian-qian-shui-geng-rong-yi-zao-yu-hua-tie-lu-lai-zi-gao-kao-de-fen-xi">压力面前，谁更容易遭遇滑铁卢？来自高考的分析</span><a href="#ya-li-mian-qian-shui-geng-rong-yi-zao-yu-hua-tie-lu-lai-zi-gao-kao-de-fen-xi" class="header-anchor">#</a></h2><p>Cai, Xiqian, Yi Lu, Jessica Pan, and Songfa Zhong. “Gender Gap under Pressure: Evidence from China’s National College Entrance Examination”, Review of Economics and Statistics, forthcoming.</p>
+<p>这种文献较为简单，计量模型没什么创新。意义大！</p>
+<p><img src="/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/image-20210305133945903.png" alt="image-20210305133945903"></p>
+<h4><span id="kuhn-p-shen-k-gender-discrimination-in-job-ads-evidence-from-china-j-quarterly-journal-of-economics-2013-128-1-287-336">Kuhn P, Shen K. Gender Discrimination in Job Ads: Evidence from China[J]. Quarterly Journal of Economics, 2013, 128(1):287-336</span><a href="#kuhn-p-shen-k-gender-discrimination-in-job-ads-evidence-from-china-j-quarterly-journal-of-economics-2013-128-1-287-336" class="header-anchor">#</a></h4><h5><span id="zhai-yao">摘要</span><a href="#zhai-yao" class="header-anchor">#</a></h5><p>We study explicit gender discrimination in a population of ads on a Chinese Internet job board. </p>
+<p>通过招聘广告分析性别歧视</p>
+<p>Gender-targeted job ads are common, favor women as often as men, and are much less common in jobs requiring higher levels of skill. </p>
+<p>以性别为目标的招聘广告很常见，对女性的青睐程度和对男性的青睐程度一样高，但在要求更高技能的工作中却不那么常见。</p>
+<p>Employers’ relative preferences for female versus male workers, on the other hand, are more strongly related to the preferred age, height, and beauty of the worker than to job skill levels. </p>
+<p>另一方面，相对于男性员工，雇主对女性员工的偏好与员工的年龄、身高和外貌的偏好关系更大，而与工作技能水平的关系更大。</p>
+<p>Almost two thirds of the variation in advertised gender preferences occurs within firms, and one third occurs within firm*occupation cells. </p>
+<p>几乎三分之二的性别偏好差异发生在公司内部，三分之一发生在公司职业内。</p>
+<p>Overall, these patterns are not well explained by a firm-level animus model, by a glass-ceiling model, or by models in which broad occupational categories are consistently gendered across firms.</p>
+<p> Instead, the patterns suggest a model in which firms have idiosyncratic preferences for particular job-gender matches, which are overridden in skilled positions by factors such as thinner labor markets or a greater incentive to search broadly for the most qualified candidate.</p>
+<p>建模看不懂！</p>
+<h4><span id="02">02</span><a href="#02" class="header-anchor">#</a></h4><h2><span id="bi-ye-sheng-ren-li-zi-ben-sheng-chan-neng-fou-cu-jin-di-fang-jing-ji-fa-zhan-ji-yu-gong-ju-bian-liang-fa-de-shi-zheng-yan-jiu">毕业生人力资本生产能否促进地方经济发展?——基于工具变量法的实证研究</span><a href="#bi-ye-sheng-ren-li-zi-ben-sheng-chan-neng-fou-cu-jin-di-fang-jing-ji-fa-zhan-ji-yu-gong-ju-bian-liang-fa-de-shi-zheng-yan-jiu" class="header-anchor">#</a></h2><p>Amendola, A. Barra, C. and Zotti, R. “Does graduate human capital production increase local economic development? An instrumental variable approach.” Journal of Regional Science. 2020; 60: 959– 994. </p>
+<h2><span id="xiang-zhang-tui-wen-2054-fei-zhou-di-qu-de-dai-ji-liu-dong-xing">【香樟推文2054】非洲地区的代际流动性</span><a href="#xiang-zhang-tui-wen-2054-fei-zhou-di-qu-de-dai-ji-liu-dong-xing" class="header-anchor">#</a></h2><p>Alesina, A. F. , Hohmann, S. , Michalopoulos, S. , &amp; Papaioannou, E. (2021). Intergenerational mobility in africa, Econometrica, 89(1), 1-35.</p>
+<h4><span id="01">01</span><a href="#01" class="header-anchor">#</a></h4><h3><span id="mei-guo-da-xue-jian-de-shou-ru-ge-chi-he-dai-ji-liu-dong">美国大学间的收入隔离和代际流动</span><a href="#mei-guo-da-xue-jian-de-shou-ru-ge-chi-he-dai-ji-liu-dong" class="header-anchor">#</a></h3><p>Chetty, R., Friedman, J. N., Saez, E., Turner, N., &amp; Yagan, D. (2020). Income segregation and intergenerational mobility across colleges in the united states. The Quarterly Journal of Economics, 135 (3), 1567-1633.</p>
+<p>What is great research</p>
+<p><strong>01</strong></p>
+<h4><span id="yin-yan">引言</span><a href="#yin-yan" class="header-anchor">#</a></h4><p>　　代际流动问题一直备受学术界和政策界的关注。不管是在美国还是中国，许多人都将上大学视为提高代际流动性的途径。那么，高等教育体系是如何影响代际流动性的呢？寒门学子是否真的难以通过高等教育实现逆袭了吗？本文分享哈佛大学教授Raj Chetty等学者2020年发表于QJE上的论文，该文以美国为例，探讨了高等教育体系对代际流动性的影响。作者使用个人所得税申报记录构建了美国每所大学家长收入和学生收入的具体数据，统计数据显示，父母收入在大学之间的隔离程度非常高。在同一所大学就读的学生中，低收入家庭和高收入家庭的孩子之间的大学后的收入差异要比不同大学之间小得多。并且，未来学生收入最好的大学往往招收的是高收入家庭的学生。进一步地，作者将家长与孩子的收入数据与孩子的SAT和ACT分数联系起来，反事实模拟了大学中学生分配的变化会如何影响收入隔离和代际流动。作者发现，在以考试成绩为录取条件并且忽视父母收入差异的前提下（Income-neutral student allocations，收入中性的分配方式），将大大减少大学之间的收入隔离。如果在申请和录取过程中给予低收入和中等收入学生足够的分数减免（Need-affirmative student allocations，需要肯定的分配方式），甚至可以消除大学之间父母的收入隔离。通过计算可知，在假设学生收入的80%的取决于就读于该大学的因果效应时，收入中性的分配方式可以将大学生的代际收入持久性降低约15%，需要肯定的分配方式可以将大学生的代际收入持久性降低约25%。简言之，通过改变学生分配到大学的方式可以大大减少收入隔离，增加代际流动性。</p>
+<p><strong>02</strong></p>
+<h4><span id="shu-ju-jie-shao"><strong>数据介绍</strong></span><a href="#shu-ju-jie-shao" class="header-anchor">#</a></h4><p>（一）样本定义</p>
+<p>　　儿童样本包括：所有（1）拥有有效的社会安全号码（SSN）或个人纳税人识别码（ITIN），（2）出生于1980至1991年间，（3）并且可以与税收数据中收入非负的父母建立联系的所有美国个人，样本约4810万人。父母样本定义为在孩子12-17岁之间是孩子最新纳税申报人的美国个人。</p>
+<p>（二）大学入学率</p>
+<p>　　孩子的大学入学信息源于联邦税收记录和教育部记录，数据的可得范围为1999-2013年。具体地，文章主要使用1098-T表格和国家学生贷款数据系统（NSLDS）的佩尔补助金记录识别孩子在19-22岁中就读于哪所大学的详细信息。识别步骤详见在线附录B。</p>
+<p>（三）收入</p>
+<p>　　作者从1996年至2014年的联邦所得税记录中获得了有关儿童和父母收入的数据，具体源于所得税申报表（1040表格）和第三方信息申报表（例如W -2表格），并以2015年消费者物价指数调整了通货膨胀。作者将家庭层面的税前总收入定义为父母收入，并对孩子15至19岁时的父母收入进行平均，然后对父母的收入百分位数进行排名。孩子收入是2014年的税前个人总收入，根据同一出生队列中其他孩子的个人收入来对孩子的收入百分位数进行排名。</p>
+<p>（四）考试成绩和种族</p>
+<p>　　作者从大学委员会和ACT获得了孩子样本的标准高考成绩和种族记录，数据涵盖了1996-2004年的SAT分数和1995-2007年的ACT分数。文章优先关注SAT分数，并将ACT分数映射为同等的SAT分数，如果个人参加了多次相同的测试，则取其最高分。此外，文章使用了以下五个种族类别：黑人、亚裔、非西班牙裔白人、西班牙裔和其他。</p>
+<p>（五）大学水平的数据统计分析</p>
+<p>　　进一步地，作者将孩子与父母的数据匹配到孩子就读的大学，具体的数据处理流程详见原文的在线附录F和G。此外，文章还将学校划分为四年制和两年制，并使用巴伦指数将四年制学校进一步划分为，常春藤联盟学校、其他精英类学校、高选择性类学校、选择性类学校和非选择性类学校五个层次。</p>
+<p>（六）汇总统计</p>
+<p>　　表1报告了研究样本中部分汇总统计数据。文章中主要关注1980-1982年的出生群组，因为这些孩子在2014年是32岁或更大，收入趋于稳定。列（1）基于1980-1982年出生群组的全样本，列（2）是1980-1982年出生并在19-22岁之间上大学的样本，列（3）是在1980-1982年出生但在19-22岁之间没上大学的。由表1可知，1980-82年出生的孩子中有62％在19至22岁之间的某个时候上大学，27％的孩子在28岁之前根本没有上过大学。1980年至1982年之间出生的孩子的父母家庭收入中位数为59,100美元，孩子在2014年的平均个人收入为26,900美元。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnyATMFdE2kicwr19mXJdSdfuDzMmKQvLKXKicLrias9rKZB5mTeBqicZ6vw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><strong>03</strong></p>
+<h4><span id="da-xue-zhi-jian-de-fu-mu-shou-ru-ge-chi"><strong>大学之间的父母收入隔离</strong></span><a href="#da-xue-zhi-jian-de-fu-mu-shou-ru-ge-chi" class="header-anchor">#</a></h4><p><code>父母收入水平与子女入学率，按照比例给出的！）分析非常好）</code></p>
+<p>　　在评估高等教育体系如何影响代际流动时，了解<strong>大学之间收入隔离</strong>的程度是关键的第一步。在这一部分，作者构建了每个学校父母收入的统计数据。</p>
+<p>　　图1中Panel A的横轴是父母的<strong>收入排名</strong>，纵轴是孩子的<strong>大学入学率</strong>。显然，学生是否上大学随父母收入的不同而有很大差异，父母收入越高其子女的大学入学率越高。</p>
+<p>​        Panel B和Panel C则体现了子女就读的<strong>大学水平</strong>也会随父母的<strong>收入变化</strong>。Panel B展示了<strong>具有代表性的四所学校</strong>的父母收入分布，具体包括哈佛大学，伯克利大学、石溪大学和格伦代尔社区学校。以哈佛大学为例，有3.0％来自收入最低的家庭，而收入最高家庭的学生比例则超过70％，并且15.4％来自位于收入1％的顶端家庭。相比之下，格伦代尔社区学校中来自收入最高家庭的比例只有13.6％。</p>
+<p>值得注意的是，伯克利是美国的精英公立学校，由图可知随着父母收入下降，贫穷的孩子上伯克利大学的可能性比上哈佛大学更大，但实际上底层家庭的学生几乎不需支付学费就可以进入精英私立大学，因此该结果表明，学费并不是造成精英私立大学中低收入学生人数不足的主要原因。</p>
+<p>Panel C显示了常春藤盟校的父母收入分布情况，其中14.5％的学生来自收入最高的顶端1%家庭，而只有3.8％的学生来自底层家庭，这意味着精英大学中父母收入的集中度更高。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnRdOupmKwbdjoXB66U1acwYwh3VImtMwxlxy90nW1U71Gw3XJZNbFibA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><strong>04</strong></p>
+<h4><span id="hai-zi-de-shou-ru-jie-guo"><strong>孩子的收入结果</strong></span><a href="#hai-zi-de-shou-ru-jie-guo" class="header-anchor">#</a></h4><p>　　本部分，作者研究每所大学的孩子的收入结果（以父母的收入为条件），这是与大学在代际流动中的作用有关的三个关键因素中的第二个。作者首先评估了大学内部的代际收入持久性，然后分析孩子的收入结果和代际流动率在各大学之间如何变化。</p>
+<p>（一）大学内部孩子收入结果的异质性</p>
+<p>　　图2中Panel A的横轴是父母的收入排名，纵轴是孩子的收入排名，斜率越大说明孩子收入对父母的依赖性越高，即代际流动性越低。基于全部样本时斜率为0.288，即父母收入平均排名每提高1个百分点，孩子的平均收入就会增加0.288个百分点，在进一步控制大学固定效应时，斜率下降至0.139。</p>
+<p>此外，Panel B还展示了伯克利大学、石溪大学和社区大学的代际收入情况，尽管三条线的截距存在差异但斜率趋于一致，截距不同说明<strong>不同层次学校</strong>之间的学生收入差距明显，斜率一致并且很小则意味着同一学校的学生收入并不十分依赖父母的收入。这一结果也体现在了不同层次大学之间详见Panel C。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnM03zY1iawcMncs5iaXBy8ILSIY1bh9v6ic1plawQibPWxbKOcwc5OPbDxw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>　　表3是具体的实证结果，其中的系数对应图2中的斜率，数值越大说明代际越固化。其中，列（1）汇报了基准回归结果，列（2）-（8）是稳健性回归结果。以列（1）为例，Panel A报告了基于所有样本的父母收入排名对孩子收入排名回归的系数，Panel B控制了大学固定效应。Panel C控制了分数与大学固定效应的交互项，系数变化不大，说明就读于同一所大学的低收入家庭和高收入家庭的孩子之间的收入差异不能用学习能力或准备程度的差异来解释。Panel D将样本限制在那些上大学的人，斜率下降到0.10。Panel E，F和G分别展示了精英类大学、其他四年制大学、两年制大学的回归结果。关于稳健性检验，列（2,按照当地收入对孩子的收入进行了调整，列（3）更换了被解释变量，使用孩子是否工作代替收入排名，列（4）和列（5）是分性别回归，列（6）和列（8）使用孩子家庭层面的收入排名代替个人收入排名，列（7）是是否结婚，具体分析详见原文Section Ⅳ.A.1。上述结果说明，无论是普通大学还是精英大学，一旦跨进了学校的门槛，其实孩子之间的收入差距就已经被缩小。换句话说，孩子的收入差异大部分是由于就读于不同大学导致的。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnjKmgkPaWJ49w0epDLUePtpTNQ95jaNEuTadJN2Tx0utI91LEUicQfww/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>（二）大学之间孩子收入结果的异质性</p>
+<p>　　前文的分析说明孩子之间的收入差异主要体现在大学之间。为探究大学之间学生收入的异质性，本文设置了流动率计算公式计算全美各高校的流动率，原文的正文中作者主要计算了父母收入位于底层五分之一子女收入进入最顶层五分之一的流动率。需要注意的是流动率反映了选择效应（被录取学生的类型）和因果效应（学校的附加值）的结合。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnoIJIUpSMUjLNniaPVqH00CGJniay535vchupbmzRLzBhqDKyceffaU8Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>　　下图展示了各大学的流动率情况，并且绘制了代表一组大学流动率的等量线。Panel A，横轴可以理解为寒门学子在某大学学生中比例，纵轴表示寒门学子的收入进入顶端五分之一的成功率。显然，寒门学子比例较高的大学，成功率往往较小。蓝色表明常春藤盟校的情况，显然，寒门学子的成功率较高，但就读率低，平均流动率为2.2%略高于全国平均水平。精英类的公立大学用红色表示，它们的就读率略高但成功率却低得多，因此平均流动率低于常春藤联盟。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnfgq8ZnJrpV4srzL2ZBicPXqNNF9jsNwRvwhIibuicSpup9ynoibuQbn49w/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>　　Panel B是寒门学子的收入进入顶端1%的流动率，显然常春藤大学的成功率明显高于其他学校。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn76VYnKicABB85Bl7sNSb3NB7ECibIPPYqLjyCTk3yJiaXV6PH41zFUk4A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><strong>05</strong></p>
+<p><strong>学生分配到大学的变化将如何影响种族隔离和代际流动？</strong></p>
+<p>　　在这一部分，作者使用反事实模拟的手段评估如果学生被分配到不同的大学，不同大学之间的收入差距和代际流动性会发生怎样的变化。</p>
+<p>（一）不匹配：按父母收入划分的SAT / ACT分数</p>
+<p>　　文章首先展示SAT/ACT分数如何随父母收入的变化而变化。下图中Panel A绘制了研究样本中分数高于1300的大学生的父母收入分布。显然，来自低收入家庭学生的平均考试成绩要低得多。分数高于1300的孩子中仅有3.7%来自底层五分之一家庭，而53.7%来自顶层五分之一的家庭。而对中产阶级，他们的考试成绩好像与常春藤的就读比例不太匹配。Panel B表示常春藤盟校中分数为1400的学生比例，可以观察到一个不对称的U形。说明常青藤盟校中确实中产阶级缺失。因此作者推测，申请或招生政策的变化可能会显著增加中产阶级家庭在美国最具选择性的私立大学中的比例。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn4hpcrpGaBo9RkNRJUO04Jn2rhwBOjSxrC0ehE645LMU0p4UJqggvDw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnv2nTDzLfGrZQUltfRt04otMDAJCc5yqsotnfsWfJv71jPDicdYhJwmQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>（二）反事实分配</p>
+<p>　　收入中性的分配方式（Income-neutral student allocations）。文章按州和种族记录每个学校SAT分数向量。然后从各州各种族的大学生中随机抽取一名考试成绩为s的学生，填补学校中对应州对应种族的学生空缺。这种分配制度消除了同一州和种族中考试成绩相似的学生之间因父母收入而导致的入学差异，该分配方式称收入中性的分配方式。</p>
+<p>　　需要肯定的分配方式（Need-affirmative student allocations）。文章还考虑到这样一个问题，我们需要给低收入的孩子多少优先权，或者说低收入学生的考试成绩必须提高多少才能完全消除大学之间的隔离。通过迭代发现为来自底层五分之一的孩子增加160分会产生了精英大学中大致相等的各层父母收入份额，该分配方式称为需要肯定的分配方式。</p>
+<p>（三）收入隔离的变化</p>
+<p>　　下图的Panel A展示了在反事实分配下大学之间的隔离会如何变化。左边的一组柱状图绘制了来自底层五分之一的学生接触到的顶层五分之一的大学同龄人的比例，考察了低收入家庭的学生与高收入家庭的学生接触的程度。右边的一组柱状图考察了高收入家庭学生之间的接触程度。显然，如果大学入学是以收入中性的分配方式进行，大学之间的隔离将大幅下降，而肯定需求的分配方式则基本上完全取消了高等教育系统的隔离。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnFKrPExVzGMsCXX4sCxgIcDPbQ5bdHJJEZdIcNyQmuibqBIrNAH3yYZw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>（四）代际流动的变化</p>
+<p>　　首先，文章通过以下回归模型评估出大学的因果效应。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnvFQA78IEQ6m9QfnWZdQd4SGDLnUCr5sJWY3kqPrKus0Y5By8U45CJg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>　　其中<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnO4cGrqGx4yy7tGKtc5VJlxqPzicDMyEpfqlpUN3Ay7ZCc47hdaTiaJgA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">表示父母收入等级为q就读于大学c的学生i的收入等级；<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn8icWPmOCOBRSHvRSIdVEcofJVZlZLv2yx4iapVtUekgppiawRRV6eRHicA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">是观察到的学生特征；<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn3icBuT86DAJX2KFmymwheoYhfvcelWAVy2xHMlrzpA3AjYiaxGPYL1yg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">是学生SAT分数的五分位数；<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnnpMQh2CvvmrukcmZfvcllQ5Rz6oDD6v7R1zWOTlIbkIPWe9RbFOA3Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">是学生父母收入等级的五分位数，<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnIFjFIQFB5E9icEvv3y1R0u0iczUCZrKqAice8H7b4BgFgNAsg3Ln5VtHg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">是种族固定效应，<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnfZDwS3tgvuhDKayzJucrmSg7VRvTeKRJjaWpyAODjib3wuaC4dWVbCA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">是大学固定效应。首先，第一个回归中不加<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn8icWPmOCOBRSHvRSIdVEcofJVZlZLv2yx4iapVtUekgppiawRRV6eRHicA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">得出<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnNS4r9wBfoicTFicAM0Aps2bWd5B138sA24V2vXUWkBXl3hqj6zWB77OQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">，然后加入<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPn8icWPmOCOBRSHvRSIdVEcofJVZlZLv2yx4iapVtUekgppiawRRV6eRHicA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">得出<img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnmVxQXMnfeibnP05Mb1d2H5Sprfhnq3bxBMiagsHZNWz1GAvUia6G8ehHg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">，最后通过第二个回归估计λ。在潜在学生的素质与就读大学的条件不相关的前提下，λ可以视为大学因果关系的反映。</p>
+<p>　　表7展示了估计λ的回归结果。列（1）至列（3）控制了一系列可观测的学生特征，λ&gt; 0.9，即超过90%的收入变化是源于因果效应。列（4）和列（5）使用学生申请的学校作为对他们潜在能力的控制，具体的是控制学生申请学校的平均分数和申请学校的总数，列（6）将样本限制于父母收入位于底层五分之一的样本，λ估计值约为0.85，95%置信区间的下限约为0.82。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnjQkCibiaJQDgF3q9VJhZibMLugYia9wqNW21iaXSribWnGoHJ5ibwdjxQUJ3w/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>　　接下来，作者假设λ= 80%，即孩子们的条件收入差异是80%由于大学造成的因果效应，同时假设这些估计的因果效应在我们的反事实学生重新分配下不会改变。作者为每个大学的儿童构建了一个反事实的收入分布。具体地，孩子们实际收入的概率为20%，收入中性分配下对应的收入的概率为80%，据此得到反事实收入并重新计算五分位数。</p>
+<p>　　表8展示了学校的代际过渡矩阵。Panel A显示了实际的过渡矩阵，Panel B显示了收入中性的分配方式下的代际过渡矩阵，Panel C展示了需要肯定的分配方式下的代际过渡矩阵。以父母收入处于底层五分之一而孩子进入收入顶层五分之一为例，实际情况下，Panel A第五栏显示，孩子进入收入最高的五分之一的范围从18.2％到40.2％；收入中性的分配方式下，Panel B第五栏显示，孩子进入收入最高的五分之一的范围从19.5％到38.3％；需要肯定的分配方式下，Panel C第五栏显示，进入收入最高的五分之一的范围从20.8％到37.0％。通过计算：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnlkuSvGo1Noxvq4FTIIrtmQwbebndNvALDomFCmeVnGmCBhy2Z6fQZA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPngpXnqEv9QibPiaW4F4HcMQMnZUQOwHfYvGwwdGmicfwRdJZsBr5Vbbwzg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>　　可得，在收入中性分配方式下，父母与子女收入等级之间的相关性下降14.6％；在需要肯定的分配方式下，父母与子女收入等级之间的相关性下降26.5％。需求肯定的分配对流动率的影响几乎是收入中立分配的两倍，这是因为需求肯定的分配可以使低收入的学生能够进入更高选择性层次中的高附加值大学。此外，文章还对因果效应的比例进行了不同的假设详见在线附录表XVI。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/dmLyqh5TYr8W7e55RxVdK0V5X1UFZrPnVDMvCK2UDVmvel5KD7URWFZCSKnts9MaibgLJIo48MVwAVl4jJEYNibA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p><strong>06</strong></p>
+<p><strong>结论和启示</strong></p>
+<p>　　这篇文章考察了高等教育体系对美国社会流动性的影响，借助所得税申报表上和大学出勤等信息，计算了涵盖全美高校的流动率，发现不同学校在促进代际流动上差异明显，并证明了家境贫寒的学生可以通过报考学校实现逆袭，具有极强的理论意义和政策含义。具体地，作者利用涵盖1999年至2013年几乎所有美国大学生的数据构建了大学层面的统计数据，发现了这样两个事实：（1）大学之间存在父母收入隔离；（2）在同一所大学就读的低收入家庭和高收入家庭的孩子的收入差异不大，但来自高收入家庭的孩子更有可能进入收入结果高的大学。作者结合大学层面的统计数据和学生SAT/ACT成绩发现，在保持学生的种族构成和地理来源不变的前提下，根据学生的考试成绩，以收入中性的分配方式将学生分配到大学，将大大增加来自中低收入家庭的学生在精英类大学中的人数。进一步地，在假设80%的收入差异源于因果关系的情况下（取决于父母收入、种族和州），反事实模拟表明，收入中性的分配方式会使收入的代际持久性降低15%，需要肯定的分配方式将收入的代际持久性降低约25%。作者指出对学生分配大学的可行改变可以在不改变现有教育计划的情况下大幅提高代际流动性。</p>
+<p>　　尽管中美两国的教育背景有很大差异，但这项研究对我们仍有非常大的参考意义。政策制定方面：首先，政府在帮助寒门学子通过教育改变命运时，或许不止高考扩招这一条路径；并且，政府可以对于985/211类大学和普通大学制定针对性的政策，以便大学教育更好地促进社会流动性。学术研究方面：相对于选择大学，寒门学子能否通过职业或行业选择实现逆袭呢？换言之，哪些职业或行业的代际流动性高一些？政府和高校为寒门学子提供就业支持或补贴是否可以更好的促进社会流动性呢？这些均是值得进一步探索的研究方向。这些均是毕竟，教育资源的不平等或许不是通过个人努力就可以突破的。</p>
+<h2><span id="02">02</span><a href="#02" class="header-anchor">#</a></h2><h3><span id="0223">0223</span><a href="#0223" class="header-anchor">#</a></h3><h5><span id="specialization-then-and-now-marriage-children-and-the-gender-earnings-gap-across-cohorts">Specialization Then and Now: Marriage, Children, and the Gender Earnings Gap across Cohorts</span><a href="#specialization-then-and-now-marriage-children-and-the-gender-earnings-gap-across-cohorts" class="header-anchor">#</a></h5><p>“Specialization Then and Now: Marriage, Children, and the Gender Earnings Gap across Cohorts”，The Journal of Economic Perspectives, Vol. 31, No. 1 (Winter 2017), pp. 183-204.</p>
+<h5><span id="yin-yan">引言</span><a href="#yin-yan" class="header-anchor">#</a></h5><p><img src="/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/Specialization Then and Now_ Marriage,Children, and the Gender Earnings Gapacross Cohorts .png" alt="Specialization Then and Now_ Marriage,Children, and the Gender Earnings Gapacross Cohorts "></p>
+<h4><span id="returns-to-education-the-causal-effects-of-education-on-earnings-health-and-smoking">Returns to Education: The Causal Effects of Education on Earnings, Health, and Smoking</span><a href="#returns-to-education-the-causal-effects-of-education-on-earnings-health-and-smoking" class="header-anchor">#</a></h4><p>This paper estimates returns to education using a dynamic model of educational choice that synthesizes approaches in the structural dynamic discrete choice literature with approaches used in the reduced form treatment effect literature. It is an empirically robust middle ground between the two approaches which estimates economically interpretable and policy-relevant dynamic treatment effects that account for heterogeneity in cognitive and non-cognitive skills and the continuation values of educational choices. Graduating college is not a wise choice for all. Ability bias is a major component of observed educational differentials. For some, there are substantial causal effects of education at all stages of schooling.</p>
+<p><img src="/2020/12/25/%E7%A7%91%E7%A0%94-sharepaper/image-20210223130537148.png" alt="image-20210223130537148" style="zoom:33%;"></p>
+<hr>
+<p>I can not understand it duo to difficulty.</p>
+<hr>
+<h4><span id="thinking"># Thinking</span><a href="#thinking" class="header-anchor">#</a></h4><p>社会科学问题：1</p>
+<p>​    .1. problem(确定核心自变量，因变量)，要聚集于一个点。</p>
+<pre><code>2. 实证；计量（控制变量）
+3. 如果能有IV,文章档次瞬间提升。找不到，也没什么关系。也可以研究。我发现IV也不是想想的那么难，还是那么多人找得到，这是计量的热点。
+4. 聚焦于一个点，切勿太大。姚洋老师说的很对，好的选择不是研究很对的因素，只聚焦于一个自变量。
+</code></pre><p>Input then output</p>
+<p>It is similar  for great scentific paper!</p>
+<p><a target="_blank" rel="noopener" href="https://academic.oup.com/qje/article/136/1/381/5928590">https://academic.oup.com/qje/article/136/1/381/5928590</a></p>
+<h4><span id="specialization-then-and-now-marriage-children-and-the-gender-earnings-gap-across-cohorts">Specialization Then and Now: Marriage, Children, and the Gender Earnings Gap across Cohorts</span><a href="#specialization-then-and-now-marriage-children-and-the-gender-earnings-gap-across-cohorts" class="header-anchor">#</a></h4><p>old method! but an interesting problem</p>
+<p>In this paper, we examine the evolution of the gender gap associated with marriage and parental status, comparing cohorts born between 1936 and 1985. The model of household specialization and division of labor introduced by Becker posits that when forming households, couples will exploit the gains from trade by having one spouse specialize in market work while the other specializes in household work. Given the historical advantage of men in the labor market, the model predicts specialization by gender and therefore an earnings advantage for married men and an earnings disadvantage for married women. Is this model of specialization useful for understanding the evolution of the gender gap across generations of women? And what about children? Academic papers have shown that wages of mothers are significantly lower than those of non-mothers with similar human capital characteristics. We do not attempt to build a structural model here, but rather document how changing associations between marriage and earnings, and between children and earnings, have contributed to the gender gap in an “accounting” sense.</p>
+<h4><span id="gender-differences-in-job-search-trading-off-commute-against-wage">Gender Differences in Job Search: Trading off Commute against Wage</span><a href="#gender-differences-in-job-search-trading-off-commute-against-wage" class="header-anchor">#</a></h4><p>好的problem,</p>
+<p>We relate gender differences in willingness to commute to the gender wage gap. Using French administrative data on job search criteria, we first document that unemployed women have a lower reservation wage and a shorter maximum acceptable commute than their male counterparts. We identify indifference curves between wage and commute using the joint distributions of reservation job attributes and accepted job bundles. Indifference curves are steeper for women, who value commute around 20% more than men. Controlling in particular for the previous job, newly hired women are paid after unemployment 4% less per hour and have a 12% shorter commute than men. Through the lens of a job search model where commuting matters, we estimate that gender differences in commute valuation can account for a 0.5 log point hourly wage deficit for women, that is, 14% of the residualized gender wage gap. Finally, we use job application data to test the robustness of our results and to show that female workers do not receive less demand from far-away employers, confirming that most of the gender gap in commute is supply-side driven.</p>
+<h4><span id="the-effect-of-air-pollution-on-migration-evidence-from-china">The Effect of Air Pollution on Migration: Evidence from China</span><a href="#the-effect-of-air-pollution-on-migration-evidence-from-china" class="header-anchor">#</a></h4><p>old method to solve new question</p>
+<p>it is worthy to template!</p>
+<p>This paper looks at the effects of air pollution on migration in China using changes in the average strength of thermal inversions over five-year periods as a source of exogenous variation for medium-run air pollution levels. Our findings suggest that air pollution is responsible for large changes in inflows and outflows of migration in China. Specifically, we find that a 10 percent increase in air pollution, holding everything else constant, is capable of reducing population through net out migration by about 2.8 percent in a given county. We find that these inflows are primarily driven by well-educated people at the beginning of their professional careers, leading to substantial changes in the sociodemographic composition of the population and labor force of Chinese counties. We also find strong gender asymmetries in the response of mid-age adults that suggests families are splitting across counties to protect vulnerable members of the household. Our results are robust to different specifications, including a spatial lag model that accounts for localized migration spillovers and spatially correlated pollution shocks.</p>
+<h3><span id="0219">0219</span><a href="#0219" class="header-anchor">#</a></h3><p>行为思路+写作技巧</p>
+<h5><span id="beauty-premium-in-china-s-labor-market-is-discrimination-the-main-reason">Beauty premium in China’s labor market: Is discrimination the main reason?</span><a href="#beauty-premium-in-china-s-labor-market-is-discrimination-the-main-reason" class="header-anchor">#</a></h5><p>Based on data from the China Labor-force Dynamics Survey (CLDS), this paper analyzes the effects of the height as well as other appearance characteristics of workers on their wages. Regression results show that after controlling for social network, human capital, and other endowment characteristics, the effects of the appearance characteristics become smaller and statistically insignificant. The decomposition results of the wage-appearance differentials show that higher wages for good-looking workers are mainly attributable to differences in individual characteristics. Among them, the lower wages for shorter males and higher wages for thinner females are mainly attributable to the unexplained parts of discrimination. Males suffer more from “shortness penalty”, whereas females may earn from “pretty face”. Further results showed that height may influence blue-collar workers’ wages through the effect on physical strength. Empirical evidence also demonstrates that there are strong correlations between appearance and working ability (social network and human capital). Thus, our results confirmed the little beauty premium in the Chinese labor market and the relatively wages differentials are not mainly due to discrimination from consumers or employers, instead attributable mainly to differences of individual endowment characteristics.</p>
+<p>I listening to Yao Yang’s course about to do economic research?</p>
+<p>Story</p>
+<p>STory</p>
+<h1><span id="2020">2020</span><a href="#2020" class="header-anchor">#</a></h1><h2><span id="12">12</span><a href="#12" class="header-anchor">#</a></h2><h3><span id="computational-socioeconomics">computational socioeconomics</span><a href="#computational-socioeconomics" class="header-anchor">#</a></h3><h4><span id="predicting-neighborhoods-socioeconomic-attributes-using-restaurant-data">Predicting neighborhoods’ socioeconomic attributes using restaurant data</span><a href="#predicting-neighborhoods-socioeconomic-attributes-using-restaurant-data" class="header-anchor">#</a></h4><p><a target="_blank" rel="noopener" href="https://www.pnas.org/content/116/31/15447">https://www.pnas.org/content/116/31/15447</a></p>
+<p>High-resolution socioeconomic data are crucial for place-based policy design and implementation, but it remains scarce for many developing cities and countries. We show that an easily accessible and timely updated neighborhood attribute, restaurant, when combined with machine-learning models, can be used to effectively predict a range of socioeconomic attributes. This approach allows us to collect training samples from representative neighborhoods and then use our trained model to infer unsampled neighborhoods in the city in a granular, timely, and low-cost manner. The good cross-city transferability performance of our model can also help bridge the “data gap” between cities, by training the model in cities with rich survey data and then applying it to cities where such data are unavailable.</p>
+<p>It is a creative but simple paper. Oh yeah!</p>
+<p>How to use data to reveal economic status. How to do obtain deep and different from big data.(How to tell a beautiful story)</p>
+<h3><span id="social-science">social science</span><a href="#social-science" class="header-anchor">#</a></h3><h4><span id="immigrants-and-the-making-of-america">Immigrants and the Making of America</span><a href="#immigrants-and-the-making-of-america" class="header-anchor">#</a></h4><p><a target="_blank" rel="noopener" href="https://scholar.harvard.edu/files/nunn/files/sequeira_nunn_qian_restud_forthcoming_0.pdf">https://scholar.harvard.edu/files/nunn/files/sequeira_nunn_qian_restud_forthcoming_0.pdf</a></p>
+<p>Abstract：We study the effects of European immigration to the U.S. during the Age of Mass Migration (1850-1920) on economic prosperity. Exploiting cross-county variation in immigration that arises from the interaction of fluctuations in aggregate immigrant flows and of the gradual expansion of the railway network, we find that counties with more historical immigration have higher income, less poverty, less unemployment, higher rates of urbanization, and greater educational attainment today. The long-run effects seem to capture the persistence of short-run benefits, including greater industrialization, increased agricultural productivity, and more innovation.</p>
+<p>细细品味：发在了Top 5的期刊上。</p>
+<p>选择的IV作为迁移量的代理： 单独建立一个回归方程，考虑了铁路，铁路相关的交互项。（接入前后)</p>
+<p>然后在进行了2SLS回归。</p>
+<p>内生性问题</p>
+<p>工具变量，就是要找到一个跟误差项不相关，但是跟内生变量高度相关的变量，从而得到一致估计。</p>
+<h3><span id="literature-review">Literature Review</span><a href="#literature-review" class="header-anchor">#</a></h3><p>三篇文献综述写的非常棒的文章。如果每个研究方向都有这种综述性，系统性文章，多省事啊。</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vYSpNQsYcri6QSvtU1dpag">夜间经济理论研究进展</a></p>
+<p> <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qsDGxiTSVNuhNLeKymT3sw">性别收入差距问题研究新进展</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ka4LCOG5aZcey84ZIZkGEA">人工智能对经济的影响研究进展</a></p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"><i class="fa fa-tag"></i> paper</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/07/%E7%A7%91%E7%A0%94-%E5%88%86%E8%A7%A3/" rel="prev" title="科研-分解">
+      <i class="fa fa-chevron-left"></i> 科研-分解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/24/%E7%A7%91%E7%A0%94-%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB-1/" rel="next" title="科研-文献阅读">
+      科研-文献阅读 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">2021</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">04</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">14 空气污染与劳动力迁移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">中国性别收入差距多维解构分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">Narrow Gender Earnings Gap in the Urban Areas of the People’s Republic of China: To What Extent Does Service Economy Matter?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">FAMILY COMPANIONSHIP AND ELDERLY SUICIDE: EVIDENCE FROM THE CHINESE LUNAR NEW YEAR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">03</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">0323</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.2.0.1.1.</span> <span class="nav-text">Relationship of gender differences in  preferences to economic development  and gender equality</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">0318</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.2.0.2.1.</span> <span class="nav-text">Beauty and job accessibility: new evidence from a field experiment</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">0317</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.2.0.3.1.</span> <span class="nav-text">Returns to higher education in China: What is the role of college quality?</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link"><span class="nav-number">1.2.0.3.1.1.</span> <span class="nav-text">Selection bias, omitted ability, and measurement error</span></a></li><li class="nav-item nav-level-6"><a class="nav-link"><span class="nav-number">1.2.0.3.1.2.</span> <span class="nav-text">Abstract</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">0317</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">一、自选择偏误（self selection bias）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">二、双向因果（simultaneous</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">0308</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.4.0.1.1.</span> <span class="nav-text">性别专题：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link"><span class="nav-number">1.4.0.1.1.1.</span> <span class="nav-text">The Expanding Gender Earnings Gap:Evidence from the LEHD-2000 Census</span></a></li><li class="nav-item nav-level-6"><a class="nav-link"><span class="nav-number">1.4.0.1.1.2.</span> <span class="nav-text">Some evidence of the importance of sticky wages</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">0307</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.1.</span> <span class="nav-text">学历歧视</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.4.1.0.1.</span> <span class="nav-text">学历的信号机制: 来自简历投递实验的证据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">0305</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">资料</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.4.1.2.1.</span> <span class="nav-text">选择偏误</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">内生性问题和倾向得分匹配, 献给准自然试验的厚礼</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.5.0.0.1.</span> <span class="nav-text">论文</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.6.</span> <span class="nav-text">压力面前，谁更容易遭遇滑铁卢？来自高考的分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">Kuhn P, Shen K. Gender Discrimination in Job Ads: Evidence from China[J]. Quarterly Journal of Economics, 2013, 128(1):287-336</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.6.0.1.1.</span> <span class="nav-text">摘要</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.6.0.2.</span> <span class="nav-text">02</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.7.</span> <span class="nav-text">毕业生人力资本生产能否促进地方经济发展?——基于工具变量法的实证研究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.8.</span> <span class="nav-text">【香樟推文2054】非洲地区的代际流动性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.8.0.1.</span> <span class="nav-text">01</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.8.1.</span> <span class="nav-text">美国大学间的收入隔离和代际流动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.8.1.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.8.1.2.</span> <span class="nav-text">数据介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.8.1.3.</span> <span class="nav-text">大学之间的父母收入隔离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.8.1.4.</span> <span class="nav-text">孩子的收入结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.9.</span> <span class="nav-text">02</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.9.1.</span> <span class="nav-text">0223</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.9.1.0.1.</span> <span class="nav-text">Specialization Then and Now: Marriage, Children, and the Gender Earnings Gap across Cohorts</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.9.1.0.2.</span> <span class="nav-text">引言</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.9.1.1.</span> <span class="nav-text">Returns to Education: The Causal Effects of Education on Earnings, Health, and Smoking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.9.1.2.</span> <span class="nav-text"># Thinking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.9.1.3.</span> <span class="nav-text">Specialization Then and Now: Marriage, Children, and the Gender Earnings Gap across Cohorts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.9.1.4.</span> <span class="nav-text">Gender Differences in Job Search: Trading off Commute against Wage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.9.1.5.</span> <span class="nav-text">The Effect of Air Pollution on Migration: Evidence from China</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.9.2.</span> <span class="nav-text">0219</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.9.2.0.1.</span> <span class="nav-text">Beauty premium in China’s labor market: Is discrimination the main reason?</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2020</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.1.</span> <span class="nav-text">computational socioeconomics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Predicting neighborhoods’ socioeconomic attributes using restaurant data</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.2.</span> <span class="nav-text">social science</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Immigrants and the Making of America</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.3.</span> <span class="nav-text">Literature Review</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

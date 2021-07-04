@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="此篇博客针对matplotlib库进行全面的讲解，以原代码展示为主，辅以动态图片。 matplotlib库绘制图的大致可分为五大步骤：  导入模块（from matplotlib.pyplot as plt)  创建画布 (fig &#x3D; plt.figure())   创建坐标系(ax &#x3D; fig.add_axes()) 绘制图片(ax.类型) 美化和规范性(ax.set_(参数))">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可视化之Matplotlib">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="此篇博客针对matplotlib库进行全面的讲解，以原代码展示为主，辅以动态图片。 matplotlib库绘制图的大致可分为五大步骤：  导入模块（from matplotlib.pyplot as plt)  创建画布 (fig &#x3D; plt.figure())   创建坐标系(ax &#x3D; fig.add_axes()) 绘制图片(ax.类型) 美化和规范性(ax.set_(参数))">
+<meta property="og:locale">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/Users/ADMIN/Documents/Apowersoft/ApowerREC/20201011_195152.gif">
+<meta property="article:published_time" content="2020-10-11T11:20:29.000Z">
+<meta property="article:modified_time" content="2020-10-18T11:22:43.387Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="绘图">
+<meta property="article:tag" content="Matplotlib">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/Users/ADMIN/Documents/Apowersoft/ApowerREC/20201011_195152.gif">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>可视化之Matplotlib | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          可视化之Matplotlib
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-11 19:20:29" itemprop="dateCreated datePublished" datetime="2020-10-11T19:20:29+08:00">2020-10-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-18 19:22:43" itemprop="dateModified" datetime="2020-10-18T19:22:43+08:00">2020-10-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">数据可视化</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>此篇博客针对matplotlib库进行全面的讲解，以原代码展示为主，辅以动态图片。 matplotlib库绘制图的大致可分为五大步骤：</p>
+<ol>
+<li><p>导入模块（from matplotlib.pyplot as plt)</p>
+</li>
+<li><p>创建画布 (fig = plt.figure()) </p>
+</li>
+<li>创建坐标系(ax = fig.add_axes())</li>
+<li>绘制图片(ax.类型)</li>
+<li>美化和规范性(ax.set_(参数))</li>
+</ol>
+<a id="more"></a>
+<h2><span id="matplotlib">Matplotlib</span><a href="#matplotlib" class="header-anchor">#</a></h2><p><img src="/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/Users\ADMIN\Documents\Apowersoft\ApowerREC\20201011_195152.gif" alt="20201011_195152"></p>
+<h2><span id="chuang-jian-hua-bu">创建画布</span><a href="#chuang-jian-hua-bu" class="header-anchor">#</a></h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig = plt.figure()</span><br><span class="line"><span class="comment"># 导入matplotlib的pyplot模块</span></span><br><span class="line"><span class="comment"># 创建类的实例: plt.pie plt.bar etc</span></span><br><span class="line"><span class="comment"># figure(num=None, figsize=None(inches,width,height), dpi=None（分辨率:单位像素点), facecolor=None, edgecolor=None, frameon=True)</span></span><br></pre></td></tr></tbody></table></figure>
+<p><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot">pyplot模块里面的方法和类</a></p>
+<p>可以调用函数获取figur(gcf())和Axes(gca())；</p>
+<p>创建类实例，绘制图</p>
+<p>厘米和英寸的换算关系：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 inchs = 2.54 cm</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="chuang-jian-zuo-biao-xi">创建坐标系</span><a href="#chuang-jian-zuo-biao-xi" class="header-anchor">#</a></h2><h3><span id="fig-add-axes-wei-zhi-zi-ding-yi">fig.add_axes() 位置自定义</span><a href="#fig-add-axes-wei-zhi-zi-ding-yi" class="header-anchor">#</a></h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()  <span class="comment"># 新建图形对象</span></span><br><span class="line">axes = fig.add_axes([<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])  <span class="comment"># 控制画布的左，下，宽度，高度（是长宽的百分比)</span></span><br><span class="line">axes.plot(x, y, <span class="string">'r'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()  # 新建画板</span><br><span class="line">axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8])  # 大画布</span><br><span class="line">axes2 = fig.add_axes([0.2, 0.5, 0.4, 0.3])  # 小画布</span><br><span class="line"></span><br><span class="line">axes1.plot(x, y, 'r')  # 大画布</span><br><span class="line">axes2.plot(y, x, 'g')  # 小画布</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="fig-add-suplots-zi-tu">fig.add_suplots()子图</span><a href="#fig-add-suplots-zi-tu" class="header-anchor">#</a></h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fig, axes = plt.subplots(nrows=<span class="number">1</span>, ncols=<span class="number">2</span>)  <span class="comment"># 子图为 1 行，2 列</span></span><br><span class="line"><span class="keyword">for</span> ax <span class="keyword">in</span> axes:</span><br><span class="line">    ax.plot(x, y, <span class="string">'r'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>fig.add_suplot()每一个子图</p>
+<p>顺序很重要</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 向画布添加子图 1</span></span><br><span class="line">ax1 = fig.add_subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, projection=<span class="string">'3d'</span>)</span><br><span class="line"><span class="comment"># 向画布添加子图 2</span></span><br><span class="line">ax2 = fig.add_subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, projection=<span class="string">'3d'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="xi-jie-zhi-ding">细节制定</span><a href="#xi-jie-zhi-ding" class="header-anchor">#</a></h3><p>通过创建坐标系，返回坐标系对象(Axes)Axes是类。然后利用axes类，对图片细节就像美化。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">matplotlib</span>.<span class="title">axes</span>.<span class="title">Axes</span>(<span class="params">fig, rect, facecolor=None, frameon=True, sharex=None, sharey=None, label=<span class="string">''</span>, xscale=None, yscale=None, box_aspect=None, **kwargs</span>)</span></span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="plottingp"></span><a href="#plottingp" class="header-anchor">#</a></h2><h3><span id="basic"></span><a href="#basic" class="header-anchor">#</a></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot"><code>Axes.plot</code></a></th>
+<th>Plot y versus x as lines and/or markers.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.errorbar.html#matplotlib.axes.Axes.errorbar"><code>Axes.errorbar</code></a></td>
+<td>Plot y versus x as lines and/or markers with attached errorbars.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.scatter.html#matplotlib.axes.Axes.scatter"><code>Axes.scatter</code></a></td>
+<td>A scatter plot of <em>y</em> vs.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot_date.html#matplotlib.axes.Axes.plot_date"><code>Axes.plot_date</code></a></td>
+<td>Plot data that contains dates.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.step.html#matplotlib.axes.Axes.step"><code>Axes.step</code></a></td>
+<td>Make a step plot.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.loglog.html#matplotlib.axes.Axes.loglog"><code>Axes.loglog</code></a></td>
+<td>Make a plot with log scaling on both the x and y axis.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.semilogx.html#matplotlib.axes.Axes.semilogx"><code>Axes.semilogx</code></a></td>
+<td>Make a plot with log scaling on the x axis.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.semilogy.html#matplotlib.axes.Axes.semilogy"><code>Axes.semilogy</code></a></td>
+<td>Make a plot with log scaling on the y axis.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.fill_between.html#matplotlib.axes.Axes.fill_between"><code>Axes.fill_between</code></a></td>
+<td>Fill the area between two horizontal curves.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.fill_betweenx.html#matplotlib.axes.Axes.fill_betweenx"><code>Axes.fill_betweenx</code></a></td>
+<td>Fill the area between two vertical curves.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar"><code>Axes.bar</code></a></td>
+<td>Make a bar plot.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.barh.html#matplotlib.axes.Axes.barh"><code>Axes.barh</code></a></td>
+<td>Make a horizontal bar plot.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.stem.html#matplotlib.axes.Axes.stem"><code>Axes.stem</code></a></td>
+<td>Create a stem plot.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.eventplot.html#matplotlib.axes.Axes.eventplot"><code>Axes.eventplot</code></a></td>
+<td>Plot identical parallel lines at the given positions.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.pie.html#matplotlib.axes.Axes.pie"><code>Axes.pie</code></a></td>
+<td>Plot a pie chart.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.stackplot.html#matplotlib.axes.Axes.stackplot"><code>Axes.stackplot</code></a></td>
+<td>Draw a stacked area plot.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.broken_barh.html#matplotlib.axes.Axes.broken_barh"><code>Axes.broken_barh</code></a></td>
+<td>Plot a horizontal sequence of rectangles.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.vlines.html#matplotlib.axes.Axes.vlines"><code>Axes.vlines</code></a></td>
+<td>Plot vertical lines.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.hlines.html#matplotlib.axes.Axes.hlines"><code>Axes.hlines</code></a></td>
+<td>Plot horizontal lines at each <em>y</em> from <em>xmin</em> to <em>xmax</em>.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.fill.html#matplotlib.axes.Axes.fill"><code>Axes.fill</code></a></td>
+<td>Plot filled polygons.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="appearance"></span><a href="#appearance" class="header-anchor">#</a></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.axis.html#matplotlib.axes.Axes.axis"><code>Axes.axis</code></a></th>
+<th>Convenience method to get or set some axis properties.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_axis_off.html#matplotlib.axes.Axes.set_axis_off"><code>Axes.set_axis_off</code></a></td>
+<td>Turn the x- and y-axis off.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_axis_on.html#matplotlib.axes.Axes.set_axis_on"><code>Axes.set_axis_on</code></a></td>
+<td>Turn the x- and y-axis on.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_frame_on.html#matplotlib.axes.Axes.set_frame_on"><code>Axes.set_frame_on</code></a></td>
+<td>Set whether the axes rectangle patch is drawn.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.get_frame_on.html#matplotlib.axes.Axes.get_frame_on"><code>Axes.get_frame_on</code></a></td>
+<td>Get whether the axes rectangle patch is drawn.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_axisbelow.html#matplotlib.axes.Axes.set_axisbelow"><code>Axes.set_axisbelow</code></a></td>
+<td>Set whether axis ticks and gridlines are above or below most artists.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.get_axisbelow.html#matplotlib.axes.Axes.get_axisbelow"><code>Axes.get_axisbelow</code></a></td>
+<td>Get whether axis ticks and gridlines are above or below most artists.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.grid.html#matplotlib.axes.Axes.grid"><code>Axes.grid</code></a></td>
+<td>Configure the grid lines.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.get_facecolor.html#matplotlib.axes.Axes.get_facecolor"><code>Axes.get_facecolor</code></a></td>
+<td>Get the facecolor of the Axes.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_facecolor.html#matplotlib.axes.Axes.set_facecolor"><code>Axes.set_facecolor</code></a></td>
+<td>Set the facecolor of the Axes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a target="_blank" rel="noopener" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes">参考这里</a></p>
+<h2><span id="ke-du">刻度</span><a href="#ke-du" class="header-anchor">#</a></h2><p>from pylab import *<br>from matplotlib.ticker import MultipleLocator, FormatStrFormatter</p>
+<p>xmajorLocator   = MultipleLocator(20) #将x主刻度标签设置为20的倍数<br>xmajorFormatter = FormatStrFormatter(‘%1.1f’) #设置x轴标签文本的格式<br>xminorLocator   = MultipleLocator(5) #将x轴次刻度标签设置为5的倍数</p>
+<p>ymajorLocator   = MultipleLocator(0.5) #将y轴主刻度标签设置为0.5的倍数<br>ymajorFormatter = FormatStrFormatter(‘%1.1f’) #设置y轴标签文本的格式<br>yminorLocator   = MultipleLocator(0.1) #将此y轴次刻度标签设置为0.1的倍数</p>
+<p>t = arange(0.0, 100.0, 1)<br>s = sin(0.1<em>pi</em>t)<em>exp(-t</em>0.01)</p>
+<p>ax = subplot(111) #注意:一般都在ax中设置,不再plot中设置<br>plot(t,s,’—b*’)</p>
+<h1><span id="she-zhi-zhu-ke-du-biao-qian-de-wei-zhi-biao-qian-wen-ben-de-ge-shi">设置主刻度标签的位置,标签文本的格式</span><a href="#she-zhi-zhu-ke-du-biao-qian-de-wei-zhi-biao-qian-wen-ben-de-ge-shi" class="header-anchor">#</a></h1><p>ax.xaxis.set_major_locator(xmajorLocator)<br>ax.xaxis.set_major_formatter(xmajorFormatter)</p>
+<p>ax.yaxis.set_major_locator(ymajorLocator)<br>ax.yaxis.set_major_formatter(ymajorFormatter)</p>
+<h1><span id="xian-shi-ci-ke-du-biao-qian-de-wei-zhi-mei-you-biao-qian-wen-ben">显示次刻度标签的位置,没有标签文本</span><a href="#xian-shi-ci-ke-du-biao-qian-de-wei-zhi-mei-you-biao-qian-wen-ben" class="header-anchor">#</a></h1><p>ax.xaxis.set_minor_locator(xminorLocator)<br>ax.yaxis.set_minor_locator(yminorLocator)</p>
+<p>ax.xaxis.grid(True, which=’major’) #x坐标轴的网格使用主刻度<br>ax.yaxis.grid(True, which=’minor’) #y坐标轴的网格使用次刻度</p>
+<p>show()</p>
+<h2><span id="hui-tu">绘图</span><a href="#hui-tu" class="header-anchor">#</a></h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>  窗口：figure: 一个窗口，plt.figure(num=,figsize=(h,w))下面数据都属于当前的figure,有一定的顺序喔</span><br><span class="line"><span class="number">2.</span>  画图：plt.plot(x,y,color=,linewidth=,linestyle,label=)</span><br><span class="line"><span class="number">3.</span>  标注信息： plt.xlim((,)), plt.yxlim((,)),plt.xlabel(),plt.ylabel(),ticks:图像的小标，plt.xticks(),plt.yticks([值<span class="number">1</span>，值<span class="number">2</span>],[<span class="string">r'$值1\ 对应的文字$'</span>,<span class="string">r'值2的文字 \alpha])</span></span><br><span class="line"><span class="string">4.  坐标轴：axis gac='</span>get current axis<span class="string">'</span></span><br><span class="line"><span class="string">    ax = plt.gca() # 轴</span></span><br><span class="line"><span class="string">    \# 获取四个轴</span></span><br><span class="line"><span class="string">    ax.spines['</span>right|left|top|<span class="string">'].set_color('</span>none<span class="string">') </span></span><br><span class="line"><span class="string">    ax.xaxis.set_ticks_position('</span>bottom<span class="string">')</span></span><br><span class="line"><span class="string">    ax.spines['</span>bottom<span class="string">'].set_position(('</span>data<span class="string">',-1))</span></span><br><span class="line"><span class="string">5.  图例：legend: </span></span><br><span class="line"><span class="string">    a. plt.plot(,label=), plt.legend()</span></span><br><span class="line"><span class="string">    b. l1, = plt.plot() plt.legend(handles=[l1,],labels=[,],loc='</span>best|upper right|<span class="string">')</span></span><br><span class="line"><span class="string">6.  注解 annotation </span></span><br><span class="line"><span class="string">    a. 点的位置(x0，y0) plt.scatter(). plt.plot([x0,y0],[y0,0],'</span>k--<span class="string">',lw=)</span></span><br><span class="line"><span class="string">    b . method 1:</span></span><br><span class="line">    plt.annotate(r'name',xy=(,)起始点，xycoords='data'//基于xy,xytext=(+30,30),textcoords='offseet points'//文本基于xy,arrowprops=dict(arrowstyle='-&gt;'箭头,connectionstyle='arc3,rad=.2')弧度)</span><br><span class="line"><span class="number">7.</span>  Bar 柱状图</span><br><span class="line">    plt.bar(x,+|-y,facecolor=<span class="string">""</span>,edgecolor,)</span><br><span class="line">    |<span class="comment"># ha horizontal alignment 对齐方式</span></span><br><span class="line">    <span class="keyword">for</span> x,y <span class="keyword">in</span> zip(x,y):</span><br><span class="line">     plt.text(x+<span class="number">0</span>,<span class="number">4</span>,y+<span class="number">0.05</span>,<span class="string">'%.2f'</span>%y,ha=<span class="string">'center'</span>,va=<span class="string">'bottom'</span>)</span><br><span class="line"><span class="number">8.</span>  很多自动 subplot(总行，当前行的列，总的按最小分的第几个)</span><br><span class="line">    subplot(,,)</span><br></pre></td></tr></tbody></table></figure>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 绘图</a>
+              <a href="/tags/Matplotlib/" rel="tag"><i class="fa fa-tag"></i> Matplotlib</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BPython%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6%E7%AF%87/" rel="prev" title="可视化之Python高级进阶篇">
+      <i class="fa fa-chevron-left"></i> 可视化之Python高级进阶篇
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/12/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BGeopandas/" rel="next" title="可视化之Geopandas">
+      可视化之Geopandas <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">创建画布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">创建坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">fig.add_axes() 位置自定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">fig.add_suplots()子图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">细节制定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">#</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">#</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">#</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">刻度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">设置主刻度标签的位置,标签文本的格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">显示次刻度标签的位置,没有标签文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">绘图</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '[object Object]';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

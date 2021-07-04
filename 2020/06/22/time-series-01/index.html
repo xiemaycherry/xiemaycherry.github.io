@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="时间序列及其分解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/06/22/time-series-01/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="时间序列及其分解">
+<meta property="og:locale">
+<meta property="og:image" content="https://xiemaycherry.github.io/2020/06/22/time-series-01/F:%5C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A1%B9%E7%9B%AE%5C2020-5-19.assets%5Car.png">
+<meta property="og:image" content="https://xiemaycherry.github.io/2020/06/22/time-series-01/F:%5C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A1%B9%E7%9B%AE%5C2020-5-19.assets%5Cma.png">
+<meta property="og:image" content="https://xiemaycherry.github.io/2020/06/22/time-series-01/F:%5C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A1%B9%E7%9B%AE%5C2020-5-19.assets%5Cauma.png">
+<meta property="og:image" content="https://xiemaycherry.github.io/2020/06/22/time-series-01/K:%5CMyBlog%5Chexo%5Csource_posts%5Ctime-series-01%5Ctuowei.png">
+<meta property="og:image" content="https://tsfresh.readthedocs.io/en/latest/_images/feature_extraction_process_20160815_mc_1.png">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/06/22/time-series-01/image-20200705150137882.png">
+<meta property="article:published_time" content="2020-06-22T11:14:33.000Z">
+<meta property="article:modified_time" content="2020-07-05T07:15:24.000Z">
+<meta property="article:author" content="XieMay">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiemaycherry.github.io/2020/06/22/time-series-01/F:%5C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A1%B9%E7%9B%AE%5C2020-5-19.assets%5Car.png">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/06/22/time-series-01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>day | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/06/22/time-series-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          day
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-22 19:14:33" itemprop="dateCreated datePublished" datetime="2020-06-22T19:14:33+08:00">2020-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-05 15:15:24" itemprop="dateModified" datetime="2020-07-05T15:15:24+08:00">2020-07-05</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1><span id="shi-jian-xu-lie-ji-qi-fen-jie">时间序列及其分解</span><a href="#shi-jian-xu-lie-ji-qi-fen-jie" class="header-anchor">#</a></h1><a id="more"></a>
+<h2><span id="shi-jian-xu-lie-fen-lei">时间序列分类</span><a href="#shi-jian-xu-lie-fen-lei" class="header-anchor">#</a></h2><h3><span id="ping-wen-xu-lie-stationary-series">平稳序列（stationary series)</span><a href="#ping-wen-xu-lie-stationary-series" class="header-anchor">#</a></h3><p>序列中的各观察值基本上在某个固定的水平上波动，在不同时F间段波动程度不同，但不存在某种规律。平稳性时间序列的均值和方差都是常数。</p>
+<p>方法：a) 看原图。是否在某个常数附近波动，且波动范围有界。如果有明显的趋势性或者周期性，则不是。b) ADF单位根检测。p值。</p>
+<h3><span id="fei-ping-wen-xu-lie-non-stationary-series">非平稳序列（non-stationary series)</span><a href="#fei-ping-wen-xu-lie-non-stationary-series" class="header-anchor">#</a></h3><p>涉及趋势、季节性和周期三种特性，包含其中一种或者多种成分。</p>
+<h4><span id="qu-shi-trend">趋势(trend)</span><a href="#qu-shi-trend" class="header-anchor">#</a></h4><p>时间序列在长时期内呈现出来的某种上升或者下降的趋势。分为线性和非线性。</p>
+<h4><span id="ji-jie-xing-seasonality">季节性（seasonality)</span><a href="#ji-jie-xing-seasonality" class="header-anchor">#</a></h4><p>是指时间序列在一年内重复出现的周期波动。因季节不同而发生变化，如旅游旺季，旅游淡季。</p>
+<h4><span id="zhou-qi-xing-cyclicity">周期性（cyclicity）</span><a href="#zhou-qi-xing-cyclicity" class="header-anchor">#</a></h4><p>是指时间序列呈现出的长期趋势。周期性不同于趋势变动，它是涨落相间的交替波动。不同意季节变动，它无固定规律，变动周期多在一年以上，且周期长短不一。周期性通常是由经济环境的变化引起的。</p>
+<h4><span id="ou-ran-xing-yin-su">偶然性因素</span><a href="#ou-ran-xing-yin-su" class="header-anchor">#</a></h4><p>其导致时间序列呈现出某种随机波动。</p>
+<p>时间序列的成分可分为：趋势（T),季节性（S),周期性（C),随机性（I)。</p>
+<h2><span id="ping-wen-shi-jian-xu-lie-fen-xi">平稳时间序列分析</span><a href="#ping-wen-shi-jian-xu-lie-fen-xi" class="header-anchor">#</a></h2><h3><span id="ar-mo-xing">AR模型</span><a href="#ar-mo-xing" class="header-anchor">#</a></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">自回归模型AR</th>
+<th style="text-align:left">自回归模型描述当前值与历史值之间的关系，用变量自身的历史时间数据对自身进行预测。自回归模型必须满足平稳性的要求。</th>
+<th style="text-align:left"><img src="https://xiemaycherry.github.io/2020/06/22/time-series-01/F:%5C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A1%B9%E7%9B%AE%5C2020-5-19.assets%5Car.png" alt="img"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">移动平均模型MA</td>
+<td style="text-align:left">移动平均模型关注的是自回归模型中的误差项的累加</td>
+<td style="text-align:left"><img src="https://xiemaycherry.github.io/2020/06/22/time-series-01/F:%5C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A1%B9%E7%9B%AE%5C2020-5-19.assets%5Cma.png" alt="img"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">自回归移动平均模型ARMA</td>
+<td style="text-align:left">自回归模型AR和移动平均模型MA模型相结合，我们就得到了自回归移动平均模型ARMA(p,q)</td>
+<td style="text-align:left"><img src="https://xiemaycherry.github.io/2020/06/22/time-series-01/F:%5C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A1%B9%E7%9B%AE%5C2020-5-19.assets%5Cauma.png" alt="img"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">差分自回归移动平均模型ARIMA</td>
+<td style="text-align:left">将自回归模型、移动平均模型和差分法结合，我们就得到了差分自回归移动平均模型ARIMA(p,d,q)</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="can-shu-que-ding">参数确定</span><a href="#can-shu-que-ding" class="header-anchor">#</a></h3><p><strong>拖尾和截尾</strong><br>拖尾指序列以指数率单调递减或震荡衰减，而截尾指序列从某个时点变得非常小。</p>
+<p><img src="https://xiemaycherry.github.io/2020/06/22/time-series-01/K:%5CMyBlog%5Chexo%5Csource_posts%5Ctime-series-01%5Ctuowei.png" alt="img"></p>
+<h3><span id="arima-jian-mo-guo-cheng">ARIMA建模过程</span><a href="#arima-jian-mo-guo-cheng" class="header-anchor">#</a></h3><ol>
+<li>将序列平稳（差分法确定d）</li>
+<li>p和q阶数确定：ACF与PACF</li>
+<li>ARIMA（p,d,q）</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模型</th>
+<th style="text-align:left">ACF</th>
+<th style="text-align:left">PACF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AR（p）</td>
+<td style="text-align:left">衰减趋于零（几何型或振荡型）</td>
+<td style="text-align:left">p阶后截尾</td>
+</tr>
+<tr>
+<td style="text-align:left">MA（q）</td>
+<td style="text-align:left">q阶后截尾</td>
+<td style="text-align:left">衰减趋于零（几何型或振荡型）</td>
+</tr>
+<tr>
+<td style="text-align:left">ARMA（p,q）</td>
+<td style="text-align:left">q阶后衰减趋于零（几何型或振荡型）</td>
+<td style="text-align:left">p阶后衰减趋于零（几何型或振荡型）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="can-shu-p-q-de-zi-dong-que-ding-fang-shi">参数 p,q 的自动确定方式</span><a href="#can-shu-p-q-de-zi-dong-que-ding-fang-shi" class="header-anchor">#</a></h4><h5><span id="xin-xi-zhun-ze">信息准则</span><a href="#xin-xi-zhun-ze" class="header-anchor">#</a></h5><p>在参数估计的时候，我们可以采用似然函数作为目标函数。可以通过加入模型复杂度的惩罚项避免过拟合问题。比如赤池信息准则（AIC)和贝叶斯信息准则(BIC)</p>
+<script type="math/tex; mode=display">
+AIC=2k−2ln(L)</script><p>一方面引入惩罚项，使得模型参数尽快少，减少过拟合。另一方面，也希望提高模型的拟合度（极大似然）</p>
+<script type="math/tex; mode=display">
+BIC=kLn(n)−2ln(L)</script><p>k为模型参数个数，n为样本数量，L为似然函数。引入$Kln(n)$惩罚项在维度过大且样本数据相对较少的情况下，可以有效避免出现维度灾难。</p>
+<h2><span id="shi-jian-xu-lie-de-fen-jie">时间序列的分解</span><a href="#shi-jian-xu-lie-de-fen-jie" class="header-anchor">#</a></h2><p>加法模型</p>
+<script type="math/tex; mode=display">
+X_t = T_t + C_t+S_t + I_t ,t = 1,2,..,n</script><p>每个时间序列看成是三个部分的叠加，分别是趋势项、循环项，季节项，随机项</p>
+<p>乘法模型</p>
+<script type="math/tex; mode=display">
+X_t = T_t*C_t*S_t*I_t</script><h3><span id="qu-shi-fen-xi">趋势分析</span><a href="#qu-shi-fen-xi" class="header-anchor">#</a></h3><p>趋势拟合法就是把时间作为自变量，相应的序列观察值作为因变量，建立序列值随时间变化的回归模型。可分为线性拟合和曲线拟合。</p>
+<h4><span id="xian-xing-ni-he">线性拟合</span><a href="#xian-xing-ni-he" class="header-anchor">#</a></h4><p>如果长期趋势呈现出线性特征，可用线性模型拟合，</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{c}
+x_t = a+bt+I_t\\
+E(I_t) = 0,Var(I_t) = \sigma^2
+\end{array}
+\right.</script><p>其中，$T_t = a+bt$就是消除随机波动影响后的该序列的长期趋势。</p>
+<h4><span id="qu-xian-ni-he">曲线拟合</span><a href="#qu-xian-ni-he" class="header-anchor">#</a></h4><p>如果长期趋势呈现出线性特征，可用曲线模型来拟合</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{array}{c|c|c}
+二次型& T_t = a+bt+ct^2& 变换后，线性最小二乘法\\
+指数型&T_t = ab^t& 对数变化 & 最小二乘法\\
+修正指数型&T_t = a+bc^t&  &迭代法\\
+Gompertz型& T_t = e^{a+bc^t}& & 迭代法\\
+Logistic & T_t = \frac{1}{a+bc^t}& 迭代法
+\end{array}
+\right.</script><h4><span id="ping-hua-fa">平滑法</span><a href="#ping-hua-fa" class="header-anchor">#</a></h4><h4><span id="yi-dong-ping-jun-fa">移动平均法</span><a href="#yi-dong-ping-jun-fa" class="header-anchor">#</a></h4><p>假设在比较短的时间间隔里，序列的取值是较稳定的，这种差异是由随机波动造成的。由此，可用一定时间间隔内的平均值作为某一期的估计值。</p>
+<p>n期中心移动平均</p>
+<script type="math/tex; mode=display">
+\widetilde{x_t} = \frac{1}{n}(\frac{1}{2}x_{t-\frac{n}{2}}+x_{t-\frac{n}{2}+1}+\dots+x_{t+\frac{n}{2}-1}+\frac{1}{2}x_{t+\frac{n}{2}})</script><p>n期移动平均</p>
+<script type="math/tex; mode=display">
+\widetilde{x_t} = \frac{1}{n}(x_t+x_{t-1}+\dots+x_{t-n+1})</script><h4><span id="zhi-shu-ping-hua-fa">指数平滑法</span><a href="#zhi-shu-ping-hua-fa" class="header-anchor">#</a></h4><p>简单指数平滑</p>
+<script type="math/tex; mode=display">
+\widetilde{x_t} = \alpha x_t+\alpha (1-\alpha )x_{t-1}+\dots)</script><h3><span id="ji-jie-xiao-ying">季节效应</span><a href="#ji-jie-xiao-ying" class="header-anchor">#</a></h3><p>季节性效应的存在，使得气温会在不同年份的相同月份呈现出相似的性质。</p>
+<p>如果只是存在季节性和随机波动性</p>
+<script type="math/tex; mode=display">
+x_{ij} = \hat{x}S_j+I_{ij}</script><p>其中$S_j$表示第j个月的季节指数，$\hat{x}$为各月平均气温。</p>
+<p>季节指数的计算:</p>
+<p>Step1: 计算周期内各期的平均数</p>
+<script type="math/tex; mode=display">
+\hat{x}_k = \frac{\sum_{i= 1}^{n}x_{ik}}{n}（k = 1,2,...,m)</script><p>其中，m表示周期，n表示周期的数量</p>
+<p>Step2: 计算总平均数</p>
+<script type="math/tex; mode=display">
+\hat{x} = \frac{\sum_{i = 1}^{n}\sum_{k = 1}^{m}x_{ik}}{nm}</script><p>Step3: 计算季节指数</p>
+<script type="math/tex; mode=display">
+S_k = \frac{\hat{x}_k}{\hat{x}}</script><h3><span id="hun-he-xiao-ying">混合效应</span><a href="#hun-he-xiao-ying" class="header-anchor">#</a></h3><p>加法模型</p>
+<script type="math/tex; mode=display">
+x_t = T_t + S_t + I_t</script><p>乘法模型</p>
+<script type="math/tex; mode=display">
+x_t = T_t*S_t*I_t</script><p>混合模型</p>
+<script type="math/tex; mode=display">
+x_t = S_t*T_t+I_t\\
+x_t = S_t*(T_t+I_t)</script><p>如果季节波动的振幅不受趋势变动的影响，则说明季节性与趋势之间没有相互作用关系，可加。如果季节波动的振幅随趋势的变化而变化，是相互作用的关系，可尝试混合模型和乘法模型。</p>
+<h1><span id="tool-in-python-xfresh">Tool in Python: xfresh</span><a href="#tool-in-python-xfresh" class="header-anchor">#</a></h1><h2><span id="te-zheng-ti-qu">特征提取</span><a href="#te-zheng-ti-qu" class="header-anchor">#</a></h2><p>官网： <a target="_blank" rel="noopener" href="https://tsfresh.readthedocs.io/en/latest/text/quick_start.html">https://tsfresh.readthedocs.io/en/latest/text/quick_start.html</a></p>
+<p>中文： <a target="_blank" rel="noopener" href="https://github.com/SimaShanhe/tsfresh-feature-translation">https://github.com/SimaShanhe/tsfresh-feature-translation</a></p>
+<h2><span id="data-formats">Data Formats</span><a href="#data-formats" class="header-anchor">#</a></h2><p>column_id: Features will be extracted individually for each entity(id); one row per id.</p>
+<p>column_sort:  sorting the time series. </p>
+<p>特征提取: 可以一次性提取完；也可以单独提取kind_to_parameters 设置参数；还可以提取</p>
+<p><img src="https://tsfresh.readthedocs.io/en/latest/_images/feature_extraction_process_20160815_mc_1.png" alt="the time series"></p>
+<p>可分布式计算</p>
+<p>the rolling mechanism</p>
+<p>首先确定滑动窗口</p>
+<p>Step1 : 实现单变量特征的提取</p>
+<p>Step2 : 实现多变量特征的提取</p>
+<h2><span id="day-ox-01">Day Ox 01</span><a href="#day-ox-01" class="header-anchor">#</a></h2><p>知识清单:</p>
+<ol>
+<li><p>特征提取：大概上千种特征（几十种方法）</p>
+<p>tsfresh.feature_extraction.extraction.extract_features(<strong>timeseries_container</strong>,default_fc_parameters=None<strong>,</strong> <em>kind_to_fc_parameters=None**</em>,<strong> <em>column_id=None</em></strong>,<strong> <em>column_sort=None</em></strong>,<strong> <em>column_kind=None</em></strong>,<strong> <em>column_value=None</em></strong>,<strong> <em>chunksize=None</em></strong>,<strong> <em>n_jobs=1</em></strong>,<strong> <em>show_warnings=False</em></strong>,<strong> <em>disable_progressbar=False</em></strong>,<strong> <em>impute_function=None</em></strong>,<strong> <em>profile=False</em></strong>,<strong> <em>profiling_filename=’profile.txt’</em></strong>,<strong> <em>profiling_sorting=’cumulative’</em></strong>,<strong> <em>distributor=None</em></strong>)**</p>
+<p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame"><code>pandas.DataFrame</code></a> containing the different time series</p>
+<p><strong>column_id</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3.7/library/stdtypes.html#str"><em>str</em></a>) – The name of the id column to group by.</p>
+<p><strong>column_sort</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3.7/library/stdtypes.html#str"><em>str</em></a>) – The name of the sort column.</p>
+<p><strong>n_jobs</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3.7/library/functions.html#int"><em>int</em></a>) – The number of processes to use for parallelization. </p>
+</li>
+<li><p>时间序列的滑动窗口（单序列划分成多序列）</p>
+<p><code>tsfresh.utilities.dataframe_functions.``roll_time_series</code><strong>(*</strong>df_or_dict<strong>*,</strong> <em>column_id**</em>,<strong> <em>column_sort=None</em></strong>,<strong> <em>column_kind=None</em></strong>,<strong> <em>rolling_direction=1</em></strong>,<strong> <em>max_timeshift=None</em></strong>,<strong> <em>min_timeshift=0</em></strong>,<strong> <em>chunksize=None</em></strong>,<strong> <em>n_jobs=1</em></strong>,<strong> <em>show_warnings=False</em></strong>,<strong> <em>disable_progressbar=False</em></strong>,<strong> <em>distributor=None</em></strong>)**</p>
+<ul>
+<li><strong>max_timeshift</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3.7/library/functions.html#int"><em>int</em></a>) – If not None, the cut-out window is at maximum max_timeshift large. If none, it grows infinitely.</li>
+<li><strong>min_timeshift</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3.7/library/functions.html#int"><em>int</em></a>) – Throw away all extracted forecast windows smaller or equal than this. Must be larger than or equal 0.</li>
+<li><strong>n_jobs</strong> (<a target="_blank" rel="noopener" href="https://docs.python.org/3.7/library/functions.html#int"><em>int</em></a>) – The number of processes to use for parallelization. If zero, no parallelization is used.</li>
+<li><em>show_warnings=False</em></li>
+</ul>
+</li>
+<li><p>（指定）特征提取</p>
+</li>
+<li><p>显著性检测</p>
+<p><a target="_blank" rel="noopener" href="https://tsfresh.readthedocs.io/en/latest/api/tsfresh.feature_selection.html?highlight=select_features#tsfresh.feature_selection.selection.select_features">https://tsfresh.readthedocs.io/en/latest/api/tsfresh.feature_selection.html?highlight=select_features#tsfresh.feature_selection.selection.select_features</a></p>
+<p>相关性检测</p>
+<p><a target="_blank" rel="noopener" href="https://tsfresh.readthedocs.io/en/latest/text/parallelization.html#parallelization-of-feature-selection">https://tsfresh.readthedocs.io/en/latest/text/parallelization.html#parallelization-of-feature-selection</a></p>
+</li>
+</ol>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tsfresh <span class="keyword">import</span> extract_features, select_features,extract_relevant_features</span><br><span class="line"><span class="keyword">from</span> tsfresh.utilities.dataframe_functions <span class="keyword">import</span> impute</span><br><span class="line"><span class="keyword">from</span> tsfresh.utilities.dataframe_functions <span class="keyword">import</span> roll_time_series, make_forecasting_frame</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> tsfresh <span class="keyword">as</span> tsf </span><br><span class="line"></span><br><span class="line">fc_parameters_value1 = {<span class="string">"length"</span>: <span class="literal">None</span>, </span><br><span class="line">                          <span class="string">"sum_values"</span>: <span class="literal">None</span>}</span><br><span class="line"></span><br><span class="line">fc_parameters_value2 = {<span class="string">"maximum"</span>: <span class="literal">None</span>, </span><br><span class="line">                             <span class="string">"minimum"</span>: <span class="literal">None</span>}</span><br><span class="line"></span><br><span class="line">kind_to_fc_parameters = {</span><br><span class="line">    <span class="string">"value1"</span>: fc_parameters_value1,</span><br><span class="line">    <span class="string">"value2"</span>: fc_parameters_value2</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># ceate data</span></span><br><span class="line">    rawdata = {<span class="string">'id1'</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],<span class="string">'time'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>],\</span><br><span class="line">        <span class="string">'value1'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>], <span class="string">'value2'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line">        }</span><br><span class="line">    df = pd.DataFrame(rawdata)</span><br><span class="line"><span class="comment"># 设置长度+1 = 真实长度,是当前编号往上数.</span></span><br><span class="line">    df_rolled = roll_time_series(df, column_id=<span class="string">"id1"</span>, column_sort=<span class="string">"time"</span>,</span><br><span class="line">                                max_timeshift=<span class="number">1</span>, min_timeshift=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># roll_time_series的返回值</span></span><br><span class="line">    print(df_rolled)</span><br><span class="line">    df_rolled = df_rolled.drop(<span class="string">'id1'</span>,axis = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># column_id: 聚合列 column_sort:排序，一个column_id就对应一个特征</span></span><br><span class="line">    extracted_features = extract_features(df_rolled, column_id=<span class="string">'id'</span>, column_sort=<span class="string">'time'</span>, </span><br><span class="line">            kind_to_fc_parameters = kind_to_fc_parameters, show_warnings=<span class="literal">False</span>)</span><br><span class="line">    print(extracted_features)</span><br></pre></td></tr></tbody></table></figure>
+<h2><span id="day-ox-02-cha-kan-ti-qu-te-zheng">Day Ox 02 查看提取特征</span><a href="#day-ox-02-cha-kan-ti-qu-te-zheng" class="header-anchor">#</a></h2><p>可根据此提取自动提取的特征，用于预测时候的提取特征</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kind_to_fc_parameters = tsf.feature_extraction.settings.from_columns(extracted_features)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5. 特征抽取与过滤同时进行（一步到位，省去多余计算）</span></span><br><span class="line"><span class="comment"># column_id: group by </span></span><br><span class="line"><span class="comment">#features_filtered_direct = extract_relevant_features(timeseries, y, column_id='id', column_sort='time')</span></span><br><span class="line"><span class="comment">#print(features_filtered_direct.head())</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/2020/06/22/time-series-01/image-20200705150137882.png" alt="image-20200705150137882" style="zoom: 50%;"></p>
+<p>学习路径：</p>
+<pre><code>1. 数据格式
+ 2. 滑动窗口设置
+ 3. 特征提取
+ 4. 特征选择
+</code></pre><h1><span id="zhuan-ti-shi-jian-xu-lie-de-jing-sai-fang-an">专题 时间序列的竞赛方案</span><a href="#zhuan-ti-shi-jian-xu-lie-de-jing-sai-fang-an" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU1Nzc1NjI0Nw==&amp;mid=2247485604&amp;idx=1&amp;sn=6283ec080344665bfad90570bf1504a4&amp;chksm=fc31b29ccb463b8acac7acf4d89494aaad0c76620becb2b07c370ccbfaff850edc3c1ad4e0fd&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1593390448780&amp;sharer_shareid=fb5716a8ad12ea6329433df53d4cbf64#rd">https://mp.weixin.qq.com/s?__biz=MzU1Nzc1NjI0Nw==&amp;mid=2247485604&amp;idx=1&amp;sn=6283ec080344665bfad90570bf1504a4&amp;chksm=fc31b29ccb463b8acac7acf4d89494aaad0c76620becb2b07c370ccbfaff850edc3c1ad4e0fd&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1593390448780&amp;sharer_shareid=fb5716a8ad12ea6329433df53d4cbf64#rd</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21229371/answer/533770345">https://www.zhihu.com/question/21229371/answer/533770345</a></p>
+<p>Prophet 工具</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/20/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/" rel="prev" title="回归分析">
+      <i class="fa fa-chevron-left"></i> 回归分析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/23/English-Daily/" rel="next" title="English-Daily">
+      English-Daily <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">时间序列及其分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">时间序列分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">平稳序列（stationary series)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.2.</span> <span class="nav-text">非平稳序列（non-stationary series)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">趋势(trend)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">季节性（seasonality)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">周期性（cyclicity）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">偶然性因素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">平稳时间序列分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.1.</span> <span class="nav-text">AR模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.2.</span> <span class="nav-text">参数确定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.3.</span> <span class="nav-text">ARIMA建模过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">参数 p,q 的自动确定方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">信息准则</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">时间序列的分解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.1.</span> <span class="nav-text">趋势分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">线性拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">曲线拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">平滑法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">移动平均法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">指数平滑法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.2.</span> <span class="nav-text">季节效应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.3.</span> <span class="nav-text">混合效应</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Tool in Python: xfresh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">特征提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">Data Formats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">Day Ox 01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">Day Ox 02 查看提取特征</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">专题 时间序列的竞赛方案</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

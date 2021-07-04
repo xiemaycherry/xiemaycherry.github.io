@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="linux内核，linux发行版（带桌面环境），服务器的访问方式（三种），linux操作系统的相关使用，通过命令行和键盘输入搞定（用户权限，用户分组，用户之间的关系，用户操作；文件结构，文件使用，文件权限，文件编辑，文件压缩和解压，这系列操作类比操作系统，只是linux系统里面，都是命令行完成，不是可视化界面罢了；帮助，终止操作，root，sudo,超级管理员，管理员组，普通用户）windows操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2019/11/27/linux/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="linux内核，linux发行版（带桌面环境），服务器的访问方式（三种），linux操作系统的相关使用，通过命令行和键盘输入搞定（用户权限，用户分组，用户之间的关系，用户操作；文件结构，文件使用，文件权限，文件编辑，文件压缩和解压，这系列操作类比操作系统，只是linux系统里面，都是命令行完成，不是可视化界面罢了；帮助，终止操作，root，sudo,超级管理员，管理员组，普通用户）windows操">
+<meta property="og:locale">
+<meta property="og:image" content="https://doc.shiyanlou.com/linux_base/1-1.png/wm">
+<meta property="og:image" content="https://img-blog.csdn.net/20180719122550321?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTAzNjcwMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://doc.shiyanlou.com/linux_base/4-1.png/wm">
+<meta property="article:published_time" content="2019-11-27T06:04:05.000Z">
+<meta property="article:modified_time" content="2020-10-05T13:48:18.764Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://doc.shiyanlou.com/linux_base/1-1.png/wm">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2019/11/27/linux/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>linux | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2019/11/27/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-27 14:04:05" itemprop="dateCreated datePublished" datetime="2019-11-27T14:04:05+08:00">2019-11-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-05 21:48:18" itemprop="dateModified" datetime="2020-10-05T21:48:18+08:00">2020-10-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index"><span itemprop="name">machine learning</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>linux内核，linux发行版（带桌面环境），服务器的访问方式（三种），linux操作系统的相关使用，通过命令行和键盘输入搞定（用户权限，用户分组，用户之间的关系，用户操作；文件结构，文件使用，文件权限，文件编辑，文件压缩和解压，这系列操作类比操作系统，只是linux系统里面，都是命令行完成，不是可视化界面罢了；帮助，终止操作，root，sudo,超级管理员，管理员组，普通用户）windows操作系统可以干的事情，在linux服务器里面，都可以干，通过命令行配置，安装，完成！</p>
+<a id="more"></a>
+<h1><span id="linux">Linux</span><a href="#linux" class="header-anchor">#</a></h1><h2><span id="linux-de-ke-pu">Linux 的科普</span><a href="#linux-de-ke-pu" class="header-anchor">#</a></h2><p> Linux 是一套免费使用和自由传播的类 Unix 操作系统 ，支持多用户，多任务，支持多线程和对CPU的操作系统。，就像你多少已经了解的 Windows（xp，7，8）和 Mac OS 。</p>
+<p><img src="https://doc.shiyanlou.com/linux_base/1-1.png/wm" alt="图1-1"></p>
+<p> 或许你之前不知道 Linux ，要知道，你之前在 Windows 使用百度、谷歌，上淘宝，聊 QQ 时，支撑这些软件和服务的，是后台成千上万的 Linux 服务器主机，它们时时刻刻都在忙碌地进行着数据处理和运算，可以说世界上大部分软件和服务都是运行在 Linux 之上的。 </p>
+<p> 明确目的：你是要用 Linux 来干什么，搭建服务器、做程序开发、日常办公，还是娱乐游戏； </p>
+<p> 兼具图形界面操作（需要使用带有桌面环境的发行版）和完全的命令行操作，可以只用键盘完成一切操作，新手入门较困难，需要一些学习和指导（这正是我们要做的事情），一旦熟练之后效率极高。 </p>
+<p>一般命令行操作，通过键盘完成</p>
+<p> 因为linux的哲学就是：没有结果就是最好的结果 </p>
+<p> 如果只是执行，执行失败会告诉你哪里错了，如果执行成功那么会没有输出，因为linux的哲学就是：没有结果就是最好的结果 </p>
+<h2><span id="linux-de-fa-xing-ban">Linux的发行版</span><a href="#linux-de-fa-xing-ban" class="header-anchor">#</a></h2><p>Linux发行版 = linux内核+应用软件的打包</p>
+<p>知名的发行版： ubuntu，redhat,centos</p>
+<p>Linux系统</p>
+<ol>
+<li><p>用户登录系统</p>
+<p>（1）命令行</p>
+<p>（2）ssh登录</p>
+<p> SSH 为 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Secure Shell">Secure Shell</a> 的缩写 ，用于远程登陆的协议</p>
+<p>远程连接工具客户端：xshell, putty,</p>
+<p>  (3)   图形界面登录</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdn.net/20180719122550321?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTAzNjcwMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<ol>
+<li><p>文件目录以及权限</p>
+<ol>
+<li>Linux 中创建、删除用户，及用户组等操作。</li>
+<li>Linux 中的文件权限设置。</li>
+</ol>
+<p>1.2 实验知识点</p>
+<ul>
+<li>Linux <strong>用户管理</strong></li>
+<li>Linux <strong>权限管理</strong></li>
+</ul>
+<ol>
+<li><p>用户管理</p>
+<p>通过第一节课程的学习，你应该已经知道，Linux 是一个可以实现多用户登录的操作系统，比如“李雷”和“韩梅梅”都可以同时登录同一台主机，他们共享一些主机的资源，但他们也分别有自己的用户空间，用于存放各自的文件。但实际上他们的文件都是放在同一个物理磁盘上的甚至同一个逻辑分区或者目录里，但是由于 Linux 的 <strong>用户管理</strong>和 <strong>权限机制</strong>，不同用户不可以轻易地查看、修改彼此的文件。 </p>
+</li>
+<li><p>在 Linux 系统里， <code>root</code> 账户拥有整个系统至高无上的权利，比如 新建/添加 用户。</p>
+<p>sudo adduser lilei</p>
+</li>
+<li><p>创建用户（sudo 组）</p>
+<p>我们一般登录系统时都是以普通账户的身份登录的，要创建用户需要 root 权限，这里就要用到 <code>sudo</code> 这个命令了。不过使用这个命令有两个大前提，一是你要知道当前登录用户的密码，二是当前用户必须在 <code>sudo</code> 用户组。 sudo命令：获得root权限</p>
+</li>
+<li><p>用户组</p>
+<p>查看：</p>
+<p>在 Linux 里面每个用户都有一个归属（用户组），用户组简单地理解就是一组用户的集合，它们共享一些资源和权限，同时拥有私有资源 。</p>
+<p> groups shiyanlou </p>
+<p>加入sudo用户组</p>
+<p>su <user>：切换用户user，需要输入目标用户和密码</user></p>
+<p>sudo usermod -G sudo lilei</p>
+</li>
+<li><p>文件所以者</p>
+<p>su -l lilei</p>
+<p>su chown 修改权限</p>
+<p><code>sudo</code> 可以以特权级别运行 cmd 命令，需要当前用户属于 sudo 组，且需要输入当前用户的密码。 </p>
+</li>
+</ol>
+</li>
+<li><p>文档编辑</p>
+<p>vim编辑器</p>
+<p>i esc :wq</p>
+</li>
+<li><p>linux文件系统与磁盘管理</p>
+</li>
+<li><p><img src="https://doc.shiyanlou.com/linux_base/4-1.png/wm" alt="img"></p>
+<p>  $ tree /  </p>
+<p>pwd</p>
+<p>cd ..: 上一级目录</p>
+<p>../</p>
+<p>/:根目录：绝对路径</p>
+<p> cd /home/shiyanlou</p>
+<p>touch test</p>
+<p> mkdir mydir </p>
+<p>  <code>cp</code>（copy）命令复制一个文件到指定目录 </p>
+<p> 要成功复制目录需要加上 <code>-r</code> 或者 <code>-R</code> 参数，表示递归复制 </p>
+<p>cd /home/shiyanlou<br> mkdir family<br>​ cp -r father family</p>
+</li>
+</ol>
+<pre><code>rm test 
+
+跟复制目录一样，要删除一个目录，也需要加上 `-r` 或 `-R` 参数 
+
+mv 源目录文件 目的目录 ，可以用来重命名文件
+</code></pre><p>   $ cd /home/shiyanlou/</p>
+<p>   使用通配符批量创建 5 个文件:</p>
+<p>   $ touch file{1..5}.txt</p>
+<p>   批量将这 5 个后缀为 .txt 的文本文件重命名为以 .c 为后缀的文件:</p>
+<p>   $ rename ‘s/.txt/.c/‘ *.txt</p>
+<p>   批量将这 5 个文件，文件名和后缀改为大写:</p>
+<p>   $ rename ‘y/a-z/A-Z/‘ *.c</p>
+<p>   文件打包和解压缩</p>
+<ul>
+<li>zip：<ul>
+<li>打包 ：zip something.zip something （目录请加 -r 参数）</li>
+<li>解包：unzip something.zip</li>
+<li>指定路径：-d 参数</li>
+</ul>
+</li>
+<li><p>tar：</p>
+<ul>
+<li>打包：tar -cf something.tar something</li>
+<li>解包：tar -xf something.tar</li>
+<li>指定路径：-C 参数、</li>
+</ul>
+<p>tar -cf shiyanlou.tar /home/shiyanlou/Desktop </p>
+<p><code>-c</code> 表示创建一个 tar 包文件，<code>-f</code> 用于指定创建的文件名，注意文件名必须紧跟在 <code>-f</code> 参数之后 </p>
+<p>tar -xf shiyanlou.tar -C tardir </p>
+<p>解包一个文件（<code>-x</code> 参数）到指定路径的<strong>已存在</strong>目录（<code>-C</code> 参数） </p>
+<p>tar -xzf shiyanlou.tar.gz </p>
+</li>
+</ul>
+<ol>
+<li><p>| 压缩文件格式 | 参数 |<br>| —————— | —— |<br>| <code>*.tar.gz</code>   | <code>-z</code> |<br>| <code>*.tar.xz</code>   | <code>-J</code> |<br>| <code>*tar.bz2</code>   | <code>-j</code> |</p>
+</li>
+<li><p>linux安装软件</p>
+</li>
+</ol>
+<h3><span id="shu-ru-shu-chu">输入，输出</span><a href="#shu-ru-shu-chu" class="header-anchor">#</a></h3><p>   输入：输入当然就是打开终端，然后按键盘输入，然后按回车，输入格式一般就是这类的</p>
+<p>输出：</p>
+<p>输出会返回你想要的结果，比如你要看什么文件，就会返回文件的内容。</p>
+<p>如果只是执行，执行失败会告诉你哪里错了，如果执行成功那么会没有输出，因为linux的哲学就是：没有结果就是最好的结果</p>
+<p>Tab: 命令补全</p>
+<p>Ctrl+C:强制终止</p>
+<p>学会使用通配符：通配符：*,?</p>
+<p>学会在命令行中获取帮助：man命令调用手册页，</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>区段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>一般命令</td>
+</tr>
+<tr>
+<td>2</td>
+<td>系统调用</td>
+</tr>
+<tr>
+<td>3</td>
+<td>库函数，涵盖了C标准函数库</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊文件（通常是/dev中的设备）和驱动程序</td>
+</tr>
+<tr>
+<td>5</td>
+<td>文件格式和约定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>游戏和屏保</td>
+</tr>
+<tr>
+<td>7</td>
+<td>杂项</td>
+</tr>
+<tr>
+<td>8</td>
+<td>系统管理命令和守护进程</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man 1 ls</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls --help</span><br></pre></td></tr></tbody></table></figure>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/11/26/%E6%B8%85%E6%99%B0%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%80%9D%E8%B7%AF/" rel="prev" title="清晰有效的数据分析思路">
+      <i class="fa fa-chevron-left"></i> 清晰有效的数据分析思路
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/01/or/" rel="next" title="or">
+      or <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">Linux 的科普</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">Linux的发行版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.1.</span> <span class="nav-text">输入，输出</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

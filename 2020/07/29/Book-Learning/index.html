@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="分享看书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Book-Learning">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/07/29/Book-Learning/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="分享看书笔记">
+<meta property="og:locale">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/07/29/Book-Learning/image-20200729213701724.png">
+<meta property="article:published_time" content="2020-07-29T13:13:42.000Z">
+<meta property="article:modified_time" content="2020-08-15T14:19:58.000Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="数据挖掘">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiemayshiyi.github.io/2020/07/29/Book-Learning/image-20200729213701724.png">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/07/29/Book-Learning/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Book-Learning | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/07/29/Book-Learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Book-Learning
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-29 21:13:42" itemprop="dateCreated datePublished" datetime="2020-07-29T21:13:42+08:00">2020-07-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-15 22:19:58" itemprop="dateModified" datetime="2020-08-15T22:19:58+08:00">2020-08-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Book/" itemprop="url" rel="index"><span itemprop="name">Book</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>分享看书笔记</p>
+<a id="more"></a>
+<h1><span id="shu-ju-wa-jue-gai-nian-yu-ji-zhu">数据挖掘——概念与技术</span><a href="#shu-ju-wa-jue-gai-nian-yu-ji-zhu" class="header-anchor">#</a></h1><h2><span id="shu-ju-wa-jue-de-gai-nian">数据挖掘的概念</span><a href="#shu-ju-wa-jue-de-gai-nian" class="header-anchor">#</a></h2><p>数据挖掘是从大量数据中提取或挖掘知识。强调：从大量的，未加工的材料中发现少量金块这一过程。</p>
+<p>基本过程：</p>
+<ol>
+<li>数据清理。(消除噪音或者不一致的数据)</li>
+<li>数据集成（多种数据集成可以组合在一起）</li>
+<li>数据选择（从数据库中提取与分析任务相关的数据)</li>
+<li>数据变换。(数据变换或统一成适合挖掘形式)</li>
+<li>数据挖掘(使用智能方法提取数据)</li>
+<li>模式评估</li>
+<li>知识表示（可视化等手段，展示挖掘的知识)</li>
+</ol>
+<h2><span id="shu-ju-yu-chu-li">数据预处理</span><a href="#shu-ju-yu-chu-li" class="header-anchor">#</a></h2><p>问题：现实中数据极易受噪音数据、遗漏数据和不一致性数据的干扰。</p>
+<p>不完整（属性值缺失）</p>
+<p>噪音(错误属性值，离群值)</p>
+<p>不一致性（编码)</p>
+<ol>
+<li>数据清理。包括填写遗漏值，平滑噪音数据，识别、删除局外者，并解决不一致来“清理数据”。脏数据转化为干净数据。</li>
+<li>数据集成。不同数据源的数据集成。</li>
+</ol>
+<p><img src="/2020/07/29/Book-Learning/image-20200729213701724.png" alt="image-20200729213701724"></p>
+<h3><span id="shu-ju-qing-xi">数据清洗</span><a href="#shu-ju-qing-xi" class="header-anchor">#</a></h3><h4><span id="yi-lou-zhi">遗漏值</span><a href="#yi-lou-zhi" class="header-anchor">#</a></h4><ol>
+<li>忽略</li>
+<li>人工填写</li>
+<li>全局变量</li>
+<li>平均值</li>
+<li>分组填充</li>
+</ol>
+<h4><span id="zao-yin-shu-ju">噪音数据</span><a href="#zao-yin-shu-ju" class="header-anchor">#</a></h4><p>噪音是指测量变量的随机误差或偏差。平滑数据。</p>
+<ol>
+<li>分箱。存储值被分布到一些箱子中，然后局部平滑。按平均值平滑。按中值平滑。按边界平滑。</li>
+<li><p>聚类。</p>
+</li>
+<li><p>回归</p>
+</li>
+</ol>
+<h4><span id="bu-yi-zhi-shu-ju">不一致数据</span><a href="#bu-yi-zhi-shu-ju" class="header-anchor">#</a></h4><h3><span id="shu-ju-ji-cheng">数据集成</span><a href="#shu-ju-ji-cheng" class="header-anchor">#</a></h3><p>实体识别。</p>
+<p>冗余。</p>
+<h3><span id="shu-ju-bian-huan">数据变换</span><a href="#shu-ju-bian-huan" class="header-anchor">#</a></h3><p>将数据转换成适用于挖掘的形式</p>
+<p>平滑。</p>
+<p>聚集。对数据进行汇总和聚集。日、月和年销售额。多粒度数据分析构造数据方</p>
+<p>数据泛化。street-&gt;city; age—&gt;young, middle-age,senior</p>
+<p>规范化。 属性数据按比例缩放，缩放到特定区间。</p>
+<p>属性构造。</p>
+<p>最小-最大规范化</p>
+<script type="math/tex; mode=display">
+v = \frac{v-min}{max-min}(new_max-new_min)+new_min</script><p>z-score规范化</p>
+<script type="math/tex; mode=display">
+v = \frac{v-mean}{\delta}</script><h3><span id="shu-ju-gui-yue">数据归约</span><a href="#shu-ju-gui-yue" class="header-anchor">#</a></h3><p>数据方聚集</p>
+<p>维归约</p>
+<p>数据压缩</p>
+<p>数值压缩</p>
+<h1><span id="gai-nian-miao-shu-te-zheng-yu-bi-jiao">概念描述：特征与比较</span><a href="#gai-nian-miao-shu-te-zheng-yu-bi-jiao" class="header-anchor">#</a></h1><p>数据挖掘分为两类: 描述式和预测式挖掘。描述式提供数据的有趣的一般性质。建立一个或一组模型，并试图预测新数据集的行为。</p>
+<p>描述式数据挖掘称为概念描述。不同的粒度和角度描述数据集。</p>
+<p>度量可以根据其所用的聚集函数分成三类：</p>
+<p>分布的：一个聚集函数是分布的，如果它能以如下分布方式进行计算：设数据被划分为 n 个集合，函数在每一部分上的计算得到一个聚集值。如果将函数用于 n 个聚集值得到的结果，与将函数<br>用于所有数据得到的结果一样，则该函数可以用分布方式计算。  </p>
+<p>代数的：ave(); </p>
+<p>整体的：rank(),median()</p>
+<h3><span id="miao-shu-xing-tong-ji-du-liang">描述性统计度量</span><a href="#miao-shu-xing-tong-ji-du-liang" class="header-anchor">#</a></h3><h4><span id="du-liang-zhong-xin-qu-shi">度量中心趋势</span><a href="#du-liang-zhong-xin-qu-shi" class="header-anchor">#</a></h4><p>平均值</p>
+<p>加权算术平均（加权平均)</p>
+<p>中位数</p>
+<p>分位数</p>
+<h1><span id="wa-jue-da-xing-shu-ju-ku-zhong-de-guan-lian-gui-ze">挖掘大型数据库中的关联规则</span><a href="#wa-jue-da-xing-shu-ju-ku-zhong-de-guan-lian-gui-ze" class="header-anchor">#</a></h1><p>关联规则挖掘发现大量数据中项集的关联或者相关联系。可用于于分类设计，交叉购物和贱卖分析。</p>
+<p>购买计算机也趋向于同时购买财务管理软件的关联规则</p>
+<script type="math/tex; mode=display">
+computer => finanical_management_software\\
+[support = 2\%, confidence = 60\%]</script><p>支持度：有用性。同时购买计算机和财务管理软件。</p>
+<p>置信度：确定性。购买计算机的顾客有多少购买财务管理软件。</p>
+<p>可最小支持度阙值和最小置信度阙值。</p>
+<h3><span id="apriori-suan-fa-shi-yong-hou-xuan-xiang-ji-zhao-pin-fan-xiang-ji">Apriori 算法： 使用候选项集找频繁项集</span><a href="#apriori-suan-fa-shi-yong-hou-xuan-xiang-ji-zhao-pin-fan-xiang-ji" class="header-anchor">#</a></h3><h1><span id="fen-lei-he-yu-ce">分类和预测</span><a href="#fen-lei-he-yu-ce" class="header-anchor">#</a></h1><p>分类和预测是数据分析的两种形式，可以用于提取描述重要数据类的模型或预测未来的数据趋势。 分类预测分类标号（类），而预测建立连续值函数模型。  </p>
+<p>预测的准确率、计算速度、鲁棒性、可规模性和可解释性是评估分类和预测方法的五条标准。  </p>
+<h1><span id="ju-lei-fen-xi">聚类分析</span><a href="#ju-lei-fen-xi" class="header-anchor">#</a></h1><p>数据对象的集合进行分析，但与分类不同的是，聚类分析 (clustering) 属于非监督学习，也就是不知道要划分类是未知的。聚类分析就是要将数据对象分组成为多个类或簇(cluster)。每一个簇中的对象之间具有较高的相似度，而不同簇对象差别较大。常常采用距离作为相异度的衡量。</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" rel="tag"><i class="fa fa-tag"></i> 数据挖掘</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BPython/" rel="prev" title="数据分析之Python">
+      <i class="fa fa-chevron-left"></i> 数据分析之Python
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" rel="next" title="机器学习之模型性能">
+      机器学习之模型性能 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">数据挖掘——概念与技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">数据挖掘的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据清洗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">遗漏值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">噪音数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">不一致数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.4.</span> <span class="nav-text">数据归约</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">概念描述：特征与比较</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.0.1.</span> <span class="nav-text">描述性统计度量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">度量中心趋势</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">挖掘大型数据库中的关联规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.0.1.</span> <span class="nav-text">Apriori 算法： 使用候选项集找频繁项集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">分类和预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">聚类分析</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '[object Object]';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

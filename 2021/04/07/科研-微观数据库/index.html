@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="免费的微观数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科研-微观数据库">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2021/04/07/%E7%A7%91%E7%A0%94-%E5%BE%AE%E8%A7%82%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="免费的微观数据库">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-07T12:05:21.000Z">
+<meta property="article:modified_time" content="2021-06-30T04:43:40.239Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="科研">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2021/04/07/%E7%A7%91%E7%A0%94-%E5%BE%AE%E8%A7%82%E6%95%B0%E6%8D%AE%E5%BA%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>科研-微观数据库 | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2021/04/07/%E7%A7%91%E7%A0%94-%E5%BE%AE%E8%A7%82%E6%95%B0%E6%8D%AE%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          科研-微观数据库
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-07 20:05:21" itemprop="dateCreated datePublished" datetime="2021-04-07T20:05:21+08:00">2021-04-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-30 12:43:40" itemprop="dateModified" datetime="2021-06-30T12:43:40+08:00">2021-06-30</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>免费的微观数据库</p>
+<a id="more"></a>
+<h1><span id="tong-ji-gong-kai-shu-ju-ji">统计公开数据集</span><a href="#tong-ji-gong-kai-shu-ju-ji" class="header-anchor">#</a></h1><h2><span id="cfps">CFPS</span><a href="#cfps" class="header-anchor">#</a></h2><p>中国家庭追踪调查（China Family Panel Studies，CFPS）旨在通过跟踪收集个体、家庭、社区三个层次的数据，反映中国社会、经济、人口、教育和健康的变迁，为学术研究和公共政策分析提供数据基础。</p>
+<h2><span id="chip">CHIP</span><a href="#chip" class="header-anchor">#</a></h2><ul>
+<li><strong>数据名称：</strong>中国家庭收入调查（China Household Income Projects） </li>
+<li><strong>执行机构：</strong>北京师范大学</li>
+<li><strong>开放数据年份：</strong>1988、1995、2002、2007</li>
+<li><strong>调查方式：</strong>面访</li>
+<li><strong>采用计算机辅助调查：</strong>否</li>
+<li><strong>数据类型：</strong>截面数据</li>
+<li><strong>抽样方式：</strong>国家统计局城乡居民收入调查的样本</li>
+<li><strong>覆盖省份：</strong>19个省（1995）；22个省（2002）</li>
+<li><strong>受访者：</strong>抽中家庭户中全部18岁以上人员</li>
+<li><strong>分析单位：</strong>个人/家庭</li>
+<li><strong>核心问题：</strong>收入水平</li>
+<li><strong>具体内容：</strong>收入、消费、就业、生产等方面</li>
+<li><strong>代表文章：</strong>赵西亮,梁文泉,李实. 房价上涨能够解释中国城镇居民高储蓄率吗?——基于CHIP微观数据的实证分析[J]. 经济学(季刊),2014,01:81-102.</li>
+<li><strong>网站链接：</strong><a target="_blank" rel="noopener" href="http://www.ciidbnu.org/chip">http://www.ciidbnu.org/chip</a></li>
+</ul>
+<h3><span id="zhong-guo-jia-ting-shou-ru-diao-cha-chip-shu-ju-shou-ye">中国家庭收入调查（CHIP）数据首页</span><a href="#zhong-guo-jia-ting-shou-ru-diao-cha-chip-shu-ju-shou-ye" class="header-anchor">#</a></h3><p>为了追踪中国收入分配的动态情况，中国家庭收入调查（CHIP）已经相继在1989年、1996年、2003年、2008年和2014年进行了五次入户调查。它们分别收集了1988、1995、2002、2007和2013年的收支信息，以及其他家庭和个人信息，分别编号为CHIP1988、CHIP1995、CHIP2002、CHIP2007和CHIP2013。这几次调查是由中外研究者共同组织的、关于“中国收入和不平等研究”的组成部分，并且在国家统计局的协助下完成。CHIP项目的参与者和其他学者分析了这四次调查数据，并且发表了涉及很多领域的文章、报告和学术书籍。对于CHIP调查的具体描述和主要研究发现可在Griffin 和Zhao（1993），Riskin、Zhao和Li（2001），Gustafsson、Li和Sicular（2008）以及Li、Hiroshi和Sicular（2013）中找到。</p>
+<h2><span id="rumic">RUMIC</span><a href="#rumic" class="header-anchor">#</a></h2><ul>
+<li><p><strong>数据名称：</strong>中国城乡流动数据库（Rural-Urban Migration in China） </p>
+</li>
+<li><p><strong>执行机构：</strong>澳大利亚国立大学、北京师范大学</p>
+</li>
+<li><p><strong>开放数据年份：</strong> 2008、2009</p>
+</li>
+<li><p><strong>调查方式：</strong>面访</p>
+</li>
+<li><p><strong>采用计算机辅助调查：</strong>是</p>
+</li>
+<li><p><strong>数据类型：</strong>追踪数据</p>
+</li>
+<li><p><strong>覆盖省份：</strong>本项目主要在人口流出或流入的大省进行调查。其中，农村住户调查是在以下9个省（直辖市）进行：安徽，重庆，广东，河北，河南，湖北，江苏，四川，浙江；城市流动人口调查是在以下15个城市进行：蚌埠，成都，重庆，东莞，广州，合肥，杭州，洛阳，南京，宁波，上海，深圳，武汉，无锡，郑州。城镇住户调查是在19个城市进行，包括城市流动人口调查以外的四个城市：安阳市，建德市，乐山，绵阳。</p>
+</li>
+<li><p><strong>分析单位：</strong>个人/家庭</p>
+</li>
+<li><p><strong>核心问题：</strong>人口流动的福利问题</p>
+</li>
+<li><p><strong>具体内容：</strong>调查问卷涉及个人和家庭层面的信息如家庭构成、成人教育、成人就业、家庭资产等。</p>
+</li>
+<li><p><strong>代表文章：</strong>温兴祥. 城镇化进程中外来居民和本地居民的收入差距问题[J]. 人口研究,2014,02:61-70.</p>
+</li>
+<li><p><strong>网站链接：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.iza.org/organization/idsc?page=27&amp;id=58">https://www.iza.org/organization/idsc?page=27&amp;id=58</a></p>
+<h2><span id="biao-ge">表格</span><a href="#biao-ge" class="header-anchor">#</a></h2></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>中文全称</strong></th>
+<th><strong>英文简写</strong></th>
+<th><strong>组织实施机构</strong></th>
+<th><strong>数据申请网站</strong></th>
+<th><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>中国家庭追踪调查</strong></td>
+<td><strong>CFPS</strong></td>
+<td><strong>北京大学中国社会科学调查中心</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://www.isss.edu.cn/cfps/">http://www.isss.edu.cn/cfps/</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国健康与养老追踪调查</strong></td>
+<td><strong>CHARLS</strong></td>
+<td><strong>北京大学国家发展研究院</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://charls.pku.edu.cn/zh-CN">http://charls.pku.edu.cn/zh-CN</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国综合社会调查</strong></td>
+<td><strong>CGSS</strong></td>
+<td><strong>中国人民大学社会学系、香港科技大学社会科学部</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://www.chinagss.org/">http://www.chinagss.org/</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国家庭收入调查</strong></td>
+<td><strong>CHIPS</strong></td>
+<td><strong>北京师范大学中国收入分配研究院</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://www.ciidbnu.org/index.asp">http://www.ciidbnu.org/index.asp</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国健康与营养调查</strong></td>
+<td><strong>CHNS</strong></td>
+<td><strong>北卡罗来纳大学人口研究中心、中国疾病控制中心</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://www.cpc.unc.edu/projects/china/">http://www.cpc.unc.edu/projects/china/</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国家庭金融调查</strong></td>
+<td><strong>CHFS</strong></td>
+<td><strong>西南财经大学中国家庭金融调查与研究中心</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://chfs.swufe.edu.cn/">http://chfs.swufe.edu.cn/</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国城镇住户**</strong>调查**</td>
+<td><strong>UHS</strong></td>
+<td><strong>国家统计局城调总队</strong></td>
+<td></td>
+<td><strong>特殊申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国人口普查（抽样调查）</strong></td>
+<td><strong>Census</strong></td>
+<td><strong>国家统计局</strong></td>
+<td></td>
+<td><strong>特殊申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国劳动力动态调查</strong></td>
+<td><strong>CLDS</strong></td>
+<td><strong>中山大学社会科学调查中心</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://css.sysu.edu.cn/data/list">http://css.sysu.edu.cn/data/list</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国教育追踪**</strong>调查**</td>
+<td><strong>CEPS</strong></td>
+<td><strong>中国人民大学中国调查与数据中心</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://ceps.ruc.edu.cn/">http://ceps.ruc.edu.cn/</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>中国宗教调查</strong></td>
+<td><strong>CRS</strong></td>
+<td><strong>中国人民大学哲学院与中国人民大学中国调查与数据中心</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://crs.ruc.edu.cn/">http://crs.ruc.edu.cn/</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>全国流动人口动态监测调查数据</strong></td>
+<td></td>
+<td><strong>国家卫计委</strong></td>
+<td><strong><a target="_blank" rel="noopener" href="http://www.chinaldrk.org.cn/data/">http://www.chinaldrk.org.cn/data/</a></strong></td>
+<td><strong>公开申请</strong></td>
+</tr>
+<tr>
+<td><strong>全国农村固定观察点调查数据</strong></td>
+<td></td>
+<td><strong>中共中央政策研究室、国家农业部</strong></td>
+<td></td>
+<td><strong>特殊申请</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1><span id="zong-jie">总结</span><a href="#zong-jie" class="header-anchor">#</a></h1><p>文件名字： 经济学研究常用中国微观数据</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E7%A0%94/" rel="tag"><i class="fa fa-tag"></i> 科研</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/01/%E7%A7%91%E7%A0%94-%E7%A9%BA%E9%97%B4%E8%AE%A1%E9%87%8F%E5%AD%A6/" rel="prev" title="科研-空间计量学">
+      <i class="fa fa-chevron-left"></i> 科研-空间计量学
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/04/17/%E7%A7%91%E7%A0%94-PSM/" rel="next" title="科研-PSM">
+      科研-PSM <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">统计公开数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">CFPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">CHIP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.1.</span> <span class="nav-text">中国家庭收入调查（CHIP）数据首页</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">RUMIC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">表格</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

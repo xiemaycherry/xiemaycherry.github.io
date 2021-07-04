@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="此篇Blog本着详细总结关于利用Excel这一工具处理，分析小规模数据集的相关内容。下面将从五个篇章展开，分别是基础篇、数据清洗篇、统计函数篇、关联匹配类篇、数据分析篇、数据可视化篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据分析之Excel">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="此篇Blog本着详细总结关于利用Excel这一工具处理，分析小规模数据集的相关内容。下面将从五个篇章展开，分别是基础篇、数据清洗篇、统计函数篇、关联匹配类篇、数据分析篇、数据可视化篇">
+<meta property="og:locale">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/Excel工具进行数据分析-提纲.svg">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/清洗处理类.svg">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/关联匹配类.png">
+<meta property="article:published_time" content="2020-09-28T02:08:16.000Z">
+<meta property="article:modified_time" content="2021-06-01T11:48:21.922Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="Excel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiemayshiyi.github.io/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/Excel工具进行数据分析-提纲.svg">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>数据分析之Excel | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据分析之Excel
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-28 10:08:16" itemprop="dateCreated datePublished" datetime="2020-09-28T10:08:16+08:00">2020-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-01 19:48:21" itemprop="dateModified" datetime="2021-06-01T19:48:21+08:00">2021-06-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>此篇Blog本着详细总结关于利用Excel这一工具处理，分析小规模数据集的相关内容。下面将从五个篇章展开，分别是基础篇、数据清洗篇、统计函数篇、关联匹配类篇、数据分析篇、数据可视化篇</p>
+<p><img src="/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/Excel工具进行数据分析-提纲.svg" alt></p>
+<a id="more"></a>
+<h1><span id="xue-xi-zi-liao">学习资料</span><a href="#xue-xi-zi-liao" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/26069349/answer/1885394078">https://www.zhihu.com/question/26069349/answer/1885394078</a></p>
+<h1><span id="ji-chu-pian">基础篇</span><a href="#ji-chu-pian" class="header-anchor">#</a></h1><h2><span id="zi-ti-he-zi-hao">字体和字号</span><a href="#zi-ti-he-zi-hao" class="header-anchor">#</a></h2><h3><span id="zi-ti">字体</span><a href="#zi-ti" class="header-anchor">#</a></h3><p>如果是word,中文：宋体；英文：新罗马字体</p>
+<p>如果是PPT，就要按场景更换了</p>
+<h3><span id="zi-hao">字号</span><a href="#zi-hao" class="header-anchor">#</a></h3><p><strong>汉字：号数制。</strong>汉字大小定为七个号数等级——按，1号、2号、3号、4号、5号、6号、7号由大至小排列。在字号等级之间又增加一些字号，并取名为“小几号字”，如“小4号””、“小5号”等等。</p>
+<p><strong>国际：点数制。</strong>国际上最通行的印刷字体的计量方法，“点”是国际上计量字体大小的基本单位，从英文“Point’，译音而来，一般用小写‘p’来表示，俗称“磅”。磅值(pt)</p>
+<p>两者的对于关系：</p>
+<ol>
+<li><p>字号‘八号’对应磅值5</p>
+</li>
+<li><p>字号‘七号’对应磅值5.5</p>
+</li>
+<li><p>字号‘小六’对应磅值6.5</p>
+</li>
+<li><p>字号‘六号’对应磅值7.5</p>
+</li>
+<li><p>字号‘小五’对应磅值9</p>
+</li>
+<li><p>字号‘五号’对应磅值10.5</p>
+</li>
+<li><p>字号‘小四’对应磅值12</p>
+</li>
+<li><p>字号‘四号’对应磅值14</p>
+</li>
+<li><p>字号‘小三’对应磅值15</p>
+</li>
+<li><p>字号‘三号’对应磅值16</p>
+</li>
+<li><p>字号‘小二’对应磅值18</p>
+</li>
+<li><p>字号‘二号’对应磅值22</p>
+</li>
+<li><p>字号‘小一’对应磅值24</p>
+</li>
+<li><p>字号‘一号’对应磅值26</p>
+</li>
+<li><p>字号‘小初’对应磅值36</p>
+</li>
+<li><p>字号‘初号’对应磅值42</p>
+</li>
+</ol>
+<h2><span id="jian-ju">间距</span><a href="#jian-ju" class="header-anchor">#</a></h2><p>行间距</p>
+<p>标题，段前段后</p>
+<h2><span id="yin-yong">引用</span><a href="#yin-yong" class="header-anchor">#</a></h2><p>绝对引用和相对引用。绝对引用$</p>
+<h1><span id="shu-ju-qing-xi-pian">数据清洗篇</span><a href="#shu-ju-qing-xi-pian" class="header-anchor">#</a></h1><p>在数据清洗的过程中，涉及的操作可能有：字符串含空格；提取字符；时间格式设置；标准化；</p>
+<p><strong>数据去重</strong></p>
+<p><strong>数据缺失值</strong></p>
+<p><strong>异常值</strong></p>
+<p><strong>噪音处理</strong></p>
+<p>噪音，是被测量变量的随机误差或方差。我们在上文中提到过异常点（离群点），那么离群点和噪音是不是一回事呢？我们知道，观测量(Measurement) = 真实数据(True Data) + 噪声 (Noise)。离群点(Outlier)属于观测量，既有可能是真实数据产生的，也有可能是噪声带来的，但是总的来说是和大部分观测量之间有明显不同的观测值。</p>
+<p><img src="/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/清洗处理类.svg" alt="清洗处理类"></p>
+<h1><span id="tong-ji-han-shu-pian">统计函数篇</span><a href="#tong-ji-han-shu-pian" class="header-anchor">#</a></h1><p>统计类函数</p>
+<h1><span id="guan-lian-pi-pei-lei-pian">关联匹配类篇</span><a href="#guan-lian-pi-pei-lei-pian" class="header-anchor">#</a></h1><p><img src="/2020/09/28/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8BExcel/关联匹配类.png" alt="关联匹配类"></p>
+<h1><span id="shu-ju-fen-xi-pian">数据分析篇</span><a href="#shu-ju-fen-xi-pian" class="header-anchor">#</a></h1><p>数据透析表</p>
+<p>分类汇总</p>
+<h1><span id="shu-ju-ke-shi-hua-pian">数据可视化篇</span><a href="#shu-ju-ke-shi-hua-pian" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110389312">https://zhuanlan.zhihu.com/p/110389312</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/97316717">https://zhuanlan.zhihu.com/p/97316717</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74625617">https://zhuanlan.zhihu.com/p/74625617</a></p>
+<h1><span id="ji-chu-xue-xi">基础学习</span><a href="#ji-chu-xue-xi" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yJ411s7wS?p=3&amp;spm_id_from=pageDriver">https://www.bilibili.com/video/BV1yJ411s7wS?p=3&amp;spm_id_from=pageDriver</a></p>
+<h2><span id="day1">day1</span><a href="#day1" class="header-anchor">#</a></h2><ol>
+<li><p>excel的基本概念</p>
+</li>
+<li><p>excel行列</p>
+<p>行列交换（shift,选中，边缘线，四个箭头)</p>
+</li>
+</ol>
+<ol>
+<li><p>表格（鼠标移动到单元格边缘线，出现四个箭头，双击，（上下，左右）找边界线。</p>
+</li>
+<li><p>填充</p>
+<p> ctrl:拖拽</p>
+<p>鼠标右键+左键</p>
+<p>填充方式（日期）</p>
+<p>编辑自定义列表：文件-&gt;选项-&gt;高级（自定义选项） 自定义序列</p>
+</li>
+</ol>
+<h2><span id="day-2">day 2</span><a href="#day-2" class="header-anchor">#</a></h2><p>文本，常规</p>
+<p>单元格格式（斜线）</p>
+<p>数据格式（日期：周，日，）</p>
+<p><strong>单元格格式</strong></p>
+<p>表格边框线:灰色是没有的</p>
+<p>合并</p>
+<p>alt:空格内部换行+回车</p>
+<p>表格斜线：单元格格式画斜线+然后换行，对齐，加空格</p>
+<p>​                三条线：只能自己画插入形状</p>
+<p>格式刷</p>
+<p><strong>数据格式设置</strong></p>
+<p>​         数值依然是数据，不管显示格式是什么，本质就是数值。</p>
+<p>​            日期格式：mmm(月份英文简写) mmmm(月份大写) d dd ddd dddd </p>
+<p>​          aaa(一，二) aaaa(中文星期)  （星期）</p>
+<p>​         显示和编辑栏是不同的，自定义格式（灵活）</p>
+<p>​       文本类型不同：文本不能和其他格式不能通过单元格格式进行修改，文本不能转数字</p>
+<pre><code>             1. 选择*1 进行转换
+</code></pre><p>数据导入和导出（csv,txt)</p>
+<p><strong>分列工具（文本日期) 常规+日期</strong></p>
+<p>文本日期：转日期格式（通过分列）</p>
+<h2><span id="day-3">day 3</span><a href="#day-3" class="header-anchor">#</a></h2><p>查找和替换</p>
+<p>​    格式（颜色，匹配）</p>
+<p>​    通配符: * 多个 ？一个</p>
+<p>​    ~*：转义字符</p>
+<p>​    Ctrl +F</p>
+<p>  Ctrl+H</p>
+<p>定位工具</p>
+<ol>
+<li><p>单元格选中</p>
+<p>：</p>
+<p>900:900</p>
+<p>A100:B200</p>
+<p>常用区域（去名字）</p>
+</li>
+<li><p>填充</p>
+<ol>
+<li>定位空格（按条件填充）合并单元格</li>
+<li>定位</li>
+<li>ctrl+回车（填充）</li>
+</ol>
+</li>
+</ol>
+<h2><span id="day-4">day 4</span><a href="#day-4" class="header-anchor">#</a></h2><p>a. 分类汇总</p>
+<p>​    先排序</p>
+<p>b.多级分类汇总（原来的基础再进行分类汇总）</p>
+<p>c.复制结果</p>
+<p>​    定位可见单元格</p>
+<p>d. 利用分类汇总，合并相同单元格</p>
+<p> ALT+;</p>
+<p>e. 数据验证</p>
+<p>一、    分类汇总工具        </p>
+<pre><code>1、认识分类汇总        
+
+2、使用分类汇总前先排序        
+
+3、分类汇总的嵌套        
+
+4、复制分类汇总的结果区域        
+
+5、使用分类汇总批量合并内容相同的单元格        
+</code></pre><p>二、    设置数据有效性        </p>
+<pre><code>1、设置整数数据有效性        
+
+2、设置文本长度数据有效性        
+
+3、设置序列数据有效性        
+
+4、数据有效性的其他设置        
+    a、输入法切换    
+    b、单元格信息    
+    c、单元格信息保护    
+</code></pre><h2><span id="day-5-hui-zong">day 5 汇总</span><a href="#day-5-hui-zong" class="header-anchor">#</a></h2><p>数据透视表</p>
+<p>字段</p>
+<p>经典模式</p>
+<p>组合(字段过多了)</p>
+<p>多个列</p>
+<p>计算字段：项目合集</p>
+<p>数据透视表    </p>
+<p>1、创建数据透视表    </p>
+<p>2、更改数据透视表汇总方式    </p>
+<p>3、数据透视表中的组合    </p>
+<p>4、汇总多列数据    </p>
+<p>5、在透视表中使用计算    </p>
+<p>6、利用筛选字段自动创建工作表    </p>
+<h2><span id="day-6-yun-suan">day 6 运算</span><a href="#day-6-yun-suan" class="header-anchor">#</a></h2><p>文本连接 &amp;</p>
+<p>1、运算符<br>    算术运算符+ - * / % &amp; ^<br>    比较运算符= &gt; &lt; &gt;= &lt;= &lt;&gt;    </p>
+<p>2、公式中的比较判断<br>    比较运算符的结果：TRUE  FALSE    </p>
+<p>3、运算符优先级<br>－        负号<br>%        百分比<br>^        求幂</p>
+<ul>
+<li>/        乘和除</li>
+</ul>
+<ul>
+<li><ul>
+<li><p>加和减<br>&amp;        文本连接<br>=,&lt;,&gt;,&lt;=,&gt;=,&lt;&gt;        比较</p>
+<p>​    </p>
+</li>
+</ul>
+</li>
+</ul>
+<p>4、单元格引用<br>    相对引用：A1<br>    绝对引用：$A$1<br>    混合引用：$A1   A$1    </p>
+<h2><span id="day-7-pi-pei-cha-xun-han-shu-zhao-shui-zai-na-li-zhao-zhao-shi-me-xin-xi-pi-pei-if-count-sum-average-std">day 7 匹配 查询函数（找谁，在哪里找，找什么信息，匹配) if count ,sum ,average, std</span><a href="#day-7-pi-pei-cha-xun-han-shu-zhao-shui-zai-na-li-zhao-zhao-shi-me-xin-xi-pi-pei-if-count-sum-average-std" class="header-anchor">#</a></h2><p>注意：被查找对象一定是第二参数（选择区域）的第一列，默认，在里面匹配，然后返回信息。</p>
+<p>一、    使用Vlookup函数                    </p>
+<pre><code>1、Vlookup函数语法                    
+    VLOOKUP(lookup_value,table_array,col_index_num,[range_lookup])    
+    查找函数
+
+2、vlookup中使用通配符        
+A2&amp;“*”:通配符
+
+3、vlookup模糊查找        
+第四参数（1,）：返回临界更近更小的
+除了数值区间，一般都是精确
+
+4、使用isna函数处理数字格式引起的错误
+&amp;“”变成文本
+文本*1；文本+1：变成数值
+    第一个参数可以修改啊        
+isna()判断函数的计算结果，如果没有结果，
+if(isna(),正确语句，错误语句)结合函数vlookup
+
+5、Hlookup函数                    
+</code></pre><p>​                        </p>
+<p>summary:文本、数值转化；if(,,),函数，isna(), &amp; “”</p>
+<h2><span id="day-8-pi-pei-suo-yin-index-match">day 8 匹配 索引 index match</span><a href="#day-8-pi-pei-suo-yin-index-match" class="header-anchor">#</a></h2><p>选区（两列）</p>
+<p>match(A2,找的A2,0|1) 定位位置（哪一行） 查找（查找什么，在哪里查找，怎么查）</p>
+<p>index(在哪里拿，低几个) 拿去（拿什么，在哪里）</p>
+<p>index(取那一列，mathch(查什么，在那一列找，1|0))</p>
+<p>vlookup也可以第三个参数（match，</p>
+<h2><span id="day9-tu-biao">day9 图表</span><a href="#day9-tu-biao" class="header-anchor">#</a></h2><p>就是类型，属性设置</p>
+<h2><span id="day10-yi-biao-ban">day10 仪表板</span><a href="#day10-yi-biao-ban" class="header-anchor">#</a></h2><p>切片器</p>
+<p>打印</p>
+<p>赋值</p>
+<p>颜色</p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Excel/" rel="tag"><i class="fa fa-tag"></i> Excel</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/24/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E4%B8%83%E5%91%A8/" rel="prev" title="数据分析-七周">
+      <i class="fa fa-chevron-left"></i> 数据分析-七周
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/29/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-k%E8%BF%91%E9%82%BB%E6%B3%95/" rel="next" title="机器学习-k近邻法">
+      机器学习-k近邻法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">学习资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">字体和字号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.1.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.2.</span> <span class="nav-text">字号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">间距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">数据清洗篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">统计函数篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">关联匹配类篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">数据分析篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">数据可视化篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">基础学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.1.</span> <span class="nav-text">day1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.2.</span> <span class="nav-text">day 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.3.</span> <span class="nav-text">day 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.4.</span> <span class="nav-text">day 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.5.</span> <span class="nav-text">day 5 汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.6.</span> <span class="nav-text">day 6 运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.7.</span> <span class="nav-text">day 7 匹配 查询函数（找谁，在哪里找，找什么信息，匹配) if count ,sum ,average, std</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.8.</span> <span class="nav-text">day 8 匹配 索引 index match</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.9.</span> <span class="nav-text">day9 图表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.10.</span> <span class="nav-text">day10 仪表板</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiemayshiyi.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="[导读]此篇Blog将简单呈现从入门到精通再到升仙的学习路径。本着通俗易懂的原则，面向新手的打怪升级套路，重量级的推出不仅仅适用于工程、竞赛的绘图标准，更是满足科研绘图的高水准的教程。(先定制出目标，能不能到达效果就看下文了)  导入模块 设置风格 设置环境 选择想要绘制的图形 规范化(调色板等等)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可视化之Seaborn">
+<meta property="og:url" content="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BSeaborn/index.html">
+<meta property="og:site_name" content="Welcome to shiyi&#39;s world">
+<meta property="og:description" content="[导读]此篇Blog将简单呈现从入门到精通再到升仙的学习路径。本着通俗易懂的原则，面向新手的打怪升级套路，重量级的推出不仅仅适用于工程、竞赛的绘图标准，更是满足科研绘图的高水准的教程。(先定制出目标，能不能到达效果就看下文了)  导入模块 设置风格 设置环境 选择想要绘制的图形 规范化(调色板等等)">
+<meta property="og:locale">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705221558317.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705221700433.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705221906969.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705221930868.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705221956955.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705222053250.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705222450188.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705222523230.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705222545523.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705222706888.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705222739608.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705222816501.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705223538747.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705223715276.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705223759570.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705223840601.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705223911555.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705223939745.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224011917.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020070522410197.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224133734.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224206318.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224252881.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224320624.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224348864.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224418436.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224447620.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224518127.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224642465.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224707150.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224740421.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224902910.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705224923484.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225047406.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225105357.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225142778.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225116145.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020070522513594.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225125876.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225230345.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225253431.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225317456.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225342903.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225414861.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225438445.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225833490.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225923448.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200705225946512.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711222858478.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711222917515.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711222937493.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223007874.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223026393.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020071122305035.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223107272.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223136492.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223207310.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223248722.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223337835.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020071122360377.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223633135.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223650940.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223708961.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223726672.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223742799.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223751528.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223807222.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711223830254.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224238846.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224251307.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224310304.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224519925.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020071122453289.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224547445.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224600931.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224611215.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224621593.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224634866.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224649463.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224700998.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224712787.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224722695.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224734854.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711224957282.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225029402.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225054379.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225125799.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225136691.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225201378.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225233217.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225246534.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225257688.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020071122531496.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225326549.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200711225346625.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190216223007343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ryb2tlX1pob3U=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200701142050146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FuZHlfc2hlbnps,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BSeaborn/Users/ADMIN/Documents/Apowersoft/Apowersoft%20Online%20Screen%20Recorder/20201010_211035.gif">
+<meta property="og:image" content="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BSeaborn/Users/ADMIN/Documents/Apowersoft/Apowersoft%20Online%20Screen%20Recorder/20201010_211219.gif">
+<meta property="article:published_time" content="2020-10-11T02:25:37.000Z">
+<meta property="article:modified_time" content="2020-10-18T02:51:51.191Z">
+<meta property="article:author" content="XieMay">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="绘图">
+<meta property="article:tag" content="Seaborn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200705221558317.png">
+
+<link rel="canonical" href="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BSeaborn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>可视化之Seaborn | Welcome to shiyi's world</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome to shiyi's world</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://xiemayshiyi.github.io/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BSeaborn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="XieMay">
+      <meta itemprop="description" content="wise">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to shiyi's world">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          可视化之Seaborn
+        </h1>
+
+        <div class="post-meta">
+			
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-11 10:25:37" itemprop="dateCreated datePublished" datetime="2020-10-11T10:25:37+08:00">2020-10-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-18 10:51:51" itemprop="dateModified" datetime="2020-10-18T10:51:51+08:00">2020-10-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">数据可视化</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>[导读]此篇Blog将简单呈现从入门到精通再到升仙的学习路径。本着通俗易懂的原则，面向新手的打怪升级套路，重量级的推出不仅仅适用于工程、竞赛的绘图标准，更是满足科研绘图的高水准的教程。(先定制出目标，能不能到达效果就看下文了)</p>
+<ol>
+<li>导入模块</li>
+<li>设置风格</li>
+<li>设置环境</li>
+<li>选择想要绘制的图形</li>
+<li>规范化(调色板等等)</li>
+</ol>
+<a id="more"></a>
+<h1><span id="wu-jia-you-nu-chu-chang-cheng-seaborn">吾家有女初长成— seaborn</span><a href="#wu-jia-you-nu-chu-chang-cheng-seaborn" class="header-anchor">#</a></h1><p>seaborn是基于matplotlib库进行封装和集成的一个Python的可视化库。</p>
+<p><a target="_blank" rel="noopener" href="http://seaborn.pydata.org/api.html#">官方文档</a></p>
+<h3><span id="step1-feng-ge-she-zhi">Step1 风格设置</span><a href="#step1-feng-ge-she-zhi" class="header-anchor">#</a></h3><h3><span id="method-1-set-tong-yong-she-zhi">Method 1: set() 通用设置</span><a href="#method-1-set-tong-yong-she-zhi" class="header-anchor">#</a></h3><p>通过set()函数可进行风格(style)，和环境（context）设置</p>
+<p><a target="_blank" rel="noopener" href="http://seaborn.pydata.org/generated/seaborn.set_theme.html#seaborn.set_theme">详情</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mwaskom/seaborn/blob/master/seaborn/rcmod.py">详情</a></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">sns.set()  <span class="comment">#默认风格为darkgrid</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_theme</span>(<span class="params">context=<span class="string">"notebook"</span>, style=<span class="string">"darkgrid"</span>, palette=<span class="string">"deep"</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">              font=<span class="string">"sans-serif"</span>, font_scale=<span class="number">1</span>, color_codes=True, rc=None</span>):</span></span><br><span class="line">    <span class="string">"""Set multiple theme parameters in one step.</span></span><br><span class="line"><span class="string">    Each set of parameters can be set directly or temporarily, see the</span></span><br><span class="line"><span class="string">    referenced functions below for more information.</span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    context : string or dict</span></span><br><span class="line"><span class="string">        Plotting context parameters, see :func:`plotting_context`.</span></span><br><span class="line"><span class="string">    style : string or dict</span></span><br><span class="line"><span class="string">        Axes style parameters, see :func:`axes_style`.</span></span><br><span class="line"><span class="string">    palette : string or sequence</span></span><br><span class="line"><span class="string">        Color palette, see :func:`color_palette`.</span></span><br><span class="line"><span class="string">    font : string</span></span><br><span class="line"><span class="string">        Font family, see matplotlib font manager.</span></span><br><span class="line"><span class="string">    font_scale : float, optional</span></span><br><span class="line"><span class="string">        Separate scaling factor to independently scale the size of the</span></span><br><span class="line"><span class="string">        font elements.</span></span><br><span class="line"><span class="string">    color_codes : bool</span></span><br><span class="line"><span class="string">        If ``True`` and ``palette`` is a seaborn palette, remap the shorthand</span></span><br><span class="line"><span class="string">        color codes (e.g. "b", "g", "r", etc.) to the colors from this palette.</span></span><br><span class="line"><span class="string">    rc : dict or None</span></span><br><span class="line"><span class="string">        Dictionary of rc parameter mappings to override the above.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    set_context(context, font_scale)</span><br><span class="line">    set_style(style, rc={<span class="string">"font.family"</span>: font})</span><br><span class="line">    set_palette(palette, color_codes=color_codes)</span><br><span class="line">    <span class="keyword">if</span> rc <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        mpl.rcParams.update(rc)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">    <span class="string">"""Alias for :func:`set_theme`, which is the preferred interface."""</span></span><br><span class="line">    set_theme(*args, **kwargs)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="set-style-feng-ge-she-zhi">set_style()风格设置</span><a href="#set-style-feng-ge-she-zhi" class="header-anchor">#</a></h3><h4><span id="quan-ju-feng-ge">全局风格</span><a href="#quan-ju-feng-ge" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2.set_style(style=None, rc=None)，自定义整体风格</span><br><span class="line">style: 参数为"white"、"dark"、 "whitegrid"、 "darkgrid"、 "ticks"或者None，默认为darkgrid</span><br><span class="line">rc: rcdict, optional</span><br><span class="line">Parameter mappings to override the values in the preset seaborn style dictionaries. This only updates parameters that are considered part of the style definition.</span><br><span class="line"></span><br><span class="line">set_style("whitegrid")</span><br><span class="line">set_style("ticks", {"xtick.major.size": 8, "ytick.major.size": 8})</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p><a target="_blank" rel="noopener" href="http://seaborn.pydata.org/generated/seaborn.set_style.html?highlight=set_style#seaborn.set_style">详情</a></p>
+<h4><span id="dang-qian-tu-axes-de-feng-ge">当前图(axes)的风格</span><a href="#dang-qian-tu-axes-de-feng-ge" class="header-anchor">#</a></h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span>axes_style()，设置子图风格</span><br><span class="line">可与<span class="keyword">with</span>搭配使用，设置<span class="keyword">with</span>代码块内的图表风格，不影响整体图表风格。</span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">15</span>,<span class="number">6</span>))</span><br><span class="line"><span class="keyword">with</span> sns.axes_style(<span class="string">"dark"</span>,rc = ): <span class="comment">#只对with代码块内的图表风格生效，即只对第一个子图生效</span></span><br><span class="line">    plt.subplot(<span class="number">121</span>)       </span><br><span class="line">    sinplot()</span><br><span class="line"></span><br><span class="line">sns.set_style(<span class="string">"white"</span>)       <span class="comment">#整体风格为white</span></span><br><span class="line">plt.subplot(<span class="number">122</span>)</span><br><span class="line">sinplot()</span><br></pre></td></tr></tbody></table></figure>
+<h4><span id="rc">rc</span><a href="#rc" class="header-anchor">#</a></h4><p>_style_keys = [</p>
+<pre><code>"axes.facecolor",
+"axes.edgecolor",
+"axes.grid",
+"axes.axisbelow",
+"axes.labelcolor",
+
+"figure.facecolor",
+
+"grid.color",
+"grid.linestyle",
+
+"text.color",
+
+"xtick.color",
+"ytick.color",
+"xtick.direction",
+"ytick.direction",
+"lines.solid_capstyle",
+
+"patch.edgecolor",
+"patch.force_edgecolor",
+
+"image.cmap",
+"font.family",
+"font.sans-serif",
+
+"xtick.bottom",
+"xtick.top",
+"ytick.left",
+"ytick.right",
+
+"axes.spines.left",
+"axes.spines.bottom",
+"axes.spines.right",
+"axes.spines.top",
+</code></pre><h3><span id="step2-huan-jing-she-zhi-context">Step2 环境设置context</span><a href="#step2-huan-jing-she-zhi-context" class="header-anchor">#</a></h3><h5><span id="5-set-context-xian-shi-bi-li">5.set_context()显示比例</span><a href="#5-set-context-xian-shi-bi-li" class="header-anchor">#</a></h5><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sns.set() //重设默认参数</span><br><span class="line">sns.set_context(<span class="string">"paper"</span>,rc)</span><br><span class="line">sinplot()</span><br><span class="line">可选参数为<span class="string">'paper'</span>、 <span class="string">'notebook'</span>、<span class="string">'talk'</span>、<span class="string">'poster'</span>，默认为notebook，设置标签、线等的大小。</span><br></pre></td></tr></tbody></table></figure>
+<h4><span id="ju-bu-axes">局部axes</span><a href="#ju-bu-axes" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> // 自定义图形规模</span><br><span class="line">sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5})</span><br><span class="line">sinplot()</span><br></pre></td></tr></tbody></table></figure>
+<h4><span id="rc">rc</span><a href="#rc" class="header-anchor">#</a></h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// 可设置的选择项 rc</span><br><span class="line">_context_keys = [</span><br><span class="line"></span><br><span class="line">    "font.size",</span><br><span class="line">    "axes.labelsize",</span><br><span class="line">    "axes.titlesize",</span><br><span class="line">    "xtick.labelsize",</span><br><span class="line">    "ytick.labelsize",</span><br><span class="line">    "legend.fontsize",</span><br><span class="line"></span><br><span class="line">    "axes.linewidth",</span><br><span class="line">    "grid.linewidth",</span><br><span class="line">    "lines.linewidth",</span><br><span class="line">    "lines.markersize",</span><br><span class="line">    "patch.linewidth",</span><br><span class="line"></span><br><span class="line">    "xtick.major.width",</span><br><span class="line">    "ytick.major.width",</span><br><span class="line">    "xtick.minor.width",</span><br><span class="line">    "ytick.minor.width",</span><br><span class="line"></span><br><span class="line">    "xtick.major.size",</span><br><span class="line">    "ytick.major.size",</span><br><span class="line">    "xtick.minor.size",</span><br><span class="line">    "ytick.minor.size",</span><br><span class="line"></span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="step-3-diao-se-ban">Step 3 调色板</span><a href="#step-3-diao-se-ban" class="header-anchor">#</a></h3><p>就是对图片的颜色进行配置。选择指定的颜色风格。通过color_palette()对颜色板进行处理，返回颜色，并对图片进行上色。</p>
+<h4><span id="diao-se-ban">调色板</span><a href="#diao-se-ban" class="header-anchor">#</a></h4><p>主要使用以下几个函数设置颜色：<br>color_palette() 能传入任何Matplotlib所有支持的颜色<br>color_palette() 不写参数则默认颜色<br>set_palette() 设置所有图的颜色</p>
+<p>主要使用以下几个函数设置颜色：</p>
+<h5><span id="color-palette-ji-yu-rgb-she-zhi-yan-se-de-jie-kou">color_palette() 基于RGB设置颜色的接口</span><a href="#color-palette-ji-yu-rgb-she-zhi-yan-se-de-jie-kou" class="header-anchor">#</a></h5><p> 能传入任何Matplotlib所有支持的颜色。基于RGB原理设置颜色的接口，可接收一个调色板对象作为参数，同时可以设置颜色数量</p>
+<p>Returns:<br>palette : list of RGB tuples. 返回一个颜色三元组列表（默认是6个）</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">seaborn.color_palette(palette=<span class="literal">None</span>, n_colors=<span class="literal">None</span>, desat=<span class="literal">None</span>, as_cmap=<span class="literal">False</span>)</span><br><span class="line">Return a list of colors <span class="keyword">or</span> continuous colormap defining a palette.</span><br><span class="line"></span><br><span class="line">Possible palette values include:</span><br><span class="line">Name of a seaborn palette (deep, muted, bright, pastel, dark, colorblind)</span><br><span class="line"></span><br><span class="line">Name of matplotlib colormap</span><br><span class="line"></span><br><span class="line">‘husl’ <span class="keyword">or</span> ‘hsl’</span><br><span class="line"></span><br><span class="line">‘ch:&lt;cubehelix arguments&gt;’</span><br><span class="line"></span><br><span class="line">‘light:&lt;color&gt;’, ‘dark:&lt;color&gt;’, ‘blend:&lt;color&gt;,&lt;color&gt;’,</span><br><span class="line"></span><br><span class="line">A sequence of colors <span class="keyword">in</span> any format matplotlib accepts</span><br></pre></td></tr></tbody></table></figure>
+<h5><span id="chang-jian-de-yan-se-ban">常见的颜色板</span><a href="#chang-jian-de-yan-se-ban" class="header-anchor">#</a></h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>颜色组合名称(首字母大写)</th>
+<th>调色显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1.Accent</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705221558317.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>2.Accent_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705221700433.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>3.Blues</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705221906969.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>4.Blues_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705221930868.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>5.BrBG</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705221956955.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>6.BrBG_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705222053250.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><em>相信聪明的你们发现了颜色名称的某个规律 XXX_r 与 XXX 大多只是颜色顺序相反，故以下只显示 XXX</em></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>7.BuGn</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705222450188.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>8.BuPu</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705222523230.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>9.CMRmap</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705222545523.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>10.Dark2</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705222706888.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>11.Dark2_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705222739608.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>12.GnBu</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705222816501.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>13.Greens</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705223538747.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>14.Greys</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705223715276.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>15.OrRd</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705223759570.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>16.Oranges</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705223840601.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>17.PRGn</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705223911555.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>18.Paired</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705223939745.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>19.Paired_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224011917.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>20.Pastel1</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/2020070522410197.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>21.Pastel1_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224133734.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>22.Pastel2</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224206318.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>23.Pastel2_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224252881.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>24.PiYG</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224320624.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>25.PuBu</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224348864.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>26.PuBuGn</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224418436.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>27.PuOr</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224447620.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>28.PuRd</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224518127.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>29.Purples</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224642465.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>30.RdBu</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224707150.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>31.RdYlBu</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224740421.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>32.RdYlGn</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224902910.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>33.Reds</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705224923484.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>34.Set1</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225047406.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>35.Set1_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225105357.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>36.Set2</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225142778.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>37.Set2_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225116145.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>38.Set3</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/2020070522513594.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>39.Set3_r</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225125876.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>40.Spectral</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225230345.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>41.Wistia</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225253431.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>42.YlGn</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225317456.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>43.YlGnBu</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225342903.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>44.YlOrBr</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225414861.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td><strong>45.YlOrRd</strong></td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225438445.png" alt="在这里插入图片描述"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>颜色组合名称(首字母小写)</th>
+<th>调色板显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.afmhot</td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225833490.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>2.autumn</td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225923448.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>3.binary</td>
+<td><img src="https://img-blog.csdnimg.cn/20200705225946512.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>4.bone</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711222858478.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>5.brg</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711222917515.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>6.bwr</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711222937493.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>7.cividis</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223007874.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>8.cool</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223026393.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>9.coolwarm</td>
+<td><img src="https://img-blog.csdnimg.cn/2020071122305035.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>10.copper</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223107272.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>11.cubehelix</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223136492.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>12.flag</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223207310.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>13.gist_earth</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223248722.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>14.gist_gray</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223337835.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>15.gist_heat</td>
+<td><img src="https://img-blog.csdnimg.cn/2020071122360377.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>16.gist_ncar</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223633135.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>17.gist_rainbow</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223650940.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>18.gist_stern</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223708961.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>19.gist_yarg</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223726672.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>20.gnuplot</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223742799.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>21.gnuplot2</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223751528.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>22.gray</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223807222.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>23.hot</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711223830254.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>24.hsv</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224238846.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>25.icefire</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224251307.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>26.inferno</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224310304.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>27.jet</td>
+<td><code>ValueError: No.</code></td>
+</tr>
+<tr>
+<td>28.magma</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224519925.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>29.mako</td>
+<td><img src="https://img-blog.csdnimg.cn/2020071122453289.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>30.nipy_spectral</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224547445.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>31.ocean</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224600931.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>32.pink</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224611215.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>33.plasma</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224621593.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>34.prism</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224634866.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>35.rainbow</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224649463.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>36.rocket</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224700998.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>37.seismic</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224712787.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>38.spring</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224722695.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>39.summer</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224734854.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>40.1.tab10</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711224957282.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>40.2.tab10_r</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225029402.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>41.1.tab20</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225054379.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>41.2.tab20_r</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225125799.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>42.1.tab20c</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225136691.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>42.2.tab20c_r</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225201378.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>43.terrain</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225233217.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>44.twilight</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225246534.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>45.twilight_shifted</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225257688.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>46.viridis</td>
+<td><img src="https://img-blog.csdnimg.cn/2020071122531496.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>47.vlag</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225326549.png" alt="在这里插入图片描述"></td>
+</tr>
+<tr>
+<td>48.winter</td>
+<td><img src="https://img-blog.csdnimg.cn/20200711225346625.png" alt="在这里插入图片描述"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">color_palette() 不写参数则默认颜色</span><br><span class="line"></span><br><span class="line">current_palette = sns.color_palette() </span><br><span class="line"></span><br><span class="line">sns.palplot(current_palette)</span><br><span class="line"></span><br><span class="line"> plt.show()</span><br><span class="line"></span><br><span class="line">set_palette() 设置所有图的颜色</span><br><span class="line"></span><br><span class="line">sns.palplot(sns.color_palette("hls",8))</span><br><span class="line"></span><br><span class="line"> plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<h5><span id="hls-palette-ji-yu-hls">hls_palette 基于hls</span><a href="#hls-palette-ji-yu-hls" class="header-anchor">#</a></h5><h5><span id="yan-se-de-hue-se-xiang-luminance-liang-du-ji-saturation-bao-he-du">颜色的hue(色相),Luminance(亮度)及Saturation(饱和度)</span><a href="#yan-se-de-hue-se-xiang-luminance-liang-du-ji-saturation-bao-he-du" class="header-anchor">#</a></h5><p>l-光度 lightness<br>s-饱和 saturation</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.palplot(sns.hls_palette(8,l=.7,s=.9)) </span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<h4><span id="xkcd-xuan-qu-yan-se">xkcd选取颜色</span><a href="#xkcd-xuan-qu-yan-se" class="header-anchor">#</a></h4><p>xkcd包含了一套众包努力的针对随机RGB色的命名。产生了954个可以随时通过xkcd_rgb字典中调用的命名颜色</p>
+<p>plt.plot([0,1],[0,1],sns.xkcd_rgb[‘pale red’],lw = 3) #lw = 线宽度<br>plt.plot([0,1],[0,2],sns.xkcd_rgb[‘medium green’],lw = 3)<br>plt.plot([0,1],[0,3],sns.xkcd_rgb[‘denim blue’],lw = 3)<br>plt.show()</p>
+<p><img src="https://img-blog.csdnimg.cn/20190216223007343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ryb2tlX1pob3U=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5><span id="se-xi-dui-bi">色系对比</span><a href="#se-xi-dui-bi" class="header-anchor">#</a></h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(12,8))</span><br><span class="line"></span><br><span class="line">#默认</span><br><span class="line">plt.subplot(231)</span><br><span class="line">palette=sns.color_palette()</span><br><span class="line">sns.boxplot(data=data,palette=palette)</span><br><span class="line"></span><br><span class="line">#设置饱和度；l-亮度 lightness；s-饱和 saturation</span><br><span class="line">plt.subplot(232)</span><br><span class="line">palette=sns.hls_palette(6, l=.7, s=.9)</span><br><span class="line">sns.boxplot(data=data,palette=palette)</span><br><span class="line"></span><br><span class="line">#配对对比</span><br><span class="line">plt.subplot(233)</span><br><span class="line">palette=sns.color_palette("Paired",6)</span><br><span class="line">sns.boxplot(data=data,palette=palette)</span><br><span class="line"></span><br><span class="line">#使用xkcd颜色来命名颜色</span><br><span class="line">plt.subplot(234)</span><br><span class="line">colors = ["pale red","windows blue", "amber", "greyish", "faded green", "dusty purple"]</span><br><span class="line">palette=sns.xkcd_palette(colors)</span><br><span class="line">sns.boxplot(data=data,palette=palette)</span><br><span class="line"></span><br><span class="line">#渐变色</span><br><span class="line">plt.subplot(235)</span><br><span class="line">palette=sns.color_palette("Blues")#想要翻转渐变，可以在面板名称中添加一个_r后缀</span><br><span class="line">sns.boxplot(data=data,palette=palette)</span><br><span class="line"></span><br><span class="line">#色调线性变换</span><br><span class="line">plt.subplot(236)</span><br><span class="line">palette=sns.cubehelix_palette(6, start=.75, rot=-.75)</span><br><span class="line">sns.boxplot(data=data,palette=palette)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200701142050146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FuZHlfc2hlbnps,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-Uwr86onk-1593584425956)(evernotecid://DD492144-9AFF-43C1-9BC0-5A625709FC62/appyinxiangcom/28357599/ENResource/p129)]"></p>
+<h3><span id="step4-zi-ti">Step4 字体</span><a href="#step4-zi-ti" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from matplotlib import rcParams</span><br><span class="line">font1 = {</span><br><span class="line">        'font.family':'serif',</span><br><span class="line">        'font.serif': 'Times New Roman',</span><br><span class="line">         'font.style': 'normal',</span><br><span class="line">         'font.size': 12,</span><br><span class="line">         }</span><br><span class="line">rcParams.update(font1)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from matplotlib import rcParams</span><br><span class="line">font1 = {</span><br><span class="line">        'font.family':'serif',</span><br><span class="line">        'font.serif': 'Times New Roman',</span><br><span class="line">         'font.style': 'normal',</span><br><span class="line">         'font.size': 12,</span><br><span class="line">         }</span><br><span class="line">rcParams.update(font1)</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="step5-an-ding-zhi-xu-qiu-tu">Step5 按定制需求图</span><a href="#step5-an-ding-zhi-xu-qiu-tu" class="header-anchor">#</a></h3><p>Seaborn 一共拥有 50 多个 API 类，相比于 Matplotlib 数千个的规模，可以算作是短小精悍了。其中，根据图形的适应场景，Seaborn 的绘图方法大致分类 6 类，分别是：关联图、类别图、分布图、回归图、矩阵图和组合图。而这 6 大类下面又包含不同数量的绘图函数。</p>
+<h5><span id="guan-lian-tu-api-lei">关联图：API类</span><a href="#guan-lian-tu-api-lei" class="header-anchor">#</a></h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">关联性分析</th>
+<th style="text-align:center">介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">relplot</td>
+<td style="text-align:center">绘制关系图</td>
+</tr>
+<tr>
+<td style="text-align:center">scatterplot</td>
+<td style="text-align:center">多维度分析散点图</td>
+</tr>
+<tr>
+<td style="text-align:center">lineplot</td>
+<td style="text-align:center">多维度分析线形图</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5><span id="lei-bie-tu">类别图</span><a href="#lei-bie-tu" class="header-anchor">#</a></h5><ul>
+<li>分类散点图：<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.stripplot.html"><code>stripplot()</code></a> (<code>kind="strip"</code>)<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.swarmplot.html"><code>swarmplot()</code></a> (<code>kind="swarm"</code>)</li>
+<li>分类分布图：<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.boxplot.html"><code>boxplot()</code></a> (<code>kind="box"</code>)<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.violinplot.html"><code>violinplot()</code></a> (<code>kind="violin"</code>)<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.boxenplot.html"><code>boxenplot()</code></a> (<code>kind="boxen"</code>)</li>
+<li>分类估计图：<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.pointplot.html"><code>pointplot()</code></a> (<code>kind="point"</code>)<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.barplot.html"><code>barplot()</code></a> (<code>kind="bar"</code>)<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.countplot.html"><code>countplot()</code></a> (<code>kind="count"</code>)</li>
+</ul>
+<p>seaborn作为一个库，里面包含了很多类，如PairGrid类。创造相应类的实例（传参)，就可以调用类里面的函数，参数，进行个性化设置。</p>
+<ol>
+<li><p>导入库 2. 创造类实例 3. 调用实例的参数和方法 4. show()</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">g = sns.FacetGrid(tips, col=<span class="string">"time"</span>)</span><br><span class="line"><span class="comment"># 创造了FaceGrid的实例。下面给出了FaceGrid的初始化方法。通过g可以调用类里面的函数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FacetGrid</span>(<span class="params">Grid</span>):</span></span><br><span class="line">    <span class="string">"""Multi-plot grid for plotting conditional relationships."""</span></span><br><span class="line"><span class="meta">    @_deprecate_positional_args</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">        self, data, *,</span></span></span><br><span class="line"><span class="function"><span class="params">        row=None, col=None, hue=None, col_wrap=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        sharex=True, sharey=True, height=<span class="number">3</span>, aspect=<span class="number">1</span>, palette=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        row_order=None, col_order=None, hue_order=None, hue_kws=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        dropna=False, legend_out=True, despine=True,</span></span></span><br><span class="line"><span class="function"><span class="params">        margin_titles=False, xlim=None, ylim=None, subplot_kws=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        gridspec_kws=None, size=None</span></span></span><br><span class="line"><span class="function"><span class="params">    </span>):</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<h4><span id="fen-bu-tu">分布图</span><a href="#fen-bu-tu" class="header-anchor">#</a></h4><p>   分布图主要是用于可视化变量的分布情况，一般分为单变量分布和多变量分布。当然这里的多变量多指二元变量，更多的变量无法绘制出直观的可视化图形。</p>
+<p>   单变量分布</p>
+<p>   <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.distplot.html"><code>distplot</code></a>，<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.kdeplot.html"><code>kdeplot</code></a></p>
+<p>   多变量分布图</p>
+<p>   <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.jointplot.html"><code>jointplot</code></a>，<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.pairplot.html"><code>pairplot</code></a></p>
+<h5><span id="hui-gui-tu">回归图</span><a href="#hui-gui-tu" class="header-anchor">#</a></h5><p>   回归图的绘制函数主要有：<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.lmplot.html"><code>lmplot</code></a> 和 <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.regplot.html"><code>regplot</code></a>。</p>
+<h5><span id="ju-zhen-tu">矩阵图</span><a href="#ju-zhen-tu" class="header-anchor">#</a></h5><p>   <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.heatmap.html"><code>heatmap</code></a> 和 <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/generated/seaborn.clustermap.html"><code>clustermap</code></a></p>
+<p>   <a target="_blank" rel="noopener" href="https://github.com/mwaskom/seaborn/tree/master/seaborn">官方文档</a></p>
+<h4><span id="duo-hui-tu-wang-ge">多绘图网格</span><a href="#duo-hui-tu-wang-ge" class="header-anchor">#</a></h4><h2><span id="1-xiao-ping-mian-wang-ge">1.小平面网格</span><a href="#1-xiao-ping-mian-wang-ge" class="header-anchor">#</a></h2><p>1.1 FaceGrid</p>
+<p>1.2 FacetGrid.map</p>
+<p>1.3 FacetGrid.map_dataframe</p>
+<h2><span id="2-pei-dui-wang-ge">2.配对网格</span><a href="#2-pei-dui-wang-ge" class="header-anchor">#</a></h2><p>2.1 PairGrid</p>
+<p>2.2 PairGrid.map</p>
+<p>2.3 PairGrid.map_diag</p>
+<p>2.4 PairGrid.map_offdiag</p>
+<p>2.5 PairGrid.map_lower</p>
+<p>2.6 PairGrid.map_upper</p>
+<h2><span id="3-lian-he-wang-ge">3.联合网格</span><a href="#3-lian-he-wang-ge" class="header-anchor">#</a></h2><p>3.1 JointGrid</p>
+<p>3.2 JointGrid.plot</p>
+<p>3.3 JointGrid.plot_joint</p>
+<p>3.4 JointGrid.plot_marginals</p>
+<h5><span id="pairgrid">PairGrid</span><a href="#pairgrid" class="header-anchor">#</a></h5><p>可绘制两种类型的图，一种是指定<strong>{x, y}_vars</strong>；另一类：x和y轴相同。可以调用方法进行绘图。</p>
+<p><img src="/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BSeaborn/Users\ADMIN\Documents\Apowersoft\Apowersoft Online Screen Recorder\20201010_211035.gif" alt="20201010_211035"></p>
+<p>二类：x,y轴相同</p>
+<p><img src="/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BSeaborn/Users\ADMIN\Documents\Apowersoft\Apowersoft Online Screen Recorder\20201010_211219.gif" alt="20201010_211219"></p>
+<h2><span id="zu-he-tu">组合图</span><a href="#zu-he-tu" class="header-anchor">#</a></h2><h2><span id="cuo-wu">错误</span><a href="#cuo-wu" class="header-anchor">#</a></h2><p>如果利用pairGrig，pairplot画回归图，似乎有的回归曲线加不上。其他的图没有问题</p>
+<h2><span id="ke-yi-jiang-dan-ge-tu-zu-he">可以将单个图组合</span><a href="#ke-yi-jiang-dan-ge-tu-zu-he" class="header-anchor">#</a></h2><p>主要网格不行</p>
+<p>支出ax参数的可以</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig, (ax1, ax2, ax3) = plt.subplots(1,3, figsize=(15,5))</span><br><span class="line">#我们在这里生成一个fig和三个axes，在下面绘图的时候只需要用ax参数来指定特定的axes就可以了</span><br><span class="line">sns.barplot(x='class', y='age', data=titanic, ax=ax1)</span><br><span class="line">sns.countplot(x='sex', data=titanic, ax=ax2)</span><br><span class="line">sns.distplot(titanic['age'], ax=ax3)</span><br><span class="line">plt.show()</span><br></pre></td></tr></tbody></table></figure>
+<h3><span id="hui-zong">汇总</span><a href="#hui-zong" class="header-anchor">#</a></h3><p><a target="_blank" rel="noopener" href="http://seaborn.pydata.org/api.html#">http://seaborn.pydata.org/api.html#</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mwaskom/seaborn/blob/master/seaborn/rcmod.py">https://github.com/mwaskom/seaborn/blob/master/seaborn/rcmod.py</a></p>
+<p><a target="_blank" rel="noopener" href="https://xkcd.com/color/rgb/">https://xkcd.com/color/rgb/</a></p>
+
+    </div>
+
+    
+    
+    
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 绘图</a>
+              <a href="/tags/Seaborn/" rel="tag"><i class="fa fa-tag"></i> Seaborn</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/09/%E8%A7%84%E5%88%92%E2%80%94-%E6%8A%80%E8%83%BDPost-Get/" rel="prev" title="规划—-技能Post_Get">
+      <i class="fa fa-chevron-left"></i> 规划—-技能Post_Get
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/11/%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BPython%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6%E7%AF%87/" rel="next" title="可视化之Python高级进阶篇">
+      可视化之Python高级进阶篇 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">吾家有女初长成— seaborn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.0.1.</span> <span class="nav-text">Step1 风格设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.0.2.</span> <span class="nav-text">Method 1: set() 通用设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.0.3.</span> <span class="nav-text">set_style()风格设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">全局风格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">当前图(axes)的风格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">rc</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.0.4.</span> <span class="nav-text">Step2 环境设置context</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.4.0.1.</span> <span class="nav-text">5.set_context()显示比例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">局部axes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">rc</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.0.5.</span> <span class="nav-text">Step 3 调色板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">调色板</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.5.1.1.</span> <span class="nav-text">color_palette() 基于RGB设置颜色的接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.5.1.2.</span> <span class="nav-text">常见的颜色板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.5.1.3.</span> <span class="nav-text">hls_palette 基于hls</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.5.1.4.</span> <span class="nav-text">颜色的hue(色相),Luminance(亮度)及Saturation(饱和度)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">xkcd选取颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.5.2.1.</span> <span class="nav-text">色系对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.0.6.</span> <span class="nav-text">Step4 字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.0.7.</span> <span class="nav-text">Step5 按定制需求图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.7.0.1.</span> <span class="nav-text">关联图：API类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.7.0.2.</span> <span class="nav-text">类别图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">分布图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.7.1.1.</span> <span class="nav-text">回归图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.7.1.2.</span> <span class="nav-text">矩阵图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">多绘图网格</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">1.小平面网格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">2.配对网格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">3.联合网格</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.3.0.0.1.</span> <span class="nav-text">PairGrid</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">组合图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.6.</span> <span class="nav-text">可以将单个图组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.1.</span> <span class="nav-text">汇总</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">XieMay</p>
+  <div class="site-description" itemprop="description">wise</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shiyichuixue" title="GitHub → https://github.com/shiyichuixue" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2323020965@qq.com" title="E-Mail → mailto:2323020965@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieMay</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">493k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:28</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共176.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '[object Object]';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
