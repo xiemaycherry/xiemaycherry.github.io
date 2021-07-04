@@ -20,16 +20,17 @@
     var CONFIG = {"hostname":"mycherrymay.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"WGLQQAQKBA","indexName":"xiemay","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="wise">
+  <meta name="description" content="差异性和logit &amp; probit 回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="科研之差异性检测">
 <meta property="og:url" content="http://mycherrymay.github.io/2021/07/04/%E7%A7%91%E7%A0%94%E4%B9%8B%E5%B7%AE%E5%BC%82%E6%80%A7%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="Welcome to shiyi&#39;s world">
-<meta property="og:description" content="wise">
+<meta property="og:description" content="差异性和logit &amp; probit 回归">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-07-04T07:08:03.000Z">
-<meta property="article:modified_time" content="2021-07-04T07:08:03.933Z">
+<meta property="article:modified_time" content="2021-07-04T13:33:52.396Z">
 <meta property="article:author" content="XieMay">
+<meta property="article:tag" content="均值">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://mycherrymay.github.io/2021/07/04/%E7%A7%91%E7%A0%94%E4%B9%8B%E5%B7%AE%E5%BC%82%E6%80%A7%E6%A3%80%E6%B5%8B/">
@@ -201,8 +202,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-07-04 15:08:03" itemprop="dateCreated datePublished" datetime="2021-07-04T15:08:03+08:00">2021-07-04</time>
+              <time title="创建时间：2021-07-04 15:08:03 / 修改时间：21:33:52" itemprop="dateCreated datePublished" datetime="2021-07-04T15:08:03+08:00">2021-07-04</time>
             </span>
 
           
@@ -218,7 +220,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
+              <span>750</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -237,7 +239,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>差异性和logit &amp; probit 回归</p>
+<a id="more"></a>
+<h2><span id="jun-zhi-chai-yi-xing-jian-yan">均值差异性检验</span><a href="#jun-zhi-chai-yi-xing-jian-yan" class="header-anchor">#</a></h2><p>均值差异性检验的另一个方法：方差分析，它与Z检验和T检验的差别在哪里呢？在数据分析中，针对单因素双水平（上面提到的两个例子）的均值差异显著性检验适用Z检验和T检验，但更多的情况是针对单因素多水平、多因素多水平的均值差异显著性检验，Z检验和T检验的比较就不再方便（只能两两比较），这时需要用方差分析。</p>
+<p>这个资料有的难找</p>
+<h2><span id="logistic-hui-gui">Logistic 回归</span><a href="#logistic-hui-gui" class="header-anchor">#</a></h2><h3><span id="er-fen-lei-logistic-hui-gui">二分类Logistic回归</span><a href="#er-fen-lei-logistic-hui-gui" class="header-anchor">#</a></h3><h3><span id="you-xu-duo-fen-lei-logistic-hui-gui">有序多分类Logistic回归</span><a href="#you-xu-duo-fen-lei-logistic-hui-gui" class="header-anchor">#</a></h3><h3><span id="wu-xu-duo-fen-lei-logistic-hui-gui"><strong>无序多分类Logistic回归</strong></span><a href="#wu-xu-duo-fen-lei-logistic-hui-gui" class="header-anchor">#</a></h3><p><a target="_blank" rel="noopener" href="https://www.mediecogroup.com/">https://www.mediecogroup.com/</a></p>
+<h2><span id="logit-hui-gui-amp-probit">Logit回归&amp; Probit</span><a href="#logit-hui-gui-amp-probit" class="header-anchor">#</a></h2><h3><span id="er-yuan-logit-mo-xing">二元 Logit 模型</span><a href="#er-yuan-logit-mo-xing" class="header-anchor">#</a></h3><p>Yizhen Gu, Elizabeth Deakin, Ying Long, The Effects of Driving Restrictions on Travel Behavior Evidence from Beijing, Journal of Urban Economics, 102 (2017), 106-122. DOI: /10.1016/j.jue.2017.03.001</p>
+<h3><span id="duo-yuan-logit-mo-xing-xiang-jie-mlogit">多元 Logit 模型详解 (mlogit)</span><a href="#duo-yuan-logit-mo-xing-xiang-jie-mlogit" class="header-anchor">#</a></h3><ul>
+<li><p>\1. 应用背景</p>
+</li>
+<li><p>\2. 多元 Logit 模型</p>
+</li>
+<li><ul>
+<li>2.1 模型设定</li>
+<li>2.2 模型系数解读</li>
+</ul>
+</li>
+<li><p>\3. 应用实例</p>
+</li>
+<li><ul>
+<li>3.1 数据结构描述</li>
+<li>3.2 模型估计</li>
+<li>3.3 假设检验</li>
+<li>3.4 预测概率值与概率值的图形显示</li>
+<li>3.5 拟合优度</li>
+<li>3.6 其他思考</li>
+</ul>
+</li>
+<li><p>参考文献</p>
+</li>
+</ul>
+<h3><span id="you-xu-shu-ju">有序数据</span><a href="#you-xu-shu-ju" class="header-anchor">#</a></h3><p>有时候我们在回归中会遇到这样一种情况：<strong>我们所选取的被解释变量为离散数据，而且是有一定顺序的离散数据。</strong>例如，我们在问卷调查中使用李克特量表对某个变量的测量（从非常满意到非常不满意；从完全同意到完全不同意等），或者对某个岗位按照技术难度排序（低难度、中等难度、高难度）</p>
+<p>ordered probit或ordered logit模</p>
+
     </div>
 
     
@@ -246,6 +280,10 @@
 
 
       <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%9D%87%E5%80%BC/" rel="tag"><i class="fa fa-tag"></i> 均值</a>
+          </div>
 
         
 
@@ -315,6 +353,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">均值差异性检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Logistic 回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">二分类Logistic回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">有序多分类Logistic回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">无序多分类Logistic回归</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Logit回归&amp; Probit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">二元 Logit 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">多元 Logit 模型详解 (mlogit)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">有序数据</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -341,7 +380,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-count">72</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -386,19 +425,19 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">493k</span>
+    <span title="站点总字数">495k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:28</span>
+    <span title="站点阅读时长">7:30</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共176.1k字</span>
+  <span class="post-count">博客全站共176.7k字</span>
 </div>
         
 <div class="busuanzi-count">
@@ -446,7 +485,7 @@
 <script src="/js/schemes/pisces.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -473,5 +512,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
 </html>

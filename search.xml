@@ -5,8 +5,14 @@
     <url>/2019/02/22/%E5%AD%A6%E4%B9%A0Daily/</url>
     <content><![CDATA[<p>努力成为一个小富婆。</p>
 <a id="more"></a>
-<h1><span id="2021">2021：</span><a href="#2021" class="header-anchor">#</a></h1><h2><span id="07">07</span><a href="#07" class="header-anchor">#</a></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">1. </span><br></pre></td></tr></tbody></table></figure>
-<h4><span id="0704">0704</span><a href="#0704" class="header-anchor">#</a></h4><p>人和人之间</p>
+<h1><span id="2021">2021：</span><a href="#2021" class="header-anchor">#</a></h1><h2><span id="07">07</span><a href="#07" class="header-anchor">#</a></h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">1. three paper(I must complete, directly in English.)</span><br><span class="line">2. One of the papers with too many tables(....讨厌，讨厌，alought I translatied , how to arrange ???) put aside</span><br><span class="line">3. One of the papers invloving many contents and results(ohohohohh)  prior</span><br><span class="line">4. One of the papers (I want to give others)</span><br></pre></td></tr></tbody></table></figure>
+<h4><span id="0704">0704</span><a href="#0704" class="header-anchor">#</a></h4><ol>
+<li>Plotting seven figure, but I do not know how to address (directly write in English)</li>
+<li>New knowledge:  Till now, I also do not how to use variance test ,F test, T test ; 2) how to use probit or logit regression (theory is seem to be easy, but practice is a little difficult, and implement is also not easy)</li>
+<li>I do not rememeber all common words and experission. </li>
+<li>I have at least three papers need to be written and have two paper ideas required to verify.</li>
+<li></li>
+</ol>
 <h4><span id="0703">0703</span><a href="#0703" class="header-anchor">#</a></h4><ol>
 <li>新概念到了，买错了</li>
 <li>gender wage gap (it is difficult to write and organize)</li>
@@ -2531,7 +2537,42 @@ matplotlib.plot的基础绘图流程：</li>
   <entry>
     <title>科研之差异性检测</title>
     <url>/2021/07/04/%E7%A7%91%E7%A0%94%E4%B9%8B%E5%B7%AE%E5%BC%82%E6%80%A7%E6%A3%80%E6%B5%8B/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>差异性和logit &amp; probit 回归</p>
+<a id="more"></a>
+<h2><span id="jun-zhi-chai-yi-xing-jian-yan">均值差异性检验</span><a href="#jun-zhi-chai-yi-xing-jian-yan" class="header-anchor">#</a></h2><p>均值差异性检验的另一个方法：方差分析，它与Z检验和T检验的差别在哪里呢？在数据分析中，针对单因素双水平（上面提到的两个例子）的均值差异显著性检验适用Z检验和T检验，但更多的情况是针对单因素多水平、多因素多水平的均值差异显著性检验，Z检验和T检验的比较就不再方便（只能两两比较），这时需要用方差分析。</p>
+<p>这个资料有的难找</p>
+<h2><span id="logistic-hui-gui">Logistic 回归</span><a href="#logistic-hui-gui" class="header-anchor">#</a></h2><h3><span id="er-fen-lei-logistic-hui-gui">二分类Logistic回归</span><a href="#er-fen-lei-logistic-hui-gui" class="header-anchor">#</a></h3><h3><span id="you-xu-duo-fen-lei-logistic-hui-gui">有序多分类Logistic回归</span><a href="#you-xu-duo-fen-lei-logistic-hui-gui" class="header-anchor">#</a></h3><h3><span id="wu-xu-duo-fen-lei-logistic-hui-gui"><strong>无序多分类Logistic回归</strong></span><a href="#wu-xu-duo-fen-lei-logistic-hui-gui" class="header-anchor">#</a></h3><p><a href="https://www.mediecogroup.com/">https://www.mediecogroup.com/</a></p>
+<h2><span id="logit-hui-gui-amp-probit">Logit回归&amp; Probit</span><a href="#logit-hui-gui-amp-probit" class="header-anchor">#</a></h2><h3><span id="er-yuan-logit-mo-xing">二元 Logit 模型</span><a href="#er-yuan-logit-mo-xing" class="header-anchor">#</a></h3><p>Yizhen Gu, Elizabeth Deakin, Ying Long, The Effects of Driving Restrictions on Travel Behavior Evidence from Beijing, Journal of Urban Economics, 102 (2017), 106-122. DOI: /10.1016/j.jue.2017.03.001</p>
+<h3><span id="duo-yuan-logit-mo-xing-xiang-jie-mlogit">多元 Logit 模型详解 (mlogit)</span><a href="#duo-yuan-logit-mo-xing-xiang-jie-mlogit" class="header-anchor">#</a></h3><ul>
+<li><p>\1. 应用背景</p>
+</li>
+<li><p>\2. 多元 Logit 模型</p>
+</li>
+<li><ul>
+<li>2.1 模型设定</li>
+<li>2.2 模型系数解读</li>
+</ul>
+</li>
+<li><p>\3. 应用实例</p>
+</li>
+<li><ul>
+<li>3.1 数据结构描述</li>
+<li>3.2 模型估计</li>
+<li>3.3 假设检验</li>
+<li>3.4 预测概率值与概率值的图形显示</li>
+<li>3.5 拟合优度</li>
+<li>3.6 其他思考</li>
+</ul>
+</li>
+<li><p>参考文献</p>
+</li>
+</ul>
+<h3><span id="you-xu-shu-ju">有序数据</span><a href="#you-xu-shu-ju" class="header-anchor">#</a></h3><p>有时候我们在回归中会遇到这样一种情况：<strong>我们所选取的被解释变量为离散数据，而且是有一定顺序的离散数据。</strong>例如，我们在问卷调查中使用李克特量表对某个变量的测量（从非常满意到非常不满意；从完全同意到完全不同意等），或者对某个岗位按照技术难度排序（低难度、中等难度、高难度）</p>
+<p>ordered probit或ordered logit模</p>
+]]></content>
+      <tags>
+        <tag>均值</tag>
+      </tags>
   </entry>
   <entry>
     <title>差异性检测</title>
